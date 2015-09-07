@@ -72,6 +72,14 @@ class SignInViewController: UIViewController {
     passwordTextField.resignFirstResponder()
   }
   
+  @IBAction func signIn(sender: AnyObject) {
+    let email = usernameTextField.text
+    let password = passwordTextField.text
+    UserService.signInWithEmail(email, password: password, completion: {(responseObject: AnyObject?, error: NSError?) in
+      self.performSegueWithIdentifier("GoToSchoolListSegue", sender: nil)
+    })
+  }
+  
   // MARK: - Notifications
   
   func keyboardWillShow(notification: NSNotification) {

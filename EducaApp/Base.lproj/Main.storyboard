@@ -57,11 +57,11 @@
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                             </mapView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QBf-5V-AKt" userLabel="Close Map Button">
-                                <rect key="frame" x="544" y="41" width="40" height="40"/>
+                                <rect key="frame" x="518" y="516" width="50" height="50"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="40" id="B5t-Z7-0wr"/>
-                                    <constraint firstAttribute="width" constant="40" id="weQ-Pu-JfZ"/>
+                                    <constraint firstAttribute="height" constant="50" id="B5t-Z7-0wr"/>
+                                    <constraint firstAttribute="width" constant="50" id="weQ-Pu-JfZ"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="ZapfDingbatsITC" family="Zapf Dingbats" pointSize="19"/>
                                 <state key="normal" title="X">
@@ -74,7 +74,7 @@
                                         <integer key="value" value="0"/>
                                     </userDefinedRuntimeAttribute>
                                     <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
-                                        <integer key="value" value="20"/>
+                                        <integer key="value" value="25"/>
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                                 <connections>
@@ -86,9 +86,9 @@
                         <constraints>
                             <constraint firstItem="PR6-kr-tX8" firstAttribute="leading" secondItem="B8w-Et-vXi" secondAttribute="leading" id="2ga-1g-V0X"/>
                             <constraint firstAttribute="trailing" secondItem="PR6-kr-tX8" secondAttribute="trailing" id="40F-1E-poi"/>
+                            <constraint firstItem="5hw-qu-lfH" firstAttribute="top" secondItem="QBf-5V-AKt" secondAttribute="bottom" constant="34" id="GzA-2p-LkL"/>
                             <constraint firstItem="PR6-kr-tX8" firstAttribute="top" secondItem="B8w-Et-vXi" secondAttribute="top" id="PxU-mI-6is"/>
-                            <constraint firstItem="QBf-5V-AKt" firstAttribute="top" secondItem="ut0-ae-bBy" secondAttribute="bottom" constant="21" id="VJi-8b-DFr"/>
-                            <constraint firstAttribute="right" secondItem="QBf-5V-AKt" secondAttribute="right" constant="16" id="eWE-mL-sWR"/>
+                            <constraint firstAttribute="right" secondItem="QBf-5V-AKt" secondAttribute="right" constant="32" id="fnO-XD-OqN"/>
                             <constraint firstItem="PR6-kr-tX8" firstAttribute="bottom" secondItem="5hw-qu-lfH" secondAttribute="top" id="l2n-PG-XQA"/>
                         </constraints>
                     </view>
@@ -149,7 +149,7 @@
                                     <userDefinedRuntimeAttribute type="boolean" keyPath="layer.maskToBounds" value="YES"/>
                                 </userDefinedRuntimeAttributes>
                                 <connections>
-                                    <action selector="startLogin:" destination="gSg-8a-5Fb" eventType="touchUpInside" id="h74-sy-ssJ"/>
+                                    <action selector="signIn:" destination="gSg-8a-5Fb" eventType="touchUpInside" id="8An-j7-yhB"/>
                                 </connections>
                             </button>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Mm9-a6-l17" userLabel="Username View">
@@ -303,6 +303,7 @@
                         </constraints>
                         <connections>
                             <outletCollection property="gestureRecognizers" destination="ne1-O4-H3j" appends="YES" id="WY6-Gk-72h"/>
+                            <outletCollection property="gestureRecognizers" destination="ULK-BZ-lRG" appends="YES" id="vrv-CL-5L6"/>
                         </connections>
                     </view>
                     <connections>
@@ -315,6 +316,7 @@
                         <outlet property="usernameContainerView" destination="Mm9-a6-l17" id="PF0-LW-Giy"/>
                         <outlet property="usernameLabel" destination="ABR-QV-OdH" id="Vjt-5u-mvZ"/>
                         <outlet property="usernameTextField" destination="zAe-hj-XgA" id="Yh9-7b-2lj"/>
+                        <segue destination="51h-Io-WH8" kind="show" identifier="GoToSchoolListSegue" id="Yid-Qe-Jbs"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="pYx-ny-JDf" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -323,8 +325,13 @@
                         <action selector="hideKeyboard:" destination="gSg-8a-5Fb" id="iCg-SJ-5cg"/>
                     </connections>
                 </tapGestureRecognizer>
+                <swipeGestureRecognizer direction="down" id="ULK-BZ-lRG">
+                    <connections>
+                        <action selector="hideKeyboard:" destination="gSg-8a-5Fb" id="hwE-rR-goX"/>
+                    </connections>
+                </swipeGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="-878" y="1"/>
+            <point key="canvasLocation" x="-600" y="32"/>
         </scene>
     </scenes>
     <resources>
