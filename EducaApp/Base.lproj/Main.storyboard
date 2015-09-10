@@ -25,7 +25,7 @@
                         <viewControllerLayoutGuide type="bottom" id="2fi-mo-0CV"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="kh9-bI-dsS">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <rect key="frame" x="0.0" y="64" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
@@ -104,7 +104,7 @@
         <!--Navigation Controller-->
         <scene sceneID="mlw-2c-G7g">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="51h-Io-WH8" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="SchoolListViewController" automaticallyAdjustsScrollViewInsets="NO" id="51h-Io-WH8" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="zVE-iV-3zP">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
@@ -133,7 +133,7 @@
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xxw-My-nK9" userLabel="Sign In Button">
                                 <rect key="frame" x="16" y="336" width="568" height="44"/>
-                                <color key="backgroundColor" red="0.78431372549019607" green="0.11372549019607843" blue="0.1803921568627451" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="44" id="2ag-qh-onh"/>
                                 </constraints>
@@ -173,7 +173,7 @@
                                     <textField opaque="NO" clipsSubviews="YES" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="zAe-hj-XgA" userLabel="Username TextField">
                                         <rect key="frame" x="90" y="0.0" width="478" height="38"/>
                                         <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="14"/>
-                                        <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardType="emailAddress" keyboardAppearance="alert" returnKeyType="next"/>
+                                        <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardType="emailAddress" keyboardAppearance="alert" returnKeyType="next" enablesReturnKeyAutomatically="YES"/>
                                     </textField>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dLq-IY-nCT" userLabel="Separator View">
                                         <rect key="frame" x="86" y="0.0" width="1" height="38"/>
@@ -277,7 +277,7 @@
                                     <constraint firstAttribute="width" constant="180" id="SzA-Qc-nn9"/>
                                 </constraints>
                                 <state key="normal" title="¿Olvidaste tu contraseña?">
-                                    <color key="titleColor" red="0.78431372549019607" green="0.11372549019607843" blue="0.1803921568627451" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                             </button>

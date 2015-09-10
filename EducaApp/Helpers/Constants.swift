@@ -14,4 +14,8 @@ struct Constants {
     static let Development = "http://private-e8504-newsapp3.apiary-mock.com/api/v1/"
   }
   
+  struct Notification {
+    static let SignIn = "SignIn"
+  }
+  
 }

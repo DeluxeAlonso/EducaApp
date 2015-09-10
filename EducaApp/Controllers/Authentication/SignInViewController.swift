@@ -96,14 +96,12 @@ class SignInViewController: UIViewController, UITextFieldDelegate {
     } else {
       UserService.signInWithEmail(email, password: password, completion: {(responseObject: AnyObject?, error: NSError?) in
         if let json = responseObject as? NSDictionary {
-          println(json.description)
           if json["error"] == nil {
             let user = User.updateOrCreateWithJson(json, ctx: self.dataLayer.managedObjectContext!)
             self.dataLayer.saveContext()
             User.setAuthenticatedUser(user!)
-            println("Current User")
             print(User.getAuthenticatedUser(self.dataLayer.managedObjectContext!)?.description)
-            self.performSegueWithIdentifier("GoToSchoolListSegue", sender: nil)
+            NSNotificationCenter.defaultCenter().postNotificationName(Constants.Notification.SignIn, object: self, userInfo: nil)
           } else {
             //Show Error Message
           }

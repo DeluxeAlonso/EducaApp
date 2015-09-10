@@ -7,12 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		E2055F211B9F7BF600E72375 /* DeserializationHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2055F201B9F7BF600E72375 /* DeserializationHelper.swift */; };
+		E2055F211B9F7BF600E72375 /* Deserializable.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2055F201B9F7BF600E72375 /* Deserializable.swift */; };
 		E2CF33BC1B9D308800B8BE40 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2CF33BB1B9D308800B8BE40 /* Constants.swift */; };
 		E2CF33BE1B9D3F2C00B8BE40 /* UrlBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2CF33BD1B9D3F2C00B8BE40 /* UrlBuilder.swift */; };
 		E2CF33C01B9D4D1800B8BE40 /* DictionaryHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2CF33BF1B9D4D1800B8BE40 /* DictionaryHelper.swift */; };
 		E2CF33C21B9D5EF100B8BE40 /* UserService.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2CF33C11B9D5EF100B8BE40 /* UserService.swift */; };
-		E2DD60761B9FCDB100FA9758 /* DataLayerHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2DD60751B9FCDB100FA9758 /* DataLayerHelper.swift */; };
+		E2DD60761B9FCDB100FA9758 /* DataLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2DD60751B9FCDB100FA9758 /* DataLayer.swift */; };
 		E2E587E01B993C1C008580D3 /* SignInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2E587DF1B993C1C008580D3 /* SignInViewController.swift */; };
 		E2E587E31B9961AB008580D3 /* UIColorHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2E587E21B9961AB008580D3 /* UIColorHelper.swift */; };
 		E2E9CA491B97BA9200DC0EDA /* UIButtonHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2E9CA481B97BA9200DC0EDA /* UIButtonHelper.swift */; };
@@ -44,12 +44,12 @@
 		88202C874AA0EF52AA054217 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		B16CF1D03442508C54A2C811 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		C330EF7BE42F7341323D4084 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
-		E2055F201B9F7BF600E72375 /* DeserializationHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DeserializationHelper.swift; path = Helpers/DeserializationHelper.swift; sourceTree = "<group>"; };
+		E2055F201B9F7BF600E72375 /* Deserializable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Deserializable.swift; path = Helpers/Deserializable.swift; sourceTree = "<group>"; };
 		E2CF33BB1B9D308800B8BE40 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Constants.swift; path = Helpers/Constants.swift; sourceTree = "<group>"; };
 		E2CF33BD1B9D3F2C00B8BE40 /* UrlBuilder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UrlBuilder.swift; path = Networking/UrlBuilder.swift; sourceTree = "<group>"; };
 		E2CF33BF1B9D4D1800B8BE40 /* DictionaryHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DictionaryHelper.swift; path = Helpers/DictionaryHelper.swift; sourceTree = "<group>"; };
 		E2CF33C11B9D5EF100B8BE40 /* UserService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UserService.swift; path = Networking/UserService.swift; sourceTree = "<group>"; };
-		E2DD60751B9FCDB100FA9758 /* DataLayerHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DataLayerHelper.swift; path = Helpers/DataLayerHelper.swift; sourceTree = "<group>"; };
+		E2DD60751B9FCDB100FA9758 /* DataLayer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DataLayer.swift; path = Helpers/DataLayer.swift; sourceTree = "<group>"; };
 		E2E587DF1B993C1C008580D3 /* SignInViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SignInViewController.swift; path = Controllers/Authentication/SignInViewController.swift; sourceTree = "<group>"; };
 		E2E587E21B9961AB008580D3 /* UIColorHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UIColorHelper.swift; path = Helpers/UIColorHelper.swift; sourceTree = "<group>"; };
 		E2E9CA481B97BA9200DC0EDA /* UIButtonHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UIButtonHelper.swift; path = Helpers/UIButtonHelper.swift; sourceTree = "<group>"; };
@@ -115,6 +115,16 @@
 				E2CF33C11B9D5EF100B8BE40 /* UserService.swift */,
 			);
 			name = Networking;
+			sourceTree = "<group>";
+		};
+		E2DC87BE1BA0D48C0083B0A0 /* Util */ = {
+			isa = PBXGroup;
+			children = (
+				E2CF33BB1B9D308800B8BE40 /* Constants.swift */,
+				E2DD60751B9FCDB100FA9758 /* DataLayer.swift */,
+				E2055F201B9F7BF600E72375 /* Deserializable.swift */,
+			);
+			name = Util;
 			sourceTree = "<group>";
 		};
 		E2E587DE1B993BE6008580D3 /* Authentication */ = {
@@ -220,12 +230,10 @@
 		E2FE3F7A1B96B1A7006EEA91 /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
+				E2DC87BE1BA0D48C0083B0A0 /* Util */,
 				E2E9CA481B97BA9200DC0EDA /* UIButtonHelper.swift */,
 				E2E587E21B9961AB008580D3 /* UIColorHelper.swift */,
-				E2CF33BB1B9D308800B8BE40 /* Constants.swift */,
 				E2CF33BF1B9D4D1800B8BE40 /* DictionaryHelper.swift */,
-				E2055F201B9F7BF600E72375 /* DeserializationHelper.swift */,
-				E2DD60751B9FCDB100FA9758 /* DataLayerHelper.swift */,
 			);
 			name = Helpers;
 			sourceTree = "<group>";
@@ -368,11 +376,11 @@
 				E2CF33C21B9D5EF100B8BE40 /* UserService.swift in Sources */,
 				E2E9CA4B1B97BAB400DC0EDA /* School.swift in Sources */,
 				E2CF33BC1B9D308800B8BE40 /* Constants.swift in Sources */,
-				E2055F211B9F7BF600E72375 /* DeserializationHelper.swift in Sources */,
+				E2055F211B9F7BF600E72375 /* Deserializable.swift in Sources */,
 				E2FE3F4B1B9632DC006EEA91 /* EducaApp.xcdatamodeld in Sources */,
 				E2FE3F721B9636E0006EEA91 /* SWRevealViewController.m in Sources */,
 				E2FE3F481B9632DC006EEA91 /* AppDelegate.swift in Sources */,
-				E2DD60761B9FCDB100FA9758 /* DataLayerHelper.swift in Sources */,
+				E2DD60761B9FCDB100FA9758 /* DataLayer.swift in Sources */,
 				E2E9CA4D1B97E4D400DC0EDA /* User.swift in Sources */,
 				E2E587E01B993C1C008580D3 /* SignInViewController.swift in Sources */,
 				E2FE3F771B963A0F006EEA91 /* MapViewController.swift in Sources */,
