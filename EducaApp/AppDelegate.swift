@@ -58,7 +58,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     self.window = UIWindow(frame: UIScreen.mainScreen().bounds)
     self.storyboard = UIStoryboard(name: "Main", bundle: nil)
     if User.isSignedIn()! {
-      window?.rootViewController = getControllerWithIdentifier("SchoolListViewController")
+      window?.rootViewController = getControllerWithIdentifier("MainViewController")
     }else{
       window?.rootViewController = storyboard?.instantiateInitialViewController() as? UIViewController
     }
@@ -74,7 +74,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
   
   func signIn(notification: NSNotification) {
     var signInViewController = window?.rootViewController
-    var initialViewController: UINavigationController = getControllerWithIdentifier("SchoolListViewController") as! UINavigationController
+    var initialViewController: UIViewController = getControllerWithIdentifier("MainViewController")!
     
     var signInView: UIView = signInViewController!.view
     var initialView: UIView = initialViewController.view

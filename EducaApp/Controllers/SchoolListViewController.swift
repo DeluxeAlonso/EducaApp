@@ -8,10 +8,17 @@
 
 import UIKit
 
+let kBarButtonSelector: Selector = "revealToggle:"
+
 class SchoolListViewController: UIViewController {
+  
+  @IBOutlet weak var menuIcon: UIBarButtonItem!
+  
+  // MARK: - Lifecycle
   
   override func viewDidLoad() {
     super.viewDidLoad()
+    setupElements()
     // Do any additional setup after loading the view, typically from a nib.
   }
   
@@ -23,6 +30,20 @@ class SchoolListViewController: UIViewController {
   override func didReceiveMemoryWarning() {
     super.didReceiveMemoryWarning()
     // Dispose of any resources that can be recreated.
+  }
+  
+  // MARK: - Private
+  
+  private func setupElements() {
+    setupBarButtonItem()
+  }
+  
+  private func setupBarButtonItem() {
+    if self.revealViewController() != nil {
+      self.menuIcon.target = self.revealViewController()
+      self.menuIcon.action = kBarButtonSelector
+      self.view.addGestureRecognizer(self.revealViewController().panGestureRecognizer())
+    }
   }
   
 }

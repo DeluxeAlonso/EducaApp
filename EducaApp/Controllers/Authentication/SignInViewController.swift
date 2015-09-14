@@ -60,16 +60,12 @@ class SignInViewController: UIViewController, UITextFieldDelegate {
   }
   
   private func setupInputFields() {
-    setupCustomIndicatorView()
     usernameTextField.delegate = self
     passwordTextField.delegate = self
     usernameLabel.textColor = UIColor.grayColor()
     passwordLabel.textColor = UIColor.grayColor()
     usernameContainerView.layer.borderColor = UIColor.defaultBorderFieldColor().CGColor
     passwordContainerView.layer.borderColor = UIColor.defaultBorderFieldColor().CGColor
-  }
-  
-  private func setupCustomIndicatorView() {
   }
   
   private func setupAdditionalConstraints() {
