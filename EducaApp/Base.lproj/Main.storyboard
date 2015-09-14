@@ -64,7 +64,7 @@
                                     <constraint firstAttribute="width" constant="50" id="weQ-Pu-JfZ"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="ZapfDingbatsITC" family="Zapf Dingbats" pointSize="19"/>
-                                <state key="normal" title="X">
+                                <state key="normal" image="CloseButton">
                                     <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                     <color key="titleShadowColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
@@ -106,6 +106,7 @@
             <objects>
                 <navigationController storyboardIdentifier="SchoolListViewController" automaticallyAdjustsScrollViewInsets="NO" id="51h-Io-WH8" sceneMemberID="viewController">
                     <toolbarItems/>
+                    <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="zVE-iV-3zP">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -152,6 +153,19 @@
                                     <action selector="signIn:" destination="gSg-8a-5Fb" eventType="touchUpInside" id="8An-j7-yhB"/>
                                 </connections>
                             </button>
+                            <view hidden="YES" userInteractionEnabled="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Jr3-c6-rnE" customClass="CustomActivityIndicatorView" customModule="EducaApp" customModuleProvider="target">
+                                <rect key="frame" x="278" y="336" width="44" height="44"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="44" id="dAc-zm-CNp"/>
+                                </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="indicatorColor">
+                                        <color key="value" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="string" keyPath="indicatorStyle" value="spotifyLike"/>
+                                </userDefinedRuntimeAttributes>
+                            </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Mm9-a6-l17" userLabel="Username View">
                                 <rect key="frame" x="16" y="234" width="568" height="38"/>
                                 <subviews>
@@ -292,6 +306,9 @@
                             <constraint firstItem="Zjc-cS-IMK" firstAttribute="top" secondItem="Mm9-a6-l17" secondAttribute="bottom" constant="8" id="L8M-ZP-4ZN"/>
                             <constraint firstItem="Zjc-cS-IMK" firstAttribute="trailing" secondItem="6vE-uS-5AL" secondAttribute="trailingMargin" id="S8c-ro-lar"/>
                             <constraint firstAttribute="centerX" secondItem="xxw-My-nK9" secondAttribute="centerX" id="Ue7-85-dvt"/>
+                            <constraint firstItem="xxw-My-nK9" firstAttribute="centerX" secondItem="Jr3-c6-rnE" secondAttribute="centerX" id="aWg-31-t3x"/>
+                            <constraint firstItem="xxw-My-nK9" firstAttribute="centerY" secondItem="Jr3-c6-rnE" secondAttribute="centerY" id="bW3-gq-lgJ"/>
+                            <constraint firstItem="xxw-My-nK9" firstAttribute="height" secondItem="Jr3-c6-rnE" secondAttribute="height" id="daK-Vw-yYH"/>
                             <constraint firstItem="xxw-My-nK9" firstAttribute="leading" secondItem="6vE-uS-5AL" secondAttribute="leadingMargin" id="dpz-R8-bQf"/>
                             <constraint firstItem="p1c-13-lUI" firstAttribute="top" secondItem="xxw-My-nK9" secondAttribute="bottom" constant="220" id="gjS-GU-2J9"/>
                             <constraint firstItem="p1c-13-lUI" firstAttribute="top" secondItem="dl9-Lk-MDk" secondAttribute="bottom" constant="20" id="h2L-pp-o93"/>
@@ -308,11 +325,13 @@
                     </view>
                     <connections>
                         <outlet property="bottomConstraint" destination="gjS-GU-2J9" id="TBV-zx-8sO"/>
+                        <outlet property="loaderIndicator" destination="Jr3-c6-rnE" id="MR4-G3-glW"/>
                         <outlet property="logoImageView" destination="0MF-Hu-8Re" id="4ao-Za-I7G"/>
                         <outlet property="passwordContainerView" destination="Zjc-cS-IMK" id="8t3-Gz-FVl"/>
                         <outlet property="passwordLabel" destination="Ch1-iQ-cTj" id="v3T-KJ-u8U"/>
                         <outlet property="passwordTextField" destination="d2o-7l-2lj" id="GSi-Es-WpH"/>
                         <outlet property="signInButton" destination="xxw-My-nK9" id="GqY-gY-N2P"/>
+                        <outlet property="trailingLogoConstraint" destination="obG-kd-DJY" id="N05-Y4-flM"/>
                         <outlet property="usernameContainerView" destination="Mm9-a6-l17" id="PF0-LW-Giy"/>
                         <outlet property="usernameLabel" destination="ABR-QV-OdH" id="Vjt-5u-mvZ"/>
                         <outlet property="usernameTextField" destination="zAe-hj-XgA" id="Yh9-7b-2lj"/>
@@ -336,6 +355,7 @@
     </scenes>
     <resources>
         <image name="AfiCompleteLogo" width="646" height="220"/>
+        <image name="CloseButton" width="25" height="25"/>
         <image name="MapIcon" width="23" height="23"/>
     </resources>
 </document>

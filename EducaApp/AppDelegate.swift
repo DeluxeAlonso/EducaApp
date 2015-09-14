@@ -80,9 +80,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var initialView: UIView = initialViewController.view
     
     UIView.transitionFromView(signInView, toView: initialView, duration: 0.4, options: UIViewAnimationOptions.CurveEaseOut | UIViewAnimationOptions.TransitionCrossDissolve, completion: { (finished: Bool) -> () in
-          if finished {
-            self.window?.rootViewController = initialViewController
-          }
+          self.window?.rootViewController = initialViewController
         })
   }
   

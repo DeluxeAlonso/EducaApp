@@ -11,6 +11,7 @@ import UIKit
 class SignInViewController: UIViewController, UITextFieldDelegate {
   
   @IBOutlet weak var logoImageView: UIImageView!
+  @IBOutlet weak var trailingLogoConstraint: NSLayoutConstraint!
   
   @IBOutlet weak var usernameContainerView: UIView!
   @IBOutlet weak var usernameLabel: UILabel!
@@ -21,6 +22,7 @@ class SignInViewController: UIViewController, UITextFieldDelegate {
   @IBOutlet weak var passwordTextField: UITextField!
   
   @IBOutlet weak var signInButton: UIButton!
+  @IBOutlet weak var loaderIndicator: CustomActivityIndicatorView!
   
   @IBOutlet weak var bottomConstraint: NSLayoutConstraint!
   
@@ -58,12 +60,16 @@ class SignInViewController: UIViewController, UITextFieldDelegate {
   }
   
   private func setupInputFields() {
+    setupCustomIndicatorView()
     usernameTextField.delegate = self
     passwordTextField.delegate = self
-    usernameLabel.textColor = UIColor.lightGrayColor()
-    passwordLabel.textColor = UIColor.lightGrayColor()
+    usernameLabel.textColor = UIColor.grayColor()
+    passwordLabel.textColor = UIColor.grayColor()
     usernameContainerView.layer.borderColor = UIColor.defaultBorderFieldColor().CGColor
     passwordContainerView.layer.borderColor = UIColor.defaultBorderFieldColor().CGColor
+  }
+  
+  private func setupCustomIndicatorView() {
   }
   
   private func setupAdditionalConstraints() {
@@ -81,6 +87,20 @@ class SignInViewController: UIViewController, UITextFieldDelegate {
     presentViewController(alertController, animated: true, completion: nil)
   }
   
+  private func enableSignInButton() {
+    loaderIndicator?.stopActivity()
+    loaderIndicator?.hidden = true
+    signInButton.userInteractionEnabled = true
+    signInButton.setTitle("Iniciar Sesión", forState: UIControlState.Normal)
+  }
+  
+  private func disableSignInButton() {
+    signInButton.setTitle("", forState: UIControlState.Normal)
+    loaderIndicator?.startActivity()
+    loaderIndicator?.hidden = false
+    signInButton.userInteractionEnabled = false
+  }
+  
   // MARK: - Actions
   
   @IBAction func hideKeyboard(sender: AnyObject) {
@@ -94,7 +114,9 @@ class SignInViewController: UIViewController, UITextFieldDelegate {
     if ( count(email) == 0 || count(password) == 0 ) {
       showEmptyUsernameOrPasswordAlert()
     } else {
+      disableSignInButton()
       UserService.signInWithEmail(email, password: password, completion: {(responseObject: AnyObject?, error: NSError?) in
+        self.enableSignInButton()
         if let json = responseObject as? NSDictionary {
           if json["error"] == nil {
             let user = User.updateOrCreateWithJson(json, ctx: self.dataLayer.managedObjectContext!)
