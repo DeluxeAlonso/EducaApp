@@ -78,14 +78,6 @@ extension User {
     return users ?? Array<User>()
   }
   
-  class func getAuthenticatedUser(ctx: NSManagedObjectContext) -> User? {
-    let defaults = NSUserDefaults.standardUserDefaults()
-    if let id = defaults.integerForKey("authenticatedUserId") as Int? {
-      return User.getUserById(Int32(id), ctx: ctx)
-    }
-    return nil
-  }
-  
   class func getUserById(id: Int32, ctx: NSManagedObjectContext) -> User? {
     let fetchRequest = NSFetchRequest()
     fetchRequest.entity = NSEntityDescription.entityForName("User", inManagedObjectContext: ctx)
@@ -98,6 +90,14 @@ extension User {
     return nil
   }
   
+  class func getAuthenticatedUser(ctx: NSManagedObjectContext) -> User? {
+    let defaults = NSUserDefaults.standardUserDefaults()
+    if let id = defaults.integerForKey("authenticatedUserId") as Int? {
+      return User.getUserById(Int32(id), ctx: ctx)
+    }
+    return nil
+  }
+  
   class func setAuthenticatedUser(user: User) {
     let defaults = NSUserDefaults.standardUserDefaults()
     defaults.setInteger(Int(user.id), forKey: "authenticatedUserId")
@@ -105,7 +105,7 @@ extension User {
     defaults.synchronize()
   }
   
-  class func logOutClearUser(){
+  class func signOut(){
     let defaults = NSUserDefaults.standardUserDefaults()
     defaults.setValue(nil, forKey: "authenticatedUserId")
     defaults.setBool(false, forKey: "signed_in")

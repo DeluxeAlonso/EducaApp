@@ -14,11 +14,7 @@ Contains the Spontivity CoreData stack. Creates instances of the CoreData stack
 objects, which makes it easier to use in application code and in unit testing.
 */
 class DataLayer {
-  
-  init() {
-    
-  }
-  
+
   // MARK: - Core Data stack
   
   lazy var applicationDocumentsDirectory: NSURL = {
