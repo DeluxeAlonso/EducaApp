@@ -118,7 +118,7 @@ class SignInViewController: UIViewController, UITextFieldDelegate {
             let user = User.updateOrCreateWithJson(json, ctx: self.dataLayer.managedObjectContext!)
             self.dataLayer.saveContext()
             User.setAuthenticatedUser(user!)
-            print(User.getAuthenticatedUser(self.dataLayer.managedObjectContext!)?.description)
+            println(User.getAuthenticatedUser(self.dataLayer.managedObjectContext!)?.description)
             NSNotificationCenter.defaultCenter().postNotificationName(Constants.Notification.SignIn, object: self, userInfo: nil)
           } else {
             //Show Error Message

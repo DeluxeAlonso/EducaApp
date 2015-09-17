@@ -18,13 +18,17 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
   
   deinit {
     NSNotificationCenter.defaultCenter().removeObserver(self, name: Constants.Notification.SignIn, object: nil);
+    NSNotificationCenter.defaultCenter().removeObserver(self, name: Constants.Notification.SignOut, object: nil);
   }
   
   func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
     launch()
     dispatch_async(dispatch_get_global_queue(Int(QOS_CLASS_BACKGROUND.value), 0)) {
       NSNotificationCenter.defaultCenter().addObserver(self, selector: "signIn:", name: Constants.Notification.SignIn, object: nil)
+      NSNotificationCenter.defaultCenter().addObserver(self, selector: "signOut:", name: Constants.Notification.SignOut, object: nil)
     }
+    PayPalMobile.initializeWithClientIdsForEnvironments([PayPalEnvironmentProduction: Constants.PayPal.Production, PayPalEnvironmentSandbox: Constants.PayPal.SandBox])
+    
     return true
   }
   
@@ -55,7 +59,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
   // Mark: - Private
   
   private func launch() {
-    self.window = UIWindow(frame: UIScreen.mainScreen().bounds)
     self.storyboard = UIStoryboard(name: "Main", bundle: nil)
     if User.isSignedIn()! {
       window?.rootViewController = getControllerWithIdentifier("MainViewController")
@@ -81,6 +84,19 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     UIView.transitionFromView(signInView, toView: initialView, duration: 0.4, options: UIViewAnimationOptions.CurveEaseOut | UIViewAnimationOptions.TransitionCrossDissolve, completion: { (finished: Bool) -> () in
           self.window?.rootViewController = initialViewController
+        })
+  }
+  
+  func signOut(notification: NSNotification) {
+    println("Signout")
+    var settingsViewController = window?.rootViewController
+    var signInViewController: UIViewController = getControllerWithIdentifier("SignInViewController")!
+    
+    var settingsView: UIView = settingsViewController!.view
+    var signInView: UIView = signInViewController.view
+    
+    UIView.transitionFromView(settingsView, toView: signInView, duration: 0.4, options: UIViewAnimationOptions.CurveEaseOut | UIViewAnimationOptions.TransitionCrossDissolve, completion: { (finished: Bool) -> () in
+          self.window?.rootViewController = signInViewController
         })
   }
   

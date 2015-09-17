@@ -16,7 +16,6 @@ public class User: NSManagedObject {
   @NSManaged public var firstName: String
   @NSManaged public var lastName: String
   @NSManaged public var username: String
-  @NSManaged public var authToken: String
   
   var fullName: String {
     var name = "\(firstName) \(lastName)"
@@ -35,7 +34,7 @@ extension User: Deserializable {
       self.firstName = firstName
       self.lastName = lastName
       self.username = username
-      self.authToken = authToken
+      User.setAuthToken(authToken)
     }
   }
   
@@ -78,14 +77,6 @@ extension User {
     return users ?? Array<User>()
   }
   
-  class func getAuthenticatedUser(ctx: NSManagedObjectContext) -> User? {
-    let defaults = NSUserDefaults.standardUserDefaults()
-    if let id = defaults.integerForKey("authenticatedUserId") as Int? {
-      return User.getUserById(Int32(id), ctx: ctx)
-    }
-    return nil
-  }
-  
   class func getUserById(id: Int32, ctx: NSManagedObjectContext) -> User? {
     let fetchRequest = NSFetchRequest()
     fetchRequest.entity = NSEntityDescription.entityForName("User", inManagedObjectContext: ctx)
@@ -98,6 +89,14 @@ extension User {
     return nil
   }
   
+  class func getAuthenticatedUser(ctx: NSManagedObjectContext) -> User? {
+    let defaults = NSUserDefaults.standardUserDefaults()
+    if let id = defaults.integerForKey("authenticatedUserId") as Int? {
+      return User.getUserById(Int32(id), ctx: ctx)
+    }
+    return nil
+  }
+  
   class func setAuthenticatedUser(user: User) {
     let defaults = NSUserDefaults.standardUserDefaults()
     defaults.setInteger(Int(user.id), forKey: "authenticatedUserId")
@@ -105,7 +104,7 @@ extension User {
     defaults.synchronize()
   }
   
-  class func logOutClearUser(){
+  class func signOut(){
     let defaults = NSUserDefaults.standardUserDefaults()
     defaults.setValue(nil, forKey: "authenticatedUserId")
     defaults.setBool(false, forKey: "signed_in")
@@ -115,6 +114,23 @@ extension User {
   class func isSignedIn() -> Bool?  {
     var is_signed_in: AnyObject?  =  NSUserDefaults.standardUserDefaults().objectForKey("signed_in")
     return is_signed_in != nil && is_signed_in as! NSNumber == true
+  }
+  
+}
+
+// MARK: - KeychainWrapper
+
+let keychainWrapper = KeychainWrapper()
+  
+extension User {
+  
+  class func setAuthToken(token: String) {
+    keychainWrapper.mySetObject(token, forKey: kSecValueData)
+    keychainWrapper.writeToKeychain()
+  }
+  
+  class func getAuthToken() -> String {
+    return keychainWrapper.myObjectForKey(Constants.Keychain.AuthTokenKey) as! String
   }
   
 }

@@ -1,5 +1,5 @@
 //
-//  SchoolListViewController.swift
+//  NewsViewController.swift
 //  EducaApp
 //
 //  Created by Alonso on 9/1/15.
@@ -10,7 +10,7 @@ import UIKit
 
 let kBarButtonSelector: Selector = "revealToggle:"
 
-class SchoolListViewController: UIViewController {
+class NewsViewController: UIViewController {
   
   @IBOutlet weak var menuIcon: UIBarButtonItem!
   

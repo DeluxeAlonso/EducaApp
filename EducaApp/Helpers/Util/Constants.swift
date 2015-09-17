@@ -16,6 +16,16 @@ struct Constants {
   
   struct Notification {
     static let SignIn = "SignIn"
+    static let SignOut = "SignOut"
+  }
+  
+  struct PayPal {
+    static let SandBox = "ASmHc1Vntg-KyLxUlgsEsL3JeH15Ih34zTHbhLocc9tyssXxCxCoXAph__kkoCPVcuuAUF-x4dwkRpom"
+    static let Production = "ASmHc1Vntg-KyLxUlgsEsL3JeH15Ih34zTHbhLocc9tyssXxCxCoXAph__kkoCPVcuuAUF-x4dwkRpom"
+  }
+  
+  struct Keychain {
+    static let AuthTokenKey = "v_Data"
   }
   
 }
