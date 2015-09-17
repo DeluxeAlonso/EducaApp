@@ -24,4 +24,8 @@ struct Constants {
     static let Production = "ASmHc1Vntg-KyLxUlgsEsL3JeH15Ih34zTHbhLocc9tyssXxCxCoXAph__kkoCPVcuuAUF-x4dwkRpom"
   }
   
+  struct Keychain {
+    static let AuthTokenKey = "v_Data"
+  }
+  
 }

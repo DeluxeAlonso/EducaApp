@@ -88,6 +88,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
   }
   
   func signOut(notification: NSNotification) {
+    println("Signout")
     var settingsViewController = window?.rootViewController
     var signInViewController: UIViewController = getControllerWithIdentifier("SignInViewController")!
     

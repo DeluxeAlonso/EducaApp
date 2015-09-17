@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		E20C34DF1BAA40CF00435F46 /* KeychainWrapper.m in Sources */ = {isa = PBXBuildFile; fileRef = E20C34DE1BAA40CF00435F46 /* KeychainWrapper.m */; };
 		E2CF33BE1B9D3F2C00B8BE40 /* UrlBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2CF33BD1B9D3F2C00B8BE40 /* UrlBuilder.swift */; };
 		E2CF33C01B9D4D1800B8BE40 /* DictionaryHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2CF33BF1B9D4D1800B8BE40 /* DictionaryHelper.swift */; };
 		E2CF33C21B9D5EF100B8BE40 /* UserService.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2CF33C11B9D5EF100B8BE40 /* UserService.swift */; };
@@ -67,6 +68,8 @@
 		88202C874AA0EF52AA054217 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		B16CF1D03442508C54A2C811 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		C330EF7BE42F7341323D4084 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
+		E20C34DD1BAA40CF00435F46 /* KeychainWrapper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KeychainWrapper.h; sourceTree = "<group>"; };
+		E20C34DE1BAA40CF00435F46 /* KeychainWrapper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KeychainWrapper.m; sourceTree = "<group>"; };
 		E2CF33BD1B9D3F2C00B8BE40 /* UrlBuilder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UrlBuilder.swift; path = Networking/UrlBuilder.swift; sourceTree = "<group>"; };
 		E2CF33BF1B9D4D1800B8BE40 /* DictionaryHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DictionaryHelper.swift; path = Helpers/DictionaryHelper.swift; sourceTree = "<group>"; };
 		E2CF33C11B9D5EF100B8BE40 /* UserService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UserService.swift; path = Networking/UserService.swift; sourceTree = "<group>"; };
@@ -323,6 +326,8 @@
 			isa = PBXGroup;
 			children = (
 				E2FE3F6F1B9636E0006EEA91 /* EducaApp-Bridging-Header.h */,
+				E20C34DD1BAA40CF00435F46 /* KeychainWrapper.h */,
+				E20C34DE1BAA40CF00435F46 /* KeychainWrapper.m */,
 				E2FE3F701B9636E0006EEA91 /* SWRevealViewController.h */,
 				E2FE3F711B9636E0006EEA91 /* SWRevealViewController.m */,
 			);
@@ -498,6 +503,7 @@
 				E2E3465B1BA77929007232A9 /* DonationsViewController.swift in Sources */,
 				E2E56B4B1BA55A3700D18F76 /* Deserializable.swift in Sources */,
 				E2E9CA4D1B97E4D400DC0EDA /* User.swift in Sources */,
+				E20C34DF1BAA40CF00435F46 /* KeychainWrapper.m in Sources */,
 				E2E56B4A1BA55A3700D18F76 /* DataLayer.swift in Sources */,
 				E2E13ABD1BA6B918004C6E45 /* SidebarViewController.swift in Sources */,
 				E2E346531BA777E0007232A9 /* SchoolListViewController.swift in Sources */,

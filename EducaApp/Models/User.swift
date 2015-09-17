@@ -16,7 +16,6 @@ public class User: NSManagedObject {
   @NSManaged public var firstName: String
   @NSManaged public var lastName: String
   @NSManaged public var username: String
-  @NSManaged public var authToken: String
   
   var fullName: String {
     var name = "\(firstName) \(lastName)"
@@ -35,7 +34,7 @@ extension User: Deserializable {
       self.firstName = firstName
       self.lastName = lastName
       self.username = username
-      self.authToken = authToken
+      User.setAuthToken(authToken)
     }
   }
   
@@ -115,6 +114,23 @@ extension User {
   class func isSignedIn() -> Bool?  {
     var is_signed_in: AnyObject?  =  NSUserDefaults.standardUserDefaults().objectForKey("signed_in")
     return is_signed_in != nil && is_signed_in as! NSNumber == true
+  }
+  
+}
+
+// MARK: - KeychainWrapper
+
+let keychainWrapper = KeychainWrapper()
+  
+extension User {
+  
+  class func setAuthToken(token: String) {
+    keychainWrapper.mySetObject(token, forKey: kSecValueData)
+    keychainWrapper.writeToKeychain()
+  }
+  
+  class func getAuthToken() -> String {
+    return keychainWrapper.myObjectForKey(Constants.Keychain.AuthTokenKey) as! String
   }
   
 }

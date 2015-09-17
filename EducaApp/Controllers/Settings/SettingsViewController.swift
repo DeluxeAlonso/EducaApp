@@ -57,8 +57,8 @@ class SettingsViewController: UIViewController, UITableViewDelegate, UITableView
   }
   
   private func signOut() {
-    User.signOut()
     NSNotificationCenter.defaultCenter().postNotificationName(Constants.Notification.SignOut, object: self, userInfo: nil)
+    User.signOut()
   }
   
   // MARK: - UITableViewDataSource
