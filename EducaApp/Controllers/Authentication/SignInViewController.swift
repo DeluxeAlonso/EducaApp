@@ -8,9 +8,10 @@
 
 import UIKit
 
-class SignInViewController: UIViewController {
+class SignInViewController: UIViewController, UITextFieldDelegate {
   
   @IBOutlet weak var logoImageView: UIImageView!
+  @IBOutlet weak var trailingLogoConstraint: NSLayoutConstraint!
   
   @IBOutlet weak var usernameContainerView: UIView!
   @IBOutlet weak var usernameLabel: UILabel!
@@ -21,10 +22,16 @@ class SignInViewController: UIViewController {
   @IBOutlet weak var passwordTextField: UITextField!
   
   @IBOutlet weak var signInButton: UIButton!
+  @IBOutlet weak var loaderIndicator: CustomActivityIndicatorView!
   
   @IBOutlet weak var bottomConstraint: NSLayoutConstraint!
   
   var initialBottomHeight: CGFloat!
+  
+  lazy var dataLayer = DataLayer()
+  
+  let kAlertMessageTitle = "Error"
+  let kEmptyUsernamePasswordMessage = "Username and Password cannot be blank."
   
   // MARK: - Lifecycle
   
@@ -53,8 +60,10 @@ class SignInViewController: UIViewController {
   }
   
   private func setupInputFields() {
-    usernameLabel.textColor = UIColor.lightGrayColor()
-    passwordLabel.textColor = UIColor.lightGrayColor()
+    usernameTextField.delegate = self
+    passwordTextField.delegate = self
+    usernameLabel.textColor = UIColor.grayColor()
+    passwordLabel.textColor = UIColor.grayColor()
     usernameContainerView.layer.borderColor = UIColor.defaultBorderFieldColor().CGColor
     passwordContainerView.layer.borderColor = UIColor.defaultBorderFieldColor().CGColor
   }
@@ -65,11 +74,75 @@ class SignInViewController: UIViewController {
     bottomConstraint.constant = initialBottomHeight
   }
   
+  private func showEmptyUsernameOrPasswordAlert() {
+    let alertController = UIAlertController(title: kAlertMessageTitle, message: kEmptyUsernamePasswordMessage, preferredStyle: UIAlertControllerStyle.Alert)
+    
+    let defaultAction = UIAlertAction(title: "OK", style: .Default, handler: nil)
+    alertController.addAction(defaultAction)
+    
+    presentViewController(alertController, animated: true, completion: nil)
+  }
+  
+  private func enableSignInButton() {
+    loaderIndicator?.stopActivity()
+    loaderIndicator?.hidden = true
+    signInButton.userInteractionEnabled = true
+    signInButton.setTitle("Iniciar Sesión", forState: UIControlState.Normal)
+  }
+  
+  private func disableSignInButton() {
+    signInButton.setTitle("", forState: UIControlState.Normal)
+    loaderIndicator?.startActivity()
+    loaderIndicator?.hidden = false
+    signInButton.userInteractionEnabled = false
+  }
+  
   // MARK: - Actions
   
   @IBAction func hideKeyboard(sender: AnyObject) {
     usernameTextField.resignFirstResponder()
     passwordTextField.resignFirstResponder()
+  }
+  
+  @IBAction func signIn(sender: AnyObject) {
+    let email = usernameTextField.text
+    let password = passwordTextField.text
+    if ( count(email) == 0 || count(password) == 0 ) {
+      showEmptyUsernameOrPasswordAlert()
+    } else {
+      disableSignInButton()
+      UserService.signInWithEmail(email, password: password, completion: {(responseObject: AnyObject?, error: NSError?) in
+        self.enableSignInButton()
+        if let json = responseObject as? NSDictionary {
+          if json["error"] == nil {
+            let user = User.updateOrCreateWithJson(json, ctx: self.dataLayer.managedObjectContext!)
+            self.dataLayer.saveContext()
+            User.setAuthenticatedUser(user!)
+            println(User.getAuthenticatedUser(self.dataLayer.managedObjectContext!)?.description)
+            NSNotificationCenter.defaultCenter().postNotificationName(Constants.Notification.SignIn, object: self, userInfo: nil)
+          } else {
+            //Show Error Message
+          }
+        }
+      })
+    }
+  }
+  
+  // MARK:- UITextFieldDelegates
+  
+  func textFieldShouldReturn(textField: UITextField) -> Bool {
+    switch textField.tag {
+    case 1:
+      passwordTextField.becomeFirstResponder()
+      break
+    case 2:
+      textField.resignFirstResponder()
+      signIn(NSNull)
+      break
+    default:
+      break
+    }
+    return true
   }
   
   // MARK: - Notifications

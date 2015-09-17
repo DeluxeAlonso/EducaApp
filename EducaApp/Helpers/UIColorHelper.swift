@@ -18,4 +18,8 @@ extension UIColor {
     return UIColor.colorWithR(193, green: 193, blue: 193, alpha: 1)
   }
   
+  class func defaultBlackBorderFieldColor() -> UIColor {
+    return UIColor.blackColor()
+  }
+  
 }
