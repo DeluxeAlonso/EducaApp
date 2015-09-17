@@ -36,8 +36,9 @@ class ChasingDotsStyle: CustomIndicatorProtocol {
     let ballSize = CGFloat(self.owner.bounds.width / 9)
     
     for var index = 0; index < ballCount; ++index {
-      let layer = self.spinnerView.layer.sublayers[index] as! CALayer
-      let layerBall = layer.sublayers[0] as! CALayer
+      guard let layer = self.spinnerView.layer.sublayers?[index], layerBall = layer.sublayers?[0] else {
+        return
+      }
       
       layer.frame = self.owner.bounds
       layerBall.frame = CGRect(x: ballSize, y: ballSize, width: ballSize, height: ballSize)
@@ -47,9 +48,11 @@ class ChasingDotsStyle: CustomIndicatorProtocol {
   }
   
   func needUpdateColor() {
-    for item in self.spinnerView.layer.sublayers {
-      let layer = item as! CALayer
-      let layerBall = layer.sublayers[0] as! CALayer
+    for item in self.spinnerView.layer.sublayers! {
+      let layer = item 
+      guard let layerBall = layer.sublayers?[0] else {
+        return
+      }
       layerBall.backgroundColor = self.owner.indicatorColor.CGColor
     }
   }
@@ -64,7 +67,9 @@ class ChasingDotsStyle: CustomIndicatorProtocol {
     let beginTime = CACurrentMediaTime();
     let delays = [CFTimeInterval(1.56), CFTimeInterval(0.31), CFTimeInterval(0.62), CFTimeInterval(0.94), CFTimeInterval(1.25)]
     for var index = 0; index < ballCount; ++index {
-      let layer = self.spinnerView.layer.sublayers[index] as! CALayer
+      guard let layer = self.spinnerView.layer.sublayers?[index] else {
+        return
+      }
       
       let anim = CAKeyframeAnimation(keyPath: "transform.rotation.z")
       anim.duration = self.animationDuration
@@ -111,7 +116,9 @@ class ChasingDotsStyle: CustomIndicatorProtocol {
       self.spinnerView.layer.removeAllAnimations()
       
       for var index = 0; index < ballCount; ++index {
-        let layer = self.spinnerView.layer.sublayers[index] as! CALayer
+        guard let layer = self.spinnerView.layer.sublayers?[index] else {
+          return
+        }
         layer.removeAllAnimations()
       }
       

@@ -38,7 +38,9 @@ class SpotifyLikeStyle: CustomIndicatorProtocol {
     self.circleView.frame = self.owner.bounds
     
     for var index = 0; index < circleCount; ++index {
-      let circleLayer = self.circleView.layer.sublayers[index] as! CALayer
+      guard let circleLayer = self.circleView.layer.sublayers?[index] else {
+        return
+      }
       circleLayer.frame = CGRect(x: circleWidth+CGFloat(index)*(circleWidth*2), y: posY, width: circleWidth, height: circleWidth)
       circleLayer.cornerRadius = circleWidth/2
     }
@@ -46,7 +48,9 @@ class SpotifyLikeStyle: CustomIndicatorProtocol {
   
   func needUpdateColor() {
     for var index = 0; index < circleCount; ++index {
-      let circleLayer = self.circleView.layer.sublayers[index] as! CALayer
+      guard let circleLayer = self.circleView.layer.sublayers?[index] else {
+        return
+      }
       circleLayer.backgroundColor = self.owner.indicatorColor.CGColor
     }
   }
@@ -60,8 +64,9 @@ class SpotifyLikeStyle: CustomIndicatorProtocol {
     
     let beginTime = CACurrentMediaTime() + self.animationDuration;
     for var index = 0; index < circleCount; ++index {
-      let circleLayer = self.circleView.layer.sublayers[index] as! CALayer
-      
+      guard let circleLayer = self.circleView.layer.sublayers?[index] else {
+        return
+      }
       let aniScale = CAKeyframeAnimation()
       aniScale.keyPath = "transform.scale"
       aniScale.values = [1.0, 1.7, 1.0, 1.0]
@@ -85,7 +90,9 @@ class SpotifyLikeStyle: CustomIndicatorProtocol {
     func removeAnimations() {
       self.spinnerView.layer.removeAllAnimations()
       for var index = 0; index < circleCount; ++index {
-        let circleLayer = self.circleView.layer.sublayers[index] as! CALayer
+        guard let circleLayer = self.circleView.layer.sublayers?[index] else {
+          return
+        }
         circleLayer.removeAllAnimations()
       }
       self.spinnerView.removeFromSuperview()

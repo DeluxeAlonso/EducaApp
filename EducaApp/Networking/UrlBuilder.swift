@@ -14,7 +14,7 @@ class UrlBuilder: NSObject {
     return self.UrlForPathWithParameters(path: path, parameters: nil)
   }
   
-  class func UrlForPathWithParameters (#path: String, parameters: Dictionary<String,String>?) -> String {
+  class func UrlForPathWithParameters (path path: String, parameters: Dictionary<String,String>?) -> String {
     var stringUrl: String
     if (parameters == nil) {
       stringUrl = String(format: "%@%@", Constants.Path.Development, path)

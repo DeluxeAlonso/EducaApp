@@ -23,7 +23,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
   
   func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
     launch()
-    dispatch_async(dispatch_get_global_queue(Int(QOS_CLASS_BACKGROUND.value), 0)) {
+    dispatch_async(dispatch_get_global_queue(Int(QOS_CLASS_BACKGROUND.rawValue), 0)) {
       NSNotificationCenter.defaultCenter().addObserver(self, selector: "signIn:", name: Constants.Notification.SignIn, object: nil)
       NSNotificationCenter.defaultCenter().addObserver(self, selector: "signOut:", name: Constants.Notification.SignOut, object: nil)
     }
@@ -63,39 +63,39 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     if User.isSignedIn()! {
       window?.rootViewController = getControllerWithIdentifier("MainViewController")
     }else{
-      window?.rootViewController = storyboard?.instantiateInitialViewController() as? UIViewController
+      window?.rootViewController = storyboard?.instantiateInitialViewController()
     }
     self.window?.makeKeyAndVisible()
   }
   
   private func getControllerWithIdentifier(identifier: String)-> UIViewController? {
-    var controller = self.storyboard?.instantiateViewControllerWithIdentifier(identifier)  as! UIViewController
+    let controller = self.storyboard?.instantiateViewControllerWithIdentifier(identifier)  as UIViewController?
     return controller
   }
   
   // MARK: - Notifications
   
   func signIn(notification: NSNotification) {
-    var signInViewController = window?.rootViewController
-    var initialViewController: UIViewController = getControllerWithIdentifier("MainViewController")!
+    let signInViewController = window?.rootViewController
+    let initialViewController: UIViewController = getControllerWithIdentifier("MainViewController")!
     
-    var signInView: UIView = signInViewController!.view
-    var initialView: UIView = initialViewController.view
+    let signInView: UIView = signInViewController!.view
+    let initialView: UIView = initialViewController.view
     
-    UIView.transitionFromView(signInView, toView: initialView, duration: 0.4, options: UIViewAnimationOptions.CurveEaseOut | UIViewAnimationOptions.TransitionCrossDissolve, completion: { (finished: Bool) -> () in
+    UIView.transitionFromView(signInView, toView: initialView, duration: 0.4, options: [UIViewAnimationOptions.CurveEaseOut, UIViewAnimationOptions.TransitionCrossDissolve], completion: { (finished: Bool) -> () in
           self.window?.rootViewController = initialViewController
         })
   }
   
   func signOut(notification: NSNotification) {
-    println("Signout")
-    var settingsViewController = window?.rootViewController
-    var signInViewController: UIViewController = getControllerWithIdentifier("SignInViewController")!
+
+    let settingsViewController = window?.rootViewController
+    let signInViewController: UIViewController = getControllerWithIdentifier("SignInViewController")!
     
-    var settingsView: UIView = settingsViewController!.view
-    var signInView: UIView = signInViewController.view
+    let settingsView: UIView = settingsViewController!.view
+    let signInView: UIView = signInViewController.view
     
-    UIView.transitionFromView(settingsView, toView: signInView, duration: 0.4, options: UIViewAnimationOptions.CurveEaseOut | UIViewAnimationOptions.TransitionCrossDissolve, completion: { (finished: Bool) -> () in
+    UIView.transitionFromView(settingsView, toView: signInView, duration: 0.4, options: [UIViewAnimationOptions.CurveEaseOut, UIViewAnimationOptions.TransitionCrossDissolve], completion: { (finished: Bool) -> () in
           self.window?.rootViewController = signInViewController
         })
   }

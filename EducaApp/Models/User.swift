@@ -18,7 +18,7 @@ public class User: NSManagedObject {
   @NSManaged public var username: String
   
   var fullName: String {
-    var name = "\(firstName) \(lastName)"
+    let name = "\(firstName) \(lastName)"
     return name
   }
   
@@ -66,14 +66,7 @@ extension User {
   class func getAllUsers(ctx: NSManagedObjectContext) -> Array<User> {
     let fetchRequest = NSFetchRequest()
     fetchRequest.entity = NSEntityDescription.entityForName("User", inManagedObjectContext: ctx)
-    
-    var error: NSError?
-    let users = ctx.executeFetchRequest(fetchRequest, error: &error) as? Array<User>
-    
-    if (error != nil) {
-      println("Error fetching all users: \(error)")
-    }
-    
+    let users = try! ctx.executeFetchRequest(fetchRequest) as? Array<User>
     return users ?? Array<User>()
   }
   
@@ -81,13 +74,14 @@ extension User {
     let fetchRequest = NSFetchRequest()
     fetchRequest.entity = NSEntityDescription.entityForName("User", inManagedObjectContext: ctx)
     fetchRequest.predicate = NSPredicate(format: "(id = %d)", Int(id))
-    var error: NSError?
-    let users = ctx.executeFetchRequest(fetchRequest, error: &error) as? Array<User>
+    let users = try! ctx.executeFetchRequest(fetchRequest) as? Array<User>
     if (users != nil && users!.count > 0) {
       return users![0]
     }
     return nil
   }
+  
+  
   
   class func getAuthenticatedUser(ctx: NSManagedObjectContext) -> User? {
     let defaults = NSUserDefaults.standardUserDefaults()
@@ -112,7 +106,7 @@ extension User {
   }
   
   class func isSignedIn() -> Bool?  {
-    var is_signed_in: AnyObject?  =  NSUserDefaults.standardUserDefaults().objectForKey("signed_in")
+    let is_signed_in: AnyObject?  =  NSUserDefaults.standardUserDefaults().objectForKey("signed_in")
     return is_signed_in != nil && is_signed_in as! NSNumber == true
   }
   

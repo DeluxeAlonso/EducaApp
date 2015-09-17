@@ -73,7 +73,7 @@ class SettingsViewController: UIViewController, UITableViewDelegate, UITableView
   
   func tableView(tableView: UITableView,
     cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-      var cell = tableView.dequeueReusableCellWithIdentifier(kSettingsCellIdentifier, forIndexPath: indexPath) as! SettingsTableViewCell
+      let cell = tableView.dequeueReusableCellWithIdentifier(kSettingsCellIdentifier, forIndexPath: indexPath) as! SettingsTableViewCell
       cell.nameLabel.text = kSettingsCellTexts[indexPath.row]
       return cell
   }

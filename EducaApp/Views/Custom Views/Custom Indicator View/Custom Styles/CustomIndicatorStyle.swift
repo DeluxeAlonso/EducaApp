@@ -27,8 +27,7 @@ enum CustomIndicatorStyle: Int {
   static func convInv(value: CustomIndicatorStyle) -> String {
     switch value {
     case .spotifyLike: return kSpotifyStyleKey
-    case .chasingDots: return kChasingDotsStyleKey
-    default: return "?"
+    default: return kChasingDotsStyleKey
     }
   }
 }

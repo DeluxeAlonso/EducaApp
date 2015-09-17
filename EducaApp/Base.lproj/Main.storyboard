@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7706" systemVersion="14F27" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="gSg-8a-5Fb">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="8191" systemVersion="14F27" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="gSg-8a-5Fb">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="8154"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <customFonts key="customFonts">
@@ -25,7 +26,7 @@
                         <viewControllerLayoutGuide type="bottom" id="LY7-TB-GUx"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="uBi-xH-a3h">
-                        <rect key="frame" x="0.0" y="64" width="600" height="600"/>
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="DonationsButtonpaypal" translatesAutoresizingMaskIntoConstraints="NO" id="Q11-zm-Unk">
@@ -86,13 +87,14 @@
                                 <color key="backgroundColor" red="0.96470588235294119" green="0.96862745098039216" blue="0.97254901960784312" alpha="1" colorSpace="calibratedRGB"/>
                                 <prototypes>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="SettingsCell" id="Qd4-TW-3VC" customClass="SettingsTableViewCell" customModule="EducaApp" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="0.0" width="600" height="44"/>
+                                        <rect key="frame" x="0.0" y="113.5" width="600" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Qd4-TW-3VC" id="ucd-JT-dud">
+                                            <rect key="frame" x="0.0" y="0.0" width="600" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Cerrar Sesión" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="muW-hl-t2Q">
-                                                    <rect key="frame" x="250" y="11.5" width="100.5" height="20.5"/>
+                                                    <rect key="frame" x="249" y="11.5" width="103" height="20.5"/>
                                                     <fontDescription key="fontDescription" type="system" weight="light" pointSize="17"/>
                                                     <color key="textColor" red="1" green="0.067999089809999996" blue="0.067999089809999996" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
@@ -255,7 +257,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xxw-My-nK9" userLabel="Sign In Button">
-                                <rect key="frame" x="16" y="336" width="568" height="44"/>
+                                <rect key="frame" x="20" y="336" width="560" height="44"/>
                                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="44" id="2ag-qh-onh"/>
@@ -289,7 +291,7 @@
                                 </userDefinedRuntimeAttributes>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Mm9-a6-l17" userLabel="Username View">
-                                <rect key="frame" x="16" y="234" width="568" height="38"/>
+                                <rect key="frame" x="20" y="234" width="560" height="38"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="  Usuario" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ABR-QV-OdH" userLabel="Username Label">
                                         <rect key="frame" x="-1" y="-1" width="85" height="40"/>
@@ -307,7 +309,7 @@
                                         </userDefinedRuntimeAttributes>
                                     </label>
                                     <textField opaque="NO" clipsSubviews="YES" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="zAe-hj-XgA" userLabel="Username TextField">
-                                        <rect key="frame" x="90" y="0.0" width="478" height="38"/>
+                                        <rect key="frame" x="90" y="0.0" width="470" height="38"/>
                                         <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="14"/>
                                         <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardType="emailAddress" keyboardAppearance="alert" returnKeyType="next" enablesReturnKeyAutomatically="YES"/>
                                     </textField>
@@ -345,7 +347,7 @@
                                 </userDefinedRuntimeAttributes>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Zjc-cS-IMK" userLabel="Password View">
-                                <rect key="frame" x="16" y="280" width="568" height="38"/>
+                                <rect key="frame" x="20" y="280" width="560" height="38"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="  Contraseña" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ch1-iQ-cTj" userLabel="Password Label">
                                         <rect key="frame" x="-1" y="-1" width="85" height="40"/>
@@ -364,7 +366,7 @@
                                         </userDefinedRuntimeAttributes>
                                     </label>
                                     <textField opaque="NO" clipsSubviews="YES" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="d2o-7l-2lj" userLabel="Password TextField">
-                                        <rect key="frame" x="90" y="0.0" width="478" height="38"/>
+                                        <rect key="frame" x="90" y="0.0" width="470" height="38"/>
                                         <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="14"/>
                                         <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardAppearance="alert" returnKeyType="go" enablesReturnKeyAutomatically="YES" secureTextEntry="YES"/>
                                     </textField>
@@ -401,7 +403,7 @@
                                 </userDefinedRuntimeAttributes>
                             </view>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="AfiCompleteLogo" translatesAutoresizingMaskIntoConstraints="NO" id="0MF-Hu-8Re">
-                                <rect key="frame" x="16" y="92" width="568" height="138"/>
+                                <rect key="frame" x="20" y="92" width="560" height="138"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="138" id="qd6-AT-sVq"/>
                                 </constraints>
@@ -487,8 +489,10 @@
                             <tableViewSection id="lau-AY-OXU">
                                 <cells>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="63" id="ggi-Cp-5XD" userLabel="Header Cell">
+                                        <rect key="frame" x="0.0" y="0.0" width="600" height="63"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="ggi-Cp-5XD" id="35G-2t-5k2">
+                                            <rect key="frame" x="0.0" y="0.0" width="600" height="63"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="EducaApp" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Sku-LR-MXx">
@@ -502,8 +506,10 @@
                                         <color key="backgroundColor" red="0.94085192679999996" green="0.94903725390000004" blue="0.95307987930000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     </tableViewCell>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="onZ-PY-eTr" userLabel="School Cell">
+                                        <rect key="frame" x="0.0" y="63" width="600" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="onZ-PY-eTr" id="4dz-s4-9dJ">
+                                            <rect key="frame" x="0.0" y="0.0" width="600" height="44"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="SchoolIcon" translatesAutoresizingMaskIntoConstraints="NO" id="dGn-wA-awl">
@@ -523,8 +529,10 @@
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="Smb-Zn-FlP" userLabel="Donation Cell">
+                                        <rect key="frame" x="0.0" y="107" width="600" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Smb-Zn-FlP" id="DTu-ZL-acV">
+                                            <rect key="frame" x="0.0" y="0.0" width="600" height="44"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="DonationIcon" translatesAutoresizingMaskIntoConstraints="NO" id="ffU-Gj-kgU">
@@ -544,8 +552,10 @@
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="iWN-ZY-OCn" userLabel="Settings Cell">
+                                        <rect key="frame" x="0.0" y="151" width="600" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="iWN-ZY-OCn" id="V6j-7m-jpy">
+                                            <rect key="frame" x="0.0" y="0.0" width="600" height="44"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="SettingsIcon" translatesAutoresizingMaskIntoConstraints="NO" id="BRK-LS-W7b">

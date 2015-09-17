@@ -33,7 +33,7 @@ class CustomActivityIndicatorView: UIView {
     super.init(frame: frame);
   }
   
-  required init(coder aDecoder: NSCoder) {
+  required init?(coder aDecoder: NSCoder) {
     super.init(coder: aDecoder)
   }
   
@@ -62,9 +62,9 @@ class CustomActivityIndicatorView: UIView {
       let context = UIGraphicsGetCurrentContext()
       CGContextSaveGState(context)
       
-      var arrayOfDashLength: [CGFloat] = [2.0, 2.0]
+      let arrayOfDashLength: [CGFloat] = [2.0, 2.0]
       CGContextSetStrokeColorWithColor(context, self.indicatorColor.CGColor)
-      var dash = { (phase: CGFloat, lengths: UnsafePointer<CGFloat>, count: Int) -> Void in
+      let dash = { (phase: CGFloat, lengths: UnsafePointer<CGFloat>, count: Int) -> Void in
         CGContextSetLineDash(context, phase, lengths, count)
       }
       dash(0.0, arrayOfDashLength, arrayOfDashLength.count)

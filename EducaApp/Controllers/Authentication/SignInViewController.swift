@@ -54,8 +54,7 @@ class SignInViewController: UIViewController, UITextFieldDelegate {
   }
   
   private func setupObservers() {
-    NSNotificationCenter.defaultCenter().addObserver(self, selector: "keyboardWillShow:",
-      name: UIKeyboardWillShowNotification, object: nil)
+    NSNotificationCenter.defaultCenter().addObserver(self, selector: "keyboardWillShow:", name: UIKeyboardWillShowNotification, object: nil)
     NSNotificationCenter.defaultCenter().addObserver(self, selector: "keyboardWillHide:", name: UIKeyboardWillHideNotification, object: nil)
   }
   
@@ -69,7 +68,7 @@ class SignInViewController: UIViewController, UITextFieldDelegate {
   }
   
   private func setupAdditionalConstraints() {
-    var screenRect: CGRect = UIScreen.mainScreen().bounds
+    let screenRect: CGRect = UIScreen.mainScreen().bounds
     initialBottomHeight = screenRect.size.height / 3
     bottomConstraint.constant = initialBottomHeight
   }
@@ -107,7 +106,7 @@ class SignInViewController: UIViewController, UITextFieldDelegate {
   @IBAction func signIn(sender: AnyObject) {
     let email = usernameTextField.text
     let password = passwordTextField.text
-    if ( count(email) == 0 || count(password) == 0 ) {
+    if ( email!.characters.count == 0 || password!.characters.count == 0 ) {
       showEmptyUsernameOrPasswordAlert()
     } else {
       disableSignInButton()
@@ -118,7 +117,7 @@ class SignInViewController: UIViewController, UITextFieldDelegate {
             let user = User.updateOrCreateWithJson(json, ctx: self.dataLayer.managedObjectContext!)
             self.dataLayer.saveContext()
             User.setAuthenticatedUser(user!)
-            println(User.getAuthenticatedUser(self.dataLayer.managedObjectContext!)?.description)
+            print(User.getAuthenticatedUser(self.dataLayer.managedObjectContext!)?.description)
             NSNotificationCenter.defaultCenter().postNotificationName(Constants.Notification.SignIn, object: self, userInfo: nil)
           } else {
             //Show Error Message
@@ -127,7 +126,7 @@ class SignInViewController: UIViewController, UITextFieldDelegate {
       })
     }
   }
-  
+
   // MARK:- UITextFieldDelegates
   
   func textFieldShouldReturn(textField: UITextField) -> Bool {
@@ -136,7 +135,7 @@ class SignInViewController: UIViewController, UITextFieldDelegate {
       passwordTextField.becomeFirstResponder()
       break
     case 2:
-      textField.resignFirstResponder()
+      //textField.resignFirstResponder()
       signIn(NSNull)
       break
     default:
@@ -148,10 +147,11 @@ class SignInViewController: UIViewController, UITextFieldDelegate {
   // MARK: - Notifications
   
   func keyboardWillShow(notification: NSNotification) {
+    print("keyboardWillShow")
     view.layoutIfNeeded()
     if let keyboardFrame: CGRect = (notification.userInfo?[UIKeyboardFrameEndUserInfoKey] as? NSValue)?.CGRectValue() {
-      var keyboardHeight = CGFloat(keyboardFrame.size.height) + CGFloat(20)
-      var diff: CGFloat = keyboardHeight - CGFloat(bottomConstraint.constant)
+      let keyboardHeight = CGFloat(keyboardFrame.size.height) + CGFloat(20)
+      let diff: CGFloat = keyboardHeight - CGFloat(bottomConstraint.constant)
       if diff > 0 {
         bottomConstraint.constant = keyboardFrame.size.height + 20
         if let logoOffSet = logoImageView?.frame.origin.y {
@@ -165,6 +165,7 @@ class SignInViewController: UIViewController, UITextFieldDelegate {
   }
   
   func keyboardWillHide(notification: NSNotification) {
+    print("keyboardWillHide")
     view.layoutIfNeeded()
     bottomConstraint.constant = self.initialBottomHeight;
     logoImageView.alpha = 1.0;

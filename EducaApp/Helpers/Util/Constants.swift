@@ -11,7 +11,7 @@ import UIKit
 struct Constants {
   
   struct Path {
-    static let Development = "http://private-e8504-newsapp3.apiary-mock.com/api/v1/"
+    static let Development = "https://private-e8504-newsapp3.apiary-mock.com/api/v1/"
   }
   
   struct Notification {

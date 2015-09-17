@@ -55,14 +55,14 @@ class DonationsViewController: UIViewController, PayPalPaymentDelegate {
   
   @IBAction func donateFixedAmout(sender: AnyObject) {
     let amount = NSDecimalNumber(string: "10.00")
-    var payment = PayPalPayment()
+    let payment = PayPalPayment()
     payment.amount = amount
     payment.currencyCode = "USD"
     payment.shortDescription = "AFI Payment"
     if (!payment.processable) {
-      println("You messed up!")
+      print("You messed up!")
     } else {
-      var paymentViewController = PayPalPaymentViewController(payment: payment, configuration: paymentConfig, delegate: self)
+      let paymentViewController = PayPalPaymentViewController(payment: payment, configuration: paymentConfig, delegate: self)
       self.presentViewController(paymentViewController, animated: true, completion: nil)
     }
   }
@@ -70,7 +70,7 @@ class DonationsViewController: UIViewController, PayPalPaymentDelegate {
   // MARK: - PayPalPaymentDelegate
   
   func payPalPaymentViewController(paymentViewController: PayPalPaymentViewController!, didCompletePayment completedPayment: PayPalPayment!) {
-    println(completedPayment.description)
+    print(completedPayment.description)
     self.dismissViewControllerAnimated(true, completion: nil)
   }
   

@@ -13,16 +13,16 @@ func toString(object: AnyObject) ->String {
 }
 
 func urlEncode(object: AnyObject) -> String {
-  var string = toString(object)
-  return string.stringByAddingPercentEscapesUsingEncoding(NSUTF8StringEncoding)!
+  let string = toString(object)
+  return string.stringByAddingPercentEncodingWithAllowedCharacters(NSCharacterSet.URLQueryAllowedCharacterSet())!
 }
 
 extension Dictionary {
   
   func urlEncodedString() -> String {
-    var parts: NSMutableArray = NSMutableArray()
+    let parts: NSMutableArray = NSMutableArray()
     for (key, value) in self {
-      var part = String(format: "%@=%@", urlEncode(key as! NSObject), urlEncode(value as! NSObject))
+      let part = String(format: "%@=%@", urlEncode(key as! NSObject), urlEncode(value as! NSObject))
       parts.addObject(part)
     }
     
