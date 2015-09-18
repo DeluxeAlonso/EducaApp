@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import CoreData
 
 let kSettingsCellIdentifier = "SettingsCell"
 let kSettingsCellTexts = ["Cerrar Sesión"]
@@ -15,6 +16,8 @@ let kActionSheetTitle = "¿Está seguro de que desea salir?"
 class SettingsViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
   
   @IBOutlet weak var menuIcon: UIBarButtonItem!
+  
+  lazy var dataLayer = DataLayer()
   
   // MARK: - Lifecycle
   
@@ -59,6 +62,19 @@ class SettingsViewController: UIViewController, UITableViewDelegate, UITableView
   private func signOut() {
     NSNotificationCenter.defaultCenter().postNotificationName(Constants.Notification.SignOut, object: self, userInfo: nil)
     User.signOut()
+    clearInformation()
+  }
+  
+  private func clearInformation(){
+    let model = self.dataLayer.managedObjectModel
+    for entityName in model.entitiesByName.keys {
+      let fr = NSFetchRequest(entityName: entityName )
+      let entitiy = try! self.dataLayer.managedObjectContext!.executeFetchRequest(fr) as! [NSManagedObject]
+      for object in entitiy {
+        self.dataLayer.managedObjectContext!.deleteObject(object)
+      }
+    }
+    try! self.dataLayer.managedObjectContext!.save()
   }
   
   // MARK: - UITableViewDataSource

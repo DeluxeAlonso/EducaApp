@@ -16,6 +16,7 @@ public class User: NSManagedObject {
   @NSManaged public var firstName: String
   @NSManaged public var lastName: String
   @NSManaged public var username: String
+  @NSManaged public var imageProfileUrl: String
   
   var fullName: String {
     let name = "\(firstName) \(lastName)"
@@ -29,12 +30,15 @@ public class User: NSManagedObject {
 extension User: Deserializable {
   
   func setDataFromJSON(json: NSDictionary) {
-    if let id = json["id"] as? Int, firstName = json["first_name"] as? String, lastName = json["last_name"] as? String, username = json["username"] as? String, authToken = json["auth_token"] as? String {
+    if let id = json["id"] as? Int, firstName = json["first_name"] as? String, lastName = json["last_name"] as? String, username = json["username"] as? String , imageProfileUrl = json["image_profile_url"] as? String{
       self.id = Int32(id)
       self.firstName = firstName
       self.lastName = lastName
       self.username = username
-      User.setAuthToken(authToken)
+      self.imageProfileUrl = imageProfileUrl
+      if let authToken = json["auth_token"] as? String {
+        User.setAuthToken(authToken)
+      }
     }
   }
   
@@ -80,8 +84,6 @@ extension User {
     }
     return nil
   }
-  
-  
   
   class func getAuthenticatedUser(ctx: NSManagedObjectContext) -> User? {
     let defaults = NSUserDefaults.standardUserDefaults()

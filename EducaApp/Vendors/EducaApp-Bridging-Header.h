@@ -5,3 +5,4 @@
 #import <AFNetworking/AFNetworking.h>
 #import "PayPalMobile.h"
 #import "KeychainWrapper.h"
+#import "UIImageView+WebCache.h"
