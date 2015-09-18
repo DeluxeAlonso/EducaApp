@@ -85,8 +85,6 @@ extension User {
     return nil
   }
   
-  
-  
   class func getAuthenticatedUser(ctx: NSManagedObjectContext) -> User? {
     let defaults = NSUserDefaults.standardUserDefaults()
     if let id = defaults.integerForKey("authenticatedUserId") as Int? {

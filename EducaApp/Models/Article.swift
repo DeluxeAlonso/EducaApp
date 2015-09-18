@@ -105,7 +105,6 @@ extension Article {
     }
     if let authorJson = json["author"] as? Array<NSDictionary>, jsonInfo = authorJson[0] as NSDictionary! {
       let user = User.updateOrCreateWithJson(jsonInfo, ctx: ctx)
-      print("User.updateOrCreateWithJson")
       print(user?.description)
       article?.author = user!
     }

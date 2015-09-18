@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		E20C34DF1BAA40CF00435F46 /* KeychainWrapper.m in Sources */ = {isa = PBXBuildFile; fileRef = E20C34DE1BAA40CF00435F46 /* KeychainWrapper.m */; };
 		E26116E11BAB9E09002C0332 /* ArticleService.swift in Sources */ = {isa = PBXBuildFile; fileRef = E26116E01BAB9E09002C0332 /* ArticleService.swift */; settings = {ASSET_TAGS = (); }; };
 		E26116E31BABA374002C0332 /* Article.swift in Sources */ = {isa = PBXBuildFile; fileRef = E26116E21BABA374002C0332 /* Article.swift */; settings = {ASSET_TAGS = (); }; };
 		E2CF33BE1B9D3F2C00B8BE40 /* UrlBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2CF33BD1B9D3F2C00B8BE40 /* UrlBuilder.swift */; };
@@ -23,6 +22,8 @@
 		E2E13ABA1BA6AFF0004C6E45 /* SpotifyLikeStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2E13AB71BA6AFF0004C6E45 /* SpotifyLikeStyle.swift */; };
 		E2E13ABD1BA6B918004C6E45 /* SidebarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2E13ABC1BA6B918004C6E45 /* SidebarViewController.swift */; };
 		E2E16C171BA7E4D900F43776 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E2E16C161BA7E4D900F43776 /* Images.xcassets */; };
+		E2E1ACC81BAC903500070EB8 /* KeychainWrapper.m in Sources */ = {isa = PBXBuildFile; fileRef = E2E1ACC71BAC903500070EB8 /* KeychainWrapper.m */; settings = {ASSET_TAGS = (); }; };
+		E2E1ACCA1BAC90C500070EB8 /* RefreshContents.xib in Resources */ = {isa = PBXBuildFile; fileRef = E2E1ACC91BAC90C500070EB8 /* RefreshContents.xib */; settings = {ASSET_TAGS = (); }; };
 		E2E346591BA7789B007232A9 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2E346581BA7789B007232A9 /* SettingsViewController.swift */; };
 		E2E3465B1BA77929007232A9 /* DonationsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2E3465A1BA77929007232A9 /* DonationsViewController.swift */; };
 		E2E56B391BA5549700D18F76 /* CALayerHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2E56B381BA5549700D18F76 /* CALayerHelper.swift */; };
@@ -69,8 +70,6 @@
 		88202C874AA0EF52AA054217 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		B16CF1D03442508C54A2C811 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		C330EF7BE42F7341323D4084 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
-		E20C34DD1BAA40CF00435F46 /* KeychainWrapper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KeychainWrapper.h; sourceTree = "<group>"; };
-		E20C34DE1BAA40CF00435F46 /* KeychainWrapper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KeychainWrapper.m; sourceTree = "<group>"; };
 		E26116E01BAB9E09002C0332 /* ArticleService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ArticleService.swift; path = Networking/ArticleService.swift; sourceTree = "<group>"; };
 		E26116E21BABA374002C0332 /* Article.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Article.swift; path = Models/Article.swift; sourceTree = "<group>"; };
 		E2CF33BD1B9D3F2C00B8BE40 /* UrlBuilder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UrlBuilder.swift; path = Networking/UrlBuilder.swift; sourceTree = "<group>"; };
@@ -86,6 +85,9 @@
 		E2E13AB71BA6AFF0004C6E45 /* SpotifyLikeStyle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SpotifyLikeStyle.swift; path = "Views/Custom Views/Custom Indicator View/Custom Styles/SpotifyLikeStyle.swift"; sourceTree = "<group>"; };
 		E2E13ABC1BA6B918004C6E45 /* SidebarViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SidebarViewController.swift; path = Controllers/Sidebar/SidebarViewController.swift; sourceTree = "<group>"; };
 		E2E16C161BA7E4D900F43776 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		E2E1ACC61BAC903500070EB8 /* KeychainWrapper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = KeychainWrapper.h; path = Vendors/KeychainWrapper.h; sourceTree = "<group>"; };
+		E2E1ACC71BAC903500070EB8 /* KeychainWrapper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = KeychainWrapper.m; path = Vendors/KeychainWrapper.m; sourceTree = "<group>"; };
+		E2E1ACC91BAC90C500070EB8 /* RefreshContents.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = RefreshContents.xib; path = Views/Xibs/RefreshContents.xib; sourceTree = "<group>"; };
 		E2E346581BA7789B007232A9 /* SettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SettingsViewController.swift; path = Controllers/Settings/SettingsViewController.swift; sourceTree = "<group>"; };
 		E2E3465A1BA77929007232A9 /* DonationsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DonationsViewController.swift; path = Controllers/Donations/DonationsViewController.swift; sourceTree = "<group>"; };
 		E2E56B381BA5549700D18F76 /* CALayerHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CALayerHelper.swift; path = Helpers/CALayerHelper.swift; sourceTree = "<group>"; };
@@ -192,6 +194,14 @@
 			name = Sidebar;
 			sourceTree = "<group>";
 		};
+		E2E1ACCB1BAC90CB00070EB8 /* Xibs */ = {
+			isa = PBXGroup;
+			children = (
+				E2E1ACC91BAC90C500070EB8 /* RefreshContents.xib */,
+			);
+			name = Xibs;
+			sourceTree = "<group>";
+		};
 		E2E3464D1BA7777D007232A9 /* Donations */ = {
 			isa = PBXGroup;
 			children = (
@@ -213,6 +223,7 @@
 			children = (
 				E2E09BA61BA92D1F00C9A109 /* Cells */,
 				E2E56B3B1BA5555F00D18F76 /* Custom Views */,
+				E2E1ACCB1BAC90CB00070EB8 /* Xibs */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -328,9 +339,9 @@
 		E2FE3F6A1B9633EF006EEA91 /* Vendors */ = {
 			isa = PBXGroup;
 			children = (
+				E2E1ACC61BAC903500070EB8 /* KeychainWrapper.h */,
+				E2E1ACC71BAC903500070EB8 /* KeychainWrapper.m */,
 				E2FE3F6F1B9636E0006EEA91 /* EducaApp-Bridging-Header.h */,
-				E20C34DD1BAA40CF00435F46 /* KeychainWrapper.h */,
-				E20C34DE1BAA40CF00435F46 /* KeychainWrapper.m */,
 				E2FE3F701B9636E0006EEA91 /* SWRevealViewController.h */,
 				E2FE3F711B9636E0006EEA91 /* SWRevealViewController.m */,
 			);
@@ -448,6 +459,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				E2E16C171BA7E4D900F43776 /* Images.xcassets in Resources */,
+				E2E1ACCA1BAC90C500070EB8 /* RefreshContents.xib in Resources */,
 				E2FE3F501B9632DC006EEA91 /* Main.storyboard in Resources */,
 				E2FE3F551B9632DC006EEA91 /* LaunchScreen.xib in Resources */,
 			);
@@ -509,7 +521,6 @@
 				E2E3465B1BA77929007232A9 /* DonationsViewController.swift in Sources */,
 				E2E56B4B1BA55A3700D18F76 /* Deserializable.swift in Sources */,
 				E2E9CA4D1B97E4D400DC0EDA /* User.swift in Sources */,
-				E20C34DF1BAA40CF00435F46 /* KeychainWrapper.m in Sources */,
 				E2E56B4A1BA55A3700D18F76 /* DataLayer.swift in Sources */,
 				E2E13ABD1BA6B918004C6E45 /* SidebarViewController.swift in Sources */,
 				E2DD53C11BABCB170034B31C /* ArticleTableViewCell.swift in Sources */,
@@ -526,6 +537,7 @@
 				E2CF33C01B9D4D1800B8BE40 /* DictionaryHelper.swift in Sources */,
 				E2CF33BE1B9D3F2C00B8BE40 /* UrlBuilder.swift in Sources */,
 				E2E9CA491B97BA9200DC0EDA /* UIButtonHelper.swift in Sources */,
+				E2E1ACC81BAC903500070EB8 /* KeychainWrapper.m in Sources */,
 				E2E13AB91BA6AFF0004C6E45 /* CustomIndicatorStyle.swift in Sources */,
 				E2E56B491BA55A3700D18F76 /* Constants.swift in Sources */,
 			);
