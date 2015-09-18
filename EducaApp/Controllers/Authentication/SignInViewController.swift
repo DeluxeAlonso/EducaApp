@@ -29,6 +29,7 @@ class SignInViewController: UIViewController, UITextFieldDelegate {
   var initialBottomHeight: CGFloat!
   
   lazy var dataLayer = DataLayer()
+  var isKeyboardVisible = false
   
   let kAlertMessageTitle = "Error"
   let kEmptyUsernamePasswordMessage = "Username and Password cannot be blank."
@@ -135,7 +136,7 @@ class SignInViewController: UIViewController, UITextFieldDelegate {
       passwordTextField.becomeFirstResponder()
       break
     case 2:
-      //textField.resignFirstResponder()
+      textField.resignFirstResponder()
       signIn(NSNull)
       break
     default:
@@ -148,6 +149,10 @@ class SignInViewController: UIViewController, UITextFieldDelegate {
   
   func keyboardWillShow(notification: NSNotification) {
     print("keyboardWillShow")
+    guard !isKeyboardVisible else {
+      return
+    }
+    isKeyboardVisible = true
     view.layoutIfNeeded()
     if let keyboardFrame: CGRect = (notification.userInfo?[UIKeyboardFrameEndUserInfoKey] as? NSValue)?.CGRectValue() {
       let keyboardHeight = CGFloat(keyboardFrame.size.height) + CGFloat(20)
@@ -166,6 +171,10 @@ class SignInViewController: UIViewController, UITextFieldDelegate {
   
   func keyboardWillHide(notification: NSNotification) {
     print("keyboardWillHide")
+    guard isKeyboardVisible else {
+      return
+    }
+    isKeyboardVisible = false
     view.layoutIfNeeded()
     bottomConstraint.constant = self.initialBottomHeight;
     logoImageView.alpha = 1.0;

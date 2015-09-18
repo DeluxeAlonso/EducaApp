@@ -22,6 +22,8 @@ class UrlBuilder: NSObject {
       stringUrl = String(format: "%@%@?%@", Constants.Path.Development, path, parameters!)
     }
     
+    print(stringUrl)
+    
     return stringUrl
   }
    
