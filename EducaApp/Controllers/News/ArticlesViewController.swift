@@ -11,7 +11,7 @@ import UIKit
 let kBarButtonSelector: Selector = "revealToggle:"
 let kArticlesCellIdentifier = "ArticleCell"
 
-class ArticlesViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
+class ArticlesViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, UIScrollViewDelegate {
   
   @IBOutlet weak var tableView: UITableView!
   @IBOutlet weak var menuIcon: UIBarButtonItem!
@@ -19,15 +19,12 @@ class ArticlesViewController: UIViewController, UITableViewDataSource, UITableVi
   
   lazy var dataLayer = DataLayer()
   var articles = [Article]()
-  
-  var refreshControl = UIRefreshControl()
+
   var customView: UIView!
   var labelsArray: Array<UILabel> = []
   
   var isRefreshing = false
-  var isAnimating = false
-  var currentColorIndex = 0
-  var currentLabelIndex = 0
+  let refreshControl = CustomRefreshControlView()
   
   // MARK: - Lifecycle
   
@@ -56,97 +53,8 @@ class ArticlesViewController: UIViewController, UITableViewDataSource, UITableVi
   private func setupTableView() {
     self.tableView.estimatedRowHeight = 243;
     self.tableView.rowHeight = UITableViewAutomaticDimension;
-    loadCustomRefreshContents()
-    refreshControl.backgroundColor = UIColor.clearColor()
-    refreshControl.tintColor = UIColor.whiteColor()
     tableView.addSubview(refreshControl)
     refreshControl.addTarget(self, action: "refreshData", forControlEvents: UIControlEvents.ValueChanged)
-  }
-  
-  private func loadCustomRefreshContents() {
-    let refreshContents = NSBundle.mainBundle().loadNibNamed("RefreshContents", owner: self, options: nil)
-    customView = refreshContents[0] as! UIView
-    customView.clipsToBounds = true;
-    customView.frame = refreshControl.bounds
-    for var i=0; i<customView.subviews.count; ++i {
-      labelsArray.append(customView.viewWithTag(i + 1) as! UILabel)
-    }
-    refreshControl.addSubview(customView)
-  }
-  
-  func animateRefreshFirstStep() {
-    isAnimating = true
-    
-    UIView.animateWithDuration(0.1, delay: 0.0, options: UIViewAnimationOptions.CurveLinear, animations: { () -> Void in
-      self.labelsArray[self.currentLabelIndex].transform = CGAffineTransformMakeRotation(CGFloat(M_PI_4))
-      self.labelsArray[self.currentLabelIndex].textColor = self.getNextColor()
-      
-      }, completion: { (finished) -> Void in
-        
-        UIView.animateWithDuration(0.05, delay: 0.0, options: UIViewAnimationOptions.CurveLinear, animations: { () -> Void in
-          self.labelsArray[self.currentLabelIndex].transform = CGAffineTransformIdentity
-          self.labelsArray[self.currentLabelIndex].textColor = UIColor.blackColor()
-          
-          }, completion: { (finished) -> Void in
-            ++self.currentLabelIndex
-            
-            if self.currentLabelIndex < self.labelsArray.count {
-              self.animateRefreshFirstStep()
-            }
-            else {
-              self.animateRefreshSecondStep()
-            }
-        })
-    })
-  }
-  
-  func animateRefreshSecondStep() {
-    UIView.animateWithDuration(0.35, delay: 0.0, options: UIViewAnimationOptions.CurveLinear, animations: { () -> Void in
-      self.labelsArray[0].transform = CGAffineTransformMakeScale(1.5, 1.5)
-      self.labelsArray[1].transform = CGAffineTransformMakeScale(1.5, 1.5)
-      self.labelsArray[2].transform = CGAffineTransformMakeScale(1.5, 1.5)
-      self.labelsArray[3].transform = CGAffineTransformMakeScale(1.5, 1.5)
-      self.labelsArray[4].transform = CGAffineTransformMakeScale(1.5, 1.5)
-      self.labelsArray[5].transform = CGAffineTransformMakeScale(1.5, 1.5)
-      self.labelsArray[6].transform = CGAffineTransformMakeScale(1.5, 1.5)
-      self.labelsArray[7].transform = CGAffineTransformMakeScale(1.5, 1.5)
-      
-      }, completion: { (finished) -> Void in
-        UIView.animateWithDuration(0.25, delay: 0.0, options: UIViewAnimationOptions.CurveLinear, animations: { () -> Void in
-          self.labelsArray[0].transform = CGAffineTransformIdentity
-          self.labelsArray[1].transform = CGAffineTransformIdentity
-          self.labelsArray[2].transform = CGAffineTransformIdentity
-          self.labelsArray[3].transform = CGAffineTransformIdentity
-          self.labelsArray[4].transform = CGAffineTransformIdentity
-          self.labelsArray[5].transform = CGAffineTransformIdentity
-          self.labelsArray[6].transform = CGAffineTransformIdentity
-          self.labelsArray[7].transform = CGAffineTransformIdentity
-          }, completion: { (finished) -> Void in
-            if self.refreshControl.refreshing {
-              self.currentLabelIndex = 0
-              self.animateRefreshFirstStep()
-            }
-            else {
-              self.isAnimating = false
-              self.currentLabelIndex = 0
-              for var i=0; i<self.labelsArray.count; ++i {
-                self.labelsArray[i].textColor = UIColor.blackColor()
-                self.labelsArray[i].transform = CGAffineTransformIdentity
-              }
-            }
-        })
-    })
-  }
-  
-  func getNextColor() -> UIColor {
-    var colorsArray: Array<UIColor> = [UIColor.magentaColor(), UIColor.brownColor(), UIColor.yellowColor(), UIColor.redColor(), UIColor.greenColor(), UIColor.blueColor(), UIColor.orangeColor()]
-    if currentColorIndex == colorsArray.count {
-      currentColorIndex = 0
-    }
-    let returnColor = colorsArray[currentColorIndex]
-    ++currentColorIndex
-    
-    return returnColor
   }
   
   private func setupBarButtonItem() {
@@ -230,10 +138,24 @@ class ArticlesViewController: UIViewController, UITableViewDataSource, UITableVi
   
   func scrollViewDidEndDecelerating(scrollView: UIScrollView) {
     if refreshControl.refreshing {
-      if !isAnimating {
-        animateRefreshFirstStep()
+      if !refreshControl.isAnimating {
+        refreshControl.animateRefreshFirstStep()
       }
     }
+  }
+  
+  // MARK: - UIScrollViewDelegate
+  
+  func scrollViewDidScroll(scrollView: UIScrollView) {
+    let offset = scrollView.contentOffset.y * -1
+    var alpha = CGFloat(0.0)
+    if offset > 30 {
+      alpha = ((offset) / 100)
+      if alpha > 100 {
+        alpha = 1.0
+      }
+    }
+    refreshControl.customView.alpha = alpha
   }
   
 }

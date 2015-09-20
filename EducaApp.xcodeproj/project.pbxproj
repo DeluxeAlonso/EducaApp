@@ -12,6 +12,7 @@
 		E2CF33BE1B9D3F2C00B8BE40 /* UrlBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2CF33BD1B9D3F2C00B8BE40 /* UrlBuilder.swift */; };
 		E2CF33C01B9D4D1800B8BE40 /* DictionaryHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2CF33BF1B9D4D1800B8BE40 /* DictionaryHelper.swift */; };
 		E2CF33C21B9D5EF100B8BE40 /* UserService.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2CF33C11B9D5EF100B8BE40 /* UserService.swift */; };
+		E2DD3F0D1BAE325500DF40C2 /* CustomRefreshControlView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2DD3F0C1BAE325500DF40C2 /* CustomRefreshControlView.swift */; settings = {ASSET_TAGS = (); }; };
 		E2DD53C11BABCB170034B31C /* ArticleTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2DD53C01BABCB170034B31C /* ArticleTableViewCell.swift */; settings = {ASSET_TAGS = (); }; };
 		E2DDE3591BA641CE00C96CE5 /* CustomActivityIndicatorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2DDE3581BA641CE00C96CE5 /* CustomActivityIndicatorView.swift */; };
 		E2DF00741BAA756F00559630 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2DF00721BAA756F00559630 /* MapViewController.swift */; };
@@ -75,6 +76,7 @@
 		E2CF33BD1B9D3F2C00B8BE40 /* UrlBuilder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UrlBuilder.swift; path = Networking/UrlBuilder.swift; sourceTree = "<group>"; };
 		E2CF33BF1B9D4D1800B8BE40 /* DictionaryHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DictionaryHelper.swift; path = Helpers/DictionaryHelper.swift; sourceTree = "<group>"; };
 		E2CF33C11B9D5EF100B8BE40 /* UserService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UserService.swift; path = Networking/UserService.swift; sourceTree = "<group>"; };
+		E2DD3F0C1BAE325500DF40C2 /* CustomRefreshControlView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CustomRefreshControlView.swift; path = "Views/Custom Views/CustomRefreshControlView.swift"; sourceTree = "<group>"; };
 		E2DD53C01BABCB170034B31C /* ArticleTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ArticleTableViewCell.swift; path = Views/Cells/ArticleTableViewCell.swift; sourceTree = "<group>"; };
 		E2DDE3581BA641CE00C96CE5 /* CustomActivityIndicatorView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CustomActivityIndicatorView.swift; path = "Views/Custom Views/Custom Indicator View/CustomActivityIndicatorView.swift"; sourceTree = "<group>"; };
 		E2DF00721BAA756F00559630 /* MapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MapViewController.swift; path = Controllers/News/MapViewController.swift; sourceTree = "<group>"; };
@@ -171,8 +173,8 @@
 		E2DF00711BAA756100559630 /* Articles */ = {
 			isa = PBXGroup;
 			children = (
-				E2DF00721BAA756F00559630 /* MapViewController.swift */,
 				E2DF00731BAA756F00559630 /* ArticlesViewController.swift */,
+				E2DF00721BAA756F00559630 /* MapViewController.swift */,
 			);
 			name = Articles;
 			sourceTree = "<group>";
@@ -232,6 +234,7 @@
 			isa = PBXGroup;
 			children = (
 				E2E56B3E1BA556AC00D18F76 /* Custom Indicator View */,
+				E2DD3F0C1BAE325500DF40C2 /* CustomRefreshControlView.swift */,
 			);
 			name = "Custom Views";
 			sourceTree = "<group>";
@@ -295,11 +298,11 @@
 		E2FE3F441B9632DC006EEA91 /* EducaApp */ = {
 			isa = PBXGroup;
 			children = (
+				E2E9CA471B97BA6300DC0EDA /* Models */,
+				E2FE3F731B96379A006EEA91 /* Controllers */,
 				E2E56B3A1BA5555900D18F76 /* Views */,
 				E2CF33BA1B9D2C5C00B8BE40 /* Networking */,
-				E2E9CA471B97BA6300DC0EDA /* Models */,
 				E2FE3F7A1B96B1A7006EEA91 /* Helpers */,
-				E2FE3F731B96379A006EEA91 /* Controllers */,
 				E2FE3F6A1B9633EF006EEA91 /* Vendors */,
 				E2FE3F471B9632DC006EEA91 /* AppDelegate.swift */,
 				E2E16C161BA7E4D900F43776 /* Images.xcassets */,
@@ -512,6 +515,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E2DD3F0D1BAE325500DF40C2 /* CustomRefreshControlView.swift in Sources */,
 				E2CF33C21B9D5EF100B8BE40 /* UserService.swift in Sources */,
 				E2E13ABA1BA6AFF0004C6E45 /* SpotifyLikeStyle.swift in Sources */,
 				E26116E11BAB9E09002C0332 /* ArticleService.swift in Sources */,

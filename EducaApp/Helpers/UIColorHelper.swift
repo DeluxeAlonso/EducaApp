@@ -22,4 +22,8 @@ extension UIColor {
     return UIColor.blackColor()
   }
   
+  class func defaultRefreshControlColor() -> UIColor {
+    return UIColor.colorWithR(236, green: 240, blue: 241, alpha: 1)
+  }
+  
 }

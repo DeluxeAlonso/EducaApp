@@ -42,7 +42,6 @@ class ArticleTableViewCell: UITableViewCell {
     authorNameLabel.text = article?.author.firstName
   }
 
-  
   func setupImages() {
     articleImageView.sd_setImageWithURL(NSURL(string: (article?.imageUrl)!)!, placeholderImage: UIImage(named: "DefaultBackground"))
     authorImageView.sd_setImageWithURL(NSURL(string: (article?.author.imageProfileUrl)!)!, placeholderImage: UIImage(named: "AfiLogo"))
