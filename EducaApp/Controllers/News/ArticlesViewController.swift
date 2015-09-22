@@ -90,6 +90,8 @@ class ArticlesViewController: UIViewController, UITableViewDataSource, UITableVi
     })
   }
   
+  // MARK: - Public
+  
   func refreshData() {
     isRefreshing = true
     let delay = 2.0 * Double(NSEC_PER_SEC)
@@ -114,11 +116,11 @@ class ArticlesViewController: UIViewController, UITableViewDataSource, UITableVi
   // MARK: - UITableViewDataSource
   
   func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-    return 1;
+    return 1
   }
   
   func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-    return articles.count;
+    return articles.count
   }
   
   func tableView(tableView: UITableView,
@@ -133,8 +135,10 @@ class ArticlesViewController: UIViewController, UITableViewDataSource, UITableVi
   
   func tableView(tableView: UITableView,
     didSelectRowAtIndexPath indexPath: NSIndexPath) {
-      tableView.deselectRowAtIndexPath(indexPath, animated: false)
+      tableView.deselectRowAtIndexPath(indexPath, animated: true)
   }
+  
+  // MARK: - UIScrollViewDelegate
   
   func scrollViewDidEndDecelerating(scrollView: UIScrollView) {
     if refreshControl.refreshing {
@@ -143,8 +147,6 @@ class ArticlesViewController: UIViewController, UITableViewDataSource, UITableVi
       }
     }
   }
-  
-  // MARK: - UIScrollViewDelegate
   
   func scrollViewDidScroll(scrollView: UIScrollView) {
     let offset = scrollView.contentOffset.y * -1
