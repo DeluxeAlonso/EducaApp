@@ -88,12 +88,10 @@ extension Article {
   
   public class func findOrCreateWithId(id: Int32, ctx: NSManagedObjectContext) -> Article {
     var article: Article? = getArticleById(id, ctx: ctx)
-    
     if (article == nil) {
       article = NSEntityDescription.insertNewObjectForEntityForName("Article", inManagedObjectContext: ctx) as? Article
       article!.id = id
     }
-    
     return article!
   }
   
@@ -108,7 +106,6 @@ extension Article {
       print(user?.description)
       article?.author = user!
     }
-
     return article
   }
   
@@ -118,7 +115,6 @@ extension Article {
     let sortDescriptor = NSSortDescriptor(key: "id", ascending: false)
     fetchRequest.sortDescriptors = [sortDescriptor]
     let articles = try! ctx.executeFetchRequest(fetchRequest) as? Array<Article>
-    
     return articles ?? Array<Article>()
   }
   
@@ -130,7 +126,6 @@ extension Article {
     if (articles != nil && articles!.count > 0) {
       return articles![0]
     }
-    
     return nil
   }
   

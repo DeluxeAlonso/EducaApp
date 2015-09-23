@@ -26,4 +26,12 @@ extension UIColor {
     return UIColor.colorWithR(236, green: 240, blue: 241, alpha: 1)
   }
   
+  class func defaultHappyFaceBorderColor() -> UIColor {
+    return UIColor.colorWithR(241, green: 196, blue: 14, alpha: 1)
+  }
+  
+  class func defaultSadFaceBorderColor() -> UIColor {
+    return UIColor.colorWithR(231, green: 76, blue: 60, alpha: 1)
+  }
+  
 }

@@ -118,7 +118,6 @@ class SignInViewController: UIViewController, UITextFieldDelegate {
             let user = User.updateOrCreateWithJson(json, ctx: self.dataLayer.managedObjectContext!)
             self.dataLayer.saveContext()
             User.setAuthenticatedUser(user!)
-            print(User.getAuthenticatedUser(self.dataLayer.managedObjectContext!)?.description)
             NSNotificationCenter.defaultCenter().postNotificationName(Constants.Notification.SignIn, object: self, userInfo: nil)
           } else {
             //Show Error Message
@@ -127,28 +126,10 @@ class SignInViewController: UIViewController, UITextFieldDelegate {
       })
     }
   }
-
-  // MARK:- UITextFieldDelegates
-  
-  func textFieldShouldReturn(textField: UITextField) -> Bool {
-    switch textField.tag {
-    case 1:
-      passwordTextField.becomeFirstResponder()
-      break
-    case 2:
-      textField.resignFirstResponder()
-      signIn(NSNull)
-      break
-    default:
-      break
-    }
-    return true
-  }
   
   // MARK: - Notifications
   
   func keyboardWillShow(notification: NSNotification) {
-    print("keyboardWillShow")
     guard !isKeyboardVisible else {
       return
     }
@@ -170,7 +151,6 @@ class SignInViewController: UIViewController, UITextFieldDelegate {
   }
   
   func keyboardWillHide(notification: NSNotification) {
-    print("keyboardWillHide")
     guard isKeyboardVisible else {
       return
     }
@@ -180,6 +160,23 @@ class SignInViewController: UIViewController, UITextFieldDelegate {
     logoImageView.alpha = 1.0;
     view.layoutIfNeeded()
     view.endEditing(true)
+  }
+
+  // MARK:- UITextFieldDelegates
+  
+  func textFieldShouldReturn(textField: UITextField) -> Bool {
+    switch textField.tag {
+    case 1:
+      passwordTextField.becomeFirstResponder()
+      break
+    case 2:
+      textField.resignFirstResponder()
+      signIn(NSNull)
+      break
+    default:
+      break
+    }
+    return true
   }
   
 }

@@ -10,6 +10,8 @@ import UIKit
 
 let kSessionsCellIdentifier =  "SessionCell"
 let kSessionDocumentsSegueIdentifier = "GoToDocumentsSegue"
+let kSessionVolunteersSegueIdentifier = "GoToVolunteersList"
+let kSessionAssistantsSegueIdentifier = "GoToAssistants"
 
 class SessionsViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, SessionTableViewCellDelegate {
   
@@ -29,6 +31,10 @@ class SessionsViewController: UIViewController, UITableViewDataSource, UITableVi
   override func viewWillAppear(animated: Bool) {
     super.viewWillAppear(animated)
     setupPanGesture()
+  }
+  
+  override func viewWillLayoutSubviews() {
+    super.viewWillLayoutSubviews()
   }
   
   override func didReceiveMemoryWarning() {
@@ -89,9 +95,13 @@ class SessionsViewController: UIViewController, UITableViewDataSource, UITableVi
   }
   
   @IBAction func goToAssistantsList(sender: AnyObject) {
+    hideMenuViewWithoutAnimation()
+    performSegueWithIdentifier(kSessionAssistantsSegueIdentifier, sender: nil)
   }
   
   @IBAction func goToVolunteersList(sender: AnyObject) {
+    hideMenuViewWithoutAnimation()
+    performSegueWithIdentifier(kSessionVolunteersSegueIdentifier, sender: nil)
   }
   
   // MARK: - Navigation
@@ -116,6 +126,7 @@ class SessionsViewController: UIViewController, UITableViewDataSource, UITableVi
   func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
     let cell = tableView.dequeueReusableCellWithIdentifier(kSessionsCellIdentifier, forIndexPath: indexPath) as! SessionTableViewCell
     cell.delegate = self
+    
     return cell
   }
   
@@ -128,6 +139,7 @@ class SessionsViewController: UIViewController, UITableViewDataSource, UITableVi
   // MARK: - SessionTableViewCellDelegate
   
   func sessionTableViewCell(sessionTableViewCell: SessionTableViewCell, menuButtonDidTapped button: UIButton) {
+    print("menuButtonDidTapped")
     showMenuView()
   }
   

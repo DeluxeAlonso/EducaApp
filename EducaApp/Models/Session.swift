@@ -8,6 +8,8 @@
 
 import UIKit
 
-class Session: NSObject {
-
+public class Session: NSObject {
+  
+  
+  
 }
