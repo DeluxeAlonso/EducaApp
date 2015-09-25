@@ -13,9 +13,8 @@ let kSessionDocumentsSegueIdentifier = "GoToDocumentsSegue"
 let kSessionVolunteersSegueIdentifier = "GoToVolunteersList"
 let kSessionAssistantsSegueIdentifier = "GoToAssistants"
 
-class SessionsViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, SessionTableViewCellDelegate {
+class SessionsViewController: BaseViewController, UITableViewDataSource, UITableViewDelegate, SessionTableViewCellDelegate {
   
-  @IBOutlet weak var menuIcon: UIBarButtonItem!
   @IBOutlet weak var menuContentView: UIView!
   @IBOutlet weak var menuHeightConstraint: NSLayoutConstraint!
   @IBOutlet weak var shadowView: UIView!
@@ -24,7 +23,6 @@ class SessionsViewController: UIViewController, UITableViewDataSource, UITableVi
   
   override func viewDidLoad() {
     super.viewDidLoad()
-    setupBarButtonItem()
     setupMenuView()
   }
   
@@ -42,13 +40,6 @@ class SessionsViewController: UIViewController, UITableViewDataSource, UITableVi
   }
   
   // MARK: - Private
-  
-  private func setupBarButtonItem() {
-    if self.revealViewController() != nil {
-      self.menuIcon.target = self.revealViewController()
-      self.menuIcon.action = kBarButtonSelector
-    }
-  }
   
   private func setupPanGesture() {
     if self.revealViewController() != nil {
@@ -126,7 +117,6 @@ class SessionsViewController: UIViewController, UITableViewDataSource, UITableVi
   func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
     let cell = tableView.dequeueReusableCellWithIdentifier(kSessionsCellIdentifier, forIndexPath: indexPath) as! SessionTableViewCell
     cell.delegate = self
-    
     return cell
   }
   
@@ -139,7 +129,6 @@ class SessionsViewController: UIViewController, UITableViewDataSource, UITableVi
   // MARK: - SessionTableViewCellDelegate
   
   func sessionTableViewCell(sessionTableViewCell: SessionTableViewCell, menuButtonDidTapped button: UIButton) {
-    print("menuButtonDidTapped")
     showMenuView()
   }
   

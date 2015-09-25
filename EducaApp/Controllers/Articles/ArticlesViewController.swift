@@ -8,13 +8,12 @@
 
 import UIKit
 
-let kBarButtonSelector: Selector = "revealToggle:"
 let kArticlesCellIdentifier = "ArticleCell"
+let kGoToArticleDetailSegueIdentifier = "GoToArticleDetailSegue"
 
-class ArticlesViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, UIScrollViewDelegate {
+class ArticlesViewController: BaseViewController, UITableViewDataSource, UITableViewDelegate, UIScrollViewDelegate {
   
   @IBOutlet weak var tableView: UITableView!
-  @IBOutlet weak var menuIcon: UIBarButtonItem!
   @IBOutlet weak var customLoader: CustomActivityIndicatorView!
   
   lazy var dataLayer = DataLayer()
@@ -47,7 +46,6 @@ class ArticlesViewController: UIViewController, UITableViewDataSource, UITableVi
   
   private func setupElements() {
     setupTableView()
-    setupBarButtonItem()
   }
   
   private func setupTableView() {
@@ -55,14 +53,6 @@ class ArticlesViewController: UIViewController, UITableViewDataSource, UITableVi
     self.tableView.rowHeight = UITableViewAutomaticDimension;
     tableView.addSubview(refreshControl)
     refreshControl.addTarget(self, action: "refreshData", forControlEvents: UIControlEvents.ValueChanged)
-  }
-  
-  private func setupBarButtonItem() {
-    if self.revealViewController() != nil {
-      self.menuIcon.target = self.revealViewController()
-      self.menuIcon.action = kBarButtonSelector
-      self.view.addGestureRecognizer(self.revealViewController().panGestureRecognizer())
-    }
   }
   
   private func setupArticles() {
@@ -113,6 +103,30 @@ class ArticlesViewController: UIViewController, UITableViewDataSource, UITableVi
     }
   }
   
+  // MARK: - Actions
+  
+  @IBAction func longPressGestureRecognized(sender: AnyObject) {
+    let longPress = sender as! UILongPressGestureRecognizer
+    let location = longPress.locationInView(tableView)
+    let indexPath = tableView.indexPathForRowAtPoint(location)
+    if longPress.state == UIGestureRecognizerState.Began {
+      tableView.deselectRowAtIndexPath(indexPath!, animated: true)
+      let cell = tableView.cellForRowAtIndexPath(indexPath!) as! ArticleTableViewCell
+      cell.setFavorite(NSNull)
+    } else if longPress.state == UIGestureRecognizerState.Recognized {
+      tableView.deselectRowAtIndexPath(indexPath!, animated: true)
+    }
+  }
+  
+  // MARK: - Navigation
+  
+  override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+    if segue.destinationViewController is ArticleDetailViewController {
+      let destinationVC = segue.destinationViewController as! ArticleDetailViewController
+      destinationVC.article = sender as? Article
+    }
+  }
+  
   // MARK: - UITableViewDataSource
   
   func numberOfSectionsInTableView(tableView: UITableView) -> Int {
@@ -136,6 +150,7 @@ class ArticlesViewController: UIViewController, UITableViewDataSource, UITableVi
   func tableView(tableView: UITableView,
     didSelectRowAtIndexPath indexPath: NSIndexPath) {
       tableView.deselectRowAtIndexPath(indexPath, animated: true)
+      self.performSegueWithIdentifier(kGoToArticleDetailSegueIdentifier, sender: articles[indexPath.row])
   }
   
   // MARK: - UIScrollViewDelegate

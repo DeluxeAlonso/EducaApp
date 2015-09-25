@@ -8,9 +8,7 @@
 
 import UIKit
 
-class DonationsViewController: UIViewController, PayPalPaymentDelegate {
-  
-  @IBOutlet weak var menuIcon: UIBarButtonItem!
+class DonationsViewController: BaseViewController, PayPalPaymentDelegate {
   
   var paymentConfig = PayPalConfiguration()
   
@@ -36,14 +34,6 @@ class DonationsViewController: UIViewController, PayPalPaymentDelegate {
   private func setupElements() {
     setupBarButtonItem()
     configuratePayment()
-  }
-  
-  private func setupBarButtonItem() {
-    if self.revealViewController() != nil {
-      self.menuIcon.target = self.revealViewController()
-      self.menuIcon.action = kBarButtonSelector
-      self.view.addGestureRecognizer(self.revealViewController().panGestureRecognizer())
-    }
   }
   
   private func configuratePayment() {

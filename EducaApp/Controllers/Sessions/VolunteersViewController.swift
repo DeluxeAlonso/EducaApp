@@ -10,7 +10,7 @@ import UIKit
 
 let kVolunteerCellIdentifier = "VolunteerCell"
 
-class VolunteersViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
+class VolunteersViewController: BaseViewController, UITableViewDataSource, UITableViewDelegate {
   
   @IBOutlet weak var tableView: UITableView!
   
@@ -24,20 +24,12 @@ class VolunteersViewController: UIViewController, UITableViewDataSource, UITable
   
   override func viewDidLoad() {
     super.viewDidLoad()
-    setupPanGesture()
   }
   
   override func didReceiveMemoryWarning() {
     super.didReceiveMemoryWarning()
   }
   
-  // MARK: - Private
-  
-  private func setupPanGesture() {
-    if self.revealViewController() != nil {
-      self.view.addGestureRecognizer(self.revealViewController().panGestureRecognizer())
-    }
-  }
   
   // MARK: - UITableViewDataSource
   

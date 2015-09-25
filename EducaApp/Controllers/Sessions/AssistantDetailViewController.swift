@@ -10,7 +10,7 @@ import UIKit
 
 let kSessionCommentCellIdentifier = "SessionCommentCell"
 
-class AssistantDetailViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
+class AssistantDetailViewController: BaseViewController, UITableViewDataSource, UITableViewDelegate {
   
   let goToCommentSegueIdentifier = "ShowCommentSegue"
   

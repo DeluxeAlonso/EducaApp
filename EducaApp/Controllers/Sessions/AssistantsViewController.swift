@@ -11,7 +11,7 @@ import UIKit
 let kAssistantCellIdentifier = "AssistantCell"
 
 
-class AssistantsViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
+class AssistantsViewController: BaseViewController, UITableViewDataSource, UITableViewDelegate {
   
   @IBOutlet weak var customView: UIView!
   
