@@ -27,6 +27,7 @@ class DocumentTableViewCell: UITableViewCell {
   
   override func awakeFromNib() {
     super.awakeFromNib()
+    setupElements()
     // Initialization code
   }
   
@@ -34,6 +35,13 @@ class DocumentTableViewCell: UITableViewCell {
     super.setSelected(selected, animated: animated)
     
     // Configure the view for the selected state
+  }
+  
+  // MARK: - Private
+  
+  private func setupElements() {
+    titleLabel.textColor = UIColor.defaultTextColor()
+    sizeLabel.textColor = UIColor.defaultSmallTextColor()
   }
   
   // MARK: - Public

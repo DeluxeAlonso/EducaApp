@@ -19,6 +19,10 @@ class SessionsViewController: BaseViewController, UITableViewDataSource, UITable
   @IBOutlet weak var menuHeightConstraint: NSLayoutConstraint!
   @IBOutlet weak var shadowView: UIView!
   
+  @IBOutlet weak var assistanceView: UIView!
+  @IBOutlet weak var documentsView: UIView!
+  @IBOutlet weak var mapView: UIView!
+  @IBOutlet weak var registerView: UIView!
   var initialHeightConstraintConstant: CGFloat?
   
   override func viewDidLoad() {
@@ -26,13 +30,9 @@ class SessionsViewController: BaseViewController, UITableViewDataSource, UITable
     setupMenuView()
   }
   
-  override func viewWillAppear(animated: Bool) {
-    super.viewWillAppear(animated)
-    setupPanGesture()
-  }
-  
   override func viewWillLayoutSubviews() {
     super.viewWillLayoutSubviews()
+    
   }
   
   override func didReceiveMemoryWarning() {
@@ -40,12 +40,6 @@ class SessionsViewController: BaseViewController, UITableViewDataSource, UITable
   }
   
   // MARK: - Private
-  
-  private func setupPanGesture() {
-    if self.revealViewController() != nil {
-      self.view.addGestureRecognizer(self.revealViewController().panGestureRecognizer())
-    }
-  }
   
   private func setupMenuView() {
     initialHeightConstraintConstant = menuHeightConstraint.constant
@@ -55,12 +49,16 @@ class SessionsViewController: BaseViewController, UITableViewDataSource, UITable
   }
   
   private func showMenuView() {
+    self.shadowView.translatesAutoresizingMaskIntoConstraints = true
+    self.menuContentView.translatesAutoresizingMaskIntoConstraints = true
     self.navigationController?.view.addSubview(self.shadowView)
     self.navigationController?.view.addSubview(self.menuContentView)
     UIView.animateWithDuration(0.25, delay: 0.0, options: UIViewAnimationOptions.CurveEaseOut, animations: {
       self.shadowView.alpha = 0.35
       self.menuContentView.frame = CGRect(x: self.menuContentView.frame.origin.x, y: self.menuContentView.frame.origin.y - self.initialHeightConstraintConstant!, width: self.menuContentView.frame.width, height: self.initialHeightConstraintConstant!)
       }, completion: nil)
+    print(self.documentsView.frame)
+    print(self.mapView.frame)
     shadowView.userInteractionEnabled = true
   }
   

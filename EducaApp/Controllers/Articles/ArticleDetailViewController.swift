@@ -14,7 +14,6 @@ class ArticleDetailViewController: BaseViewController {
   @IBOutlet weak var titleLabel: UILabel!
   @IBOutlet weak var authorLabel: UILabel!
   @IBOutlet weak var articleTextView: UITextView!
-  @IBOutlet weak var textViewHeightConstraint: NSLayoutConstraint!
   
   var article: Article?
   
@@ -23,18 +22,23 @@ class ArticleDetailViewController: BaseViewController {
   override func viewDidLoad() {
     super.viewDidLoad()
     setupElements()
-    // Do any additional setup after loading the view.
   }
   
   override func didReceiveMemoryWarning() {
     super.didReceiveMemoryWarning()
-    // Dispose of any resources that can be recreated.
   }
   
   // MARK: - Private
   
   private func setupElements() {
+    setupInfoViews()
     setupArticle()
+  }
+  
+  private func setupInfoViews() {
+    titleLabel.textColor = UIColor.defaultTextColor()
+    authorLabel.textColor = UIColor.defaultSmallTextColor()
+    articleTextView.textColor = UIColor.defaultSmallTextColor()
   }
   
   private func setupArticle() {

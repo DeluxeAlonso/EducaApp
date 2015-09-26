@@ -38,9 +38,11 @@ class ArticleTableViewCell: UITableViewCell {
   }
   
   func setupLabels() {
-    print(article?.author.firstName)
+    articleTitle.textColor = UIColor.defaultTextColor()
     articleTitle.text = article?.title
+    postTimeLabel.textColor = UIColor.defaultSmallTextColor()
     postTimeLabel.text = article?.postTime
+    authorNameLabel.textColor = UIColor.defaultSmallTextColor()
     authorNameLabel.text = article?.author.firstName
   }
 

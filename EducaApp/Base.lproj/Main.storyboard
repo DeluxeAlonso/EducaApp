@@ -86,7 +86,7 @@
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="10" sectionFooterHeight="10" translatesAutoresizingMaskIntoConstraints="NO" id="MvX-sk-Cnb">
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
-                                <color key="backgroundColor" red="0.96470588235294119" green="0.96862745098039216" blue="0.97254901960784312" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <prototypes>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="SettingsCell" id="Qd4-TW-3VC" customClass="SettingsTableViewCell" customModule="EducaApp" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="113.5" width="600" height="44"/>
@@ -102,11 +102,13 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
+                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                             <constraints>
                                                 <constraint firstAttribute="centerX" secondItem="muW-hl-t2Q" secondAttribute="centerX" id="Hws-dK-C2Z"/>
                                                 <constraint firstAttribute="centerY" secondItem="muW-hl-t2Q" secondAttribute="centerY" id="V9b-GB-h0D"/>
                                             </constraints>
                                         </tableViewCellContentView>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         <connections>
                                             <outlet property="nameLabel" destination="muW-hl-t2Q" id="C8C-wZ-KOo"/>
                                         </connections>
@@ -171,21 +173,22 @@
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wgk-Di-rUD" customClass="CustomActivityIndicatorView" customModule="EducaApp" customModuleProvider="target">
                                 <rect key="frame" x="275" y="275" width="50" height="50"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="DzZ-qm-nbN"/>
                                     <constraint firstAttribute="width" constant="50" id="WAT-nd-IH6"/>
                                 </constraints>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="color" keyPath="indicatorColor">
-                                        <color key="value" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                        <color key="value" red="0.37647058820000001" green="0.72549019609999998" blue="0.98039215690000003" alpha="1" colorSpace="calibratedRGB"/>
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </view>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="lMr-kO-3Am">
                                 <rect key="frame" x="0.0" y="64" width="600" height="536"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <gestureRecognizers/>
+                                <color key="sectionIndexBackgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <prototypes>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="ArticleCell" rowHeight="243" id="WrA-H4-4Mr" customClass="ArticleTableViewCell" customModule="EducaApp" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="600" height="243"/>
@@ -194,11 +197,6 @@
                                             <rect key="frame" x="0.0" y="0.0" width="600" height="242.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="EOY-GC-LDm">
-                                                    <rect key="frame" x="0.0" y="0.0" width="600" height="242.5"/>
-                                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                                    <gestureRecognizers/>
-                                                </view>
                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Nfy-CI-maQ">
                                                     <rect key="frame" x="10" y="8" width="580" height="137"/>
                                                     <constraints>
@@ -207,6 +205,7 @@
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="W7Z-yd-VdH">
                                                     <rect key="frame" x="10" y="148" width="580" height="50"/>
+                                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                     <fontDescription key="fontDescription" name="AvenirNext-Medium" family="Avenir Next" pointSize="17"/>
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
@@ -249,12 +248,12 @@
                                                     </connections>
                                                 </button>
                                             </subviews>
+                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                             <constraints>
                                                 <constraint firstItem="Nfy-CI-maQ" firstAttribute="leading" secondItem="551-bh-Frp" secondAttribute="leading" id="0al-7h-LiN"/>
                                                 <constraint firstItem="Nfy-CI-maQ" firstAttribute="leading" secondItem="k11-Ac-od4" secondAttribute="leadingMargin" constant="2" id="5YR-0b-bxs"/>
                                                 <constraint firstItem="xe2-7Q-fhi" firstAttribute="leading" secondItem="k11-Ac-od4" secondAttribute="leading" constant="48" id="B80-UX-GhY"/>
                                                 <constraint firstItem="xe2-7Q-fhi" firstAttribute="leading" secondItem="551-bh-Frp" secondAttribute="trailing" constant="8" id="H6K-Ig-oGG"/>
-                                                <constraint firstAttribute="trailing" secondItem="EOY-GC-LDm" secondAttribute="trailing" id="Ili-0j-fhI"/>
                                                 <constraint firstItem="lMZ-Ig-nYH" firstAttribute="top" secondItem="W7Z-yd-VdH" secondAttribute="bottom" constant="19" id="MyO-q9-cOu"/>
                                                 <constraint firstAttribute="bottomMargin" secondItem="551-bh-Frp" secondAttribute="bottom" constant="0.5" id="OfB-c6-PPy"/>
                                                 <constraint firstItem="Nfy-CI-maQ" firstAttribute="trailing" secondItem="W7Z-yd-VdH" secondAttribute="trailing" id="Pee-JO-InK"/>
@@ -262,9 +261,6 @@
                                                 <constraint firstAttribute="bottomMargin" secondItem="xe2-7Q-fhi" secondAttribute="bottom" constant="12.5" id="WBz-Eo-NoV"/>
                                                 <constraint firstItem="551-bh-Frp" firstAttribute="top" secondItem="W7Z-yd-VdH" secondAttribute="bottom" constant="6" id="ZCW-sO-ibh"/>
                                                 <constraint firstItem="xe2-7Q-fhi" firstAttribute="top" secondItem="W7Z-yd-VdH" secondAttribute="bottom" constant="3" id="ZMM-Ct-h9E"/>
-                                                <constraint firstAttribute="bottom" secondItem="EOY-GC-LDm" secondAttribute="bottom" id="dzK-Bu-50M"/>
-                                                <constraint firstItem="EOY-GC-LDm" firstAttribute="leading" secondItem="k11-Ac-od4" secondAttribute="leading" id="hUf-vp-70Q"/>
-                                                <constraint firstItem="EOY-GC-LDm" firstAttribute="top" secondItem="k11-Ac-od4" secondAttribute="top" id="k63-hh-yUZ"/>
                                                 <constraint firstItem="551-bh-Frp" firstAttribute="leading" secondItem="k11-Ac-od4" secondAttribute="leadingMargin" constant="2" id="myd-v4-udE"/>
                                                 <constraint firstItem="W7Z-yd-VdH" firstAttribute="top" secondItem="Nfy-CI-maQ" secondAttribute="bottom" constant="3" id="olP-Xh-p5P"/>
                                                 <constraint firstItem="lMZ-Ig-nYH" firstAttribute="leading" secondItem="xe2-7Q-fhi" secondAttribute="leading" id="pk8-15-4xf"/>
@@ -275,6 +271,7 @@
                                                 <constraint firstAttribute="bottom" secondItem="ePJ-SY-KZ1" secondAttribute="bottom" constant="0.5" id="zuZ-Pg-JQQ"/>
                                             </constraints>
                                         </tableViewCellContentView>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         <gestureRecognizers/>
                                         <connections>
                                             <outlet property="articleImageView" destination="Nfy-CI-maQ" id="lDe-KD-F8s"/>
@@ -289,11 +286,11 @@
                                 <connections>
                                     <outlet property="dataSource" destination="XYv-7N-YI6" id="oNj-5S-H0h"/>
                                     <outlet property="delegate" destination="XYv-7N-YI6" id="FE9-4Z-4dt"/>
-                                    <outletCollection property="gestureRecognizers" destination="ORR-wi-CNt" appends="YES" id="fEx-kH-RGh"/>
                                 </connections>
                             </tableView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <gestureRecognizers/>
                         <constraints>
                             <constraint firstItem="wgk-Di-rUD" firstAttribute="centerY" secondItem="5tk-Lh-n1q" secondAttribute="centerY" id="3AG-L7-DxN"/>
                             <constraint firstItem="lMr-kO-3Am" firstAttribute="top" secondItem="5tk-Lh-n1q" secondAttribute="top" constant="64" id="Erk-gi-AIB"/>
@@ -315,11 +312,6 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="BQC-Qa-JbX" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <pongPressGestureRecognizer allowableMovement="10" minimumPressDuration="1.5" id="ORR-wi-CNt">
-                    <connections>
-                        <action selector="longPressGestureRecognized:" destination="XYv-7N-YI6" id="b84-bh-7me"/>
-                    </connections>
-                </pongPressGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="804" y="-744"/>
         </scene>
@@ -349,6 +341,7 @@
                                             </imageView>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="Sjx-gu-83V">
                                                 <rect key="frame" x="16" y="200" width="567" height="55"/>
+                                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="55" id="pvd-eZ-LMG"/>
                                                 </constraints>
@@ -358,6 +351,7 @@
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="IgO-PF-8kZ">
                                                 <rect key="frame" x="16" y="255" width="173" height="32"/>
+                                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="32" id="2zR-3k-0tV"/>
                                                     <constraint firstAttribute="width" constant="173" id="nZF-w7-PCD"/>
@@ -375,6 +369,7 @@
                                             </view>
                                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" bounces="NO" scrollEnabled="NO" editable="NO" textAlignment="justified" translatesAutoresizingMaskIntoConstraints="NO" id="xj1-uM-DYQ">
                                                 <rect key="frame" x="0.0" y="323.5" width="600" height="659.5"/>
+                                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                 <string key="text">El Ministerio de la Mujer y Poblaciones Vulnerables (MIMP), destacó la aprobación del reglamento de la Ley General del Voluntario que busca promover la solidaridad y conciencia social entre los peruanos y peruanas, y que establece diversos beneficios de carácter social, salud y educativos a favor de las personas que realicen este tipo de actividades.
  
 El reglamento de la ley indica que toda persona mayor de 14 años podrá ser voluntaria siempre y cuando cumpla con el perfil que establezca la entidad o grupo beneficiario del voluntariado o la organización de voluntarios a la que pertenece.
@@ -394,7 +389,7 @@ El voluntariado comprende actividades asistenciales de servicios sociales, cívi
                                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                             </textView>
                                             <button opaque="NO" alpha="0.59999999999999998" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="adB-nQ-0NK">
-                                                <rect key="frame" x="496" y="250" width="84" height="41"/>
+                                                <rect key="frame" x="500" y="250" width="84" height="41"/>
                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="84" id="FjX-Fe-QRF"/>
@@ -405,6 +400,7 @@ El voluntariado comprende actividades asistenciales de servicios sociales, cívi
                                                 </state>
                                             </button>
                                         </subviews>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         <constraints>
                                             <constraint firstItem="Niw-XZ-lsa" firstAttribute="leading" secondItem="e7a-VI-SnT" secondAttribute="leading" id="4AO-yv-Bbl"/>
                                             <constraint firstItem="xj1-uM-DYQ" firstAttribute="width" secondItem="e7a-VI-SnT" secondAttribute="width" id="9Bt-2y-OJh"/>
@@ -424,11 +420,11 @@ El voluntariado comprende actividades asistenciales de servicios sociales, cívi
                                             <constraint firstAttribute="trailing" secondItem="xj1-uM-DYQ" secondAttribute="trailing" id="rcG-5g-5d7"/>
                                             <constraint firstItem="xj1-uM-DYQ" firstAttribute="top" secondItem="sEp-gE-aqV" secondAttribute="bottom" constant="14.5" id="tWj-VD-DjU"/>
                                             <constraint firstItem="Sjx-gu-83V" firstAttribute="leading" secondItem="e7a-VI-SnT" secondAttribute="leading" constant="16" id="wu9-As-9AK"/>
-                                            <constraint firstAttribute="trailing" secondItem="adB-nQ-0NK" secondAttribute="trailing" constant="20" id="zg7-zR-paU"/>
+                                            <constraint firstAttribute="trailing" secondItem="adB-nQ-0NK" secondAttribute="trailing" constant="16" id="zg7-zR-paU"/>
                                         </constraints>
                                     </scrollView>
                                 </subviews>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstItem="e7a-VI-SnT" firstAttribute="centerX" secondItem="PX3-Lh-l1F" secondAttribute="centerX" id="AMN-zW-jXj"/>
                                     <constraint firstItem="e7a-VI-SnT" firstAttribute="centerY" secondItem="PX3-Lh-l1F" secondAttribute="centerY" id="lh1-Oi-uTw"/>
@@ -480,7 +476,7 @@ El voluntariado comprende actividades asistenciales de servicios sociales, cívi
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xxw-My-nK9" userLabel="Sign In Button">
                                 <rect key="frame" x="20" y="336" width="560" height="44"/>
-                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="backgroundColor" red="0.0" green="0.59999999999999998" blue="0.80000000000000004" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="44" id="2ag-qh-onh"/>
                                 </constraints>
@@ -637,12 +633,12 @@ El voluntariado comprende actividades asistenciales de servicios sociales, cívi
                                     <constraint firstAttribute="width" constant="180" id="SzA-Qc-nn9"/>
                                 </constraints>
                                 <state key="normal" title="¿Olvidaste tu contraseña?">
-                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                    <color key="titleColor" red="0.0" green="0.59999999999999998" blue="0.80000000000000004" alpha="1" colorSpace="calibratedRGB"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                             </button>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="0.94117647058823528" green="0.98039215686274506" blue="0.98039215686274506" alpha="1" colorSpace="calibratedRGB"/>
                         <gestureRecognizers/>
                         <constraints>
                             <constraint firstItem="xxw-My-nK9" firstAttribute="trailing" secondItem="6vE-uS-5AL" secondAttribute="trailingMargin" id="4Dj-YX-wMy"/>
@@ -705,12 +701,12 @@ El voluntariado comprende actividades asistenciales de servicios sociales, cívi
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="plain" separatorStyle="none" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="Yd7-hI-eHK">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" red="0.94085192679999996" green="0.94903725390000004" blue="0.95307987930000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                        <color key="sectionIndexBackgroundColor" red="0.94085192679999996" green="0.94903725390000004" blue="0.95307987930000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="backgroundColor" red="0.94117647059999998" green="0.98039215690000003" blue="0.98039215690000003" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="sectionIndexBackgroundColor" red="0.94117647059999998" green="0.98039215690000003" blue="0.98039215690000003" alpha="1" colorSpace="calibratedRGB"/>
                         <sections>
                             <tableViewSection id="lau-AY-OXU">
                                 <cells>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="63" id="ggi-Cp-5XD" userLabel="Header Cell">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" rowHeight="63" id="ggi-Cp-5XD" userLabel="Header Cell">
                                         <rect key="frame" x="0.0" y="0.0" width="600" height="63"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="ggi-Cp-5XD" id="35G-2t-5k2">
@@ -724,7 +720,7 @@ El voluntariado comprende actividades asistenciales de servicios sociales, cívi
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
-                                            <color key="backgroundColor" red="0.92549019610000005" green="0.93725490199999995" blue="0.94117647059999998" alpha="1" colorSpace="calibratedRGB"/>
+                                            <color key="backgroundColor" red="0.94117647059999998" green="0.98039215690000003" blue="0.98039215690000003" alpha="1" colorSpace="calibratedRGB"/>
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" red="0.94085192679999996" green="0.94903725390000004" blue="0.95307987930000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     </tableViewCell>
@@ -745,39 +741,15 @@ El voluntariado comprende actividades asistenciales de servicios sociales, cívi
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
-                                            <color key="backgroundColor" red="0.92549019610000005" green="0.93725490199999995" blue="0.94117647059999998" alpha="1" colorSpace="calibratedRGB"/>
+                                            <color key="backgroundColor" red="0.94117647059999998" green="0.98039215690000003" blue="0.98039215690000003" alpha="1" colorSpace="calibratedRGB"/>
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" red="0.94085192679999996" green="0.94903725390000004" blue="0.95307987930000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <connections>
                                             <segue destination="51h-Io-WH8" kind="custom" customClass="SWRevealViewControllerSeguePushController" id="RtS-xr-ajm"/>
                                         </connections>
                                     </tableViewCell>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="Smb-Zn-FlP" userLabel="Donation Cell">
-                                        <rect key="frame" x="0.0" y="107" width="600" height="44"/>
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Smb-Zn-FlP" id="DTu-ZL-acV">
-                                            <rect key="frame" x="0.0" y="0.0" width="600" height="44"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <subviews>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="DonationIcon" translatesAutoresizingMaskIntoConstraints="NO" id="ffU-Gj-kgU">
-                                                    <rect key="frame" x="18" y="4" width="35" height="35"/>
-                                                </imageView>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Donaciones" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="H6s-f3-dY7">
-                                                    <rect key="frame" x="61" y="6" width="100" height="31"/>
-                                                    <fontDescription key="fontDescription" name="AvenirNextCondensed-Medium" family="Avenir Next Condensed" pointSize="22"/>
-                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                            </subviews>
-                                            <color key="backgroundColor" red="0.92549019607843142" green="0.93725490196078431" blue="0.94117647058823528" alpha="1" colorSpace="calibratedRGB"/>
-                                        </tableViewCellContentView>
-                                        <color key="backgroundColor" red="0.94085192679999996" green="0.94903725390000004" blue="0.95307987930000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                        <connections>
-                                            <segue destination="3Zj-sa-evx" kind="custom" customClass="SWRevealViewControllerSeguePushController" id="hFd-ET-FZ3"/>
-                                        </connections>
-                                    </tableViewCell>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="Vhm-qx-Mx7" userLabel="Sessions Cell">
-                                        <rect key="frame" x="0.0" y="151" width="600" height="44"/>
+                                        <rect key="frame" x="0.0" y="107" width="600" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Vhm-qx-Mx7" id="OEs-et-GEV">
                                             <rect key="frame" x="0.0" y="0.0" width="600" height="44"/>
@@ -793,11 +765,35 @@ El voluntariado comprende actividades asistenciales de servicios sociales, cívi
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
-                                            <color key="backgroundColor" red="0.92549019610000005" green="0.93725490199999995" blue="0.94117647059999998" alpha="1" colorSpace="calibratedRGB"/>
+                                            <color key="backgroundColor" red="0.94117647059999998" green="0.98039215690000003" blue="0.98039215690000003" alpha="1" colorSpace="calibratedRGB"/>
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" red="0.94085192679999996" green="0.94903725390000004" blue="0.95307987930000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <connections>
                                             <segue destination="eId-bY-6l6" kind="custom" customClass="SWRevealViewControllerSeguePushController" id="mFZ-TI-LzV"/>
+                                        </connections>
+                                    </tableViewCell>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="Smb-Zn-FlP" userLabel="Donation Cell">
+                                        <rect key="frame" x="0.0" y="151" width="600" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Smb-Zn-FlP" id="DTu-ZL-acV">
+                                            <rect key="frame" x="0.0" y="0.0" width="600" height="44"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="DonationIcon" translatesAutoresizingMaskIntoConstraints="NO" id="ffU-Gj-kgU">
+                                                    <rect key="frame" x="18" y="4" width="35" height="35"/>
+                                                </imageView>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Pagos" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="H6s-f3-dY7">
+                                                    <rect key="frame" x="61" y="6" width="100" height="31"/>
+                                                    <fontDescription key="fontDescription" name="AvenirNextCondensed-Medium" family="Avenir Next Condensed" pointSize="22"/>
+                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <color key="backgroundColor" red="0.94117647059999998" green="0.98039215690000003" blue="0.98039215690000003" alpha="1" colorSpace="calibratedRGB"/>
+                                        </tableViewCellContentView>
+                                        <color key="backgroundColor" red="0.94085192679999996" green="0.94903725390000004" blue="0.95307987930000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <connections>
+                                            <segue destination="3Zj-sa-evx" kind="custom" customClass="SWRevealViewControllerSeguePushController" id="hFd-ET-FZ3"/>
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="v2i-5g-vnA" userLabel="Documents Cell">
@@ -817,7 +813,7 @@ El voluntariado comprende actividades asistenciales de servicios sociales, cívi
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
-                                            <color key="backgroundColor" red="0.92549019610000005" green="0.93725490199999995" blue="0.94117647059999998" alpha="1" colorSpace="calibratedRGB"/>
+                                            <color key="backgroundColor" red="0.94117647059999998" green="0.98039215690000003" blue="0.98039215690000003" alpha="1" colorSpace="calibratedRGB"/>
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" red="0.94085192679999996" green="0.94903725390000004" blue="0.95307987930000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <connections>
@@ -841,7 +837,7 @@ El voluntariado comprende actividades asistenciales de servicios sociales, cívi
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
-                                            <color key="backgroundColor" red="0.92549019610000005" green="0.93725490199999995" blue="0.94117647059999998" alpha="1" colorSpace="calibratedRGB"/>
+                                            <color key="backgroundColor" red="0.94117647059999998" green="0.98039215690000003" blue="0.98039215690000003" alpha="1" colorSpace="calibratedRGB"/>
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" red="0.94085192679999996" green="0.94903725390000004" blue="0.95307987930000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <connections>
@@ -915,7 +911,7 @@ El voluntariado comprende actividades asistenciales de servicios sociales, cívi
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="58" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="gau-KQ-y4g">
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="SessionCell" rowHeight="58" id="e5l-cF-Hjn" customClass="SessionTableViewCell" customModule="EducaApp" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="92" width="600" height="58"/>
@@ -925,15 +921,18 @@ El voluntariado comprende actividades asistenciales de servicios sociales, cívi
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Cerro El Pino" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QIP-2u-1VU" userLabel="Session Place">
-                                                    <rect key="frame" x="255" y="19" width="91" height="19"/>
-                                                    <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="16"/>
+                                                    <rect key="frame" x="18" y="5" width="518" height="25"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="25" id="V5K-8e-N5J"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="17"/>
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="16/09/2015" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7LB-DH-Xhc" userLabel="Session Date">
-                                                    <rect key="frame" x="11" y="18" width="77" height="21"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="16/09/2015, 4:00 PM" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7LB-DH-Xhc" userLabel="Session Date">
+                                                    <rect key="frame" x="18" y="30" width="517" height="21"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="height" constant="21" id="S5x-49-33d"/>
+                                                        <constraint firstAttribute="height" constant="21" id="Wow-RJ-3ua"/>
                                                     </constraints>
                                                     <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="15"/>
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
@@ -945,21 +944,25 @@ El voluntariado comprende actividades asistenciales de servicios sociales, cívi
                                                         <constraint firstAttribute="width" constant="56" id="imA-Yg-JyT"/>
                                                         <constraint firstAttribute="height" constant="56" id="r7b-2A-L4N"/>
                                                     </constraints>
-                                                    <state key="normal" image="OpenMenuIcon"/>
+                                                    <state key="normal" image="OpenMenuBlueIcon"/>
                                                     <connections>
                                                         <action selector="openMenu:" destination="e5l-cF-Hjn" eventType="touchUpInside" id="KjA-Ra-fZk"/>
                                                     </connections>
                                                 </button>
                                             </subviews>
+                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                             <constraints>
                                                 <constraint firstItem="JMN-TU-eMP" firstAttribute="centerY" secondItem="3Bc-PS-xVU" secondAttribute="centerY" id="1lb-uO-jmu"/>
-                                                <constraint firstItem="QIP-2u-1VU" firstAttribute="centerY" secondItem="3Bc-PS-xVU" secondAttribute="centerY" id="J6f-rh-iqe"/>
-                                                <constraint firstItem="7LB-DH-Xhc" firstAttribute="leading" secondItem="3Bc-PS-xVU" secondAttribute="leadingMargin" constant="3" id="P5q-kX-Roc"/>
+                                                <constraint firstItem="JMN-TU-eMP" firstAttribute="leading" secondItem="7LB-DH-Xhc" secondAttribute="trailing" constant="9" id="4iR-a9-MZx"/>
+                                                <constraint firstItem="7LB-DH-Xhc" firstAttribute="top" secondItem="QIP-2u-1VU" secondAttribute="bottom" id="Ag7-7D-zVg"/>
+                                                <constraint firstItem="7LB-DH-Xhc" firstAttribute="leading" secondItem="3Bc-PS-xVU" secondAttribute="leading" constant="18" id="Pjg-Rh-xvc"/>
+                                                <constraint firstItem="QIP-2u-1VU" firstAttribute="top" secondItem="3Bc-PS-xVU" secondAttribute="top" constant="5" id="SZf-bx-125"/>
+                                                <constraint firstItem="JMN-TU-eMP" firstAttribute="leading" secondItem="QIP-2u-1VU" secondAttribute="trailing" constant="8" id="a1y-4I-U8M"/>
                                                 <constraint firstAttribute="trailing" secondItem="JMN-TU-eMP" secondAttribute="trailing" id="dIo-Ow-FaS"/>
-                                                <constraint firstItem="7LB-DH-Xhc" firstAttribute="centerY" secondItem="3Bc-PS-xVU" secondAttribute="centerY" id="jV8-Pq-HGc"/>
-                                                <constraint firstItem="QIP-2u-1VU" firstAttribute="centerX" secondItem="3Bc-PS-xVU" secondAttribute="centerX" id="rle-fS-FCl"/>
+                                                <constraint firstItem="QIP-2u-1VU" firstAttribute="leading" secondItem="3Bc-PS-xVU" secondAttribute="leading" constant="18" id="vV5-rQ-hT1"/>
                                             </constraints>
                                         </tableViewCellContentView>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         <connections>
                                             <outlet property="dateLabel" destination="7LB-DH-Xhc" id="8h2-9O-cox"/>
                                             <outlet property="menuButton" destination="JMN-TU-eMP" id="QuE-57-AAL"/>
@@ -1035,7 +1038,7 @@ El voluntariado comprende actividades asistenciales de servicios sociales, cívi
                                             <constraint firstItem="X0m-Pm-uR8" firstAttribute="centerX" secondItem="Mwt-th-EbQ" secondAttribute="centerX" id="nBk-Hc-RYb"/>
                                         </constraints>
                                     </view>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gws-ZM-SRY" userLabel="Map View">
+                                    <view opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gws-ZM-SRY" userLabel="Map View">
                                         <rect key="frame" x="150" y="54" width="150" height="135"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bpR-lP-dzO">
@@ -1141,23 +1144,31 @@ El voluntariado comprende actividades asistenciales de servicios sociales, cívi
                                     <constraint firstItem="6DB-Ra-T3C" firstAttribute="leading" secondItem="gws-ZM-SRY" secondAttribute="trailing" id="2NM-ID-ZGp"/>
                                     <constraint firstItem="Mwt-th-EbQ" firstAttribute="leading" secondItem="DTA-6m-rln" secondAttribute="leading" id="6Uk-hT-Bli"/>
                                     <constraint firstItem="tK0-7I-rbU" firstAttribute="top" secondItem="DTA-6m-rln" secondAttribute="top" constant="16" id="7Mf-bY-JTY"/>
+                                    <constraint firstItem="40f-FK-d86" firstAttribute="top" secondItem="Mwt-th-EbQ" secondAttribute="top" id="8GQ-gY-RfW"/>
+                                    <constraint firstItem="gws-ZM-SRY" firstAttribute="top" secondItem="Mwt-th-EbQ" secondAttribute="top" id="8zs-oI-JyQ"/>
                                     <constraint firstItem="40f-FK-d86" firstAttribute="top" secondItem="ngc-h0-JDy" secondAttribute="bottom" id="GnM-m2-PUJ"/>
                                     <constraint firstItem="Mwt-th-EbQ" firstAttribute="top" secondItem="ngc-h0-JDy" secondAttribute="bottom" id="Gqe-6s-4Nr"/>
                                     <constraint firstItem="tK0-7I-rbU" firstAttribute="leading" secondItem="DTA-6m-rln" secondAttribute="leading" constant="18" id="IRk-VG-ijX"/>
                                     <constraint firstItem="40f-FK-d86" firstAttribute="leading" secondItem="6DB-Ra-T3C" secondAttribute="trailing" id="N4P-rl-igh"/>
+                                    <constraint firstItem="gws-ZM-SRY" firstAttribute="bottom" secondItem="Mwt-th-EbQ" secondAttribute="bottom" id="Oi0-9W-0VI"/>
                                     <constraint firstAttribute="trailing" secondItem="40f-FK-d86" secondAttribute="trailing" id="OkW-29-okI"/>
+                                    <constraint firstItem="6DB-Ra-T3C" firstAttribute="bottom" secondItem="Mwt-th-EbQ" secondAttribute="bottom" id="QBx-1l-dEN"/>
                                     <constraint firstItem="gws-ZM-SRY" firstAttribute="height" secondItem="Mwt-th-EbQ" secondAttribute="height" id="Rkb-RE-ubN"/>
                                     <constraint firstItem="gws-ZM-SRY" firstAttribute="top" secondItem="ngc-h0-JDy" secondAttribute="bottom" id="Shd-fM-JwG"/>
                                     <constraint firstItem="40f-FK-d86" firstAttribute="height" secondItem="Mwt-th-EbQ" secondAttribute="height" id="Tit-9N-jKa"/>
                                     <constraint firstAttribute="trailing" secondItem="ngc-h0-JDy" secondAttribute="trailing" id="X0A-cF-gYQ"/>
+                                    <constraint firstItem="40f-FK-d86" firstAttribute="bottom" secondItem="Mwt-th-EbQ" secondAttribute="bottom" id="Zt0-qJ-KQa"/>
                                     <constraint firstItem="6DB-Ra-T3C" firstAttribute="top" secondItem="ngc-h0-JDy" secondAttribute="bottom" id="aBH-D9-zuG"/>
                                     <constraint firstItem="6DB-Ra-T3C" firstAttribute="height" secondItem="Mwt-th-EbQ" secondAttribute="height" id="dVb-PQ-U81"/>
+                                    <constraint firstItem="Mwt-th-EbQ" firstAttribute="leading" secondItem="DTA-6m-rln" secondAttribute="leading" id="e1Y-rU-TB6"/>
+                                    <constraint firstItem="6DB-Ra-T3C" firstAttribute="top" secondItem="Mwt-th-EbQ" secondAttribute="top" id="eR9-X9-ajh"/>
                                     <constraint firstItem="ngc-h0-JDy" firstAttribute="top" secondItem="tK0-7I-rbU" secondAttribute="bottom" constant="16" id="fes-Va-YPe"/>
                                     <constraint firstItem="6DB-Ra-T3C" firstAttribute="width" secondItem="Mwt-th-EbQ" secondAttribute="width" id="js1-B4-T2k"/>
                                     <constraint firstItem="gws-ZM-SRY" firstAttribute="width" secondItem="Mwt-th-EbQ" secondAttribute="width" id="lHq-cM-knE"/>
                                     <constraint firstItem="ngc-h0-JDy" firstAttribute="leading" secondItem="DTA-6m-rln" secondAttribute="leading" id="xmz-PI-Wid"/>
                                     <constraint firstAttribute="height" constant="189" id="xnK-gN-GuB"/>
                                     <constraint firstItem="gws-ZM-SRY" firstAttribute="leading" secondItem="Mwt-th-EbQ" secondAttribute="trailing" id="yBZ-XJ-0gn"/>
+                                    <constraint firstAttribute="trailing" secondItem="40f-FK-d86" secondAttribute="trailing" id="zqw-af-rgW"/>
                                 </constraints>
                             </view>
                         </subviews>
@@ -1180,9 +1191,13 @@ El voluntariado comprende actividades asistenciales de servicios sociales, cívi
                         <barButtonItem key="leftBarButtonItem" image="MenuIcon" id="iB4-oj-scM"/>
                     </navigationItem>
                     <connections>
+                        <outlet property="assistanceView" destination="40f-FK-d86" id="qFi-WF-dH9"/>
+                        <outlet property="documentsView" destination="6DB-Ra-T3C" id="Opy-yF-ZlM"/>
+                        <outlet property="mapView" destination="gws-ZM-SRY" id="urz-JT-nAq"/>
                         <outlet property="menuContentView" destination="DTA-6m-rln" id="pfr-df-x2r"/>
                         <outlet property="menuHeightConstraint" destination="xnK-gN-GuB" id="y6o-sp-tLw"/>
                         <outlet property="menuIcon" destination="iB4-oj-scM" id="HOB-fo-qEd"/>
+                        <outlet property="registerView" destination="Mwt-th-EbQ" id="fmE-gK-lXg"/>
                         <outlet property="shadowView" destination="DVS-50-KWh" id="aYa-cz-Pp8"/>
                         <segue destination="sOw-mS-ShX" kind="show" identifier="GoToDocumentsSegue" id="ThX-Nn-SQw"/>
                         <segue destination="hRc-HK-hM5" kind="show" identifier="GoToVolunteersList" id="xd9-wz-Kff"/>
@@ -1217,7 +1232,7 @@ El voluntariado comprende actividades asistenciales de servicios sociales, cívi
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="70" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="gDS-Nf-igI">
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="VolunteerCell" rowHeight="70" id="gf2-WH-bLA" customClass="VolunteerTableViewCell" customModule="EducaApp" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="92" width="600" height="70"/>
@@ -1250,6 +1265,7 @@ El voluntariado comprende actividades asistenciales de servicios sociales, cívi
                                                     </constraints>
                                                 </imageView>
                                             </subviews>
+                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                             <constraints>
                                                 <constraint firstAttribute="trailing" secondItem="He7-aA-mR2" secondAttribute="trailing" constant="18" id="1zS-w0-7SZ"/>
                                                 <constraint firstItem="Hj9-Vz-Soz" firstAttribute="centerY" secondItem="HMk-OZ-PQm" secondAttribute="centerY" id="One-RK-meM"/>
@@ -1259,6 +1275,7 @@ El voluntariado comprende actividades asistenciales de servicios sociales, cívi
                                                 <constraint firstItem="He7-aA-mR2" firstAttribute="centerY" secondItem="HMk-OZ-PQm" secondAttribute="centerY" id="rJt-O5-z8U"/>
                                             </constraints>
                                         </tableViewCellContentView>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         <connections>
                                             <outlet property="volunteerImageView" destination="Hj9-Vz-Soz" id="ECI-gG-Id6"/>
                                             <outlet property="volunteerMarkImageView" destination="He7-aA-mR2" id="N8p-r3-L6S"/>
@@ -1321,7 +1338,7 @@ El voluntariado comprende actividades asistenciales de servicios sociales, cívi
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="70" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="por-Ck-MfZ">
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="DocumentCell" rowHeight="70" id="uxQ-Vd-NlV" customClass="DocumentTableViewCell" customModule="EducaApp" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="92" width="600" height="70"/>
@@ -1357,7 +1374,7 @@ El voluntariado comprende actividades asistenciales de servicios sociales, cívi
                                                         <constraint firstAttribute="width" constant="58" id="xff-ce-xWy"/>
                                                         <constraint firstAttribute="height" constant="69.5" id="y8J-kT-yra"/>
                                                     </constraints>
-                                                    <state key="normal" image="OpenMenuIcon"/>
+                                                    <state key="normal" image="OpenMenuBlueIcon"/>
                                                     <connections>
                                                         <action selector="openMenu:" destination="uxQ-Vd-NlV" eventType="touchUpInside" id="Hk5-FP-iQc"/>
                                                     </connections>
@@ -1372,6 +1389,7 @@ El voluntariado comprende actividades asistenciales de servicios sociales, cívi
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
+                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                             <constraints>
                                                 <constraint firstItem="GO7-Hx-o9q" firstAttribute="leading" secondItem="oaL-B8-2zZ" secondAttribute="trailing" constant="8" id="8XH-SM-3Gb"/>
                                                 <constraint firstItem="fpk-H4-mQV" firstAttribute="centerY" secondItem="Y33-Yc-H5V" secondAttribute="centerY" id="8lR-V9-Htd"/>
@@ -1389,6 +1407,7 @@ El voluntariado comprende actividades asistenciales de servicios sociales, cívi
                                                 <constraint firstItem="oaL-B8-2zZ" firstAttribute="leading" secondItem="fpk-H4-mQV" secondAttribute="trailing" constant="13" id="x3o-Lm-U37"/>
                                             </constraints>
                                         </tableViewCellContentView>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         <connections>
                                             <outlet property="iconImageView" destination="fpk-H4-mQV" id="0sM-S4-26b"/>
                                             <outlet property="menuButton" destination="GO7-Hx-o9q" id="6pp-wB-Pk6"/>
@@ -1606,7 +1625,7 @@ El voluntariado comprende actividades asistenciales de servicios sociales, cívi
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="70" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Tnq-hG-aGJ">
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="AssistantCell" rowHeight="70" id="Xdg-eT-ipE" customClass="AssistantTableViewCell" customModule="EducaApp" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="92" width="600" height="70"/>
@@ -1616,43 +1635,52 @@ El voluntariado comprende actividades asistenciales de servicios sociales, cívi
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Edad: 12" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fR1-kW-SAF">
-                                                    <rect key="frame" x="18" y="24.5" width="85" height="21"/>
+                                                    <rect key="frame" x="18" y="37" width="521" height="21"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="height" constant="21" id="nBJ-Q6-5c0"/>
+                                                        <constraint firstAttribute="height" constant="21" id="bSg-5T-DI1"/>
                                                     </constraints>
-                                                    <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="17"/>
-                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Eduardo Arenas" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="asU-me-M7h">
-                                                    <rect key="frame" x="109" y="12.5" width="383" height="46"/>
-                                                    <constraints>
-                                                        <constraint firstAttribute="height" constant="46" id="RUh-8N-OP3"/>
-                                                    </constraints>
-                                                    <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="17"/>
+                                                    <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="15"/>
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" verticalHuggingPriority="251" image="UnsentCommentIcon" translatesAutoresizingMaskIntoConstraints="NO" id="VOZ-Bf-zBk">
-                                                    <rect key="frame" x="547" y="17.5" width="35" height="35"/>
+                                                    <rect key="frame" x="547" y="17" width="35" height="35"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="35" id="KDH-Nd-ax5"/>
                                                         <constraint firstAttribute="width" constant="35" id="W1V-oP-8rP"/>
                                                     </constraints>
                                                 </imageView>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Eduardo Arenas" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="asU-me-M7h">
+                                                    <rect key="frame" x="18" y="11" width="521" height="25"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="25" id="Et7-Nm-QWm"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="17"/>
+                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
                                             </subviews>
+                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                             <constraints>
+                                                <constraint firstItem="fR1-kW-SAF" firstAttribute="leading" secondItem="fdi-xB-ahD" secondAttribute="leading" constant="18" id="3ko-AV-GLq"/>
                                                 <constraint firstItem="VOZ-Bf-zBk" firstAttribute="centerY" secondItem="fdi-xB-ahD" secondAttribute="centerY" id="4s7-h0-zSs"/>
-                                                <constraint firstItem="asU-me-M7h" firstAttribute="centerY" secondItem="fdi-xB-ahD" secondAttribute="centerY" id="Fdo-oO-tmq"/>
-                                                <constraint firstItem="fR1-kW-SAF" firstAttribute="leading" secondItem="fdi-xB-ahD" secondAttribute="leading" constant="18" id="GiR-8V-FSB"/>
-                                                <constraint firstItem="VOZ-Bf-zBk" firstAttribute="leading" secondItem="asU-me-M7h" secondAttribute="trailing" constant="55" id="Jsb-qO-2gt"/>
-                                                <constraint firstItem="asU-me-M7h" firstAttribute="leading" secondItem="fR1-kW-SAF" secondAttribute="trailing" constant="6" id="ZQD-9W-GyD"/>
+                                                <constraint firstItem="fR1-kW-SAF" firstAttribute="top" secondItem="asU-me-M7h" secondAttribute="bottom" constant="1.5" id="FXv-sN-td4"/>
+                                                <constraint firstItem="asU-me-M7h" firstAttribute="top" secondItem="fdi-xB-ahD" secondAttribute="top" constant="11" id="NWN-di-blm"/>
+                                                <constraint firstItem="VOZ-Bf-zBk" firstAttribute="leading" secondItem="fR1-kW-SAF" secondAttribute="trailing" constant="8" id="TR7-H9-0Uf"/>
+                                                <constraint firstItem="asU-me-M7h" firstAttribute="leading" secondItem="fdi-xB-ahD" secondAttribute="leading" constant="18" id="f8b-Iw-auG"/>
                                                 <constraint firstAttribute="trailingMargin" secondItem="VOZ-Bf-zBk" secondAttribute="trailing" constant="10" id="jvM-gn-wdb"/>
-                                                <constraint firstItem="asU-me-M7h" firstAttribute="centerX" secondItem="fdi-xB-ahD" secondAttribute="centerX" id="tpt-38-eMn"/>
-                                                <constraint firstItem="fR1-kW-SAF" firstAttribute="centerY" secondItem="fdi-xB-ahD" secondAttribute="centerY" id="w41-I3-BbJ"/>
+                                                <constraint firstItem="fR1-kW-SAF" firstAttribute="top" secondItem="asU-me-M7h" secondAttribute="bottom" constant="1" id="lzo-Mh-hTd"/>
+                                                <constraint firstItem="VOZ-Bf-zBk" firstAttribute="leading" secondItem="asU-me-M7h" secondAttribute="trailing" constant="8" id="wJo-Cp-s90"/>
                                             </constraints>
+                                            <variation key="default">
+                                                <mask key="constraints">
+                                                    <exclude reference="FXv-sN-td4"/>
+                                                </mask>
+                                            </variation>
                                         </tableViewCellContentView>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         <connections>
+                                            <outlet property="ageLabel" destination="fR1-kW-SAF" id="VD0-w7-DVh"/>
                                             <outlet property="commentedImageView" destination="VOZ-Bf-zBk" id="AuQ-Ns-M2s"/>
                                             <outlet property="nameLabel" destination="asU-me-M7h" id="7TX-i1-GS7"/>
                                         </connections>
@@ -1697,9 +1725,6 @@ El voluntariado comprende actividades asistenciales de servicios sociales, cívi
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wyt-dD-lVP">
                                 <rect key="frame" x="0.0" y="64" width="600" height="128"/>
                                 <subviews>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="DefaultBackground" translatesAutoresizingMaskIntoConstraints="NO" id="7a4-rM-vwC">
-                                        <rect key="frame" x="0.0" y="0.0" width="600" height="128"/>
-                                    </imageView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Genero: Masculino" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yru-5o-6j8">
                                         <rect key="frame" x="0.0" y="21" width="94.5" height="48"/>
                                         <constraints>
@@ -1707,9 +1732,7 @@ El voluntariado comprende actividades asistenciales de servicios sociales, cívi
                                             <constraint firstAttribute="height" constant="48" id="dNR-d2-x0c"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="17"/>
-                                        <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <nil key="highlightedColor"/>
-                                        <color key="shadowColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Edad: 12 Años" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dGV-UN-6oP">
                                         <rect key="frame" x="268" y="21" width="63" height="48"/>
@@ -1718,9 +1741,7 @@ El voluntariado comprende actividades asistenciales de servicios sociales, cívi
                                             <constraint firstAttribute="width" constant="63" id="RlD-Lv-a89"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="17"/>
-                                        <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <nil key="highlightedColor"/>
-                                        <color key="shadowColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Fecha de Inscripcion: 01/01/2015" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="d2s-MW-0Tg">
                                         <rect key="frame" x="176" y="64" width="248" height="56"/>
@@ -1728,9 +1749,7 @@ El voluntariado comprende actividades asistenciales de servicios sociales, cívi
                                             <constraint firstAttribute="height" constant="56" id="Dfy-KG-0Y5"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="17"/>
-                                        <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <nil key="highlightedColor"/>
-                                        <color key="shadowColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sesiones: 12" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vov-CM-anu">
                                         <rect key="frame" x="521" y="21" width="74" height="48"/>
@@ -1739,14 +1758,11 @@ El voluntariado comprende actividades asistenciales de servicios sociales, cívi
                                             <constraint firstAttribute="height" constant="48" id="Bc8-mm-Zcw"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="17"/>
-                                        <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <nil key="highlightedColor"/>
-                                        <color key="shadowColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                     </label>
                                 </subviews>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <constraints>
-                                    <constraint firstAttribute="trailing" secondItem="7a4-rM-vwC" secondAttribute="trailing" id="6Cw-x6-0Tt"/>
                                     <constraint firstItem="dGV-UN-6oP" firstAttribute="centerX" secondItem="wyt-dD-lVP" secondAttribute="centerX" id="Kru-Va-QbO"/>
                                     <constraint firstAttribute="bottom" secondItem="d2s-MW-0Tg" secondAttribute="bottom" constant="8" id="TBN-PU-UM3"/>
                                     <constraint firstItem="d2s-MW-0Tg" firstAttribute="centerX" secondItem="wyt-dD-lVP" secondAttribute="centerX" id="TOP-qU-3hp"/>
@@ -1754,12 +1770,9 @@ El voluntariado comprende actividades asistenciales de servicios sociales, cívi
                                     <constraint firstAttribute="height" constant="128" id="Zn3-Sr-WwC"/>
                                     <constraint firstItem="vov-CM-anu" firstAttribute="top" secondItem="yru-5o-6j8" secondAttribute="top" id="bKX-nH-MRv"/>
                                     <constraint firstItem="dGV-UN-6oP" firstAttribute="top" secondItem="yru-5o-6j8" secondAttribute="top" id="cTZ-W0-4dO"/>
-                                    <constraint firstItem="7a4-rM-vwC" firstAttribute="top" secondItem="wyt-dD-lVP" secondAttribute="top" id="fMr-wH-uQE"/>
                                     <constraint firstItem="dGV-UN-6oP" firstAttribute="top" secondItem="wyt-dD-lVP" secondAttribute="top" constant="21" id="g3v-pP-gfw"/>
                                     <constraint firstAttribute="trailing" secondItem="vov-CM-anu" secondAttribute="trailing" constant="5" id="m7f-HI-SBD"/>
-                                    <constraint firstItem="7a4-rM-vwC" firstAttribute="leading" secondItem="wyt-dD-lVP" secondAttribute="leading" id="mgk-Yh-omf"/>
                                     <constraint firstItem="yru-5o-6j8" firstAttribute="top" secondItem="wyt-dD-lVP" secondAttribute="top" constant="21" id="nqm-z8-lcG"/>
-                                    <constraint firstAttribute="bottom" secondItem="7a4-rM-vwC" secondAttribute="bottom" id="tsl-EY-ORp"/>
                                     <constraint firstItem="yru-5o-6j8" firstAttribute="leading" secondItem="wyt-dD-lVP" secondAttribute="leading" id="yDm-3t-ukG"/>
                                 </constraints>
                             </view>
@@ -1797,7 +1810,8 @@ El voluntariado comprende actividades asistenciales de servicios sociales, cívi
                             </view>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="64" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="iB7-YH-kh9">
                                 <rect key="frame" x="0.0" y="248" width="600" height="352"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <color key="sectionIndexBackgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="SessionCommentCell" rowHeight="64" id="Ol5-Op-hml" customClass="SessionCommentTableViewCell" customModule="EducaApp" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="600" height="64"/>
@@ -1830,6 +1844,7 @@ El voluntariado comprende actividades asistenciales de servicios sociales, cívi
                                                     </constraints>
                                                 </imageView>
                                             </subviews>
+                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                             <constraints>
                                                 <constraint firstItem="xKL-jV-toa" firstAttribute="centerX" secondItem="MTt-bx-a6Y" secondAttribute="centerX" id="4SB-OJ-pW0"/>
                                                 <constraint firstItem="xKL-jV-toa" firstAttribute="centerY" secondItem="MTt-bx-a6Y" secondAttribute="centerY" id="5tn-RH-ANT"/>
@@ -1839,6 +1854,7 @@ El voluntariado comprende actividades asistenciales de servicios sociales, cívi
                                                 <constraint firstAttribute="trailing" secondItem="WiO-Tl-rBY" secondAttribute="trailing" constant="18" id="pq8-ex-rMi"/>
                                             </constraints>
                                         </tableViewCellContentView>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         <connections>
                                             <outlet property="moodFaceImageView" destination="WiO-Tl-rBY" id="OYj-Yw-419"/>
                                             <outlet property="volunteerNameLabel" destination="xKL-jV-toa" id="TY0-Nf-xqF"/>
@@ -1873,6 +1889,10 @@ El voluntariado comprende actividades asistenciales de servicios sociales, cívi
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="ageLabel" destination="dGV-UN-6oP" id="udW-YB-OOq"/>
+                        <outlet property="dateLabel" destination="d2s-MW-0Tg" id="gk7-GB-WMR"/>
+                        <outlet property="genderLabel" destination="yru-5o-6j8" id="orI-mO-YJu"/>
+                        <outlet property="sessionCountLabel" destination="vov-CM-anu" id="wVF-22-PB5"/>
                         <segue destination="gix-Cn-RUY" kind="presentation" identifier="ShowCommentSegue" id="uO7-XQ-L73"/>
                     </connections>
                 </viewController>
@@ -1902,7 +1922,7 @@ El voluntariado comprende actividades asistenciales de servicios sociales, cívi
                                                 <rect key="frame" x="42" y="114" width="516" height="328"/>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
-                                                <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                                <color key="textColor" red="0.37647058823529411" green="0.72549019607843135" blue="0.98039215686274506" alpha="1" colorSpace="calibratedRGB"/>
                                                 <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                                 <userDefinedRuntimeAttributes>
@@ -1918,12 +1938,12 @@ El voluntariado comprende actividades asistenciales de servicios sociales, cívi
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Comentario:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eGH-1N-Ifi">
                                                 <rect key="frame" x="42" y="85" width="86" height="21"/>
                                                 <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="16"/>
-                                                <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                                <color key="textColor" red="0.0" green="0.59999999999999998" blue="0.80000000000000004" alpha="1" colorSpace="calibratedRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dOF-jn-Hxq">
                                                 <rect key="frame" x="0.0" y="480" width="600" height="56"/>
-                                                <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                <color key="backgroundColor" red="0.0" green="0.59999999999999998" blue="0.80000000000000004" alpha="1" colorSpace="calibratedRGB"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="56" id="LOs-sX-VEx"/>
                                                 </constraints>
@@ -1994,7 +2014,7 @@ El voluntariado comprende actividades asistenciales de servicios sociales, cívi
                                         </constraints>
                                     </view>
                                 </subviews>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstItem="rMN-8Y-JdC" firstAttribute="top" secondItem="nEY-Aq-WHY" secondAttribute="top" id="2Dp-ub-baE"/>
                                     <constraint firstAttribute="trailing" secondItem="rMN-8Y-JdC" secondAttribute="trailing" id="90e-BY-agJ"/>
@@ -2004,6 +2024,7 @@ El voluntariado comprende actividades asistenciales de servicios sociales, cívi
                                 </constraints>
                             </scrollView>
                         </subviews>
+                        <color key="backgroundColor" red="0.94117647058823528" green="0.98039215686274506" blue="0.98039215686274506" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstItem="nEY-Aq-WHY" firstAttribute="top" secondItem="C6e-yE-m7f" secondAttribute="bottom" constant="-64" id="506-N4-ybM"/>
                             <constraint firstItem="rMN-8Y-JdC" firstAttribute="height" secondItem="6pV-S1-0Fg" secondAttribute="height" constant="-64" id="FFX-hG-ykn"/>
@@ -2092,7 +2113,6 @@ El voluntariado comprende actividades asistenciales de servicios sociales, cívi
         <image name="BlueDocumentsIcon" width="30" height="30"/>
         <image name="CameraIcon" width="30" height="30"/>
         <image name="CheckAssistanceIcon" width="30" height="30"/>
-        <image name="DefaultBackground" width="960" height="600"/>
         <image name="DocumentsIcon" width="25" height="25"/>
         <image name="DonationIcon" width="32" height="32"/>
         <image name="DonationsButtonpaypal" width="617" height="231"/>
@@ -2101,7 +2121,7 @@ El voluntariado comprende actividades asistenciales de servicios sociales, cívi
         <image name="HappyFaceIcon" width="30" height="30"/>
         <image name="HelpKidButton" width="350" height="200"/>
         <image name="MenuIcon" width="22" height="22"/>
-        <image name="OpenMenuIcon" width="24" height="24"/>
+        <image name="OpenMenuBlueIcon" width="30" height="30"/>
         <image name="SadFaceGrayIcon" width="30" height="30"/>
         <image name="SchoolIcon" width="32" height="32"/>
         <image name="SearchIcon" width="30" height="30"/>
@@ -2119,6 +2139,6 @@ El voluntariado comprende actividades asistenciales de servicios sociales, cívi
     <inferredMetricsTieBreakers>
         <segue reference="RtS-xr-ajm"/>
         <segue reference="ThX-Nn-SQw"/>
-        <segue reference="D5R-3H-W7X"/>
+        <segue reference="uO7-XQ-L73"/>
     </inferredMetricsTieBreakers>
 </document>

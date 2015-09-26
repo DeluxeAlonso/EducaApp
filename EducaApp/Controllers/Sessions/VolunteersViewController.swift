@@ -14,7 +14,7 @@ class VolunteersViewController: BaseViewController, UITableViewDataSource, UITab
   
   @IBOutlet weak var tableView: UITableView!
   
-  var volunteers: NSMutableArray = ["Alonso Alvarez", "Fernando Banda", "Luis Barcena", "Daekef Abarca", "Gloria Cisneros", "Diego Malpartida", "Luis Incio", "Gabriel Tovar"]
+  var volunteers: NSMutableArray = ["Alonso Alvarez", "Daekef Abarca", "Diego Malpartida","Fernando Banda", "Gabriel Tovar", "Gloria Cisneros", "Luis Barcena", "Luis Incio"]
   var checkedVolunteers: NSMutableArray = []
   
   let uncheckImageName = "UncheckMark"

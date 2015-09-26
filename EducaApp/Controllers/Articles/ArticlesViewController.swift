@@ -38,6 +38,10 @@ class ArticlesViewController: BaseViewController, UITableViewDataSource, UITable
     navigationController?.navigationBar.layer.removeAllAnimations()
   }
   
+  override func viewWillDisappear(animated: Bool) {
+    super.viewWillDisappear(true)
+  }
+  
   override func didReceiveMemoryWarning() {
     super.didReceiveMemoryWarning()
   }

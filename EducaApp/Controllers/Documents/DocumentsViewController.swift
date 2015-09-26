@@ -37,11 +37,20 @@ class DocumentsViewController: BaseViewController, UITableViewDataSource, UITabl
     getDocuments()
   }
   
+  override func setupBarButtonItem() {
+    super.setupBarButtonItem()
+    if self.revealViewController() != nil && session == nil {
+      let menuIcon = UIBarButtonItem(title: nil, style: UIBarButtonItemStyle.Plain, target: self.revealViewController(), action: kBarButtonSelector)
+      menuIcon.image = UIImage(named: "MenuIcon")
+      self.navigationItem.leftBarButtonItem = menuIcon
+    }
+    self.view.addGestureRecognizer(self.revealViewController().panGestureRecognizer())
+  }
+  
   private func setupMenuView() {
     initialHeightConstraintConstant = menuHeightConstraint.constant
     menuContentView.clipsToBounds = true
     menuHeightConstraint.constant = 0
-    
   }
   
   private func getDocuments() {
@@ -55,17 +64,10 @@ class DocumentsViewController: BaseViewController, UITableViewDataSource, UITabl
     }
   }
   
-  override func setupBarButtonItem() {
-    super.setupBarButtonItem()
-    if self.revealViewController() != nil && session == nil{
-      let menuIcon = UIBarButtonItem(title: nil, style: UIBarButtonItemStyle.Plain, target: self.revealViewController(), action: kBarButtonSelector)
-      menuIcon.image = UIImage(named: "MenuIcon")
-      self.navigationItem.leftBarButtonItem = menuIcon
-    }
-    self.view.addGestureRecognizer(self.revealViewController().panGestureRecognizer())
-  }
-  
   private func showMenuView() {
+    self.shadowView.translatesAutoresizingMaskIntoConstraints = true
+    self.menuContentView.translatesAutoresizingMaskIntoConstraints = true
+    self.navigationController?.interactivePopGestureRecognizer?.enabled = false
     self.navigationController?.view.addSubview(self.shadowView)
     self.navigationController?.view.addSubview(self.menuContentView)
     UIView.animateWithDuration(0.25, delay: 0.0, options: UIViewAnimationOptions.CurveEaseOut, animations: {
@@ -76,6 +78,7 @@ class DocumentsViewController: BaseViewController, UITableViewDataSource, UITabl
   }
   
   private func hideMenuViewWithoutAnimation () {
+    self.navigationController?.interactivePopGestureRecognizer?.enabled = true
     self.shadowView.alpha = 0.0
     self.menuContentView.frame = CGRect(x: self.menuContentView.frame.origin.x, y: self.menuContentView.frame.origin.y + self.initialHeightConstraintConstant!, width: self.menuContentView.frame.width, height: self.initialHeightConstraintConstant!)
   }
@@ -87,6 +90,7 @@ class DocumentsViewController: BaseViewController, UITableViewDataSource, UITabl
   }
   
   @IBAction func hideMenuView(sender: AnyObject) {
+    self.navigationController?.interactivePopGestureRecognizer?.enabled = true
     UIView.animateWithDuration(0.25, delay: 0.0, options: UIViewAnimationOptions.CurveEaseOut, animations: {
       self.hideMenuViewWithoutAnimation()
       }, completion: nil)

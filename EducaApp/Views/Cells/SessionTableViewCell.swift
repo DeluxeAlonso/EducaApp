@@ -24,13 +24,20 @@ class SessionTableViewCell: UITableViewCell {
   
   override func awakeFromNib() {
     super.awakeFromNib()
-    // Initialization code
+    setupElements()
   }
   
   override func setSelected(selected: Bool, animated: Bool) {
     super.setSelected(selected, animated: animated)
     
     // Configure the view for the selected state
+  }
+  
+  // MARK: - Private
+  
+  private func setupElements() {
+    plaseLabel.textColor = UIColor.defaultTextColor()
+    dateLabel.textColor = UIColor.defaultSmallTextColor()
   }
   
   // MARK: - Actions

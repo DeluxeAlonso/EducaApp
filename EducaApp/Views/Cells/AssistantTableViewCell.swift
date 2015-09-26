@@ -10,19 +10,26 @@ import UIKit
 
 class AssistantTableViewCell: UITableViewCell {
   
-  @IBOutlet weak var ageLabel: UILabel!
   @IBOutlet weak var nameLabel: UILabel!
-  
+  @IBOutlet weak var ageLabel: UILabel!
   @IBOutlet weak var commentedImageView: UIImageView!
 
   // MARK: - Lifecycle
   
   override func awakeFromNib() {
     super.awakeFromNib()
+    setupElements()
   }
   
   override func setSelected(selected: Bool, animated: Bool) {
     super.setSelected(selected, animated: animated)
+  }
+  
+  // MARK: - Private
+  
+  private func setupElements() {
+    nameLabel.textColor = UIColor.defaultTextColor()
+    ageLabel.textColor = UIColor.defaultSmallTextColor()
   }
   
   // MARK: - Public

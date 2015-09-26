@@ -20,40 +20,59 @@ class BaseViewController: UIViewController, SWRevealViewControllerDelegate {
   
   override func viewDidLoad() {
     super.viewDidLoad()
-    self.revealViewController().delegate = self
-    // Do any additional setup after loading the view.
+    setupAppColors()
+    setupBarButtonItem()
   }
   
   override func viewWillAppear(animated: Bool) {
     super.viewWillAppear(true)
-    setupBarButtonItem()
+    setupPanGesture()
+  }
+  
+  override func viewWillDisappear(animated: Bool) {
+    if let recognizers = self.view.gestureRecognizers {
+      for recognizer in recognizers {
+        self.view.removeGestureRecognizer(recognizer)
+      }
+    }
   }
   
   override func didReceiveMemoryWarning() {
     super.didReceiveMemoryWarning()
-    // Dispose of any resources that can be recreated.
   }
   
   // MARK: - Private
   
-   func setupBarButtonItem() {
+  func setupAppColors() {
+    UIApplication.sharedApplication().setStatusBarStyle(UIStatusBarStyle.LightContent, animated: false)
+    view.backgroundColor = UIColor.defaultBackgroundColor()
+    navigationController?.navigationBar.barTintColor = UIColor.defaultTextColor()
+    navigationController?.navigationBar.tintColor = UIColor.whiteColor()
+    navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName: UIColor.whiteColor()]
+  }
+  
+  func setupBarButtonItem() {
     if self.revealViewController() != nil {
       menuIcon?.target = self.revealViewController()
       menuIcon?.action = kBarButtonSelector
-      tapGesture = UITapGestureRecognizer(target: self.revealViewController(), action: kBarButtonSelector)
-      view.addGestureRecognizer(tapGesture!)
-      tapGesture?.enabled = false
       view.addGestureRecognizer(self.revealViewController().panGestureRecognizer())
     }
   }
   
-  // MARK - SWRevealViewControllerDelegate
+  private func setupPanGesture() {
+    self.revealViewController().delegate = self
+    if self.revealViewController() != nil {
+      self.view.addGestureRecognizer(self.revealViewController().panGestureRecognizer())
+    }
+  }
+  
+  // MARK: - SWRevealViewControllerDelegate
   
   func revealController(revealController: SWRevealViewController!, willMoveToPosition position: FrontViewPosition) {
     if position == FrontViewPosition.Right {
-      self.tapGesture?.enabled = true
+      UIApplication.sharedApplication().setStatusBarStyle(UIStatusBarStyle.Default, animated: true)
     } else if position == FrontViewPosition.Left {
-      self.tapGesture?.enabled = false
+      UIApplication.sharedApplication().setStatusBarStyle(UIStatusBarStyle.LightContent, animated: true)
     }
   }
   

@@ -50,6 +50,7 @@ class AssistantCommentViewController: UIViewController {
   private func setupElements() {
     title = assistant
     setupObservers()
+    setupNavBar()
     setupButtons()
     setupTextView()
   }
@@ -57,6 +58,12 @@ class AssistantCommentViewController: UIViewController {
   private func setupObservers() {
     NSNotificationCenter.defaultCenter().addObserver(self, selector: "keyboardWillShow:", name: UIKeyboardWillShowNotification, object: nil)
     NSNotificationCenter.defaultCenter().addObserver(self, selector: "keyboardWillHide:", name: UIKeyboardWillHideNotification, object: nil)
+  }
+  
+  func setupNavBar() {
+    navigationController?.navigationBar.barTintColor = UIColor.defaultTextColor()
+    navigationController?.navigationBar.tintColor = UIColor.whiteColor()
+    navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName: UIColor.whiteColor()]
   }
   
   private func setupButtons() {
@@ -75,7 +82,8 @@ class AssistantCommentViewController: UIViewController {
     if comment != nil {
       commentTextView.userInteractionEnabled = false
     }
-    commentTextView.layer.borderColor = UIColor.lightGrayColor().CGColor
+    commentTextView.textColor = UIColor.defaultSmallTextColor()
+    commentTextView.layer.borderColor = UIColor.defaultTextColor().CGColor
   }
   
   // MARK: - Actions

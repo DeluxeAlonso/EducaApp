@@ -12,6 +12,14 @@ let kSessionCommentCellIdentifier = "SessionCommentCell"
 
 class AssistantDetailViewController: BaseViewController, UITableViewDataSource, UITableViewDelegate {
   
+  @IBOutlet weak var genderLabel: UILabel!
+  
+  @IBOutlet weak var ageLabel: UILabel!
+  
+  @IBOutlet weak var dateLabel: UILabel!
+  
+  @IBOutlet weak var sessionCountLabel: UILabel!
+  
   let goToCommentSegueIdentifier = "ShowCommentSegue"
   
   var assistant: String?
@@ -34,6 +42,15 @@ class AssistantDetailViewController: BaseViewController, UITableViewDataSource, 
   
   private func setupElements() {
     title = assistant
+    setupLabels()
+  }
+  
+  
+  private func setupLabels() {
+    genderLabel.textColor = UIColor.defaultSmallTextColor()
+    ageLabel.textColor = UIColor.defaultSmallTextColor()
+    dateLabel.textColor = UIColor.defaultSmallTextColor()
+    sessionCountLabel.textColor = UIColor.defaultSmallTextColor()
   }
   
   // MARK: - Actions

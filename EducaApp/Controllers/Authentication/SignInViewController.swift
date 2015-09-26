@@ -69,6 +69,7 @@ class SignInViewController: UIViewController, UITextFieldDelegate {
   }
   
   private func setupAdditionalConstraints() {
+    UIApplication.sharedApplication().setStatusBarStyle(UIStatusBarStyle.Default, animated: true)
     let screenRect: CGRect = UIScreen.mainScreen().bounds
     initialBottomHeight = screenRect.size.height / 3
     bottomConstraint.constant = initialBottomHeight

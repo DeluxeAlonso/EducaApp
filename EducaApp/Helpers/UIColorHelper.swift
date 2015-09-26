@@ -14,6 +14,18 @@ extension UIColor {
     return UIColor(red: CGFloat(r)/255.0, green: CGFloat(g)/255.0, blue: CGFloat(b)/255.0, alpha: CGFloat(a))
   }
   
+  class func defaultTextColor() -> UIColor {
+    return UIColor.colorWithR(0, green: 153, blue: 204, alpha: 1)
+  }
+  
+  class func defaultSmallTextColor() -> UIColor {
+    return UIColor.colorWithR(96, green: 185, blue: 214, alpha: 1)
+  }
+  
+  class func defaultBackgroundColor() -> UIColor {
+    return UIColor.colorWithR(240, green: 255, blue: 255, alpha: 1)
+  }
+  
   class func defaultBorderFieldColor() -> UIColor {
     return UIColor.colorWithR(193, green: 193, blue: 193, alpha: 1)
   }
