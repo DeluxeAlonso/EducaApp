@@ -10,6 +10,4 @@ import UIKit
 
 public class Session: NSObject {
   
-  
-  
 }

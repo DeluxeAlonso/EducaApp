@@ -11,6 +11,10 @@ import UIKit
 public class SessionComment: NSObject {
 
   public var author: String?
-  //public var author: User?
+  public var comment: String?
+  
+  var fullComment: String {
+    return "\(author!): \(comment!)"
+  }
   
 }

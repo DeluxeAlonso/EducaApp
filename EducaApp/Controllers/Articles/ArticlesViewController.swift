@@ -53,8 +53,8 @@ class ArticlesViewController: BaseViewController, UITableViewDataSource, UITable
   }
   
   private func setupTableView() {
-    self.tableView.estimatedRowHeight = 243;
-    self.tableView.rowHeight = UITableViewAutomaticDimension;
+    self.tableView.estimatedRowHeight = 243
+    self.tableView.rowHeight = UITableViewAutomaticDimension
     tableView.addSubview(refreshControl)
     refreshControl.addTarget(self, action: "refreshData", forControlEvents: UIControlEvents.ValueChanged)
   }

@@ -33,6 +33,11 @@ struct Constants {
     static let DocumentsSize: NSMutableArray = ["126 KB", "254 KB", "1.2 MB", "13 KB"]
     static let DocumentsUploadTime: NSMutableArray = ["Hace 3 dias, 3:24 PM", "Hace 3 dias, 3:21 PM", "Hace 4 dias, 12:05 PM", "Hace 7 dias, 1:14 PM"]
     static let DocumentsImage: NSMutableArray = ["WordIcon", "PDFIcon", "ExcelIcon", "GenericDocIcon"]
+    
+    static let FirstBlockAuthors: NSMutableArray = ["Alonso Alvarez", "Fernando Banda", "Luis Barcena",  "Daekef Abarca"]
+    static let SecondBlockAuthors: NSMutableArray = ["Gloria Cisneros", "Diego Malpartida", "Luis Incio",  "Gabriel Tovar"]
+    static let FirstBlockComments: NSMutableArray = ["Tuvo un buen comportamiento el dia de hoy. Sin embargo, le falto ser mas participativo y comprometido con los eventos y juegos realizados en la sesion del dia de hoy.", "Se comporto bien.", "Buen desempeño.", "Bien."]
+    static let SecondBlockComments: NSMutableArray = ["Se comporto bien.", "Tuvo un buen comportamiento el dia de hoy. Sin embargo, le falto ser mas participativo y comprometido con los eventos y juegos realizados en la sesion del dia de hoy.", "Bien", "Se comporto bien."]
   }
   
 }

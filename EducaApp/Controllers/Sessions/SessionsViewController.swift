@@ -57,8 +57,6 @@ class SessionsViewController: BaseViewController, UITableViewDataSource, UITable
       self.shadowView.alpha = 0.35
       self.menuContentView.frame = CGRect(x: self.menuContentView.frame.origin.x, y: self.menuContentView.frame.origin.y - self.initialHeightConstraintConstant!, width: self.menuContentView.frame.width, height: self.initialHeightConstraintConstant!)
       }, completion: nil)
-    print(self.documentsView.frame)
-    print(self.mapView.frame)
     shadowView.userInteractionEnabled = true
   }
   

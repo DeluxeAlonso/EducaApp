@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		E202F74B1BB3658100D5E64D /* Document.swift in Sources */ = {isa = PBXBuildFile; fileRef = E202F74A1BB3658100D5E64D /* Document.swift */; settings = {ASSET_TAGS = (); }; };
+		E208C6891BB6938F005DF1EB /* SessionCommentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E208C6881BB6938F005DF1EB /* SessionCommentView.swift */; settings = {ASSET_TAGS = (); }; };
+		E208C68B1BB694F9005DF1EB /* Util.swift in Sources */ = {isa = PBXBuildFile; fileRef = E208C68A1BB694F9005DF1EB /* Util.swift */; settings = {ASSET_TAGS = (); }; };
 		E25A5EF41BAFBC26000530F7 /* DocumentsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E25A5EF31BAFBC26000530F7 /* DocumentsViewController.swift */; settings = {ASSET_TAGS = (); }; };
 		E25A5EF71BAFC58F000530F7 /* Session.swift in Sources */ = {isa = PBXBuildFile; fileRef = E25A5EF61BAFC58F000530F7 /* Session.swift */; settings = {ASSET_TAGS = (); }; };
 		E26116E11BAB9E09002C0332 /* ArticleService.swift in Sources */ = {isa = PBXBuildFile; fileRef = E26116E01BAB9E09002C0332 /* ArticleService.swift */; settings = {ASSET_TAGS = (); }; };
@@ -26,6 +28,9 @@
 		E2DDE3591BA641CE00C96CE5 /* CustomActivityIndicatorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2DDE3581BA641CE00C96CE5 /* CustomActivityIndicatorView.swift */; };
 		E2DE92601BB4BC1100E762F8 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2DE925F1BB4BC1100E762F8 /* BaseViewController.swift */; settings = {ASSET_TAGS = (); }; };
 		E2DF160C1BB1327600886D1A /* VolunteersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2DF160B1BB1327600886D1A /* VolunteersViewController.swift */; settings = {ASSET_TAGS = (); }; };
+		E2DF3F821BB7463D0010E81A /* ShowAssistantCommentView.xib in Resources */ = {isa = PBXBuildFile; fileRef = E2DF3F811BB7463D0010E81A /* ShowAssistantCommentView.xib */; settings = {ASSET_TAGS = (); }; };
+		E2DF3F841BB7A70B0010E81A /* CollapseSectionHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2DF3F831BB7A70B0010E81A /* CollapseSectionHeaderView.swift */; settings = {ASSET_TAGS = (); }; };
+		E2DF3F861BB7A7420010E81A /* CollapseSectionHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = E2DF3F851BB7A7420010E81A /* CollapseSectionHeaderView.xib */; settings = {ASSET_TAGS = (); }; };
 		E2E0810B1BAF28FD0014803B /* SessionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2E0810A1BAF28FD0014803B /* SessionsViewController.swift */; settings = {ASSET_TAGS = (); }; };
 		E2E09BA81BA92D6800C9A109 /* SettingsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2E09BA71BA92D6800C9A109 /* SettingsTableViewCell.swift */; };
 		E2E13AB81BA6AFF0004C6E45 /* ChasingDotsStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2E13AB51BA6AFF0004C6E45 /* ChasingDotsStyle.swift */; };
@@ -34,7 +39,8 @@
 		E2E13ABD1BA6B918004C6E45 /* SidebarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2E13ABC1BA6B918004C6E45 /* SidebarViewController.swift */; };
 		E2E16C171BA7E4D900F43776 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E2E16C161BA7E4D900F43776 /* Images.xcassets */; };
 		E2E1ACC81BAC903500070EB8 /* KeychainWrapper.m in Sources */ = {isa = PBXBuildFile; fileRef = E2E1ACC71BAC903500070EB8 /* KeychainWrapper.m */; settings = {ASSET_TAGS = (); }; };
-		E2E1ACCA1BAC90C500070EB8 /* RefreshContents.xib in Resources */ = {isa = PBXBuildFile; fileRef = E2E1ACC91BAC90C500070EB8 /* RefreshContents.xib */; settings = {ASSET_TAGS = (); }; };
+		E2E1ACCA1BAC90C500070EB8 /* RefreshContentsView.xib in Resources */ = {isa = PBXBuildFile; fileRef = E2E1ACC91BAC90C500070EB8 /* RefreshContentsView.xib */; settings = {ASSET_TAGS = (); }; };
+		E2E2A1F41BB6863F00B1CBB3 /* ShowAssistantCommentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2E2A1F21BB6863F00B1CBB3 /* ShowAssistantCommentViewController.swift */; settings = {ASSET_TAGS = (); }; };
 		E2E316AA1BB1C09C000D8DC7 /* AssistantsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2E316A91BB1C09C000D8DC7 /* AssistantsViewController.swift */; settings = {ASSET_TAGS = (); }; };
 		E2E316AC1BB1C87A000D8DC7 /* AssistantTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2E316AB1BB1C87A000D8DC7 /* AssistantTableViewCell.swift */; settings = {ASSET_TAGS = (); }; };
 		E2E316B31BB1F5F9000D8DC7 /* AssistantCommentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2E316B21BB1F5F9000D8DC7 /* AssistantCommentViewController.swift */; settings = {ASSET_TAGS = (); }; };
@@ -87,6 +93,8 @@
 		B16CF1D03442508C54A2C811 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		C330EF7BE42F7341323D4084 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		E202F74A1BB3658100D5E64D /* Document.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Document.swift; path = Models/Document.swift; sourceTree = "<group>"; };
+		E208C6881BB6938F005DF1EB /* SessionCommentView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SessionCommentView.swift; path = "Views/Custom Views/SessionCommentView.swift"; sourceTree = "<group>"; };
+		E208C68A1BB694F9005DF1EB /* Util.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Util.swift; path = Helpers/Util/Util.swift; sourceTree = "<group>"; };
 		E25A5EF31BAFBC26000530F7 /* DocumentsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DocumentsViewController.swift; path = Controllers/Documents/DocumentsViewController.swift; sourceTree = "<group>"; };
 		E25A5EF61BAFC58F000530F7 /* Session.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Session.swift; path = Models/Session.swift; sourceTree = "<group>"; };
 		E26116E01BAB9E09002C0332 /* ArticleService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ArticleService.swift; path = Networking/ArticleService.swift; sourceTree = "<group>"; };
@@ -105,6 +113,9 @@
 		E2DDE3581BA641CE00C96CE5 /* CustomActivityIndicatorView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CustomActivityIndicatorView.swift; path = "Views/Custom Views/Custom Indicator View/CustomActivityIndicatorView.swift"; sourceTree = "<group>"; };
 		E2DE925F1BB4BC1100E762F8 /* BaseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BaseViewController.swift; path = Controllers/Base/BaseViewController.swift; sourceTree = "<group>"; };
 		E2DF160B1BB1327600886D1A /* VolunteersViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = VolunteersViewController.swift; path = Controllers/Sessions/VolunteersViewController.swift; sourceTree = "<group>"; };
+		E2DF3F811BB7463D0010E81A /* ShowAssistantCommentView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = ShowAssistantCommentView.xib; path = Views/Xibs/ShowAssistantCommentView.xib; sourceTree = "<group>"; };
+		E2DF3F831BB7A70B0010E81A /* CollapseSectionHeaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CollapseSectionHeaderView.swift; path = Views/CollapseSectionHeaderView.swift; sourceTree = "<group>"; };
+		E2DF3F851BB7A7420010E81A /* CollapseSectionHeaderView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CollapseSectionHeaderView.xib; sourceTree = "<group>"; };
 		E2E0810A1BAF28FD0014803B /* SessionsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SessionsViewController.swift; path = Controllers/Sessions/SessionsViewController.swift; sourceTree = "<group>"; };
 		E2E09BA71BA92D6800C9A109 /* SettingsTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SettingsTableViewCell.swift; path = Views/Cells/SettingsTableViewCell.swift; sourceTree = "<group>"; };
 		E2E13AB51BA6AFF0004C6E45 /* ChasingDotsStyle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ChasingDotsStyle.swift; path = "Views/Custom Views/Custom Indicator View/Custom Styles/ChasingDotsStyle.swift"; sourceTree = "<group>"; };
@@ -114,7 +125,8 @@
 		E2E16C161BA7E4D900F43776 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		E2E1ACC61BAC903500070EB8 /* KeychainWrapper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = KeychainWrapper.h; path = Vendors/KeychainWrapper.h; sourceTree = "<group>"; };
 		E2E1ACC71BAC903500070EB8 /* KeychainWrapper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = KeychainWrapper.m; path = Vendors/KeychainWrapper.m; sourceTree = "<group>"; };
-		E2E1ACC91BAC90C500070EB8 /* RefreshContents.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = RefreshContents.xib; path = Views/Xibs/RefreshContents.xib; sourceTree = "<group>"; };
+		E2E1ACC91BAC90C500070EB8 /* RefreshContentsView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = RefreshContentsView.xib; path = Views/Xibs/RefreshContentsView.xib; sourceTree = "<group>"; };
+		E2E2A1F21BB6863F00B1CBB3 /* ShowAssistantCommentViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ShowAssistantCommentViewController.swift; path = Controllers/Sessions/ShowAssistantCommentViewController.swift; sourceTree = "<group>"; };
 		E2E316A91BB1C09C000D8DC7 /* AssistantsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AssistantsViewController.swift; path = Controllers/Sessions/AssistantsViewController.swift; sourceTree = "<group>"; };
 		E2E316AB1BB1C87A000D8DC7 /* AssistantTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AssistantTableViewCell.swift; path = Views/Cells/AssistantTableViewCell.swift; sourceTree = "<group>"; };
 		E2E316B21BB1F5F9000D8DC7 /* AssistantCommentViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AssistantCommentViewController.swift; path = Controllers/Sessions/AssistantCommentViewController.swift; sourceTree = "<group>"; };
@@ -204,6 +216,7 @@
 				E2E56B461BA55A3700D18F76 /* Constants.swift */,
 				E2E56B471BA55A3700D18F76 /* DataLayer.swift */,
 				E2E56B481BA55A3700D18F76 /* Deserializable.swift */,
+				E208C68A1BB694F9005DF1EB /* Util.swift */,
 			);
 			name = Util;
 			sourceTree = "<group>";
@@ -233,6 +246,7 @@
 				E2E316A91BB1C09C000D8DC7 /* AssistantsViewController.swift */,
 				E2E316B21BB1F5F9000D8DC7 /* AssistantCommentViewController.swift */,
 				E26916431BB264BC001B1160 /* AssistantDetailViewController.swift */,
+				E2E2A1F21BB6863F00B1CBB3 /* ShowAssistantCommentViewController.swift */,
 			);
 			name = Sessions;
 			sourceTree = "<group>";
@@ -262,7 +276,9 @@
 		E2E1ACCB1BAC90CB00070EB8 /* Xibs */ = {
 			isa = PBXGroup;
 			children = (
-				E2E1ACC91BAC90C500070EB8 /* RefreshContents.xib */,
+				E2DF3F811BB7463D0010E81A /* ShowAssistantCommentView.xib */,
+				E2E1ACC91BAC90C500070EB8 /* RefreshContentsView.xib */,
+				E2DF3F851BB7A7420010E81A /* CollapseSectionHeaderView.xib */,
 			);
 			name = Xibs;
 			sourceTree = "<group>";
@@ -289,6 +305,8 @@
 				E2E09BA61BA92D1F00C9A109 /* Cells */,
 				E2E56B3B1BA5555F00D18F76 /* Custom Views */,
 				E2E1ACCB1BAC90CB00070EB8 /* Xibs */,
+				E208C6881BB6938F005DF1EB /* SessionCommentView.swift */,
+				E2DF3F831BB7A70B0010E81A /* CollapseSectionHeaderView.swift */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -531,7 +549,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				E2E16C171BA7E4D900F43776 /* Images.xcassets in Resources */,
-				E2E1ACCA1BAC90C500070EB8 /* RefreshContents.xib in Resources */,
+				E2DF3F821BB7463D0010E81A /* ShowAssistantCommentView.xib in Resources */,
+				E2DF3F861BB7A7420010E81A /* CollapseSectionHeaderView.xib in Resources */,
+				E2E1ACCA1BAC90C500070EB8 /* RefreshContentsView.xib in Resources */,
 				E2FE3F501B9632DC006EEA91 /* Main.storyboard in Resources */,
 				E2FE3F551B9632DC006EEA91 /* LaunchScreen.xib in Resources */,
 			);
@@ -621,11 +641,15 @@
 				E2DDD1421BB3DCD00085D795 /* ArticlesViewController.swift in Sources */,
 				E2CF33BE1B9D3F2C00B8BE40 /* UrlBuilder.swift in Sources */,
 				E2E0810B1BAF28FD0014803B /* SessionsViewController.swift in Sources */,
+				E2E2A1F41BB6863F00B1CBB3 /* ShowAssistantCommentViewController.swift in Sources */,
+				E2DF3F841BB7A70B0010E81A /* CollapseSectionHeaderView.swift in Sources */,
 				E2F598D21BB28E9B00C0206E /* SessionCommentTableViewCell.swift in Sources */,
+				E208C68B1BB694F9005DF1EB /* Util.swift in Sources */,
 				E2E9CA491B97BA9200DC0EDA /* UIButtonHelper.swift in Sources */,
 				E2E1ACC81BAC903500070EB8 /* KeychainWrapper.m in Sources */,
 				E26916441BB264BC001B1160 /* AssistantDetailViewController.swift in Sources */,
 				E2DDD13E1BB3ABE20085D795 /* DocumentTableViewCell.swift in Sources */,
+				E208C6891BB6938F005DF1EB /* SessionCommentView.swift in Sources */,
 				E2E13AB91BA6AFF0004C6E45 /* CustomIndicatorStyle.swift in Sources */,
 				E2E56B491BA55A3700D18F76 /* Constants.swift in Sources */,
 			);

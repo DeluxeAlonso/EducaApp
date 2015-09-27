@@ -33,8 +33,12 @@ class SessionCommentTableViewCell: UITableViewCell {
   
   // MARK: - Public
   
-  func setupSessionComment(comment: String) {
-    volunteerNameLabel.text = comment
+  func setupSessionComment(comment: SessionComment) {
+    let longString: String = comment.fullComment
+    let stringToBold = "\((comment.author)!):"
+    let stringToBoldRange = (longString as NSString).rangeOfString(stringToBold)
+    let attributedString = NSMutableAttributedString(string: longString, attributes: [NSFontAttributeName : UIFont(name: "HelveticaNeue-Light", size: 15) ?? UIFont.systemFontOfSize(15.0)])
+    attributedString.setAttributes([NSFontAttributeName : UIFont(name: "HelveticaNeue-Regular", size: 15) ?? UIFont.systemFontOfSize(15.0), NSForegroundColorAttributeName : UIColor.defaultTextColor()], range: stringToBoldRange)
+    volunteerNameLabel.attributedText = attributedString
   }
-  
 }

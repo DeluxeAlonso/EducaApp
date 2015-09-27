@@ -1808,7 +1808,7 @@ El voluntariado comprende actividades asistenciales de servicios sociales, cívi
                                     <constraint firstItem="uYv-MI-9NF" firstAttribute="centerX" secondItem="8ql-lN-aez" secondAttribute="centerX" id="lZQ-Tb-Oyo"/>
                                 </constraints>
                             </view>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="64" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="iB7-YH-kh9">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="64" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="iB7-YH-kh9">
                                 <rect key="frame" x="0.0" y="248" width="600" height="352"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <color key="sectionIndexBackgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
@@ -1817,41 +1817,47 @@ El voluntariado comprende actividades asistenciales de servicios sociales, cívi
                                         <rect key="frame" x="0.0" y="28" width="600" height="64"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Ol5-Op-hml" id="MTt-bx-a6Y">
-                                            <rect key="frame" x="0.0" y="0.0" width="600" height="63.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="600" height="64"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Alonso Alvarez" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xKL-jV-toa">
-                                                    <rect key="frame" x="253" y="5" width="94.5" height="53.5"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="justified" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xKL-jV-toa">
+                                                    <rect key="frame" x="12" y="5" width="515.5" height="53.5"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="height" constant="53.5" id="efC-O3-Pve"/>
+                                                        <constraint firstAttribute="height" relation="lessThanOrEqual" constant="60" id="9ta-2W-SDE"/>
+                                                        <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="40" id="f9g-21-EPW"/>
                                                     </constraints>
+                                                    <string key="text">Alonso Alvarez: Tuvo un buen comportamiento el dia de hoy. Sin embargo, le falto ser mas participativo y comprometido con los eventos y juegos realizados en la sesion del dia de hoy.</string>
                                                     <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="15"/>
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="HappyFaceIcon" translatesAutoresizingMaskIntoConstraints="NO" id="WiO-Tl-rBY">
-                                                    <rect key="frame" x="547" y="14" width="35" height="35"/>
+                                                    <rect key="frame" x="547" y="14.5" width="35" height="35"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="35" id="1GA-pD-MBS"/>
                                                         <constraint firstAttribute="height" constant="35" id="MDP-OW-gmo"/>
                                                     </constraints>
                                                 </imageView>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="AfiLogo" translatesAutoresizingMaskIntoConstraints="NO" id="5D9-VW-JGB">
-                                                    <rect key="frame" x="17" y="11" width="42" height="42"/>
+                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="iFK-wE-bmc" userLabel="Separator View">
+                                                    <rect key="frame" x="0.0" y="63" width="600" height="1"/>
+                                                    <color key="backgroundColor" red="0.81960784313725488" green="0.85882352941176465" blue="0.8666666666666667" alpha="1" colorSpace="calibratedRGB"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="height" constant="42" id="6f1-Oh-sGJ"/>
-                                                        <constraint firstAttribute="width" constant="42" id="Oiw-76-l2V"/>
+                                                        <constraint firstAttribute="height" constant="1" id="1gN-9r-WPi"/>
                                                     </constraints>
-                                                </imageView>
+                                                </view>
                                             </subviews>
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                             <constraints>
-                                                <constraint firstItem="xKL-jV-toa" firstAttribute="centerX" secondItem="MTt-bx-a6Y" secondAttribute="centerX" id="4SB-OJ-pW0"/>
-                                                <constraint firstItem="xKL-jV-toa" firstAttribute="centerY" secondItem="MTt-bx-a6Y" secondAttribute="centerY" id="5tn-RH-ANT"/>
-                                                <constraint firstItem="5D9-VW-JGB" firstAttribute="leading" secondItem="MTt-bx-a6Y" secondAttribute="leadingMargin" constant="9" id="QBN-4w-w1g"/>
-                                                <constraint firstItem="5D9-VW-JGB" firstAttribute="centerY" secondItem="MTt-bx-a6Y" secondAttribute="centerY" id="VXa-au-ajy"/>
+                                                <constraint firstItem="xKL-jV-toa" firstAttribute="leading" secondItem="MTt-bx-a6Y" secondAttribute="leading" constant="12" id="3Ab-k9-Un4"/>
+                                                <constraint firstAttribute="bottom" secondItem="iFK-wE-bmc" secondAttribute="bottom" id="9Ni-VR-Gse"/>
+                                                <constraint firstItem="xKL-jV-toa" firstAttribute="centerY" secondItem="MTt-bx-a6Y" secondAttribute="centerY" id="BkS-Cx-HF5"/>
+                                                <constraint firstAttribute="trailing" secondItem="iFK-wE-bmc" secondAttribute="trailing" id="JBS-hk-hig"/>
+                                                <constraint firstItem="xKL-jV-toa" firstAttribute="top" secondItem="MTt-bx-a6Y" secondAttribute="top" constant="5" id="Jh2-Be-jEe"/>
+                                                <constraint firstItem="WiO-Tl-rBY" firstAttribute="leading" secondItem="xKL-jV-toa" secondAttribute="trailing" constant="19.5" id="KZT-bF-tEb"/>
+                                                <constraint firstItem="iFK-wE-bmc" firstAttribute="leading" secondItem="MTt-bx-a6Y" secondAttribute="leading" id="e0Z-04-uTt"/>
                                                 <constraint firstItem="WiO-Tl-rBY" firstAttribute="centerY" secondItem="MTt-bx-a6Y" secondAttribute="centerY" id="kZs-GP-PqX"/>
                                                 <constraint firstAttribute="trailing" secondItem="WiO-Tl-rBY" secondAttribute="trailing" constant="18" id="pq8-ex-rMi"/>
+                                                <constraint firstAttribute="bottom" secondItem="xKL-jV-toa" secondAttribute="bottom" constant="5" id="xwZ-pF-paW"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
@@ -1893,7 +1899,8 @@ El voluntariado comprende actividades asistenciales de servicios sociales, cívi
                         <outlet property="dateLabel" destination="d2s-MW-0Tg" id="gk7-GB-WMR"/>
                         <outlet property="genderLabel" destination="yru-5o-6j8" id="orI-mO-YJu"/>
                         <outlet property="sessionCountLabel" destination="vov-CM-anu" id="wVF-22-PB5"/>
-                        <segue destination="gix-Cn-RUY" kind="presentation" identifier="ShowCommentSegue" id="uO7-XQ-L73"/>
+                        <outlet property="tableView" destination="iB7-YH-kh9" id="7mb-Mt-Cxu"/>
+                        <segue destination="gix-Cn-RUY" kind="presentation" identifier="ShowCommentSegue" id="hv0-vG-lMP"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cgW-9K-Wzn" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -2139,6 +2146,6 @@ El voluntariado comprende actividades asistenciales de servicios sociales, cívi
     <inferredMetricsTieBreakers>
         <segue reference="RtS-xr-ajm"/>
         <segue reference="ThX-Nn-SQw"/>
-        <segue reference="uO7-XQ-L73"/>
+        <segue reference="hv0-vG-lMP"/>
     </inferredMetricsTieBreakers>
 </document>
