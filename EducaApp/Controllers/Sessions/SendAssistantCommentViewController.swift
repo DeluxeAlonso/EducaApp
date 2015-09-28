@@ -23,6 +23,9 @@ class SendAssistantCommentViewController: UIViewController {
   let SendText = "Enviar"
   let SendMessage: Selector = "sendMessage:"
   
+  let ScaleToSize: CGFloat = 1.15
+  let ScaleDuration: NSTimeInterval = 0.5
+  
   var delegate: AssistantDetailViewController?
   var assistant: String?
   
@@ -76,14 +79,18 @@ class SendAssistantCommentViewController: UIViewController {
     happyMoodImageView.layer.borderColor = UIColor.defaultHappyFaceBorderColor().CGColor
     sadMoodImageView.layer.borderColor = UIColor.defaultBorderFieldColor().CGColor
     sadMoodImageView.image = UIImage(named: "SadFaceGrayIcon")
+    happyMoodImageView.scaleToSize(ScaleToSize, duration: ScaleDuration)
+    sadMoodImageView.restoreWithDuration(ScaleDuration)
   }
-  
+
   @IBAction func pressSadButton(sender: AnyObject) {
     selectedFaceIndex = SelectedMood.SadMood
     sadMoodImageView.image = UIImage(named: "SadFaceIcon")
     sadMoodImageView.layer.borderColor = UIColor.defaultSadFaceBorderColor().CGColor
     happyMoodImageView.image = UIImage(named: "HappyFaceGrayIcon")
     happyMoodImageView.layer.borderColor = UIColor.defaultBorderFieldColor().CGColor
+    sadMoodImageView.scaleToSize(ScaleToSize, duration: ScaleDuration)
+    happyMoodImageView.restoreWithDuration(ScaleDuration)
   }
   
 }
