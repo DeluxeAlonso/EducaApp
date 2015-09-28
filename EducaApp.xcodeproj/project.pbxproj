@@ -19,6 +19,7 @@
 		E2CF33BE1B9D3F2C00B8BE40 /* UrlBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2CF33BD1B9D3F2C00B8BE40 /* UrlBuilder.swift */; };
 		E2CF33C01B9D4D1800B8BE40 /* DictionaryHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2CF33BF1B9D4D1800B8BE40 /* DictionaryHelper.swift */; };
 		E2CF33C21B9D5EF100B8BE40 /* UserService.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2CF33C11B9D5EF100B8BE40 /* UserService.swift */; };
+		E2DA52E31BB8E5FB00CB3793 /* SendAssistantCommentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2DA52E21BB8E5FB00CB3793 /* SendAssistantCommentViewController.swift */; settings = {ASSET_TAGS = (); }; };
 		E2DD0A7B1BB148B60038A358 /* VolunteerTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2DD0A7A1BB148B60038A358 /* VolunteerTableViewCell.swift */; settings = {ASSET_TAGS = (); }; };
 		E2DD3F0D1BAE325500DF40C2 /* CustomRefreshControlView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2DD3F0C1BAE325500DF40C2 /* CustomRefreshControlView.swift */; settings = {ASSET_TAGS = (); }; };
 		E2DD53C11BABCB170034B31C /* ArticleTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2DD53C01BABCB170034B31C /* ArticleTableViewCell.swift */; settings = {ASSET_TAGS = (); }; };
@@ -43,7 +44,6 @@
 		E2E2A1F41BB6863F00B1CBB3 /* ShowAssistantCommentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2E2A1F21BB6863F00B1CBB3 /* ShowAssistantCommentViewController.swift */; settings = {ASSET_TAGS = (); }; };
 		E2E316AA1BB1C09C000D8DC7 /* AssistantsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2E316A91BB1C09C000D8DC7 /* AssistantsViewController.swift */; settings = {ASSET_TAGS = (); }; };
 		E2E316AC1BB1C87A000D8DC7 /* AssistantTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2E316AB1BB1C87A000D8DC7 /* AssistantTableViewCell.swift */; settings = {ASSET_TAGS = (); }; };
-		E2E316B31BB1F5F9000D8DC7 /* AssistantCommentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2E316B21BB1F5F9000D8DC7 /* AssistantCommentViewController.swift */; settings = {ASSET_TAGS = (); }; };
 		E2E346591BA7789B007232A9 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2E346581BA7789B007232A9 /* SettingsViewController.swift */; };
 		E2E3465B1BA77929007232A9 /* DonationsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2E3465A1BA77929007232A9 /* DonationsViewController.swift */; };
 		E2E56B391BA5549700D18F76 /* CALayerHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2E56B381BA5549700D18F76 /* CALayerHelper.swift */; };
@@ -104,6 +104,7 @@
 		E2CF33BD1B9D3F2C00B8BE40 /* UrlBuilder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UrlBuilder.swift; path = Networking/UrlBuilder.swift; sourceTree = "<group>"; };
 		E2CF33BF1B9D4D1800B8BE40 /* DictionaryHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DictionaryHelper.swift; path = Helpers/DictionaryHelper.swift; sourceTree = "<group>"; };
 		E2CF33C11B9D5EF100B8BE40 /* UserService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UserService.swift; path = Networking/UserService.swift; sourceTree = "<group>"; };
+		E2DA52E21BB8E5FB00CB3793 /* SendAssistantCommentViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SendAssistantCommentViewController.swift; path = Controllers/Sessions/SendAssistantCommentViewController.swift; sourceTree = "<group>"; };
 		E2DD0A7A1BB148B60038A358 /* VolunteerTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = VolunteerTableViewCell.swift; path = Views/Cells/VolunteerTableViewCell.swift; sourceTree = "<group>"; };
 		E2DD3F0C1BAE325500DF40C2 /* CustomRefreshControlView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CustomRefreshControlView.swift; path = "Views/Custom Views/CustomRefreshControlView.swift"; sourceTree = "<group>"; };
 		E2DD53C01BABCB170034B31C /* ArticleTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ArticleTableViewCell.swift; path = Views/Cells/ArticleTableViewCell.swift; sourceTree = "<group>"; };
@@ -129,7 +130,6 @@
 		E2E2A1F21BB6863F00B1CBB3 /* ShowAssistantCommentViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ShowAssistantCommentViewController.swift; path = Controllers/Sessions/ShowAssistantCommentViewController.swift; sourceTree = "<group>"; };
 		E2E316A91BB1C09C000D8DC7 /* AssistantsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AssistantsViewController.swift; path = Controllers/Sessions/AssistantsViewController.swift; sourceTree = "<group>"; };
 		E2E316AB1BB1C87A000D8DC7 /* AssistantTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AssistantTableViewCell.swift; path = Views/Cells/AssistantTableViewCell.swift; sourceTree = "<group>"; };
-		E2E316B21BB1F5F9000D8DC7 /* AssistantCommentViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AssistantCommentViewController.swift; path = Controllers/Sessions/AssistantCommentViewController.swift; sourceTree = "<group>"; };
 		E2E346581BA7789B007232A9 /* SettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SettingsViewController.swift; path = Controllers/Settings/SettingsViewController.swift; sourceTree = "<group>"; };
 		E2E3465A1BA77929007232A9 /* DonationsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DonationsViewController.swift; path = Controllers/Donations/DonationsViewController.swift; sourceTree = "<group>"; };
 		E2E56B381BA5549700D18F76 /* CALayerHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CALayerHelper.swift; path = Helpers/CALayerHelper.swift; sourceTree = "<group>"; };
@@ -244,9 +244,9 @@
 				E2E0810A1BAF28FD0014803B /* SessionsViewController.swift */,
 				E2DF160B1BB1327600886D1A /* VolunteersViewController.swift */,
 				E2E316A91BB1C09C000D8DC7 /* AssistantsViewController.swift */,
-				E2E316B21BB1F5F9000D8DC7 /* AssistantCommentViewController.swift */,
 				E26916431BB264BC001B1160 /* AssistantDetailViewController.swift */,
 				E2E2A1F21BB6863F00B1CBB3 /* ShowAssistantCommentViewController.swift */,
+				E2DA52E21BB8E5FB00CB3793 /* SendAssistantCommentViewController.swift */,
 			);
 			name = Sessions;
 			sourceTree = "<group>";
@@ -626,13 +626,13 @@
 				E2DDE3591BA641CE00C96CE5 /* CustomActivityIndicatorView.swift in Sources */,
 				E2E587E31B9961AB008580D3 /* UIColorHelper.swift in Sources */,
 				E25A5EF71BAFC58F000530F7 /* Session.swift in Sources */,
+				E2DA52E31BB8E5FB00CB3793 /* SendAssistantCommentViewController.swift in Sources */,
 				E2E346591BA7789B007232A9 /* SettingsViewController.swift in Sources */,
 				E2E13AB81BA6AFF0004C6E45 /* ChasingDotsStyle.swift in Sources */,
 				E2F598D41BB29E4E00C0206E /* SessionComment.swift in Sources */,
 				E2E09BA81BA92D6800C9A109 /* SettingsTableViewCell.swift in Sources */,
 				E202F74B1BB3658100D5E64D /* Document.swift in Sources */,
 				E2E56B391BA5549700D18F76 /* CALayerHelper.swift in Sources */,
-				E2E316B31BB1F5F9000D8DC7 /* AssistantCommentViewController.swift in Sources */,
 				E2DDD1401BB3DCA60085D795 /* ArticleDetailViewController.swift in Sources */,
 				E2DF160C1BB1327600886D1A /* VolunteersViewController.swift in Sources */,
 				E26116E31BABA374002C0332 /* Article.swift in Sources */,

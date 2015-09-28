@@ -12,7 +12,6 @@ class Util {
 
   class func needsPopoverPresentation(label: UILabel,string: NSString) -> Bool {
     let size = string.sizeWithAttributes([NSFontAttributeName: label.font])
-    print(size)
     if size.width > 1000 {
       return true
     }

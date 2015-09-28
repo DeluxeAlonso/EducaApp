@@ -6,3 +6,4 @@
 #import "PayPalMobile.h"
 #import "KeychainWrapper.h"
 #import "UIImageView+WebCache.h"
+#import <STPopup/STPopup.h>

@@ -12,20 +12,20 @@ class ShowAssistantCommentViewController: UIViewController {
   
   @IBOutlet weak var commentLabel: UILabel!
   
+  let ShowAssistantCommentViewIdentifier = "ShowAssistantCommentView"
+  
   override func viewDidLoad() {
     super.viewDidLoad()
-    // Do any additional setup after loading the view.
   }
   
   override func didReceiveMemoryWarning() {
     super.didReceiveMemoryWarning()
-    // Dispose of any resources that can be recreated.
   }
   
   // MARK: - Public
   
   func setupView(comment: SessionComment) {
-    self.view = NSBundle.mainBundle().loadNibNamed("ShowAssistantCommentView", owner: self, options: nil).first as! SessionCommentView
+    self.view = NSBundle.mainBundle().loadNibNamed(ShowAssistantCommentViewIdentifier, owner: self, options: nil).first as! SessionCommentView
     let longString: String = comment.fullComment
     let stringToBold = "\((comment.author)!):"
     let stringToBoldRange = (longString as NSString).rangeOfString(stringToBold)

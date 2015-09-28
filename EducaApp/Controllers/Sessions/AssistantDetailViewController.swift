@@ -10,6 +10,7 @@ import UIKit
 
 let SessionCommentCellIdentifier = "SessionCommentCell"
 let CollapseSectionHeaderViewIdentifier = "CollapseHeader"
+let SendAssistantCommentViewIdentifier = "SendAssistantCommentViewController"
 
 class AssistantDetailViewController: BaseViewController, UITableViewDataSource, UITableViewDelegate, UIPopoverPresentationControllerDelegate, CollapseSectionHeaderViewDelegate {
   
@@ -18,12 +19,12 @@ class AssistantDetailViewController: BaseViewController, UITableViewDataSource, 
   @IBOutlet weak var ageLabel: UILabel!
   @IBOutlet weak var dateLabel: UILabel!
   @IBOutlet weak var sessionCountLabel: UILabel!
-
-  let GoToCommentSegueIdentifier = "ShowCommentSegue"
   
   var assistant: String?
   var sections: NSMutableArray = ["16/09/2015", "01/09/2015"]
-  var collapseSectionsInfo:[CollapseSectionModel] = Array();
+  var collapseSectionsInfo:[CollapseSectionModel] = Array()
+  
+  var popupViewController: STPopupController?
   
   override func awakeFromNib() {
     for section in sections {
@@ -85,24 +86,28 @@ class AssistantDetailViewController: BaseViewController, UITableViewDataSource, 
     popoverPresentationController.sourceRect = (cell?.bounds)!
   }
   
+  private func setupPopupNavigationBar() {
+    STPopupNavigationBar.appearance().barTintColor = UIColor.defaultTextColor()
+    STPopupNavigationBar.appearance().tintColor = UIColor.whiteColor()
+    STPopupNavigationBar.appearance().titleTextAttributes = [NSForegroundColorAttributeName: UIColor.whiteColor(), NSFontAttributeName: UIFont(name: "HelveticaNeue-Light", size: 17) ?? UIFont.systemFontOfSize(17)]
+  }
+  
+  // MARK: - Public
+  
+  func dismissSendCommentPopup() {
+    popupViewController!.dismiss()
+  }
+  
   // MARK: - Actions
   
   @IBAction func goToSendCommentSection(sender: AnyObject) {
-    self.performSegueWithIdentifier(GoToCommentSegueIdentifier, sender: nil)
-  }
-  
-  // MARK: - Navigation
-  
-  override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-    if segue.destinationViewController is UINavigationController {
-      let destination = segue.destinationViewController as! UINavigationController
-      let destinationVC = destination.viewControllers[0] as! AssistantCommentViewController
-      destinationVC.delegate = self
-      destinationVC.assistant = assistant
-      if sender != nil {
-        destinationVC.comment = sender as? SessionComment
-      }
-    }
+    let viewController = self.storyboard?.instantiateViewControllerWithIdentifier(SendAssistantCommentViewIdentifier) as! SendAssistantCommentViewController
+    viewController.assistant = assistant
+    viewController.delegate = self
+    setupPopupNavigationBar()
+
+    popupViewController = STPopupController(rootViewController: viewController)
+    popupViewController!.presentInViewController(self)
   }
   
   // MARK: - UITableViewDataSource

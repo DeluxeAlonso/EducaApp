@@ -56,12 +56,7 @@ class AssistantsViewController: BaseViewController, UITableViewDataSource, UITab
   // MARK: - Navigation
   
   override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-    if segue.destinationViewController is UINavigationController {
-      let destination = segue.destinationViewController as! UINavigationController
-      let destinationVC = destination.viewControllers[0] as! AssistantCommentViewController
-      destinationVC.delegate = self
-      destinationVC.assistant = sender as? String
-    } else if segue.destinationViewController is AssistantDetailViewController {
+    if segue.destinationViewController is AssistantDetailViewController {
       let destinationVC = segue.destinationViewController as! AssistantDetailViewController
       destinationVC.assistant = sender as? String
     }

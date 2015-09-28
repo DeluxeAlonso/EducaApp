@@ -1907,157 +1907,137 @@ El voluntariado comprende actividades asistenciales de servicios sociales, cívi
             </objects>
             <point key="canvasLocation" x="2241" y="1599"/>
         </scene>
-        <!--Comentario-->
-        <scene sceneID="SWs-w0-Zkd">
+        <!--Send Assistant Comment View Controller-->
+        <scene sceneID="XRg-q1-qFp">
             <objects>
-                <viewController id="Vmo-wg-4Or" customClass="AssistantCommentViewController" customModule="EducaApp" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="SendAssistantCommentViewController" id="0Dh-8O-tZ6" customClass="SendAssistantCommentViewController" customModule="EducaApp" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="C6e-yE-m7f"/>
-                        <viewControllerLayoutGuide type="bottom" id="TUW-bL-NIJ"/>
+                        <viewControllerLayoutGuide type="top" id="QZy-lC-7am"/>
+                        <viewControllerLayoutGuide type="bottom" id="NYu-gY-htU"/>
                     </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="6pV-S1-0Fg">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                    <view key="view" contentMode="scaleToFill" id="i8e-WX-mvg">
+                        <rect key="frame" x="0.0" y="0.0" width="300" height="170"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" keyboardDismissMode="interactive" translatesAutoresizingMaskIntoConstraints="NO" id="nEY-Aq-WHY">
-                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="uHa-Wj-zmk">
+                                <rect key="frame" x="0.0" y="0.0" width="300" height="170"/>
                                 <subviews>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rMN-8Y-JdC">
-                                        <rect key="frame" x="0.0" y="0.0" width="600" height="536"/>
-                                        <subviews>
-                                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="ysA-hv-IiK">
-                                                <rect key="frame" x="42" y="114" width="516" height="328"/>
-                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                                <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
-                                                <color key="textColor" red="0.37647058823529411" green="0.72549019607843135" blue="0.98039215686274506" alpha="1" colorSpace="calibratedRGB"/>
-                                                <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="14"/>
-                                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                                                <userDefinedRuntimeAttributes>
-                                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.borderWidth">
-                                                        <integer key="value" value="1"/>
-                                                    </userDefinedRuntimeAttribute>
-                                                    <userDefinedRuntimeAttribute type="boolean" keyPath="layer.maskToBounds" value="YES"/>
-                                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
-                                                        <integer key="value" value="5"/>
-                                                    </userDefinedRuntimeAttribute>
-                                                </userDefinedRuntimeAttributes>
-                                            </textView>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Comentario:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eGH-1N-Ifi">
-                                                <rect key="frame" x="42" y="85" width="86" height="21"/>
-                                                <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="16"/>
-                                                <color key="textColor" red="0.0" green="0.59999999999999998" blue="0.80000000000000004" alpha="1" colorSpace="calibratedRGB"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dOF-jn-Hxq">
-                                                <rect key="frame" x="0.0" y="480" width="600" height="56"/>
-                                                <color key="backgroundColor" red="0.0" green="0.59999999999999998" blue="0.80000000000000004" alpha="1" colorSpace="calibratedRGB"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="height" constant="56" id="LOs-sX-VEx"/>
-                                                </constraints>
-                                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="24"/>
-                                                <state key="normal" title="Comentar">
-                                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                                </state>
-                                                <connections>
-                                                    <action selector="sendComment:" destination="Vmo-wg-4Or" eventType="touchUpInside" id="OVq-ch-neW"/>
-                                                </connections>
-                                            </button>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YlV-wV-Ejb" userLabel="Happy Button">
-                                                <rect key="frame" x="238" y="24" width="50" height="50"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="height" constant="50" id="49L-nV-rLJ"/>
-                                                    <constraint firstAttribute="width" constant="50" id="E8D-bp-ppT"/>
-                                                </constraints>
-                                                <state key="normal" image="HappyFaceGrayIcon"/>
-                                                <userDefinedRuntimeAttributes>
-                                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
-                                                        <integer key="value" value="2"/>
-                                                    </userDefinedRuntimeAttribute>
-                                                    <userDefinedRuntimeAttribute type="boolean" keyPath="layer.maskToBounds" value="YES"/>
-                                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.borderWidth">
-                                                        <integer key="value" value="3"/>
-                                                    </userDefinedRuntimeAttribute>
-                                                </userDefinedRuntimeAttributes>
-                                                <connections>
-                                                    <action selector="pressHappyButton:" destination="Vmo-wg-4Or" eventType="touchUpInside" id="czK-Hk-5q7"/>
-                                                </connections>
-                                            </button>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VIg-69-Z6F" userLabel="Sad Button">
-                                                <rect key="frame" x="312" y="24" width="50" height="50"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="width" constant="50" id="Tzm-WI-aSd"/>
-                                                    <constraint firstAttribute="height" constant="50" id="sIp-pP-Ubu"/>
-                                                </constraints>
-                                                <state key="normal" image="SadFaceGrayIcon"/>
-                                                <userDefinedRuntimeAttributes>
-                                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
-                                                        <integer key="value" value="2"/>
-                                                    </userDefinedRuntimeAttribute>
-                                                    <userDefinedRuntimeAttribute type="boolean" keyPath="layer.maskToBounds" value="YES"/>
-                                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.borderWidth">
-                                                        <integer key="value" value="3"/>
-                                                    </userDefinedRuntimeAttribute>
-                                                </userDefinedRuntimeAttributes>
-                                                <connections>
-                                                    <action selector="pressSadButton:" destination="Vmo-wg-4Or" eventType="touchUpInside" id="0fq-Sq-SMh"/>
-                                                </connections>
-                                            </button>
-                                        </subviews>
+                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="justified" translatesAutoresizingMaskIntoConstraints="NO" id="7ba-lG-cfC">
+                                        <rect key="frame" x="30" y="76" width="240" height="76"/>
                                         <constraints>
-                                            <constraint firstAttribute="trailing" secondItem="dOF-jn-Hxq" secondAttribute="trailing" id="1XM-ZV-3sA"/>
-                                            <constraint firstItem="ysA-hv-IiK" firstAttribute="centerY" secondItem="rMN-8Y-JdC" secondAttribute="centerY" constant="10" id="4LJ-FX-usS"/>
-                                            <constraint firstItem="ysA-hv-IiK" firstAttribute="centerX" secondItem="rMN-8Y-JdC" secondAttribute="centerX" id="9P4-BQ-ch5"/>
-                                            <constraint firstItem="VIg-69-Z6F" firstAttribute="centerX" secondItem="rMN-8Y-JdC" secondAttribute="centerX" constant="37" id="MhX-l1-CQg"/>
-                                            <constraint firstItem="VIg-69-Z6F" firstAttribute="leading" secondItem="YlV-wV-Ejb" secondAttribute="trailing" constant="24" id="Tgy-Vu-zEh"/>
-                                            <constraint firstItem="YlV-wV-Ejb" firstAttribute="top" secondItem="rMN-8Y-JdC" secondAttribute="top" constant="24" id="XU0-vt-owg"/>
-                                            <constraint firstAttribute="bottom" secondItem="dOF-jn-Hxq" secondAttribute="bottom" id="don-X9-7dk"/>
-                                            <constraint firstItem="dOF-jn-Hxq" firstAttribute="leading" secondItem="rMN-8Y-JdC" secondAttribute="leading" id="hCX-zU-Nds"/>
-                                            <constraint firstItem="ysA-hv-IiK" firstAttribute="leading" secondItem="rMN-8Y-JdC" secondAttribute="leading" constant="42" id="hfj-yh-fdK"/>
-                                            <constraint firstItem="YlV-wV-Ejb" firstAttribute="centerX" secondItem="rMN-8Y-JdC" secondAttribute="centerX" constant="-37" id="kYj-hV-1cO"/>
-                                            <constraint firstItem="ysA-hv-IiK" firstAttribute="top" secondItem="rMN-8Y-JdC" secondAttribute="top" constant="114" id="me1-aZ-Dtx"/>
-                                            <constraint firstItem="VIg-69-Z6F" firstAttribute="top" secondItem="YlV-wV-Ejb" secondAttribute="top" id="p6A-Cw-RQG"/>
-                                            <constraint firstItem="VIg-69-Z6F" firstAttribute="centerY" secondItem="YlV-wV-Ejb" secondAttribute="centerY" id="qHZ-MV-Vd3"/>
-                                            <constraint firstAttribute="trailing" secondItem="ysA-hv-IiK" secondAttribute="trailing" constant="42" id="vbM-CM-Phc"/>
+                                            <constraint firstAttribute="height" constant="76" id="ea0-aH-pPS"/>
+                                            <constraint firstAttribute="width" constant="240" id="xBq-uS-Zd2"/>
                                         </constraints>
-                                    </view>
+                                        <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
+                                        <color key="textColor" red="0.37647058820000001" green="0.72549019609999998" blue="0.98039215690000003" alpha="1" colorSpace="calibratedRGB"/>
+                                        <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="layer.borderWidth">
+                                                <integer key="value" value="1"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                <integer key="value" value="2"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="boolean" keyPath="layer.maskToBounds" value="YES"/>
+                                        </userDefinedRuntimeAttributes>
+                                    </textView>
+                                    <imageView contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="HappyFaceGrayIcon" translatesAutoresizingMaskIntoConstraints="NO" id="jdF-DJ-QWG">
+                                        <rect key="frame" x="76" y="13" width="50" height="50"/>
+                                        <gestureRecognizers/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="50" id="541-DP-UJO"/>
+                                            <constraint firstAttribute="height" constant="50" id="Tex-8x-bfB"/>
+                                        </constraints>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="layer.borderWidth">
+                                                <integer key="value" value="3"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                <integer key="value" value="2"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="boolean" keyPath="layer.maskToBounds" value="YES"/>
+                                        </userDefinedRuntimeAttributes>
+                                        <connections>
+                                            <outletCollection property="gestureRecognizers" destination="Tov-BL-ZyA" appends="YES" id="83r-eA-221"/>
+                                        </connections>
+                                    </imageView>
+                                    <imageView contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="SadFaceGrayIcon" translatesAutoresizingMaskIntoConstraints="NO" id="mgQ-cA-QGg">
+                                        <rect key="frame" x="174" y="13" width="50" height="50"/>
+                                        <gestureRecognizers/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="50" id="QCK-Sg-iqd"/>
+                                            <constraint firstAttribute="width" constant="50" id="oFS-Vl-GZC"/>
+                                            <constraint firstAttribute="height" constant="35" id="xk4-Lj-hmx"/>
+                                        </constraints>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="layer.borderWidth">
+                                                <integer key="value" value="3"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                <integer key="value" value="2"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="boolean" keyPath="layer.maskToBounds" value="YES"/>
+                                        </userDefinedRuntimeAttributes>
+                                        <variation key="default">
+                                            <mask key="constraints">
+                                                <exclude reference="xk4-Lj-hmx"/>
+                                            </mask>
+                                        </variation>
+                                        <connections>
+                                            <outletCollection property="gestureRecognizers" destination="YKE-c9-GN7" appends="YES" id="hWX-zX-8yc"/>
+                                        </connections>
+                                    </imageView>
                                 </subviews>
-                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <color key="backgroundColor" red="0.94117647058823528" green="0.98039215686274506" blue="0.98039215686274506" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
-                                    <constraint firstItem="rMN-8Y-JdC" firstAttribute="top" secondItem="nEY-Aq-WHY" secondAttribute="top" id="2Dp-ub-baE"/>
-                                    <constraint firstAttribute="trailing" secondItem="rMN-8Y-JdC" secondAttribute="trailing" id="90e-BY-agJ"/>
-                                    <constraint firstItem="rMN-8Y-JdC" firstAttribute="leading" secondItem="nEY-Aq-WHY" secondAttribute="leading" id="W4j-3o-caD"/>
-                                    <constraint firstItem="rMN-8Y-JdC" firstAttribute="centerX" secondItem="nEY-Aq-WHY" secondAttribute="centerX" id="go3-X5-ljr"/>
-                                    <constraint firstAttribute="bottom" secondItem="rMN-8Y-JdC" secondAttribute="bottom" id="krK-IK-hpe"/>
+                                    <constraint firstItem="mgQ-cA-QGg" firstAttribute="leading" secondItem="jdF-DJ-QWG" secondAttribute="trailing" constant="48" id="0m7-lB-J21"/>
+                                    <constraint firstItem="jdF-DJ-QWG" firstAttribute="leading" secondItem="uHa-Wj-zmk" secondAttribute="leading" constant="76" id="7dX-58-oPj"/>
+                                    <constraint firstItem="7ba-lG-cfC" firstAttribute="top" secondItem="jdF-DJ-QWG" secondAttribute="bottom" constant="13" id="87X-q9-mvw"/>
+                                    <constraint firstItem="mgQ-cA-QGg" firstAttribute="top" secondItem="uHa-Wj-zmk" secondAttribute="top" constant="30" id="TCF-gM-5by"/>
+                                    <constraint firstAttribute="bottom" secondItem="7ba-lG-cfC" secondAttribute="bottom" constant="18" id="VNU-9g-3e0"/>
+                                    <constraint firstAttribute="trailing" secondItem="mgQ-cA-QGg" secondAttribute="trailing" constant="76" id="hBd-fh-wuR"/>
+                                    <constraint firstItem="7ba-lG-cfC" firstAttribute="top" secondItem="mgQ-cA-QGg" secondAttribute="bottom" constant="13" id="idY-5I-eSv"/>
+                                    <constraint firstItem="7ba-lG-cfC" firstAttribute="centerX" secondItem="uHa-Wj-zmk" secondAttribute="centerX" id="jM4-JI-Edd"/>
+                                    <constraint firstItem="jdF-DJ-QWG" firstAttribute="top" secondItem="uHa-Wj-zmk" secondAttribute="top" constant="30" id="zLK-nM-Ieo"/>
                                 </constraints>
-                            </scrollView>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="zLK-nM-Ieo"/>
+                                        <exclude reference="TCF-gM-5by"/>
+                                    </mask>
+                                </variation>
+                            </view>
                         </subviews>
-                        <color key="backgroundColor" red="0.94117647058823528" green="0.98039215686274506" blue="0.98039215686274506" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="nEY-Aq-WHY" firstAttribute="top" secondItem="C6e-yE-m7f" secondAttribute="bottom" constant="-64" id="506-N4-ybM"/>
-                            <constraint firstItem="rMN-8Y-JdC" firstAttribute="height" secondItem="6pV-S1-0Fg" secondAttribute="height" constant="-64" id="FFX-hG-ykn"/>
-                            <constraint firstItem="nEY-Aq-WHY" firstAttribute="leading" secondItem="6pV-S1-0Fg" secondAttribute="leading" id="UsF-K8-h1p"/>
-                            <constraint firstItem="TUW-bL-NIJ" firstAttribute="top" secondItem="nEY-Aq-WHY" secondAttribute="bottom" id="X6t-JB-ltC"/>
-                            <constraint firstAttribute="trailing" secondItem="nEY-Aq-WHY" secondAttribute="trailing" id="wTv-lF-wEs"/>
+                            <constraint firstAttribute="trailing" secondItem="uHa-Wj-zmk" secondAttribute="trailing" id="28g-X1-BfE"/>
+                            <constraint firstItem="NYu-gY-htU" firstAttribute="top" secondItem="uHa-Wj-zmk" secondAttribute="bottom" id="A0H-tf-f1q"/>
+                            <constraint firstItem="uHa-Wj-zmk" firstAttribute="leading" secondItem="i8e-WX-mvg" secondAttribute="leading" id="C9F-WM-5IT"/>
+                            <constraint firstItem="uHa-Wj-zmk" firstAttribute="top" secondItem="i8e-WX-mvg" secondAttribute="top" id="ps8-Qk-MZR"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="Comentario" id="7Ad-JO-3Dg">
-                        <barButtonItem key="leftBarButtonItem" title="Cancelar" id="R5g-XD-ptX">
-                            <connections>
-                                <action selector="closeModal:" destination="Vmo-wg-4Or" id="Lf8-fd-WyQ"/>
-                            </connections>
-                        </barButtonItem>
-                    </navigationItem>
+                    <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+                    <size key="freeformSize" width="300" height="170"/>
                     <connections>
-                        <outlet property="commentTextView" destination="ysA-hv-IiK" id="krd-w7-UY6"/>
-                        <outlet property="happyFaceButton" destination="YlV-wV-Ejb" id="DHO-I6-Bbc"/>
-                        <outlet property="sadFaceButton" destination="VIg-69-Z6F" id="k3t-Zo-2cq"/>
-                        <outlet property="scrollView" destination="nEY-Aq-WHY" id="wC3-EH-VhC"/>
-                        <outlet property="submitButton" destination="dOF-jn-Hxq" id="a67-aT-vlf"/>
+                        <outlet property="commentTextView" destination="7ba-lG-cfC" id="mqR-T2-wZQ"/>
+                        <outlet property="happyMoodImageView" destination="jdF-DJ-QWG" id="DU7-VX-yjD"/>
+                        <outlet property="sadMoodImageView" destination="mgQ-cA-QGg" id="ogZ-1X-lym"/>
                     </connections>
                 </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="5F8-Kd-rwR" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="vsn-fM-Wre" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="Tov-BL-ZyA">
+                    <connections>
+                        <action selector="pressHappyButton:" destination="0Dh-8O-tZ6" id="g0S-hD-Z6s"/>
+                    </connections>
+                </tapGestureRecognizer>
+                <tapGestureRecognizer id="YKE-c9-GN7">
+                    <connections>
+                        <action selector="pressSadButton:" destination="0Dh-8O-tZ6" id="382-gW-cr3"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="2960" y="817"/>
+            <point key="canvasLocation" x="2823" y="1599"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="5Mj-Iq-76W">
@@ -2105,9 +2085,6 @@ El voluntariado comprende actividades asistenciales de servicios sociales, cívi
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
-                    <connections>
-                        <segue destination="Vmo-wg-4Or" kind="relationship" relationship="rootViewController" id="xhn-au-AAs"/>
-                    </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Y07-yn-zqA" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

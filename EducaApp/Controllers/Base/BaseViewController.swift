@@ -20,7 +20,7 @@ class BaseViewController: UIViewController, SWRevealViewControllerDelegate {
   
   override func viewDidLoad() {
     super.viewDidLoad()
-    setupAppColors()
+    setupNavigationBar()
     setupBarButtonItem()
   }
   
@@ -43,7 +43,7 @@ class BaseViewController: UIViewController, SWRevealViewControllerDelegate {
   
   // MARK: - Private
   
-  func setupAppColors() {
+  func setupNavigationBar() {
     UIApplication.sharedApplication().setStatusBarStyle(UIStatusBarStyle.LightContent, animated: false)
     view.backgroundColor = UIColor.defaultBackgroundColor()
     navigationController?.navigationBar.barTintColor = UIColor.defaultTextColor()
