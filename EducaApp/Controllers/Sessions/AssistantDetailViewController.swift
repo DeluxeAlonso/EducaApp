@@ -8,17 +8,31 @@
 
 import UIKit
 
+let SearchSelector: Selector = "showSearchBar:"
+let AdvancedSearchSelector: Selector = "showAdvancedSearchPopup:"
 let SessionCommentCellIdentifier = "SessionCommentCell"
 let CollapseSectionHeaderViewIdentifier = "CollapseHeader"
+let CollectionHeaderViewNibName = "CollapseSectionHeaderView"
 let SendAssistantCommentViewIdentifier = "SendAssistantCommentViewController"
+let AssistantCommentsFilterViewIdentifier = "AssistantCommentsFilterViewController"
 
-class AssistantDetailViewController: BaseViewController, UITableViewDataSource, UITableViewDelegate, UIPopoverPresentationControllerDelegate, CollapseSectionHeaderViewDelegate {
+class AssistantDetailViewController: BaseViewController, UITableViewDataSource, UITableViewDelegate, UIPopoverPresentationControllerDelegate, CollapseSectionHeaderViewDelegate, UISearchBarDelegate {
   
   @IBOutlet weak var tableView: UITableView!
   @IBOutlet weak var genderLabel: UILabel!
   @IBOutlet weak var ageLabel: UILabel!
   @IBOutlet weak var dateLabel: UILabel!
   @IBOutlet weak var sessionCountLabel: UILabel!
+  @IBOutlet weak var commentViewLabel: UILabel!
+  @IBOutlet weak var searchBarButtonItem: UIBarButtonItem!
+  
+  @IBOutlet weak var heightConstraint: NSLayoutConstraint!
+  
+  let commentViewText = "Comentarios"
+  
+  var searchBar = UISearchBar()
+  var simpleSearchBarButtonItem = UIBarButtonItem()
+  var advanceSearchBarButtonItem = UIBarButtonItem()
   
   var assistant: String?
   var sections: NSMutableArray = ["16/09/2015", "01/09/2015"]
@@ -26,11 +40,20 @@ class AssistantDetailViewController: BaseViewController, UITableViewDataSource, 
   
   var popupViewController: STPopupController?
   
+  var isKeyboardVisible = false
+  var initialHeightConstant: CGFloat!
+  
+  // MARK: - Lifecycle
+  
+  deinit {
+    NSNotificationCenter.defaultCenter().removeObserver(self, name: UIKeyboardWillShowNotification, object: nil)
+    NSNotificationCenter.defaultCenter().removeObserver(self, name: UIKeyboardWillHideNotification, object: nil)
+  }
+  
   override func awakeFromNib() {
     for section in sections {
-        self.collapseSectionsInfo.append(CollapseSectionModel(sectionName: section as! String, section: sections.indexOfObject(section), open: true));
+        self.collapseSectionsInfo.append(CollapseSectionModel(sectionName: section as! String, section: sections.indexOfObject(section), open: true))
     }
-
   }
   
   override func viewDidLoad() {
@@ -46,8 +69,25 @@ class AssistantDetailViewController: BaseViewController, UITableViewDataSource, 
   
   private func setupElements() {
     title = assistant
+    setupObservers()
     setupLabels()
+    setupSearchBar()
     setupTableView()
+  }
+  
+  private func setupObservers() {
+    NSNotificationCenter.defaultCenter().addObserver(self, selector: "keyboardWillShow:", name: UIKeyboardWillShowNotification, object: nil)
+    NSNotificationCenter.defaultCenter().addObserver(self, selector: "keyboardWillHide:", name: UIKeyboardWillHideNotification, object: nil)
+  }
+  
+  override func setupBarButtonItem() {
+    super.setupBarButtonItem()
+    simpleSearchBarButtonItem.image = UIImage(named: "SearchIcon")
+    simpleSearchBarButtonItem.target = self
+    simpleSearchBarButtonItem.action = SearchSelector
+    advanceSearchBarButtonItem.image = UIImage(named: "AdvancedSearchIcon")
+    advanceSearchBarButtonItem.target = self
+    advanceSearchBarButtonItem.action = AdvancedSearchSelector
   }
   
   private func setupLabels() {
@@ -57,6 +97,13 @@ class AssistantDetailViewController: BaseViewController, UITableViewDataSource, 
     sessionCountLabel.textColor = UIColor.defaultSmallTextColor()
   }
   
+  private func setupSearchBar() {
+    initialHeightConstant = heightConstraint.constant
+    searchBar.delegate = self
+    self.searchBar.showsCancelButton = true
+    searchBar.searchBarStyle = UISearchBarStyle.Default
+  }
+  
   private func setupTableView() {
     setupTableViewHeader()
     self.tableView.estimatedRowHeight = 64
@@ -64,7 +111,7 @@ class AssistantDetailViewController: BaseViewController, UITableViewDataSource, 
   }
   
   private func setupTableViewHeader() {
-    let sectionHeader = UINib(nibName: "CollapseSectionHeaderView", bundle: nil)
+    let sectionHeader = UINib(nibName: CollectionHeaderViewNibName, bundle: nil)
     self.tableView.registerNib(sectionHeader, forHeaderFooterViewReuseIdentifier: CollapseSectionHeaderViewIdentifier)
   }
   
@@ -92,9 +139,29 @@ class AssistantDetailViewController: BaseViewController, UITableViewDataSource, 
     STPopupNavigationBar.appearance().titleTextAttributes = [NSForegroundColorAttributeName: UIColor.whiteColor(), NSFontAttributeName: UIFont(name: "HelveticaNeue-Light", size: 17) ?? UIFont.systemFontOfSize(17)]
   }
   
+  private func hideSearchBar() {
+    let duration = 0.3
+    searchBar.resignFirstResponder()
+    setupSearchButton()
+    UIView.animateWithDuration(duration, animations: {
+      self.navigationItem.titleView?.alpha = 0
+      }, completion: { finished in
+        self.navigationItem.title = self.assistant
+        self.navigationItem.titleView = nil
+    })
+  }
+  
+  private func setupSearchButton() {
+    navigationItem.setRightBarButtonItem(simpleSearchBarButtonItem, animated: true)
+  }
+  
+  private func setupAdvancedSearchButton() {
+    navigationItem.setRightBarButtonItem(advanceSearchBarButtonItem, animated: true)
+  }
+  
   // MARK: - Public
   
-  func dismissSendCommentPopup() {
+  func dismissPopup() {
     popupViewController!.dismiss()
   }
   
@@ -105,9 +172,65 @@ class AssistantDetailViewController: BaseViewController, UITableViewDataSource, 
     viewController.assistant = assistant
     viewController.delegate = self
     setupPopupNavigationBar()
-
     popupViewController = STPopupController(rootViewController: viewController)
     popupViewController!.presentInViewController(self)
+  }
+  
+  @IBAction func showSearchBar(sender: AnyObject) {
+    navigationItem.titleView = searchBar
+    searchBar.alpha = 0
+    setupAdvancedSearchButton()
+    UIView.animateWithDuration(0.5, animations: {
+      self.searchBar.alpha = 1
+      self.searchBar.becomeFirstResponder()
+      }, completion: { finished in
+        
+    })
+  }
+  
+  @IBAction func showAdvancedSearchPopup(sender: AnyObject) {
+    let viewController = self.storyboard?.instantiateViewControllerWithIdentifier(AssistantCommentsFilterViewIdentifier) as! AssistantCommentsFilterViewController
+    viewController.delegate = self
+    setupPopupNavigationBar()
+    popupViewController = STPopupController(rootViewController: viewController)
+    popupViewController!.presentInViewController(self)
+  }
+  
+  // MARK: - Notifications
+  
+  func keyboardWillShow(notification: NSNotification) {
+    guard !isKeyboardVisible else {
+      return
+    }
+    isKeyboardVisible = true
+    view.layoutIfNeeded()
+    if let keyboardFrame: CGRect = (notification.userInfo?[UIKeyboardFrameEndUserInfoKey] as? NSValue)?.CGRectValue() {
+      heightConstraint.constant = 0
+      view.layoutIfNeeded()
+      var contentInset = tableView.contentInset
+      var scrollIndicatorInset = tableView.scrollIndicatorInsets
+      let bottomInset = keyboardFrame.size.height
+      contentInset.bottom = bottomInset
+      scrollIndicatorInset.bottom = bottomInset
+      tableView.contentInset = contentInset
+      tableView.scrollIndicatorInsets = scrollIndicatorInset
+    }
+  }
+  
+  func keyboardWillHide(notification: NSNotification) {
+    guard isKeyboardVisible else {
+      return
+    }
+    isKeyboardVisible = false
+    view.layoutIfNeeded()
+    heightConstraint.constant = initialHeightConstant
+    view.layoutIfNeeded()
+    var inset = tableView.contentInset
+    inset.top = topLayoutGuide.length - (initialHeightConstant / 2)
+    inset.bottom = bottomLayoutGuide.length
+    tableView.contentInset = inset
+    tableView.scrollIndicatorInsets = inset
+    view.endEditing(true)
   }
   
   // MARK: - UITableViewDataSource
@@ -200,6 +323,12 @@ class AssistantDetailViewController: BaseViewController, UITableViewDataSource, 
     self.tableView.beginUpdates()
     self.tableView.deleteRowsAtIndexPaths(indexPathsToDelete, withRowAnimation:UITableViewRowAnimation.Top)
     self.tableView.endUpdates()
+  }
+  
+  //MARK: - UISearchBarDelegate
+  
+  func searchBarCancelButtonClicked(searchBar: UISearchBar) {
+    hideSearchBar()
   }
   
 }

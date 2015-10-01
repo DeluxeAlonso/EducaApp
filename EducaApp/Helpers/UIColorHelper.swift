@@ -46,4 +46,8 @@ extension UIColor {
     return UIColor.colorWithR(231, green: 76, blue: 60, alpha: 1)
   }
   
+  class func defaultFilterBorderField() -> UIColor {
+    return UIColor.colorWithR(199, green: 199, blue: 204, alpha: 1)
+  }
+  
 }

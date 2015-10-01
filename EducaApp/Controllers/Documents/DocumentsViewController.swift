@@ -9,16 +9,19 @@
 import UIKit
 
 let kDocumentCellIdentifier = "DocumentCell"
+let DocumentsNavigationItemTitle = "Documentos"
 
-class DocumentsViewController: BaseViewController, UITableViewDataSource, UITableViewDelegate, DocumentTableViewCellDelegate {
+class DocumentsViewController: BaseViewController, UITableViewDataSource, UITableViewDelegate, DocumentTableViewCellDelegate, UISearchBarDelegate {
   
+  @IBOutlet weak var searchBarButtonItem: UIBarButtonItem!
   @IBOutlet weak var shadowView: UIView!
   @IBOutlet weak var menuContentView: UIView!
-  
   @IBOutlet weak var menuHeightConstraint: NSLayoutConstraint!
+  
   var session:Session?
   var documents: NSMutableArray = []
   var initialHeightConstraintConstant: CGFloat?
+  var searchBar = UISearchBar()
   
   override func viewDidLoad() {
     super.viewDidLoad()
@@ -33,6 +36,7 @@ class DocumentsViewController: BaseViewController, UITableViewDataSource, UITabl
   
   private func setupElements() {
     setupBarButtonItem()
+    setupSearchBar()
     setupMenuView()
     getDocuments()
   }
@@ -42,9 +46,15 @@ class DocumentsViewController: BaseViewController, UITableViewDataSource, UITabl
     if self.revealViewController() != nil && session == nil {
       let menuIcon = UIBarButtonItem(title: nil, style: UIBarButtonItemStyle.Plain, target: self.revealViewController(), action: kBarButtonSelector)
       menuIcon.image = UIImage(named: "MenuIcon")
-      self.navigationItem.leftBarButtonItem = menuIcon
+      self.navigationItem.setLeftBarButtonItem(menuIcon, animated: false)
     }
     self.view.addGestureRecognizer(self.revealViewController().panGestureRecognizer())
+  }
+  
+  private func setupSearchBar() {
+    searchBar.delegate = self
+    self.searchBar.showsCancelButton = true
+    searchBar.searchBarStyle = UISearchBarStyle.Default
   }
   
   private func setupMenuView() {
@@ -65,6 +75,7 @@ class DocumentsViewController: BaseViewController, UITableViewDataSource, UITabl
   }
   
   private func showMenuView() {
+    hideSearchBarAnimated(false)
     self.shadowView.translatesAutoresizingMaskIntoConstraints = true
     self.menuContentView.translatesAutoresizingMaskIntoConstraints = true
     self.navigationController?.interactivePopGestureRecognizer?.enabled = false
@@ -83,6 +94,18 @@ class DocumentsViewController: BaseViewController, UITableViewDataSource, UITabl
     self.menuContentView.frame = CGRect(x: self.menuContentView.frame.origin.x, y: self.menuContentView.frame.origin.y + self.initialHeightConstraintConstant!, width: self.menuContentView.frame.width, height: self.initialHeightConstraintConstant!)
   }
   
+  private func hideSearchBarAnimated(animated: Bool) {
+    let duration = animated ? 0.3 : 0
+    searchBar.resignFirstResponder()
+    UIView.animateWithDuration(duration, animations: {
+      self.navigationItem.titleView?.alpha = 0
+      }, completion: { finished in
+          self.setupBarButtonItem()
+          self.navigationItem.title = DocumentsNavigationItemTitle
+          self.navigationItem.titleView = nil
+    })
+  }
+  
   // MARK: - Actions
   
   @IBAction func goBack(sender: AnyObject) {
@@ -94,6 +117,16 @@ class DocumentsViewController: BaseViewController, UITableViewDataSource, UITabl
     UIView.animateWithDuration(0.25, delay: 0.0, options: UIViewAnimationOptions.CurveEaseOut, animations: {
       self.hideMenuViewWithoutAnimation()
       }, completion: nil)
+  }
+  
+  @IBAction func showSearchBar(sender: AnyObject) {
+    navigationItem.titleView = searchBar
+    searchBar.alpha = 0
+    UIView.animateWithDuration(0.5, animations: {
+      self.searchBar.alpha = 1
+      self.searchBar.becomeFirstResponder()
+      }, completion: { finished in
+    })
   }
   
   // MARK: - UITableViewDataSource
@@ -123,6 +156,12 @@ class DocumentsViewController: BaseViewController, UITableViewDataSource, UITabl
   
   func documentTableViewCell(documentTableViewCell: DocumentTableViewCell, menuButtonDidTapped button: UIButton) {
     showMenuView()
+  }
+  
+  //MARK: - UISearchBarDelegate
+  
+  func searchBarCancelButtonClicked(searchBar: UISearchBar) {
+    hideSearchBarAnimated(true)
   }
   
 }

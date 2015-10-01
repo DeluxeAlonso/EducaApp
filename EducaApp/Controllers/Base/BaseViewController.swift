@@ -44,6 +44,7 @@ class BaseViewController: UIViewController, SWRevealViewControllerDelegate {
   // MARK: - Private
   
   func setupNavigationBar() {
+    navigationController?.navigationItem.backBarButtonItem?.title = ""
     UIApplication.sharedApplication().setStatusBarStyle(UIStatusBarStyle.LightContent, animated: false)
     view.backgroundColor = UIColor.defaultBackgroundColor()
     navigationController?.navigationBar.barTintColor = UIColor.defaultTextColor()

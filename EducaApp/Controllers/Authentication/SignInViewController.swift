@@ -31,8 +31,8 @@ class SignInViewController: UIViewController, UITextFieldDelegate {
   lazy var dataLayer = DataLayer()
   var isKeyboardVisible = false
   
-  let kAlertMessageTitle = "Error"
-  let kEmptyUsernamePasswordMessage = "Username and Password cannot be blank."
+  let AlertMessageTitle = "Error"
+  let EmptyUsernamePasswordMessage = "Username and Password cannot be blank."
   
   // MARK: - Lifecycle
   
@@ -76,7 +76,7 @@ class SignInViewController: UIViewController, UITextFieldDelegate {
   }
   
   private func showEmptyUsernameOrPasswordAlert() {
-    let alertController = UIAlertController(title: kAlertMessageTitle, message: kEmptyUsernamePasswordMessage, preferredStyle: UIAlertControllerStyle.Alert)
+    let alertController = UIAlertController(title: AlertMessageTitle, message: EmptyUsernamePasswordMessage, preferredStyle: UIAlertControllerStyle.Alert)
     
     let defaultAction = UIAlertAction(title: "OK", style: .Default, handler: nil)
     alertController.addAction(defaultAction)

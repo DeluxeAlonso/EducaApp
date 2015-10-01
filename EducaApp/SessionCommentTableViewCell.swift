@@ -37,8 +37,8 @@ class SessionCommentTableViewCell: UITableViewCell {
     let longString: String = comment.fullComment
     let stringToBold = "\((comment.author)!):"
     let stringToBoldRange = (longString as NSString).rangeOfString(stringToBold)
-    let attributedString = NSMutableAttributedString(string: longString, attributes: [NSFontAttributeName : UIFont(name: "HelveticaNeue-Light", size: 15) ?? UIFont.systemFontOfSize(15.0)])
-    attributedString.setAttributes([NSFontAttributeName : UIFont(name: "HelveticaNeue-Regular", size: 15) ?? UIFont.systemFontOfSize(15.0), NSForegroundColorAttributeName : UIColor.defaultTextColor()], range: stringToBoldRange)
+    let attributedString = NSMutableAttributedString(string: longString, attributes: [NSFontAttributeName : UIFont.lightFontWithFontSize(15.0)])
+    attributedString.setAttributes([NSFontAttributeName : UIFont.regularFontWithFontSize(15.0), NSForegroundColorAttributeName : UIColor.defaultTextColor()], range: stringToBoldRange)
     volunteerNameLabel.attributedText = attributedString
   }
 }
