@@ -8,17 +8,17 @@
 
 import UIKit
 
-let kVolunteerCellIdentifier = "VolunteerCell"
+let VolunteerCellIdentifier = "VolunteerCell"
 
 class VolunteersViewController: BaseViewController, UITableViewDataSource, UITableViewDelegate {
   
   @IBOutlet weak var tableView: UITableView!
   
+  let UncheckImageName = "UncheckMark"
+  let CheckImageName = "CheckAssistanceIcon"
+  
   var volunteers: NSMutableArray = ["Alonso Alvarez", "Daekef Abarca", "Diego Malpartida","Fernando Banda", "Gabriel Tovar", "Gloria Cisneros", "Luis Barcena", "Luis Incio"]
   var checkedVolunteers: NSMutableArray = []
-  
-  let uncheckImageName = "UncheckMark"
-  let checkImageName = "CheckAssistanceIcon"
   
   // MARK: - Lifecycle
   
@@ -42,12 +42,12 @@ class VolunteersViewController: BaseViewController, UITableViewDataSource, UITab
   }
   
   func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-    let cell = tableView.dequeueReusableCellWithIdentifier(kVolunteerCellIdentifier, forIndexPath: indexPath) as! VolunteerTableViewCell
+    let cell = tableView.dequeueReusableCellWithIdentifier(VolunteerCellIdentifier, forIndexPath: indexPath) as! VolunteerTableViewCell
     cell.setupVolunteer(volunteers[indexPath.row] as! String)
     if checkedVolunteers.containsObject(volunteers[indexPath.row]) {
-      cell.setupVolunteerWithImage(checkImageName, animated: false)
+      cell.setupVolunteerWithImage(CheckImageName, animated: false)
     } else {
-      cell.setupVolunteerWithImage(uncheckImageName, animated: false)
+      cell.setupVolunteerWithImage(UncheckImageName, animated: false)
     }
     return cell
   }
@@ -60,10 +60,10 @@ class VolunteersViewController: BaseViewController, UITableViewDataSource, UITab
     let selectedCell = tableView.cellForRowAtIndexPath(indexPath) as! VolunteerTableViewCell
     if checkedVolunteers.containsObject(selectedName) {
       checkedVolunteers.removeObject(selectedName)
-      selectedCell.setupVolunteerWithImage(uncheckImageName, animated: true)
+      selectedCell.setupVolunteerWithImage(UncheckImageName, animated: true)
     } else {
       checkedVolunteers.addObject(selectedName)
-      selectedCell.setupVolunteerWithImage(checkImageName, animated: true)
+      selectedCell.setupVolunteerWithImage(CheckImageName, animated: true)
     }
   }
   

@@ -10,6 +10,7 @@ import UIKit
 
 class SortingFilterTableViewCell: UITableViewCell {
   
+  @IBOutlet weak var fieldNameLabel: UILabel!
   @IBOutlet weak var sortingTypeLabel: UILabel!
   
   // MARK - Lifecycle
@@ -31,5 +32,11 @@ class SortingFilterTableViewCell: UITableViewCell {
     sortingTypeLabel.textColor = UIColor.defaultFilterBorderField()
   }
   
+  // MARK: - Public
+  
+  func setupFieldNameLabel(fieldName: String, fieldType: String) {
+    fieldNameLabel.text = fieldName
+    sortingTypeLabel.text = fieldType
+  }
   
 }

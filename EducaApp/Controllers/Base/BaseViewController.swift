@@ -14,6 +14,8 @@ class BaseViewController: UIViewController, SWRevealViewControllerDelegate {
   
   @IBOutlet weak var menuIcon: UIBarButtonItem!
   
+  let MenuIconImageName = "MenuIcon"
+  
   var tapGesture: UITapGestureRecognizer?
   
   // MARK: - Lifecycle
@@ -26,14 +28,16 @@ class BaseViewController: UIViewController, SWRevealViewControllerDelegate {
   
   override func viewWillAppear(animated: Bool) {
     super.viewWillAppear(true)
+    view.endEditing(true)
     setupPanGesture()
   }
   
   override func viewWillDisappear(animated: Bool) {
-    if let recognizers = self.view.gestureRecognizers {
-      for recognizer in recognizers {
-        self.view.removeGestureRecognizer(recognizer)
-      }
+    guard let recognizers = self.view.gestureRecognizers else {
+      return
+    }
+    for recognizer in recognizers {
+      self.view.removeGestureRecognizer(recognizer)
     }
   }
   
@@ -41,7 +45,7 @@ class BaseViewController: UIViewController, SWRevealViewControllerDelegate {
     super.didReceiveMemoryWarning()
   }
   
-  // MARK: - Private
+  // MARK: - Public
   
   func setupNavigationBar() {
     navigationController?.navigationItem.backBarButtonItem?.title = ""
@@ -60,6 +64,8 @@ class BaseViewController: UIViewController, SWRevealViewControllerDelegate {
     }
   }
   
+  // MARK: - Private
+  
   private func setupPanGesture() {
     self.revealViewController().delegate = self
     if self.revealViewController() != nil {
@@ -71,6 +77,7 @@ class BaseViewController: UIViewController, SWRevealViewControllerDelegate {
   
   func revealController(revealController: SWRevealViewController!, willMoveToPosition position: FrontViewPosition) {
     if position == FrontViewPosition.Right {
+      view.endEditing(true)
       UIApplication.sharedApplication().setStatusBarStyle(UIStatusBarStyle.Default, animated: true)
     } else if position == FrontViewPosition.Left {
       UIApplication.sharedApplication().setStatusBarStyle(UIStatusBarStyle.LightContent, animated: true)

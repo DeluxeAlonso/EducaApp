@@ -17,12 +17,14 @@ let SortingFilterCellIdentifier = "SortingFilterCell"
 
 let AssistantCommentFilterTitle = "Búsqueda"
 
-let FilterCellHeight: CGFloat = 212
-
 class AssistantCommentsFilterViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
   
   let rightBarButtonItemTitle = "Buscar"
   let advancedSearchSelector: Selector = "advancedSearch:"
+  let sortingOptions = ["Más Actual", "Más Antiguo"]
+  let sortingViewControllerTitle = "Ordenar por"
+  
+  let popupHeight: CGFloat = 212
   
   var delegate: UIViewController?
   
@@ -31,7 +33,7 @@ class AssistantCommentsFilterViewController: UIViewController, UITableViewDataSo
   override func viewDidLoad() {
     super.viewDidLoad()
     setupNavigationBar()
-    self.contentSizeInPopup = CGSizeMake(300, FilterCellHeight)
+    self.contentSizeInPopup = CGSizeMake(300, popupHeight)
   }
   
   override func didReceiveMemoryWarning() {
@@ -47,11 +49,15 @@ class AssistantCommentsFilterViewController: UIViewController, UITableViewDataSo
   
   private func goToDatePickerView() {
     let viewController = self.storyboard?.instantiateViewControllerWithIdentifier(DatePickerViewControllerIdentifier) as! DateFilterViewController
+    viewController.height = popupHeight
     self.popupController?.pushViewController(viewController, animated: true)
   }
   
   private func goToSortSelection() {
     let viewController = self.storyboard?.instantiateViewControllerWithIdentifier(SortingFilterViewControllerIdentifier) as! SortingFilterViewController
+    viewController.height = popupHeight
+    viewController.sortingOptions = sortingOptions
+    viewController.viewTitle = sortingViewControllerTitle
     self.popupController?.pushViewController(viewController, animated: true)
   }
   
@@ -62,6 +68,10 @@ class AssistantCommentsFilterViewController: UIViewController, UITableViewDataSo
       (delegate as! AssistantDetailViewController).dismissPopup()
     } else if delegate is UsersViewController {
       (delegate as! UsersViewController).dismissPopup()
+    } else if delegate is PostsViewController {
+      (delegate as! PostsViewController).dismissPopup()
+    } else if delegate is StudentsViewController {
+      (delegate as! StudentsViewController).dismissPopup()
     }
   }
   

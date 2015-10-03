@@ -70,7 +70,7 @@ class SendAssistantCommentViewController: UIViewController {
   // MARK: - Actions
   
   @IBAction func sendMessage(sender: AnyObject) {
-    delegate?.dismissPopup()
+    delegate?.dismissSendCommentPopup()
   }
   
   @IBAction func pressHappyButton(sender: AnyObject) {

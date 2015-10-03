@@ -31,6 +31,7 @@ class SignInViewController: UIViewController, UITextFieldDelegate {
   lazy var dataLayer = DataLayer()
   var isKeyboardVisible = false
   
+  let SignInButtonTitle = "Iniciar Sesión"
   let AlertMessageTitle = "Error"
   let EmptyUsernamePasswordMessage = "Username and Password cannot be blank."
   
@@ -77,10 +78,8 @@ class SignInViewController: UIViewController, UITextFieldDelegate {
   
   private func showEmptyUsernameOrPasswordAlert() {
     let alertController = UIAlertController(title: AlertMessageTitle, message: EmptyUsernamePasswordMessage, preferredStyle: UIAlertControllerStyle.Alert)
-    
     let defaultAction = UIAlertAction(title: "OK", style: .Default, handler: nil)
     alertController.addAction(defaultAction)
-    
     presentViewController(alertController, animated: true, completion: nil)
   }
   
@@ -88,7 +87,7 @@ class SignInViewController: UIViewController, UITextFieldDelegate {
     loaderIndicator?.stopActivity()
     loaderIndicator?.hidden = true
     signInButton.userInteractionEnabled = true
-    signInButton.setTitle("Iniciar Sesión", forState: UIControlState.Normal)
+    signInButton.setTitle(SignInButtonTitle, forState: UIControlState.Normal)
   }
   
   private func disableSignInButton() {
@@ -114,15 +113,16 @@ class SignInViewController: UIViewController, UITextFieldDelegate {
       disableSignInButton()
       UserService.signInWithEmail(email, password: password, completion: {(responseObject: AnyObject?, error: NSError?) in
         self.enableSignInButton()
-        if let json = responseObject as? NSDictionary {
-          if json["error"] == nil {
-            let user = User.updateOrCreateWithJson(json, ctx: self.dataLayer.managedObjectContext!)
-            self.dataLayer.saveContext()
-            User.setAuthenticatedUser(user!)
-            NSNotificationCenter.defaultCenter().postNotificationName(Constants.Notification.SignIn, object: self, userInfo: nil)
-          } else {
+        guard let json = responseObject as? NSDictionary else {
+          return
+        }
+        if json["error"] == nil {
+          let user = User.updateOrCreateWithJson(json, ctx: self.dataLayer.managedObjectContext!)
+          self.dataLayer.saveContext()
+          User.setAuthenticatedUser(user!)
+          NSNotificationCenter.defaultCenter().postNotificationName(Constants.Notification.SignIn, object: self, userInfo: nil)
+        } else {
             //Show Error Message
-          }
         }
       })
     }

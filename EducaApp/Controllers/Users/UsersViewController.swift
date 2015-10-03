@@ -8,22 +8,22 @@
 
 import UIKit
 
-class UsersViewController: BaseViewController, UITableViewDataSource, UITableViewDelegate, UISearchBarDelegate {
+let UsersFilterViewControllerIdentifier = "UsersFilterViewController"
+let UserTableViewCellIdentifier = "UserCell"
+
+class UsersViewController: BaseFilterViewController, UITableViewDataSource, UITableViewDelegate {
   
-  @IBOutlet weak var searchBarButtonItem: UIBarButtonItem!
-  
-  var searchBar = UISearchBar()
-  
-  var simpleSearchBarButtonItem = UIBarButtonItem()
-  var advanceSearchBarButtonItem = UIBarButtonItem()
+  let UsersViewControllerTitle = "Usuarios"
   
   var popupViewController: STPopupController?
+  var document: Document?
+  var users: NSMutableArray = []
   
   // MARK: - Lifecycle
   
   override func viewDidLoad() {
     super.viewDidLoad()
-    setupElements()
+    getUsers()
   }
   
   override func didReceiveMemoryWarning() {
@@ -32,30 +32,30 @@ class UsersViewController: BaseViewController, UITableViewDataSource, UITableVie
 
   // MARK: - Private
   
-  private func setupElements() {
-    setupSearchBar()
-  }
-  
-  override func setupBarButtonItem() {
-    super.setupBarButtonItem()
-    simpleSearchBarButtonItem.image = UIImage(named: "SearchIcon")
-    simpleSearchBarButtonItem.target = self
-    simpleSearchBarButtonItem.action = SearchSelector
-    advanceSearchBarButtonItem.image = UIImage(named: "AdvancedSearchIcon")
-    advanceSearchBarButtonItem.target = self
-    advanceSearchBarButtonItem.action = AdvancedSearchSelector
-  }
-  
-  private func setupSearchBar() {
-    searchBar.delegate = self
-    self.searchBar.showsCancelButton = true
-    searchBar.searchBarStyle = UISearchBarStyle.Default
+  private func getUsers() {
+    for i in 0..<Int((Constants.MockData.UsersName.count)) {
+      let user = Student()
+      user.name = (Constants.MockData.UsersName[i] as? String)!
+      user.document = Constants.MockData.UsersDoc[i] as? String
+      users.addObject(user)
+    }
   }
   
   private func setupPopupNavigationBar() {
     STPopupNavigationBar.appearance().barTintColor = UIColor.defaultTextColor()
     STPopupNavigationBar.appearance().tintColor = UIColor.whiteColor()
-    STPopupNavigationBar.appearance().titleTextAttributes = [NSForegroundColorAttributeName: UIColor.whiteColor(), NSFontAttributeName: UIFont(name: "HelveticaNeue-Light", size: 17) ?? UIFont.systemFontOfSize(17)]
+    STPopupNavigationBar.appearance().titleTextAttributes = [NSForegroundColorAttributeName: UIColor.whiteColor(), NSFontAttributeName: UIFont.lightFontWithFontSize(17)]
+  }
+  
+  override func setupBarButtonItem() {
+    super.setupBarButtonItem()
+    print(document)
+    if self.revealViewController() != nil && document == nil {
+      let menuIcon = UIBarButtonItem(title: nil, style: UIBarButtonItemStyle.Plain, target: self.revealViewController(), action: kBarButtonSelector)
+      menuIcon.image = UIImage(named: MenuIconImageName)
+      self.navigationItem.setLeftBarButtonItem(menuIcon, animated: false)
+    }
+    self.view.addGestureRecognizer(self.revealViewController().panGestureRecognizer())
   }
   
   private func hideSearchBar() {
@@ -65,17 +65,9 @@ class UsersViewController: BaseViewController, UITableViewDataSource, UITableVie
     UIView.animateWithDuration(duration, animations: {
       self.navigationItem.titleView?.alpha = 0
       }, completion: { finished in
-        self.navigationItem.title = "Usuarios"
+        self.navigationItem.title = self.UsersViewControllerTitle
         self.navigationItem.titleView = nil
     })
-  }
-  
-  private func setupSearchButton() {
-    navigationItem.setRightBarButtonItem(simpleSearchBarButtonItem, animated: true)
-  }
-  
-  private func setupAdvancedSearchButton() {
-    navigationItem.setRightBarButtonItem(advanceSearchBarButtonItem, animated: true)
   }
   
   // MARK: - Public
@@ -99,7 +91,8 @@ class UsersViewController: BaseViewController, UITableViewDataSource, UITableVie
   }
   
   @IBAction func showAdvancedSearchPopup(sender: AnyObject) {
-    let viewController = self.storyboard?.instantiateViewControllerWithIdentifier(AssistantCommentsFilterViewIdentifier) as! AssistantCommentsFilterViewController
+    hideSearchBar()
+    let viewController = self.storyboard?.instantiateViewControllerWithIdentifier(UsersFilterViewControllerIdentifier) as! UsersFilterViewController
     viewController.delegate = self
     setupPopupNavigationBar()
     popupViewController = STPopupController(rootViewController: viewController)
@@ -111,12 +104,14 @@ class UsersViewController: BaseViewController, UITableViewDataSource, UITableVie
   func numberOfSectionsInTableView(tableView: UITableView) -> Int {
     return 1
   }
+  
   func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-    return 5
+    return users.count
   }
   
   func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-    let cell = tableView.dequeueReusableCellWithIdentifier("UserCell", forIndexPath: indexPath)
+    let cell = tableView.dequeueReusableCellWithIdentifier(UserTableViewCellIdentifier, forIndexPath: indexPath) as! UserTableViewCell
+    cell.setupUser(users[indexPath.row] as! Student)
     return cell
   }
   
@@ -127,7 +122,7 @@ class UsersViewController: BaseViewController, UITableViewDataSource, UITableVie
       return .None
   }
   
-  //MARK: - UISearchBarDelegate
+  // MARK: - UISearchBarDelegate
   
   func searchBarCancelButtonClicked(searchBar: UISearchBar) {
     hideSearchBar()

@@ -40,13 +40,14 @@ class VolunteerTableViewCell: UITableViewCell {
   
   func setupVolunteerWithImage(imageName: String, animated: Bool) {
     volunteerMarkImageView.image = UIImage(named: imageName)
-    if animated {
-      let transition: CATransition = CATransition()
-      transition.duration = 0.25
-      transition.timingFunction = CAMediaTimingFunction(name: kCAMediaTimingFunctionEaseInEaseOut)
-      transition.type = kCATransitionFade
-      volunteerMarkImageView.layer.addAnimation(transition, forKey: nil)
+    guard animated else {
+      return
     }
+    let transition: CATransition = CATransition()
+    transition.duration = 0.25
+    transition.timingFunction = CAMediaTimingFunction(name: kCAMediaTimingFunctionEaseInEaseOut)
+    transition.type = kCATransitionFade
+    volunteerMarkImageView.layer.addAnimation(transition, forKey: nil)
   }
   
 }

@@ -7,3 +7,4 @@
 #import "KeychainWrapper.h"
 #import "UIImageView+WebCache.h"
 #import <STPopup/STPopup.h>
+#import "NMRangeSlider.h"

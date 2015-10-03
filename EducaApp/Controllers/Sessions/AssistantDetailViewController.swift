@@ -16,7 +16,7 @@ let CollectionHeaderViewNibName = "CollapseSectionHeaderView"
 let SendAssistantCommentViewIdentifier = "SendAssistantCommentViewController"
 let AssistantCommentsFilterViewIdentifier = "AssistantCommentsFilterViewController"
 
-class AssistantDetailViewController: BaseViewController, UITableViewDataSource, UITableViewDelegate, UIPopoverPresentationControllerDelegate, CollapseSectionHeaderViewDelegate, UISearchBarDelegate {
+class AssistantDetailViewController: BaseFilterViewController, UITableViewDataSource, UITableViewDelegate, UIPopoverPresentationControllerDelegate, CollapseSectionHeaderViewDelegate {
   
   @IBOutlet weak var tableView: UITableView!
   @IBOutlet weak var genderLabel: UILabel!
@@ -24,22 +24,19 @@ class AssistantDetailViewController: BaseViewController, UITableViewDataSource, 
   @IBOutlet weak var dateLabel: UILabel!
   @IBOutlet weak var sessionCountLabel: UILabel!
   @IBOutlet weak var commentViewLabel: UILabel!
-  @IBOutlet weak var searchBarButtonItem: UIBarButtonItem!
   
   @IBOutlet weak var heightConstraint: NSLayoutConstraint!
   
   let commentViewText = "Comentarios"
-  
-  var searchBar = UISearchBar()
-  var simpleSearchBarButtonItem = UIBarButtonItem()
-  var advanceSearchBarButtonItem = UIBarButtonItem()
   
   var assistant: String?
   var sections: NSMutableArray = ["16/09/2015", "01/09/2015"]
   var collapseSectionsInfo:[CollapseSectionModel] = Array()
   
   var popupViewController: STPopupController?
+  var sendCommentPopupViewController: STPopupController?
   
+  var isSearchBarOpen = false
   var isKeyboardVisible = false
   var initialHeightConstant: CGFloat!
   
@@ -80,16 +77,6 @@ class AssistantDetailViewController: BaseViewController, UITableViewDataSource, 
     NSNotificationCenter.defaultCenter().addObserver(self, selector: "keyboardWillHide:", name: UIKeyboardWillHideNotification, object: nil)
   }
   
-  override func setupBarButtonItem() {
-    super.setupBarButtonItem()
-    simpleSearchBarButtonItem.image = UIImage(named: "SearchIcon")
-    simpleSearchBarButtonItem.target = self
-    simpleSearchBarButtonItem.action = SearchSelector
-    advanceSearchBarButtonItem.image = UIImage(named: "AdvancedSearchIcon")
-    advanceSearchBarButtonItem.target = self
-    advanceSearchBarButtonItem.action = AdvancedSearchSelector
-  }
-  
   private func setupLabels() {
     genderLabel.textColor = UIColor.defaultSmallTextColor()
     ageLabel.textColor = UIColor.defaultSmallTextColor()
@@ -97,11 +84,9 @@ class AssistantDetailViewController: BaseViewController, UITableViewDataSource, 
     sessionCountLabel.textColor = UIColor.defaultSmallTextColor()
   }
   
-  private func setupSearchBar() {
+  override internal func setupSearchBar() {
+    super.setupSearchBar()
     initialHeightConstant = heightConstraint.constant
-    searchBar.delegate = self
-    self.searchBar.showsCancelButton = true
-    searchBar.searchBarStyle = UISearchBarStyle.Default
   }
   
   private func setupTableView() {
@@ -136,10 +121,11 @@ class AssistantDetailViewController: BaseViewController, UITableViewDataSource, 
   private func setupPopupNavigationBar() {
     STPopupNavigationBar.appearance().barTintColor = UIColor.defaultTextColor()
     STPopupNavigationBar.appearance().tintColor = UIColor.whiteColor()
-    STPopupNavigationBar.appearance().titleTextAttributes = [NSForegroundColorAttributeName: UIColor.whiteColor(), NSFontAttributeName: UIFont(name: "HelveticaNeue-Light", size: 17) ?? UIFont.systemFontOfSize(17)]
+    STPopupNavigationBar.appearance().titleTextAttributes = [NSForegroundColorAttributeName: UIColor.whiteColor(), NSFontAttributeName: UIFont.lightFontWithFontSize(17)]
   }
   
   private func hideSearchBar() {
+    isSearchBarOpen = false
     let duration = 0.3
     searchBar.resignFirstResponder()
     setupSearchButton()
@@ -150,33 +136,31 @@ class AssistantDetailViewController: BaseViewController, UITableViewDataSource, 
         self.navigationItem.titleView = nil
     })
   }
-  
-  private func setupSearchButton() {
-    navigationItem.setRightBarButtonItem(simpleSearchBarButtonItem, animated: true)
-  }
-  
-  private func setupAdvancedSearchButton() {
-    navigationItem.setRightBarButtonItem(advanceSearchBarButtonItem, animated: true)
-  }
-  
+
   // MARK: - Public
   
   func dismissPopup() {
     popupViewController!.dismiss()
   }
   
+  func dismissSendCommentPopup() {
+    sendCommentPopupViewController!.dismiss()
+  }
+  
   // MARK: - Actions
   
   @IBAction func goToSendCommentSection(sender: AnyObject) {
+    hideSearchBar()
     let viewController = self.storyboard?.instantiateViewControllerWithIdentifier(SendAssistantCommentViewIdentifier) as! SendAssistantCommentViewController
     viewController.assistant = assistant
     viewController.delegate = self
     setupPopupNavigationBar()
-    popupViewController = STPopupController(rootViewController: viewController)
-    popupViewController!.presentInViewController(self)
+    sendCommentPopupViewController = STPopupController(rootViewController: viewController)
+    sendCommentPopupViewController!.presentInViewController(self)
   }
   
   @IBAction func showSearchBar(sender: AnyObject) {
+    isSearchBarOpen = true
     navigationItem.titleView = searchBar
     searchBar.alpha = 0
     setupAdvancedSearchButton()
@@ -189,6 +173,7 @@ class AssistantDetailViewController: BaseViewController, UITableViewDataSource, 
   }
   
   @IBAction func showAdvancedSearchPopup(sender: AnyObject) {
+    hideSearchBar()
     let viewController = self.storyboard?.instantiateViewControllerWithIdentifier(AssistantCommentsFilterViewIdentifier) as! AssistantCommentsFilterViewController
     viewController.delegate = self
     setupPopupNavigationBar()
@@ -199,7 +184,7 @@ class AssistantDetailViewController: BaseViewController, UITableViewDataSource, 
   // MARK: - Notifications
   
   func keyboardWillShow(notification: NSNotification) {
-    guard !isKeyboardVisible else {
+    guard !isKeyboardVisible && isSearchBarOpen else {
       return
     }
     isKeyboardVisible = true
@@ -268,9 +253,11 @@ class AssistantDetailViewController: BaseViewController, UITableViewDataSource, 
     if indexPath.section == 0 {
       comment.author = Constants.MockData.FirstBlockAuthors[indexPath.row] as? String
       comment.comment = Constants.MockData.FirstBlockComments[indexPath.row] as? String
+      comment.mood = Constants.MockData.FirstBlockMoods[indexPath.row] as? Int
     } else {
       comment.author = Constants.MockData.SecondBlockAuthors[indexPath.row] as? String
       comment.comment = Constants.MockData.SecondBlockComments[indexPath.row] as? String
+      comment.mood = Constants.MockData.SecondBlockMoods[indexPath.row] as? Int
     }
     cell.setupSessionComment(comment)
     return cell
@@ -284,9 +271,11 @@ class AssistantDetailViewController: BaseViewController, UITableViewDataSource, 
     if indexPath.section == 0 {
       comment.author = Constants.MockData.FirstBlockAuthors[indexPath.row] as? String
       comment.comment = Constants.MockData.FirstBlockComments[indexPath.row] as? String
+      comment.mood = Constants.MockData.FirstBlockMoods[indexPath.row] as? Int
     } else {
       comment.author = Constants.MockData.SecondBlockAuthors[indexPath.row] as? String
       comment.comment = Constants.MockData.SecondBlockComments[indexPath.row] as? String
+      comment.mood = Constants.MockData.SecondBlockMoods[indexPath.row] as? Int
     }
     let cell = tableView.cellForRowAtIndexPath(indexPath) as! SessionCommentTableViewCell
     if Util.needsPopoverPresentation(cell.volunteerNameLabel, string: comment.fullComment) {
@@ -325,7 +314,7 @@ class AssistantDetailViewController: BaseViewController, UITableViewDataSource, 
     self.tableView.endUpdates()
   }
   
-  //MARK: - UISearchBarDelegate
+  // MARK: - UISearchBarDelegate
   
   func searchBarCancelButtonClicked(searchBar: UISearchBar) {
     hideSearchBar()

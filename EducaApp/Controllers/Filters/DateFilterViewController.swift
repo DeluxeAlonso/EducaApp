@@ -13,10 +13,12 @@ class DateFilterViewController: UIViewController {
   let rightBarButtonItemTitle = "Seleccionar"
   let advancedSearchSelector: Selector = "selectDate:"
   
+  var height: CGFloat?
+  
   override func viewDidLoad() {
     super.viewDidLoad()
     setupNavigationBar()
-    self.contentSizeInPopup = CGSizeMake(300, FilterCellHeight)
+    self.contentSizeInPopup = CGSizeMake(300, height!)
   }
   
   override func didReceiveMemoryWarning() {

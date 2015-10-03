@@ -29,8 +29,8 @@ class ShowAssistantCommentViewController: UIViewController {
     let longString: String = comment.fullComment
     let stringToBold = "\((comment.author)!):"
     let stringToBoldRange = (longString as NSString).rangeOfString(stringToBold)
-    let attributedString = NSMutableAttributedString(string: longString, attributes: [NSFontAttributeName : UIFont(name: "HelveticaNeue-Light", size: 17) ?? UIFont.systemFontOfSize(17.0)])
-    attributedString.setAttributes([NSFontAttributeName : UIFont(name: "HelveticaNeue", size: 17) ?? UIFont.systemFontOfSize(17.0), NSForegroundColorAttributeName : UIColor.defaultTextColor()], range: stringToBoldRange)
+    let attributedString = NSMutableAttributedString(string: longString, attributes: [NSFontAttributeName : UIFont.lightFontWithFontSize(17)])
+    attributedString.setAttributes([NSFontAttributeName : UIFont.regularFontWithFontSize(17), NSForegroundColorAttributeName : UIColor.defaultTextColor()], range: stringToBoldRange)
     (self.view as! SessionCommentView).commentLabel.attributedText = attributedString
   }
   

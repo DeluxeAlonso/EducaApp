@@ -14,17 +14,26 @@ class SortingFilterViewController: UIViewController, UITableViewDataSource, UITa
   
   @IBOutlet weak var tableView: UITableView!
   
-  var sortingOptions = ["Más Actual", "Más Antiguo"]
+  var sortingOptions: NSArray?
+  var height: CGFloat?
+  var viewTitle: String?
   
   // MARK: - Lifecycle
   
   override func viewDidLoad() {
     super.viewDidLoad()
-    self.contentSizeInPopup = CGSizeMake(300, FilterCellHeight)
+    setupNavigationBar()
+    self.contentSizeInPopup = CGSizeMake(300, height!)
   }
   
   override func didReceiveMemoryWarning() {
     super.didReceiveMemoryWarning()
+  }
+  
+  // MARK: - Private
+  
+  private func setupNavigationBar() {
+    self.title = viewTitle
   }
   
   // MARK: - UITableViewDataSource
@@ -34,15 +43,17 @@ class SortingFilterViewController: UIViewController, UITableViewDataSource, UITa
   }
   
   func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-    return sortingOptions.count
+    return sortingOptions!.count
   }
   
   func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
     let cell = tableView.dequeueReusableCellWithIdentifier(SortingFilterCellIdentidifer, forIndexPath: indexPath) as! SortSelectionTableViewCell
-    cell.setupSortLabel(sortingOptions[indexPath.row])
+    cell.accessoryType = UITableViewCellAccessoryType.None
+    if indexPath.row == 0 {
+      cell.accessoryType = UITableViewCellAccessoryType.Checkmark
+    }
+    cell.setupSortLabel(sortingOptions?[indexPath.row] as! String)
     return cell
   }
-  
-  // MARK: - UITableViewDelegate
   
 }

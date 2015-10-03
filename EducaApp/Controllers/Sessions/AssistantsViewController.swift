@@ -8,15 +8,14 @@
 
 import UIKit
 
-let kAssistantCellIdentifier = "AssistantCell"
-
+let AssistantCellIdentifier = "AssistantCell"
 
 class AssistantsViewController: BaseViewController, UITableViewDataSource, UITableViewDelegate {
   
   @IBOutlet weak var customView: UIView!
   
-  let goToCommentViewSegueIdentifier = "ShowCommentSegue"
-  let goToDetailViewSegueIdentifier = "GoToAssistantDetail"
+  let GoToCommentViewSegueIdentifier = "ShowCommentSegue"
+  let GoToDetailViewSegueIdentifier = "GoToAssistantDetail"
   
   var assistants: NSMutableArray = ["Eduardo Arenas", "Julio Castillo", "Juan Reyes", "Kevin Brown", "Robert Aduviri"]
   var selectedCell: UITableViewCell?
@@ -37,11 +36,11 @@ class AssistantsViewController: BaseViewController, UITableViewDataSource, UITab
   
   private func goToCommentSection(tableView:UITableView, indexPath: NSIndexPath) {
     selectedCell = tableView.cellForRowAtIndexPath(indexPath) as! AssistantTableViewCell
-    self.performSegueWithIdentifier(goToCommentViewSegueIdentifier, sender: assistants[indexPath.row])
+    self.performSegueWithIdentifier(GoToCommentViewSegueIdentifier, sender: assistants[indexPath.row])
   }
   
   private func goToDetailSection(tableView:UITableView, indexPath: NSIndexPath) {
-    self.performSegueWithIdentifier(goToDetailViewSegueIdentifier, sender: assistants[indexPath.row])
+    self.performSegueWithIdentifier(GoToDetailViewSegueIdentifier, sender: assistants[indexPath.row])
   }
   
   // MARK: - Public
@@ -73,7 +72,7 @@ class AssistantsViewController: BaseViewController, UITableViewDataSource, UITab
   }
   
   func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-    let cell = tableView.dequeueReusableCellWithIdentifier(kAssistantCellIdentifier, forIndexPath: indexPath) as! AssistantTableViewCell
+    let cell = tableView.dequeueReusableCellWithIdentifier(AssistantCellIdentifier, forIndexPath: indexPath) as! AssistantTableViewCell
     cell.setupAssistant(assistants[indexPath.row] as! String)
     return cell
   }

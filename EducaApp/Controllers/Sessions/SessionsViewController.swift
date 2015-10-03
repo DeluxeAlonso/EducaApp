@@ -8,10 +8,10 @@
 
 import UIKit
 
-let kSessionsCellIdentifier =  "SessionCell"
-let kSessionDocumentsSegueIdentifier = "GoToDocumentsSegue"
-let kSessionVolunteersSegueIdentifier = "GoToVolunteersList"
-let kSessionAssistantsSegueIdentifier = "GoToAssistants"
+let SessionsCellIdentifier =  "SessionCell"
+let SessionDocumentsSegueIdentifier = "GoToDocumentsSegue"
+let SessionVolunteersSegueIdentifier = "GoToVolunteersList"
+let SessionAssistantsSegueIdentifier = "GoToAssistants"
 
 class SessionsViewController: BaseViewController, UITableViewDataSource, UITableViewDelegate, SessionTableViewCellDelegate {
   
@@ -23,6 +23,7 @@ class SessionsViewController: BaseViewController, UITableViewDataSource, UITable
   @IBOutlet weak var documentsView: UIView!
   @IBOutlet weak var mapView: UIView!
   @IBOutlet weak var registerView: UIView!
+  
   var initialHeightConstraintConstant: CGFloat?
   
   override func viewDidLoad() {
@@ -32,7 +33,6 @@ class SessionsViewController: BaseViewController, UITableViewDataSource, UITable
   
   override func viewWillLayoutSubviews() {
     super.viewWillLayoutSubviews()
-    
   }
   
   override func didReceiveMemoryWarning() {
@@ -45,7 +45,6 @@ class SessionsViewController: BaseViewController, UITableViewDataSource, UITable
     initialHeightConstraintConstant = menuHeightConstraint.constant
     menuContentView.clipsToBounds = true
     menuHeightConstraint.constant = 0
-    
   }
   
   private func showMenuView() {
@@ -75,7 +74,7 @@ class SessionsViewController: BaseViewController, UITableViewDataSource, UITable
   
   @IBAction func goToSessionDocuments(sender: AnyObject) {
     hideMenuViewWithoutAnimation()
-    performSegueWithIdentifier(kSessionDocumentsSegueIdentifier, sender: nil)
+    performSegueWithIdentifier(SessionDocumentsSegueIdentifier, sender: nil)
   }
   
   @IBAction func goToSessionMap(sender: AnyObject) {
@@ -83,12 +82,12 @@ class SessionsViewController: BaseViewController, UITableViewDataSource, UITable
   
   @IBAction func goToAssistantsList(sender: AnyObject) {
     hideMenuViewWithoutAnimation()
-    performSegueWithIdentifier(kSessionAssistantsSegueIdentifier, sender: nil)
+    performSegueWithIdentifier(SessionAssistantsSegueIdentifier, sender: nil)
   }
   
   @IBAction func goToVolunteersList(sender: AnyObject) {
     hideMenuViewWithoutAnimation()
-    performSegueWithIdentifier(kSessionVolunteersSegueIdentifier, sender: nil)
+    performSegueWithIdentifier(SessionVolunteersSegueIdentifier, sender: nil)
   }
   
   // MARK: - Navigation
@@ -111,7 +110,7 @@ class SessionsViewController: BaseViewController, UITableViewDataSource, UITable
   }
   
   func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-    let cell = tableView.dequeueReusableCellWithIdentifier(kSessionsCellIdentifier, forIndexPath: indexPath) as! SessionTableViewCell
+    let cell = tableView.dequeueReusableCellWithIdentifier(SessionsCellIdentifier, forIndexPath: indexPath) as! SessionTableViewCell
     cell.delegate = self
     return cell
   }

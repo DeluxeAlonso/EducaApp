@@ -13,6 +13,7 @@ let RotateLeftIconName = "RotateLeftIcon"
 
 class CameraViewController: BaseViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
   
+  @IBOutlet weak var pictureContainerView: UIView!
   @IBOutlet weak var pictureImageView: UIImageView!
   @IBOutlet weak var rotateLeftButton: UIButton!
   @IBOutlet weak var rotateRightButton: UIButton!
@@ -44,10 +45,10 @@ class CameraViewController: BaseViewController, UIImagePickerControllerDelegate,
   }
   
   private func setupImageView() {
-    pictureImageView.layer.shadowColor = UIColor.blackColor().CGColor
-    pictureImageView.layer.shadowOffset = CGSizeMake(1, 1)
-    pictureImageView.layer.shadowRadius = 5
-    pictureImageView.layer.shadowOpacity = 0.5
+    pictureContainerView.layer.shadowColor = UIColor.blackColor().CGColor
+    pictureContainerView.layer.shadowOffset = CGSizeMake(1, 1)
+    pictureContainerView.layer.shadowRadius = 5
+    pictureContainerView.layer.shadowOpacity = 0.5
   }
   
   private func enableButtons() {

@@ -12,6 +12,7 @@ public class SessionComment: NSObject {
 
   public var author: String?
   public var comment: String?
+  public var mood: Int?
   
   var fullComment: String {
     return "\(author!): \(comment!)"

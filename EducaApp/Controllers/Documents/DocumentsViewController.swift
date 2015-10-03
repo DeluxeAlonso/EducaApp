@@ -8,20 +8,20 @@
 
 import UIKit
 
-let kDocumentCellIdentifier = "DocumentCell"
+let DocumentCellIdentifier = "DocumentCell"
 let DocumentsNavigationItemTitle = "Documentos"
 
-class DocumentsViewController: BaseViewController, UITableViewDataSource, UITableViewDelegate, DocumentTableViewCellDelegate, UISearchBarDelegate {
+class DocumentsViewController: BaseFilterViewController, UITableViewDataSource, UITableViewDelegate, DocumentTableViewCellDelegate {
   
-  @IBOutlet weak var searchBarButtonItem: UIBarButtonItem!
   @IBOutlet weak var shadowView: UIView!
   @IBOutlet weak var menuContentView: UIView!
   @IBOutlet weak var menuHeightConstraint: NSLayoutConstraint!
   
+  let UserListSegueIdentifier = "GoToUserListSegue"
+  
   var session:Session?
   var documents: NSMutableArray = []
   var initialHeightConstraintConstant: CGFloat?
-  var searchBar = UISearchBar()
   
   override func viewDidLoad() {
     super.viewDidLoad()
@@ -45,16 +45,10 @@ class DocumentsViewController: BaseViewController, UITableViewDataSource, UITabl
     super.setupBarButtonItem()
     if self.revealViewController() != nil && session == nil {
       let menuIcon = UIBarButtonItem(title: nil, style: UIBarButtonItemStyle.Plain, target: self.revealViewController(), action: kBarButtonSelector)
-      menuIcon.image = UIImage(named: "MenuIcon")
+      menuIcon.image = UIImage(named: MenuIconImageName)
       self.navigationItem.setLeftBarButtonItem(menuIcon, animated: false)
     }
     self.view.addGestureRecognizer(self.revealViewController().panGestureRecognizer())
-  }
-  
-  private func setupSearchBar() {
-    searchBar.delegate = self
-    self.searchBar.showsCancelButton = true
-    searchBar.searchBarStyle = UISearchBarStyle.Default
   }
   
   private func setupMenuView() {
@@ -129,6 +123,20 @@ class DocumentsViewController: BaseViewController, UITableViewDataSource, UITabl
     })
   }
   
+  @IBAction func goToUsersList(sender: AnyObject) {
+    hideMenuViewWithoutAnimation()
+    performSegueWithIdentifier(UserListSegueIdentifier, sender: Document())
+  }
+  
+  // MARK: - Navigation
+  
+  override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+    if (segue.destinationViewController is UsersViewController) {
+      let destinationVC = segue.destinationViewController as! UsersViewController;
+      destinationVC.document = Document()
+    }
+  }
+  
   // MARK: - UITableViewDataSource
   
   func numberOfSectionsInTableView(tableView: UITableView) -> Int {
@@ -140,7 +148,7 @@ class DocumentsViewController: BaseViewController, UITableViewDataSource, UITabl
   }
   
   func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-    let cell = tableView.dequeueReusableCellWithIdentifier(kDocumentCellIdentifier, forIndexPath: indexPath) as! DocumentTableViewCell
+    let cell = tableView.dequeueReusableCellWithIdentifier(DocumentCellIdentifier, forIndexPath: indexPath) as! DocumentTableViewCell
     cell.setupDocument(documents[indexPath.row] as! Document)
     cell.delegate = self
     return cell

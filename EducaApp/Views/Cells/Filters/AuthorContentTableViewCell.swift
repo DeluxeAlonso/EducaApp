@@ -10,6 +10,8 @@ import UIKit
 
 class AuthorContentTableViewCell: UITableViewCell {
   
+  @IBOutlet weak var fieldNameLabel: UILabel!
+
   @IBOutlet weak var filterTextField: UITextField!
   
   // MARK - Lifecycle
@@ -29,6 +31,12 @@ class AuthorContentTableViewCell: UITableViewCell {
   
   private func setupElements() {
     filterTextField.layer.borderColor = UIColor.defaultFilterBorderField().CGColor
+  }
+  
+  // MARK: - Public
+  
+  func setupNameFieldLabel(string: String) {
+    fieldNameLabel.text = string
   }
   
 }
