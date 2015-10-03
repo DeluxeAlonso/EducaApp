@@ -15,8 +15,10 @@ class ArticleTableViewCell: UITableViewCell {
   @IBOutlet weak var authorImageView: UIImageView!
   @IBOutlet weak var postTimeLabel: UILabel!
   @IBOutlet weak var authorNameLabel: UILabel!
+  @IBOutlet weak var favoriteButton: UIButton!
   
   var article: Article?
+  var isFavorite = false
   
   // MARK: - Lifecycle
   
@@ -36,9 +38,11 @@ class ArticleTableViewCell: UITableViewCell {
   }
   
   func setupLabels() {
-    print(article?.author.firstName)
+    articleTitle.textColor = UIColor.defaultTextColor()
     articleTitle.text = article?.title
+    postTimeLabel.textColor = UIColor.defaultSmallTextColor()
     postTimeLabel.text = article?.postTime
+    authorNameLabel.textColor = UIColor.defaultSmallTextColor()
     authorNameLabel.text = article?.author.firstName
   }
 
@@ -46,5 +50,24 @@ class ArticleTableViewCell: UITableViewCell {
     articleImageView.sd_setImageWithURL(NSURL(string: (article?.imageUrl)!)!, placeholderImage: UIImage(named: "DefaultBackground"))
     authorImageView.sd_setImageWithURL(NSURL(string: (article?.author.imageProfileUrl)!)!, placeholderImage: UIImage(named: "AfiLogo"))
   }
+  
+  // MARK: - Actions
+  
+  @IBAction func setFavorite(sender: AnyObject) {
+    let transition: CATransition = CATransition()
+    transition.duration = 0.25
+    transition.timingFunction = CAMediaTimingFunction(name: kCAMediaTimingFunctionEaseInEaseOut)
+    transition.type = kCATransitionFade
+    if !isFavorite {
+      isFavorite = true
+      favoriteButton.setImage(UIImage(named: "StarFilled"), forState: UIControlState.Normal)
+      favoriteButton.layer.addAnimation(transition, forKey: nil)
+    } else {
+      isFavorite = false
+      favoriteButton.setImage(UIImage(named: "StarGray"), forState: UIControlState.Normal)
+      favoriteButton.layer.addAnimation(transition, forKey: nil)
+    }
+  }
+  
   
 }

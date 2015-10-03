@@ -9,6 +9,12 @@
 import Foundation
 import CoreData
 
+enum UserType: Int {
+  case Member
+  case Volunteer
+  case Godfather
+}
+
 @objc(User)
 public class User: NSManagedObject {
   
@@ -17,6 +23,7 @@ public class User: NSManagedObject {
   @NSManaged public var lastName: String
   @NSManaged public var username: String
   @NSManaged public var imageProfileUrl: String
+  @NSManaged public var type: Int32
   
   var fullName: String {
     let name = "\(firstName) \(lastName)"
@@ -30,12 +37,13 @@ public class User: NSManagedObject {
 extension User: Deserializable {
   
   func setDataFromJSON(json: NSDictionary) {
-    if let id = json["id"] as? Int, firstName = json["first_name"] as? String, lastName = json["last_name"] as? String, username = json["username"] as? String , imageProfileUrl = json["image_profile_url"] as? String{
+    if let id = json["id"] as? Int, firstName = json["first_name"] as? String, lastName = json["last_name"] as? String, username = json["username"] as? String , imageProfileUrl = json["image_profile_url"] as? String, type = json["type"] as? Int{
       self.id = Int32(id)
       self.firstName = firstName
       self.lastName = lastName
       self.username = username
       self.imageProfileUrl = imageProfileUrl
+      self.type = Int32(type)
       if let authToken = json["auth_token"] as? String {
         User.setAuthToken(authToken)
       }
@@ -71,6 +79,7 @@ extension User {
     let fetchRequest = NSFetchRequest()
     fetchRequest.entity = NSEntityDescription.entityForName("User", inManagedObjectContext: ctx)
     let users = try! ctx.executeFetchRequest(fetchRequest) as? Array<User>
+    
     return users ?? Array<User>()
   }
   

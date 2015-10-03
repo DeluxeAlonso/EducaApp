@@ -18,7 +18,7 @@ class CustomRefreshControlView: UIRefreshControl {
   var currentColorIndex = 0
   var currentLabelIndex = 0
   
-  let kXibIdentifier = "RefreshContents"
+  let kXibIdentifier = "RefreshContentsView"
 
   // MARK: - Lifecycle
   

@@ -13,9 +13,7 @@ let kSettingsCellIdentifier = "SettingsCell"
 let kSettingsCellTexts = ["Cerrar Sesión"]
 let kActionSheetTitle = "¿Está seguro de que desea salir?"
 
-class SettingsViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
-  
-  @IBOutlet weak var menuIcon: UIBarButtonItem!
+class SettingsViewController: BaseViewController, UITableViewDelegate, UITableViewDataSource {
   
   lazy var dataLayer = DataLayer()
   
@@ -38,15 +36,7 @@ class SettingsViewController: UIViewController, UITableViewDelegate, UITableView
     setupBarButtonItem()
   }
   
-  private func setupBarButtonItem() {
-    if self.revealViewController() != nil {
-      self.menuIcon.target = self.revealViewController()
-      self.menuIcon.action = kBarButtonSelector
-      self.view.addGestureRecognizer(self.revealViewController().panGestureRecognizer())
-    }
-  }
-  
-  private func showSignOutActionSheet() {
+  private func showSignOutActionSheet(cell: SettingsTableViewCell) {
     let alertController = UIAlertController(title: kActionSheetTitle, message: nil, preferredStyle: .ActionSheet)
     let ok = UIAlertAction(title: "Cerrar Sesión", style: .Destructive, handler: { (action) -> Void in
       self.signOut()
@@ -55,6 +45,11 @@ class SettingsViewController: UIViewController, UITableViewDelegate, UITableView
 
     alertController.addAction(ok)
     alertController.addAction(cancel)
+    
+    if let popoverController = alertController.popoverPresentationController {
+      popoverController.sourceView = cell
+      popoverController.sourceRect = cell.bounds
+    }
     
     presentViewController(alertController, animated: true, completion: nil)
   }
@@ -98,7 +93,8 @@ class SettingsViewController: UIViewController, UITableViewDelegate, UITableView
   
   func tableView(tableView: UITableView,
     didSelectRowAtIndexPath indexPath: NSIndexPath) {
-      showSignOutActionSheet()
+      let selectedCell = tableView.cellForRowAtIndexPath(indexPath) as! SettingsTableViewCell
+      showSignOutActionSheet(selectedCell)
       tableView.deselectRowAtIndexPath(indexPath, animated: false)
   }
   

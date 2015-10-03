@@ -31,8 +31,9 @@ class SignInViewController: UIViewController, UITextFieldDelegate {
   lazy var dataLayer = DataLayer()
   var isKeyboardVisible = false
   
-  let kAlertMessageTitle = "Error"
-  let kEmptyUsernamePasswordMessage = "Username and Password cannot be blank."
+  let SignInButtonTitle = "Iniciar Sesión"
+  let AlertMessageTitle = "Error"
+  let EmptyUsernamePasswordMessage = "Username and Password cannot be blank."
   
   // MARK: - Lifecycle
   
@@ -69,17 +70,16 @@ class SignInViewController: UIViewController, UITextFieldDelegate {
   }
   
   private func setupAdditionalConstraints() {
+    UIApplication.sharedApplication().setStatusBarStyle(UIStatusBarStyle.Default, animated: true)
     let screenRect: CGRect = UIScreen.mainScreen().bounds
     initialBottomHeight = screenRect.size.height / 3
     bottomConstraint.constant = initialBottomHeight
   }
   
   private func showEmptyUsernameOrPasswordAlert() {
-    let alertController = UIAlertController(title: kAlertMessageTitle, message: kEmptyUsernamePasswordMessage, preferredStyle: UIAlertControllerStyle.Alert)
-    
+    let alertController = UIAlertController(title: AlertMessageTitle, message: EmptyUsernamePasswordMessage, preferredStyle: UIAlertControllerStyle.Alert)
     let defaultAction = UIAlertAction(title: "OK", style: .Default, handler: nil)
     alertController.addAction(defaultAction)
-    
     presentViewController(alertController, animated: true, completion: nil)
   }
   
@@ -87,7 +87,7 @@ class SignInViewController: UIViewController, UITextFieldDelegate {
     loaderIndicator?.stopActivity()
     loaderIndicator?.hidden = true
     signInButton.userInteractionEnabled = true
-    signInButton.setTitle("Iniciar Sesión", forState: UIControlState.Normal)
+    signInButton.setTitle(SignInButtonTitle, forState: UIControlState.Normal)
   }
   
   private func disableSignInButton() {
@@ -113,42 +113,24 @@ class SignInViewController: UIViewController, UITextFieldDelegate {
       disableSignInButton()
       UserService.signInWithEmail(email, password: password, completion: {(responseObject: AnyObject?, error: NSError?) in
         self.enableSignInButton()
-        if let json = responseObject as? NSDictionary {
-          if json["error"] == nil {
-            let user = User.updateOrCreateWithJson(json, ctx: self.dataLayer.managedObjectContext!)
-            self.dataLayer.saveContext()
-            User.setAuthenticatedUser(user!)
-            print(User.getAuthenticatedUser(self.dataLayer.managedObjectContext!)?.description)
-            NSNotificationCenter.defaultCenter().postNotificationName(Constants.Notification.SignIn, object: self, userInfo: nil)
-          } else {
+        guard let json = responseObject as? NSDictionary else {
+          return
+        }
+        if json["error"] == nil {
+          let user = User.updateOrCreateWithJson(json, ctx: self.dataLayer.managedObjectContext!)
+          self.dataLayer.saveContext()
+          User.setAuthenticatedUser(user!)
+          NSNotificationCenter.defaultCenter().postNotificationName(Constants.Notification.SignIn, object: self, userInfo: nil)
+        } else {
             //Show Error Message
-          }
         }
       })
     }
-  }
-
-  // MARK:- UITextFieldDelegates
-  
-  func textFieldShouldReturn(textField: UITextField) -> Bool {
-    switch textField.tag {
-    case 1:
-      passwordTextField.becomeFirstResponder()
-      break
-    case 2:
-      textField.resignFirstResponder()
-      signIn(NSNull)
-      break
-    default:
-      break
-    }
-    return true
   }
   
   // MARK: - Notifications
   
   func keyboardWillShow(notification: NSNotification) {
-    print("keyboardWillShow")
     guard !isKeyboardVisible else {
       return
     }
@@ -170,7 +152,6 @@ class SignInViewController: UIViewController, UITextFieldDelegate {
   }
   
   func keyboardWillHide(notification: NSNotification) {
-    print("keyboardWillHide")
     guard isKeyboardVisible else {
       return
     }
@@ -180,6 +161,23 @@ class SignInViewController: UIViewController, UITextFieldDelegate {
     logoImageView.alpha = 1.0;
     view.layoutIfNeeded()
     view.endEditing(true)
+  }
+
+  // MARK:- UITextFieldDelegates
+  
+  func textFieldShouldReturn(textField: UITextField) -> Bool {
+    switch textField.tag {
+    case 1:
+      passwordTextField.becomeFirstResponder()
+      break
+    case 2:
+      textField.resignFirstResponder()
+      signIn(NSNull)
+      break
+    default:
+      break
+    }
+    return true
   }
   
 }
