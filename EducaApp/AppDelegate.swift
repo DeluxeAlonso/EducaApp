@@ -14,7 +14,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
   
   var window: UIWindow?
   var storyboard: UIStoryboard?
+  
   lazy var dataLayer = DataLayer()
+  
+  let GoogleMapsApiKey = "AIzaSyCw4hGJhT6FyPKlwjbz3kSsymp9be0iqBI"
   
   deinit {
     NSNotificationCenter.defaultCenter().removeObserver(self, name: Constants.Notification.SignIn, object: nil);
@@ -28,7 +31,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
       NSNotificationCenter.defaultCenter().addObserver(self, selector: "signOut:", name: Constants.Notification.SignOut, object: nil)
     }
     PayPalMobile.initializeWithClientIdsForEnvironments([PayPalEnvironmentProduction: Constants.PayPal.Production, PayPalEnvironmentSandbox: Constants.PayPal.SandBox])
-    
+    GMSServices.provideAPIKey(GoogleMapsApiKey)
     return true
   }
   

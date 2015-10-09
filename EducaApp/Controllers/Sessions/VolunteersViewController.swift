@@ -9,6 +9,7 @@
 import UIKit
 
 let VolunteerCellIdentifier = "VolunteerCell"
+let RateVolunteerViewControllerIdentifier = "RateVolunteerViewController"
 
 class VolunteersViewController: BaseViewController, UITableViewDataSource, UITableViewDelegate {
   
@@ -16,6 +17,7 @@ class VolunteersViewController: BaseViewController, UITableViewDataSource, UITab
   
   let UncheckImageName = "UncheckMark"
   let CheckImageName = "CheckAssistanceIcon"
+  let RateButtonTitle = "Calificar"
   
   var volunteers: NSMutableArray = ["Alonso Alvarez", "Daekef Abarca", "Diego Malpartida","Fernando Banda", "Gabriel Tovar", "Gloria Cisneros", "Luis Barcena", "Luis Incio"]
   var checkedVolunteers: NSMutableArray = []
@@ -30,6 +32,13 @@ class VolunteersViewController: BaseViewController, UITableViewDataSource, UITab
     super.didReceiveMemoryWarning()
   }
   
+  // MARK: - Private
+  
+  private func setupPopupNavigationBar() {
+    STPopupNavigationBar.appearance().barTintColor = UIColor.defaultTextColor()
+    STPopupNavigationBar.appearance().tintColor = UIColor.whiteColor()
+    STPopupNavigationBar.appearance().titleTextAttributes = [NSForegroundColorAttributeName: UIColor.whiteColor(), NSFontAttributeName: UIFont.lightFontWithFontSize(17)]
+  }
   
   // MARK: - UITableViewDataSource
   
@@ -65,6 +74,24 @@ class VolunteersViewController: BaseViewController, UITableViewDataSource, UITab
       checkedVolunteers.addObject(selectedName)
       selectedCell.setupVolunteerWithImage(CheckImageName, animated: true)
     }
+  }
+  
+  func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
+  }
+  
+  func tableView(tableView: UITableView, editActionsForRowAtIndexPath indexPath: NSIndexPath) -> [UITableViewRowAction]?
+  {
+    let rateAction = UITableViewRowAction(style: .Normal, title: RateButtonTitle, handler: { (action:UITableViewRowAction, indexPath:NSIndexPath) -> Void in
+      let viewController = self.storyboard?.instantiateViewControllerWithIdentifier(RateVolunteerViewControllerIdentifier) as! RateVolunteerViewController
+      viewController.volunteer = self.volunteers[indexPath.row] as? String
+      self.setupPopupNavigationBar()
+      let ratePopupViewController = STPopupController(rootViewController: viewController)
+      ratePopupViewController!.presentInViewController(self)
+    })
+    
+    rateAction.backgroundColor = UIColor.blueColor()
+    
+    return [rateAction]
   }
   
 }

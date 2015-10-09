@@ -73,8 +73,8 @@ class AssistantDetailViewController: BaseFilterViewController, UITableViewDataSo
   }
   
   private func setupObservers() {
-    NSNotificationCenter.defaultCenter().addObserver(self, selector: "keyboardWillShow:", name: UIKeyboardWillShowNotification, object: nil)
-    NSNotificationCenter.defaultCenter().addObserver(self, selector: "keyboardWillHide:", name: UIKeyboardWillHideNotification, object: nil)
+    NSNotificationCenter.defaultCenter().addObserver(self, selector: Constants.KeyboardSelector.WillShow, name: UIKeyboardWillShowNotification, object: nil)
+    NSNotificationCenter.defaultCenter().addObserver(self, selector: Constants.KeyboardSelector.WillHide, name: UIKeyboardWillHideNotification, object: nil)
   }
   
   private func setupLabels() {

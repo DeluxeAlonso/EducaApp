@@ -8,13 +8,14 @@
 
 import UIKit
 
-class PostDetailViewController: BaseViewController {
+class PostDetailViewController: BaseViewController, UIPopoverPresentationControllerDelegate {
   
   @IBOutlet weak var titleLabel: UILabel!
   @IBOutlet weak var seeCommentsButton: UIButton!
   @IBOutlet weak var authorLabel: UILabel!
   @IBOutlet weak var postTextView: UITextView!
-  
+  @IBOutlet weak var authorInfoView: UIView!
+
   let URLToShare = "https://www.facebook.com/afiperu?fref=ts"
   
   // MARK: - Lifecycle
@@ -46,15 +47,41 @@ class PostDetailViewController: BaseViewController {
     seeCommentsButton.layer.borderColor = UIColor.defaultSmallTextColor().CGColor
   }
   
+  private func showPopoverCommentView() {
+    let popoverViewController = PostAuthorDetailViewController()
+    popoverViewController.modalPresentationStyle = .Popover
+    popoverViewController.preferredContentSize = CGSizeMake(view.frame.width - 10, 300)
+    let popoverPresentationController = popoverViewController.popoverPresentationController
+    setupPopoverPresentation(popoverPresentationController!)
+    presentViewController(popoverViewController,animated: true, completion: nil)
+  }
+  
+  private func setupPopoverPresentation(popoverPresentationController: UIPopoverPresentationController) {
+    popoverPresentationController.delegate = self
+    popoverPresentationController.permittedArrowDirections = .Any
+    popoverPresentationController.sourceView = authorInfoView
+    popoverPresentationController.sourceRect = authorInfoView.bounds
+  }
+  
   // MARK: - Actions
   
   @IBAction func shareButtonClicked(sender: AnyObject) {
     if let myWebsite = NSURL(string: URLToShare) {
       let objectsToShare = [myWebsite]
       let activityVC = UIActivityViewController(activityItems: objectsToShare, applicationActivities: nil)
-      
       self.presentViewController(activityVC, animated: true, completion: nil)
     }
+  }
+  
+  @IBAction func showPostAuthorInfo(sender: AnyObject) {
+    showPopoverCommentView()
+  }
+  
+  // MARK: - UIPopoverPresentationControllerDelegate
+  
+  func adaptivePresentationStyleForPresentationController(
+    controller: UIPresentationController) -> UIModalPresentationStyle {
+      return .None
   }
   
 }
