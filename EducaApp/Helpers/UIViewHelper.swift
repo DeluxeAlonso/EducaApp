@@ -22,4 +22,28 @@ extension UIView {
       }, completion: nil)
   }
   
+  func fadeOut(duration: NSTimeInterval) {
+    UIView.animateWithDuration(duration) {
+      self.alpha = 0.0
+    }
+  }
+  
+  func fadeIn(duration: NSTimeInterval) {
+    UIView.animateWithDuration(duration) {
+      self.alpha = 1.0
+    }
+  }
+  
+  class func viewFromNibName(name: String) -> UIView? {
+    let views = NSBundle.mainBundle().loadNibNamed(name, owner: nil, options: nil)
+    return views.first as? UIView
+  }
+  
+  func setShadowBorder() {
+    self.layer.shadowColor = UIColor.blackColor().CGColor
+    self.layer.shadowOffset = CGSizeMake(1, 1)
+    self.layer.shadowRadius = 2
+    self.layer.shadowOpacity = 0.5
+  }
+  
 }

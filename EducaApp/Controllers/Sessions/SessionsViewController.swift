@@ -12,6 +12,7 @@ let SessionsCellIdentifier =  "SessionCell"
 let SessionDocumentsSegueIdentifier = "GoToDocumentsSegue"
 let SessionVolunteersSegueIdentifier = "GoToVolunteersList"
 let SessionAssistantsSegueIdentifier = "GoToAssistants"
+let SessionMapSegueIdentifier = "GoToSessionMapSegue"
 
 class SessionsViewController: BaseViewController, UITableViewDataSource, UITableViewDelegate, SessionTableViewCellDelegate {
   
@@ -73,11 +74,13 @@ class SessionsViewController: BaseViewController, UITableViewDataSource, UITable
   }
   
   @IBAction func goToSessionDocuments(sender: AnyObject) {
-    hideMenuViewWithoutAnimation()
     performSegueWithIdentifier(SessionDocumentsSegueIdentifier, sender: nil)
+    hideMenuViewWithoutAnimation()
   }
   
   @IBAction func goToSessionMap(sender: AnyObject) {
+    hideMenuView(NSNull)
+    performSegueWithIdentifier(SessionMapSegueIdentifier, sender: nil)
   }
   
   @IBAction func goToAssistantsList(sender: AnyObject) {

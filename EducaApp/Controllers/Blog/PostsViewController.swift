@@ -83,6 +83,7 @@ class PostsViewController: BaseFilterViewController, UITableViewDataSource, UITa
   func numberOfSectionsInTableView(tableView: UITableView) -> Int {
     return 1
   }
+  
   func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
     return 3
   }

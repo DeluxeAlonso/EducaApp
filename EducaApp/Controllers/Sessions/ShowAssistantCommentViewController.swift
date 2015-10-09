@@ -14,6 +14,8 @@ class ShowAssistantCommentViewController: UIViewController {
   
   let ShowAssistantCommentViewIdentifier = "ShowAssistantCommentView"
   
+  // MARK: - Lifecycle
+  
   override func viewDidLoad() {
     super.viewDidLoad()
   }
