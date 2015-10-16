@@ -17,6 +17,8 @@ public class Article: NSManagedObject {
   @NSManaged public var postTime: String
   @NSManaged public var imageUrl: String
   @NSManaged public var author: User
+  @NSManaged public var favoritedByCurrentUser: Bool
+  @NSManaged public var favoriteBy: NSSet
 
 }
 
@@ -33,6 +35,12 @@ extension Article: Deserializable {
     self.title = title
     self.postTime = postTime
     self.imageUrl = imageUrl
+  }
+  
+  func isFavoriteByUser(user: User, ctx: NSManagedObjectContext) -> Bool {
+    var articleUser: ArticleUser?
+    articleUser = ArticleUser.findByArticleAndUser(self, user: user, ctx: ctx)
+    return (articleUser?.favorite)!
   }
   
 }
@@ -65,9 +73,10 @@ extension Article {
     let newIds = NSMutableSet(array: ids)
     newIds.minusSet(NSSet(array: persistedIds) as Set<NSObject>)
     let newArticles = newIds.allObjects.map({ (id: AnyObject) -> Article in
-      let e = NSEntityDescription.insertNewObjectForEntityForName("Article", inManagedObjectContext: ctx) as! Article
-      e.id = (Int32(id as! Int))
-      return e
+      let newArticle = NSEntityDescription.insertNewObjectForEntityForName("Article", inManagedObjectContext: ctx) as! Article
+      newArticle.id = (Int32(id as! Int))
+      ArticleUser.createNewArticleUser(newArticle, user: User.getAuthenticatedUser(ctx)!, ctx: ctx)
+      return newArticle
     })
     
     // Find existing Article objects

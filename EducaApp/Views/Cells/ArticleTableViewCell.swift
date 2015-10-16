@@ -8,6 +8,12 @@
 
 import UIKit
 
+protocol ArticleTableViewCellDelegate {
+  
+  func articleTableViewCell(sessionTableViewCell: ArticleTableViewCell, starButtonDidTapped button: UIButton, favorited: Bool, indexPath: NSIndexPath)
+  
+}
+
 class ArticleTableViewCell: UITableViewCell {
   
   @IBOutlet weak var articleImageView: UIImageView!
@@ -19,6 +25,8 @@ class ArticleTableViewCell: UITableViewCell {
   
   var article: Article?
   var isFavorite = false
+  var indexPath: NSIndexPath?
+  var delegate: ArticleTableViewCellDelegate?
   
   // MARK: - Lifecycle
   
@@ -30,25 +38,39 @@ class ArticleTableViewCell: UITableViewCell {
     super.setSelected(selected, animated: animated)
   }
   
+  // MARK: - Private
+  
+  func setupLabels(article: Article) {
+    articleTitle.textColor = UIColor.defaultTextColor()
+    articleTitle.text = article.title
+    postTimeLabel.textColor = UIColor.defaultSmallTextColor()
+    postTimeLabel.text = article.postTime
+    authorNameLabel.textColor = UIColor.defaultSmallTextColor()
+    authorNameLabel.text = article.author.firstName
+  }
+  
+  func setupButtons(article: Article) {
+    if article.favoritedByCurrentUser == true {
+      isFavorite = true
+      favoriteButton.setImage(UIImage(named: "StarFilled"), forState: UIControlState.Normal)
+    } else {
+      isFavorite = false
+      favoriteButton.setImage(UIImage(named: "StarGray"), forState: UIControlState.Normal)
+    }
+  }
+  
+  func setupImageViews(article: Article) {
+    articleImageView.sd_setImageWithURL(NSURL(string: (article.imageUrl))!, placeholderImage: UIImage(named: "DefaultBackground"))
+    authorImageView.sd_setImageWithURL(NSURL(string: (article.author.imageProfileUrl))!, placeholderImage: UIImage(named: "AfiLogo"))
+  }
+  
   // MARK: - Public
   
-  func setupElements() {
-    setupLabels()
-    setupImages()
-  }
-  
-  func setupLabels() {
-    articleTitle.textColor = UIColor.defaultTextColor()
-    articleTitle.text = article?.title
-    postTimeLabel.textColor = UIColor.defaultSmallTextColor()
-    postTimeLabel.text = article?.postTime
-    authorNameLabel.textColor = UIColor.defaultSmallTextColor()
-    authorNameLabel.text = article?.author.firstName
-  }
-
-  func setupImages() {
-    articleImageView.sd_setImageWithURL(NSURL(string: (article?.imageUrl)!)!, placeholderImage: UIImage(named: "DefaultBackground"))
-    authorImageView.sd_setImageWithURL(NSURL(string: (article?.author.imageProfileUrl)!)!, placeholderImage: UIImage(named: "AfiLogo"))
+  func setupArticle(article: Article, indexPath: NSIndexPath) {
+    self.indexPath = indexPath
+    setupLabels(article)
+    setupButtons(article)
+    setupImageViews(article)
   }
   
   // MARK: - Actions
@@ -62,10 +84,12 @@ class ArticleTableViewCell: UITableViewCell {
       isFavorite = true
       favoriteButton.setImage(UIImage(named: "StarFilled"), forState: UIControlState.Normal)
       favoriteButton.layer.addAnimation(transition, forKey: nil)
+      delegate?.articleTableViewCell(self, starButtonDidTapped: favoriteButton, favorited: true, indexPath: indexPath!)
     } else {
       isFavorite = false
       favoriteButton.setImage(UIImage(named: "StarGray"), forState: UIControlState.Normal)
       favoriteButton.layer.addAnimation(transition, forKey: nil)
+      delegate?.articleTableViewCell(self, starButtonDidTapped: favoriteButton, favorited: false, indexPath: indexPath!)
     }
   }
   

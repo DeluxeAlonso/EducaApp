@@ -1,11 +1,18 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="8195" systemVersion="14F27" minimumToolsVersion="Automatic">
+<model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="8195" systemVersion="15A284" minimumToolsVersion="Automatic">
     <entity name="Article" representedClassName="Article" syncable="YES">
+        <attribute name="favoritedByCurrentUser" optional="YES" attributeType="Boolean" defaultValueString="0.0" syncable="YES"/>
         <attribute name="id" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
         <attribute name="imageUrl" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="postTime" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="title" optional="YES" attributeType="String" syncable="YES"/>
         <relationship name="author" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="User" inverseName="articles" inverseEntity="User" syncable="YES"/>
+        <relationship name="favoriteBy" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="ArticleUser" inverseName="article" inverseEntity="ArticleUser" syncable="YES"/>
+    </entity>
+    <entity name="ArticleUser" representedClassName="ArticleUser" syncable="YES">
+        <attribute name="favorite" optional="YES" attributeType="Boolean" syncable="YES"/>
+        <relationship name="article" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Article" inverseName="favoriteBy" inverseEntity="Article" syncable="YES"/>
+        <relationship name="user" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="User" inverseName="favoriteArticles" inverseEntity="User" syncable="YES"/>
     </entity>
     <entity name="User" representedClassName="User" syncable="YES">
         <attribute name="firstName" optional="YES" attributeType="String" syncable="YES"/>
@@ -15,9 +22,11 @@
         <attribute name="type" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
         <attribute name="username" optional="YES" attributeType="String" syncable="YES"/>
         <relationship name="articles" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Article" inverseName="author" inverseEntity="Article" syncable="YES"/>
+        <relationship name="favoriteArticles" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="ArticleUser" inverseName="user" inverseEntity="ArticleUser" syncable="YES"/>
     </entity>
     <elements>
-        <element name="Article" positionX="-63" positionY="9" width="128" height="120"/>
-        <element name="User" positionX="-63" positionY="-18" width="128" height="150"/>
+        <element name="Article" positionX="-1971" positionY="63" width="128" height="148"/>
+        <element name="ArticleUser" positionX="-1935" positionY="252" width="128" height="88"/>
+        <element name="User" positionX="-2124" positionY="225" width="128" height="163"/>
     </elements>
 </model>

@@ -19,8 +19,6 @@ class AssistantsViewController: BaseViewController, UITableViewDataSource, UITab
   
   var assistants: NSMutableArray = ["Eduardo Arenas", "Julio Castillo", "Juan Reyes", "Kevin Brown", "Robert Aduviri"]
   var selectedCell: UITableViewCell?
-  
-  lazy var dataLayer = DataLayer()
 
   // MARK: - Lifecycle
   

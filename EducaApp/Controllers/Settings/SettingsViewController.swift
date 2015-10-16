@@ -9,13 +9,19 @@
 import UIKit
 import CoreData
 
-let kSettingsCellIdentifier = "SettingsCell"
-let kSettingsCellTexts = ["Cerrar Sesión"]
-let kActionSheetTitle = "¿Está seguro de que desea salir?"
+let PhoneCellIdentifier = "PhoneCell"
+let AddressCellIdentifier = "AddressCell"
+let ChangePasswordCellIdentifier = "ChangePasswordCell"
+let NotificationControlCellIdentifier = "NotificationControlCell"
+let SettingsCellIdentifier = "SettingsCell"
 
 class SettingsViewController: BaseViewController, UITableViewDelegate, UITableViewDataSource {
   
-  lazy var dataLayer = DataLayer()
+  let SignOutCellTexts = "Cerrar Sesión"
+  let ActionSheetTitle = "¿Está seguro de que desea salir?"
+  let CalendarCellText = "Sincronizar Eventos"
+  let SectionHeadersTitle = ["Datos Personales", "", "Calendario","Notificaciones", ""]
+  let NotificarionControlNames = ["Eventos Próximos", "Pagos Pendientes"]
   
   // MARK: - Lifecycle
   
@@ -37,7 +43,7 @@ class SettingsViewController: BaseViewController, UITableViewDelegate, UITableVi
   }
   
   private func showSignOutActionSheet(cell: SettingsTableViewCell) {
-    let alertController = UIAlertController(title: kActionSheetTitle, message: nil, preferredStyle: .ActionSheet)
+    let alertController = UIAlertController(title: ActionSheetTitle, message: nil, preferredStyle: .ActionSheet)
     let ok = UIAlertAction(title: "Cerrar Sesión", style: .Destructive, handler: { (action) -> Void in
       self.signOut()
     })
@@ -75,26 +81,51 @@ class SettingsViewController: BaseViewController, UITableViewDelegate, UITableVi
   // MARK: - UITableViewDataSource
   
   func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-    return 1;
+    return SectionHeadersTitle.count
+  }
+  
+  func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+    return SectionHeadersTitle[section]
   }
   
   func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-    return kSettingsCellTexts.count;
+    if section == 1 {
+      return 2
+    } else if section == 3 {
+      return NotificarionControlNames.count
+    }
+    return 1
   }
   
   func tableView(tableView: UITableView,
     cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-      let cell = tableView.dequeueReusableCellWithIdentifier(kSettingsCellIdentifier, forIndexPath: indexPath) as! SettingsTableViewCell
-      cell.nameLabel.text = kSettingsCellTexts[indexPath.row]
-      return cell
+      var cell: UITableViewCell?
+      switch indexPath.section {
+      case 0:
+        cell = tableView.dequeueReusableCellWithIdentifier(PhoneCellIdentifier, forIndexPath: indexPath)
+      case 1:
+        cell = indexPath.row == 0 ? tableView.dequeueReusableCellWithIdentifier(AddressCellIdentifier, forIndexPath: indexPath) :tableView.dequeueReusableCellWithIdentifier(ChangePasswordCellIdentifier, forIndexPath: indexPath)
+      case 2:
+        cell = tableView.dequeueReusableCellWithIdentifier(NotificationControlCellIdentifier, forIndexPath: indexPath)
+        (cell as! NotificationControlTableViewCell).setupNotificationControl(CalendarCellText)
+      case 3:
+        cell = tableView.dequeueReusableCellWithIdentifier(NotificationControlCellIdentifier, forIndexPath: indexPath)
+        (cell as! NotificationControlTableViewCell).setupNotificationControl(NotificarionControlNames[indexPath.row])
+      default:
+        cell = tableView.dequeueReusableCellWithIdentifier(SettingsCellIdentifier, forIndexPath: indexPath)
+        (cell as! SettingsTableViewCell).nameLabel.text = SignOutCellTexts
+      }
+      return cell!
   }
   
   // MARK: - UITableViewDelegate
   
   func tableView(tableView: UITableView,
     didSelectRowAtIndexPath indexPath: NSIndexPath) {
-      let selectedCell = tableView.cellForRowAtIndexPath(indexPath) as! SettingsTableViewCell
-      showSignOutActionSheet(selectedCell)
+      if indexPath.section == 4 {
+        let selectedCell = tableView.cellForRowAtIndexPath(indexPath) as! SettingsTableViewCell
+        showSignOutActionSheet(selectedCell)
+      }
       tableView.deselectRowAtIndexPath(indexPath, animated: false)
   }
   

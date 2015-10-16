@@ -24,6 +24,7 @@ public class User: NSManagedObject {
   @NSManaged public var username: String
   @NSManaged public var imageProfileUrl: String
   @NSManaged public var type: Int32
+  @NSManaged public var favoriteArticles: NSMutableArray
   
   var fullName: String {
     let name = "\(firstName) \(lastName)"
@@ -50,6 +51,13 @@ extension User: Deserializable {
     }
   }
   
+  func updateFavoriteArticle(article: Article, favorited: Bool, ctx: NSManagedObjectContext) {
+    var articleUser: ArticleUser?
+    articleUser = ArticleUser.findByArticleAndUser(article, user: self, ctx: ctx)
+    favorited ? (article.favoritedByCurrentUser = true) : (article.favoritedByCurrentUser = false)
+    articleUser?.favorite = favorited
+  }
+  
 }
 
 // MARK: - CoreData
@@ -58,7 +66,6 @@ extension User {
   
   class func findOrCreateWithId(id: Int32, ctx: NSManagedObjectContext) -> User {
     var user: User? = getUserById(id, ctx: ctx)
-    
     if (user == nil) {
       user = NSEntityDescription.insertNewObjectForEntityForName("User", inManagedObjectContext: ctx) as? User
     }
