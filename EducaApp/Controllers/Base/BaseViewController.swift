@@ -16,12 +16,17 @@ class BaseViewController: UIViewController, SWRevealViewControllerDelegate {
   
   let MenuIconImageName = "MenuIcon"
   
+  lazy var dataLayer = DataLayer()
+  
+  var currentUser: User?
+  
   var tapGesture: UITapGestureRecognizer?
   
   // MARK: - Lifecycle
   
   override func viewDidLoad() {
     super.viewDidLoad()
+    setupCurrentUser()
     setupNavigationBar()
     setupBarButtonItem()
   }
@@ -46,6 +51,10 @@ class BaseViewController: UIViewController, SWRevealViewControllerDelegate {
   }
   
   // MARK: - Public
+  
+  func setupCurrentUser() {
+    currentUser = User.getAuthenticatedUser(dataLayer.managedObjectContext!)
+  }
   
   func setupNavigationBar() {
     UIApplication.sharedApplication().setStatusBarStyle(UIStatusBarStyle.LightContent, animated: false)

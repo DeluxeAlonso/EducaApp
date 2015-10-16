@@ -11,13 +11,14 @@ import UIKit
 let kArticlesCellIdentifier = "ArticleCell"
 let kGoToArticleDetailSegueIdentifier = "GoToArticleDetailSegue"
 
-class ArticlesViewController: BaseViewController, UITableViewDataSource, UITableViewDelegate, UIScrollViewDelegate {
+class ArticlesViewController: BaseViewController, UITableViewDataSource, UITableViewDelegate, UIScrollViewDelegate, ArticleTableViewCellDelegate {
   
   @IBOutlet weak var tableView: UITableView!
   @IBOutlet weak var customLoader: CustomActivityIndicatorView!
+  @IBOutlet weak var favoritesSegmentedControl: UISegmentedControl!
   
-  lazy var dataLayer = DataLayer()
   var articles = [Article]()
+  var allArticles = [Article]()
 
   var customView: UIView!
   var labelsArray: Array<UILabel> = []
@@ -84,21 +85,32 @@ class ArticlesViewController: BaseViewController, UITableViewDataSource, UITable
     })
   }
   
+  private func showAllArticles() {
+    tableView.addSubview(refreshControl)
+    articles = Article.getAllArticles(self.dataLayer.managedObjectContext!)
+    tableView.reloadSections(NSIndexSet(index: 0), withRowAnimation: UITableViewRowAnimation.Fade)
+  }
+  
+  private func showAllFavoriteArticles() {
+    refreshControl.endRefreshing()
+    refreshControl.removeFromSuperview()
+    let favorites = articles.filter { (article) in article.favoritedByCurrentUser == true }
+    self.articles = favorites
+    //tableView.reloadData()
+    tableView.reloadSections(NSIndexSet(index: 0), withRowAnimation: UITableViewRowAnimation.Fade)
+  }
+  
   // MARK: - Public
   
   func refreshData() {
     isRefreshing = true
-    let delay = 2.0 * Double(NSEC_PER_SEC)
-    let time = dispatch_time(DISPATCH_TIME_NOW, Int64(delay))
-    dispatch_after(time, dispatch_get_main_queue()) {
-        self.getArticles()
+    Util.delay(2.0) {
+      self.getArticles()
     }
   }
   
   func reloadData() {
-    let delay = 0.5 * Double(NSEC_PER_SEC)
-    let time = dispatch_time(DISPATCH_TIME_NOW, Int64(delay))
-    dispatch_after(time, dispatch_get_main_queue()) {
+    Util.delay(0.5) {
       if !self.isRefreshing {
         self.customLoader.stopActivity()
         self.tableView.hidden = false
@@ -109,16 +121,14 @@ class ArticlesViewController: BaseViewController, UITableViewDataSource, UITable
   
   // MARK: - Actions
   
-  @IBAction func longPressGestureRecognized(sender: AnyObject) {
-    let longPress = sender as! UILongPressGestureRecognizer
-    let location = longPress.locationInView(tableView)
-    let indexPath = tableView.indexPathForRowAtPoint(location)
-    if longPress.state == UIGestureRecognizerState.Began {
-      tableView.deselectRowAtIndexPath(indexPath!, animated: true)
-      let cell = tableView.cellForRowAtIndexPath(indexPath!) as! ArticleTableViewCell
-      cell.setFavorite(NSNull)
-    } else if longPress.state == UIGestureRecognizerState.Recognized {
-      tableView.deselectRowAtIndexPath(indexPath!, animated: true)
+  @IBAction func segmentedControlIndexChanged(sender: AnyObject) {
+    switch favoritesSegmentedControl.selectedSegmentIndex {
+    case 0:
+      showAllArticles()
+      break
+    default:
+      showAllFavoriteArticles()
+      break
     }
   }
   
@@ -144,8 +154,8 @@ class ArticlesViewController: BaseViewController, UITableViewDataSource, UITable
   func tableView(tableView: UITableView,
     cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
       let cell = tableView.dequeueReusableCellWithIdentifier(kArticlesCellIdentifier, forIndexPath: indexPath) as! ArticleTableViewCell
-      cell.article = articles[indexPath.row]
-      cell.setupElements()
+      cell.delegate = self
+      cell.setupArticle(articles[indexPath.row], indexPath: indexPath)
       return cell
   }
   
@@ -177,6 +187,14 @@ class ArticlesViewController: BaseViewController, UITableViewDataSource, UITable
       }
     }
     refreshControl.customView.alpha = alpha
+  }
+  
+  // MARK: - ArticleTableViewCellDelegate
+  
+  func articleTableViewCell(sessionTableViewCell: ArticleTableViewCell, starButtonDidTapped button: UIButton, favorited: Bool, indexPath: NSIndexPath) {
+    print(favorited)
+    currentUser!.updateFavoriteArticle(articles[indexPath.row], favorited: favorited, ctx: dataLayer.managedObjectContext!)
+    self.dataLayer.saveContext()
   }
   
 }

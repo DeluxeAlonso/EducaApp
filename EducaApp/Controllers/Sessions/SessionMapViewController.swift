@@ -96,7 +96,7 @@ class SessionMapViewController: UIViewController, CLLocationManagerDelegate, GMS
     locationManager.requestWhenInUseAuthorization()
   }
   
-  func setupNavigationBar() {
+  private func setupNavigationBar() {
     UIApplication.sharedApplication().setStatusBarStyle(UIStatusBarStyle.LightContent, animated: false)
     view.backgroundColor = UIColor.defaultBackgroundColor()
     navigationController?.navigationBar.barTintColor = UIColor.defaultTextColor()
