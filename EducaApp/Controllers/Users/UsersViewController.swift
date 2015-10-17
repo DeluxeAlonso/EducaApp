@@ -51,8 +51,8 @@ class UsersViewController: BaseFilterViewController, UITableViewDataSource, UITa
     super.setupBarButtonItem()
     print(document)
     if self.revealViewController() != nil && document == nil {
-      let menuIcon = UIBarButtonItem(title: nil, style: UIBarButtonItemStyle.Plain, target: self.revealViewController(), action: kBarButtonSelector)
-      menuIcon.image = UIImage(named: MenuIconImageName)
+      let menuIcon = UIBarButtonItem(title: nil, style: UIBarButtonItemStyle.Plain, target: self.revealViewController(), action: MenuButtonSelector)
+      menuIcon.image = UIImage(named: ImageAssets.MenuIcon)
       self.navigationItem.setLeftBarButtonItem(menuIcon, animated: false)
     }
     self.view.addGestureRecognizer(self.revealViewController().panGestureRecognizer())

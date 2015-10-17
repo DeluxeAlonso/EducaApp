@@ -10,6 +10,14 @@ import UIKit
 
 class Util {
   
+  class func fadeTransitionWithDuration(duration: Double) -> CATransition {
+    let transition: CATransition = CATransition()
+    transition.duration = duration
+    transition.timingFunction = CAMediaTimingFunction(name: kCAMediaTimingFunctionEaseInEaseOut)
+    transition.type = kCATransitionFade
+    return transition
+  }
+  
   class func delay(delay: Double, closure:()->()) {
     dispatch_after(
       dispatch_time(

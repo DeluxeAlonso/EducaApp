@@ -33,8 +33,8 @@ class SignInViewController: UIViewController, UITextFieldDelegate {
   
   let SignInButtonTitle = "Iniciar Sesión"
   let AlertMessageTitle = "Error"
-  let EmptyUsernamePasswordMessage = "Username and Password cannot be blank."
-  
+  let EmptyUsernamePasswordMessage = "El nombre de usuario y contraseña no pueden estar en blanco."
+
   // MARK: - Lifecycle
   
   deinit {

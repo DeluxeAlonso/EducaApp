@@ -8,14 +8,16 @@
 
 import UIKit
 
-let kArticlesCellIdentifier = "ArticleCell"
-let kGoToArticleDetailSegueIdentifier = "GoToArticleDetailSegue"
+let ArticlesCellIdentifier = "ArticleCell"
+let GoToArticleDetailSegueIdentifier = "GoToArticleDetailSegue"
 
 class ArticlesViewController: BaseViewController, UITableViewDataSource, UITableViewDelegate, UIScrollViewDelegate, ArticleTableViewCellDelegate {
   
   @IBOutlet weak var tableView: UITableView!
   @IBOutlet weak var customLoader: CustomActivityIndicatorView!
   @IBOutlet weak var favoritesSegmentedControl: UISegmentedControl!
+  
+  let refreshDataSelector: Selector = "refreshData:"
   
   var articles = [Article]()
   var allArticles = [Article]()
@@ -57,7 +59,7 @@ class ArticlesViewController: BaseViewController, UITableViewDataSource, UITable
     self.tableView.estimatedRowHeight = 243
     self.tableView.rowHeight = UITableViewAutomaticDimension
     tableView.addSubview(refreshControl)
-    refreshControl.addTarget(self, action: "refreshData", forControlEvents: UIControlEvents.ValueChanged)
+    refreshControl.addTarget(self, action: refreshDataSelector, forControlEvents: UIControlEvents.ValueChanged)
   }
   
   private func setupArticles() {
@@ -96,7 +98,6 @@ class ArticlesViewController: BaseViewController, UITableViewDataSource, UITable
     refreshControl.removeFromSuperview()
     let favorites = articles.filter { (article) in article.favoritedByCurrentUser == true }
     self.articles = favorites
-    //tableView.reloadData()
     tableView.reloadSections(NSIndexSet(index: 0), withRowAnimation: UITableViewRowAnimation.Fade)
   }
   
@@ -153,7 +154,7 @@ class ArticlesViewController: BaseViewController, UITableViewDataSource, UITable
   
   func tableView(tableView: UITableView,
     cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-      let cell = tableView.dequeueReusableCellWithIdentifier(kArticlesCellIdentifier, forIndexPath: indexPath) as! ArticleTableViewCell
+      let cell = tableView.dequeueReusableCellWithIdentifier(ArticlesCellIdentifier, forIndexPath: indexPath) as! ArticleTableViewCell
       cell.delegate = self
       cell.setupArticle(articles[indexPath.row], indexPath: indexPath)
       return cell
@@ -164,7 +165,7 @@ class ArticlesViewController: BaseViewController, UITableViewDataSource, UITable
   func tableView(tableView: UITableView,
     didSelectRowAtIndexPath indexPath: NSIndexPath) {
       tableView.deselectRowAtIndexPath(indexPath, animated: true)
-      self.performSegueWithIdentifier(kGoToArticleDetailSegueIdentifier, sender: articles[indexPath.row])
+      self.performSegueWithIdentifier(GoToArticleDetailSegueIdentifier, sender: articles[indexPath.row])
   }
   
   // MARK: - UIScrollViewDelegate
@@ -192,7 +193,6 @@ class ArticlesViewController: BaseViewController, UITableViewDataSource, UITable
   // MARK: - ArticleTableViewCellDelegate
   
   func articleTableViewCell(sessionTableViewCell: ArticleTableViewCell, starButtonDidTapped button: UIButton, favorited: Bool, indexPath: NSIndexPath) {
-    print(favorited)
     currentUser!.updateFavoriteArticle(articles[indexPath.row], favorited: favorited, ctx: dataLayer.managedObjectContext!)
     self.dataLayer.saveContext()
   }

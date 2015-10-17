@@ -8,18 +8,15 @@
 
 import UIKit
 
-let kBarButtonSelector: Selector = "revealToggle:"
-
 class BaseViewController: UIViewController, SWRevealViewControllerDelegate {
   
   @IBOutlet weak var menuIcon: UIBarButtonItem!
   
-  let MenuIconImageName = "MenuIcon"
+  let MenuButtonSelector: Selector = "revealToggle:"
   
   lazy var dataLayer = DataLayer()
   
   var currentUser: User?
-  
   var tapGesture: UITapGestureRecognizer?
   
   // MARK: - Lifecycle
@@ -67,7 +64,7 @@ class BaseViewController: UIViewController, SWRevealViewControllerDelegate {
   func setupBarButtonItem() {
     if self.revealViewController() != nil {
       menuIcon?.target = self.revealViewController()
-      menuIcon?.action = kBarButtonSelector
+      menuIcon?.action = MenuButtonSelector
       view.addGestureRecognizer(self.revealViewController().panGestureRecognizer())
     }
   }

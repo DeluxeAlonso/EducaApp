@@ -39,7 +39,7 @@ class AssistantTableViewCell: UITableViewCell {
   }
   
   func setupCommentedImage() {
-    commentedImageView.image = UIImage(named: "SentCommentIcon")
+    commentedImageView.image = UIImage(named: ImageAssets.SentCommentIcon)
   }
   
 }

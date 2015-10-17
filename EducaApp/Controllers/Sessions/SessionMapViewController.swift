@@ -53,6 +53,9 @@ class SessionMapViewController: UIViewController, CLLocationManagerDelegate, GMS
   let CancelAlertTitle = "¿Está seguro de que desea salir?"
   let CancelAlertMessage = "Sus cambios no han sido guardados."
   
+  let deleteMarkerSelector: Selector = "deleteMarker:"
+  let undoDeleteActionSelector: Selector = "undoDeleteAction:"
+  
   let locationManager = CLLocationManager()
   let sessionLocation = CLLocationCoordinate2DMake(
     -12.068016, -77.001027)
@@ -191,13 +194,13 @@ class SessionMapViewController: UIViewController, CLLocationManagerDelegate, GMS
   }
   
   private func enableUndoButton() {
-    deleteMarkerButton.setImage(UIImage(named: "UndoIcon"), forState: UIControlState.Normal)
-    deleteMarkerButton.addTarget(self, action: "undoDeleteAction:", forControlEvents: UIControlEvents.TouchUpInside)
+    deleteMarkerButton.setImage(UIImage(named: ImageAssets.UndoIcon), forState: UIControlState.Normal)
+    deleteMarkerButton.addTarget(self, action: undoDeleteActionSelector, forControlEvents: UIControlEvents.TouchUpInside)
   }
   
   private func enableDeleteButton() {
-    deleteMarkerButton.setImage(UIImage(named: "DeleteMarkerIcon"), forState: UIControlState.Normal)
-    deleteMarkerButton.addTarget(self, action: "deleteMarker:", forControlEvents: UIControlEvents.TouchUpInside)
+    deleteMarkerButton.setImage(UIImage(named: ImageAssets.DeleteMarkerIcon), forState: UIControlState.Normal)
+    deleteMarkerButton.addTarget(self, action: deleteMarkerSelector, forControlEvents: UIControlEvents.TouchUpInside)
   }
   
   private func canDeleteCurrentMarker() -> Bool {

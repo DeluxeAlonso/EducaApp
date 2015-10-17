@@ -66,5 +66,5 @@ struct Constants {
         -11.991553,-77.102887), CLLocationCoordinate2DMake(
           -12.068016, -77.001027)]
   }
-  
+
 }

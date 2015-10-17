@@ -50,17 +50,22 @@ class CalendarViewController: UIViewController, CVCalendarViewDelegate, CVCalend
   }
   
   private func setupLabels() {
+    dateLabel?.text = calendarView.presentedDate.commonDescription
     monthLabel.text = CVDate(date: NSDate()).globalDescription
   }
   
   // MARK: - Actions
   
   @IBAction func loadPrevious(sender: AnyObject) {
-    calendarView.loadPreviousView()
+    calendarView?.loadPreviousView()
   }
   
   @IBAction func loadNext(sender: AnyObject) {
-    calendarView.loadNextView()
+    calendarView?.loadNextView()
+  }
+  
+  @IBAction func dismissCalendarView(sender: AnyObject) {
+    dismissViewControllerAnimated(true, completion: nil)
   }
   
   // MARK: - CVCalendarViewDelegate
@@ -74,11 +79,11 @@ class CalendarViewController: UIViewController, CVCalendarViewDelegate, CVCalend
   }
   
   func didSelectDayView(dayView: CVCalendarDayView) {
-    dateLabel.text = calendarView.presentedDate.commonDescription
+    dateLabel?.text = calendarView.presentedDate.commonDescription
   }
   
   func presentedDateUpdated(date: Date) {
-    monthLabel.text = date.globalDescription
+    monthLabel?.text = date.globalDescription
   }
   
 }
