@@ -29,7 +29,10 @@ class SignInViewController: UIViewController, UITextFieldDelegate {
   var initialBottomHeight: CGFloat!
   
   lazy var dataLayer = DataLayer()
+  
   var isKeyboardVisible = false
+  var isPopUpVisible = false
+  var recoverPasswordPopUp: STPopupController?
   
   let SignInButtonTitle = "Iniciar Sesión"
   let AlertMessageTitle = "Error"
@@ -97,11 +100,25 @@ class SignInViewController: UIViewController, UITextFieldDelegate {
     signInButton.userInteractionEnabled = false
   }
   
+  private func setupPopupNavigationBar() {
+    STPopupNavigationBar.appearance().barTintColor = UIColor.defaultTextColor()
+    STPopupNavigationBar.appearance().tintColor = UIColor.whiteColor()
+    STPopupNavigationBar.appearance().titleTextAttributes = [NSForegroundColorAttributeName: UIColor.whiteColor(), NSFontAttributeName: UIFont.lightFontWithFontSize(17)]
+  }
+  
   // MARK: - Actions
   
   @IBAction func hideKeyboard(sender: AnyObject) {
     usernameTextField.resignFirstResponder()
     passwordTextField.resignFirstResponder()
+  }
+  
+  @IBAction func gotoRecoverPassword(sender: AnyObject) {
+    let viewController = self.storyboard?.instantiateViewControllerWithIdentifier("RecoverPasswordTableViewController") as! RecoverPasswordTableViewController
+    print(viewController.description)
+    setupPopupNavigationBar()
+    recoverPasswordPopUp = STPopupController(rootViewController: viewController)
+    recoverPasswordPopUp!.presentInViewController(self)
   }
   
   @IBAction func signIn(sender: AnyObject) {

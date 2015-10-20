@@ -15,25 +15,19 @@ let ChangePasswordCellIdentifier = "ChangePasswordCell"
 let NotificationControlCellIdentifier = "NotificationControlCell"
 let SettingsCellIdentifier = "SettingsCell"
 
-class SettingsViewController: BaseViewController, UITableViewDelegate, UITableViewDataSource {
+class SettingsViewController: BaseViewController {
   
   let SignOutCellTexts = "Cerrar Sesión"
   let ActionSheetTitle = "¿Está seguro de que desea salir?"
   let CalendarCellText = "Sincronizar Eventos"
-  let SectionHeadersTitle = ["Datos Personales", "", "Calendario","Notificaciones", ""]
-  let NotificarionControlNames = ["Eventos Próximos", "Pagos Pendientes"]
+  let SectionHeadersTitle = ["Datos Personales", "Calendario","Notificaciones", ""]
+  let NotificationControlNames = ["Eventos Próximos", "Pagos Pendientes"]
   
   // MARK: - Lifecycle
   
   override func viewDidLoad() {
     super.viewDidLoad()
     setupElements()
-    // Do any additional setup after loading the view.
-  }
-  
-  override func didReceiveMemoryWarning() {
-    super.didReceiveMemoryWarning()
-    // Dispose of any resources that can be recreated.
   }
   
   // MARK: - Private
@@ -78,7 +72,11 @@ class SettingsViewController: BaseViewController, UITableViewDelegate, UITableVi
     try! self.dataLayer.managedObjectContext!.save()
   }
   
-  // MARK: - UITableViewDataSource
+}
+
+// MARK: - UITableViewDataSource
+
+extension SettingsViewController: UITableViewDataSource {
   
   func numberOfSectionsInTableView(tableView: UITableView) -> Int {
     return SectionHeadersTitle.count
@@ -89,10 +87,8 @@ class SettingsViewController: BaseViewController, UITableViewDelegate, UITableVi
   }
   
   func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-    if section == 1 {
-      return 2
-    } else if section == 3 {
-      return NotificarionControlNames.count
+    if section == 2 {
+      return NotificationControlNames.count
     }
     return 1
   }
@@ -102,15 +98,13 @@ class SettingsViewController: BaseViewController, UITableViewDelegate, UITableVi
       var cell: UITableViewCell?
       switch indexPath.section {
       case 0:
-        cell = tableView.dequeueReusableCellWithIdentifier(PhoneCellIdentifier, forIndexPath: indexPath)
+        cell = tableView.dequeueReusableCellWithIdentifier(ChangePasswordCellIdentifier, forIndexPath: indexPath)
       case 1:
-        cell = indexPath.row == 0 ? tableView.dequeueReusableCellWithIdentifier(AddressCellIdentifier, forIndexPath: indexPath) :tableView.dequeueReusableCellWithIdentifier(ChangePasswordCellIdentifier, forIndexPath: indexPath)
-      case 2:
         cell = tableView.dequeueReusableCellWithIdentifier(NotificationControlCellIdentifier, forIndexPath: indexPath)
         (cell as! NotificationControlTableViewCell).setupNotificationControl(CalendarCellText)
-      case 3:
+      case 2:
         cell = tableView.dequeueReusableCellWithIdentifier(NotificationControlCellIdentifier, forIndexPath: indexPath)
-        (cell as! NotificationControlTableViewCell).setupNotificationControl(NotificarionControlNames[indexPath.row])
+        (cell as! NotificationControlTableViewCell).setupNotificationControl(NotificationControlNames[indexPath.row])
       default:
         cell = tableView.dequeueReusableCellWithIdentifier(SettingsCellIdentifier, forIndexPath: indexPath)
         (cell as! SettingsTableViewCell).nameLabel.text = SignOutCellTexts
@@ -118,11 +112,15 @@ class SettingsViewController: BaseViewController, UITableViewDelegate, UITableVi
       return cell!
   }
   
-  // MARK: - UITableViewDelegate
+}
+
+// MARK: - UITableViewDelegate
+
+extension SettingsViewController: UITableViewDelegate {
   
   func tableView(tableView: UITableView,
     didSelectRowAtIndexPath indexPath: NSIndexPath) {
-      if indexPath.section == 4 {
+      if indexPath.section == 3 {
         let selectedCell = tableView.cellForRowAtIndexPath(indexPath) as! SettingsTableViewCell
         showSignOutActionSheet(selectedCell)
       }

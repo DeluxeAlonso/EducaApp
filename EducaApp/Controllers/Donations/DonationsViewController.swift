@@ -8,7 +8,7 @@
 
 import UIKit
 
-class DonationsViewController: BaseViewController, PayPalPaymentDelegate, UITextFieldDelegate {
+class DonationsViewController: BaseViewController {
   
   @IBOutlet weak var donationBarButtonItem: UIBarButtonItem!
   
@@ -78,30 +78,17 @@ class DonationsViewController: BaseViewController, PayPalPaymentDelegate, UIText
     }
   }
   
-  // MARK: - PayPalPaymentDelegate
-  
-  func payPalPaymentViewController(paymentViewController: PayPalPaymentViewController!, didCompletePayment completedPayment: PayPalPayment!) {
-    print(completedPayment.description)
-    self.dismissViewControllerAnimated(true, completion: nil)
-  }
-  
-  func payPalPaymentDidCancel(paymentViewController: PayPalPaymentViewController!) {
-    self.dismissViewControllerAnimated(true, completion: nil)
-  }
-  
   // MARK: - Notifications
   
   func keyboardWillShow(notification: NSNotification) {
-    guard !isKeyboardVisible else {
+    guard !isKeyboardVisible, let keyboardFrame: CGRect = (notification.userInfo?[UIKeyboardFrameEndUserInfoKey] as? NSValue)?.CGRectValue()  else {
       return
     }
     isKeyboardVisible = true
     view.layoutIfNeeded()
-    if let keyboardFrame: CGRect = (notification.userInfo?[UIKeyboardFrameEndUserInfoKey] as? NSValue)?.CGRectValue() {
-      let keyboardHeight = CGFloat(keyboardFrame.size.height)
-      termsButtonBottomConstraints.constant += keyboardHeight
-      view.layoutIfNeeded()
-    }
+    let keyboardHeight = CGFloat(keyboardFrame.size.height)
+    termsButtonBottomConstraints.constant += keyboardHeight
+    view.layoutIfNeeded()
   }
   
   func keyboardWillHide(notification: NSNotification) {
@@ -115,13 +102,6 @@ class DonationsViewController: BaseViewController, PayPalPaymentDelegate, UIText
     view.endEditing(true)
   }
   
-  // MARK: - UITextFieldDelegate
-  
-  func textFieldDidBeginEditing(textField: UITextField) {
-    donationBarButtonItem.enabled = true
-  }
-  
-  
   // MARK: - SWRevealViewControllerDelegate
   
   override func revealController(revealController: SWRevealViewController!, willMoveToPosition position: FrontViewPosition) {
@@ -129,6 +109,31 @@ class DonationsViewController: BaseViewController, PayPalPaymentDelegate, UIText
     if position == FrontViewPosition.Left {
       donationAmountTextField.becomeFirstResponder()
     }
+  }
+  
+}
+
+// MARK: - UITextFieldDelegate
+
+extension DonationsViewController: UITextFieldDelegate {
+  
+  func textFieldDidBeginEditing(textField: UITextField) {
+    donationBarButtonItem.enabled = true
+  }
+  
+}
+
+// MARK: - PayPalPaymentDelegate
+
+extension DonationsViewController: PayPalPaymentDelegate {
+  
+  func payPalPaymentViewController(paymentViewController: PayPalPaymentViewController!, didCompletePayment completedPayment: PayPalPayment!) {
+    print(completedPayment.description)
+    self.dismissViewControllerAnimated(true, completion: nil)
+  }
+  
+  func payPalPaymentDidCancel(paymentViewController: PayPalPaymentViewController!) {
+    self.dismissViewControllerAnimated(true, completion: nil)
   }
   
 }

@@ -8,7 +8,7 @@
 
 import UIKit
 
-class PostDetailViewController: BaseViewController, UIPopoverPresentationControllerDelegate {
+class PostDetailViewController: BaseViewController {
   
   @IBOutlet weak var titleLabel: UILabel!
   @IBOutlet weak var seeCommentsButton: UIButton!
@@ -66,18 +66,23 @@ class PostDetailViewController: BaseViewController, UIPopoverPresentationControl
   // MARK: - Actions
   
   @IBAction func shareButtonClicked(sender: AnyObject) {
-    if let myWebsite = NSURL(string: URLToShare) {
-      let objectsToShare = [myWebsite]
-      let activityVC = UIActivityViewController(activityItems: objectsToShare, applicationActivities: nil)
-      self.presentViewController(activityVC, animated: true, completion: nil)
+    guard let myWebsite = NSURL(string: URLToShare) else {
+      return
     }
+    let objectsToShare = [myWebsite]
+    let activityVC = UIActivityViewController(activityItems: objectsToShare, applicationActivities: nil)
+    self.presentViewController(activityVC, animated: true, completion: nil)
   }
   
   @IBAction func showPostAuthorInfo(sender: AnyObject) {
     showPopoverCommentView()
   }
   
-  // MARK: - UIPopoverPresentationControllerDelegate
+}
+
+// MARK: - UIPopoverPresentationControllerDelegate
+
+extension PostDetailViewController: UIPopoverPresentationControllerDelegate {
   
   func adaptivePresentationStyleForPresentationController(
     controller: UIPresentationController) -> UIModalPresentationStyle {

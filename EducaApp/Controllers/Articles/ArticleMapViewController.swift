@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ArticleMapViewController: UIViewController, GMSMapViewDelegate, CLLocationManagerDelegate {
+class ArticleMapViewController: UIViewController {
   
   @IBOutlet weak var mapView: GMSMapView!
   @IBOutlet weak var mapInfoView: UIView!
@@ -26,14 +26,11 @@ class ArticleMapViewController: UIViewController, GMSMapViewDelegate, CLLocation
   
   var polyline: GMSPolyline?
   
+  // MARK: - Lifecycle
+  
   override func viewDidLoad() {
     super.viewDidLoad()
     setupElements()
-  }
-  
-  override func didReceiveMemoryWarning() {
-    super.didReceiveMemoryWarning()
-    // Dispose of any resources that can be recreated.
   }
   
   // MARK: - Private
@@ -45,7 +42,6 @@ class ArticleMapViewController: UIViewController, GMSMapViewDelegate, CLLocation
   }
   
   private func setupLocation() {
-    mapView.delegate = self
     locationManager.delegate = self
     locationManager.requestWhenInUseAuthorization()
     addMarkerWithTitle(EventMarkerTitle, color: UIColor.blueColor(), coordinate: sessionLocation)
@@ -111,7 +107,11 @@ class ArticleMapViewController: UIViewController, GMSMapViewDelegate, CLLocation
     polyline?.map = mapView
   }
   
-  // MARK: - CLLocationManagerDelegate
+}
+
+// MARK: - CLLocationManagerDelegate
+
+extension ArticleMapViewController: CLLocationManagerDelegate {
   
   func locationManager(manager: CLLocationManager, didChangeAuthorizationStatus status: CLAuthorizationStatus) {
     guard status == .AuthorizedWhenInUse else {
@@ -131,6 +131,5 @@ class ArticleMapViewController: UIViewController, GMSMapViewDelegate, CLLocation
     mapView.camera = GMSCameraPosition(target: location.coordinate, zoom: 11, bearing: 0, viewingAngle: 0)
     locationManager.stopUpdatingLocation()
   }
-
   
 }

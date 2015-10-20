@@ -11,13 +11,14 @@ import UIKit
 let ArticlesCellIdentifier = "ArticleCell"
 let GoToArticleDetailSegueIdentifier = "GoToArticleDetailSegue"
 
-class ArticlesViewController: BaseViewController, UITableViewDataSource, UITableViewDelegate, UIScrollViewDelegate, ArticleTableViewCellDelegate {
+class ArticlesViewController: BaseViewController {
   
   @IBOutlet weak var tableView: UITableView!
   @IBOutlet weak var customLoader: CustomActivityIndicatorView!
   @IBOutlet weak var favoritesSegmentedControl: UISegmentedControl!
   
-  let refreshDataSelector: Selector = "refreshData:"
+  let refreshDataSelector: Selector = "refreshData"
+  let refreshControl = CustomRefreshControlView()
   
   var articles = [Article]()
   var allArticles = [Article]()
@@ -26,7 +27,6 @@ class ArticlesViewController: BaseViewController, UITableViewDataSource, UITable
   var labelsArray: Array<UILabel> = []
   
   var isRefreshing = false
-  let refreshControl = CustomRefreshControlView()
   
   // MARK: - Lifecycle
   
@@ -64,11 +64,12 @@ class ArticlesViewController: BaseViewController, UITableViewDataSource, UITable
   
   private func setupArticles() {
     articles = Article.getAllArticles(self.dataLayer.managedObjectContext!)
-    if articles.count == 0 {
-      self.tableView.hidden = true
-      customLoader.startActivity()
-      getArticles()
+    guard articles.count == 0 else {
+      return
     }
+    self.tableView.hidden = true
+    customLoader.startActivity()
+    getArticles()
   }
   
   private func getArticles() {
@@ -112,11 +113,12 @@ class ArticlesViewController: BaseViewController, UITableViewDataSource, UITable
   
   func reloadData() {
     Util.delay(0.5) {
-      if !self.isRefreshing {
-        self.customLoader.stopActivity()
-        self.tableView.hidden = false
-        self.tableView.reloadData()
+      guard !self.isRefreshing else {
+        return
       }
+      self.customLoader.stopActivity()
+      self.tableView.hidden = false
+      self.tableView.reloadData()
     }
   }
   
@@ -142,7 +144,11 @@ class ArticlesViewController: BaseViewController, UITableViewDataSource, UITable
     }
   }
   
-  // MARK: - UITableViewDataSource
+}
+
+// MARK: - UITableViewDataSource
+
+extension ArticlesViewController: UITableViewDataSource {
   
   func numberOfSectionsInTableView(tableView: UITableView) -> Int {
     return 1
@@ -159,8 +165,12 @@ class ArticlesViewController: BaseViewController, UITableViewDataSource, UITable
       cell.setupArticle(articles[indexPath.row], indexPath: indexPath)
       return cell
   }
-  
-  // MARK: - UITableViewDelegate
+
+}
+
+// MARK: - UITableViewDelegate
+
+extension ArticlesViewController: UITableViewDelegate {
   
   func tableView(tableView: UITableView,
     didSelectRowAtIndexPath indexPath: NSIndexPath) {
@@ -168,14 +178,17 @@ class ArticlesViewController: BaseViewController, UITableViewDataSource, UITable
       self.performSegueWithIdentifier(GoToArticleDetailSegueIdentifier, sender: articles[indexPath.row])
   }
   
-  // MARK: - UIScrollViewDelegate
+}
+
+// MARK: - UIScrollViewDelegate
+
+extension ArticlesViewController: UIScrollViewDelegate {
   
   func scrollViewDidEndDecelerating(scrollView: UIScrollView) {
-    if refreshControl.refreshing {
-      if !refreshControl.isAnimating {
-        refreshControl.animateRefreshFirstStep()
-      }
+    guard refreshControl.refreshing && !refreshControl.isAnimating else {
+      return
     }
+    refreshControl.animateRefreshFirstStep()
   }
   
   func scrollViewDidScroll(scrollView: UIScrollView) {
@@ -190,7 +203,11 @@ class ArticlesViewController: BaseViewController, UITableViewDataSource, UITable
     refreshControl.customView.alpha = alpha
   }
   
-  // MARK: - ArticleTableViewCellDelegate
+}
+
+// MARK: - ArticleTableViewCellDelegate
+
+extension ArticlesViewController: ArticleTableViewCellDelegate {
   
   func articleTableViewCell(sessionTableViewCell: ArticleTableViewCell, starButtonDidTapped button: UIButton, favorited: Bool, indexPath: NSIndexPath) {
     currentUser!.updateFavoriteArticle(articles[indexPath.row], favorited: favorited, ctx: dataLayer.managedObjectContext!)

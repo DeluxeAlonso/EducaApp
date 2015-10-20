@@ -11,7 +11,7 @@ import UIKit
 let VolunteerCellIdentifier = "VolunteerCell"
 let RateVolunteerViewControllerIdentifier = "RateVolunteerViewController"
 
-class VolunteersViewController: BaseViewController, UITableViewDataSource, UITableViewDelegate {
+class VolunteersViewController: BaseViewController {
   
   @IBOutlet weak var tableView: UITableView!
   
@@ -28,10 +28,6 @@ class VolunteersViewController: BaseViewController, UITableViewDataSource, UITab
     super.viewDidLoad()
   }
   
-  override func didReceiveMemoryWarning() {
-    super.didReceiveMemoryWarning()
-  }
-  
   // MARK: - Private
   
   private func setupPopupNavigationBar() {
@@ -40,7 +36,11 @@ class VolunteersViewController: BaseViewController, UITableViewDataSource, UITab
     STPopupNavigationBar.appearance().titleTextAttributes = [NSForegroundColorAttributeName: UIColor.whiteColor(), NSFontAttributeName: UIFont.lightFontWithFontSize(17)]
   }
   
-  // MARK: - UITableViewDataSource
+}
+
+// MARK: - UITableViewDataSource
+
+extension VolunteersViewController: UITableViewDataSource {
   
   func numberOfSectionsInTableView(tableView: UITableView) -> Int {
     return 1
@@ -61,7 +61,11 @@ class VolunteersViewController: BaseViewController, UITableViewDataSource, UITab
     return cell
   }
   
-  // MARK: - UITableViewDelegate
+}
+
+// MARK: - UITableViewDelegate
+
+extension VolunteersViewController: UITableViewDelegate {
   
   func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
     tableView.deselectRowAtIndexPath(indexPath, animated: true)
@@ -79,8 +83,7 @@ class VolunteersViewController: BaseViewController, UITableViewDataSource, UITab
   func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
   }
   
-  func tableView(tableView: UITableView, editActionsForRowAtIndexPath indexPath: NSIndexPath) -> [UITableViewRowAction]?
-  {
+  func tableView(tableView: UITableView, editActionsForRowAtIndexPath indexPath: NSIndexPath) -> [UITableViewRowAction]? {
     let rateAction = UITableViewRowAction(style: .Normal, title: RateButtonTitle, handler: { (action:UITableViewRowAction, indexPath:NSIndexPath) -> Void in
       let viewController = self.storyboard?.instantiateViewControllerWithIdentifier(RateVolunteerViewControllerIdentifier) as! RateVolunteerViewController
       viewController.volunteer = self.volunteers[indexPath.row] as? String
@@ -88,9 +91,7 @@ class VolunteersViewController: BaseViewController, UITableViewDataSource, UITab
       let ratePopupViewController = STPopupController(rootViewController: viewController)
       ratePopupViewController!.presentInViewController(self)
     })
-    
     rateAction.backgroundColor = UIColor.blueColor()
-    
     return [rateAction]
   }
   

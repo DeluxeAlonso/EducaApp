@@ -109,8 +109,6 @@ class SessionMapViewController: UIViewController, CLLocationManagerDelegate, GMS
   
   private func setupInfoView() {
     mapInfoView.setShadowBorder()
-    mapRouteButton.setShadowBorder()
-    deleteMarkerButton.setShadowBorder()
   }
   
   private func setupAdditionalConstraints() {
@@ -139,7 +137,8 @@ class SessionMapViewController: UIViewController, CLLocationManagerDelegate, GMS
       guard let address = response?.firstResult() else {
         return
       }
-      let lines: [String] = address.lines as! [String]
+      var lines: [String] = address.lines as! [String]
+      lines = lines.filter { (line) in line.characters.count != 0 }
       self.mapInfoLabel.text = lines.joinWithSeparator("\n")
     })
     UIView.animateWithDuration(0.25, animations: {
@@ -194,12 +193,12 @@ class SessionMapViewController: UIViewController, CLLocationManagerDelegate, GMS
   }
   
   private func enableUndoButton() {
-    deleteMarkerButton.setImage(UIImage(named: ImageAssets.UndoIcon), forState: UIControlState.Normal)
+    deleteMarkerButton.setBackgroundImage(UIImage(named: ImageAssets.UndoIcon), forState: UIControlState.Normal)
     deleteMarkerButton.addTarget(self, action: undoDeleteActionSelector, forControlEvents: UIControlEvents.TouchUpInside)
   }
   
   private func enableDeleteButton() {
-    deleteMarkerButton.setImage(UIImage(named: ImageAssets.DeleteMarkerIcon), forState: UIControlState.Normal)
+    deleteMarkerButton.setBackgroundImage(UIImage(named: ImageAssets.DeleteMarkerIcon), forState: UIControlState.Normal)
     deleteMarkerButton.addTarget(self, action: deleteMarkerSelector, forControlEvents: UIControlEvents.TouchUpInside)
   }
   

@@ -8,7 +8,7 @@
 
 import UIKit
 
-class PostAuthorDetailViewController: UIViewController, UIPopoverPresentationControllerDelegate {
+class PostAuthorDetailViewController: UIViewController {
   
   let PostAuthorDetailViewNibName = "PostAuthorDetailView"
   

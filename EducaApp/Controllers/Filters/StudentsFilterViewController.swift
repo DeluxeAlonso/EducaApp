@@ -53,7 +53,11 @@ class StudentsFilterViewController: UIViewController {
     }
   }
   
-  // MARK: - UITableViewDataSource
+}
+
+// MARK: - UITableViewDataSource
+
+extension StudentsFilterViewController: UITableViewDataSource {
   
   func numberOfSectionsInTableView(tableView: UITableView) -> Int {
     return 1
@@ -81,8 +85,12 @@ class StudentsFilterViewController: UIViewController {
     return cell!
   }
   
-  // MARK: - UITableViewDelegate
-  
+}
+
+// MARK: - UITableViewDelegate
+
+extension StudentsFilterViewController: UITableViewDelegate {
+
   func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
     tableView.deselectRowAtIndexPath(indexPath, animated: true)
   }

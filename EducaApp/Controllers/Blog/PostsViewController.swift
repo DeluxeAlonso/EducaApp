@@ -11,7 +11,7 @@ import UIKit
 let PostCellIdentifier = "PostCell"
 let PostDetailSegueIdentifier = "GoToBlogDetailSegue"
 
-class PostsViewController: BaseFilterViewController, UITableViewDataSource, UITableViewDelegate {
+class PostsViewController: BaseFilterViewController {
   
   @IBOutlet weak var nameLabel: UILabel!
   
@@ -78,7 +78,17 @@ class PostsViewController: BaseFilterViewController, UITableViewDataSource, UITa
     popupViewController!.presentInViewController(self)
   }
   
-  // MARK: - UITableViewDataSource
+  // MARK: - UISearchBarDelegate
+  
+  func searchBarCancelButtonClicked(searchBar: UISearchBar) {
+    hideSearchBar()
+  }
+  
+}
+
+// MARK: - UITableViewDataSource
+
+extension PostsViewController: UITableViewDataSource {
   
   func numberOfSectionsInTableView(tableView: UITableView) -> Int {
     return 1
@@ -93,24 +103,26 @@ class PostsViewController: BaseFilterViewController, UITableViewDataSource, UITa
     return cell
   }
   
-  // MARK: - UITableViewDelegate
-  
+}
+
+// MARK: - UITableViewDelegate
+
+extension PostsViewController: UITableViewDelegate {
+
   func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
     tableView.deselectRowAtIndexPath(indexPath, animated: true)
     performSegueWithIdentifier(PostDetailSegueIdentifier, sender: nil)
   }
   
-  // MARK: - UIPopoverPresentationControllerDelegate
+}
+
+// MARK: - UIPopoverPresentationControllerDelegate
+
+extension PostsViewController: UIPopoverPresentationControllerDelegate {
   
   func adaptivePresentationStyleForPresentationController(
     controller: UIPresentationController) -> UIModalPresentationStyle {
       return .None
-  }
-  
-  // MARK: - UISearchBarDelegate
-  
-  func searchBarCancelButtonClicked(searchBar: UISearchBar) {
-    hideSearchBar()
   }
   
 }

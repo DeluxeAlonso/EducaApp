@@ -16,7 +16,7 @@ let CollectionHeaderViewNibName = "CollapseSectionHeaderView"
 let SendAssistantCommentViewIdentifier = "SendAssistantCommentViewController"
 let AssistantCommentsFilterViewIdentifier = "AssistantCommentsFilterViewController"
 
-class AssistantDetailViewController: BaseFilterViewController, UITableViewDataSource, UITableViewDelegate, UIPopoverPresentationControllerDelegate, CollapseSectionHeaderViewDelegate {
+class AssistantDetailViewController: BaseFilterViewController {
   
   @IBOutlet weak var tableView: UITableView!
   @IBOutlet weak var genderLabel: UILabel!
@@ -56,10 +56,6 @@ class AssistantDetailViewController: BaseFilterViewController, UITableViewDataSo
   override func viewDidLoad() {
     super.viewDidLoad()
     setupElements()
-  }
-  
-  override func didReceiveMemoryWarning() {
-    super.didReceiveMemoryWarning()
   }
   
   // MARK: - Private
@@ -135,6 +131,12 @@ class AssistantDetailViewController: BaseFilterViewController, UITableViewDataSo
         self.navigationItem.title = self.assistant
         self.navigationItem.titleView = nil
     })
+  }
+  
+  // MARK: - UISearchBarDelegate
+  
+  func searchBarCancelButtonClicked(searchBar: UISearchBar) {
+    hideSearchBar()
   }
 
   // MARK: - Public
@@ -218,7 +220,11 @@ class AssistantDetailViewController: BaseFilterViewController, UITableViewDataSo
     view.endEditing(true)
   }
   
-  // MARK: - UITableViewDataSource
+}
+
+// MARK: - UITableViewDataSource
+
+extension AssistantDetailViewController: UITableViewDataSource {
   
   func numberOfSectionsInTableView(tableView: UITableView) -> Int {
     return sections.count
@@ -263,7 +269,11 @@ class AssistantDetailViewController: BaseFilterViewController, UITableViewDataSo
     return cell
   }
   
-  //  MARK: - UITableViewDelegate
+}
+
+//  MARK: - UITableViewDelegate
+
+extension AssistantDetailViewController: UITableViewDelegate {
   
   func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
     tableView.deselectRowAtIndexPath(indexPath, animated: true)
@@ -283,14 +293,22 @@ class AssistantDetailViewController: BaseFilterViewController, UITableViewDataSo
     }
   }
   
-  // MARK: - UIPopoverPresentationControllerDelegate
+}
+
+// MARK: - UIPopoverPresentationControllerDelegate
+
+extension AssistantDetailViewController: UIPopoverPresentationControllerDelegate {
   
   func adaptivePresentationStyleForPresentationController(
     controller: UIPresentationController) -> UIModalPresentationStyle {
       return .None
   }
   
-  // MARK: - CollapseSectionHeaderViewDelegate
+}
+
+// MARK: - CollapseSectionHeaderViewDelegate
+
+extension AssistantDetailViewController: CollapseSectionHeaderViewDelegate {
   
   func collapseSectionHeaderViewDelegate(sectionHeaderView: CollapseSectionHeaderView, sectionOpened section: Int) {
     let rowsToInsert = Constants.MockData.FirstBlockAuthors.count
@@ -312,12 +330,6 @@ class AssistantDetailViewController: BaseFilterViewController, UITableViewDataSo
     self.tableView.beginUpdates()
     self.tableView.deleteRowsAtIndexPaths(indexPathsToDelete, withRowAnimation:UITableViewRowAnimation.Top)
     self.tableView.endUpdates()
-  }
-  
-  // MARK: - UISearchBarDelegate
-  
-  func searchBarCancelButtonClicked(searchBar: UISearchBar) {
-    hideSearchBar()
   }
   
 }

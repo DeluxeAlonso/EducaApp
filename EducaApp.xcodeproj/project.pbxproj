@@ -92,6 +92,9 @@
 		E2E9CA4D1B97E4D400DC0EDA /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2E9CA4C1B97E4D400DC0EDA /* User.swift */; };
 		E2ED7EEF1BC651E9001A7C29 /* ArticleMapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2ED7EEE1BC651E9001A7C29 /* ArticleMapViewController.swift */; settings = {ASSET_TAGS = (); }; };
 		E2ED7EF21BC668E5001A7C29 /* SchoolsMapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2ED7EF11BC668E5001A7C29 /* SchoolsMapViewController.swift */; settings = {ASSET_TAGS = (); }; };
+		E2EE4D5D1BD5FD92006CBDFE /* PeopleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2EE4D5C1BD5FD92006CBDFE /* PeopleViewController.swift */; settings = {ASSET_TAGS = (); }; };
+		E2EE4D601BD63085006CBDFE /* PeriodsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2EE4D5F1BD63085006CBDFE /* PeriodsViewController.swift */; settings = {ASSET_TAGS = (); }; };
+		E2EE4D621BD6309C006CBDFE /* RecoverPasswordTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2EE4D611BD6309C006CBDFE /* RecoverPasswordTableViewController.swift */; settings = {ASSET_TAGS = (); }; };
 		E2F21EAF1BC63FD500CD474E /* CustomMapMarker.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2F21EAE1BC63FD500CD474E /* CustomMapMarker.swift */; settings = {ASSET_TAGS = (); }; };
 		E2F2D8251BC70308005DDEA2 /* RateVolunteerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2F2D8241BC70308005DDEA2 /* RateVolunteerViewController.swift */; settings = {ASSET_TAGS = (); }; };
 		E2F2D82A1BC7246B005DDEA2 /* PaymentsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2F2D8291BC7246B005DDEA2 /* PaymentsViewController.swift */; settings = {ASSET_TAGS = (); }; };
@@ -247,6 +250,9 @@
 		E2E9CA4C1B97E4D400DC0EDA /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = User.swift; path = Models/User.swift; sourceTree = "<group>"; };
 		E2ED7EEE1BC651E9001A7C29 /* ArticleMapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ArticleMapViewController.swift; path = Controllers/Articles/ArticleMapViewController.swift; sourceTree = "<group>"; };
 		E2ED7EF11BC668E5001A7C29 /* SchoolsMapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SchoolsMapViewController.swift; path = Controllers/Schools/SchoolsMapViewController.swift; sourceTree = "<group>"; };
+		E2EE4D5C1BD5FD92006CBDFE /* PeopleViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PeopleViewController.swift; path = Controllers/People/PeopleViewController.swift; sourceTree = "<group>"; };
+		E2EE4D5F1BD63085006CBDFE /* PeriodsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PeriodsViewController.swift; path = Controllers/Periods/PeriodsViewController.swift; sourceTree = "<group>"; };
+		E2EE4D611BD6309C006CBDFE /* RecoverPasswordTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RecoverPasswordTableViewController.swift; path = Controllers/Authentication/RecoverPasswordTableViewController.swift; sourceTree = "<group>"; };
 		E2F21EAE1BC63FD500CD474E /* CustomMapMarker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CustomMapMarker.swift; path = "Views/Custom Views/CustomMapMarker.swift"; sourceTree = "<group>"; };
 		E2F2D8241BC70308005DDEA2 /* RateVolunteerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RateVolunteerViewController.swift; path = Controllers/Sessions/RateVolunteerViewController.swift; sourceTree = "<group>"; };
 		E2F2D8291BC7246B005DDEA2 /* PaymentsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PaymentsViewController.swift; path = Controllers/Payments/PaymentsViewController.swift; sourceTree = "<group>"; };
@@ -555,6 +561,7 @@
 		E2E587DE1B993BE6008580D3 /* Authentication */ = {
 			isa = PBXGroup;
 			children = (
+				E2EE4D611BD6309C006CBDFE /* RecoverPasswordTableViewController.swift */,
 				E2E587DF1B993C1C008580D3 /* SignInViewController.swift */,
 			);
 			name = Authentication;
@@ -581,6 +588,22 @@
 				E2ED7EF11BC668E5001A7C29 /* SchoolsMapViewController.swift */,
 			);
 			name = Schools;
+			sourceTree = "<group>";
+		};
+		E2EE4D5B1BD5FD4E006CBDFE /* People */ = {
+			isa = PBXGroup;
+			children = (
+				E2EE4D5C1BD5FD92006CBDFE /* PeopleViewController.swift */,
+			);
+			name = People;
+			sourceTree = "<group>";
+		};
+		E2EE4D5E1BD6306A006CBDFE /* Periods */ = {
+			isa = PBXGroup;
+			children = (
+				E2EE4D5F1BD63085006CBDFE /* PeriodsViewController.swift */,
+			);
+			name = Periods;
 			sourceTree = "<group>";
 		};
 		E2F2D8281BC7243E005DDEA2 /* Payments */ = {
@@ -716,6 +739,8 @@
 				E2E3464D1BA7777D007232A9 /* Donations */,
 				E2DD269C1BBC4806006A0A78 /* Filters */,
 				E2F2D8281BC7243E005DDEA2 /* Payments */,
+				E2EE4D5B1BD5FD4E006CBDFE /* People */,
+				E2EE4D5E1BD6306A006CBDFE /* Periods */,
 				E2DF0F481BBCF8E200F1D1D0 /* Postulation */,
 				E2E3464E1BA77785007232A9 /* Settings */,
 				E2ED7EF01BC665FC001A7C29 /* Schools */,
@@ -892,6 +917,7 @@
 				E2CF33C21B9D5EF100B8BE40 /* UserService.swift in Sources */,
 				E2E13ABA1BA6AFF0004C6E45 /* SpotifyLikeStyle.swift in Sources */,
 				E2F2D82C1BC7710E005DDEA2 /* DepositPaymentViewController.swift in Sources */,
+				E2EE4D601BD63085006CBDFE /* PeriodsViewController.swift in Sources */,
 				E26116E11BAB9E09002C0332 /* ArticleService.swift in Sources */,
 				E2F9C8A51BCF47E000DBE7B9 /* CVDate.swift in Sources */,
 				E21257B71BBCC779007425B2 /* SortingFilterTableViewCell.swift in Sources */,
@@ -919,6 +945,7 @@
 				E241CF371BCA36CA00FE66A8 /* ArticleUser.swift in Sources */,
 				E2F2D8251BC70308005DDEA2 /* RateVolunteerViewController.swift in Sources */,
 				E2E13ABD1BA6B918004C6E45 /* SidebarViewController.swift in Sources */,
+				E2EE4D5D1BD5FD92006CBDFE /* PeopleViewController.swift in Sources */,
 				E2DE92601BB4BC1100E762F8 /* BaseViewController.swift in Sources */,
 				E2DD53C11BABCB170034B31C /* ArticleTableViewCell.swift in Sources */,
 				E2E4F8151BBE40FF00224059 /* Student.swift in Sources */,
@@ -978,6 +1005,7 @@
 				E2F9C8961BCF47E000DBE7B9 /* CVCalendarMenuView.swift in Sources */,
 				E2DF0F4E1BBCFA1E00F1D1D0 /* PostsViewController.swift in Sources */,
 				E2E9CA491B97BA9200DC0EDA /* UIButtonHelper.swift in Sources */,
+				E2EE4D621BD6309C006CBDFE /* RecoverPasswordTableViewController.swift in Sources */,
 				E2E1ACC81BAC903500070EB8 /* KeychainWrapper.m in Sources */,
 				E264BB811BBDF7D800D4D7D5 /* StudentsFilterViewController.swift in Sources */,
 				E2DF0F4C1BBCF9DD00F1D1D0 /* PostulationViewController.swift in Sources */,

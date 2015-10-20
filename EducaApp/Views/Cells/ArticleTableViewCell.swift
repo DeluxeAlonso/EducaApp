@@ -57,7 +57,7 @@ class ArticleTableViewCell: UITableViewCell {
   
   private func setupImageViews(article: Article) {
     articleImageView.sd_setImageWithURL(NSURL(string: (article.imageUrl))!, placeholderImage: UIImage(named: ImageAssets.DefaultBackground))
-    authorImageView.sd_setImageWithURL(NSURL(string: (article.author.imageProfileUrl))!, placeholderImage: UIImage(named: ImageAssets.AfiLogo))
+    authorImageView.image = UIImage(named: ImageAssets.AfiLogo)
   }
   
   private func setupStarImage(imageName: String, favorited: Bool) {

@@ -8,7 +8,7 @@
 
 import UIKit
 
-class CalendarViewController: UIViewController, CVCalendarViewDelegate, CVCalendarMenuViewDelegate {
+class CalendarViewController: UIViewController {
   
   @IBOutlet weak var monthLabel: UILabel!
   @IBOutlet weak var calendarView: CVCalendarView!
@@ -67,9 +67,13 @@ class CalendarViewController: UIViewController, CVCalendarViewDelegate, CVCalend
   @IBAction func dismissCalendarView(sender: AnyObject) {
     dismissViewControllerAnimated(true, completion: nil)
   }
-  
-  // MARK: - CVCalendarViewDelegate
-  
+ 
+}
+
+// MARK: - CVCalendarViewDelegate
+
+extension CalendarViewController: CVCalendarViewDelegate {
+
   func presentationMode() -> CalendarMode {
     return .MonthView
   }

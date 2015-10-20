@@ -10,7 +10,7 @@ import UIKit
 
 let AssistantCellIdentifier = "AssistantCell"
 
-class AssistantsViewController: BaseViewController, UITableViewDataSource, UITableViewDelegate {
+class AssistantsViewController: BaseViewController {
   
   @IBOutlet weak var customView: UIView!
   
@@ -24,10 +24,6 @@ class AssistantsViewController: BaseViewController, UITableViewDataSource, UITab
   
   override func viewDidLoad() {
     super.viewDidLoad()
-  }
-  
-  override func didReceiveMemoryWarning() {
-    super.didReceiveMemoryWarning()
   }
   
   // MARK: - Private
@@ -59,12 +55,16 @@ class AssistantsViewController: BaseViewController, UITableViewDataSource, UITab
     }
   }
   
-  // MARK: - UITableViewDataSource
+}
+
+// MARK: - UITableViewDataSource
+
+extension AssistantsViewController: UITableViewDataSource {
   
   func numberOfSectionsInTableView(tableView: UITableView) -> Int {
     return 1
   }
-
+  
   func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
     return assistants.count
   }
@@ -75,7 +75,11 @@ class AssistantsViewController: BaseViewController, UITableViewDataSource, UITab
     return cell
   }
   
-  //  MARK: - UITableViewDelegate
+}
+
+//  MARK: - UITableViewDelegate
+
+extension AssistantsViewController: UITableViewDelegate {
   
   func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
     tableView.deselectRowAtIndexPath(indexPath, animated: true)

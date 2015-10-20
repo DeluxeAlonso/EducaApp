@@ -26,5 +26,20 @@ class MenuController: UITableViewController {
     super.didReceiveMemoryWarning()
     // Dispose of any resources that can be recreated.
   }
-
+  
+  override func tableView(tableView: UITableView,
+    didSelectRowAtIndexPath indexPath: NSIndexPath) {
+      if indexPath.row == 1 {
+        let actionSheetController: UIAlertController = UIAlertController(title: "¿Está seguro de que desea participar en este periodo?", message: nil, preferredStyle: .Alert)
+        let payPalAction: UIAlertAction = UIAlertAction(title: "Cancelar", style:UIAlertActionStyle.Cancel, handler: nil)
+        actionSheetController.addAction(payPalAction)
+        let depositAction: UIAlertAction = UIAlertAction(title: "Aceptar", style: UIAlertActionStyle.Default) { action -> Void in
+        }
+        actionSheetController.addAction(depositAction)
+        self.presentViewController(actionSheetController, animated: true, completion: nil)
+      }
+      tableView.deselectRowAtIndexPath(indexPath, animated: true)
+  }
+  
 }
+
