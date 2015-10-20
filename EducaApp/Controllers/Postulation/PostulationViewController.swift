@@ -13,16 +13,12 @@ let PostulationCellIdentifier = "PostulationCell"
 let PostulationCellTexts = ["¡Postular!"]
 let PostulationActionSheetTitle = "¿Está seguro de que desea participar de este periodo?"
 
-class PostulationViewController: BaseViewController, UITableViewDataSource, UITableViewDelegate {
+class PostulationViewController: BaseViewController {
   
   // MARK: - Lifecycle
   
   override func viewDidLoad() {
     super.viewDidLoad()
-  }
-  
-  override func didReceiveMemoryWarning() {
-    super.didReceiveMemoryWarning()
   }
   
   // MARK: - Private
@@ -38,9 +34,13 @@ class PostulationViewController: BaseViewController, UITableViewDataSource, UITa
     
     presentViewController(alertController, animated: true, completion: nil)
   }
-  
-  // MARK: - UITableViewDataSource
-  
+
+}
+
+// MARK: - UITableViewDataSource
+
+extension PostulationViewController: UITableViewDataSource {
+
   func numberOfSectionsInTableView(tableView: UITableView) -> Int {
     return 1;
   }
@@ -57,8 +57,12 @@ class PostulationViewController: BaseViewController, UITableViewDataSource, UITa
       return cell
   }
   
-  // MARK: - UITableViewDelegate
-  
+}
+
+// MARK: - UITableViewDelegate
+
+extension PostulationViewController: UITableViewDelegate {
+
   func tableView(tableView: UITableView,
     didSelectRowAtIndexPath indexPath: NSIndexPath) {
       showPostulationSheet()

@@ -68,5 +68,4 @@ class BaseFilterViewController: BaseViewController, UISearchBarDelegate {
     }
   }
   
-  
 }

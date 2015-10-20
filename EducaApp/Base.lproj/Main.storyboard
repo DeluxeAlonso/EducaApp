@@ -704,12 +704,12 @@
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AEP-PX-Ba1">
                                         <rect key="frame" x="536" y="18" width="53" height="53"/>
                                         <animations/>
-                                        <color key="backgroundColor" red="0.0" green="0.59999999999999998" blue="0.80000000000000004" alpha="1" colorSpace="calibratedRGB"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="53" id="91Y-HV-UQn"/>
                                             <constraint firstAttribute="height" constant="53" id="Bpj-AS-MIU"/>
                                         </constraints>
-                                        <state key="normal" image="MapRouteIcon">
+                                        <state key="normal" backgroundImage="MapRouteIcon">
                                             <color key="titleColor" red="0.0" green="0.59999999999999998" blue="0.80000000000000004" alpha="1" colorSpace="calibratedRGB"/>
                                         </state>
                                         <userDefinedRuntimeAttributes>
@@ -728,12 +728,12 @@
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qm7-N8-3mz">
                                         <rect key="frame" x="472" y="18" width="53" height="53"/>
                                         <animations/>
-                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="53" id="gHg-TC-Q2a"/>
                                             <constraint firstAttribute="height" constant="53" id="v48-mp-Woq"/>
                                         </constraints>
-                                        <state key="normal" image="DeleteMarkerIcon"/>
+                                        <state key="normal" backgroundImage="DeleteMarkerIcon"/>
                                         <userDefinedRuntimeAttributes>
                                             <userDefinedRuntimeAttribute type="boolean" keyPath="layer.clipToBounds" value="YES"/>
                                             <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
@@ -1655,14 +1655,11 @@ El voluntariado comprende actividades asistenciales de servicios sociales, cívi
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Detalle" id="qxs-nx-y4c">
-                        <rightBarButtonItems>
-                            <barButtonItem image="ShareIcon" id="fbk-ff-CAY">
-                                <connections>
-                                    <action selector="shareButtonClicked:" destination="IsU-36-lMc" id="KVs-Xp-8ds"/>
-                                </connections>
-                            </barButtonItem>
-                            <barButtonItem image="WriteCommentIcon" id="aKL-G7-OKB"/>
-                        </rightBarButtonItems>
+                        <barButtonItem key="rightBarButtonItem" image="ShareIcon" id="fbk-ff-CAY">
+                            <connections>
+                                <action selector="shareButtonClicked:" destination="IsU-36-lMc" id="KVs-Xp-8ds"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="articleImageView" destination="Niw-XZ-lsa" id="cAd-bm-y3P"/>
@@ -1960,6 +1957,9 @@ El voluntariado comprende actividades asistenciales de servicios sociales, cívi
                                     <color key="titleColor" red="0.0" green="0.59999999999999998" blue="0.80000000000000004" alpha="1" colorSpace="calibratedRGB"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <connections>
+                                    <action selector="gotoRecoverPassword:" destination="gSg-8a-5Fb" eventType="touchUpInside" id="t4e-qm-qbX"/>
+                                </connections>
                             </button>
                         </subviews>
                         <animations/>
@@ -2032,14 +2032,14 @@ El voluntariado comprende actividades asistenciales de servicios sociales, cívi
                         <sections>
                             <tableViewSection id="lau-AY-OXU">
                                 <cells>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" rowHeight="63" id="ggi-Cp-5XD" userLabel="Header Cell">
-                                        <rect key="frame" x="0.0" y="0.0" width="600" height="63"/>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" rowHeight="15" id="ggi-Cp-5XD" userLabel="Header Cell">
+                                        <rect key="frame" x="0.0" y="0.0" width="600" height="15"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="ggi-Cp-5XD" id="35G-2t-5k2">
-                                            <rect key="frame" x="0.0" y="0.0" width="600" height="63"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="600" height="15"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="EducaApp" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Sku-LR-MXx">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Sku-LR-MXx">
                                                     <rect key="frame" x="19" y="21" width="119" height="24"/>
                                                     <animations/>
                                                     <fontDescription key="fontDescription" name="AvenirNextCondensed-Medium" family="Avenir Next Condensed" pointSize="26"/>
@@ -2054,7 +2054,7 @@ El voluntariado comprende actividades asistenciales de servicios sociales, cívi
                                         <color key="backgroundColor" red="0.94085192679999996" green="0.94903725390000004" blue="0.95307987930000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     </tableViewCell>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="tJv-Mn-ffD" userLabel="Camera Cell">
-                                        <rect key="frame" x="0.0" y="63" width="600" height="44"/>
+                                        <rect key="frame" x="0.0" y="15" width="600" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="tJv-Mn-ffD" id="rsM-Xn-HmA">
                                             <rect key="frame" x="0.0" y="0.0" width="600" height="44"/>
@@ -2068,7 +2068,7 @@ El voluntariado comprende actividades asistenciales de servicios sociales, cívi
                                                     <rect key="frame" x="61" y="6" width="142" height="31"/>
                                                     <animations/>
                                                     <fontDescription key="fontDescription" name="AvenirNextCondensed-Medium" family="Avenir Next Condensed" pointSize="22"/>
-                                                    <color key="textColor" red="0.019607843137254902" green="0.58431372549019611" blue="0.78823529411764703" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <color key="textColor" red="0.95294117647058818" green="0.61176470588235299" blue="0.070588235294117646" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
@@ -2077,18 +2077,15 @@ El voluntariado comprende actividades asistenciales de servicios sociales, cívi
                                         </tableViewCellContentView>
                                         <animations/>
                                         <color key="backgroundColor" red="0.94085192679999996" green="0.94903725390000004" blue="0.95307987930000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                        <connections>
-                                            <segue destination="tzn-30-vIQ" kind="custom" customClass="SWRevealViewControllerSeguePushController" id="Lbt-sr-aJl"/>
-                                        </connections>
                                     </tableViewCell>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="onZ-PY-eTr" userLabel="School Cell">
-                                        <rect key="frame" x="0.0" y="107" width="600" height="44"/>
+                                        <rect key="frame" x="0.0" y="59" width="600" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="onZ-PY-eTr" id="4dz-s4-9dJ">
                                             <rect key="frame" x="0.0" y="0.0" width="600" height="44"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="SchoolIcon" translatesAutoresizingMaskIntoConstraints="NO" id="dGn-wA-awl">
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="NewsIcon" translatesAutoresizingMaskIntoConstraints="NO" id="dGn-wA-awl">
                                                     <rect key="frame" x="18" y="4" width="35" height="35"/>
                                                     <animations/>
                                                 </imageView>
@@ -2096,7 +2093,7 @@ El voluntariado comprende actividades asistenciales de servicios sociales, cívi
                                                     <rect key="frame" x="61" y="9" width="71" height="31"/>
                                                     <animations/>
                                                     <fontDescription key="fontDescription" name="AvenirNextCondensed-Medium" family="Avenir Next Condensed" pointSize="22"/>
-                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <color key="textColor" red="0.0" green="0.59999999999999998" blue="0.80000000000000004" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
@@ -2109,148 +2106,8 @@ El voluntariado comprende actividades asistenciales de servicios sociales, cívi
                                             <segue destination="51h-Io-WH8" kind="custom" customClass="SWRevealViewControllerSeguePushController" id="RtS-xr-ajm"/>
                                         </connections>
                                     </tableViewCell>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="Vhm-qx-Mx7" userLabel="Sessions Cell">
-                                        <rect key="frame" x="0.0" y="151" width="600" height="44"/>
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Vhm-qx-Mx7" id="OEs-et-GEV">
-                                            <rect key="frame" x="0.0" y="0.0" width="600" height="44"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <subviews>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="SessionsIcon" translatesAutoresizingMaskIntoConstraints="NO" id="19l-sm-wzP">
-                                                    <rect key="frame" x="18" y="4" width="35" height="35"/>
-                                                    <animations/>
-                                                </imageView>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Sesiones" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mRP-Bu-glf">
-                                                    <rect key="frame" x="61" y="6" width="100" height="31"/>
-                                                    <animations/>
-                                                    <fontDescription key="fontDescription" name="AvenirNextCondensed-Medium" family="Avenir Next Condensed" pointSize="22"/>
-                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                            </subviews>
-                                            <animations/>
-                                            <color key="backgroundColor" red="0.94117647059999998" green="0.98039215690000003" blue="0.98039215690000003" alpha="1" colorSpace="calibratedRGB"/>
-                                        </tableViewCellContentView>
-                                        <animations/>
-                                        <color key="backgroundColor" red="0.94085192679999996" green="0.94903725390000004" blue="0.95307987930000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                        <connections>
-                                            <segue destination="eId-bY-6l6" kind="custom" customClass="SWRevealViewControllerSeguePushController" id="mFZ-TI-LzV"/>
-                                        </connections>
-                                    </tableViewCell>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="Smb-Zn-FlP" userLabel="Pay Cell">
-                                        <rect key="frame" x="0.0" y="195" width="600" height="44"/>
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Smb-Zn-FlP" id="DTu-ZL-acV">
-                                            <rect key="frame" x="0.0" y="0.0" width="600" height="44"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <subviews>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="SchoolBlackIcon" translatesAutoresizingMaskIntoConstraints="NO" id="ffU-Gj-kgU">
-                                                    <rect key="frame" x="18" y="4" width="35" height="35"/>
-                                                    <animations/>
-                                                </imageView>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Pagos" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="H6s-f3-dY7">
-                                                    <rect key="frame" x="61" y="6" width="100" height="31"/>
-                                                    <animations/>
-                                                    <fontDescription key="fontDescription" name="AvenirNextCondensed-Medium" family="Avenir Next Condensed" pointSize="22"/>
-                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                            </subviews>
-                                            <animations/>
-                                            <color key="backgroundColor" red="0.94117647059999998" green="0.98039215690000003" blue="0.98039215690000003" alpha="1" colorSpace="calibratedRGB"/>
-                                        </tableViewCellContentView>
-                                        <animations/>
-                                        <color key="backgroundColor" red="0.94085192679999996" green="0.94903725390000004" blue="0.95307987930000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                        <connections>
-                                            <segue destination="3Zj-sa-evx" kind="custom" customClass="SWRevealViewControllerSeguePushController" id="hFd-ET-FZ3"/>
-                                        </connections>
-                                    </tableViewCell>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="02a-GX-Vrm" userLabel="Donation Cell">
-                                        <rect key="frame" x="0.0" y="239" width="600" height="44"/>
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="02a-GX-Vrm" id="RE6-RK-KyH">
-                                            <rect key="frame" x="0.0" y="0.0" width="600" height="44"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <subviews>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="DonationIcon" translatesAutoresizingMaskIntoConstraints="NO" id="6CS-bU-3oe">
-                                                    <rect key="frame" x="18" y="4" width="35" height="35"/>
-                                                    <animations/>
-                                                </imageView>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Donaciones" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Rht-7C-uKV">
-                                                    <rect key="frame" x="61" y="6" width="100" height="31"/>
-                                                    <animations/>
-                                                    <fontDescription key="fontDescription" name="AvenirNextCondensed-Medium" family="Avenir Next Condensed" pointSize="22"/>
-                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                            </subviews>
-                                            <animations/>
-                                            <color key="backgroundColor" red="0.94117647059999998" green="0.98039215690000003" blue="0.98039215690000003" alpha="1" colorSpace="calibratedRGB"/>
-                                        </tableViewCellContentView>
-                                        <animations/>
-                                        <color key="backgroundColor" red="0.94085192679999996" green="0.94903725390000004" blue="0.95307987930000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                        <connections>
-                                            <segue destination="op2-AU-eZT" kind="custom" customClass="SWRevealViewControllerSeguePushController" id="wHQ-er-aEG"/>
-                                        </connections>
-                                    </tableViewCell>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="v2i-5g-vnA" userLabel="Documents Cell">
-                                        <rect key="frame" x="0.0" y="283" width="600" height="44"/>
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="v2i-5g-vnA" id="aDI-r3-b8N">
-                                            <rect key="frame" x="0.0" y="0.0" width="600" height="44"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <subviews>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="DocumentsIcon" translatesAutoresizingMaskIntoConstraints="NO" id="WKd-Ou-FvD">
-                                                    <rect key="frame" x="18" y="4" width="35" height="35"/>
-                                                    <animations/>
-                                                </imageView>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Documentos" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="W3f-yg-dj5">
-                                                    <rect key="frame" x="61" y="6" width="101" height="31"/>
-                                                    <animations/>
-                                                    <fontDescription key="fontDescription" name="AvenirNextCondensed-Medium" family="Avenir Next Condensed" pointSize="22"/>
-                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                            </subviews>
-                                            <animations/>
-                                            <color key="backgroundColor" red="0.94117647059999998" green="0.98039215690000003" blue="0.98039215690000003" alpha="1" colorSpace="calibratedRGB"/>
-                                        </tableViewCellContentView>
-                                        <animations/>
-                                        <color key="backgroundColor" red="0.94085192679999996" green="0.94903725390000004" blue="0.95307987930000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                        <connections>
-                                            <segue destination="g6b-oT-GuY" kind="custom" customClass="SWRevealViewControllerSeguePushController" id="qI9-Ra-9gx"/>
-                                        </connections>
-                                    </tableViewCell>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="Rkf-37-TOG" userLabel="Camera Cell">
-                                        <rect key="frame" x="0.0" y="327" width="600" height="44"/>
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Rkf-37-TOG" id="KMh-jh-Psx">
-                                            <rect key="frame" x="0.0" y="0.0" width="600" height="44"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <subviews>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="CameraBlackIcon" translatesAutoresizingMaskIntoConstraints="NO" id="dfG-B1-TnY">
-                                                    <rect key="frame" x="18" y="4" width="35" height="35"/>
-                                                    <animations/>
-                                                </imageView>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Cámara" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jJ6-7Z-HOa">
-                                                    <rect key="frame" x="61" y="6" width="60" height="31"/>
-                                                    <animations/>
-                                                    <fontDescription key="fontDescription" name="AvenirNextCondensed-Medium" family="Avenir Next Condensed" pointSize="22"/>
-                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                            </subviews>
-                                            <animations/>
-                                            <color key="backgroundColor" red="0.94117647059999998" green="0.98039215690000003" blue="0.98039215690000003" alpha="1" colorSpace="calibratedRGB"/>
-                                        </tableViewCellContentView>
-                                        <animations/>
-                                        <color key="backgroundColor" red="0.94085192679999996" green="0.94903725390000004" blue="0.95307987930000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                        <connections>
-                                            <segue destination="QXN-Ls-nZO" kind="custom" customClass="SWRevealViewControllerSeguePushController" id="O9u-Gc-vYO"/>
-                                        </connections>
-                                    </tableViewCell>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="obf-5B-3ev" userLabel="Blog Cell">
-                                        <rect key="frame" x="0.0" y="371" width="600" height="44"/>
+                                        <rect key="frame" x="0.0" y="103" width="600" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="obf-5B-3ev" id="nWB-kS-z9F">
                                             <rect key="frame" x="0.0" y="0.0" width="600" height="44"/>
@@ -2264,7 +2121,7 @@ El voluntariado comprende actividades asistenciales de servicios sociales, cívi
                                                     <rect key="frame" x="61" y="6" width="37" height="31"/>
                                                     <animations/>
                                                     <fontDescription key="fontDescription" name="AvenirNextCondensed-Medium" family="Avenir Next Condensed" pointSize="22"/>
-                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <color key="textColor" red="0.0" green="0.59999999999999998" blue="0.80000000000000004" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
@@ -2277,22 +2134,162 @@ El voluntariado comprende actividades asistenciales de servicios sociales, cívi
                                             <segue destination="0EJ-to-wYP" kind="custom" customClass="SWRevealViewControllerSeguePushController" id="9GK-eN-2vA"/>
                                         </connections>
                                     </tableViewCell>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="Pki-vb-zxY" userLabel="Kids Cell">
-                                        <rect key="frame" x="0.0" y="415" width="600" height="44"/>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="Vhm-qx-Mx7" userLabel="Sessions Cell">
+                                        <rect key="frame" x="0.0" y="147" width="600" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Vhm-qx-Mx7" id="OEs-et-GEV">
+                                            <rect key="frame" x="0.0" y="0.0" width="600" height="44"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="SessionsIcon" translatesAutoresizingMaskIntoConstraints="NO" id="19l-sm-wzP">
+                                                    <rect key="frame" x="18" y="4" width="35" height="35"/>
+                                                    <animations/>
+                                                </imageView>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Sesiones" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mRP-Bu-glf">
+                                                    <rect key="frame" x="61" y="7" width="100" height="31"/>
+                                                    <animations/>
+                                                    <fontDescription key="fontDescription" name="AvenirNextCondensed-Medium" family="Avenir Next Condensed" pointSize="22"/>
+                                                    <color key="textColor" red="0.0" green="0.59999999999999998" blue="0.80000000000000004" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <animations/>
+                                            <color key="backgroundColor" red="0.94117647059999998" green="0.98039215690000003" blue="0.98039215690000003" alpha="1" colorSpace="calibratedRGB"/>
+                                        </tableViewCellContentView>
+                                        <animations/>
+                                        <color key="backgroundColor" red="0.94085192679999996" green="0.94903725390000004" blue="0.95307987930000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <connections>
+                                            <segue destination="eId-bY-6l6" kind="custom" customClass="SWRevealViewControllerSeguePushController" id="mFZ-TI-LzV"/>
+                                        </connections>
+                                    </tableViewCell>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="Smb-Zn-FlP" userLabel="Pay Cell">
+                                        <rect key="frame" x="0.0" y="191" width="600" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Smb-Zn-FlP" id="DTu-ZL-acV">
+                                            <rect key="frame" x="0.0" y="0.0" width="600" height="44"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="PaymentsIcon" translatesAutoresizingMaskIntoConstraints="NO" id="ffU-Gj-kgU">
+                                                    <rect key="frame" x="18" y="4" width="35" height="35"/>
+                                                    <animations/>
+                                                </imageView>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Pagos" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="H6s-f3-dY7">
+                                                    <rect key="frame" x="61" y="6" width="100" height="31"/>
+                                                    <animations/>
+                                                    <fontDescription key="fontDescription" name="AvenirNextCondensed-Medium" family="Avenir Next Condensed" pointSize="22"/>
+                                                    <color key="textColor" red="0.0" green="0.59999999999999998" blue="0.80000000000000004" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <animations/>
+                                            <color key="backgroundColor" red="0.94117647059999998" green="0.98039215690000003" blue="0.98039215690000003" alpha="1" colorSpace="calibratedRGB"/>
+                                        </tableViewCellContentView>
+                                        <animations/>
+                                        <color key="backgroundColor" red="0.94085192679999996" green="0.94903725390000004" blue="0.95307987930000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <connections>
+                                            <segue destination="3Zj-sa-evx" kind="custom" customClass="SWRevealViewControllerSeguePushController" id="hFd-ET-FZ3"/>
+                                        </connections>
+                                    </tableViewCell>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="02a-GX-Vrm" userLabel="Donation Cell">
+                                        <rect key="frame" x="0.0" y="235" width="600" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="02a-GX-Vrm" id="RE6-RK-KyH">
+                                            <rect key="frame" x="0.0" y="0.0" width="600" height="44"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="DonationIcon" translatesAutoresizingMaskIntoConstraints="NO" id="6CS-bU-3oe">
+                                                    <rect key="frame" x="18" y="4" width="35" height="35"/>
+                                                    <animations/>
+                                                </imageView>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Donaciones" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Rht-7C-uKV">
+                                                    <rect key="frame" x="61" y="6" width="100" height="31"/>
+                                                    <animations/>
+                                                    <fontDescription key="fontDescription" name="AvenirNextCondensed-Medium" family="Avenir Next Condensed" pointSize="22"/>
+                                                    <color key="textColor" red="0.0" green="0.59999999999999998" blue="0.80000000000000004" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <animations/>
+                                            <color key="backgroundColor" red="0.94117647059999998" green="0.98039215690000003" blue="0.98039215690000003" alpha="1" colorSpace="calibratedRGB"/>
+                                        </tableViewCellContentView>
+                                        <animations/>
+                                        <color key="backgroundColor" red="0.94085192679999996" green="0.94903725390000004" blue="0.95307987930000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <connections>
+                                            <segue destination="op2-AU-eZT" kind="custom" customClass="SWRevealViewControllerSeguePushController" id="wHQ-er-aEG"/>
+                                        </connections>
+                                    </tableViewCell>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="v2i-5g-vnA" userLabel="Documents Cell">
+                                        <rect key="frame" x="0.0" y="279" width="600" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="v2i-5g-vnA" id="aDI-r3-b8N">
+                                            <rect key="frame" x="0.0" y="0.0" width="600" height="44"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="DocumentsIcon" translatesAutoresizingMaskIntoConstraints="NO" id="WKd-Ou-FvD">
+                                                    <rect key="frame" x="18" y="4" width="35" height="35"/>
+                                                    <animations/>
+                                                </imageView>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Documentos" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="W3f-yg-dj5">
+                                                    <rect key="frame" x="61" y="6" width="101" height="31"/>
+                                                    <animations/>
+                                                    <fontDescription key="fontDescription" name="AvenirNextCondensed-Medium" family="Avenir Next Condensed" pointSize="22"/>
+                                                    <color key="textColor" red="0.0" green="0.59999999999999998" blue="0.80000000000000004" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <animations/>
+                                            <color key="backgroundColor" red="0.94117647059999998" green="0.98039215690000003" blue="0.98039215690000003" alpha="1" colorSpace="calibratedRGB"/>
+                                        </tableViewCellContentView>
+                                        <animations/>
+                                        <color key="backgroundColor" red="0.94085192679999996" green="0.94903725390000004" blue="0.95307987930000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <connections>
+                                            <segue destination="g6b-oT-GuY" kind="custom" customClass="SWRevealViewControllerSeguePushController" id="qI9-Ra-9gx"/>
+                                        </connections>
+                                    </tableViewCell>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="Rkf-37-TOG" userLabel="Camera Cell">
+                                        <rect key="frame" x="0.0" y="323" width="600" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Rkf-37-TOG" id="KMh-jh-Psx">
+                                            <rect key="frame" x="0.0" y="0.0" width="600" height="44"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="CameraBlackIcon" translatesAutoresizingMaskIntoConstraints="NO" id="dfG-B1-TnY">
+                                                    <rect key="frame" x="18" y="4" width="35" height="35"/>
+                                                    <animations/>
+                                                </imageView>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Cámara" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jJ6-7Z-HOa">
+                                                    <rect key="frame" x="61" y="6" width="60" height="31"/>
+                                                    <animations/>
+                                                    <fontDescription key="fontDescription" name="AvenirNextCondensed-Medium" family="Avenir Next Condensed" pointSize="22"/>
+                                                    <color key="textColor" red="0.0" green="0.59999999999999998" blue="0.80000000000000004" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <animations/>
+                                            <color key="backgroundColor" red="0.94117647059999998" green="0.98039215690000003" blue="0.98039215690000003" alpha="1" colorSpace="calibratedRGB"/>
+                                        </tableViewCellContentView>
+                                        <animations/>
+                                        <color key="backgroundColor" red="0.94085192679999996" green="0.94903725390000004" blue="0.95307987930000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <connections>
+                                            <segue destination="QXN-Ls-nZO" kind="custom" customClass="SWRevealViewControllerSeguePushController" id="O9u-Gc-vYO"/>
+                                        </connections>
+                                    </tableViewCell>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="Pki-vb-zxY" userLabel="People Cell">
+                                        <rect key="frame" x="0.0" y="367" width="600" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Pki-vb-zxY" id="Ard-AH-QMD">
                                             <rect key="frame" x="0.0" y="0.0" width="600" height="44"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="KidsIcon" translatesAutoresizingMaskIntoConstraints="NO" id="vhP-iU-Ec2">
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="UserIcon" translatesAutoresizingMaskIntoConstraints="NO" id="vhP-iU-Ec2">
                                                     <rect key="frame" x="18" y="4" width="35" height="35"/>
                                                     <animations/>
                                                 </imageView>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Niños" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bBq-FI-hKq">
-                                                    <rect key="frame" x="61" y="6" width="47" height="31"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Personas" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bBq-FI-hKq">
+                                                    <rect key="frame" x="61" y="6" width="76" height="31"/>
                                                     <animations/>
                                                     <fontDescription key="fontDescription" name="AvenirNextCondensed-Medium" family="Avenir Next Condensed" pointSize="22"/>
-                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <color key="textColor" red="0.0" green="0.59999999999999998" blue="0.80000000000000004" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
@@ -2302,25 +2299,25 @@ El voluntariado comprende actividades asistenciales de servicios sociales, cívi
                                         <animations/>
                                         <color key="backgroundColor" red="0.94085192679999996" green="0.94903725390000004" blue="0.95307987930000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <connections>
-                                            <segue destination="TQa-7P-YXz" kind="custom" customClass="SWRevealViewControllerSeguePushController" id="rjr-n3-Omv"/>
+                                            <segue destination="AUn-6k-vLm" kind="custom" customClass="SWRevealViewControllerSeguePushController" id="Ow3-hM-cvw"/>
                                         </connections>
                                     </tableViewCell>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="sb1-tc-dpr" userLabel="Users Cell">
-                                        <rect key="frame" x="0.0" y="459" width="600" height="44"/>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="e3S-zB-pJ9" userLabel="School Cell">
+                                        <rect key="frame" x="0.0" y="411" width="600" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="sb1-tc-dpr" id="j75-Bi-d4g">
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="e3S-zB-pJ9" id="Vub-jl-ABp">
                                             <rect key="frame" x="0.0" y="0.0" width="600" height="44"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="UserIcon" translatesAutoresizingMaskIntoConstraints="NO" id="3sE-xF-TVT">
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="PeriodsIcon" translatesAutoresizingMaskIntoConstraints="NO" id="FgS-KX-bqk">
                                                     <rect key="frame" x="18" y="4" width="35" height="35"/>
                                                     <animations/>
                                                 </imageView>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Usuarios" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uJ0-3p-pLC">
-                                                    <rect key="frame" x="61" y="6" width="69" height="31"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Periodos" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ylr-cd-Ew2">
+                                                    <rect key="frame" x="61" y="9" width="71" height="31"/>
                                                     <animations/>
                                                     <fontDescription key="fontDescription" name="AvenirNextCondensed-Medium" family="Avenir Next Condensed" pointSize="22"/>
-                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <color key="textColor" red="0.0" green="0.59999999999999998" blue="0.80000000000000004" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
@@ -2330,11 +2327,11 @@ El voluntariado comprende actividades asistenciales de servicios sociales, cívi
                                         <animations/>
                                         <color key="backgroundColor" red="0.94085192679999996" green="0.94903725390000004" blue="0.95307987930000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <connections>
-                                            <segue destination="1a6-4a-TDm" kind="custom" customClass="SWRevealViewControllerSeguePushController" id="9SW-Q5-CM0"/>
+                                            <segue destination="iwE-5P-Cpj" kind="custom" customClass="SWRevealViewControllerSeguePushController" id="Vrt-vR-Q1Y"/>
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="iWN-ZY-OCn" userLabel="Settings Cell">
-                                        <rect key="frame" x="0.0" y="503" width="600" height="44"/>
+                                        <rect key="frame" x="0.0" y="455" width="600" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="iWN-ZY-OCn" id="V6j-7m-jpy">
                                             <rect key="frame" x="0.0" y="0.0" width="600" height="44"/>
@@ -2348,7 +2345,7 @@ El voluntariado comprende actividades asistenciales de servicios sociales, cívi
                                                     <rect key="frame" x="61" y="6" width="116" height="31"/>
                                                     <animations/>
                                                     <fontDescription key="fontDescription" name="AvenirNextCondensed-Medium" family="Avenir Next Condensed" pointSize="22"/>
-                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <color key="textColor" red="0.0" green="0.59999999999999998" blue="0.80000000000000004" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
@@ -2698,7 +2695,6 @@ El voluntariado comprende actividades asistenciales de servicios sociales, cívi
                                     <constraint firstItem="gws-ZM-SRY" firstAttribute="top" secondItem="ngc-h0-JDy" secondAttribute="bottom" id="Shd-fM-JwG"/>
                                     <constraint firstItem="40f-FK-d86" firstAttribute="height" secondItem="Mwt-th-EbQ" secondAttribute="height" id="Tit-9N-jKa"/>
                                     <constraint firstAttribute="trailing" secondItem="ngc-h0-JDy" secondAttribute="trailing" id="X0A-cF-gYQ"/>
-                                    <constraint firstItem="40f-FK-d86" firstAttribute="bottom" secondItem="Mwt-th-EbQ" secondAttribute="bottom" id="Zt0-qJ-KQa"/>
                                     <constraint firstItem="6DB-Ra-T3C" firstAttribute="top" secondItem="ngc-h0-JDy" secondAttribute="bottom" id="aBH-D9-zuG"/>
                                     <constraint firstItem="6DB-Ra-T3C" firstAttribute="height" secondItem="Mwt-th-EbQ" secondAttribute="height" id="dVb-PQ-U81"/>
                                     <constraint firstItem="Mwt-th-EbQ" firstAttribute="leading" secondItem="DTA-6m-rln" secondAttribute="leading" id="e1Y-rU-TB6"/>
@@ -2778,8 +2774,59 @@ El voluntariado comprende actividades asistenciales de servicios sociales, cívi
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mwf-uz-t3j" userLabel="Month View">
+                                <rect key="frame" x="0.0" y="64" width="600" height="60"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6Fe-rT-JPg">
+                                        <rect key="frame" x="0.0" y="0.0" width="54" height="60"/>
+                                        <animations/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="60" id="Aq2-wl-oUa"/>
+                                            <constraint firstAttribute="width" constant="54" id="kwt-jP-ydF"/>
+                                        </constraints>
+                                        <state key="normal" image="LeftArrowBlueIcont"/>
+                                        <connections>
+                                            <action selector="loadPrevious:" destination="uLv-9Z-3do" eventType="touchUpInside" id="VYY-Au-FTj"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CxI-p8-Rcq">
+                                        <rect key="frame" x="546" y="0.0" width="54" height="60"/>
+                                        <animations/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="54" id="lbO-zU-ecq"/>
+                                            <constraint firstAttribute="height" constant="60" id="wzN-4h-kqN"/>
+                                        </constraints>
+                                        <state key="normal" image="RightArrowBlueIcon"/>
+                                        <connections>
+                                            <action selector="loadNext:" destination="uLv-9Z-3do" eventType="touchUpInside" id="ZLg-B2-1TJ"/>
+                                        </connections>
+                                    </button>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Mes" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VEd-A9-G9p">
+                                        <rect key="frame" x="62" y="8" width="476" height="44"/>
+                                        <animations/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="44" id="RPg-tQ-Fqa"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="21"/>
+                                        <color key="textColor" red="0.090196078430000007" green="0.65490196079999996" blue="0.83529411760000005" alpha="1" colorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <animations/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="60" id="OKf-6f-1d7"/>
+                                    <constraint firstItem="6Fe-rT-JPg" firstAttribute="leading" secondItem="mwf-uz-t3j" secondAttribute="leading" id="WYR-13-H6c"/>
+                                    <constraint firstAttribute="trailing" secondItem="CxI-p8-Rcq" secondAttribute="trailing" id="aza-k2-6SV"/>
+                                    <constraint firstItem="6Fe-rT-JPg" firstAttribute="centerY" secondItem="mwf-uz-t3j" secondAttribute="centerY" id="eXN-KK-S5q"/>
+                                    <constraint firstItem="CxI-p8-Rcq" firstAttribute="leading" secondItem="VEd-A9-G9p" secondAttribute="trailing" constant="8" id="hsA-dG-o5l"/>
+                                    <constraint firstItem="VEd-A9-G9p" firstAttribute="leading" secondItem="6Fe-rT-JPg" secondAttribute="trailing" constant="8" id="syp-4g-kTA"/>
+                                    <constraint firstItem="VEd-A9-G9p" firstAttribute="centerY" secondItem="mwf-uz-t3j" secondAttribute="centerY" id="vU6-cJ-tmg"/>
+                                    <constraint firstItem="CxI-p8-Rcq" firstAttribute="centerY" secondItem="mwf-uz-t3j" secondAttribute="centerY" id="xfH-QV-7ao"/>
+                                </constraints>
+                            </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fXR-w8-J0q" customClass="CVCalendarView" customModule="EducaApp" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="125" width="600" height="267"/>
+                                <rect key="frame" x="0.0" y="125" width="600" height="268"/>
                                 <animations/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <connections>
@@ -2789,7 +2836,7 @@ El voluntariado comprende actividades asistenciales de servicios sociales, cívi
                                 </connections>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="etn-s3-MpA" customClass="CVCalendarMenuView" customModule="EducaApp" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="392" width="600" height="208"/>
+                                <rect key="frame" x="0.0" y="393" width="600" height="207"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Nombre de la sesion" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KLz-nq-EHL">
                                         <rect key="frame" x="0.0" y="8" width="600" height="45"/>
@@ -2906,64 +2953,13 @@ El voluntariado comprende actividades asistenciales de servicios sociales, cívi
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </view>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mwf-uz-t3j">
-                                <rect key="frame" x="0.0" y="64" width="600" height="60"/>
-                                <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6Fe-rT-JPg">
-                                        <rect key="frame" x="0.0" y="0.0" width="54" height="60"/>
-                                        <animations/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="60" id="Aq2-wl-oUa"/>
-                                            <constraint firstAttribute="width" constant="54" id="kwt-jP-ydF"/>
-                                        </constraints>
-                                        <state key="normal" image="LeftArrowBlueIcont"/>
-                                        <connections>
-                                            <action selector="loadPrevious:" destination="uLv-9Z-3do" eventType="touchUpInside" id="VYY-Au-FTj"/>
-                                        </connections>
-                                    </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CxI-p8-Rcq">
-                                        <rect key="frame" x="546" y="0.0" width="54" height="60"/>
-                                        <animations/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" constant="54" id="lbO-zU-ecq"/>
-                                            <constraint firstAttribute="height" constant="60" id="wzN-4h-kqN"/>
-                                        </constraints>
-                                        <state key="normal" image="RightArrowBlueIcon"/>
-                                        <connections>
-                                            <action selector="loadNext:" destination="uLv-9Z-3do" eventType="touchUpInside" id="ZLg-B2-1TJ"/>
-                                        </connections>
-                                    </button>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Mes" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VEd-A9-G9p">
-                                        <rect key="frame" x="62" y="8" width="476" height="44"/>
-                                        <animations/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="44" id="RPg-tQ-Fqa"/>
-                                        </constraints>
-                                        <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="21"/>
-                                        <color key="textColor" red="0.090196078430000007" green="0.65490196079999996" blue="0.83529411760000005" alpha="1" colorSpace="calibratedRGB"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                </subviews>
-                                <animations/>
-                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="60" id="OKf-6f-1d7"/>
-                                    <constraint firstItem="6Fe-rT-JPg" firstAttribute="leading" secondItem="mwf-uz-t3j" secondAttribute="leading" id="WYR-13-H6c"/>
-                                    <constraint firstAttribute="trailing" secondItem="CxI-p8-Rcq" secondAttribute="trailing" id="aza-k2-6SV"/>
-                                    <constraint firstItem="6Fe-rT-JPg" firstAttribute="centerY" secondItem="mwf-uz-t3j" secondAttribute="centerY" id="eXN-KK-S5q"/>
-                                    <constraint firstItem="CxI-p8-Rcq" firstAttribute="leading" secondItem="VEd-A9-G9p" secondAttribute="trailing" constant="8" id="hsA-dG-o5l"/>
-                                    <constraint firstItem="VEd-A9-G9p" firstAttribute="leading" secondItem="6Fe-rT-JPg" secondAttribute="trailing" constant="8" id="syp-4g-kTA"/>
-                                    <constraint firstItem="VEd-A9-G9p" firstAttribute="centerY" secondItem="mwf-uz-t3j" secondAttribute="centerY" id="vU6-cJ-tmg"/>
-                                    <constraint firstItem="CxI-p8-Rcq" firstAttribute="centerY" secondItem="mwf-uz-t3j" secondAttribute="centerY" id="xfH-QV-7ao"/>
-                                </constraints>
-                            </view>
                         </subviews>
                         <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="fXR-w8-J0q" firstAttribute="top" secondItem="mwf-uz-t3j" secondAttribute="bottom" constant="1" id="3Bn-Rh-JdT"/>
                             <constraint firstItem="mwf-uz-t3j" firstAttribute="leading" secondItem="1ui-jQ-7gh" secondAttribute="leading" id="83A-9m-7Ju"/>
-                            <constraint firstItem="fXR-w8-J0q" firstAttribute="height" secondItem="1ui-jQ-7gh" secondAttribute="height" multiplier="0.447" constant="-1.1999999999999886" id="CHb-j1-FdR"/>
+                            <constraint firstItem="fXR-w8-J0q" firstAttribute="height" secondItem="1ui-jQ-7gh" secondAttribute="height" multiplier="0.447" id="CHb-j1-FdR"/>
                             <constraint firstItem="etn-s3-MpA" firstAttribute="leading" secondItem="1ui-jQ-7gh" secondAttribute="leading" id="H0O-Wu-7Wc"/>
                             <constraint firstAttribute="trailing" secondItem="etn-s3-MpA" secondAttribute="trailing" id="KT0-ss-mrj"/>
                             <constraint firstAttribute="trailing" secondItem="mwf-uz-t3j" secondAttribute="trailing" id="NHQ-sa-MjG"/>
@@ -2976,13 +2972,17 @@ El voluntariado comprende actividades asistenciales de servicios sociales, cívi
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Calendario de Eventos" id="kn8-Vr-0vp">
-                        <barButtonItem key="leftBarButtonItem" title="Salir" id="gAw-Lb-Kz0"/>
+                        <barButtonItem key="leftBarButtonItem" title="Salir" id="gAw-Lb-Kz0">
+                            <connections>
+                                <action selector="dismissCalendarView:" destination="uLv-9Z-3do" id="heT-4K-ay5"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="calendarMenuView" destination="etn-s3-MpA" id="k7U-ek-2U0"/>
                         <outlet property="calendarView" destination="fXR-w8-J0q" id="RLy-Ea-b8H"/>
                         <outlet property="dateLabel" destination="EH4-ep-7es" id="tFO-5z-nnb"/>
-                        <outlet property="monthLabel" destination="VEd-A9-G9p" id="nps-7b-Ear"/>
+                        <outlet property="monthLabel" destination="VEd-A9-G9p" id="YV9-aW-cs5"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="k7h-Ol-K4p" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -3116,7 +3116,7 @@ El voluntariado comprende actividades asistenciales de servicios sociales, cívi
                                     <userDefinedRuntimeAttribute type="boolean" keyPath="layer.clipToBounds" value="YES"/>
                                 </userDefinedRuntimeAttributes>
                             </textView>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="KEU-He-TW9" customClass="CosmosView" customModule="EducaApp" customModuleProvider="target">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="KEU-He-TW9" customClass="CustomRatingView" customModule="EducaApp" customModuleProvider="target">
                                 <rect key="frame" x="30" y="13" width="240" height="50"/>
                                 <animations/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
@@ -3330,7 +3330,7 @@ El voluntariado comprende actividades asistenciales de servicios sociales, cívi
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="W2w-yz-uaQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="913" y="1529"/>
+            <point key="canvasLocation" x="913" y="1601"/>
         </scene>
         <!--Documentos-->
         <scene sceneID="vuh-aW-Mtg">
@@ -4294,7 +4294,7 @@ El voluntariado comprende actividades asistenciales de servicios sociales, cívi
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="C27-Mf-kaI" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1475" y="2239"/>
+            <point key="canvasLocation" x="2133" y="3139"/>
         </scene>
         <!--Date Filter View Controller-->
         <scene sceneID="Yhe-As-Ju8">
@@ -4418,14 +4418,13 @@ El voluntariado comprende actividades asistenciales de servicios sociales, cívi
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="uHa-Wj-zmk">
                                 <rect key="frame" x="0.0" y="0.0" width="300" height="170"/>
                                 <subviews>
-                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="justified" translatesAutoresizingMaskIntoConstraints="NO" id="7ba-lG-cfC">
+                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="Ingrese un comentario." textAlignment="justified" translatesAutoresizingMaskIntoConstraints="NO" id="7ba-lG-cfC">
                                         <rect key="frame" x="30" y="76" width="240" height="76"/>
                                         <animations/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="76" id="ea0-aH-pPS"/>
                                             <constraint firstAttribute="width" constant="240" id="xBq-uS-Zd2"/>
                                         </constraints>
-                                        <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
                                         <color key="textColor" red="0.37647058820000001" green="0.72549019609999998" blue="0.98039215690000003" alpha="1" colorSpace="calibratedRGB"/>
                                         <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="14"/>
                                         <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
@@ -4595,9 +4594,9 @@ El voluntariado comprende actividades asistenciales de servicios sociales, cívi
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="VZc-Oe-3VS" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="207" y="1529"/>
+            <point key="canvasLocation" x="207" y="1601"/>
         </scene>
-        <!--Usuarios-->
+        <!--Users View Controller-->
         <scene sceneID="4wf-G9-n5W">
             <objects>
                 <viewController id="qf6-h5-f8O" customClass="UsersViewController" customModule="EducaApp" customModuleProvider="target" sceneMemberID="viewController">
@@ -4615,14 +4614,14 @@ El voluntariado comprende actividades asistenciales de servicios sociales, cívi
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="UserCell" rowHeight="58" id="Usg-5b-KYk" customClass="UserTableViewCell" customModule="EducaApp" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="92" width="600" height="58"/>
+                                        <rect key="frame" x="0.0" y="28" width="600" height="58"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Usg-5b-KYk" id="rmI-5X-rem">
                                             <rect key="frame" x="0.0" y="0.0" width="600" height="57.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Nombre Apellido" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pGY-cJ-BeH">
-                                                    <rect key="frame" x="15" y="9" width="127.5" height="21"/>
+                                                    <rect key="frame" x="15" y="7" width="127.5" height="21"/>
                                                     <animations/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="21" id="6Ct-C9-Pci"/>
@@ -4632,7 +4631,7 @@ El voluntariado comprende actividades asistenciales de servicios sociales, cívi
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="07220300" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="K8c-cz-pee">
-                                                    <rect key="frame" x="15" y="30" width="67" height="18"/>
+                                                    <rect key="frame" x="15" y="31" width="67" height="18"/>
                                                     <animations/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="21" id="MMs-Fs-jDU"/>
@@ -4647,39 +4646,19 @@ El voluntariado comprende actividades asistenciales de servicios sociales, cívi
                                                         </mask>
                                                     </variation>
                                                 </label>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="AfiLogo" translatesAutoresizingMaskIntoConstraints="NO" id="VQc-3l-2p4">
-                                                    <rect key="frame" x="545" y="8" width="40" height="40"/>
-                                                    <animations/>
-                                                    <constraints>
-                                                        <constraint firstAttribute="width" constant="40" id="AFG-WH-ajo"/>
-                                                        <constraint firstAttribute="height" constant="40" id="XHy-OZ-RYw"/>
-                                                        <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="50" id="Zkh-U4-H55"/>
-                                                    </constraints>
-                                                    <variation key="default">
-                                                        <mask key="constraints">
-                                                            <exclude reference="Zkh-U4-H55"/>
-                                                        </mask>
-                                                    </variation>
-                                                </imageView>
                                             </subviews>
                                             <animations/>
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                             <constraints>
                                                 <constraint firstAttribute="bottomMargin" secondItem="K8c-cz-pee" secondAttribute="bottom" constant="19" id="2xW-fI-P6z"/>
-                                                <constraint firstAttribute="trailing" secondItem="VQc-3l-2p4" secondAttribute="trailing" constant="15" id="EXJ-HN-C1T"/>
-                                                <constraint firstItem="VQc-3l-2p4" firstAttribute="top" secondItem="rmI-5X-rem" secondAttribute="top" constant="15" id="FB1-kO-guO"/>
-                                                <constraint firstItem="pGY-cJ-BeH" firstAttribute="top" secondItem="rmI-5X-rem" secondAttribute="top" constant="9" id="Ie4-je-a2J"/>
-                                                <constraint firstAttribute="bottom" secondItem="VQc-3l-2p4" secondAttribute="bottom" constant="15" id="LoV-H1-5bj"/>
-                                                <constraint firstItem="K8c-cz-pee" firstAttribute="top" secondItem="pGY-cJ-BeH" secondAttribute="bottom" id="MBa-0P-shK"/>
-                                                <constraint firstItem="VQc-3l-2p4" firstAttribute="centerY" secondItem="rmI-5X-rem" secondAttribute="centerY" id="N6m-dy-jgH"/>
+                                                <constraint firstItem="pGY-cJ-BeH" firstAttribute="top" secondItem="rmI-5X-rem" secondAttribute="top" constant="7" id="Ie4-je-a2J"/>
+                                                <constraint firstItem="K8c-cz-pee" firstAttribute="top" secondItem="pGY-cJ-BeH" secondAttribute="bottom" constant="3" id="MBa-0P-shK"/>
                                                 <constraint firstItem="pGY-cJ-BeH" firstAttribute="leading" secondItem="rmI-5X-rem" secondAttribute="leading" constant="15" id="ZD8-an-aFf"/>
                                                 <constraint firstItem="K8c-cz-pee" firstAttribute="leading" secondItem="rmI-5X-rem" secondAttribute="leading" constant="15" id="vzG-hP-ZQy"/>
                                             </constraints>
                                             <variation key="default">
                                                 <mask key="constraints">
                                                     <exclude reference="2xW-fI-P6z"/>
-                                                    <exclude reference="FB1-kO-guO"/>
-                                                    <exclude reference="LoV-H1-5bj"/>
                                                 </mask>
                                             </variation>
                                         </tableViewCellContentView>
@@ -4706,39 +4685,11 @@ El voluntariado comprende actividades asistenciales de servicios sociales, cívi
                             <constraint firstItem="XNL-Aj-cDD" firstAttribute="top" secondItem="dQd-JF-gxN" secondAttribute="bottom" id="vmR-Ef-QTP"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="Usuarios" id="hex-N0-o3K">
-                        <barButtonItem key="rightBarButtonItem" image="SearchIcon" id="DB3-S0-JA1">
-                            <connections>
-                                <action selector="showSearchBar:" destination="qf6-h5-f8O" id="mMM-cL-e92"/>
-                            </connections>
-                        </barButtonItem>
-                    </navigationItem>
-                    <connections>
-                        <outlet property="searchBarButtonItem" destination="DB3-S0-JA1" id="Rzv-e1-r8x"/>
-                    </connections>
+                    <nil key="simulatedTopBarMetrics"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9gS-cH-bFl" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="908" y="2239"/>
-        </scene>
-        <!--Navigation Controller-->
-        <scene sceneID="6ni-ak-aAz">
-            <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="1a6-4a-TDm" sceneMemberID="viewController">
-                    <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="csm-5N-O08">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                        <animations/>
-                    </navigationBar>
-                    <nil name="viewControllers"/>
-                    <connections>
-                        <segue destination="qf6-h5-f8O" kind="relationship" relationship="rootViewController" id="tMx-Ng-rHH"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="wWW-XE-ZW3" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="207" y="2239"/>
+            <point key="canvasLocation" x="1593" y="3107"/>
         </scene>
         <!--Entradas del Blog-->
         <scene sceneID="xGP-kC-zjr">
@@ -4880,82 +4831,7 @@ El voluntariado comprende actividades asistenciales de servicios sociales, cívi
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="REP-OR-9d2" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="908" y="2927"/>
-        </scene>
-        <!--Periodo 2015-2-->
-        <scene sceneID="8b4-Pq-bVZ">
-            <objects>
-                <viewController id="3EE-9q-Nd6" customClass="PostulationViewController" customModule="EducaApp" customModuleProvider="target" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="ITJ-OZ-uke"/>
-                        <viewControllerLayoutGuide type="bottom" id="wDb-m4-KeU"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="COc-EY-TpF">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="18" sectionFooterHeight="18" translatesAutoresizingMaskIntoConstraints="NO" id="dz9-uM-ma5">
-                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
-                                <animations/>
-                                <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="calibratedRGB"/>
-                                <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="PostulationCell" id="Gsz-j7-c0H" customClass="PostulationTableViewCell" customModule="EducaApp" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="113.5" width="600" height="44"/>
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Gsz-j7-c0H" id="XDh-Wx-zyq">
-                                            <rect key="frame" x="0.0" y="0.0" width="600" height="43.5"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="¡Postular!" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dL0-8W-4bg">
-                                                    <rect key="frame" x="264" y="12" width="72" height="20"/>
-                                                    <animations/>
-                                                    <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="17"/>
-                                                    <color key="textColor" red="0.30978104319999999" green="0.74277935610000001" blue="0.45044197200000002" alpha="1" colorSpace="calibratedRGB"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                            </subviews>
-                                            <animations/>
-                                            <constraints>
-                                                <constraint firstItem="dL0-8W-4bg" firstAttribute="centerX" secondItem="XDh-Wx-zyq" secondAttribute="centerX" id="d12-Vc-HHm"/>
-                                                <constraint firstItem="dL0-8W-4bg" firstAttribute="centerY" secondItem="XDh-Wx-zyq" secondAttribute="centerY" id="fjI-sr-tmi"/>
-                                            </constraints>
-                                        </tableViewCellContentView>
-                                        <animations/>
-                                        <connections>
-                                            <outlet property="nameLabel" destination="dL0-8W-4bg" id="y6P-UI-gvu"/>
-                                        </connections>
-                                    </tableViewCell>
-                                </prototypes>
-                                <connections>
-                                    <outlet property="dataSource" destination="3EE-9q-Nd6" id="yQC-3e-1jR"/>
-                                    <outlet property="delegate" destination="3EE-9q-Nd6" id="vSd-Vt-cWf"/>
-                                </connections>
-                            </tableView>
-                        </subviews>
-                        <animations/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <constraints>
-                            <constraint firstItem="dz9-uM-ma5" firstAttribute="top" secondItem="COc-EY-TpF" secondAttribute="top" id="JdX-MJ-qhz"/>
-                            <constraint firstItem="wDb-m4-KeU" firstAttribute="top" secondItem="dz9-uM-ma5" secondAttribute="bottom" id="PnO-bw-iVK"/>
-                            <constraint firstAttribute="trailing" secondItem="dz9-uM-ma5" secondAttribute="trailing" id="Pv6-jp-e8y"/>
-                            <constraint firstItem="dz9-uM-ma5" firstAttribute="leading" secondItem="COc-EY-TpF" secondAttribute="leading" id="uva-S7-Whv"/>
-                        </constraints>
-                    </view>
-                    <navigationItem key="navigationItem" title="Periodo 2015-2" id="l76-Q0-22X">
-                        <barButtonItem key="leftBarButtonItem" image="MenuIcon" id="4Ho-wU-VHk"/>
-                        <barButtonItem key="rightBarButtonItem" title="Mapa" id="rTC-t4-K7B">
-                            <connections>
-                                <segue destination="HjM-nR-PES" kind="presentation" id="Ra6-b7-LEI"/>
-                            </connections>
-                        </barButtonItem>
-                    </navigationItem>
-                    <connections>
-                        <outlet property="MenuIcon" destination="4Ho-wU-VHk" id="omv-XW-Kh0"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="1ma-Cg-ki1" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="908" y="3637"/>
+            <point key="canvasLocation" x="908" y="2359"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="u0x-Hz-pbI">
@@ -4974,142 +4850,7 @@ El voluntariado comprende actividades asistenciales de servicios sociales, cívi
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="z8K-dg-cXR" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="207" y="2927"/>
-        </scene>
-        <!--Navigation Controller-->
-        <scene sceneID="O3v-YE-cZV">
-            <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="tzn-30-vIQ" sceneMemberID="viewController">
-                    <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="Ucd-sS-8b4">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                        <animations/>
-                    </navigationBar>
-                    <nil name="viewControllers"/>
-                    <connections>
-                        <segue destination="3EE-9q-Nd6" kind="relationship" relationship="rootViewController" id="JAX-ki-Zcm"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="A8x-kV-B1Q" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="207" y="3637"/>
-        </scene>
-        <!--Niños-->
-        <scene sceneID="48d-2c-rYI">
-            <objects>
-                <viewController id="GRt-m3-kB7" customClass="StudentsViewController" customModule="EducaApp" customModuleProvider="target" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="Lh1-Ga-YWj"/>
-                        <viewControllerLayoutGuide type="bottom" id="bgA-dw-1E9"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="8VK-Tr-xR3">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="58" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="H9X-fx-Ye6">
-                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
-                                <animations/>
-                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="StudentCell" rowHeight="58" id="BJz-Ou-eAk" customClass="StudentTableViewCell" customModule="EducaApp" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="92" width="600" height="58"/>
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="BJz-Ou-eAk" id="96H-Wt-dd9">
-                                            <rect key="frame" x="0.0" y="0.0" width="600" height="57.5"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Alonso Alvarez" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ig5-hu-pfz">
-                                                    <rect key="frame" x="15" y="6" width="112.5" height="20"/>
-                                                    <animations/>
-                                                    <constraints>
-                                                        <constraint firstAttribute="height" constant="20" id="IYU-pq-fkV"/>
-                                                    </constraints>
-                                                    <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="17"/>
-                                                    <color key="textColor" red="0.019607843140000001" green="0.58431372550000005" blue="0.78823529410000004" alpha="1" colorSpace="calibratedRGB"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Edad: 12" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vQT-OE-Z8N">
-                                                    <rect key="frame" x="15" y="29" width="59" height="21"/>
-                                                    <animations/>
-                                                    <constraints>
-                                                        <constraint firstAttribute="height" constant="21" id="eXA-9s-x1x"/>
-                                                    </constraints>
-                                                    <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="15"/>
-                                                    <color key="textColor" red="0.0" green="0.59999999999999998" blue="0.80000000000000004" alpha="1" colorSpace="calibratedRGB"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="MaleGenderIcon" translatesAutoresizingMaskIntoConstraints="NO" id="yrq-HY-jVf">
-                                                    <rect key="frame" x="550" y="11" width="35" height="35"/>
-                                                    <animations/>
-                                                    <constraints>
-                                                        <constraint firstAttribute="height" constant="35" id="6el-8O-hng"/>
-                                                        <constraint firstAttribute="width" constant="35" id="rdc-4m-nHr"/>
-                                                    </constraints>
-                                                </imageView>
-                                            </subviews>
-                                            <animations/>
-                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                            <constraints>
-                                                <constraint firstItem="ig5-hu-pfz" firstAttribute="centerY" secondItem="96H-Wt-dd9" secondAttribute="centerY" id="JoB-Aq-oR8"/>
-                                                <constraint firstItem="ig5-hu-pfz" firstAttribute="leading" secondItem="96H-Wt-dd9" secondAttribute="leading" constant="15" id="Okj-1f-jBS"/>
-                                                <constraint firstItem="vQT-OE-Z8N" firstAttribute="top" secondItem="ig5-hu-pfz" secondAttribute="bottom" constant="3" id="Rk4-Dh-bkn"/>
-                                                <constraint firstItem="ig5-hu-pfz" firstAttribute="leading" secondItem="96H-Wt-dd9" secondAttribute="leading" id="bDQ-Cd-Zym"/>
-                                                <constraint firstItem="vQT-OE-Z8N" firstAttribute="leading" secondItem="96H-Wt-dd9" secondAttribute="leading" constant="15" id="gHj-wb-IG9"/>
-                                                <constraint firstItem="vQT-OE-Z8N" firstAttribute="top" secondItem="ig5-hu-pfz" secondAttribute="bottom" constant="9" id="kaa-be-FJd"/>
-                                                <constraint firstItem="vQT-OE-Z8N" firstAttribute="top" secondItem="ig5-hu-pfz" secondAttribute="bottom" constant="3" id="lZu-Uf-1J8"/>
-                                                <constraint firstItem="yrq-HY-jVf" firstAttribute="centerY" secondItem="96H-Wt-dd9" secondAttribute="centerY" id="sLN-oQ-pHE"/>
-                                                <constraint firstItem="ig5-hu-pfz" firstAttribute="top" secondItem="96H-Wt-dd9" secondAttribute="top" constant="6" id="t6k-NW-EEh"/>
-                                                <constraint firstAttribute="trailing" secondItem="yrq-HY-jVf" secondAttribute="trailing" constant="15" id="ucs-Ha-rLm"/>
-                                            </constraints>
-                                            <variation key="default">
-                                                <mask key="constraints">
-                                                    <exclude reference="JoB-Aq-oR8"/>
-                                                    <exclude reference="bDQ-Cd-Zym"/>
-                                                    <exclude reference="kaa-be-FJd"/>
-                                                </mask>
-                                            </variation>
-                                        </tableViewCellContentView>
-                                        <animations/>
-                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                        <connections>
-                                            <outlet property="ageLabel" destination="vQT-OE-Z8N" id="BWT-Le-f7p"/>
-                                            <outlet property="genderImageView" destination="yrq-HY-jVf" id="uFv-jE-pb1"/>
-                                            <outlet property="nameLabel" destination="ig5-hu-pfz" id="zzb-oz-C1D"/>
-                                        </connections>
-                                    </tableViewCell>
-                                </prototypes>
-                                <connections>
-                                    <outlet property="dataSource" destination="GRt-m3-kB7" id="aHt-Tv-wny"/>
-                                    <outlet property="delegate" destination="GRt-m3-kB7" id="SkJ-xv-mC0"/>
-                                </connections>
-                            </tableView>
-                        </subviews>
-                        <animations/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <constraints>
-                            <constraint firstItem="H9X-fx-Ye6" firstAttribute="top" secondItem="8VK-Tr-xR3" secondAttribute="top" id="S8T-eA-lEo"/>
-                            <constraint firstItem="bgA-dw-1E9" firstAttribute="top" secondItem="H9X-fx-Ye6" secondAttribute="bottom" id="bJx-O0-6tx"/>
-                            <constraint firstAttribute="trailing" secondItem="H9X-fx-Ye6" secondAttribute="trailing" id="cut-7x-7rw"/>
-                            <constraint firstItem="H9X-fx-Ye6" firstAttribute="leading" secondItem="8VK-Tr-xR3" secondAttribute="leading" id="oK8-Gs-WtZ"/>
-                        </constraints>
-                    </view>
-                    <navigationItem key="navigationItem" title="Niños" id="uiq-u7-2O5">
-                        <barButtonItem key="leftBarButtonItem" image="MenuIcon" id="H1I-2a-nXq"/>
-                        <barButtonItem key="rightBarButtonItem" image="SearchIcon" id="uFD-PB-wRC">
-                            <connections>
-                                <action selector="showSearchBar:" destination="GRt-m3-kB7" id="r35-ax-Xwv"/>
-                            </connections>
-                        </barButtonItem>
-                    </navigationItem>
-                    <connections>
-                        <outlet property="menuIcon" destination="H1I-2a-nXq" id="6hL-2V-nWe"/>
-                        <outlet property="searchBarButtonItem" destination="uFD-PB-wRC" id="N3O-c2-bty"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="qjq-jz-dGe" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="908" y="4334"/>
+            <point key="canvasLocation" x="207" y="2359"/>
         </scene>
         <!--Donación-->
         <scene sceneID="ORg-Q6-Hgn">
@@ -5225,26 +4966,215 @@ El voluntariado comprende actividades asistenciales de servicios sociales, cívi
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="BRZ-dG-6w9" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="908" y="5014"/>
+            <point key="canvasLocation" x="913" y="3854"/>
         </scene>
-        <!--Navigation Controller-->
-        <scene sceneID="5Sb-v7-0Uk">
+        <!--Personas-->
+        <scene sceneID="fvY-tE-Vnn">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="TQa-7P-YXz" sceneMemberID="viewController">
-                    <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="mAB-01-Ann">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
+                <viewController id="mtl-8m-8Nc" customClass="PeopleViewController" customModule="EducaApp" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="TXN-Vm-fm6"/>
+                        <viewControllerLayoutGuide type="bottom" id="lgJ-uM-0ik"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="XO4-DC-9Em">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="awB-IH-ynE">
+                                <rect key="frame" x="20" y="72" width="560" height="29"/>
+                                <animations/>
+                                <segments>
+                                    <segment title="Usuarios"/>
+                                    <segment title="Niños"/>
+                                </segments>
+                                <color key="tintColor" red="0.090196078430000007" green="0.65490196079999996" blue="0.83529411760000005" alpha="1" colorSpace="calibratedRGB"/>
+                                <connections>
+                                    <action selector="selectedControlIndexChanged:" destination="mtl-8m-8Nc" eventType="valueChanged" id="Xef-Xi-GI7"/>
+                                </connections>
+                            </segmentedControl>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="BBd-u4-VKV" userLabel="Separator View">
+                                <rect key="frame" x="0.0" y="108" width="600" height="1"/>
+                                <animations/>
+                                <color key="backgroundColor" red="0.81960784310000001" green="0.85882352939999995" blue="0.86666666670000003" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="1" id="bsS-qp-0G9"/>
+                                </constraints>
+                            </view>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="58" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="r5b-4g-hB8">
+                                <rect key="frame" x="0.0" y="109" width="600" height="491"/>
+                                <animations/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="UserCell" rowHeight="58" id="or7-i8-Rzu" customClass="UserTableViewCell" customModule="EducaApp" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="28" width="600" height="58"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="or7-i8-Rzu" id="vQb-no-k8s">
+                                            <rect key="frame" x="0.0" y="0.0" width="600" height="57.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Nombre Apellido" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kOV-hb-FsP">
+                                                    <rect key="frame" x="15" y="7" width="127.5" height="21"/>
+                                                    <animations/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="21" id="qkZ-h4-w3Y"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="17"/>
+                                                    <color key="textColor" red="0.0" green="0.59999999999999998" blue="0.80000000000000004" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="07220300" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jwN-Xn-WEB">
+                                                    <rect key="frame" x="15" y="31" width="67" height="18"/>
+                                                    <animations/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="18" id="hjj-2I-d1z"/>
+                                                        <constraint firstAttribute="height" constant="21" id="zBV-2Y-Yfb"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="15"/>
+                                                    <color key="textColor" red="0.37647058820000001" green="0.72549019609999998" blue="0.83921568629999999" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                    <variation key="default">
+                                                        <mask key="constraints">
+                                                            <exclude reference="zBV-2Y-Yfb"/>
+                                                        </mask>
+                                                    </variation>
+                                                </label>
+                                            </subviews>
+                                            <animations/>
+                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                            <constraints>
+                                                <constraint firstItem="jwN-Xn-WEB" firstAttribute="leading" secondItem="vQb-no-k8s" secondAttribute="leading" constant="15" id="1hN-jG-UJM"/>
+                                                <constraint firstItem="kOV-hb-FsP" firstAttribute="leading" secondItem="vQb-no-k8s" secondAttribute="leading" constant="15" id="EXb-nC-whK"/>
+                                                <constraint firstAttribute="bottomMargin" secondItem="jwN-Xn-WEB" secondAttribute="bottom" constant="19" id="Wie-i8-Sqx"/>
+                                                <constraint firstItem="jwN-Xn-WEB" firstAttribute="top" secondItem="kOV-hb-FsP" secondAttribute="bottom" constant="3" id="jgX-PQ-e6K"/>
+                                                <constraint firstItem="kOV-hb-FsP" firstAttribute="top" secondItem="vQb-no-k8s" secondAttribute="top" constant="7" id="uvr-j3-TzT"/>
+                                            </constraints>
+                                            <variation key="default">
+                                                <mask key="constraints">
+                                                    <exclude reference="Wie-i8-Sqx"/>
+                                                </mask>
+                                            </variation>
+                                        </tableViewCellContentView>
+                                        <animations/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        <connections>
+                                            <outlet property="documentLabel" destination="jwN-Xn-WEB" id="12F-R0-jQr"/>
+                                            <outlet property="nameLabel" destination="kOV-hb-FsP" id="gXg-wR-Qim"/>
+                                        </connections>
+                                    </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="StudentCell" rowHeight="58" id="X69-Gi-C7r" customClass="StudentTableViewCell" customModule="EducaApp" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="86" width="600" height="58"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="X69-Gi-C7r" id="E3i-bZ-im1">
+                                            <rect key="frame" x="0.0" y="0.0" width="600" height="57.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Alonso Alvarez" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rrT-DN-XoN">
+                                                    <rect key="frame" x="15" y="6" width="112.5" height="20"/>
+                                                    <animations/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="20" id="yWm-M2-q5z"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="17"/>
+                                                    <color key="textColor" red="0.019607843140000001" green="0.58431372550000005" blue="0.78823529410000004" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Edad: 12" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="clS-SI-gup">
+                                                    <rect key="frame" x="15" y="29" width="59" height="21"/>
+                                                    <animations/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="21" id="SSX-gC-NDa"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="15"/>
+                                                    <color key="textColor" red="0.0" green="0.59999999999999998" blue="0.80000000000000004" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="MaleGenderIcon" translatesAutoresizingMaskIntoConstraints="NO" id="BwR-do-Wwq">
+                                                    <rect key="frame" x="550" y="11" width="35" height="35"/>
+                                                    <animations/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="35" id="AXU-4p-vxS"/>
+                                                        <constraint firstAttribute="width" constant="35" id="hN9-nm-ueI"/>
+                                                    </constraints>
+                                                </imageView>
+                                            </subviews>
+                                            <animations/>
+                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                            <constraints>
+                                                <constraint firstItem="rrT-DN-XoN" firstAttribute="centerY" secondItem="E3i-bZ-im1" secondAttribute="centerY" id="Dep-hx-UON"/>
+                                                <constraint firstAttribute="trailing" secondItem="BwR-do-Wwq" secondAttribute="trailing" constant="15" id="Ig6-hS-NAJ"/>
+                                                <constraint firstItem="rrT-DN-XoN" firstAttribute="top" secondItem="E3i-bZ-im1" secondAttribute="top" constant="6" id="Kp4-Pk-rpH"/>
+                                                <constraint firstItem="clS-SI-gup" firstAttribute="top" secondItem="rrT-DN-XoN" secondAttribute="bottom" constant="9" id="W8Q-y0-496"/>
+                                                <constraint firstItem="clS-SI-gup" firstAttribute="leading" secondItem="E3i-bZ-im1" secondAttribute="leading" constant="15" id="WBz-ZB-A4y"/>
+                                                <constraint firstItem="clS-SI-gup" firstAttribute="top" secondItem="rrT-DN-XoN" secondAttribute="bottom" constant="3" id="b1m-b6-veD"/>
+                                                <constraint firstItem="rrT-DN-XoN" firstAttribute="leading" secondItem="E3i-bZ-im1" secondAttribute="leading" constant="15" id="egb-Wq-NR0"/>
+                                                <constraint firstItem="rrT-DN-XoN" firstAttribute="leading" secondItem="E3i-bZ-im1" secondAttribute="leading" id="f2l-WI-Kka"/>
+                                                <constraint firstItem="BwR-do-Wwq" firstAttribute="centerY" secondItem="E3i-bZ-im1" secondAttribute="centerY" id="j2G-4D-gtk"/>
+                                                <constraint firstItem="clS-SI-gup" firstAttribute="top" secondItem="rrT-DN-XoN" secondAttribute="bottom" constant="3" id="nrg-NK-gdF"/>
+                                            </constraints>
+                                            <variation key="default">
+                                                <mask key="constraints">
+                                                    <exclude reference="Dep-hx-UON"/>
+                                                    <exclude reference="f2l-WI-Kka"/>
+                                                    <exclude reference="W8Q-y0-496"/>
+                                                </mask>
+                                            </variation>
+                                        </tableViewCellContentView>
+                                        <animations/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        <connections>
+                                            <outlet property="ageLabel" destination="clS-SI-gup" id="xb0-xE-LBO"/>
+                                            <outlet property="genderImageView" destination="BwR-do-Wwq" id="uzU-Ct-VcI"/>
+                                            <outlet property="nameLabel" destination="rrT-DN-XoN" id="yRM-is-w1s"/>
+                                        </connections>
+                                    </tableViewCell>
+                                </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="mtl-8m-8Nc" id="Z2n-L5-Vcj"/>
+                                    <outlet property="delegate" destination="mtl-8m-8Nc" id="i3h-4g-Bac"/>
+                                </connections>
+                            </tableView>
+                        </subviews>
                         <animations/>
-                    </navigationBar>
-                    <nil name="viewControllers"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="awB-IH-ynE" firstAttribute="top" secondItem="TXN-Vm-fm6" secondAttribute="bottom" constant="8" id="3kN-HK-Eze"/>
+                            <constraint firstItem="awB-IH-ynE" firstAttribute="leading" secondItem="XO4-DC-9Em" secondAttribute="leading" constant="20" id="9O3-ED-ZK5"/>
+                            <constraint firstAttribute="trailing" secondItem="awB-IH-ynE" secondAttribute="trailing" constant="20" id="Cht-9d-VNR"/>
+                            <constraint firstItem="BBd-u4-VKV" firstAttribute="centerX" secondItem="XO4-DC-9Em" secondAttribute="centerX" id="Eme-fq-aSv"/>
+                            <constraint firstItem="r5b-4g-hB8" firstAttribute="leading" secondItem="XO4-DC-9Em" secondAttribute="leading" id="Ezr-rx-K34"/>
+                            <constraint firstItem="BBd-u4-VKV" firstAttribute="width" secondItem="XO4-DC-9Em" secondAttribute="width" id="JRb-1n-Pz4"/>
+                            <constraint firstItem="BBd-u4-VKV" firstAttribute="top" secondItem="awB-IH-ynE" secondAttribute="bottom" constant="8" id="Wr6-lb-tHz"/>
+                            <constraint firstAttribute="trailing" secondItem="r5b-4g-hB8" secondAttribute="trailing" id="cBz-IG-d09"/>
+                            <constraint firstItem="r5b-4g-hB8" firstAttribute="top" secondItem="awB-IH-ynE" secondAttribute="bottom" constant="9" id="fLZ-UG-Ryg"/>
+                            <constraint firstItem="lgJ-uM-0ik" firstAttribute="top" secondItem="r5b-4g-hB8" secondAttribute="bottom" id="tcL-lW-5LA"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="Personas" id="9Tc-1D-Ezw">
+                        <barButtonItem key="leftBarButtonItem" image="MenuIcon" id="q8c-BQ-wzn"/>
+                        <rightBarButtonItems>
+                            <barButtonItem image="SearchBlueIcon" id="Jmp-XZ-GRR">
+                                <connections>
+                                    <action selector="showSearchBar:" destination="mtl-8m-8Nc" id="1Ei-sf-JQw"/>
+                                </connections>
+                            </barButtonItem>
+                            <barButtonItem image="MapIcon" id="KEX-I7-3n6">
+                                <connections>
+                                    <segue destination="HjM-nR-PES" kind="presentation" id="bxv-IL-yTR"/>
+                                </connections>
+                            </barButtonItem>
+                        </rightBarButtonItems>
+                    </navigationItem>
                     <connections>
-                        <segue destination="GRt-m3-kB7" kind="relationship" relationship="rootViewController" id="ggb-LY-LLg"/>
+                        <outlet property="mapButton" destination="KEX-I7-3n6" id="NtM-Io-NB4"/>
+                        <outlet property="menuIcon" destination="q8c-BQ-wzn" id="ZGd-3G-Hxx"/>
+                        <outlet property="searchBarButtonItem" destination="Jmp-XZ-GRR" id="cZn-GJ-dY3"/>
+                        <outlet property="segmentedControl" destination="awB-IH-ynE" id="xgl-IR-sHf"/>
+                        <outlet property="tableView" destination="r5b-4g-hB8" id="9CB-Kk-av6"/>
                     </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="RAP-Tn-EAm" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="gVv-WO-NT1" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="207" y="4334"/>
+            <point key="canvasLocation" x="908" y="3107"/>
         </scene>
         <!--Detalle-->
         <scene sceneID="FcU-EC-h9I">
@@ -5475,11 +5405,14 @@ El voluntariado comprende actividades asistenciales de servicios sociales, cívi
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Detalle" id="wuY-lQ-8Zn">
-                        <barButtonItem key="rightBarButtonItem" image="ShareIcon" id="NE8-iR-SRS">
-                            <connections>
-                                <action selector="shareButtonClicked:" destination="ull-q3-v4c" id="Tmc-6D-mus"/>
-                            </connections>
-                        </barButtonItem>
+                        <rightBarButtonItems>
+                            <barButtonItem image="ShareIcon" id="NE8-iR-SRS">
+                                <connections>
+                                    <action selector="shareButtonClicked:" destination="ull-q3-v4c" id="Tmc-6D-mus"/>
+                                </connections>
+                            </barButtonItem>
+                            <barButtonItem image="WriteCommentIcon" id="lnY-bE-ZjO"/>
+                        </rightBarButtonItems>
                     </navigationItem>
                     <connections>
                         <outlet property="authorInfoView" destination="X1z-Wz-jic" id="CoN-xc-vyo"/>
@@ -5496,7 +5429,7 @@ El voluntariado comprende actividades asistenciales de servicios sociales, cívi
                     </connections>
                 </tapGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="1593" y="2927"/>
+            <point key="canvasLocation" x="1593" y="2359"/>
         </scene>
         <!--Students Filter View Controller-->
         <scene sceneID="5CC-Ls-bfO">
@@ -5693,7 +5626,7 @@ El voluntariado comprende actividades asistenciales de servicios sociales, cívi
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="P9l-zZ-Siv" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1475" y="4334"/>
+            <point key="canvasLocation" x="1593" y="3838"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="Ddu-kb-OZ8">
@@ -5750,7 +5683,7 @@ El voluntariado comprende actividades asistenciales de servicios sociales, cívi
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="pqN-BH-tFA" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1593" y="3637"/>
+            <point key="canvasLocation" x="207" y="4585"/>
         </scene>
         <!--Colegios y Voluntarios-->
         <scene sceneID="sAc-ZN-vHI">
@@ -5785,13 +5718,13 @@ El voluntariado comprende actividades asistenciales de servicios sociales, cívi
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ws9-nv-lxI">
                                         <rect key="frame" x="536" y="18" width="53" height="53"/>
                                         <animations/>
-                                        <color key="backgroundColor" red="0.0" green="0.59999999999999998" blue="0.80000000000000004" alpha="1" colorSpace="calibratedRGB"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="53" id="3Lw-v2-CEt"/>
                                             <constraint firstAttribute="width" constant="53" id="g7r-1N-aOe"/>
                                         </constraints>
-                                        <state key="normal" image="MapRouteIcon">
-                                            <color key="titleColor" red="0.0" green="0.59999999999999998" blue="0.80000000000000004" alpha="1" colorSpace="calibratedRGB"/>
+                                        <state key="normal" backgroundImage="MapRouteIcon">
+                                            <color key="titleColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         </state>
                                         <userDefinedRuntimeAttributes>
                                             <userDefinedRuntimeAttribute type="boolean" keyPath="layer.clipToBounds" value="YES"/>
@@ -5848,7 +5781,7 @@ El voluntariado comprende actividades asistenciales de servicios sociales, cívi
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="EOj-Cv-mdG" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2299" y="3637"/>
+            <point key="canvasLocation" x="913" y="4585"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="ptU-le-X9W">
@@ -5867,7 +5800,7 @@ El voluntariado comprende actividades asistenciales de servicios sociales, cívi
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qxn-zR-6J3" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="207" y="5014"/>
+            <point key="canvasLocation" x="212" y="3854"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="p0F-P5-8rZ">
@@ -6113,6 +6046,298 @@ El voluntariado comprende actividades asistenciales de servicios sociales, cívi
             </objects>
             <point key="canvasLocation" x="1625" y="-751"/>
         </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="IGO-eE-S62">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="AUn-6k-vLm" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="z9k-jp-dON">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <animations/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="mtl-8m-8Nc" kind="relationship" relationship="rootViewController" id="rhg-LR-QfD"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="gtz-hv-nDY" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="207" y="3107"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="f6O-uH-pBx">
+            <objects>
+                <viewController id="Iro-iy-mQf" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Ixg-3U-yEv"/>
+                        <viewControllerLayoutGuide type="bottom" id="Ajt-uX-LjF"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="gjc-Mt-eVV">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <animations/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="LpD-h8-Ng5" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+        </scene>
+        <!--Periodos-->
+        <scene sceneID="cQV-kB-PQJ">
+            <objects>
+                <viewController id="FDP-Fg-XSi" userLabel="Periodos" customClass="PeriodsViewController" customModule="EducaApp" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="qla-P3-NrT"/>
+                        <viewControllerLayoutGuide type="bottom" id="8ri-ot-EuM"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="kc5-eL-SOi">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="70" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="9Ab-iz-rka">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                                <animations/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="DocumentCell" rowHeight="70" id="9wQ-IE-F5v" customClass="DocumentTableViewCell" customModule="EducaApp" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="92" width="600" height="70"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="9wQ-IE-F5v" id="mFT-Je-k3D">
+                                            <rect key="frame" x="0.0" y="0.0" width="600" height="69.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="PDFIcon" translatesAutoresizingMaskIntoConstraints="NO" id="E8f-Qj-5Sl">
+                                                    <rect key="frame" x="18" y="14" width="40" height="40"/>
+                                                    <animations/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="40" id="NjJ-ME-pn1"/>
+                                                        <constraint firstAttribute="height" constant="40" id="WCT-nH-9h0"/>
+                                                    </constraints>
+                                                </imageView>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="126 KB - Hace 3 dias, 3:24 PM" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="s7z-QS-a5N">
+                                                    <rect key="frame" x="71" y="33" width="461" height="22"/>
+                                                    <animations/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="21.5" id="fCg-Hf-ELR"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="16"/>
+                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Reporte Trimestral 27/09.pdf" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="MDk-nM-dxe">
+                                                    <rect key="frame" x="71" y="13" width="461" height="20"/>
+                                                    <animations/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="34" id="ny1-91-8aP"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="17"/>
+                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                    <variation key="default">
+                                                        <mask key="constraints">
+                                                            <exclude reference="ny1-91-8aP"/>
+                                                        </mask>
+                                                    </variation>
+                                                </label>
+                                            </subviews>
+                                            <animations/>
+                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                            <constraints>
+                                                <constraint firstItem="E8f-Qj-5Sl" firstAttribute="leading" secondItem="mFT-Je-k3D" secondAttribute="leading" constant="18" id="BPH-pn-8jz"/>
+                                                <constraint firstItem="s7z-QS-a5N" firstAttribute="top" secondItem="MDk-nM-dxe" secondAttribute="bottom" id="ETC-TO-MeW"/>
+                                                <constraint firstItem="MDk-nM-dxe" firstAttribute="top" secondItem="mFT-Je-k3D" secondAttribute="top" constant="13" id="GNl-gN-KQh"/>
+                                                <constraint firstItem="MDk-nM-dxe" firstAttribute="leading" secondItem="E8f-Qj-5Sl" secondAttribute="trailing" constant="13" id="MvT-8k-V2E"/>
+                                                <constraint firstItem="s7z-QS-a5N" firstAttribute="centerX" secondItem="mFT-Je-k3D" secondAttribute="centerX" constant="1.5" id="Xm6-Xg-LPQ"/>
+                                                <constraint firstItem="MDk-nM-dxe" firstAttribute="top" secondItem="mFT-Je-k3D" secondAttribute="top" constant="13" id="b0j-jj-Cad"/>
+                                                <constraint firstItem="s7z-QS-a5N" firstAttribute="leading" secondItem="MDk-nM-dxe" secondAttribute="leading" id="dyl-Xe-7M2"/>
+                                                <constraint firstItem="MDk-nM-dxe" firstAttribute="centerX" secondItem="mFT-Je-k3D" secondAttribute="centerX" constant="1.5" id="g5F-Ru-9pu"/>
+                                                <constraint firstItem="E8f-Qj-5Sl" firstAttribute="centerY" secondItem="mFT-Je-k3D" secondAttribute="centerY" id="oKB-7I-7S7"/>
+                                            </constraints>
+                                            <variation key="default">
+                                                <mask key="constraints">
+                                                    <exclude reference="GNl-gN-KQh"/>
+                                                </mask>
+                                            </variation>
+                                        </tableViewCellContentView>
+                                        <animations/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        <connections>
+                                            <outlet property="iconImageView" destination="E8f-Qj-5Sl" id="WSn-T8-fk3"/>
+                                            <outlet property="sizeLabel" destination="s7z-QS-a5N" id="ZTy-vP-Ze6"/>
+                                            <outlet property="titleLabel" destination="MDk-nM-dxe" id="Lfg-PS-npK"/>
+                                        </connections>
+                                    </tableViewCell>
+                                </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="FDP-Fg-XSi" id="K6e-IW-uZg"/>
+                                    <outlet property="delegate" destination="FDP-Fg-XSi" id="We1-MB-MGR"/>
+                                </connections>
+                            </tableView>
+                        </subviews>
+                        <animations/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="9Ab-iz-rka" firstAttribute="bottom" secondItem="8ri-ot-EuM" secondAttribute="top" id="1v6-fJ-652"/>
+                            <constraint firstItem="9Ab-iz-rka" firstAttribute="top" secondItem="qla-P3-NrT" secondAttribute="bottom" constant="-64" id="G0N-M2-q7G"/>
+                            <constraint firstAttribute="trailing" secondItem="9Ab-iz-rka" secondAttribute="trailing" id="UJf-LF-2vp"/>
+                            <constraint firstItem="9Ab-iz-rka" firstAttribute="leading" secondItem="kc5-eL-SOi" secondAttribute="leading" id="vlo-Lg-1U8"/>
+                            <constraint firstItem="9Ab-iz-rka" firstAttribute="centerX" secondItem="kc5-eL-SOi" secondAttribute="centerX" id="xKM-Fh-ZVn"/>
+                        </constraints>
+                    </view>
+                    <toolbarItems/>
+                    <navigationItem key="navigationItem" title="Periodos" id="kLA-tS-zn9" userLabel="Periodos">
+                        <barButtonItem key="leftBarButtonItem" image="MenuIcon" id="EvZ-SS-ioO" userLabel="Menu Icon"/>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="menuIcon" destination="EvZ-SS-ioO" id="3mz-Ee-zmU"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="BvY-IX-7uQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="908" y="-3011"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="rxl-XR-BOj">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="iwE-5P-Cpj" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="3vk-kx-9jy">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <animations/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="FDP-Fg-XSi" kind="relationship" relationship="rootViewController" id="5kq-5v-cKX"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="N7s-8e-ZoH" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="207" y="-3011"/>
+        </scene>
+        <!--Recover Password Table View Controller-->
+        <scene sceneID="eUP-4Y-hsJ">
+            <objects>
+                <tableViewController storyboardIdentifier="RecoverPasswordTableViewController" id="ZyW-Us-tuf" customClass="RecoverPasswordTableViewController" customModule="EducaApp" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" scrollEnabled="NO" dataMode="static" style="plain" separatorStyle="none" rowHeight="50" sectionHeaderHeight="28" sectionFooterHeight="1" id="ps0-4L-c9X">
+                        <rect key="frame" x="0.0" y="0.0" width="300" height="200"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <animations/>
+                        <color key="backgroundColor" red="0.94117647059999998" green="0.98039215690000003" blue="0.98039215690000003" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="sectionIndexColor" red="0.43529411759999997" green="0.4431372549" blue="0.47450980390000003" alpha="1" colorSpace="calibratedRGB"/>
+                        <sections>
+                            <tableViewSection headerTitle="" id="WLV-Xq-v4I">
+                                <cells>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" rowHeight="79" id="55L-Zc-wiF">
+                                        <rect key="frame" x="0.0" y="0.0" width="300" height="79"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="55L-Zc-wiF" id="J67-1T-nVT">
+                                            <rect key="frame" x="0.0" y="0.0" width="300" height="79"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" editable="NO" text="Para reestablecer su contraseña, ingrese su correo electrónico:" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="Vxd-Ww-u7a">
+                                                    <rect key="frame" x="29" y="25" width="242" height="54"/>
+                                                    <animations/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="242" id="Osa-Ju-Gtg"/>
+                                                        <constraint firstAttribute="height" constant="54" id="Xnj-ge-XWq"/>
+                                                    </constraints>
+                                                    <color key="textColor" red="0.43529411759999997" green="0.4431372549" blue="0.47450980390000003" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                                    <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                                </textView>
+                                            </subviews>
+                                            <animations/>
+                                            <color key="backgroundColor" red="0.94117647059999998" green="0.98039215690000003" blue="0.98039215690000003" alpha="1" colorSpace="calibratedRGB"/>
+                                            <constraints>
+                                                <constraint firstItem="Vxd-Ww-u7a" firstAttribute="centerX" secondItem="J67-1T-nVT" secondAttribute="centerX" id="4xM-Bj-lQR"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="Vxd-Ww-u7a" secondAttribute="trailing" constant="171" id="Mft-MO-1yF"/>
+                                                <constraint firstItem="Vxd-Ww-u7a" firstAttribute="leading" secondItem="J67-1T-nVT" secondAttribute="leadingMargin" constant="171" id="hg6-xP-7bS"/>
+                                                <constraint firstItem="Vxd-Ww-u7a" firstAttribute="centerY" secondItem="J67-1T-nVT" secondAttribute="centerY" constant="12.5" id="yaV-xx-JiN"/>
+                                            </constraints>
+                                            <variation key="default">
+                                                <mask key="constraints">
+                                                    <exclude reference="Mft-MO-1yF"/>
+                                                    <exclude reference="hg6-xP-7bS"/>
+                                                </mask>
+                                            </variation>
+                                        </tableViewCellContentView>
+                                        <animations/>
+                                    </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" rowHeight="50" id="dWR-U2-nNJ">
+                                        <rect key="frame" x="0.0" y="79" width="300" height="50"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="dWR-U2-nNJ" id="Xug-oQ-yKn">
+                                            <rect key="frame" x="0.0" y="0.0" width="300" height="50"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Introduzca su cuenta email          " textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Ygm-9c-rdg">
+                                                    <rect key="frame" x="34" y="10" width="233" height="30"/>
+                                                    <animations/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="30" id="Cx8-9G-uJG"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                    <textInputTraits key="textInputTraits"/>
+                                                </textField>
+                                            </subviews>
+                                            <animations/>
+                                            <constraints>
+                                                <constraint firstItem="Ygm-9c-rdg" firstAttribute="leading" secondItem="Xug-oQ-yKn" secondAttribute="leadingMargin" constant="26" id="Qff-Ol-eTm"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="Ygm-9c-rdg" secondAttribute="trailing" constant="25" id="Rm7-dk-Bgb"/>
+                                                <constraint firstItem="Ygm-9c-rdg" firstAttribute="centerX" secondItem="Xug-oQ-yKn" secondAttribute="centerX" id="WwS-0P-6Ws"/>
+                                                <constraint firstItem="Ygm-9c-rdg" firstAttribute="centerY" secondItem="Xug-oQ-yKn" secondAttribute="centerY" id="d6s-Xi-bax"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <animations/>
+                                        <color key="backgroundColor" red="0.94117647059999998" green="0.98039215690000003" blue="0.98039215690000003" alpha="1" colorSpace="calibratedRGB"/>
+                                    </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" rowHeight="73" id="M6P-Ra-xEp">
+                                        <rect key="frame" x="0.0" y="129" width="300" height="73"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="M6P-Ra-xEp" id="tKF-3r-zMl">
+                                            <rect key="frame" x="0.0" y="0.0" width="300" height="73"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qeb-Z2-Efn">
+                                                    <rect key="frame" x="33" y="8" width="235" height="35"/>
+                                                    <animations/>
+                                                    <color key="backgroundColor" red="0.02145729494" green="0.58461438789999998" blue="0.78929924240000005" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="35" id="h1M-L6-29y"/>
+                                                        <constraint firstAttribute="width" constant="235" id="oxy-Yx-uSN"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="15"/>
+                                                    <state key="normal" title="Continuar">
+                                                        <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                                    </state>
+                                                </button>
+                                            </subviews>
+                                            <animations/>
+                                            <constraints>
+                                                <constraint firstItem="qeb-Z2-Efn" firstAttribute="centerX" secondItem="tKF-3r-zMl" secondAttribute="centerX" id="Fxl-Qf-tNo"/>
+                                                <constraint firstItem="qeb-Z2-Efn" firstAttribute="centerY" secondItem="tKF-3r-zMl" secondAttribute="centerY" constant="-11" id="bhl-nI-cAn"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <animations/>
+                                        <color key="backgroundColor" red="0.94117647059999998" green="0.98039215690000003" blue="0.98039215690000003" alpha="1" colorSpace="calibratedRGB"/>
+                                    </tableViewCell>
+                                </cells>
+                            </tableViewSection>
+                        </sections>
+                        <connections>
+                            <outlet property="dataSource" destination="ZyW-Us-tuf" id="Kjp-7C-fr3"/>
+                            <outlet property="delegate" destination="ZyW-Us-tuf" id="WIk-bz-oEH"/>
+                        </connections>
+                    </tableView>
+                    <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+                    <size key="freeformSize" width="300" height="200"/>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="9Ga-Fk-Q7X" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-2257" y="625"/>
+        </scene>
     </scenes>
     <resources>
         <image name="AfiCompleteLogo" width="646" height="220"/>
@@ -6125,34 +6350,36 @@ El voluntariado comprende actividades asistenciales de servicios sociales, cívi
         <image name="CameraWhiteIcon" width="30" height="30"/>
         <image name="CheckAssistanceIcon" width="30" height="30"/>
         <image name="DeleteMarkerIcon" width="30" height="30"/>
-        <image name="DocumentsIcon" width="25" height="25"/>
-        <image name="DonationIcon" width="32" height="32"/>
+        <image name="DocumentsIcon" width="30" height="30"/>
+        <image name="DonationIcon" width="30" height="30"/>
         <image name="DownloadIcon" width="30" height="30"/>
         <image name="FemaleGenderIcon" width="30" height="30"/>
         <image name="GalleryWhiteIcon" width="30" height="30"/>
         <image name="HappyFaceGrayIcon" width="30" height="30"/>
         <image name="HappyFaceIcon" width="30" height="30"/>
         <image name="InfoIcon" width="30" height="30"/>
-        <image name="KidsIcon" width="30" height="30"/>
         <image name="LeftArrowBlueIcont" width="30" height="30"/>
         <image name="MaleGenderIcon" width="30" height="30"/>
+        <image name="MapIcon" width="23" height="23"/>
         <image name="MapRouteIcon" width="30" height="30"/>
         <image name="MenuIcon" width="22" height="22"/>
         <image name="NewpostulationIcon" width="30" height="30"/>
+        <image name="NewsIcon" width="30" height="30"/>
         <image name="OpenMenuBlueIcon" width="30" height="30"/>
+        <image name="PDFIcon" width="64" height="64"/>
+        <image name="PaymentsIcon" width="30" height="30"/>
+        <image name="PeriodsIcon" width="30" height="30"/>
         <image name="RightArrowBlueIcon" width="30" height="30"/>
         <image name="RotateLeftGrayIcon" width="30" height="30"/>
         <image name="RotateRightGrayIcon" width="30" height="30"/>
         <image name="SadFaceGrayIcon" width="30" height="30"/>
-        <image name="SchoolBlackIcon" width="30" height="30"/>
-        <image name="SchoolIcon" width="32" height="32"/>
         <image name="SearchBlueIcon" width="30" height="30"/>
         <image name="SearchIcon" width="30" height="30"/>
         <image name="SeeMapBlackIcon" width="30" height="30"/>
         <image name="SeeMapIcon" width="30" height="30"/>
         <image name="SeenFileIcon" width="30" height="30"/>
-        <image name="SessionsIcon" width="25" height="25"/>
-        <image name="SettingsIcon" width="32" height="32"/>
+        <image name="SessionsIcon" width="30" height="30"/>
+        <image name="SettingsIcon" width="30" height="30"/>
         <image name="ShareIcon" width="30" height="30"/>
         <image name="StarFilled" width="30" height="30"/>
         <image name="StarGray" width="30" height="30"/>
@@ -6166,6 +6393,5 @@ El voluntariado comprende actividades asistenciales de servicios sociales, cívi
     <inferredMetricsTieBreakers>
         <segue reference="RtS-xr-ajm"/>
         <segue reference="ThX-Nn-SQw"/>
-        <segue reference="Bq6-7u-HM0"/>
     </inferredMetricsTieBreakers>
 </document>

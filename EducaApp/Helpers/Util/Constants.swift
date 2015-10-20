@@ -35,7 +35,7 @@ struct Constants {
   
   struct MockData {
     static let UsersName: NSMutableArray = ["Alonso Alvarez", "Fernando Banda", "Luis Barcena",  "Daekef Abarca", "Gloria Cisneros"]
-    static let UsersDoc: NSMutableArray = ["45678954", "12345678", "10006532",  "78905321", "14792378"]
+    static let UsersDoc: NSMutableArray = ["Voluntario - 45678954", "Voluntario - 12345678", "Padrino - 10006532",  "Miembro de AFI - 78905321", "Miembro de AFI - 14792378"]
     
     static let StudentsName: NSMutableArray = ["Eduardo Arenas", "Julio Castillo", "Juan Reyes", "Andrea Roca", "Robert Aduviri"]
     static let StudentsAge: NSMutableArray = ["12", "11", "05", "07", "10"]
@@ -66,5 +66,5 @@ struct Constants {
         -11.991553,-77.102887), CLLocationCoordinate2DMake(
           -12.068016, -77.001027)]
   }
-  
+
 }

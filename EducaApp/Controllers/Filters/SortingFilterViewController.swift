@@ -10,7 +10,7 @@ import UIKit
 
 let SortingFilterCellIdentidifer = "SortingNameCell"
 
-class SortingFilterViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
+class SortingFilterViewController: UIViewController {
   
   @IBOutlet weak var tableView: UITableView!
   
@@ -36,8 +36,12 @@ class SortingFilterViewController: UIViewController, UITableViewDataSource, UITa
     self.title = viewTitle
   }
   
-  // MARK: - UITableViewDataSource
-  
+}
+
+// MARK: - UITableViewDataSource
+
+extension SortingFilterViewController: UITableViewDataSource {
+
   func numberOfSectionsInTableView(tableView: UITableView) -> Int {
     return 1
   }

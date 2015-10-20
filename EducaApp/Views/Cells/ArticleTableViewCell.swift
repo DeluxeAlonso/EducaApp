@@ -23,6 +23,8 @@ class ArticleTableViewCell: UITableViewCell {
   @IBOutlet weak var authorNameLabel: UILabel!
   @IBOutlet weak var favoriteButton: UIButton!
   
+  let FavoriteButtonTransitionDuration = 0.25
+  
   var article: Article?
   var isFavorite = false
   var indexPath: NSIndexPath?
@@ -40,7 +42,7 @@ class ArticleTableViewCell: UITableViewCell {
   
   // MARK: - Private
   
-  func setupLabels(article: Article) {
+  private func setupLabels(article: Article) {
     articleTitle.textColor = UIColor.defaultTextColor()
     articleTitle.text = article.title
     postTimeLabel.textColor = UIColor.defaultSmallTextColor()
@@ -49,19 +51,24 @@ class ArticleTableViewCell: UITableViewCell {
     authorNameLabel.text = article.author.firstName
   }
   
-  func setupButtons(article: Article) {
-    if article.favoritedByCurrentUser == true {
-      isFavorite = true
-      favoriteButton.setImage(UIImage(named: "StarFilled"), forState: UIControlState.Normal)
-    } else {
-      isFavorite = false
-      favoriteButton.setImage(UIImage(named: "StarGray"), forState: UIControlState.Normal)
-    }
+  private func setupButtons(article: Article) {
+    article.favoritedByCurrentUser ? setupStarImage(ImageAssets.StarFilled, favorited: true) : setupStarImage(ImageAssets.StarGray, favorited: false)
   }
   
-  func setupImageViews(article: Article) {
-    articleImageView.sd_setImageWithURL(NSURL(string: (article.imageUrl))!, placeholderImage: UIImage(named: "DefaultBackground"))
-    authorImageView.sd_setImageWithURL(NSURL(string: (article.author.imageProfileUrl))!, placeholderImage: UIImage(named: "AfiLogo"))
+  private func setupImageViews(article: Article) {
+    articleImageView.sd_setImageWithURL(NSURL(string: (article.imageUrl))!, placeholderImage: UIImage(named: ImageAssets.DefaultBackground))
+    authorImageView.image = UIImage(named: ImageAssets.AfiLogo)
+  }
+  
+  private func setupStarImage(imageName: String, favorited: Bool) {
+    isFavorite = favorited
+    favoriteButton.setImage(UIImage(named: imageName), forState: UIControlState.Normal)
+  }
+  
+  private func animateFavoriteSelection(favorited favorited: Bool) {
+    favorited ? setupStarImage(ImageAssets.StarFilled, favorited: favorited) : setupStarImage(ImageAssets.StarGray, favorited: selected)
+    favoriteButton.layer.addAnimation(Util.fadeTransitionWithDuration(FavoriteButtonTransitionDuration), forKey: nil)
+    delegate?.articleTableViewCell(self, starButtonDidTapped: favoriteButton, favorited: favorited, indexPath: indexPath!)
   }
   
   // MARK: - Public
@@ -76,22 +83,7 @@ class ArticleTableViewCell: UITableViewCell {
   // MARK: - Actions
   
   @IBAction func setFavorite(sender: AnyObject) {
-    let transition: CATransition = CATransition()
-    transition.duration = 0.25
-    transition.timingFunction = CAMediaTimingFunction(name: kCAMediaTimingFunctionEaseInEaseOut)
-    transition.type = kCATransitionFade
-    if !isFavorite {
-      isFavorite = true
-      favoriteButton.setImage(UIImage(named: "StarFilled"), forState: UIControlState.Normal)
-      favoriteButton.layer.addAnimation(transition, forKey: nil)
-      delegate?.articleTableViewCell(self, starButtonDidTapped: favoriteButton, favorited: true, indexPath: indexPath!)
-    } else {
-      isFavorite = false
-      favoriteButton.setImage(UIImage(named: "StarGray"), forState: UIControlState.Normal)
-      favoriteButton.layer.addAnimation(transition, forKey: nil)
-      delegate?.articleTableViewCell(self, starButtonDidTapped: favoriteButton, favorited: false, indexPath: indexPath!)
-    }
+    isFavorite ? animateFavoriteSelection(favorited: false) : animateFavoriteSelection(favorited: true)
   }
-  
   
 }

@@ -53,6 +53,9 @@ class SessionMapViewController: UIViewController, CLLocationManagerDelegate, GMS
   let CancelAlertTitle = "¿Está seguro de que desea salir?"
   let CancelAlertMessage = "Sus cambios no han sido guardados."
   
+  let deleteMarkerSelector: Selector = "deleteMarker:"
+  let undoDeleteActionSelector: Selector = "undoDeleteAction:"
+  
   let locationManager = CLLocationManager()
   let sessionLocation = CLLocationCoordinate2DMake(
     -12.068016, -77.001027)
@@ -106,8 +109,6 @@ class SessionMapViewController: UIViewController, CLLocationManagerDelegate, GMS
   
   private func setupInfoView() {
     mapInfoView.setShadowBorder()
-    mapRouteButton.setShadowBorder()
-    deleteMarkerButton.setShadowBorder()
   }
   
   private func setupAdditionalConstraints() {
@@ -136,7 +137,8 @@ class SessionMapViewController: UIViewController, CLLocationManagerDelegate, GMS
       guard let address = response?.firstResult() else {
         return
       }
-      let lines: [String] = address.lines as! [String]
+      var lines: [String] = address.lines as! [String]
+      lines = lines.filter { (line) in line.characters.count != 0 }
       self.mapInfoLabel.text = lines.joinWithSeparator("\n")
     })
     UIView.animateWithDuration(0.25, animations: {
@@ -191,13 +193,13 @@ class SessionMapViewController: UIViewController, CLLocationManagerDelegate, GMS
   }
   
   private func enableUndoButton() {
-    deleteMarkerButton.setImage(UIImage(named: "UndoIcon"), forState: UIControlState.Normal)
-    deleteMarkerButton.addTarget(self, action: "undoDeleteAction:", forControlEvents: UIControlEvents.TouchUpInside)
+    deleteMarkerButton.setBackgroundImage(UIImage(named: ImageAssets.UndoIcon), forState: UIControlState.Normal)
+    deleteMarkerButton.addTarget(self, action: undoDeleteActionSelector, forControlEvents: UIControlEvents.TouchUpInside)
   }
   
   private func enableDeleteButton() {
-    deleteMarkerButton.setImage(UIImage(named: "DeleteMarkerIcon"), forState: UIControlState.Normal)
-    deleteMarkerButton.addTarget(self, action: "deleteMarker:", forControlEvents: UIControlEvents.TouchUpInside)
+    deleteMarkerButton.setBackgroundImage(UIImage(named: ImageAssets.DeleteMarkerIcon), forState: UIControlState.Normal)
+    deleteMarkerButton.addTarget(self, action: deleteMarkerSelector, forControlEvents: UIControlEvents.TouchUpInside)
   }
   
   private func canDeleteCurrentMarker() -> Bool {

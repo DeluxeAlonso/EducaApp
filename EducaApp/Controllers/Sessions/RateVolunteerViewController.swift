@@ -11,7 +11,7 @@ import UIKit
 class RateVolunteerViewController: UIViewController {
   
   @IBOutlet weak var commentTextView: UITextView!
-  @IBOutlet weak var rateStarsView: CosmosView!
+  @IBOutlet weak var rateStarsView: CustomRatingView!
   
   let RateButtonText = "Enviar"
   

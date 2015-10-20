@@ -62,7 +62,6 @@ class SendAssistantCommentViewController: UIViewController {
   }
   
   private func setupTextView() {
-    commentTextView.text = "Ingrese un comentario."
     commentTextView.textColor = UIColor.defaultSmallTextColor()
     commentTextView.layer.borderColor = UIColor.defaultSmallTextColor().CGColor
   }
@@ -75,19 +74,19 @@ class SendAssistantCommentViewController: UIViewController {
   
   @IBAction func pressHappyButton(sender: AnyObject) {
     selectedFaceIndex = SelectedMood.HappyMood
-    happyMoodImageView.image = UIImage(named: "HappyFaceIcon")
+    happyMoodImageView.image = UIImage(named: ImageAssets.HappyFaceIcon)
     happyMoodImageView.layer.borderColor = UIColor.defaultHappyFaceBorderColor().CGColor
     sadMoodImageView.layer.borderColor = UIColor.defaultBorderFieldColor().CGColor
-    sadMoodImageView.image = UIImage(named: "SadFaceGrayIcon")
+    sadMoodImageView.image = UIImage(named: ImageAssets.SadFaceGrayIcon)
     happyMoodImageView.scaleToSize(ScaleToSize, duration: ScaleDuration)
     sadMoodImageView.restoreWithDuration(ScaleDuration)
   }
 
   @IBAction func pressSadButton(sender: AnyObject) {
     selectedFaceIndex = SelectedMood.SadMood
-    sadMoodImageView.image = UIImage(named: "SadFaceIcon")
+    sadMoodImageView.image = UIImage(named: ImageAssets.SadFaceIcon)
     sadMoodImageView.layer.borderColor = UIColor.defaultSadFaceBorderColor().CGColor
-    happyMoodImageView.image = UIImage(named: "HappyFaceGrayIcon")
+    happyMoodImageView.image = UIImage(named: ImageAssets.HappyFaceGrayIcon)
     happyMoodImageView.layer.borderColor = UIColor.defaultBorderFieldColor().CGColor
     sadMoodImageView.scaleToSize(ScaleToSize, duration: ScaleDuration)
     happyMoodImageView.restoreWithDuration(ScaleDuration)

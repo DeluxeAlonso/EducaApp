@@ -11,19 +11,14 @@ import UIKit
 let StudentCellIdentifier = "StudentCell"
 let StudentsFilterViewControllerIdentifier = "StudentsFilterViewController"
 
-class StudentsViewController: BaseFilterViewController, UITableViewDelegate, UITableViewDataSource {
+class StudentsViewController: BaseFilterViewController {
   
   var popupViewController: STPopupController?
-  
   var students: NSMutableArray = []
   
   override func viewDidLoad() {
     super.viewDidLoad()
     getStudents()
-  }
-  
-  override func didReceiveMemoryWarning() {
-    super.didReceiveMemoryWarning()
   }
   
   // MARK: - Private
@@ -85,7 +80,17 @@ class StudentsViewController: BaseFilterViewController, UITableViewDelegate, UIT
     popupViewController!.presentInViewController(self)
   }
   
-  // MARK: - UITableViewDataSource
+  // MARK: - UISearchBarDelegate
+  
+  func searchBarCancelButtonClicked(searchBar: UISearchBar) {
+    hideSearchBar()
+  }
+  
+}
+
+// MARK: - UITableViewDataSource
+
+extension StudentsViewController: UITableViewDataSource {
   
   func numberOfSectionsInTableView(tableView: UITableView) -> Int {
     return 1
@@ -100,17 +105,15 @@ class StudentsViewController: BaseFilterViewController, UITableViewDelegate, UIT
     return cell
   }
   
-  // MARK: - UIPopoverPresentationControllerDelegate
+}
+
+// MARK: - UIPopoverPresentationControllerDelegate
+
+extension StudentsViewController: UIPopoverPresentationControllerDelegate {
   
   func adaptivePresentationStyleForPresentationController(
     controller: UIPresentationController) -> UIModalPresentationStyle {
       return .None
   }
   
-  // MARK: - UISearchBarDelegate
-  
-  func searchBarCancelButtonClicked(searchBar: UISearchBar) {
-    hideSearchBar()
-  }
-
 }

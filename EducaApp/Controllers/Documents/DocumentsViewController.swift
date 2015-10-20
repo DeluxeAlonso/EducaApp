@@ -11,8 +11,8 @@ import UIKit
 let DocumentCellIdentifier = "DocumentCell"
 let DocumentsNavigationItemTitle = "Documentos"
 
-class DocumentsViewController: BaseFilterViewController, UITableViewDataSource, UITableViewDelegate, DocumentTableViewCellDelegate {
-  
+class DocumentsViewController: BaseFilterViewController {
+
   @IBOutlet weak var shadowView: UIView!
   @IBOutlet weak var menuContentView: UIView!
   @IBOutlet weak var menuHeightConstraint: NSLayoutConstraint!
@@ -44,8 +44,8 @@ class DocumentsViewController: BaseFilterViewController, UITableViewDataSource, 
   override func setupBarButtonItem() {
     super.setupBarButtonItem()
     if self.revealViewController() != nil && session == nil {
-      let menuIcon = UIBarButtonItem(title: nil, style: UIBarButtonItemStyle.Plain, target: self.revealViewController(), action: kBarButtonSelector)
-      menuIcon.image = UIImage(named: MenuIconImageName)
+      let menuIcon = UIBarButtonItem(title: nil, style: UIBarButtonItemStyle.Plain, target: self.revealViewController(), action: MenuButtonSelector)
+      menuIcon.image = UIImage(named: ImageAssets.MenuIcon)
       self.navigationItem.setLeftBarButtonItem(menuIcon, animated: false)
     }
     self.view.addGestureRecognizer(self.revealViewController().panGestureRecognizer())
@@ -137,7 +137,17 @@ class DocumentsViewController: BaseFilterViewController, UITableViewDataSource, 
     }
   }
   
-  // MARK: - UITableViewDataSource
+  // MARK: - UISearchBarDelegate
+  
+  func searchBarCancelButtonClicked(searchBar: UISearchBar) {
+    hideSearchBarAnimated(true)
+  }
+  
+}
+
+// MARK: - UITableViewDataSource
+
+extension DocumentsViewController: UITableViewDataSource {
   
   func numberOfSectionsInTableView(tableView: UITableView) -> Int {
     return 1
@@ -154,22 +164,24 @@ class DocumentsViewController: BaseFilterViewController, UITableViewDataSource, 
     return cell
   }
   
-  // MARK: - UITableViewDelegate
-  
+}
+
+// MARK: - UITableViewDelegate
+
+extension DocumentsViewController: UITableViewDelegate {
+
   func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
     tableView.deselectRowAtIndexPath(indexPath, animated: true)
   }
   
-  // MARK: - DocumentTableViewCellDelegate
+}
+
+// MARK: - DocumentTableViewCellDelegate
+
+extension DocumentsViewController: DocumentTableViewCellDelegate {
   
   func documentTableViewCell(documentTableViewCell: DocumentTableViewCell, menuButtonDidTapped button: UIButton) {
     showMenuView()
-  }
-  
-  //MARK: - UISearchBarDelegate
-  
-  func searchBarCancelButtonClicked(searchBar: UISearchBar) {
-    hideSearchBarAnimated(true)
   }
   
 }

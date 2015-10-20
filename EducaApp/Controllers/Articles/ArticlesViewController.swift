@@ -8,14 +8,17 @@
 
 import UIKit
 
-let kArticlesCellIdentifier = "ArticleCell"
-let kGoToArticleDetailSegueIdentifier = "GoToArticleDetailSegue"
+let ArticlesCellIdentifier = "ArticleCell"
+let GoToArticleDetailSegueIdentifier = "GoToArticleDetailSegue"
 
-class ArticlesViewController: BaseViewController, UITableViewDataSource, UITableViewDelegate, UIScrollViewDelegate, ArticleTableViewCellDelegate {
+class ArticlesViewController: BaseViewController {
   
   @IBOutlet weak var tableView: UITableView!
   @IBOutlet weak var customLoader: CustomActivityIndicatorView!
   @IBOutlet weak var favoritesSegmentedControl: UISegmentedControl!
+  
+  let refreshDataSelector: Selector = "refreshData"
+  let refreshControl = CustomRefreshControlView()
   
   var articles = [Article]()
   var allArticles = [Article]()
@@ -24,7 +27,6 @@ class ArticlesViewController: BaseViewController, UITableViewDataSource, UITable
   var labelsArray: Array<UILabel> = []
   
   var isRefreshing = false
-  let refreshControl = CustomRefreshControlView()
   
   // MARK: - Lifecycle
   
@@ -57,16 +59,17 @@ class ArticlesViewController: BaseViewController, UITableViewDataSource, UITable
     self.tableView.estimatedRowHeight = 243
     self.tableView.rowHeight = UITableViewAutomaticDimension
     tableView.addSubview(refreshControl)
-    refreshControl.addTarget(self, action: "refreshData", forControlEvents: UIControlEvents.ValueChanged)
+    refreshControl.addTarget(self, action: refreshDataSelector, forControlEvents: UIControlEvents.ValueChanged)
   }
   
   private func setupArticles() {
     articles = Article.getAllArticles(self.dataLayer.managedObjectContext!)
-    if articles.count == 0 {
-      self.tableView.hidden = true
-      customLoader.startActivity()
-      getArticles()
+    guard articles.count == 0 else {
+      return
     }
+    self.tableView.hidden = true
+    customLoader.startActivity()
+    getArticles()
   }
   
   private func getArticles() {
@@ -96,7 +99,6 @@ class ArticlesViewController: BaseViewController, UITableViewDataSource, UITable
     refreshControl.removeFromSuperview()
     let favorites = articles.filter { (article) in article.favoritedByCurrentUser == true }
     self.articles = favorites
-    //tableView.reloadData()
     tableView.reloadSections(NSIndexSet(index: 0), withRowAnimation: UITableViewRowAnimation.Fade)
   }
   
@@ -111,11 +113,12 @@ class ArticlesViewController: BaseViewController, UITableViewDataSource, UITable
   
   func reloadData() {
     Util.delay(0.5) {
-      if !self.isRefreshing {
-        self.customLoader.stopActivity()
-        self.tableView.hidden = false
-        self.tableView.reloadData()
+      guard !self.isRefreshing else {
+        return
       }
+      self.customLoader.stopActivity()
+      self.tableView.hidden = false
+      self.tableView.reloadData()
     }
   }
   
@@ -141,7 +144,11 @@ class ArticlesViewController: BaseViewController, UITableViewDataSource, UITable
     }
   }
   
-  // MARK: - UITableViewDataSource
+}
+
+// MARK: - UITableViewDataSource
+
+extension ArticlesViewController: UITableViewDataSource {
   
   func numberOfSectionsInTableView(tableView: UITableView) -> Int {
     return 1
@@ -153,28 +160,35 @@ class ArticlesViewController: BaseViewController, UITableViewDataSource, UITable
   
   func tableView(tableView: UITableView,
     cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-      let cell = tableView.dequeueReusableCellWithIdentifier(kArticlesCellIdentifier, forIndexPath: indexPath) as! ArticleTableViewCell
+      let cell = tableView.dequeueReusableCellWithIdentifier(ArticlesCellIdentifier, forIndexPath: indexPath) as! ArticleTableViewCell
       cell.delegate = self
       cell.setupArticle(articles[indexPath.row], indexPath: indexPath)
       return cell
   }
-  
-  // MARK: - UITableViewDelegate
+
+}
+
+// MARK: - UITableViewDelegate
+
+extension ArticlesViewController: UITableViewDelegate {
   
   func tableView(tableView: UITableView,
     didSelectRowAtIndexPath indexPath: NSIndexPath) {
       tableView.deselectRowAtIndexPath(indexPath, animated: true)
-      self.performSegueWithIdentifier(kGoToArticleDetailSegueIdentifier, sender: articles[indexPath.row])
+      self.performSegueWithIdentifier(GoToArticleDetailSegueIdentifier, sender: articles[indexPath.row])
   }
   
-  // MARK: - UIScrollViewDelegate
+}
+
+// MARK: - UIScrollViewDelegate
+
+extension ArticlesViewController: UIScrollViewDelegate {
   
   func scrollViewDidEndDecelerating(scrollView: UIScrollView) {
-    if refreshControl.refreshing {
-      if !refreshControl.isAnimating {
-        refreshControl.animateRefreshFirstStep()
-      }
+    guard refreshControl.refreshing && !refreshControl.isAnimating else {
+      return
     }
+    refreshControl.animateRefreshFirstStep()
   }
   
   func scrollViewDidScroll(scrollView: UIScrollView) {
@@ -189,10 +203,13 @@ class ArticlesViewController: BaseViewController, UITableViewDataSource, UITable
     refreshControl.customView.alpha = alpha
   }
   
-  // MARK: - ArticleTableViewCellDelegate
+}
+
+// MARK: - ArticleTableViewCellDelegate
+
+extension ArticlesViewController: ArticleTableViewCellDelegate {
   
   func articleTableViewCell(sessionTableViewCell: ArticleTableViewCell, starButtonDidTapped button: UIButton, favorited: Bool, indexPath: NSIndexPath) {
-    print(favorited)
     currentUser!.updateFavoriteArticle(articles[indexPath.row], favorited: favorited, ctx: dataLayer.managedObjectContext!)
     self.dataLayer.saveContext()
   }

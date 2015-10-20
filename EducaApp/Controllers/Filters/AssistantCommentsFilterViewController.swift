@@ -17,7 +17,7 @@ let SortingFilterCellIdentifier = "SortingFilterCell"
 
 let AssistantCommentFilterTitle = "Búsqueda"
 
-class AssistantCommentsFilterViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
+class AssistantCommentsFilterViewController: UIViewController {
   
   let rightBarButtonItemTitle = "Buscar"
   let advancedSearchSelector: Selector = "advancedSearch:"
@@ -75,8 +75,12 @@ class AssistantCommentsFilterViewController: UIViewController, UITableViewDataSo
     }
   }
   
-  // MARK: - UITableViewDataSource
-  
+}
+
+// MARK: - UITableViewDataSource
+
+extension AssistantCommentsFilterViewController: UITableViewDataSource {
+
   func numberOfSectionsInTableView(tableView: UITableView) -> Int {
     return 2
   }
@@ -92,10 +96,10 @@ class AssistantCommentsFilterViewController: UIViewController, UITableViewDataSo
       case 0:
         cell = tableView.dequeueReusableCellWithIdentifier(AuthorContentFilterCellIdentidifer, forIndexPath: indexPath)
       case 1:
-        cell = tableView.dequeueReusableCellWithIdentifier(DateFilterCellIdentifier, forIndexPath: indexPath) as! DateFilterTableViewCell
+        cell = tableView.dequeueReusableCellWithIdentifier(DateFilterCellIdentifier, forIndexPath: indexPath)
         (cell as! DateFilterTableViewCell).setupLabels(DateFilterType.From.rawValue)
       case 2:
-        cell = tableView.dequeueReusableCellWithIdentifier(DateFilterCellIdentifier, forIndexPath: indexPath) as! DateFilterTableViewCell
+        cell = tableView.dequeueReusableCellWithIdentifier(DateFilterCellIdentifier, forIndexPath: indexPath)
         (cell as! DateFilterTableViewCell).setupLabels(DateFilterType.To.rawValue)
       default:
         break
@@ -111,7 +115,11 @@ class AssistantCommentsFilterViewController: UIViewController, UITableViewDataSo
     return cell!
   }
   
-  // MARK: - UITableViewDelegate
+}
+
+// MARK: - UITableViewDelegate
+
+extension AssistantCommentsFilterViewController: UITableViewDelegate {
   
   func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
     tableView.deselectRowAtIndexPath(indexPath, animated: true)

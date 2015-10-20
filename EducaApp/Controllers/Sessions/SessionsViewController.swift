@@ -14,7 +14,7 @@ let SessionVolunteersSegueIdentifier = "GoToVolunteersList"
 let SessionAssistantsSegueIdentifier = "GoToAssistants"
 let SessionMapSegueIdentifier = "GoToSessionMapSegue"
 
-class SessionsViewController: BaseViewController, UITableViewDataSource, UITableViewDelegate, SessionTableViewCellDelegate {
+class SessionsViewController: BaseViewController {
   
   @IBOutlet weak var menuContentView: UIView!
   @IBOutlet weak var menuHeightConstraint: NSLayoutConstraint!
@@ -30,14 +30,6 @@ class SessionsViewController: BaseViewController, UITableViewDataSource, UITable
   override func viewDidLoad() {
     super.viewDidLoad()
     setupMenuView()
-  }
-  
-  override func viewWillLayoutSubviews() {
-    super.viewWillLayoutSubviews()
-  }
-  
-  override func didReceiveMemoryWarning() {
-    super.didReceiveMemoryWarning()
   }
   
   // MARK: - Private
@@ -102,8 +94,12 @@ class SessionsViewController: BaseViewController, UITableViewDataSource, UITable
     }
   }
   
+}
+
   // MARK: - UITableViewDataSource
-  
+
+extension SessionsViewController: UITableViewDataSource {
+
   func numberOfSectionsInTableView(tableView: UITableView) -> Int {
     return 1
   }
@@ -118,14 +114,22 @@ class SessionsViewController: BaseViewController, UITableViewDataSource, UITable
     return cell
   }
   
+}
+
   // MARK: - UITableViewDelegate
-  
+
+extension SessionsViewController: UITableViewDelegate {
+
   func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
     tableView.deselectRowAtIndexPath(indexPath, animated: true)
   }
   
+}
+
   // MARK: - SessionTableViewCellDelegate
-  
+
+extension SessionsViewController: SessionTableViewCellDelegate {
+
   func sessionTableViewCell(sessionTableViewCell: SessionTableViewCell, menuButtonDidTapped button: UIButton) {
     showMenuView()
   }

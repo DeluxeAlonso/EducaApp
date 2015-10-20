@@ -17,7 +17,6 @@
     <entity name="User" representedClassName="User" syncable="YES">
         <attribute name="firstName" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="id" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
-        <attribute name="imageProfileUrl" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="lastName" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="type" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
         <attribute name="username" optional="YES" attributeType="String" syncable="YES"/>
@@ -27,6 +26,6 @@
     <elements>
         <element name="Article" positionX="-1971" positionY="63" width="128" height="148"/>
         <element name="ArticleUser" positionX="-1935" positionY="252" width="128" height="88"/>
-        <element name="User" positionX="-2124" positionY="225" width="128" height="163"/>
+        <element name="User" positionX="-2124" positionY="225" width="128" height="150"/>
     </elements>
 </model>

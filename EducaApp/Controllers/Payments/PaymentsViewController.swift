@@ -8,7 +8,11 @@
 
 import UIKit
 
-class PaymentsViewController: BaseViewController, UITableViewDataSource, UITableViewDelegate, PayPalPaymentDelegate {
+let PendingPaymentCellIdentifier = "PendingPaymentCell"
+let CanceledPaymentCellIdentifier = "CanceledPaymentCell"
+let DebtPaymentCellIdentifier = "DebtPaymentCell"
+
+class PaymentsViewController: BaseViewController {
 
   let GoToDepositSegueIdentifier = "GoToDepositSegue"
   
@@ -24,11 +28,6 @@ class PaymentsViewController: BaseViewController, UITableViewDataSource, UITable
   override func viewWillAppear(animated: Bool) {
     super.viewWillAppear(animated)
     PayPalMobile.preconnectWithEnvironment(PayPalEnvironmentSandbox)
-  }
-  
-  override func didReceiveMemoryWarning() {
-    super.didReceiveMemoryWarning()
-    // Dispose of any resources that can be recreated.
   }
   
   // MARK: - Private
@@ -58,8 +57,12 @@ class PaymentsViewController: BaseViewController, UITableViewDataSource, UITable
     }
   }
   
-  // MARK: - UITableViewDataSource
-  
+}
+
+// MARK: - UITableViewDataSource
+
+extension PaymentsViewController: UITableViewDataSource {
+
   func numberOfSectionsInTableView(tableView: UITableView) -> Int {
     return 1
   }
@@ -71,17 +74,21 @@ class PaymentsViewController: BaseViewController, UITableViewDataSource, UITable
   func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
     let cell: UITableViewCell
     if indexPath.row == 2 {
-      cell = tableView.dequeueReusableCellWithIdentifier("PendingPaymentCell", forIndexPath: indexPath)
+      cell = tableView.dequeueReusableCellWithIdentifier(PendingPaymentCellIdentifier, forIndexPath: indexPath)
     } else if indexPath.row == 3 {
-      cell = tableView.dequeueReusableCellWithIdentifier("CanceledPaymentCell", forIndexPath: indexPath)
+      cell = tableView.dequeueReusableCellWithIdentifier(CanceledPaymentCellIdentifier, forIndexPath: indexPath)
     } else {
-      cell = tableView.dequeueReusableCellWithIdentifier("DebtPaymentCell", forIndexPath: indexPath)
+      cell = tableView.dequeueReusableCellWithIdentifier(DebtPaymentCellIdentifier, forIndexPath: indexPath)
     }
     return cell
   }
   
-  // MARK: - UITableViewDelegate
+}
 
+// MARK: - UITableViewDelegate
+
+extension PaymentsViewController: UITableViewDelegate {
+  
   func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
     let actionSheetController: UIAlertController = UIAlertController(title: "Método de Pago", message: "Seleccione un método de pago.", preferredStyle: .Alert)
     let payPalAction: UIAlertAction = UIAlertAction(title: "PayPal", style: .Default) { action -> Void in
@@ -95,8 +102,12 @@ class PaymentsViewController: BaseViewController, UITableViewDataSource, UITable
     self.presentViewController(actionSheetController, animated: true, completion: nil)
   }
   
-  // MARK: - PayPalPaymentDelegate
-  
+}
+
+// MARK: - PayPalPaymentDelegate
+
+extension PaymentsViewController: PayPalPaymentDelegate {
+
   func payPalPaymentViewController(paymentViewController: PayPalPaymentViewController!, didCompletePayment completedPayment: PayPalPayment!) {
     print(completedPayment.description)
     self.dismissViewControllerAnimated(true, completion: nil)

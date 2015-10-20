@@ -15,7 +15,7 @@ enum UsersFilterFields: String {
   case SortResult = "Miembro de AFI"
 }
 
-class UsersFilterViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
+class UsersFilterViewController: UIViewController {
 
   let rightBarButtonItemTitle = "Buscar"
   let advancedSearchSelector: Selector = "advancedSearch:"
@@ -67,7 +67,11 @@ class UsersFilterViewController: UIViewController, UITableViewDataSource, UITabl
     }
   }
   
-  // MARK: - UITableViewDataSource
+}
+
+// MARK: - UITableViewDataSource
+
+extension UsersFilterViewController: UITableViewDataSource {
   
   func numberOfSectionsInTableView(tableView: UITableView) -> Int {
     return 1
@@ -97,7 +101,11 @@ class UsersFilterViewController: UIViewController, UITableViewDataSource, UITabl
     return cell!
   }
   
-  // MARK: - UITableViewDelegate
+}
+
+// MARK: - UITableViewDelegate
+
+extension UsersFilterViewController: UITableViewDelegate {
   
   func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
     tableView.deselectRowAtIndexPath(indexPath, animated: true)
@@ -105,5 +113,5 @@ class UsersFilterViewController: UIViewController, UITableViewDataSource, UITabl
       goToSortSelection()
     }
   }
-
+  
 }

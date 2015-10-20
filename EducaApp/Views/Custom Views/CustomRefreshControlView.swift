@@ -10,6 +10,8 @@ import UIKit
 
 class CustomRefreshControlView: UIRefreshControl {
   
+  let XibIdentifier = "RefreshContentsView"
+  
   var customView: UIView!
   
   var labelsArray: Array<UILabel> = []
@@ -17,8 +19,6 @@ class CustomRefreshControlView: UIRefreshControl {
   var isAnimating = false
   var currentColorIndex = 0
   var currentLabelIndex = 0
-  
-  let kXibIdentifier = "RefreshContentsView"
 
   // MARK: - Lifecycle
   
@@ -34,7 +34,7 @@ class CustomRefreshControlView: UIRefreshControl {
   // MARK: - Private
   
   private func setupView() {
-    let refreshContents = NSBundle.mainBundle().loadNibNamed(kXibIdentifier, owner: self, options: nil)
+    let refreshContents = NSBundle.mainBundle().loadNibNamed(XibIdentifier, owner: self, options: nil)
     customView = refreshContents[0] as! UIView
     customView.backgroundColor = UIColor.defaultRefreshControlColor()
     customView.frame = self.bounds
@@ -74,25 +74,14 @@ class CustomRefreshControlView: UIRefreshControl {
   
   func animateRefreshSecondStep() {
     UIView.animateWithDuration(0.35, delay: 0.0, options: UIViewAnimationOptions.CurveLinear, animations: { () -> Void in
-      self.labelsArray[0].transform = CGAffineTransformMakeScale(1.5, 1.5)
-      self.labelsArray[1].transform = CGAffineTransformMakeScale(1.5, 1.5)
-      self.labelsArray[2].transform = CGAffineTransformMakeScale(1.5, 1.5)
-      self.labelsArray[3].transform = CGAffineTransformMakeScale(1.5, 1.5)
-      self.labelsArray[4].transform = CGAffineTransformMakeScale(1.5, 1.5)
-      self.labelsArray[5].transform = CGAffineTransformMakeScale(1.5, 1.5)
-      self.labelsArray[6].transform = CGAffineTransformMakeScale(1.5, 1.5)
-      self.labelsArray[7].transform = CGAffineTransformMakeScale(1.5, 1.5)
-      
+        self.labelsArray.each { (label) in
+          label.transform = CGAffineTransformMakeScale(1.5, 1.5)
+        }
       }, completion: { (finished) -> Void in
         UIView.animateWithDuration(0.25, delay: 0.0, options: UIViewAnimationOptions.CurveLinear, animations: { () -> Void in
-          self.labelsArray[0].transform = CGAffineTransformIdentity
-          self.labelsArray[1].transform = CGAffineTransformIdentity
-          self.labelsArray[2].transform = CGAffineTransformIdentity
-          self.labelsArray[3].transform = CGAffineTransformIdentity
-          self.labelsArray[4].transform = CGAffineTransformIdentity
-          self.labelsArray[5].transform = CGAffineTransformIdentity
-          self.labelsArray[6].transform = CGAffineTransformIdentity
-          self.labelsArray[7].transform = CGAffineTransformIdentity
+            self.labelsArray.each { (label) in
+              label.transform = CGAffineTransformIdentity
+            }
           }, completion: { (finished) -> Void in
             if self.refreshing {
               self.currentLabelIndex = 0
@@ -117,7 +106,6 @@ class CustomRefreshControlView: UIRefreshControl {
     }
     let returnColor = colorsArray[currentColorIndex]
     ++currentColorIndex
-    
     return returnColor
   }
   

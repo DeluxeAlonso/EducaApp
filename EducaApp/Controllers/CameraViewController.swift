@@ -8,9 +8,6 @@
 
 import UIKit
 
-let RotateRightIconName = "RotateRightIcon"
-let RotateLeftIconName = "RotateLeftIcon"
-
 class CameraViewController: BaseViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
   
   @IBOutlet weak var pictureContainerView: UIView!
@@ -52,11 +49,7 @@ class CameraViewController: BaseViewController, UIImagePickerControllerDelegate,
   }
   
   private func enableButtons() {
-    rotateLeftButton.userInteractionEnabled = true
-    rotateRightButton.userInteractionEnabled = true
     sendPhotoButton.userInteractionEnabled = true
-    rotateRightButton.setBackgroundImage(UIImage(named: RotateRightIconName), forState: UIControlState.Normal)
-    rotateLeftButton.setBackgroundImage(UIImage(named: RotateLeftIconName), forState: UIControlState.Normal)
     sendPhotoButton.layer.backgroundColor = UIColor.defaultTextColor().CGColor
   }
   

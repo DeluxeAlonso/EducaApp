@@ -55,12 +55,12 @@ class ArticleDetailViewController: BaseViewController {
   @IBAction func shareButtonClicked(sender: AnyObject) {
     let textToShare = article!.title
     let imageToShare = articleImageView.image as UIImage!
-    if let myWebsite = NSURL(string: URLToShare) {
-      let objectsToShare = [textToShare, myWebsite, imageToShare]
-      let activityVC = UIActivityViewController(activityItems: objectsToShare, applicationActivities: nil)
-      
-      self.presentViewController(activityVC, animated: true, completion: nil)
+    guard let myWebsite = NSURL(string: URLToShare) else {
+      return
     }
+    let objectsToShare = [textToShare, myWebsite, imageToShare]
+    let activityVC = UIActivityViewController(activityItems: objectsToShare, applicationActivities: nil)
+    self.presentViewController(activityVC, animated: true, completion: nil)
   }
   
 }

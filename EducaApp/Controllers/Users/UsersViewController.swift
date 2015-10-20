@@ -11,7 +11,7 @@ import UIKit
 let UsersFilterViewControllerIdentifier = "UsersFilterViewController"
 let UserTableViewCellIdentifier = "UserCell"
 
-class UsersViewController: BaseFilterViewController, UITableViewDataSource, UITableViewDelegate {
+class UsersViewController: BaseFilterViewController {
   
   let UsersViewControllerTitle = "Usuarios"
   
@@ -49,10 +49,9 @@ class UsersViewController: BaseFilterViewController, UITableViewDataSource, UITa
   
   override func setupBarButtonItem() {
     super.setupBarButtonItem()
-    print(document)
     if self.revealViewController() != nil && document == nil {
-      let menuIcon = UIBarButtonItem(title: nil, style: UIBarButtonItemStyle.Plain, target: self.revealViewController(), action: kBarButtonSelector)
-      menuIcon.image = UIImage(named: MenuIconImageName)
+      let menuIcon = UIBarButtonItem(title: nil, style: UIBarButtonItemStyle.Plain, target: self.revealViewController(), action: MenuButtonSelector)
+      menuIcon.image = UIImage(named: ImageAssets.MenuIcon)
       self.navigationItem.setLeftBarButtonItem(menuIcon, animated: false)
     }
     self.view.addGestureRecognizer(self.revealViewController().panGestureRecognizer())
@@ -99,7 +98,17 @@ class UsersViewController: BaseFilterViewController, UITableViewDataSource, UITa
     popupViewController!.presentInViewController(self)
   }
   
-  // MARK: - UITableViewDataSource
+  // MARK: - UISearchBarDelegate
+  
+  func searchBarCancelButtonClicked(searchBar: UISearchBar) {
+    hideSearchBar()
+  }
+  
+}
+
+// MARK: - UITableViewDataSource
+
+extension UsersViewController: UITableViewDataSource {
   
   func numberOfSectionsInTableView(tableView: UITableView) -> Int {
     return 1
@@ -115,17 +124,15 @@ class UsersViewController: BaseFilterViewController, UITableViewDataSource, UITa
     return cell
   }
   
-  // MARK: - UIPopoverPresentationControllerDelegate
+}
+
+// MARK: - UIPopoverPresentationControllerDelegate
+
+extension UsersViewController: UIPopoverPresentationControllerDelegate {
   
   func adaptivePresentationStyleForPresentationController(
     controller: UIPresentationController) -> UIModalPresentationStyle {
       return .None
-  }
-  
-  // MARK: - UISearchBarDelegate
-  
-  func searchBarCancelButtonClicked(searchBar: UISearchBar) {
-    hideSearchBar()
   }
   
 }

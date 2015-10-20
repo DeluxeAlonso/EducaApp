@@ -14,6 +14,8 @@ class StudentTableViewCell: UITableViewCell {
   @IBOutlet weak var ageLabel: UILabel!
   @IBOutlet weak var genderImageView: UIImageView!
   
+  let AgeLabelText = "Edad:"
+  
   override func awakeFromNib() {
     super.awakeFromNib()
   }
@@ -24,12 +26,8 @@ class StudentTableViewCell: UITableViewCell {
   
   func setupStudent(student: Student) {
     nameLabel.text = student.name
-    ageLabel.text = "Edad: \((student.age)!)"
-    if student.gender == 0 {
-      genderImageView.image = UIImage(named: "MaleGenderIcon")
-    } else {
-      genderImageView.image = UIImage(named: "FemaleGenderIcon")
-    }
+    ageLabel.text = "\(AgeLabelText) \((student.age)!)"
+    genderImageView.image = student.gender == 0 ? UIImage(named: ImageAssets.MaleGenderIcon) : UIImage(named: ImageAssets.FemaleGenderIcon)
   }
   
 }
