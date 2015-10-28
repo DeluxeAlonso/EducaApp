@@ -41,30 +41,25 @@ class SchoolsMapViewController: UIViewController, CLLocationManagerDelegate, GMS
   @IBOutlet weak var mapInfoLabel: UILabel!
   @IBOutlet weak var mapInfoViewHeightConstraint: NSLayoutConstraint!
   @IBOutlet weak var mapRouteButton: UIButton!
+  @IBOutlet weak var customLoader: CustomActivityIndicatorView!
   
   let locationManager = CLLocationManager()
-  
   var initialHeightConstant: CGFloat?
-  
   var currentLocation: CLLocationCoordinate2D?
   var targetLocation: CLLocationCoordinate2D?
-  
   var polyline: GMSPolyline?
-  
   var currentMarker: CustomMapMarker?
-  
   var isSaved = true
+  var schools = [School]()
+  var volunteers = [User]()
+  lazy var dataLayer = DataLayer()
   
   // MARK: - Lifecycle
   
   override func viewDidLoad() {
     super.viewDidLoad()
     setupElements()
-    getReunionPoints()
-  }
-  
-  override func didReceiveMemoryWarning() {
-    super.didReceiveMemoryWarning()
+    setupSchools()
   }
   
   // MARK: - Private
@@ -72,12 +67,12 @@ class SchoolsMapViewController: UIViewController, CLLocationManagerDelegate, GMS
   private func setupElements() {
     setupLocation()
     setupNavigationBar()
-    setupInfoView()
     setupAdditionalConstraints()
   }
   
   private func setupLocation() {
     mapView.delegate = self
+    mapInfoView.setShadowBorder()
     locationManager.delegate = self
     locationManager.requestWhenInUseAuthorization()
   }
@@ -90,20 +85,52 @@ class SchoolsMapViewController: UIViewController, CLLocationManagerDelegate, GMS
     navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName: UIColor.whiteColor()]
   }
   
-  private func setupInfoView() {
-    mapInfoView.setShadowBorder()
-    mapRouteButton.setShadowBorder()
-  }
-  
   private func setupAdditionalConstraints() {
     initialHeightConstant = mapInfoViewHeightConstraint.constant
     mapInfoViewHeightConstraint.constant = 0
   }
   
-  private func getReunionPoints() {
-    for i in 0..<Int((Constants.MockData.ReunionPoints.count)) {
-      addMarkerWithTitle(SchoolMarkerType.SchoolPoint.markerTitle(), color: SchoolMarkerType.SchoolPoint.markerColor(), type: SchoolMarkerType.SchoolPoint.hashValue, coordinate: Constants.MockData.ReunionPoints[i])
-      addMarkerWithTitle(SchoolMarkerType.VolunteerPoint.markerTitle(), color: SchoolMarkerType.VolunteerPoint.markerColor(), type: SchoolMarkerType.VolunteerPoint.hashValue, coordinate: Constants.MockData.VolunteerPoints[i])
+  private func setupSchools() {
+    schools = School.getAllSchools(self.dataLayer.managedObjectContext!)
+    guard schools.count == 0 else {
+      getSchools()
+      return
+    }
+    self.mapView.hidden = true
+    customLoader.startActivity()
+    getSchools()
+  }
+  
+  private func getSchools() {
+    SchoolService.fetchSchoolsAndVolunteers({(responseObject: AnyObject?, error: NSError?) in
+      guard let json = responseObject as? NSDictionary else {
+        return
+      }
+      if (json[Constants.Api.ErrorKey] == nil) {
+        let syncedSchools = School.syncWithJsonArray(json["schools"] as! Array<NSDictionary> , ctx: self.dataLayer.managedObjectContext!)
+        self.schools = syncedSchools
+        let syncedVolunteers = User.syncWithJsonArray(json["volunteers"] as! Array<NSDictionary> , ctx: self.dataLayer.managedObjectContext!)
+        self.volunteers = syncedVolunteers
+        self.saveSchoolsAndVolunteers()
+      } else {
+        //Show Error Message
+      }
+    })
+  }
+  
+  private func saveSchoolsAndVolunteers() {
+    self.dataLayer.saveContext()
+    setReunionPoints()
+    self.mapView.hidden = false
+    self.customLoader.stopActivity()
+  }
+  
+  private func setReunionPoints() {
+    for school in schools {
+      addMarkerWithTitle(school.name, color: SchoolMarkerType.SchoolPoint.markerColor(), type: SchoolMarkerType.SchoolPoint.hashValue, coordinate: school.coordinate)
+    }
+    for volunteer in volunteers {
+      addMarkerWithTitle(volunteer.fullName, color: SchoolMarkerType.VolunteerPoint.markerColor(), type: SchoolMarkerType.VolunteerPoint.hashValue, coordinate: volunteer.coordinate)
     }
   }
   
@@ -131,7 +158,6 @@ class SchoolsMapViewController: UIViewController, CLLocationManagerDelegate, GMS
     marker.icon = CustomMapMarker.markerImageWithColor(color)
     marker.appearAnimation = kGMSMarkerAnimationPop
     marker.map = mapView
-    mapView.selectedMarker = marker
   }
   
   private func showMapInfoView() {

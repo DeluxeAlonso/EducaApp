@@ -17,7 +17,7 @@ class AssistantsViewController: BaseViewController {
   let GoToCommentViewSegueIdentifier = "ShowCommentSegue"
   let GoToDetailViewSegueIdentifier = "GoToAssistantDetail"
   
-  var assistants: NSMutableArray = ["Eduardo Arenas", "Julio Castillo", "Juan Reyes", "Kevin Brown", "Robert Aduviri"]
+  var assistants = [Student]()
   var selectedCell: UITableViewCell?
 
   // MARK: - Lifecycle
@@ -71,7 +71,7 @@ extension AssistantsViewController: UITableViewDataSource {
   
   func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
     let cell = tableView.dequeueReusableCellWithIdentifier(AssistantCellIdentifier, forIndexPath: indexPath) as! AssistantTableViewCell
-    cell.setupAssistant(assistants[indexPath.row] as! String)
+    cell.setupAssistant(assistants[indexPath.row])
     return cell
   }
   
@@ -83,17 +83,7 @@ extension AssistantsViewController: UITableViewDelegate {
   
   func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
     tableView.deselectRowAtIndexPath(indexPath, animated: true)
-    let userType = User.getAuthenticatedUser(self.dataLayer.managedObjectContext!)?.type
-    switch Int(userType!) {
-    case 0:
-      goToDetailSection(tableView, indexPath: indexPath)
-      break
-    case 1:
-      goToCommentSection(tableView, indexPath: indexPath)
-      break
-    default:
-      break
-    }
+    ((currentUser?.canListAssistantsComments()) == true) ? goToDetailSection(tableView, indexPath: indexPath) : goToCommentSection(tableView, indexPath: indexPath)
   }
   
 }

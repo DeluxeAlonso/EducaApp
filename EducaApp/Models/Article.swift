@@ -37,12 +37,6 @@ extension Article: Deserializable {
     self.imageUrl = imageUrl
   }
   
-  func isFavoriteByUser(user: User, ctx: NSManagedObjectContext) -> Bool {
-    var articleUser: ArticleUser?
-    articleUser = ArticleUser.findByArticleAndUser(self, user: user, ctx: ctx)
-    return (articleUser?.favorite)!
-  }
-  
 }
 
 // MARK: - CoreData
@@ -50,7 +44,7 @@ extension Article: Deserializable {
 extension Article {
   
   public class func syncWithJsonArray(arr: Array<NSDictionary>, ctx: NSManagedObjectContext) -> Array<Article> {
-    
+
     // Map JSON to ids, for easier access
     var jsonById = Dictionary<Int, NSDictionary>()
     for json in arr {
@@ -75,7 +69,6 @@ extension Article {
     let newArticles = newIds.allObjects.map({ (id: AnyObject) -> Article in
       let newArticle = NSEntityDescription.insertNewObjectForEntityForName("Article", inManagedObjectContext: ctx) as! Article
       newArticle.id = (Int32(id as! Int))
-      ArticleUser.createNewArticleUser(newArticle, user: User.getAuthenticatedUser(ctx)!, ctx: ctx)
       return newArticle
     })
     
@@ -112,7 +105,6 @@ extension Article {
     }
     if let authorJson = json["author"] as? Array<NSDictionary>, jsonInfo = authorJson[0] as NSDictionary! {
       let user = User.updateOrCreateWithJson(jsonInfo, ctx: ctx)
-      print(user?.description)
       article?.author = user!
     }
     return article

@@ -8,127 +8,139 @@
 
 /* Begin PBXBuildFile section */
 		239BBDB765A74B254C0F89BD /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3766A7409970578ACAFAFA23 /* libPods.a */; };
-		E202F74B1BB3658100D5E64D /* Document.swift in Sources */ = {isa = PBXBuildFile; fileRef = E202F74A1BB3658100D5E64D /* Document.swift */; settings = {ASSET_TAGS = (); }; };
-		E208C68B1BB694F9005DF1EB /* Util.swift in Sources */ = {isa = PBXBuildFile; fileRef = E208C68A1BB694F9005DF1EB /* Util.swift */; settings = {ASSET_TAGS = (); }; };
-		E21257B71BBCC779007425B2 /* SortingFilterTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E21257B61BBCC779007425B2 /* SortingFilterTableViewCell.swift */; settings = {ASSET_TAGS = (); }; };
-		E22E72211BBCC5DD0082FE4B /* AuthorContentTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E22E72201BBCC5DD0082FE4B /* AuthorContentTableViewCell.swift */; settings = {ASSET_TAGS = (); }; };
-		E23D17FC1BB915C900AB8D18 /* UIViewHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = E23D17FB1BB915C900AB8D18 /* UIViewHelper.swift */; settings = {ASSET_TAGS = (); }; };
-		E241CF371BCA36CA00FE66A8 /* ArticleUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = E241CF361BCA36CA00FE66A8 /* ArticleUser.swift */; settings = {ASSET_TAGS = (); }; };
-		E246CE721BD1A2FA006A194D /* ImageAssests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E246CE711BD1A2FA006A194D /* ImageAssests.swift */; settings = {ASSET_TAGS = (); }; };
-		E246CE741BD1B9B4006A194D /* ArrayHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = E246CE731BD1B9B4006A194D /* ArrayHelper.swift */; settings = {ASSET_TAGS = (); }; };
-		E246CE761BD1BDF4006A194D /* CollapseSectionHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E246CE751BD1BDF4006A194D /* CollapseSectionHeaderView.swift */; settings = {ASSET_TAGS = (); }; };
-		E246CE781BD1BE0F006A194D /* SessionCommentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E246CE771BD1BE0F006A194D /* SessionCommentView.swift */; settings = {ASSET_TAGS = (); }; };
-		E246CE7A1BD1BE1A006A194D /* CustomRatingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E246CE791BD1BE1A006A194D /* CustomRatingView.swift */; settings = {ASSET_TAGS = (); }; };
-		E246CE7D1BD1BE38006A194D /* NMRangeSlider.m in Sources */ = {isa = PBXBuildFile; fileRef = E246CE7C1BD1BE38006A194D /* NMRangeSlider.m */; settings = {ASSET_TAGS = (); }; };
-		E246CE7F1BD1BE9D006A194D /* SessionCommentTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E246CE7E1BD1BE9D006A194D /* SessionCommentTableViewCell.swift */; settings = {ASSET_TAGS = (); }; };
-		E246CE821BD1BFE4006A194D /* CollapseSectionHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = E246CE801BD1BFE4006A194D /* CollapseSectionHeaderView.xib */; settings = {ASSET_TAGS = (); }; };
-		E246CE831BD1BFE4006A194D /* PostAuthorDetailView.xib in Resources */ = {isa = PBXBuildFile; fileRef = E246CE811BD1BFE4006A194D /* PostAuthorDetailView.xib */; settings = {ASSET_TAGS = (); }; };
-		E253E3C41BCDDB34006A284F /* NotificationControlTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E253E3C31BCDDB34006A284F /* NotificationControlTableViewCell.swift */; settings = {ASSET_TAGS = (); }; };
-		E25A5EF41BAFBC26000530F7 /* DocumentsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E25A5EF31BAFBC26000530F7 /* DocumentsViewController.swift */; settings = {ASSET_TAGS = (); }; };
-		E25A5EF71BAFC58F000530F7 /* Session.swift in Sources */ = {isa = PBXBuildFile; fileRef = E25A5EF61BAFC58F000530F7 /* Session.swift */; settings = {ASSET_TAGS = (); }; };
-		E26116E11BAB9E09002C0332 /* ArticleService.swift in Sources */ = {isa = PBXBuildFile; fileRef = E26116E01BAB9E09002C0332 /* ArticleService.swift */; settings = {ASSET_TAGS = (); }; };
-		E26116E31BABA374002C0332 /* Article.swift in Sources */ = {isa = PBXBuildFile; fileRef = E26116E21BABA374002C0332 /* Article.swift */; settings = {ASSET_TAGS = (); }; };
-		E264BB811BBDF7D800D4D7D5 /* StudentsFilterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E264BB801BBDF7D800D4D7D5 /* StudentsFilterViewController.swift */; settings = {ASSET_TAGS = (); }; };
-		E26916441BB264BC001B1160 /* AssistantDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E26916431BB264BC001B1160 /* AssistantDetailViewController.swift */; settings = {ASSET_TAGS = (); }; };
-		E279C83F1BBCCDD900FCC139 /* SortSelectionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E279C83E1BBCCDD900FCC139 /* SortSelectionTableViewCell.swift */; settings = {ASSET_TAGS = (); }; };
-		E2A41DDD1BC1A965003C00E9 /* SessionMapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2A41DDC1BC1A965003C00E9 /* SessionMapViewController.swift */; settings = {ASSET_TAGS = (); }; };
-		E2B2A76C1BAF65DF00691884 /* SessionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2B2A76B1BAF65DF00691884 /* SessionTableViewCell.swift */; settings = {ASSET_TAGS = (); }; };
-		E2CD93FF1BBD22BD00A2F357 /* StudentsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2CD93FE1BBD22BD00A2F357 /* StudentsViewController.swift */; settings = {ASSET_TAGS = (); }; };
-		E2CD94011BBD2A3000A2F357 /* UsersFilterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2CD94001BBD2A3000A2F357 /* UsersFilterViewController.swift */; settings = {ASSET_TAGS = (); }; };
+		E202F74B1BB3658100D5E64D /* Document.swift in Sources */ = {isa = PBXBuildFile; fileRef = E202F74A1BB3658100D5E64D /* Document.swift */; };
+		E208C68B1BB694F9005DF1EB /* Util.swift in Sources */ = {isa = PBXBuildFile; fileRef = E208C68A1BB694F9005DF1EB /* Util.swift */; };
+		E21257B71BBCC779007425B2 /* SortingFilterTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E21257B61BBCC779007425B2 /* SortingFilterTableViewCell.swift */; };
+		E22E72211BBCC5DD0082FE4B /* AuthorContentTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E22E72201BBCC5DD0082FE4B /* AuthorContentTableViewCell.swift */; };
+		E23D17FC1BB915C900AB8D18 /* UIViewHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = E23D17FB1BB915C900AB8D18 /* UIViewHelper.swift */; };
+		E246CE721BD1A2FA006A194D /* ImageAssests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E246CE711BD1A2FA006A194D /* ImageAssests.swift */; };
+		E246CE741BD1B9B4006A194D /* ArrayHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = E246CE731BD1B9B4006A194D /* ArrayHelper.swift */; };
+		E246CE761BD1BDF4006A194D /* CollapseSectionHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E246CE751BD1BDF4006A194D /* CollapseSectionHeaderView.swift */; };
+		E246CE781BD1BE0F006A194D /* SessionCommentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E246CE771BD1BE0F006A194D /* SessionCommentView.swift */; };
+		E246CE7A1BD1BE1A006A194D /* CustomRatingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E246CE791BD1BE1A006A194D /* CustomRatingView.swift */; };
+		E246CE7D1BD1BE38006A194D /* NMRangeSlider.m in Sources */ = {isa = PBXBuildFile; fileRef = E246CE7C1BD1BE38006A194D /* NMRangeSlider.m */; };
+		E246CE7F1BD1BE9D006A194D /* SessionCommentTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E246CE7E1BD1BE9D006A194D /* SessionCommentTableViewCell.swift */; };
+		E246CE821BD1BFE4006A194D /* CollapseSectionHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = E246CE801BD1BFE4006A194D /* CollapseSectionHeaderView.xib */; };
+		E246CE831BD1BFE4006A194D /* PostAuthorDetailView.xib in Resources */ = {isa = PBXBuildFile; fileRef = E246CE811BD1BFE4006A194D /* PostAuthorDetailView.xib */; };
+		E253E3C41BCDDB34006A284F /* NotificationControlTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E253E3C31BCDDB34006A284F /* NotificationControlTableViewCell.swift */; };
+		E25A5EF41BAFBC26000530F7 /* DocumentsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E25A5EF31BAFBC26000530F7 /* DocumentsViewController.swift */; };
+		E26116E11BAB9E09002C0332 /* ArticleService.swift in Sources */ = {isa = PBXBuildFile; fileRef = E26116E01BAB9E09002C0332 /* ArticleService.swift */; };
+		E26116E31BABA374002C0332 /* Article.swift in Sources */ = {isa = PBXBuildFile; fileRef = E26116E21BABA374002C0332 /* Article.swift */; };
+		E264BB811BBDF7D800D4D7D5 /* StudentsFilterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E264BB801BBDF7D800D4D7D5 /* StudentsFilterViewController.swift */; };
+		E26916441BB264BC001B1160 /* AssistantDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E26916431BB264BC001B1160 /* AssistantDetailViewController.swift */; };
+		E279C83F1BBCCDD900FCC139 /* SortSelectionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E279C83E1BBCCDD900FCC139 /* SortSelectionTableViewCell.swift */; };
+		E29F29141BDF59B2000D174B /* SchoolService.swift in Sources */ = {isa = PBXBuildFile; fileRef = E29F29131BDF59B2000D174B /* SchoolService.swift */; };
+		E29F29161BDF5C49000D174B /* School.swift in Sources */ = {isa = PBXBuildFile; fileRef = E29F29151BDF5C49000D174B /* School.swift */; };
+		E2A41DDD1BC1A965003C00E9 /* SessionMapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2A41DDC1BC1A965003C00E9 /* SessionMapViewController.swift */; };
+		E2B2A76C1BAF65DF00691884 /* SessionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2B2A76B1BAF65DF00691884 /* SessionTableViewCell.swift */; };
+		E2CD93FF1BBD22BD00A2F357 /* StudentsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2CD93FE1BBD22BD00A2F357 /* StudentsViewController.swift */; };
+		E2CD94011BBD2A3000A2F357 /* UsersFilterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2CD94001BBD2A3000A2F357 /* UsersFilterViewController.swift */; };
 		E2CF33BE1B9D3F2C00B8BE40 /* UrlBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2CF33BD1B9D3F2C00B8BE40 /* UrlBuilder.swift */; };
 		E2CF33C01B9D4D1800B8BE40 /* DictionaryHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2CF33BF1B9D4D1800B8BE40 /* DictionaryHelper.swift */; };
 		E2CF33C21B9D5EF100B8BE40 /* UserService.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2CF33C11B9D5EF100B8BE40 /* UserService.swift */; };
-		E2DA52E31BB8E5FB00CB3793 /* SendAssistantCommentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2DA52E21BB8E5FB00CB3793 /* SendAssistantCommentViewController.swift */; settings = {ASSET_TAGS = (); }; };
-		E2DC077E1BBDDA3900304FDE /* PostDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2DC077D1BBDDA3900304FDE /* PostDetailViewController.swift */; settings = {ASSET_TAGS = (); }; };
-		E2DD0A7B1BB148B60038A358 /* VolunteerTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2DD0A7A1BB148B60038A358 /* VolunteerTableViewCell.swift */; settings = {ASSET_TAGS = (); }; };
-		E2DD26A01BBC49BC006A0A78 /* AssistantCommentsFilterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2DD269F1BBC49BC006A0A78 /* AssistantCommentsFilterViewController.swift */; settings = {ASSET_TAGS = (); }; };
-		E2DD26A21BBC5256006A0A78 /* DateFilterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2DD26A11BBC5255006A0A78 /* DateFilterViewController.swift */; settings = {ASSET_TAGS = (); }; };
-		E2DD26A41BBC526D006A0A78 /* SortingFilterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2DD26A31BBC526D006A0A78 /* SortingFilterViewController.swift */; settings = {ASSET_TAGS = (); }; };
-		E2DD3F0D1BAE325500DF40C2 /* CustomRefreshControlView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2DD3F0C1BAE325500DF40C2 /* CustomRefreshControlView.swift */; settings = {ASSET_TAGS = (); }; };
-		E2DD53C11BABCB170034B31C /* ArticleTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2DD53C01BABCB170034B31C /* ArticleTableViewCell.swift */; settings = {ASSET_TAGS = (); }; };
-		E2DDD13E1BB3ABE20085D795 /* DocumentTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2DDD13D1BB3ABE20085D795 /* DocumentTableViewCell.swift */; settings = {ASSET_TAGS = (); }; };
-		E2DDD1401BB3DCA60085D795 /* ArticleDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2DDD13F1BB3DCA60085D795 /* ArticleDetailViewController.swift */; settings = {ASSET_TAGS = (); }; };
-		E2DDD1421BB3DCD00085D795 /* ArticlesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2DDD1411BB3DCD00085D795 /* ArticlesViewController.swift */; settings = {ASSET_TAGS = (); }; };
+		E2DA52E31BB8E5FB00CB3793 /* SendAssistantCommentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2DA52E21BB8E5FB00CB3793 /* SendAssistantCommentViewController.swift */; };
+		E2DC077E1BBDDA3900304FDE /* PostDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2DC077D1BBDDA3900304FDE /* PostDetailViewController.swift */; };
+		E2DD0A7B1BB148B60038A358 /* VolunteerTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2DD0A7A1BB148B60038A358 /* VolunteerTableViewCell.swift */; };
+		E2DD26A01BBC49BC006A0A78 /* AssistantCommentsFilterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2DD269F1BBC49BC006A0A78 /* AssistantCommentsFilterViewController.swift */; };
+		E2DD26A21BBC5256006A0A78 /* DateFilterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2DD26A11BBC5255006A0A78 /* DateFilterViewController.swift */; };
+		E2DD26A41BBC526D006A0A78 /* SortingFilterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2DD26A31BBC526D006A0A78 /* SortingFilterViewController.swift */; };
+		E2DD3F0D1BAE325500DF40C2 /* CustomRefreshControlView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2DD3F0C1BAE325500DF40C2 /* CustomRefreshControlView.swift */; };
+		E2DD53C11BABCB170034B31C /* ArticleTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2DD53C01BABCB170034B31C /* ArticleTableViewCell.swift */; };
+		E2DDD13E1BB3ABE20085D795 /* DocumentTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2DDD13D1BB3ABE20085D795 /* DocumentTableViewCell.swift */; };
+		E2DDD1401BB3DCA60085D795 /* ArticleDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2DDD13F1BB3DCA60085D795 /* ArticleDetailViewController.swift */; };
+		E2DDD1421BB3DCD00085D795 /* ArticlesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2DDD1411BB3DCD00085D795 /* ArticlesViewController.swift */; };
 		E2DDE3591BA641CE00C96CE5 /* CustomActivityIndicatorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2DDE3581BA641CE00C96CE5 /* CustomActivityIndicatorView.swift */; };
-		E2DDF91A1BBC8FB900000555 /* DateFilterTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2DDF9191BBC8FB900000555 /* DateFilterTableViewCell.swift */; settings = {ASSET_TAGS = (); }; };
-		E2DDF91C1BBC97D800000555 /* UIFontHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2DDF91B1BBC97D800000555 /* UIFontHelper.swift */; settings = {ASSET_TAGS = (); }; };
-		E2DE92601BB4BC1100E762F8 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2DE925F1BB4BC1100E762F8 /* BaseViewController.swift */; settings = {ASSET_TAGS = (); }; };
-		E2DF0F4C1BBCF9DD00F1D1D0 /* PostulationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2DF0F4B1BBCF9DD00F1D1D0 /* PostulationViewController.swift */; settings = {ASSET_TAGS = (); }; };
-		E2DF0F4E1BBCFA1E00F1D1D0 /* PostsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2DF0F4D1BBCFA1E00F1D1D0 /* PostsViewController.swift */; settings = {ASSET_TAGS = (); }; };
-		E2DF0F501BBCFA5400F1D1D0 /* UsersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2DF0F4F1BBCFA5400F1D1D0 /* UsersViewController.swift */; settings = {ASSET_TAGS = (); }; };
-		E2DF0F541BBCFB6C00F1D1D0 /* PostulationTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2DF0F531BBCFB6C00F1D1D0 /* PostulationTableViewCell.swift */; settings = {ASSET_TAGS = (); }; };
-		E2DF0F561BBD0F2000F1D1D0 /* BaseFilterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2DF0F551BBD0F2000F1D1D0 /* BaseFilterViewController.swift */; settings = {ASSET_TAGS = (); }; };
-		E2DF160C1BB1327600886D1A /* VolunteersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2DF160B1BB1327600886D1A /* VolunteersViewController.swift */; settings = {ASSET_TAGS = (); }; };
-		E2DF3F821BB7463D0010E81A /* ShowAssistantCommentView.xib in Resources */ = {isa = PBXBuildFile; fileRef = E2DF3F811BB7463D0010E81A /* ShowAssistantCommentView.xib */; settings = {ASSET_TAGS = (); }; };
-		E2E0810B1BAF28FD0014803B /* SessionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2E0810A1BAF28FD0014803B /* SessionsViewController.swift */; settings = {ASSET_TAGS = (); }; };
+		E2DDF91A1BBC8FB900000555 /* DateFilterTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2DDF9191BBC8FB900000555 /* DateFilterTableViewCell.swift */; };
+		E2DDF91C1BBC97D800000555 /* UIFontHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2DDF91B1BBC97D800000555 /* UIFontHelper.swift */; };
+		E2DE92601BB4BC1100E762F8 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2DE925F1BB4BC1100E762F8 /* BaseViewController.swift */; };
+		E2DF0F4C1BBCF9DD00F1D1D0 /* PostulationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2DF0F4B1BBCF9DD00F1D1D0 /* PostulationViewController.swift */; };
+		E2DF0F4E1BBCFA1E00F1D1D0 /* PostsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2DF0F4D1BBCFA1E00F1D1D0 /* PostsViewController.swift */; };
+		E2DF0F501BBCFA5400F1D1D0 /* UsersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2DF0F4F1BBCFA5400F1D1D0 /* UsersViewController.swift */; };
+		E2DF0F541BBCFB6C00F1D1D0 /* PostulationTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2DF0F531BBCFB6C00F1D1D0 /* PostulationTableViewCell.swift */; };
+		E2DF0F561BBD0F2000F1D1D0 /* BaseFilterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2DF0F551BBD0F2000F1D1D0 /* BaseFilterViewController.swift */; };
+		E2DF160C1BB1327600886D1A /* VolunteersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2DF160B1BB1327600886D1A /* VolunteersViewController.swift */; };
+		E2DF3F821BB7463D0010E81A /* ShowAssistantCommentView.xib in Resources */ = {isa = PBXBuildFile; fileRef = E2DF3F811BB7463D0010E81A /* ShowAssistantCommentView.xib */; };
+		E2E0810B1BAF28FD0014803B /* SessionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2E0810A1BAF28FD0014803B /* SessionsViewController.swift */; };
 		E2E09BA81BA92D6800C9A109 /* SettingsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2E09BA71BA92D6800C9A109 /* SettingsTableViewCell.swift */; };
-		E2E0CCB81BB9FD5000067144 /* CameraViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2E0CCB71BB9FD5000067144 /* CameraViewController.swift */; settings = {ASSET_TAGS = (); }; };
-		E2E0CCBA1BBA187700067144 /* UIImageHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2E0CCB91BBA187700067144 /* UIImageHelper.swift */; settings = {ASSET_TAGS = (); }; };
+		E2E0CCB81BB9FD5000067144 /* CameraViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2E0CCB71BB9FD5000067144 /* CameraViewController.swift */; };
+		E2E0CCBA1BBA187700067144 /* UIImageHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2E0CCB91BBA187700067144 /* UIImageHelper.swift */; };
 		E2E13AB81BA6AFF0004C6E45 /* ChasingDotsStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2E13AB51BA6AFF0004C6E45 /* ChasingDotsStyle.swift */; };
 		E2E13AB91BA6AFF0004C6E45 /* CustomIndicatorStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2E13AB61BA6AFF0004C6E45 /* CustomIndicatorStyle.swift */; };
 		E2E13ABA1BA6AFF0004C6E45 /* SpotifyLikeStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2E13AB71BA6AFF0004C6E45 /* SpotifyLikeStyle.swift */; };
 		E2E13ABD1BA6B918004C6E45 /* SidebarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2E13ABC1BA6B918004C6E45 /* SidebarViewController.swift */; };
 		E2E16C171BA7E4D900F43776 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E2E16C161BA7E4D900F43776 /* Images.xcassets */; };
-		E2E1ACC81BAC903500070EB8 /* KeychainWrapper.m in Sources */ = {isa = PBXBuildFile; fileRef = E2E1ACC71BAC903500070EB8 /* KeychainWrapper.m */; settings = {ASSET_TAGS = (); }; };
-		E2E1ACCA1BAC90C500070EB8 /* RefreshContentsView.xib in Resources */ = {isa = PBXBuildFile; fileRef = E2E1ACC91BAC90C500070EB8 /* RefreshContentsView.xib */; settings = {ASSET_TAGS = (); }; };
-		E2E2A1F41BB6863F00B1CBB3 /* ShowAssistantCommentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2E2A1F21BB6863F00B1CBB3 /* ShowAssistantCommentViewController.swift */; settings = {ASSET_TAGS = (); }; };
-		E2E316AA1BB1C09C000D8DC7 /* AssistantsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2E316A91BB1C09C000D8DC7 /* AssistantsViewController.swift */; settings = {ASSET_TAGS = (); }; };
-		E2E316AC1BB1C87A000D8DC7 /* AssistantTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2E316AB1BB1C87A000D8DC7 /* AssistantTableViewCell.swift */; settings = {ASSET_TAGS = (); }; };
+		E2E1ACC81BAC903500070EB8 /* KeychainWrapper.m in Sources */ = {isa = PBXBuildFile; fileRef = E2E1ACC71BAC903500070EB8 /* KeychainWrapper.m */; };
+		E2E1ACCA1BAC90C500070EB8 /* RefreshContentsView.xib in Resources */ = {isa = PBXBuildFile; fileRef = E2E1ACC91BAC90C500070EB8 /* RefreshContentsView.xib */; };
+		E2E2A1F41BB6863F00B1CBB3 /* ShowAssistantCommentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2E2A1F21BB6863F00B1CBB3 /* ShowAssistantCommentViewController.swift */; };
+		E2E316AA1BB1C09C000D8DC7 /* AssistantsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2E316A91BB1C09C000D8DC7 /* AssistantsViewController.swift */; };
+		E2E316AC1BB1C87A000D8DC7 /* AssistantTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2E316AB1BB1C87A000D8DC7 /* AssistantTableViewCell.swift */; };
 		E2E346591BA7789B007232A9 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2E346581BA7789B007232A9 /* SettingsViewController.swift */; };
 		E2E3465B1BA77929007232A9 /* DonationsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2E3465A1BA77929007232A9 /* DonationsViewController.swift */; };
-		E2E4F7D61BBE395E00224059 /* AgeFilterTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2E4F7D51BBE395E00224059 /* AgeFilterTableViewCell.swift */; settings = {ASSET_TAGS = (); }; };
-		E2E4F80F1BBE3D4B00224059 /* UserTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2E4F80E1BBE3D4B00224059 /* UserTableViewCell.swift */; settings = {ASSET_TAGS = (); }; };
-		E2E4F8111BBE3D8600224059 /* PostTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2E4F8101BBE3D8600224059 /* PostTableViewCell.swift */; settings = {ASSET_TAGS = (); }; };
-		E2E4F8131BBE3D9300224059 /* StudentTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2E4F8121BBE3D9300224059 /* StudentTableViewCell.swift */; settings = {ASSET_TAGS = (); }; };
-		E2E4F8151BBE40FF00224059 /* Student.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2E4F8141BBE40FF00224059 /* Student.swift */; settings = {ASSET_TAGS = (); }; };
-		E2E4F8171BBE410C00224059 /* Post.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2E4F8161BBE410C00224059 /* Post.swift */; settings = {ASSET_TAGS = (); }; };
+		E2E4F7D61BBE395E00224059 /* AgeFilterTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2E4F7D51BBE395E00224059 /* AgeFilterTableViewCell.swift */; };
+		E2E4F80F1BBE3D4B00224059 /* UserTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2E4F80E1BBE3D4B00224059 /* UserTableViewCell.swift */; };
+		E2E4F8111BBE3D8600224059 /* PostTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2E4F8101BBE3D8600224059 /* PostTableViewCell.swift */; };
+		E2E4F8131BBE3D9300224059 /* StudentTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2E4F8121BBE3D9300224059 /* StudentTableViewCell.swift */; };
+		E2E4F8151BBE40FF00224059 /* Student.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2E4F8141BBE40FF00224059 /* Student.swift */; };
+		E2E4F8171BBE410C00224059 /* Post.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2E4F8161BBE410C00224059 /* Post.swift */; };
 		E2E56B391BA5549700D18F76 /* CALayerHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2E56B381BA5549700D18F76 /* CALayerHelper.swift */; };
 		E2E56B491BA55A3700D18F76 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2E56B461BA55A3700D18F76 /* Constants.swift */; };
 		E2E56B4A1BA55A3700D18F76 /* DataLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2E56B471BA55A3700D18F76 /* DataLayer.swift */; };
 		E2E56B4B1BA55A3700D18F76 /* Deserializable.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2E56B481BA55A3700D18F76 /* Deserializable.swift */; };
 		E2E587E01B993C1C008580D3 /* SignInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2E587DF1B993C1C008580D3 /* SignInViewController.swift */; };
 		E2E587E31B9961AB008580D3 /* UIColorHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2E587E21B9961AB008580D3 /* UIColorHelper.swift */; };
+		E2E990DB1BD75477006064FD /* Session.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2E990DA1BD75477006064FD /* Session.swift */; };
+		E2E990DD1BD75F07006064FD /* ChangePasswordTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2E990DC1BD75F07006064FD /* ChangePasswordTableViewController.swift */; };
+		E2E990E11BD762F0006064FD /* UIAlertControllerHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2E990E01BD762F0006064FD /* UIAlertControllerHelper.swift */; };
+		E2E990E31BD765AB006064FD /* BaseTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2E990E21BD765AB006064FD /* BaseTableViewController.swift */; };
 		E2E9CA491B97BA9200DC0EDA /* UIButtonHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2E9CA481B97BA9200DC0EDA /* UIButtonHelper.swift */; };
 		E2E9CA4D1B97E4D400DC0EDA /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2E9CA4C1B97E4D400DC0EDA /* User.swift */; };
-		E2ED7EEF1BC651E9001A7C29 /* ArticleMapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2ED7EEE1BC651E9001A7C29 /* ArticleMapViewController.swift */; settings = {ASSET_TAGS = (); }; };
-		E2ED7EF21BC668E5001A7C29 /* SchoolsMapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2ED7EF11BC668E5001A7C29 /* SchoolsMapViewController.swift */; settings = {ASSET_TAGS = (); }; };
-		E2EE4D5D1BD5FD92006CBDFE /* PeopleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2EE4D5C1BD5FD92006CBDFE /* PeopleViewController.swift */; settings = {ASSET_TAGS = (); }; };
-		E2EE4D601BD63085006CBDFE /* PeriodsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2EE4D5F1BD63085006CBDFE /* PeriodsViewController.swift */; settings = {ASSET_TAGS = (); }; };
-		E2EE4D621BD6309C006CBDFE /* RecoverPasswordTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2EE4D611BD6309C006CBDFE /* RecoverPasswordTableViewController.swift */; settings = {ASSET_TAGS = (); }; };
-		E2F21EAF1BC63FD500CD474E /* CustomMapMarker.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2F21EAE1BC63FD500CD474E /* CustomMapMarker.swift */; settings = {ASSET_TAGS = (); }; };
-		E2F2D8251BC70308005DDEA2 /* RateVolunteerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2F2D8241BC70308005DDEA2 /* RateVolunteerViewController.swift */; settings = {ASSET_TAGS = (); }; };
-		E2F2D82A1BC7246B005DDEA2 /* PaymentsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2F2D8291BC7246B005DDEA2 /* PaymentsViewController.swift */; settings = {ASSET_TAGS = (); }; };
-		E2F2D82C1BC7710E005DDEA2 /* DepositPaymentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2F2D82B1BC7710E005DDEA2 /* DepositPaymentViewController.swift */; settings = {ASSET_TAGS = (); }; };
-		E2F2D8301BC77E08005DDEA2 /* PostAuthorDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2F2D82F1BC77E08005DDEA2 /* PostAuthorDetailViewController.swift */; settings = {ASSET_TAGS = (); }; };
-		E2F598D41BB29E4E00C0206E /* SessionComment.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2F598D31BB29E4E00C0206E /* SessionComment.swift */; settings = {ASSET_TAGS = (); }; };
-		E2F9C83D1BCF292800DBE7B9 /* CalendarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2F9C83C1BCF292800DBE7B9 /* CalendarViewController.swift */; settings = {ASSET_TAGS = (); }; };
-		E2F9C8911BCF47E000DBE7B9 /* CVAuxiliaryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2F9C8761BCF47E000DBE7B9 /* CVAuxiliaryView.swift */; settings = {ASSET_TAGS = (); }; };
-		E2F9C8921BCF47E000DBE7B9 /* CVCalendarContentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2F9C8771BCF47E000DBE7B9 /* CVCalendarContentViewController.swift */; settings = {ASSET_TAGS = (); }; };
-		E2F9C8931BCF47E000DBE7B9 /* CVCalendarDayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2F9C8781BCF47E000DBE7B9 /* CVCalendarDayView.swift */; settings = {ASSET_TAGS = (); }; };
-		E2F9C8941BCF47E000DBE7B9 /* CVCalendarDayViewControlCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2F9C8791BCF47E000DBE7B9 /* CVCalendarDayViewControlCoordinator.swift */; settings = {ASSET_TAGS = (); }; };
-		E2F9C8951BCF47E000DBE7B9 /* CVCalendarManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2F9C87A1BCF47E000DBE7B9 /* CVCalendarManager.swift */; settings = {ASSET_TAGS = (); }; };
-		E2F9C8961BCF47E000DBE7B9 /* CVCalendarMenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2F9C87B1BCF47E000DBE7B9 /* CVCalendarMenuView.swift */; settings = {ASSET_TAGS = (); }; };
-		E2F9C8971BCF47E000DBE7B9 /* CVCalendarMenuViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2F9C87C1BCF47E000DBE7B9 /* CVCalendarMenuViewDelegate.swift */; settings = {ASSET_TAGS = (); }; };
-		E2F9C8981BCF47E000DBE7B9 /* CVCalendarMonthContentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2F9C87D1BCF47E000DBE7B9 /* CVCalendarMonthContentViewController.swift */; settings = {ASSET_TAGS = (); }; };
-		E2F9C8991BCF47E000DBE7B9 /* CVCalendarMonthView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2F9C87E1BCF47E000DBE7B9 /* CVCalendarMonthView.swift */; settings = {ASSET_TAGS = (); }; };
-		E2F9C89A1BCF47E000DBE7B9 /* CVCalendarTouchController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2F9C87F1BCF47E000DBE7B9 /* CVCalendarTouchController.swift */; settings = {ASSET_TAGS = (); }; };
-		E2F9C89B1BCF47E000DBE7B9 /* CVCalendarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2F9C8801BCF47E000DBE7B9 /* CVCalendarView.swift */; settings = {ASSET_TAGS = (); }; };
-		E2F9C89C1BCF47E000DBE7B9 /* CVCalendarViewAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2F9C8811BCF47E000DBE7B9 /* CVCalendarViewAnimator.swift */; settings = {ASSET_TAGS = (); }; };
-		E2F9C89D1BCF47E000DBE7B9 /* CVCalendarViewAnimatorDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2F9C8821BCF47E000DBE7B9 /* CVCalendarViewAnimatorDelegate.swift */; settings = {ASSET_TAGS = (); }; };
-		E2F9C89E1BCF47E000DBE7B9 /* CVCalendarViewAppearance.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2F9C8831BCF47E000DBE7B9 /* CVCalendarViewAppearance.swift */; settings = {ASSET_TAGS = (); }; };
-		E2F9C89F1BCF47E000DBE7B9 /* CVCalendarViewAppearanceDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2F9C8841BCF47E000DBE7B9 /* CVCalendarViewAppearanceDelegate.swift */; settings = {ASSET_TAGS = (); }; };
-		E2F9C8A01BCF47E000DBE7B9 /* CVCalendarViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2F9C8851BCF47E000DBE7B9 /* CVCalendarViewDelegate.swift */; settings = {ASSET_TAGS = (); }; };
-		E2F9C8A11BCF47E000DBE7B9 /* CVCalendarViewPresentationMode.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2F9C8861BCF47E000DBE7B9 /* CVCalendarViewPresentationMode.swift */; settings = {ASSET_TAGS = (); }; };
-		E2F9C8A21BCF47E000DBE7B9 /* CVCalendarWeekContentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2F9C8871BCF47E000DBE7B9 /* CVCalendarWeekContentViewController.swift */; settings = {ASSET_TAGS = (); }; };
-		E2F9C8A31BCF47E000DBE7B9 /* CVCalendarWeekday.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2F9C8881BCF47E000DBE7B9 /* CVCalendarWeekday.swift */; settings = {ASSET_TAGS = (); }; };
-		E2F9C8A41BCF47E000DBE7B9 /* CVCalendarWeekView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2F9C8891BCF47E000DBE7B9 /* CVCalendarWeekView.swift */; settings = {ASSET_TAGS = (); }; };
-		E2F9C8A51BCF47E000DBE7B9 /* CVDate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2F9C88A1BCF47E000DBE7B9 /* CVDate.swift */; settings = {ASSET_TAGS = (); }; };
-		E2F9C8A61BCF47E000DBE7B9 /* CVRange.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2F9C88B1BCF47E000DBE7B9 /* CVRange.swift */; settings = {ASSET_TAGS = (); }; };
-		E2F9C8A71BCF47E000DBE7B9 /* CVScrollDirection.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2F9C88C1BCF47E000DBE7B9 /* CVScrollDirection.swift */; settings = {ASSET_TAGS = (); }; };
-		E2F9C8A81BCF47E000DBE7B9 /* CVSelectionType.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2F9C88D1BCF47E000DBE7B9 /* CVSelectionType.swift */; settings = {ASSET_TAGS = (); }; };
-		E2F9C8A91BCF47E000DBE7B9 /* CVSet.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2F9C88E1BCF47E000DBE7B9 /* CVSet.swift */; settings = {ASSET_TAGS = (); }; };
-		E2F9C8AA1BCF47E000DBE7B9 /* CVShape.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2F9C88F1BCF47E000DBE7B9 /* CVShape.swift */; settings = {ASSET_TAGS = (); }; };
-		E2F9C8AB1BCF47E000DBE7B9 /* CVWeekdaySymbolType.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2F9C8901BCF47E000DBE7B9 /* CVWeekdaySymbolType.swift */; settings = {ASSET_TAGS = (); }; };
+		E2ED7EEF1BC651E9001A7C29 /* ArticleMapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2ED7EEE1BC651E9001A7C29 /* ArticleMapViewController.swift */; };
+		E2ED7EF21BC668E5001A7C29 /* SchoolsMapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2ED7EF11BC668E5001A7C29 /* SchoolsMapViewController.swift */; };
+		E2EE4D5D1BD5FD92006CBDFE /* PeopleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2EE4D5C1BD5FD92006CBDFE /* PeopleViewController.swift */; };
+		E2EE4D601BD63085006CBDFE /* PeriodsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2EE4D5F1BD63085006CBDFE /* PeriodsViewController.swift */; };
+		E2EE4D621BD6309C006CBDFE /* RecoverPasswordTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2EE4D611BD6309C006CBDFE /* RecoverPasswordTableViewController.swift */; };
+		E2EEA6501BDA1B7D00D3CE7F /* MapTasks.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2EEA64F1BDA1B7D00D3CE7F /* MapTasks.swift */; };
+		E2EEF3621BE038CF003A83B0 /* ReunionPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2EEF3611BE038CF003A83B0 /* ReunionPoint.swift */; };
+		E2EEF3641BE0392C003A83B0 /* Action.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2EEF3631BE0392C003A83B0 /* Action.swift */; };
+		E2F21EAF1BC63FD500CD474E /* CustomMapMarker.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2F21EAE1BC63FD500CD474E /* CustomMapMarker.swift */; };
+		E2F2D8251BC70308005DDEA2 /* RateVolunteerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2F2D8241BC70308005DDEA2 /* RateVolunteerViewController.swift */; };
+		E2F2D82A1BC7246B005DDEA2 /* PaymentsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2F2D8291BC7246B005DDEA2 /* PaymentsViewController.swift */; };
+		E2F2D82C1BC7710E005DDEA2 /* DepositPaymentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2F2D82B1BC7710E005DDEA2 /* DepositPaymentViewController.swift */; };
+		E2F2D8301BC77E08005DDEA2 /* PostAuthorDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2F2D82F1BC77E08005DDEA2 /* PostAuthorDetailViewController.swift */; };
+		E2F462BD1BD895C600339271 /* SessionService.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2F462BC1BD895C600339271 /* SessionService.swift */; };
+		E2F598D41BB29E4E00C0206E /* SessionComment.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2F598D31BB29E4E00C0206E /* SessionComment.swift */; };
+		E2F9C83D1BCF292800DBE7B9 /* CalendarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2F9C83C1BCF292800DBE7B9 /* CalendarViewController.swift */; };
+		E2F9C8911BCF47E000DBE7B9 /* CVAuxiliaryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2F9C8761BCF47E000DBE7B9 /* CVAuxiliaryView.swift */; };
+		E2F9C8921BCF47E000DBE7B9 /* CVCalendarContentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2F9C8771BCF47E000DBE7B9 /* CVCalendarContentViewController.swift */; };
+		E2F9C8931BCF47E000DBE7B9 /* CVCalendarDayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2F9C8781BCF47E000DBE7B9 /* CVCalendarDayView.swift */; };
+		E2F9C8941BCF47E000DBE7B9 /* CVCalendarDayViewControlCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2F9C8791BCF47E000DBE7B9 /* CVCalendarDayViewControlCoordinator.swift */; };
+		E2F9C8951BCF47E000DBE7B9 /* CVCalendarManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2F9C87A1BCF47E000DBE7B9 /* CVCalendarManager.swift */; };
+		E2F9C8961BCF47E000DBE7B9 /* CVCalendarMenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2F9C87B1BCF47E000DBE7B9 /* CVCalendarMenuView.swift */; };
+		E2F9C8971BCF47E000DBE7B9 /* CVCalendarMenuViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2F9C87C1BCF47E000DBE7B9 /* CVCalendarMenuViewDelegate.swift */; };
+		E2F9C8981BCF47E000DBE7B9 /* CVCalendarMonthContentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2F9C87D1BCF47E000DBE7B9 /* CVCalendarMonthContentViewController.swift */; };
+		E2F9C8991BCF47E000DBE7B9 /* CVCalendarMonthView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2F9C87E1BCF47E000DBE7B9 /* CVCalendarMonthView.swift */; };
+		E2F9C89A1BCF47E000DBE7B9 /* CVCalendarTouchController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2F9C87F1BCF47E000DBE7B9 /* CVCalendarTouchController.swift */; };
+		E2F9C89B1BCF47E000DBE7B9 /* CVCalendarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2F9C8801BCF47E000DBE7B9 /* CVCalendarView.swift */; };
+		E2F9C89C1BCF47E000DBE7B9 /* CVCalendarViewAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2F9C8811BCF47E000DBE7B9 /* CVCalendarViewAnimator.swift */; };
+		E2F9C89D1BCF47E000DBE7B9 /* CVCalendarViewAnimatorDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2F9C8821BCF47E000DBE7B9 /* CVCalendarViewAnimatorDelegate.swift */; };
+		E2F9C89E1BCF47E000DBE7B9 /* CVCalendarViewAppearance.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2F9C8831BCF47E000DBE7B9 /* CVCalendarViewAppearance.swift */; };
+		E2F9C89F1BCF47E000DBE7B9 /* CVCalendarViewAppearanceDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2F9C8841BCF47E000DBE7B9 /* CVCalendarViewAppearanceDelegate.swift */; };
+		E2F9C8A01BCF47E000DBE7B9 /* CVCalendarViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2F9C8851BCF47E000DBE7B9 /* CVCalendarViewDelegate.swift */; };
+		E2F9C8A11BCF47E000DBE7B9 /* CVCalendarViewPresentationMode.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2F9C8861BCF47E000DBE7B9 /* CVCalendarViewPresentationMode.swift */; };
+		E2F9C8A21BCF47E000DBE7B9 /* CVCalendarWeekContentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2F9C8871BCF47E000DBE7B9 /* CVCalendarWeekContentViewController.swift */; };
+		E2F9C8A31BCF47E000DBE7B9 /* CVCalendarWeekday.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2F9C8881BCF47E000DBE7B9 /* CVCalendarWeekday.swift */; };
+		E2F9C8A41BCF47E000DBE7B9 /* CVCalendarWeekView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2F9C8891BCF47E000DBE7B9 /* CVCalendarWeekView.swift */; };
+		E2F9C8A51BCF47E000DBE7B9 /* CVDate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2F9C88A1BCF47E000DBE7B9 /* CVDate.swift */; };
+		E2F9C8A61BCF47E000DBE7B9 /* CVRange.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2F9C88B1BCF47E000DBE7B9 /* CVRange.swift */; };
+		E2F9C8A71BCF47E000DBE7B9 /* CVScrollDirection.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2F9C88C1BCF47E000DBE7B9 /* CVScrollDirection.swift */; };
+		E2F9C8A81BCF47E000DBE7B9 /* CVSelectionType.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2F9C88D1BCF47E000DBE7B9 /* CVSelectionType.swift */; };
+		E2F9C8A91BCF47E000DBE7B9 /* CVSet.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2F9C88E1BCF47E000DBE7B9 /* CVSet.swift */; };
+		E2F9C8AA1BCF47E000DBE7B9 /* CVShape.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2F9C88F1BCF47E000DBE7B9 /* CVShape.swift */; };
+		E2F9C8AB1BCF47E000DBE7B9 /* CVWeekdaySymbolType.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2F9C8901BCF47E000DBE7B9 /* CVWeekdaySymbolType.swift */; };
+		E2FA6F7B1BDDA06A000DA2E5 /* Profile.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2FA6F771BDDA06A000DA2E5 /* Profile.swift */; };
+		E2FA6F851BDE0160000DA2E5 /* SessionUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2FA6F831BDE0160000DA2E5 /* SessionUser.swift */; };
+		E2FBE7401BDFDEA600DC7457 /* SessionStudent.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2FBE73F1BDFDEA600DC7457 /* SessionStudent.swift */; };
+		E2FBE7421BE013D100DC7457 /* StudentService.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2FBE7411BE013D100DC7457 /* StudentService.swift */; };
 		E2FE3F481B9632DC006EEA91 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2FE3F471B9632DC006EEA91 /* AppDelegate.swift */; };
 		E2FE3F4B1B9632DC006EEA91 /* EducaApp.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = E2FE3F491B9632DC006EEA91 /* EducaApp.xcdatamodeld */; };
 		E2FE3F501B9632DC006EEA91 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E2FE3F4E1B9632DC006EEA91 /* Main.storyboard */; };
@@ -169,7 +181,6 @@
 		E21257B61BBCC779007425B2 /* SortingFilterTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SortingFilterTableViewCell.swift; path = Views/Cells/Filters/SortingFilterTableViewCell.swift; sourceTree = "<group>"; };
 		E22E72201BBCC5DD0082FE4B /* AuthorContentTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AuthorContentTableViewCell.swift; path = Views/Cells/Filters/AuthorContentTableViewCell.swift; sourceTree = "<group>"; };
 		E23D17FB1BB915C900AB8D18 /* UIViewHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UIViewHelper.swift; path = Helpers/UIViewHelper.swift; sourceTree = "<group>"; };
-		E241CF361BCA36CA00FE66A8 /* ArticleUser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ArticleUser.swift; path = Models/ArticleUser.swift; sourceTree = "<group>"; };
 		E246CE711BD1A2FA006A194D /* ImageAssests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ImageAssests.swift; path = Helpers/Util/ImageAssests.swift; sourceTree = "<group>"; };
 		E246CE731BD1B9B4006A194D /* ArrayHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ArrayHelper.swift; path = Helpers/ArrayHelper.swift; sourceTree = "<group>"; };
 		E246CE751BD1BDF4006A194D /* CollapseSectionHeaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CollapseSectionHeaderView.swift; path = "Views/Custom Views/CollapseSectionHeaderView.swift"; sourceTree = "<group>"; };
@@ -182,12 +193,13 @@
 		E246CE811BD1BFE4006A194D /* PostAuthorDetailView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = PostAuthorDetailView.xib; path = Views/Xibs/PostAuthorDetailView.xib; sourceTree = "<group>"; };
 		E253E3C31BCDDB34006A284F /* NotificationControlTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NotificationControlTableViewCell.swift; path = Views/Cells/NotificationControlTableViewCell.swift; sourceTree = "<group>"; };
 		E25A5EF31BAFBC26000530F7 /* DocumentsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DocumentsViewController.swift; path = Controllers/Documents/DocumentsViewController.swift; sourceTree = "<group>"; };
-		E25A5EF61BAFC58F000530F7 /* Session.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Session.swift; path = Models/Session.swift; sourceTree = "<group>"; };
 		E26116E01BAB9E09002C0332 /* ArticleService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ArticleService.swift; path = Networking/ArticleService.swift; sourceTree = "<group>"; };
 		E26116E21BABA374002C0332 /* Article.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Article.swift; path = Models/Article.swift; sourceTree = "<group>"; };
 		E264BB801BBDF7D800D4D7D5 /* StudentsFilterViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = StudentsFilterViewController.swift; path = Controllers/Filters/StudentsFilterViewController.swift; sourceTree = "<group>"; };
 		E26916431BB264BC001B1160 /* AssistantDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AssistantDetailViewController.swift; path = Controllers/Sessions/AssistantDetailViewController.swift; sourceTree = "<group>"; };
 		E279C83E1BBCCDD900FCC139 /* SortSelectionTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SortSelectionTableViewCell.swift; path = Views/Cells/Filters/SortSelectionTableViewCell.swift; sourceTree = "<group>"; };
+		E29F29131BDF59B2000D174B /* SchoolService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SchoolService.swift; path = Networking/SchoolService.swift; sourceTree = "<group>"; };
+		E29F29151BDF5C49000D174B /* School.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = School.swift; path = Models/School.swift; sourceTree = "<group>"; };
 		E2A41DDC1BC1A965003C00E9 /* SessionMapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SessionMapViewController.swift; path = Controllers/Sessions/SessionMapViewController.swift; sourceTree = "<group>"; };
 		E2B2A76B1BAF65DF00691884 /* SessionTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SessionTableViewCell.swift; path = Views/Cells/SessionTableViewCell.swift; sourceTree = "<group>"; };
 		E2CD93FE1BBD22BD00A2F357 /* StudentsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = StudentsViewController.swift; path = Controllers/Students/StudentsViewController.swift; sourceTree = "<group>"; };
@@ -246,6 +258,10 @@
 		E2E56B481BA55A3700D18F76 /* Deserializable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Deserializable.swift; path = Helpers/Util/Deserializable.swift; sourceTree = "<group>"; };
 		E2E587DF1B993C1C008580D3 /* SignInViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SignInViewController.swift; path = Controllers/Authentication/SignInViewController.swift; sourceTree = "<group>"; };
 		E2E587E21B9961AB008580D3 /* UIColorHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UIColorHelper.swift; path = Helpers/UIColorHelper.swift; sourceTree = "<group>"; };
+		E2E990DA1BD75477006064FD /* Session.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Session.swift; path = Models/Session.swift; sourceTree = "<group>"; };
+		E2E990DC1BD75F07006064FD /* ChangePasswordTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ChangePasswordTableViewController.swift; path = Controllers/Settings/ChangePasswordTableViewController.swift; sourceTree = "<group>"; };
+		E2E990E01BD762F0006064FD /* UIAlertControllerHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UIAlertControllerHelper.swift; path = Helpers/UIAlertControllerHelper.swift; sourceTree = "<group>"; };
+		E2E990E21BD765AB006064FD /* BaseTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BaseTableViewController.swift; path = Controllers/Base/BaseTableViewController.swift; sourceTree = "<group>"; };
 		E2E9CA481B97BA9200DC0EDA /* UIButtonHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UIButtonHelper.swift; path = Helpers/UIButtonHelper.swift; sourceTree = "<group>"; };
 		E2E9CA4C1B97E4D400DC0EDA /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = User.swift; path = Models/User.swift; sourceTree = "<group>"; };
 		E2ED7EEE1BC651E9001A7C29 /* ArticleMapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ArticleMapViewController.swift; path = Controllers/Articles/ArticleMapViewController.swift; sourceTree = "<group>"; };
@@ -253,11 +269,15 @@
 		E2EE4D5C1BD5FD92006CBDFE /* PeopleViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PeopleViewController.swift; path = Controllers/People/PeopleViewController.swift; sourceTree = "<group>"; };
 		E2EE4D5F1BD63085006CBDFE /* PeriodsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PeriodsViewController.swift; path = Controllers/Periods/PeriodsViewController.swift; sourceTree = "<group>"; };
 		E2EE4D611BD6309C006CBDFE /* RecoverPasswordTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RecoverPasswordTableViewController.swift; path = Controllers/Authentication/RecoverPasswordTableViewController.swift; sourceTree = "<group>"; };
+		E2EEA64F1BDA1B7D00D3CE7F /* MapTasks.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MapTasks.swift; path = Helpers/Util/MapTasks.swift; sourceTree = "<group>"; };
+		E2EEF3611BE038CF003A83B0 /* ReunionPoint.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ReunionPoint.swift; path = Models/ReunionPoint.swift; sourceTree = "<group>"; };
+		E2EEF3631BE0392C003A83B0 /* Action.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Action.swift; path = Models/Action.swift; sourceTree = "<group>"; };
 		E2F21EAE1BC63FD500CD474E /* CustomMapMarker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CustomMapMarker.swift; path = "Views/Custom Views/CustomMapMarker.swift"; sourceTree = "<group>"; };
 		E2F2D8241BC70308005DDEA2 /* RateVolunteerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RateVolunteerViewController.swift; path = Controllers/Sessions/RateVolunteerViewController.swift; sourceTree = "<group>"; };
 		E2F2D8291BC7246B005DDEA2 /* PaymentsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PaymentsViewController.swift; path = Controllers/Payments/PaymentsViewController.swift; sourceTree = "<group>"; };
 		E2F2D82B1BC7710E005DDEA2 /* DepositPaymentViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DepositPaymentViewController.swift; path = Controllers/Payments/DepositPaymentViewController.swift; sourceTree = "<group>"; };
 		E2F2D82F1BC77E08005DDEA2 /* PostAuthorDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PostAuthorDetailViewController.swift; path = Controllers/Blog/PostAuthorDetailViewController.swift; sourceTree = "<group>"; };
+		E2F462BC1BD895C600339271 /* SessionService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SessionService.swift; path = Networking/SessionService.swift; sourceTree = "<group>"; };
 		E2F598D31BB29E4E00C0206E /* SessionComment.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SessionComment.swift; path = Models/SessionComment.swift; sourceTree = "<group>"; };
 		E2F9C83C1BCF292800DBE7B9 /* CalendarViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CalendarViewController.swift; path = Controllers/Sessions/CalendarViewController.swift; sourceTree = "<group>"; };
 		E2F9C8761BCF47E000DBE7B9 /* CVAuxiliaryView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CVAuxiliaryView.swift; sourceTree = "<group>"; };
@@ -287,6 +307,10 @@
 		E2F9C88E1BCF47E000DBE7B9 /* CVSet.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CVSet.swift; sourceTree = "<group>"; };
 		E2F9C88F1BCF47E000DBE7B9 /* CVShape.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CVShape.swift; sourceTree = "<group>"; };
 		E2F9C8901BCF47E000DBE7B9 /* CVWeekdaySymbolType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CVWeekdaySymbolType.swift; sourceTree = "<group>"; };
+		E2FA6F771BDDA06A000DA2E5 /* Profile.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Profile.swift; path = Models/Profile.swift; sourceTree = "<group>"; };
+		E2FA6F831BDE0160000DA2E5 /* SessionUser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SessionUser.swift; path = Models/SessionUser.swift; sourceTree = "<group>"; };
+		E2FBE73F1BDFDEA600DC7457 /* SessionStudent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SessionStudent.swift; path = Models/SessionStudent.swift; sourceTree = "<group>"; };
+		E2FBE7411BE013D100DC7457 /* StudentService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = StudentService.swift; path = Networking/StudentService.swift; sourceTree = "<group>"; };
 		E2FE3F421B9632DC006EEA91 /* EducaApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = EducaApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E2FE3F461B9632DC006EEA91 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E2FE3F471B9632DC006EEA91 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -359,6 +383,9 @@
 				E2CF33BD1B9D3F2C00B8BE40 /* UrlBuilder.swift */,
 				E2CF33C11B9D5EF100B8BE40 /* UserService.swift */,
 				E26116E01BAB9E09002C0332 /* ArticleService.swift */,
+				E2F462BC1BD895C600339271 /* SessionService.swift */,
+				E29F29131BDF59B2000D174B /* SchoolService.swift */,
+				E2FBE7411BE013D100DC7457 /* StudentService.swift */,
 			);
 			name = Networking;
 			sourceTree = "<group>";
@@ -366,6 +393,7 @@
 		E2DC87BE1BA0D48C0083B0A0 /* Util */ = {
 			isa = PBXGroup;
 			children = (
+				E2EEA64F1BDA1B7D00D3CE7F /* MapTasks.swift */,
 				E2E56B461BA55A3700D18F76 /* Constants.swift */,
 				E2E56B471BA55A3700D18F76 /* DataLayer.swift */,
 				E2E56B481BA55A3700D18F76 /* Deserializable.swift */,
@@ -404,6 +432,7 @@
 			children = (
 				E2DE925F1BB4BC1100E762F8 /* BaseViewController.swift */,
 				E2DF0F551BBD0F2000F1D1D0 /* BaseFilterViewController.swift */,
+				E2E990E21BD765AB006064FD /* BaseTableViewController.swift */,
 			);
 			name = Base;
 			sourceTree = "<group>";
@@ -463,8 +492,8 @@
 		E2E09BA61BA92D1F00C9A109 /* Cells */ = {
 			isa = PBXGroup;
 			children = (
-				E246CE7E1BD1BE9D006A194D /* SessionCommentTableViewCell.swift */,
 				E2DDF9181BBC8F7F00000555 /* Filters */,
+				E246CE7E1BD1BE9D006A194D /* SessionCommentTableViewCell.swift */,
 				E2E09BA71BA92D6800C9A109 /* SettingsTableViewCell.swift */,
 				E2DD53C01BABCB170034B31C /* ArticleTableViewCell.swift */,
 				E2B2A76B1BAF65DF00691884 /* SessionTableViewCell.swift */,
@@ -511,6 +540,7 @@
 			isa = PBXGroup;
 			children = (
 				E2E346581BA7789B007232A9 /* SettingsViewController.swift */,
+				E2E990DC1BD75F07006064FD /* ChangePasswordTableViewController.swift */,
 			);
 			name = Settings;
 			sourceTree = "<group>";
@@ -528,11 +558,11 @@
 		E2E56B3B1BA5555F00D18F76 /* Custom Views */ = {
 			isa = PBXGroup;
 			children = (
+				E2F9C8751BCF47E000DBE7B9 /* Custom Calendar View */,
+				E2E56B3E1BA556AC00D18F76 /* Custom Indicator View */,
 				E246CE791BD1BE1A006A194D /* CustomRatingView.swift */,
 				E246CE771BD1BE0F006A194D /* SessionCommentView.swift */,
 				E246CE751BD1BDF4006A194D /* CollapseSectionHeaderView.swift */,
-				E2F9C8751BCF47E000DBE7B9 /* Custom Calendar View */,
-				E2E56B3E1BA556AC00D18F76 /* Custom Indicator View */,
 				E2DD3F0C1BAE325500DF40C2 /* CustomRefreshControlView.swift */,
 				E2F21EAE1BC63FD500CD474E /* CustomMapMarker.swift */,
 			);
@@ -573,11 +603,16 @@
 				E202F74A1BB3658100D5E64D /* Document.swift */,
 				E2E9CA4C1B97E4D400DC0EDA /* User.swift */,
 				E26116E21BABA374002C0332 /* Article.swift */,
-				E241CF361BCA36CA00FE66A8 /* ArticleUser.swift */,
-				E25A5EF61BAFC58F000530F7 /* Session.swift */,
-				E2F598D31BB29E4E00C0206E /* SessionComment.swift */,
-				E2E4F8141BBE40FF00224059 /* Student.swift */,
 				E2E4F8161BBE410C00224059 /* Post.swift */,
+				E2FA6F771BDDA06A000DA2E5 /* Profile.swift */,
+				E2E990DA1BD75477006064FD /* Session.swift */,
+				E2FA6F831BDE0160000DA2E5 /* SessionUser.swift */,
+				E2F598D31BB29E4E00C0206E /* SessionComment.swift */,
+				E2FBE73F1BDFDEA600DC7457 /* SessionStudent.swift */,
+				E2E4F8141BBE40FF00224059 /* Student.swift */,
+				E29F29151BDF5C49000D174B /* School.swift */,
+				E2EEF3611BE038CF003A83B0 /* ReunionPoint.swift */,
+				E2EEF3631BE0392C003A83B0 /* Action.swift */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -765,6 +800,7 @@
 				E2E0CCB91BBA187700067144 /* UIImageHelper.swift */,
 				E2DDF91B1BBC97D800000555 /* UIFontHelper.swift */,
 				E246CE731BD1B9B4006A194D /* ArrayHelper.swift */,
+				E2E990E01BD762F0006064FD /* UIAlertControllerHelper.swift */,
 			);
 			name = Helpers;
 			sourceTree = "<group>";
@@ -818,7 +854,7 @@
 			attributes = {
 				LastSwiftMigration = 0700;
 				LastSwiftUpdateCheck = 0700;
-				LastUpgradeCheck = 0700;
+				LastUpgradeCheck = 0710;
 				ORGANIZATIONNAME = Alonso;
 				TargetAttributes = {
 					E2FE3F411B9632DC006EEA91 = {
@@ -919,6 +955,7 @@
 				E2F2D82C1BC7710E005DDEA2 /* DepositPaymentViewController.swift in Sources */,
 				E2EE4D601BD63085006CBDFE /* PeriodsViewController.swift in Sources */,
 				E26116E11BAB9E09002C0332 /* ArticleService.swift in Sources */,
+				E2EEF3641BE0392C003A83B0 /* Action.swift in Sources */,
 				E2F9C8A51BCF47E000DBE7B9 /* CVDate.swift in Sources */,
 				E21257B71BBCC779007425B2 /* SortingFilterTableViewCell.swift in Sources */,
 				E2FE3F4B1B9632DC006EEA91 /* EducaApp.xcdatamodeld in Sources */,
@@ -942,7 +979,7 @@
 				E2E0CCBA1BBA187700067144 /* UIImageHelper.swift in Sources */,
 				E2CD94011BBD2A3000A2F357 /* UsersFilterViewController.swift in Sources */,
 				E2F9C8981BCF47E000DBE7B9 /* CVCalendarMonthContentViewController.swift in Sources */,
-				E241CF371BCA36CA00FE66A8 /* ArticleUser.swift in Sources */,
+				E2E990E11BD762F0006064FD /* UIAlertControllerHelper.swift in Sources */,
 				E2F2D8251BC70308005DDEA2 /* RateVolunteerViewController.swift in Sources */,
 				E2E13ABD1BA6B918004C6E45 /* SidebarViewController.swift in Sources */,
 				E2EE4D5D1BD5FD92006CBDFE /* PeopleViewController.swift in Sources */,
@@ -958,7 +995,6 @@
 				E2E587E31B9961AB008580D3 /* UIColorHelper.swift in Sources */,
 				E2DF0F561BBD0F2000F1D1D0 /* BaseFilterViewController.swift in Sources */,
 				E2DD26A01BBC49BC006A0A78 /* AssistantCommentsFilterViewController.swift in Sources */,
-				E25A5EF71BAFC58F000530F7 /* Session.swift in Sources */,
 				E2DA52E31BB8E5FB00CB3793 /* SendAssistantCommentViewController.swift in Sources */,
 				E2F9C89D1BCF47E000DBE7B9 /* CVCalendarViewAnimatorDelegate.swift in Sources */,
 				E2DDF91C1BBC97D800000555 /* UIFontHelper.swift in Sources */,
@@ -968,10 +1004,15 @@
 				E2F9C83D1BCF292800DBE7B9 /* CalendarViewController.swift in Sources */,
 				E2F21EAF1BC63FD500CD474E /* CustomMapMarker.swift in Sources */,
 				E2F9C8A21BCF47E000DBE7B9 /* CVCalendarWeekContentViewController.swift in Sources */,
+				E2E990DB1BD75477006064FD /* Session.swift in Sources */,
+				E2FBE7421BE013D100DC7457 /* StudentService.swift in Sources */,
+				E2FA6F7B1BDDA06A000DA2E5 /* Profile.swift in Sources */,
 				E2ED7EEF1BC651E9001A7C29 /* ArticleMapViewController.swift in Sources */,
+				E2FBE7401BDFDEA600DC7457 /* SessionStudent.swift in Sources */,
 				E2E13AB81BA6AFF0004C6E45 /* ChasingDotsStyle.swift in Sources */,
 				E2F598D41BB29E4E00C0206E /* SessionComment.swift in Sources */,
 				E2F9C8911BCF47E000DBE7B9 /* CVAuxiliaryView.swift in Sources */,
+				E2EEA6501BDA1B7D00D3CE7F /* MapTasks.swift in Sources */,
 				E2E4F8111BBE3D8600224059 /* PostTableViewCell.swift in Sources */,
 				E2E09BA81BA92D6800C9A109 /* SettingsTableViewCell.swift in Sources */,
 				E2F9C89F1BCF47E000DBE7B9 /* CVCalendarViewAppearanceDelegate.swift in Sources */,
@@ -986,6 +1027,7 @@
 				E2ED7EF21BC668E5001A7C29 /* SchoolsMapViewController.swift in Sources */,
 				E2F2D8301BC77E08005DDEA2 /* PostAuthorDetailViewController.swift in Sources */,
 				E26116E31BABA374002C0332 /* Article.swift in Sources */,
+				E2E990DD1BD75F07006064FD /* ChangePasswordTableViewController.swift in Sources */,
 				E2E316AC1BB1C87A000D8DC7 /* AssistantTableViewCell.swift in Sources */,
 				E2CF33C01B9D4D1800B8BE40 /* DictionaryHelper.swift in Sources */,
 				E2F9C8A31BCF47E000DBE7B9 /* CVCalendarWeekday.swift in Sources */,
@@ -1005,10 +1047,12 @@
 				E2F9C8961BCF47E000DBE7B9 /* CVCalendarMenuView.swift in Sources */,
 				E2DF0F4E1BBCFA1E00F1D1D0 /* PostsViewController.swift in Sources */,
 				E2E9CA491B97BA9200DC0EDA /* UIButtonHelper.swift in Sources */,
+				E2E990E31BD765AB006064FD /* BaseTableViewController.swift in Sources */,
 				E2EE4D621BD6309C006CBDFE /* RecoverPasswordTableViewController.swift in Sources */,
 				E2E1ACC81BAC903500070EB8 /* KeychainWrapper.m in Sources */,
 				E264BB811BBDF7D800D4D7D5 /* StudentsFilterViewController.swift in Sources */,
 				E2DF0F4C1BBCF9DD00F1D1D0 /* PostulationViewController.swift in Sources */,
+				E29F29141BDF59B2000D174B /* SchoolService.swift in Sources */,
 				E2F9C8A91BCF47E000DBE7B9 /* CVSet.swift in Sources */,
 				E22E72211BBCC5DD0082FE4B /* AuthorContentTableViewCell.swift in Sources */,
 				E2DD26A21BBC5256006A0A78 /* DateFilterViewController.swift in Sources */,
@@ -1018,6 +1062,7 @@
 				E2DDD13E1BB3ABE20085D795 /* DocumentTableViewCell.swift in Sources */,
 				E2E13AB91BA6AFF0004C6E45 /* CustomIndicatorStyle.swift in Sources */,
 				E246CE761BD1BDF4006A194D /* CollapseSectionHeaderView.swift in Sources */,
+				E2EEF3621BE038CF003A83B0 /* ReunionPoint.swift in Sources */,
 				E2F2D82A1BC7246B005DDEA2 /* PaymentsViewController.swift in Sources */,
 				E2A41DDD1BC1A965003C00E9 /* SessionMapViewController.swift in Sources */,
 				E2F9C8A61BCF47E000DBE7B9 /* CVRange.swift in Sources */,
@@ -1026,9 +1071,12 @@
 				E2F9C8A71BCF47E000DBE7B9 /* CVScrollDirection.swift in Sources */,
 				E2DDF91A1BBC8FB900000555 /* DateFilterTableViewCell.swift in Sources */,
 				E2F9C8971BCF47E000DBE7B9 /* CVCalendarMenuViewDelegate.swift in Sources */,
+				E29F29161BDF5C49000D174B /* School.swift in Sources */,
 				E2CD93FF1BBD22BD00A2F357 /* StudentsViewController.swift in Sources */,
 				E2F9C89C1BCF47E000DBE7B9 /* CVCalendarViewAnimator.swift in Sources */,
 				E2F9C8A01BCF47E000DBE7B9 /* CVCalendarViewDelegate.swift in Sources */,
+				E2F462BD1BD895C600339271 /* SessionService.swift in Sources */,
+				E2FA6F851BDE0160000DA2E5 /* SessionUser.swift in Sources */,
 				E2F9C89B1BCF47E000DBE7B9 /* CVCalendarView.swift in Sources */,
 				E2E56B491BA55A3700D18F76 /* Constants.swift in Sources */,
 			);
@@ -1171,7 +1219,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "com.alonso.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
-				SDKROOT = iphoneos9.0;
+				SDKROOT = iphoneos;
 				SWIFT_OBJC_BRIDGING_HEADER = "EducaApp/Vendors/EducaApp-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -1193,7 +1241,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "com.alonso.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
-				SDKROOT = iphoneos9.0;
+				SDKROOT = iphoneos;
 				SWIFT_OBJC_BRIDGING_HEADER = "EducaApp/Vendors/EducaApp-Bridging-Header.h";
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};

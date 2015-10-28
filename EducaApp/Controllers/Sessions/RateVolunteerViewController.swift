@@ -15,7 +15,7 @@ class RateVolunteerViewController: UIViewController {
   
   let RateButtonText = "Enviar"
   
-  var volunteer: String?
+  var volunteer: User?
   
   override func viewDidLoad() {
     super.viewDidLoad()
@@ -34,7 +34,7 @@ class RateVolunteerViewController: UIViewController {
   }
   
   private func setupNavigationBar() {
-    self.title = volunteer
+    self.title = volunteer?.firstName
     self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: RateButtonText, style: UIBarButtonItemStyle.Plain, target: self, action: nil)
   }
   

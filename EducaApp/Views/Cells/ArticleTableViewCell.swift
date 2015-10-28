@@ -10,7 +10,7 @@ import UIKit
 
 protocol ArticleTableViewCellDelegate {
   
-  func articleTableViewCell(sessionTableViewCell: ArticleTableViewCell, starButtonDidTapped button: UIButton, favorited: Bool, indexPath: NSIndexPath)
+  func articleTableViewCell(articleTableViewCell: ArticleTableViewCell, starButtonDidTapped button: UIButton, favorited: Bool, indexPath: NSIndexPath)
   
 }
 

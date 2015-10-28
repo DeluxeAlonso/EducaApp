@@ -23,7 +23,6 @@ class ArticlesViewController: BaseViewController {
   var articles = [Article]()
   var allArticles = [Article]()
 
-  var customView: UIView!
   var labelsArray: Array<UILabel> = []
   
   var isRefreshing = false
@@ -39,14 +38,6 @@ class ArticlesViewController: BaseViewController {
   override func viewWillAppear(animated: Bool) {
     super.viewWillAppear(animated)
     navigationController?.navigationBar.layer.removeAllAnimations()
-  }
-  
-  override func viewWillDisappear(animated: Bool) {
-    super.viewWillDisappear(true)
-  }
-  
-  override func didReceiveMemoryWarning() {
-    super.didReceiveMemoryWarning()
   }
   
   // MARK: - Private
@@ -65,6 +56,7 @@ class ArticlesViewController: BaseViewController {
   private func setupArticles() {
     articles = Article.getAllArticles(self.dataLayer.managedObjectContext!)
     guard articles.count == 0 else {
+      getArticles()
       return
     }
     self.tableView.hidden = true
@@ -112,10 +104,11 @@ class ArticlesViewController: BaseViewController {
   }
   
   func reloadData() {
+    guard !self.isRefreshing else {
+      self.tableView.reloadData()
+      return
+    }
     Util.delay(0.5) {
-      guard !self.isRefreshing else {
-        return
-      }
       self.customLoader.stopActivity()
       self.tableView.hidden = false
       self.tableView.reloadData()
@@ -125,14 +118,7 @@ class ArticlesViewController: BaseViewController {
   // MARK: - Actions
   
   @IBAction func segmentedControlIndexChanged(sender: AnyObject) {
-    switch favoritesSegmentedControl.selectedSegmentIndex {
-    case 0:
-      showAllArticles()
-      break
-    default:
-      showAllFavoriteArticles()
-      break
-    }
+    favoritesSegmentedControl.selectedSegmentIndex == 0 ? showAllArticles() : showAllFavoriteArticles()
   }
   
   // MARK: - Navigation
@@ -182,7 +168,7 @@ extension ArticlesViewController: UITableViewDelegate {
 
 // MARK: - UIScrollViewDelegate
 
-extension ArticlesViewController: UIScrollViewDelegate {
+extension PeopleViewController: UIScrollViewDelegate {
   
   func scrollViewDidEndDecelerating(scrollView: UIScrollView) {
     guard refreshControl.refreshing && !refreshControl.isAnimating else {

@@ -15,7 +15,7 @@ class ChasingDotsStyle: CustomIndicatorProtocol {
   
   private let spinnerView = UIView()
   private let ballCount = 5
-  private let animationDuration = CFTimeInterval(7.15)
+  private let animationDuration = CFTimeInterval(4)
   
   init(indicatorView: CustomActivityIndicatorView) {
     self.owner = indicatorView

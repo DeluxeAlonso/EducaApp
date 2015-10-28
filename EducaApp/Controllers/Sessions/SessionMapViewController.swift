@@ -55,21 +55,20 @@ class SessionMapViewController: UIViewController, CLLocationManagerDelegate, GMS
   
   let deleteMarkerSelector: Selector = "deleteMarker:"
   let undoDeleteActionSelector: Selector = "undoDeleteAction:"
-  
   let locationManager = CLLocationManager()
   let sessionLocation = CLLocationCoordinate2DMake(
     -12.068016, -77.001027)
   
   var initialHeightConstant: CGFloat?
-  
   var currentLocation: CLLocationCoordinate2D?
   var targetLocation: CLLocationCoordinate2D?
-  
+  var mapTasks = MapTasks()
   var polyline: GMSPolyline?
-  
   var currentMarker: CustomMapMarker?
-  
   var isSaved = true
+  lazy var dataLayer = DataLayer()
+  
+  var session: Session?
   
   // MARK: - Lifecycle
   
@@ -86,6 +85,7 @@ class SessionMapViewController: UIViewController, CLLocationManagerDelegate, GMS
   // MARK: - Private
   
   private func setupElements() {
+    print(session?.reunionPoints.count)
     setupLocation()
     setupNavigationBar()
     setupInfoView()
@@ -215,6 +215,16 @@ class SessionMapViewController: UIViewController, CLLocationManagerDelegate, GMS
     }
   }
   
+  private func drawRoute() {
+    let route = mapTasks.overviewPolyline["points"] as! String
+    
+    let path: GMSPath = GMSPath(fromEncodedPath: route)
+    polyline = GMSPolyline(path: path)
+    polyline!.strokeWidth = 5.0
+    polyline?.strokeColor = UIColor.defaultTextColor()
+    polyline?.map = mapView
+  }
+  
   // MARK: - Actions
   
   @IBAction func dismissMap(sender: AnyObject) {
@@ -246,13 +256,14 @@ class SessionMapViewController: UIViewController, CLLocationManagerDelegate, GMS
   }
   
   @IBAction func drawRoute(sender: AnyObject) {
-    let path = GMSMutablePath()
-    path.addCoordinate(currentLocation!)
-    path.addCoordinate(targetLocation!)
-    polyline = GMSPolyline(path: path)
-    polyline!.strokeWidth = 5.0
-    polyline!.geodesic = true
-    polyline?.map = mapView
+    self.mapTasks.getDirections(currentLocation, destination: targetLocation, waypoints: nil, travelMode: TravelModes.driving, completionHandler: { (status, success) -> Void in
+      if success {
+        self.drawRoute()
+      }
+      else {
+        print(status)
+      }
+    })
   }
   
   // MARK: - CLLocationManagerDelegate

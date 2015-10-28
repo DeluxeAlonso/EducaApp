@@ -33,12 +33,6 @@ class UsersViewController: BaseFilterViewController {
   // MARK: - Private
   
   private func getUsers() {
-    for i in 0..<Int((Constants.MockData.UsersName.count)) {
-      let user = Student()
-      user.name = (Constants.MockData.UsersName[i] as? String)!
-      user.document = Constants.MockData.UsersDoc[i] as? String
-      users.addObject(user)
-    }
   }
   
   private func setupPopupNavigationBar() {
@@ -115,12 +109,12 @@ extension UsersViewController: UITableViewDataSource {
   }
   
   func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-    return users.count
+    return 5
   }
   
   func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
     let cell = tableView.dequeueReusableCellWithIdentifier(UserTableViewCellIdentifier, forIndexPath: indexPath) as! UserTableViewCell
-    cell.setupUser(users[indexPath.row] as! Student)
+    //cell.setupUser(users[indexPath.row] as! User)
     return cell
   }
   

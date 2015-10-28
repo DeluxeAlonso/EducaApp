@@ -26,5 +26,22 @@ class UrlBuilder: NSObject {
     
     return stringUrl
   }
-   
+  
+  class func UrlForApiaryPath (path: String) -> String {
+    return self.UrlForLocalPathWithParameters(path: path, parameters: nil)
+  }
+  
+  class func UrlForLocalPathWithParameters (path path: String, parameters: Dictionary<String,String>?) -> String {
+    var stringUrl: String
+    if (parameters == nil) {
+      stringUrl = String(format: "%@%@", Constants.Path.Apiary, path)
+    } else {
+      stringUrl = String(format: "%@%@?%@", Constants.Path.Apiary, path, parameters!)
+    }
+    
+    print(stringUrl)
+    
+    return stringUrl
+  }
+  
 }

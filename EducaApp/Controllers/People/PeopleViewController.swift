@@ -18,59 +18,113 @@ class PeopleViewController: BaseFilterViewController {
   @IBOutlet weak var segmentedControl: UISegmentedControl!
   @IBOutlet weak var tableView: UITableView!
   @IBOutlet weak var mapButton: UIBarButtonItem!
+  @IBOutlet weak var customLoader: CustomActivityIndicatorView!
   
   let userAdvancedSearchSelector: Selector = "showAdvancedUserSearchPopup:"
   let studentAdvancedSearchSelector: Selector = "showAdvancedStudentSearchPopup:"
+  let refreshDataSelector: Selector = "refreshData"
+  let refreshControl = CustomRefreshControlView()
   
+  var isRefreshing = false
   var popupViewController: STPopupController?
   var selectedSegmentIndex: Int?
-  var people: NSMutableArray = []
+  var users = [User]()
+  var students = [Student]()
+  
+  var mapBarButtonItem = UIBarButtonItem()
   
   // MARK: - Lifecycle
   
   override func viewDidLoad() {
     super.viewDidLoad()
     setupElements()
-  }
-  
-  override func didReceiveMemoryWarning() {
-    super.didReceiveMemoryWarning()
+    setupUsers()
   }
   
   // MARK: - Private
   
   private func setupElements() {
+    mapBarButtonItem = mapButton
     selectedSegmentIndex = SelectedSegmentIndex.Users.hashValue
+    advanceSearchBarButtonItem.action = userAdvancedSearchSelector
+    setupTableView()
+  }
+  
+  private func setupTableView() {
+    tableView.addSubview(refreshControl)
+    refreshControl.addTarget(self, action: refreshDataSelector, forControlEvents: UIControlEvents.ValueChanged)
+  }
+  
+  private func setupUsers() {
+    users = User.getAllUsers(self.dataLayer.managedObjectContext!)
+    students = Student.getAllStudents(self.dataLayer.managedObjectContext!)
+    guard users.count == 0 else {
+      getUsers()
+      getStudents()
+      return
+    }
+    self.tableView.hidden = true
+    customLoader.startActivity()
     getUsers()
-    tableView.reloadData()
   }
   
   private func getUsers() {
-    let users: NSMutableArray = []
-    for i in 0..<Int((Constants.MockData.UsersName.count)) {
-      let user = Student()
-      user.name = (Constants.MockData.UsersName[i] as? String)!
-      user.document = (Constants.MockData.UsersDoc[i] as? String)!
-      users.addObject(user)
+    UserService.fetchUsers({(responseObject: AnyObject?, error: NSError?) in
+      self.refreshControl.endRefreshing()
+      self.isRefreshing = false
+      guard let json = responseObject as? Array<NSDictionary> else {
+        return
+      }
+      if (json[0][Constants.Api.ErrorKey] == nil) {
+        let syncedUsers = User.syncWithJsonArray(json , ctx: self.dataLayer.managedObjectContext!)
+        self.users = syncedUsers
+        self.dataLayer.saveContext()
+        self.reloadData()
+      } else {
+        //Show Error Message
+      }
+    })
+  }
+  
+  private func setupStudents() {
+    students = Student.getAllStudents(self.dataLayer.managedObjectContext!)
+    guard students.count == 0 else {
+      getStudents()
+      return
     }
-    people = users
+    self.tableView.hidden = true
+    customLoader.startActivity()
+    getStudents()
   }
   
   private func getStudents() {
-    let students: NSMutableArray = []
-    for i in 0..<Int((Constants.MockData.StudentsName.count)) {
-      let student = Student()
-      student.name = (Constants.MockData.StudentsName[i] as? String)!
-      student.age = Constants.MockData.StudentsAge[i] as? String
-      student.gender = Constants.MockData.StudentsGender[i] as? Int
-      students.addObject(student)
-    }
-    people = students
+    StudentService.fetchStudents({(responseObject: AnyObject?, error: NSError?) in
+      self.refreshControl.endRefreshing()
+      self.isRefreshing = false
+      guard let json = responseObject as? Array<NSDictionary> else {
+        return
+      }
+      if (json[0][Constants.Api.ErrorKey] == nil) {
+        let syncedStudents = Student.syncWithJsonArray(json , ctx: self.dataLayer.managedObjectContext!)
+        self.students = syncedStudents
+        self.dataLayer.saveContext()
+        self.reloadData()
+      } else {
+        //Show Error Message
+      }
+    })
   }
   
   private func refreshTableView() {
-    selectedSegmentIndex == SelectedSegmentIndex.Users.rawValue ? getUsers() : getStudents()
-    tableView.reloadData()
+    if isRefreshing {
+      refreshControl.endRefreshing()
+      isRefreshing = false
+      Util.delay(0.5) {
+        self.tableView.reloadData()
+      }
+    } else {
+        tableView.reloadData()
+    }
   }
   
   private func setupPopupNavigationBar() {
@@ -86,9 +140,31 @@ class PeopleViewController: BaseFilterViewController {
     UIView.animateWithDuration(duration, animations: {
       self.navigationItem.titleView?.alpha = 0
       }, completion: { finished in
+        self.navigationItem.setRightBarButtonItems([self.simpleSearchBarButtonItem, self.mapBarButtonItem], animated: true)
         self.navigationItem.title = "Personas"
         self.navigationItem.titleView = nil
     })
+  }
+  
+  // MARK: - Public
+  
+  func refreshData() {
+    isRefreshing = true
+    Util.delay(2.0) {
+      self.selectedSegmentIndex == SelectedSegmentIndex.Users.rawValue ? self.getUsers() : self.getStudents()
+    }
+  }
+  
+  func reloadData() {
+    guard !self.isRefreshing else {
+      self.tableView.reloadData()
+      return
+    }
+    Util.delay(0.5) {
+      self.customLoader.stopActivity()
+      self.tableView.hidden = false
+      self.tableView.reloadData()
+    }
   }
   
   // MARK: - Actions
@@ -101,6 +177,7 @@ class PeopleViewController: BaseFilterViewController {
   
   @IBAction func showSearchBar(sender: AnyObject) {
     navigationItem.titleView = searchBar
+    navigationItem.setRightBarButtonItems([advanceSearchBarButtonItem], animated: true)
     searchBar.alpha = 0
     setupAdvancedSearchButton()
     UIView.animateWithDuration(0.5, animations: {
@@ -144,7 +221,7 @@ extension PeopleViewController: UITableViewDataSource {
   }
   
   func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-    return people.count
+    return selectedSegmentIndex! == SelectedSegmentIndex.Users.rawValue ? users.count : (students.count)
   }
   
   func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
@@ -152,12 +229,37 @@ extension PeopleViewController: UITableViewDataSource {
     switch selectedSegmentIndex {
     case SelectedSegmentIndex.Users.rawValue?:
       cell = tableView.dequeueReusableCellWithIdentifier(UserTableViewCellIdentifier, forIndexPath: indexPath)
-      (cell as! UserTableViewCell).setupUser(people[indexPath.row] as! Student)
+      (cell as! UserTableViewCell).setupUser(users[indexPath.row] )
     default:
       cell = tableView.dequeueReusableCellWithIdentifier(StudentCellIdentifier, forIndexPath: indexPath) as! StudentTableViewCell
-      (cell as! StudentTableViewCell).setupStudent(people[indexPath.row] as! Student)
+      (cell as! StudentTableViewCell).setupStudent(students[indexPath.row])
     }
     return cell!
+  }
+  
+}
+
+// MARK: - UIScrollViewDelegate
+
+extension ArticlesViewController: UIScrollViewDelegate {
+  
+  func scrollViewDidEndDecelerating(scrollView: UIScrollView) {
+    guard refreshControl.refreshing && !refreshControl.isAnimating else {
+      return
+    }
+    refreshControl.animateRefreshFirstStep()
+  }
+  
+  func scrollViewDidScroll(scrollView: UIScrollView) {
+    let offset = scrollView.contentOffset.y * -1
+    var alpha = CGFloat(0.0)
+    if offset > 30 {
+      alpha = ((offset) / 100)
+      if alpha > 100 {
+        alpha = 1.0
+      }
+    }
+    refreshControl.customView.alpha = alpha
   }
   
 }

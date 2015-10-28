@@ -11,7 +11,11 @@ import UIKit
 struct Constants {
   
   struct Path {
-    static let Development = "https://private-e8504-newsapp3.apiary-mock.com/api/v1/"
+    static let Development = "http://200.16.7.111/afiperularavel/public/api/v1/"
+    static let Localhost = "http://localhost:8000/api/v1/"
+    static let Apiary = "http://private-7791c-afiapp.apiary-mock.com/api/v1/"
+    //http://192.168.1.6:8000
+    //http://200.16.7.111/afiperularavel/public/api/v1/
   }
   
   struct Notification {
@@ -22,6 +26,11 @@ struct Constants {
   struct PayPal {
     static let SandBox = "ASmHc1Vntg-KyLxUlgsEsL3JeH15Ih34zTHbhLocc9tyssXxCxCoXAph__kkoCPVcuuAUF-x4dwkRpom"
     static let Production = "ASmHc1Vntg-KyLxUlgsEsL3JeH15Ih34zTHbhLocc9tyssXxCxCoXAph__kkoCPVcuuAUF-x4dwkRpom"
+  }
+  
+  struct Api {
+    static let Header = "Authorization"
+    static let ErrorKey = "error"
   }
   
   struct Keychain {

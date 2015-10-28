@@ -24,13 +24,7 @@ class StudentsViewController: BaseFilterViewController {
   // MARK: - Private
   
   private func getStudents() {
-    for i in 0..<Int((Constants.MockData.StudentsName.count)) {
-      let student = Student()
-      student.name = (Constants.MockData.StudentsName[i] as? String)!
-      student.age = Constants.MockData.StudentsAge[i] as? String
-      student.gender = Constants.MockData.StudentsGender[i] as? Int
-      students.addObject(student)
-    }
+    
   }
   
   private func setupPopupNavigationBar() {

@@ -34,8 +34,8 @@ class AssistantTableViewCell: UITableViewCell {
   
   // MARK: - Public
   
-  func setupAssistant(name: String) {
-    nameLabel.text = name
+  func setupAssistant(student: Student) {
+    nameLabel.text = student.fullName
   }
   
   func setupCommentedImage() {

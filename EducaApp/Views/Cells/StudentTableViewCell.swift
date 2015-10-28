@@ -25,8 +25,8 @@ class StudentTableViewCell: UITableViewCell {
   }
   
   func setupStudent(student: Student) {
-    nameLabel.text = student.name
-    ageLabel.text = "\(AgeLabelText) \((student.age)!)"
+    nameLabel.text = student.fullName
+    ageLabel.text = "\(AgeLabelText) \((student.age))"
     genderImageView.image = student.gender == 0 ? UIImage(named: ImageAssets.MaleGenderIcon) : UIImage(named: ImageAssets.FemaleGenderIcon)
   }
   
