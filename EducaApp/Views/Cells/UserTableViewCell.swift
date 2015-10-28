@@ -22,9 +22,13 @@ class UserTableViewCell: UITableViewCell {
     super.setSelected(selected, animated: animated)
   }
   
-  func setupUser(user: Student) {
-    nameLabel.text = user.name
-    documentLabel.text = user.document
+  func setupUser(user: User) {
+    nameLabel.text = user.firstName
+    var profiles = ""
+    for profile in user.profiles {
+      profiles += "\((profile as! Profile).name!) - "
+    }
+    documentLabel.text = "\(profiles)\(user.username)"
   }
   
 }

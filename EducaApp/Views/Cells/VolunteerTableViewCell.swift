@@ -34,8 +34,8 @@ class VolunteerTableViewCell: UITableViewCell {
   
   // MARK: - Public
   
-  func setupVolunteer(name: String) {
-    volunteerNameLabel.text = name
+  func setupVolunteer(volunteer: User) {
+    volunteerNameLabel.text = volunteer.firstName
   }
   
   func setupVolunteerWithImage(imageName: String, animated: Bool) {

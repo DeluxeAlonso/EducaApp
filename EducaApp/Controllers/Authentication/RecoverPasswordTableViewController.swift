@@ -9,9 +9,7 @@
 import UIKit
 
 class RecoverPasswordTableViewController: UITableViewController {
-    
-    
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         contentSizeInPopup = CGSizeMake(300, 200)

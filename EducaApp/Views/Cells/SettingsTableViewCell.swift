@@ -11,13 +11,15 @@ import UIKit
 class SettingsTableViewCell: UITableViewCell {
   
   @IBOutlet weak var nameLabel: UILabel!
-
-    override func awakeFromNib() {
-        super.awakeFromNib()
-    }
-
-    override func setSelected(selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-    }
+  
+  // MARK: - Lifecycle
+  
+  override func awakeFromNib() {
+    super.awakeFromNib()
+  }
+  
+  override func setSelected(selected: Bool, animated: Bool) {
+    super.setSelected(selected, animated: animated)
+  }
 
 }

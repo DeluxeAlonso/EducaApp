@@ -8,7 +8,7 @@
 
 import UIKit
 
-class SignInViewController: UIViewController, UITextFieldDelegate {
+class SignInViewController: UIViewController {
   
   @IBOutlet weak var logoImageView: UIImageView!
   @IBOutlet weak var trailingLogoConstraint: NSLayoutConstraint!
@@ -26,18 +26,21 @@ class SignInViewController: UIViewController, UITextFieldDelegate {
   
   @IBOutlet weak var bottomConstraint: NSLayoutConstraint!
   
-  var initialBottomHeight: CGFloat!
-  
-  lazy var dataLayer = DataLayer()
-  
-  var isKeyboardVisible = false
-  var isPopUpVisible = false
-  var recoverPasswordPopUp: STPopupController?
+  let RecoverPasswordTableViewControllerIdentifier = "RecoverPasswordTableViewController"
   
   let SignInButtonTitle = "Iniciar Sesión"
   let AlertMessageTitle = "Error"
+  let AlertButtonTitle = "OK"
   let EmptyUsernamePasswordMessage = "El nombre de usuario y contraseña no pueden estar en blanco."
+  let RequestErrorMessage = "Ocurrió un error. Por favor intenta de nuevo."
+  
+  var initialBottomHeight: CGFloat!
+  var isKeyboardVisible = false
+  var isPopUpVisible = false
+  var recoverPasswordPopUp: STPopupController?
 
+  lazy var dataLayer = DataLayer()
+  
   // MARK: - Lifecycle
   
   deinit {
@@ -106,6 +109,20 @@ class SignInViewController: UIViewController, UITextFieldDelegate {
     STPopupNavigationBar.appearance().titleTextAttributes = [NSForegroundColorAttributeName: UIColor.whiteColor(), NSFontAttributeName: UIFont.lightFontWithFontSize(17)]
   }
   
+  private func showAlertWithTitle(title: String, message: String, buttonTitle: String) {
+    let alertController = UIAlertController(title: title, message: message, preferredStyle: UIAlertControllerStyle.Alert)
+    let defaultAction = UIAlertAction(title: buttonTitle, style: .Default, handler: nil)
+    alertController.addAction(defaultAction)
+    presentViewController(alertController, animated: true, completion: nil)
+  }
+  
+  private func saveUser(json: NSDictionary) {
+    let user = User.updateOrCreateWithJson(json, ctx: self.dataLayer.managedObjectContext!)
+    self.dataLayer.saveContext()
+    User.setAuthenticatedUser(user!)
+    NSNotificationCenter.defaultCenter().postNotificationName(Constants.Notification.SignIn, object: self, userInfo: nil)
+  }
+  
   // MARK: - Actions
   
   @IBAction func hideKeyboard(sender: AnyObject) {
@@ -114,7 +131,7 @@ class SignInViewController: UIViewController, UITextFieldDelegate {
   }
   
   @IBAction func gotoRecoverPassword(sender: AnyObject) {
-    let viewController = self.storyboard?.instantiateViewControllerWithIdentifier("RecoverPasswordTableViewController") as! RecoverPasswordTableViewController
+    let viewController = self.storyboard?.instantiateViewControllerWithIdentifier(RecoverPasswordTableViewControllerIdentifier) as! RecoverPasswordTableViewController
     print(viewController.description)
     setupPopupNavigationBar()
     recoverPasswordPopUp = STPopupController(rootViewController: viewController)
@@ -122,27 +139,21 @@ class SignInViewController: UIViewController, UITextFieldDelegate {
   }
   
   @IBAction func signIn(sender: AnyObject) {
-    let email = usernameTextField.text
-    let password = passwordTextField.text
-    if ( email!.characters.count == 0 || password!.characters.count == 0 ) {
+    let email = usernameTextField.text, password = passwordTextField.text
+    guard ( email!.characters.count != 0 || password!.characters.count != 0 ) else {
       showEmptyUsernameOrPasswordAlert()
-    } else {
-      disableSignInButton()
-      UserService.signInWithEmail(email, password: password, completion: {(responseObject: AnyObject?, error: NSError?) in
-        self.enableSignInButton()
-        guard let json = responseObject as? NSDictionary else {
-          return
-        }
-        if json["error"] == nil {
-          let user = User.updateOrCreateWithJson(json, ctx: self.dataLayer.managedObjectContext!)
-          self.dataLayer.saveContext()
-          User.setAuthenticatedUser(user!)
-          NSNotificationCenter.defaultCenter().postNotificationName(Constants.Notification.SignIn, object: self, userInfo: nil)
-        } else {
-            //Show Error Message
-        }
-      })
+      return
     }
+    disableSignInButton()
+    UserService.signInWithEmail(email, password: password, completion: {(responseObject: AnyObject?, error: NSError?) in
+      self.enableSignInButton()
+      print(responseObject)
+      guard let json = responseObject as? NSDictionary else {
+        self.showAlertWithTitle(self.AlertMessageTitle, message: self.RequestErrorMessage, buttonTitle: self.AlertButtonTitle)
+        return
+      }
+      json[Constants.Api.ErrorKey] == nil ? self.saveUser(json) : self.showAlertWithTitle(self.AlertMessageTitle, message: json[Constants.Api.ErrorKey] as! String, buttonTitle: self.AlertButtonTitle)
+    })
   }
   
   // MARK: - Notifications
@@ -179,8 +190,12 @@ class SignInViewController: UIViewController, UITextFieldDelegate {
     view.layoutIfNeeded()
     view.endEditing(true)
   }
+  
+}
 
-  // MARK:- UITextFieldDelegates
+// MARK: - UITextFieldDelegates
+
+extension SignInViewController: UITextFieldDelegate {
   
   func textFieldShouldReturn(textField: UITextField) -> Bool {
     switch textField.tag {

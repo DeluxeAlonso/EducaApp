@@ -59,7 +59,6 @@ class ArticleMapViewController: UIViewController {
   
   private func setupInfoView() {
     mapInfoView.setShadowBorder()
-    mapRouteButton.setShadowBorder()
   }
   
   private func addMarkerWithTitle(title: String, color: UIColor, coordinate: CLLocationCoordinate2D) {

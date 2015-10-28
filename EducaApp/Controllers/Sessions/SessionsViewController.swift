@@ -16,28 +16,76 @@ let SessionMapSegueIdentifier = "GoToSessionMapSegue"
 
 class SessionsViewController: BaseViewController {
   
+  @IBOutlet weak var tableView: UITableView!
   @IBOutlet weak var menuContentView: UIView!
   @IBOutlet weak var menuHeightConstraint: NSLayoutConstraint!
   @IBOutlet weak var shadowView: UIView!
   
+  @IBOutlet weak var customLoader: CustomActivityIndicatorView!
   @IBOutlet weak var assistanceView: UIView!
   @IBOutlet weak var documentsView: UIView!
   @IBOutlet weak var mapView: UIView!
   @IBOutlet weak var registerView: UIView!
   
+  let refreshDataSelector: Selector = "refreshData"
+  let refreshControl = CustomRefreshControlView()
+  
   var initialHeightConstraintConstant: CGFloat?
+  var sessions = [Session]()
+  var selectedSession: Session?
+  var isRefreshing = false
   
   override func viewDidLoad() {
     super.viewDidLoad()
-    setupMenuView()
+    setupElements()
+    setupSessions()
   }
   
   // MARK: - Private
+  
+  private func setupElements() {
+    setupTableView()
+    setupMenuView()
+  }
+  
+  private func setupTableView() {
+    tableView.addSubview(refreshControl)
+    refreshControl.addTarget(self, action: refreshDataSelector, forControlEvents: UIControlEvents.ValueChanged)
+  }
   
   private func setupMenuView() {
     initialHeightConstraintConstant = menuHeightConstraint.constant
     menuContentView.clipsToBounds = true
     menuHeightConstraint.constant = 0
+  }
+  
+  private func setupSessions() {
+    sessions = Session.getAllSessions(self.dataLayer.managedObjectContext!)
+    guard sessions.count == 0 else {
+      getSessions()
+      return
+    }
+    self.tableView.hidden = true
+    customLoader.startActivity()
+    getSessions()
+  }
+  
+  private func getSessions() {
+    SessionService.fetchSessions({(responseObject: AnyObject?, error: NSError?) in
+      self.refreshControl.endRefreshing()
+      self.isRefreshing = false
+      guard let json = responseObject as? Array<NSDictionary> else {
+        return
+      }
+      if (json[0]["error"] == nil) {
+        let syncedSessions = Session.syncWithJsonArray(json , ctx: self.dataLayer.managedObjectContext!)
+        self.sessions = syncedSessions
+        self.dataLayer.saveContext()
+        self.reloadData()
+      } else {
+        //Show Error Message
+      }
+    })
   }
   
   private func showMenuView() {
@@ -57,11 +105,32 @@ class SessionsViewController: BaseViewController {
     self.menuContentView.frame = CGRect(x: self.menuContentView.frame.origin.x, y: self.menuContentView.frame.origin.y + self.initialHeightConstraintConstant!, width: self.menuContentView.frame.width, height: self.initialHeightConstraintConstant!)
   }
   
+  // MARK: - Public
+  
+  func refreshData() {
+    isRefreshing = true
+    Util.delay(2.0) {
+      self.getSessions()
+    }
+  }
+  
+  func reloadData() {
+    guard !self.isRefreshing else {
+      self.tableView.reloadData()
+      return
+    }
+    Util.delay(0.5) {
+      self.customLoader.stopActivity()
+      self.tableView.hidden = false
+      self.tableView.reloadData()
+    }
+  }
+  
   // MARK: - Actions
   
   @IBAction func hideMenuView(sender: AnyObject) {
     UIView.animateWithDuration(0.25, delay: 0.0, options: UIViewAnimationOptions.CurveEaseOut, animations: {
-        self.hideMenuViewWithoutAnimation()
+      self.hideMenuViewWithoutAnimation()
       }, completion: nil)
   }
   
@@ -88,49 +157,93 @@ class SessionsViewController: BaseViewController {
   // MARK: - Navigation
   
   override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-    if (segue.destinationViewController is DocumentsViewController) {
-      let destinationVC = segue.destinationViewController as! DocumentsViewController;
+    switch segue.destinationViewController {
+    case is DocumentsViewController:
+      let destinationVC = segue.destinationViewController as! DocumentsViewController
       destinationVC.session = Session()
+    case is VolunteersViewController:
+      let destinationVC = segue.destinationViewController as! VolunteersViewController
+      destinationVC.session = selectedSession
+      destinationVC.volunteers = (selectedSession!.volunteers.allObjects as! [SessionUser]).map { (sessionUser) in return sessionUser.user }
+    case is AssistantsViewController:
+      let destinationVC = segue.destinationViewController as! AssistantsViewController
+      destinationVC.assistants = (selectedSession!.students.allObjects as! [SessionStudent]).map { (sessionStudent) in return sessionStudent.student }
+    case is UINavigationController:
+      let navigationController = segue.destinationViewController as! UINavigationController
+      let destinationVC = navigationController.viewControllers.first as! SessionMapViewController
+      destinationVC.session = selectedSession
+    default:
+      break
     }
   }
   
 }
 
-  // MARK: - UITableViewDataSource
+// MARK: - UITableViewDataSource
 
 extension SessionsViewController: UITableViewDataSource {
-
+  
   func numberOfSectionsInTableView(tableView: UITableView) -> Int {
     return 1
   }
   
   func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-    return 5
+    return sessions.count
   }
   
   func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
     let cell = tableView.dequeueReusableCellWithIdentifier(SessionsCellIdentifier, forIndexPath: indexPath) as! SessionTableViewCell
     cell.delegate = self
+    cell.indexPath = indexPath
+    print(sessions[indexPath.row].volunteers)
+    cell.setupSession(sessions[indexPath.row])
     return cell
   }
   
 }
 
-  // MARK: - UITableViewDelegate
+// MARK: - UITableViewDelegate
 
 extension SessionsViewController: UITableViewDelegate {
-
+  
   func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
     tableView.deselectRowAtIndexPath(indexPath, animated: true)
   }
   
 }
 
-  // MARK: - SessionTableViewCellDelegate
+// MARK: - UIScrollViewDelegate
+
+extension SessionsViewController: UIScrollViewDelegate {
+  
+  func scrollViewDidEndDecelerating(scrollView: UIScrollView) {
+    guard refreshControl.refreshing && !refreshControl.isAnimating else {
+      return
+    }
+    refreshControl.animateRefreshFirstStep()
+  }
+  
+  func scrollViewDidScroll(scrollView: UIScrollView) {
+    var offset = scrollView.contentOffset.y * -1
+    var alpha = CGFloat(0.0)
+    offset = offset - 64
+    if offset > 30 {
+      alpha = ((offset) / 100)
+      if alpha > 100 {
+        alpha = 1.0
+      }
+    }
+    refreshControl.customView.alpha = alpha
+  }
+  
+}
+
+// MARK: - SessionTableViewCellDelegate
 
 extension SessionsViewController: SessionTableViewCellDelegate {
 
-  func sessionTableViewCell(sessionTableViewCell: SessionTableViewCell, menuButtonDidTapped button: UIButton) {
+  func sessionTableViewCell(sessionTableViewCell: SessionTableViewCell, menuButtonDidTapped button: UIButton, indexPath: NSIndexPath) {
+    selectedSession = sessions[indexPath.row]
     showMenuView()
   }
   
