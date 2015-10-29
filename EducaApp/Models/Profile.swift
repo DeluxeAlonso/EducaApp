@@ -24,7 +24,7 @@ public class Profile: NSManagedObject {
 // MARK: - JSON Deserialization
 
 extension Profile: Deserializable {
-  
+
   func setDataFromJSON(json: NSDictionary) {
     guard let id = json[ProfileIdKey] as AnyObject?, name = json[ProfileNameKey] as? String else {
       return

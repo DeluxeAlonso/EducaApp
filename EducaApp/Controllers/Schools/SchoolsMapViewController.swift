@@ -92,6 +92,7 @@ class SchoolsMapViewController: UIViewController, CLLocationManagerDelegate, GMS
   
   private func setupSchools() {
     schools = School.getAllSchools(self.dataLayer.managedObjectContext!)
+    setReunionPoints()
     guard schools.count == 0 else {
       getSchools()
       return

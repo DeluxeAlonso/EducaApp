@@ -54,7 +54,9 @@ extension User: Deserializable {
       self.lastName = lastName
       self.username = username
       if let authToken = json[UserAuthTokenKey] as? String {
-        User.setAuthToken(authToken)
+        if User.isSignedIn() == false {
+          User.setAuthToken(authToken)
+        }
       }
       if let latitude = json[UserLatitudeKey] as? Float, longitude = json[UserLongitudeKey] as? Float {
         self.latitude = latitude
@@ -145,9 +147,13 @@ extension User {
       user = findOrCreateWithId(userId, ctx: ctx)
       user?.setDataFromJSON(json)
     }
-    if let profiles = json[UserProfilesKey] as? Array<NSDictionary>, actions = json[UserActionsKey] as? Array<NSDictionary> {
+    if let profiles = json[UserProfilesKey] as? Array<NSDictionary> {
       Profile.syncJsonArrayWithUser(user!,arr: profiles, ctx: ctx)
-      Action.syncJsonArrayWithUser(user!, arr: actions, ctx: ctx)
+    }
+    if let actions = json[UserActionsKey] as? Array<NSDictionary> {
+      if User.isSignedIn() == false {
+        Action.syncJsonArrayWithUser(user!, arr: actions, ctx: ctx)
+      }
     }
     return user
   }

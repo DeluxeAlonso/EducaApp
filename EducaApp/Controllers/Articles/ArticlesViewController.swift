@@ -43,6 +43,11 @@ class ArticlesViewController: BaseViewController {
   // MARK: - Private
   
   private func setupElements() {
+    print("SETUTUT")
+    print(currentUser?.actions.count)
+    for action in (currentUser?.actions)! {
+      print((action as! Action).id)
+    }
     setupTableView()
   }
   

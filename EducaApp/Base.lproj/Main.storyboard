@@ -2089,7 +2089,7 @@ El voluntariado comprende actividades asistenciales de servicios sociales, cívi
                                         <animations/>
                                         <color key="backgroundColor" red="0.94085192679999996" green="0.94903725390000004" blue="0.95307987930000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     </tableViewCell>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="tJv-Mn-ffD" userLabel="Camera Cell">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="tJv-Mn-ffD" userLabel="Postulation Cell">
                                         <rect key="frame" x="0.0" y="15" width="600" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="tJv-Mn-ffD" id="rsM-Xn-HmA">
@@ -2402,6 +2402,10 @@ El voluntariado comprende actividades asistenciales de servicios sociales, cívi
                             <outlet property="delegate" destination="ch9-Mj-2JE" id="K36-V2-q6d"/>
                         </connections>
                     </tableView>
+                    <connections>
+                        <outlet property="PostulationCell" destination="tJv-Mn-ffD" id="BSd-kk-9At"/>
+                        <outlet property="SchoolCell" destination="onZ-PY-eTr" id="SMV-h8-6Hy"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="J4w-b8-2BF" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

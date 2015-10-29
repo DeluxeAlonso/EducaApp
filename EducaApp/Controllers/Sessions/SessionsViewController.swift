@@ -77,7 +77,7 @@ class SessionsViewController: BaseViewController {
       guard let json = responseObject as? Array<NSDictionary> else {
         return
       }
-      if (json[0]["error"] == nil) {
+      if (json[0][Constants.Api.ErrorKey] == nil) {
         let syncedSessions = Session.syncWithJsonArray(json , ctx: self.dataLayer.managedObjectContext!)
         self.sessions = syncedSessions
         self.dataLayer.saveContext()
@@ -170,8 +170,10 @@ class SessionsViewController: BaseViewController {
       destinationVC.assistants = (selectedSession!.students.allObjects as! [SessionStudent]).map { (sessionStudent) in return sessionStudent.student }
     case is UINavigationController:
       let navigationController = segue.destinationViewController as! UINavigationController
-      let destinationVC = navigationController.viewControllers.first as! SessionMapViewController
-      destinationVC.session = selectedSession
+      if navigationController.viewControllers.first is SessionMapViewController {
+        let destinationVC = navigationController.viewControllers.first as! SessionMapViewController
+        destinationVC.session = selectedSession
+      }
     default:
       break
     }

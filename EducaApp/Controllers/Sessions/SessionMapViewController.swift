@@ -85,7 +85,9 @@ class SessionMapViewController: UIViewController, CLLocationManagerDelegate, GMS
   // MARK: - Private
   
   private func setupElements() {
+    print("REUNION POINTS")
     print(session?.reunionPoints.count)
+    print(session?.reunionPoints.description)
     setupLocation()
     setupNavigationBar()
     setupInfoView()
@@ -117,14 +119,14 @@ class SessionMapViewController: UIViewController, CLLocationManagerDelegate, GMS
   }
   
   private func getReunionPoints() {
-    for i in 0..<Int((Constants.MockData.ReunionPoints.count)) {
-      addMarkerWithTitle(SessionMarkerType.ReunionPoint.markerTitle(), color: SessionMarkerType.ReunionPoint.markerColor(), type: SessionMarkerType.ReunionPoint.hashValue, coordinate: Constants.MockData.ReunionPoints[i])
+    for reunionPoint in (session?.reunionPoints)! {
+      addMarkerWithTitle(SessionMarkerType.ReunionPoint.markerTitle(), color: SessionMarkerType.ReunionPoint.markerColor(), type: SessionMarkerType.ReunionPoint.hashValue, coordinate: reunionPoint.coordinate)
     }
     setupSessionPoint()
   }
   
   private func setupSessionPoint() {
-    addMarkerWithTitle(SessionMarkerType.SessionPoint.markerTitle(), color: SessionMarkerType.SessionPoint.markerColor(), type: SessionMarkerType.SessionPoint.hashValue, coordinate: sessionLocation)
+    addMarkerWithTitle(SessionMarkerType.SessionPoint.markerTitle(), color: SessionMarkerType.SessionPoint.markerColor(), type: SessionMarkerType.SessionPoint.hashValue, coordinate: (session?.coordinate)!)
     reverseGeocodeCoordinate(sessionLocation)
     showMapInfoView()
   }

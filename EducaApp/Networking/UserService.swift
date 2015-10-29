@@ -17,7 +17,7 @@ class UserService {
   class func signInWithEmail(email: String!, password: String!, completion: (responseObject: NSObject?, error: NSError?) -> Void) {
     let manager = AFHTTPRequestOperationManager()
     let parameters = ["username": email, "password": password]
-    manager.POST(UrlBuilder.UrlForApiaryPath(SignInPath), parameters: parameters, success: { (operation: AFHTTPRequestOperation, responseObject: AnyObject?) in
+    manager.POST(UrlBuilder.UrlForPath(SignInPath), parameters: parameters, success: { (operation: AFHTTPRequestOperation, responseObject: AnyObject?) in
       print(responseObject)
         completion(responseObject: responseObject! as? NSObject, error: nil)
       }, failure: { (operation: AFHTTPRequestOperation, error: NSError) in
@@ -43,7 +43,7 @@ class UserService {
     let serializer = AFHTTPRequestSerializer()
     serializer.setValue(User.getAuthToken(), forHTTPHeaderField: Constants.Api.Header)
     manager.requestSerializer = serializer
-    manager.GET(UrlBuilder.UrlForApiaryPath(UsersPath), parameters: nil, success: { (operation: AFHTTPRequestOperation, responseObject: AnyObject?) in
+    manager.GET(UrlBuilder.UrlForPath(UsersPath), parameters: nil, success: { (operation: AFHTTPRequestOperation, responseObject: AnyObject?) in
       completion(responseObject: responseObject! as? NSObject, error: nil)
       }, failure: {(operation: AFHTTPRequestOperation, error: NSError) in
         completion(responseObject: nil, error: error)

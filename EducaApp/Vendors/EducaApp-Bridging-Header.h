@@ -9,3 +9,4 @@
 #import <STPopup/STPopup.h>
 #import "NMRangeSlider.h"
 #import <GoogleMaps/GoogleMaps.h>
+#import "StaticDataTableViewController.h"

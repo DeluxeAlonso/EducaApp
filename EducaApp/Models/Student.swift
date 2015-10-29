@@ -37,10 +37,10 @@ public class Student: NSManagedObject {
 extension Student: Deserializable {
   
   func setDataFromJSON(json: NSDictionary) {
-    guard let id = json[StudentIdKey] as? Int, firstName = json[StudentNameKey] as? String, lastName = json[StudentLastNameKey] as? String, age = json[StudentAgeKey] as? Int, gender = json[StudentGenderKey] as? Int else {
+    guard let id = json[StudentIdKey] as AnyObject?, firstName = json[StudentNameKey] as? String, lastName = json[StudentLastNameKey] as? String, age = json[StudentAgeKey] as? Int, gender = json[StudentGenderKey] as? Int else {
         return
     }
-    self.id = Int32(id)
+    self.id = id is Int ? Int32(id as! Int) : Int32(id as! String)!
     self.firstName = firstName
     self.lastName = lastName
     self.age = Int32(age)
