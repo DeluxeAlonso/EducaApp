@@ -82,6 +82,15 @@ extension User: Deserializable {
     return true
   }
   
+  func hasPermissionWithId(id: Int) -> Bool {
+    let actionsArray: NSArray = (self.actions.allObjects) as NSArray
+    let actionsIds: Array<Int32> = actionsArray.map{(action) in return action.id} as Array<Int32>
+    if actionsIds.contains(Int32(id)) {
+      return true
+    }
+    return false
+  }
+  
 }
 
 // MARK: - CoreData
