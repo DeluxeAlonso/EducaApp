@@ -47,12 +47,6 @@ class PeopleViewController: BaseFilterViewController {
     mapBarButtonItem = mapButton
     selectedSegmentIndex = SelectedSegmentIndex.Users.hashValue
     advanceSearchBarButtonItem.action = userAdvancedSearchSelector
-    setupTableView()
-  }
-  
-  private func setupTableView() {
-    tableView.addSubview(refreshControl)
-    refreshControl.addTarget(self, action: refreshDataSelector, forControlEvents: UIControlEvents.ValueChanged)
   }
   
   private func setupUsers() {
@@ -75,26 +69,15 @@ class PeopleViewController: BaseFilterViewController {
       guard let json = responseObject as? Array<NSDictionary> else {
         return
       }
+      print(responseObject)
+      print(User.getAuthToken())
       if (json[0][Constants.Api.ErrorKey] == nil) {
         let syncedUsers = User.syncWithJsonArray(json , ctx: self.dataLayer.managedObjectContext!)
         self.users = syncedUsers
         self.dataLayer.saveContext()
-        self.reloadData()
-      } else {
-        //Show Error Message
+        self.tableView.reloadData()
       }
     })
-  }
-  
-  private func setupStudents() {
-    students = Student.getAllStudents(self.dataLayer.managedObjectContext!)
-    guard students.count == 0 else {
-      getStudents()
-      return
-    }
-    self.tableView.hidden = true
-    customLoader.startActivity()
-    getStudents()
   }
   
   private func getStudents() {
@@ -104,27 +87,19 @@ class PeopleViewController: BaseFilterViewController {
       guard let json = responseObject as? Array<NSDictionary> else {
         return
       }
+      guard json.count > 0 else {
+        return
+      }
+      
       if (json[0][Constants.Api.ErrorKey] == nil) {
         let syncedStudents = Student.syncWithJsonArray(json , ctx: self.dataLayer.managedObjectContext!)
         self.students = syncedStudents
         self.dataLayer.saveContext()
-        self.reloadData()
+        self.tableView.reloadData()
       } else {
         //Show Error Message
       }
     })
-  }
-  
-  private func refreshTableView() {
-    if isRefreshing {
-      refreshControl.endRefreshing()
-      isRefreshing = false
-      Util.delay(0.5) {
-        self.tableView.reloadData()
-      }
-    } else {
-        tableView.reloadData()
-    }
   }
   
   private func setupPopupNavigationBar() {
@@ -146,33 +121,12 @@ class PeopleViewController: BaseFilterViewController {
     })
   }
   
-  // MARK: - Public
-  
-  func refreshData() {
-    isRefreshing = true
-    Util.delay(2.0) {
-      self.selectedSegmentIndex == SelectedSegmentIndex.Users.rawValue ? self.getUsers() : self.getStudents()
-    }
-  }
-  
-  func reloadData() {
-    guard !self.isRefreshing else {
-      self.tableView.reloadData()
-      return
-    }
-    Util.delay(0.5) {
-      self.customLoader.stopActivity()
-      self.tableView.hidden = false
-      self.tableView.reloadData()
-    }
-  }
-  
   // MARK: - Actions
   
   @IBAction func selectedControlIndexChanged(sender: AnyObject) {
     selectedSegmentIndex = segmentedControl.selectedSegmentIndex
     advanceSearchBarButtonItem.action = selectedSegmentIndex == SelectedSegmentIndex.Users.rawValue ? userAdvancedSearchSelector : studentAdvancedSearchSelector
-    refreshTableView()
+    tableView.reloadData()
   }
   
   @IBAction func showSearchBar(sender: AnyObject) {
@@ -235,31 +189,6 @@ extension PeopleViewController: UITableViewDataSource {
       (cell as! StudentTableViewCell).setupStudent(students[indexPath.row])
     }
     return cell!
-  }
-  
-}
-
-// MARK: - UIScrollViewDelegate
-
-extension ArticlesViewController: UIScrollViewDelegate {
-  
-  func scrollViewDidEndDecelerating(scrollView: UIScrollView) {
-    guard refreshControl.refreshing && !refreshControl.isAnimating else {
-      return
-    }
-    refreshControl.animateRefreshFirstStep()
-  }
-  
-  func scrollViewDidScroll(scrollView: UIScrollView) {
-    let offset = scrollView.contentOffset.y * -1
-    var alpha = CGFloat(0.0)
-    if offset > 30 {
-      alpha = ((offset) / 100)
-      if alpha > 100 {
-        alpha = 1.0
-      }
-    }
-    refreshControl.customView.alpha = alpha
   }
   
 }

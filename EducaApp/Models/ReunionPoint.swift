@@ -13,6 +13,7 @@ let ReunionPointEntityName = "ReunionPoint"
 let ReunionPointIdKey = "id"
 let ReunionPointLatitudeKey = "latitude"
 let ReunionPointLongitudeKey = "longitude"
+let ReunionPointMeetingPoint = "meeting_point"
 
 @objc(ReunionPoint)
 public class ReunionPoint: NSManagedObject {
@@ -20,7 +21,10 @@ public class ReunionPoint: NSManagedObject {
   @NSManaged public var id: Int32
   @NSManaged public var latitude: Float
   @NSManaged public var longitude: Float
-  @NSManaged public var session: Session
+  
+  var coordinate: CLLocationCoordinate2D {
+    return CLLocationCoordinate2D(latitude: CLLocationDegrees(latitude), longitude: CLLocationDegrees(longitude))
+  }
 
 }
 
@@ -29,10 +33,10 @@ public class ReunionPoint: NSManagedObject {
 extension ReunionPoint: Deserializable {
   
   func setDataFromJSON(json: NSDictionary) {
-    guard let id = json[ReunionPointIdKey] as? Int, latitude = json[ReunionPointLatitudeKey] as? Float, longitude = json[ReunionPointLongitudeKey] as? Float else {
+    guard let id = json[ReunionPointIdKey] as AnyObject?, latitude = json[ReunionPointLatitudeKey] as? Float, longitude = json[ReunionPointLongitudeKey] as? Float else {
       return
     }
-    self.id = Int32(id)
+    self.id = id is Int ? Int32(id as! Int) : Int32(id as! String)!
     self.latitude = latitude
     self.longitude = longitude
   }
@@ -43,11 +47,21 @@ extension ReunionPoint: Deserializable {
 
 extension ReunionPoint {
   
-  public class func syncWithJsonArray(session:Session, arr: Array<NSDictionary>, ctx: NSManagedObjectContext) -> Array<ReunionPoint> {
+  public class func syncJsonArrayWithSession(session:Session, arr: Array<NSDictionary>, ctx: NSManagedObjectContext) {
+    let sessionReunionPoints = NSMutableArray()
+    for json in arr {
+      if let reunionPointJson = json[ReunionPointMeetingPoint] as? NSDictionary {
+       sessionReunionPoints.addObject(updateOrCreateWithJson(reunionPointJson, ctx: ctx)!)
+      }
+    }
+    session.reunionPoints = NSSet(array: sessionReunionPoints as [AnyObject])
+  }
+  
+  /*public class func syncWithJsonArray(session:Session, arr: Array<NSDictionary>, ctx: NSManagedObjectContext) -> Array<ReunionPoint> {
     // Map JSON to ids, for easier access
     var jsonById = Dictionary<Int, NSDictionary>()
     for json in arr {
-      if let id = json[ReunionPointIdKey] as AnyObject? {
+      if let reunionPointJson = json[ReunionPointMeetingPoint], id = reunionPointJson[ReunionPointIdKey] as AnyObject? {
         let studentsId = id is Int ? id as! Int : Int(id as! String)!
         jsonById[studentsId] = json
       }
@@ -68,7 +82,7 @@ extension ReunionPoint {
     let newReunionPoints = newIds.allObjects.map({ (id: AnyObject) -> ReunionPoint in
       let newReunionPoint = NSEntityDescription.insertNewObjectForEntityForName(ReunionPointEntityName, inManagedObjectContext: ctx) as! ReunionPoint
       newReunionPoint.id = (Int32(id as! Int))
-      newReunionPoint.session = session
+      //newReunionPoint.session = session
       return newReunionPoint
     })
     
@@ -86,7 +100,7 @@ extension ReunionPoint {
     }
     
     return ReunionPoint.getAllReunionPoints(ctx)
-  }
+  }*/
   
   class func findOrCreateWithId(id: Int32, ctx: NSManagedObjectContext) -> ReunionPoint {
     var student: ReunionPoint? = getReunionPointById(id, ctx: ctx)

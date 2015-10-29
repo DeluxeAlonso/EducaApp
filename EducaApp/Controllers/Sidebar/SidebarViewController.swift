@@ -8,23 +8,32 @@
 
 import UIKit
 
-class MenuController: UITableViewController {
+class MenuController: StaticDataTableViewController {
+  
+  @IBOutlet weak var PostulationCell: UITableViewCell!
+  @IBOutlet weak var SchoolCell: UITableViewCell!
+  
+  var currentUser: User?
+  lazy var dataLayer = DataLayer()
   
   // MARK: - Lifecycle
-  
   override func viewDidLoad() {
     super.viewDidLoad()
-    
-    // Uncomment the following line to preserve selection between presentations
-    // self.clearsSelectionOnViewWillAppear = false
-    
-    // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-    // self.navigationItem.rightBarButtonItem = self.editButtonItem()
+    currentUser = User.getAuthenticatedUser(dataLayer.managedObjectContext!)
+    for action in (currentUser?.actions)! {
+      print((action as! Action).id)
+    }
+    setupPermissions()
   }
   
   override func didReceiveMemoryWarning() {
     super.didReceiveMemoryWarning()
-    // Dispose of any resources that can be recreated.
+  }
+  
+  private func setupPermissions() {
+    //self.cell(PostulationCell, setHidden: true)
+    //self.cell(SchoolCell, setHidden: true)
+    self.reloadDataAnimated(false)
   }
   
   override func tableView(tableView: UITableView,

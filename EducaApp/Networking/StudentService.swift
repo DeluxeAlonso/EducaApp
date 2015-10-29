@@ -17,7 +17,7 @@ class StudentService {
     let serializer = AFHTTPRequestSerializer()
     serializer.setValue(User.getAuthToken(), forHTTPHeaderField: Constants.Api.Header)
     manager.requestSerializer = serializer
-    manager.GET(UrlBuilder.UrlForApiaryPath(StudentsPath), parameters: nil, success: { (operation: AFHTTPRequestOperation, responseObject: AnyObject?) in
+    manager.GET(UrlBuilder.UrlForPath(StudentsPath), parameters: nil, success: { (operation: AFHTTPRequestOperation, responseObject: AnyObject?) in
       completion(responseObject: responseObject! as? NSObject, error: nil)
       }, failure: {(operation: AFHTTPRequestOperation, error: NSError) in
         completion(responseObject: nil, error: error)

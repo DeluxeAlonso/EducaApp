@@ -107,6 +107,7 @@
 		E2F2D82A1BC7246B005DDEA2 /* PaymentsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2F2D8291BC7246B005DDEA2 /* PaymentsViewController.swift */; };
 		E2F2D82C1BC7710E005DDEA2 /* DepositPaymentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2F2D82B1BC7710E005DDEA2 /* DepositPaymentViewController.swift */; };
 		E2F2D8301BC77E08005DDEA2 /* PostAuthorDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2F2D82F1BC77E08005DDEA2 /* PostAuthorDetailViewController.swift */; };
+		E2F457111BE1DC4D00941231 /* StaticDataTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E2F457101BE1DC4D00941231 /* StaticDataTableViewController.m */; };
 		E2F462BD1BD895C600339271 /* SessionService.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2F462BC1BD895C600339271 /* SessionService.swift */; };
 		E2F598D41BB29E4E00C0206E /* SessionComment.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2F598D31BB29E4E00C0206E /* SessionComment.swift */; };
 		E2F9C83D1BCF292800DBE7B9 /* CalendarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2F9C83C1BCF292800DBE7B9 /* CalendarViewController.swift */; };
@@ -277,6 +278,8 @@
 		E2F2D8291BC7246B005DDEA2 /* PaymentsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PaymentsViewController.swift; path = Controllers/Payments/PaymentsViewController.swift; sourceTree = "<group>"; };
 		E2F2D82B1BC7710E005DDEA2 /* DepositPaymentViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DepositPaymentViewController.swift; path = Controllers/Payments/DepositPaymentViewController.swift; sourceTree = "<group>"; };
 		E2F2D82F1BC77E08005DDEA2 /* PostAuthorDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PostAuthorDetailViewController.swift; path = Controllers/Blog/PostAuthorDetailViewController.swift; sourceTree = "<group>"; };
+		E2F4570F1BE1DC4D00941231 /* StaticDataTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = StaticDataTableViewController.h; path = Vendors/StaticDataTableViewController.h; sourceTree = "<group>"; };
+		E2F457101BE1DC4D00941231 /* StaticDataTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = StaticDataTableViewController.m; path = Vendors/StaticDataTableViewController.m; sourceTree = "<group>"; };
 		E2F462BC1BD895C600339271 /* SessionService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SessionService.swift; path = Networking/SessionService.swift; sourceTree = "<group>"; };
 		E2F598D31BB29E4E00C0206E /* SessionComment.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SessionComment.swift; path = Models/SessionComment.swift; sourceTree = "<group>"; };
 		E2F9C83C1BCF292800DBE7B9 /* CalendarViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CalendarViewController.swift; path = Controllers/Sessions/CalendarViewController.swift; sourceTree = "<group>"; };
@@ -752,6 +755,8 @@
 		E2FE3F6A1B9633EF006EEA91 /* Vendors */ = {
 			isa = PBXGroup;
 			children = (
+				E2F4570F1BE1DC4D00941231 /* StaticDataTableViewController.h */,
+				E2F457101BE1DC4D00941231 /* StaticDataTableViewController.m */,
 				E246CE7C1BD1BE38006A194D /* NMRangeSlider.m */,
 				E246CE7B1BD1BE2E006A194D /* NMRangeSlider.h */,
 				E2E1ACC61BAC903500070EB8 /* KeychainWrapper.h */,
@@ -1047,6 +1052,7 @@
 				E2F9C8961BCF47E000DBE7B9 /* CVCalendarMenuView.swift in Sources */,
 				E2DF0F4E1BBCFA1E00F1D1D0 /* PostsViewController.swift in Sources */,
 				E2E9CA491B97BA9200DC0EDA /* UIButtonHelper.swift in Sources */,
+				E2F457111BE1DC4D00941231 /* StaticDataTableViewController.m in Sources */,
 				E2E990E31BD765AB006064FD /* BaseTableViewController.swift in Sources */,
 				E2EE4D621BD6309C006CBDFE /* RecoverPasswordTableViewController.swift in Sources */,
 				E2E1ACC81BAC903500070EB8 /* KeychainWrapper.m in Sources */,

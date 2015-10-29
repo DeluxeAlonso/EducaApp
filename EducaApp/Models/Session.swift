@@ -22,6 +22,8 @@ let SessionLongitudeKey = "longitude"
 let SessionAttendanceVolunteerKey = "attendance_volunteers"
 let SessionAttendanceChildrenKey = "attendance_children"
 let SessionReunionPointKey = "points_of_reunion"
+let SessionEventPointsKey = "event_points"
+let SessionMeetingPointsKey = "meeting_point"
 
 
 @objc(Session)
@@ -130,8 +132,9 @@ extension Session {
     if let studentsJson = json[SessionAttendanceChildrenKey] as! Array<NSDictionary>? {
       SessionStudent.syncWithJsonArray(session!, arr: studentsJson, ctx: ctx)
     }
-    if let reunionPointsJson = json[SessionReunionPointKey] as! Array<NSDictionary>? {
-      ReunionPoint.syncWithJsonArray(session!, arr: reunionPointsJson, ctx: ctx)
+    print(json)
+    if let reunionPointsJson = json[SessionEventPointsKey] as! Array<NSDictionary>? {
+      ReunionPoint.syncJsonArrayWithSession(session!, arr: reunionPointsJson, ctx: ctx)
     }
     return session
   }
