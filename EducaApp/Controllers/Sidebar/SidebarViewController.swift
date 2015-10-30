@@ -30,6 +30,10 @@ class MenuController: StaticDataTableViewController {
     super.viewDidLoad()
     currentUser = User.getAuthenticatedUser(dataLayer.managedObjectContext!)
     setupPermissions()
+    print(User.isSignedIn())
+    print(currentUser?.profiles.count)
+    print(currentUser?.actions.count)
+    print(User.getAuthToken())
     for action in (currentUser?.actions)! {
       print((action as! Action).id)
       

@@ -44,9 +44,9 @@ class ArticlesViewController: BaseViewController {
   
   private func setupElements() {
     print("Actions ids")
-    for action in (currentUser?.actions)! {
-      print((action as! Action).id)
-    }
+    //for action in (NSUserDefaults.standardUserDefaults().objectForKey("actions") as! NSSet) {
+    //  print((action as! Action).id)
+    //}
     setupTableView()
   }
   

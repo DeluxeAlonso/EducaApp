@@ -19,6 +19,7 @@ let ReunionPointMeetingPoint = "meeting_point"
 public class ReunionPoint: NSManagedObject {
   
   @NSManaged public var id: Int32
+  @NSManaged public var address: String
   @NSManaged public var latitude: Float
   @NSManaged public var longitude: Float
   

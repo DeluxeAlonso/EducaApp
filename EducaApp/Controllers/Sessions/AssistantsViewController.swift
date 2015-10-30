@@ -19,6 +19,8 @@ class AssistantsViewController: BaseViewController {
   
   var assistants = [Student]()
   var selectedCell: UITableViewCell?
+  
+  var sendCommentPopupViewController: STPopupController?
 
   // MARK: - Lifecycle
   
@@ -28,13 +30,25 @@ class AssistantsViewController: BaseViewController {
   
   // MARK: - Private
   
+  private func setupPopupNavigationBar() {
+    STPopupNavigationBar.appearance().barTintColor = UIColor.defaultTextColor()
+    STPopupNavigationBar.appearance().tintColor = UIColor.whiteColor()
+    STPopupNavigationBar.appearance().titleTextAttributes = [NSForegroundColorAttributeName: UIColor.whiteColor(), NSFontAttributeName: UIFont.lightFontWithFontSize(17)]
+  }
+  
   private func goToCommentSection(tableView:UITableView, indexPath: NSIndexPath) {
     selectedCell = tableView.cellForRowAtIndexPath(indexPath) as! AssistantTableViewCell
-    self.performSegueWithIdentifier(GoToCommentViewSegueIdentifier, sender: assistants[indexPath.row])
+    let viewController = self.storyboard?.instantiateViewControllerWithIdentifier(SendAssistantCommentViewIdentifier) as! SendAssistantCommentViewController
+    viewController.assistant = assistants[indexPath.row].fullName
+    viewController.delegate = self
+    setupPopupNavigationBar()
+    sendCommentPopupViewController = STPopupController(rootViewController: viewController)
+    sendCommentPopupViewController!.presentInViewController(self)
+
   }
   
   private func goToDetailSection(tableView:UITableView, indexPath: NSIndexPath) {
-    self.performSegueWithIdentifier(GoToDetailViewSegueIdentifier, sender: assistants[indexPath.row])
+    self.performSegueWithIdentifier(GoToDetailViewSegueIdentifier, sender: assistants[indexPath.row].fullName)
   }
   
   // MARK: - Public
@@ -44,6 +58,10 @@ class AssistantsViewController: BaseViewController {
       return
     }
     cell.setupCommentedImage()
+  }
+  
+  func dismissSendCommentPopup() {
+    sendCommentPopupViewController!.dismiss()
   }
   
   // MARK: - Navigation
@@ -84,6 +102,17 @@ extension AssistantsViewController: UITableViewDelegate {
   func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
     tableView.deselectRowAtIndexPath(indexPath, animated: true)
     ((currentUser?.canListAssistantsComments()) == true) ? goToDetailSection(tableView, indexPath: indexPath) : goToCommentSection(tableView, indexPath: indexPath)
+  }
+  
+}
+
+// MARK: - UIPopoverPresentationControllerDelegate
+
+extension AssistantsViewController: UIPopoverPresentationControllerDelegate {
+  
+  func adaptivePresentationStyleForPresentationController(
+    controller: UIPresentationController) -> UIModalPresentationStyle {
+      return .None
   }
   
 }

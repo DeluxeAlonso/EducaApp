@@ -44,6 +44,10 @@ class PeopleViewController: BaseFilterViewController {
   // MARK: - Private
   
   private func setupElements() {
+    if currentUser?.hasPermissionWithId(28) == false {
+      mapButton.image = nil
+      mapButton.enabled = false
+    }
     mapBarButtonItem = mapButton
     selectedSegmentIndex = SelectedSegmentIndex.Users.hashValue
     advanceSearchBarButtonItem.action = userAdvancedSearchSelector
@@ -69,8 +73,11 @@ class PeopleViewController: BaseFilterViewController {
       guard let json = responseObject as? Array<NSDictionary> else {
         return
       }
-      print(responseObject)
-      print(User.getAuthToken())
+      guard json.count > 0 else {
+        self.customLoader.stopActivity()
+        self.tableView.hidden = false
+        return
+      }
       if (json[0][Constants.Api.ErrorKey] == nil) {
         let syncedUsers = User.syncWithJsonArray(json , ctx: self.dataLayer.managedObjectContext!)
         self.users = syncedUsers

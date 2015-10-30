@@ -218,6 +218,8 @@ extension SessionsViewController: UITableViewDataSource {
 extension SessionsViewController: UITableViewDelegate {
   
   func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+    selectedSession = sessions[indexPath.row]
+    showMenuView()
     tableView.deselectRowAtIndexPath(indexPath, animated: true)
   }
   

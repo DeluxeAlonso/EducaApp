@@ -18,6 +18,7 @@
         <relationship name="users" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="User" inverseName="profiles" inverseEntity="User" syncable="YES"/>
     </entity>
     <entity name="ReunionPoint" representedClassName="ReunionPoint" syncable="YES">
+        <attribute name="address" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="id" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
         <attribute name="latitude" optional="YES" attributeType="Float" defaultValueString="0.0" syncable="YES"/>
         <attribute name="longitude" optional="YES" attributeType="Float" defaultValueString="0.0" syncable="YES"/>
@@ -80,13 +81,13 @@
         <element name="Action" positionX="-2135" positionY="404" width="128" height="73"/>
         <element name="Article" positionX="-1946" positionY="36" width="128" height="133"/>
         <element name="Profile" positionX="-2349" positionY="191" width="128" height="88"/>
-        <element name="ReunionPoint" positionX="-1793" positionY="-135" width="128" height="103"/>
+        <element name="ReunionPoint" positionX="-1793" positionY="-135" width="128" height="120"/>
         <element name="School" positionX="-2340" positionY="45" width="128" height="103"/>
         <element name="Session" positionX="-2133" positionY="-163" width="128" height="163"/>
+        <element name="SessionReunionPoint" positionX="-1964" positionY="-108" width="128" height="88"/>
         <element name="SessionStudent" positionX="-2315" positionY="-126" width="128" height="118"/>
         <element name="SessionUser" positionX="-2135" positionY="45" width="128" height="88"/>
         <element name="Student" positionX="-2504" positionY="-144" width="128" height="133"/>
         <element name="User" positionX="-2133" positionY="176" width="128" height="193"/>
-        <element name="SessionReunionPoint" positionX="-1964" positionY="-108" width="128" height="88"/>
     </elements>
 </model>

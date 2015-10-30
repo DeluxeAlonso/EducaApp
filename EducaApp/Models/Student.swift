@@ -98,6 +98,16 @@ extension Student {
       Student.updateOrCreateWithJson(jsonById[Int(student.id)]!,ctx: ctx)
     }
     
+    // Delete old items
+    let deleteIds = NSMutableSet(array: persistedIds)
+    deleteIds.minusSet(NSSet(array: ids) as Set<NSObject>)
+    let deleteStudents = deleteIds.allObjects.map({ (id: AnyObject) -> Student in
+      return persistedStudentById[id as! Int]!
+    })
+    for student in deleteStudents {
+      ctx.deleteObject(student)
+    }
+    
     return Student.getAllStudents(ctx)
   }
   

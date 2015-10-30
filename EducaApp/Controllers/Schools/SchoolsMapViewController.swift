@@ -35,7 +35,7 @@ enum SchoolMarkerType {
 }
 
 class SchoolsMapViewController: UIViewController, CLLocationManagerDelegate, GMSMapViewDelegate{
-
+  
   @IBOutlet weak var mapView: GMSMapView!
   @IBOutlet weak var mapInfoView: UIView!
   @IBOutlet weak var mapInfoLabel: UILabel!
@@ -237,5 +237,5 @@ class SchoolsMapViewController: UIViewController, CLLocationManagerDelegate, GMS
     clearMap()
     hideMapInfoView()
   }
-
+  
 }
