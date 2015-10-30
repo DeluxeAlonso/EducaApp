@@ -129,7 +129,9 @@ class MapTasks: NSObject {
         dispatch_async(dispatch_get_main_queue(), { () -> Void in
           let directionsData = NSData(contentsOfURL: directionsURL!)
           
-          
+          guard directionsData != nil else {
+            return
+          }
           let dictionary: Dictionary<NSObject, AnyObject> = try! NSJSONSerialization.JSONObjectWithData(directionsData!, options: NSJSONReadingOptions.MutableContainers) as! Dictionary<NSObject, AnyObject>
           
           

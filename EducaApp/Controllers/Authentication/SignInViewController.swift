@@ -147,7 +147,6 @@ class SignInViewController: UIViewController {
     disableSignInButton()
     UserService.signInWithEmail(email, password: password, completion: {(responseObject: AnyObject?, error: NSError?) in
       self.enableSignInButton()
-      print(responseObject)
       guard let json = responseObject as? NSDictionary else {
         self.showAlertWithTitle(self.AlertMessageTitle, message: self.RequestErrorMessage, buttonTitle: self.AlertButtonTitle)
         return

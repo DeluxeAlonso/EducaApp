@@ -22,8 +22,7 @@ let SessionLongitudeKey = "longitude"
 let SessionAttendanceVolunteerKey = "attendance_volunteers"
 let SessionAttendanceChildrenKey = "attendance_children"
 let SessionReunionPointKey = "points_of_reunion"
-let SessionEventPointsKey = "event_points"
-let SessionMeetingPointsKey = "meeting_point"
+let SessionMeetingPointsKey = "meeting_points"
 
 
 @objc(Session)
@@ -58,6 +57,12 @@ extension Session: Deserializable {
     self.longitude = longitude
     self.date = NSDate(timeIntervalSince1970: date)
   }
+  
+  func selectReunionPoint(reunionPoint: ReunionPoint, selected: Bool, ctx: NSManagedObjectContext) {
+    let sessionReunionPoint = SessionReunionPoint.findBySessionAndReunionPoint(self, reunionPoint: reunionPoint, ctx: ctx)
+    sessionReunionPoint?.selected = selected
+  }
+  
   
 }
 
@@ -107,6 +112,16 @@ extension Session {
       Session.updateOrCreateWithJson(jsonById[Int(session.id)]!,ctx: ctx)
     }
     
+    // Delete old items
+    let deleteIds = NSMutableSet(array: persistedIds)
+    deleteIds.minusSet(NSSet(array: ids) as Set<NSObject>)
+    let deleteSessionUsers = deleteIds.allObjects.map({ (id: AnyObject) -> Session in
+      return persistedSessionById[id as! Int]!
+    })
+    for sessionUser in deleteSessionUsers {
+      ctx.deleteObject(sessionUser)
+    }
+    
     return Session.getAllSessions(ctx)
   }
   
@@ -132,9 +147,20 @@ extension Session {
     if let studentsJson = json[SessionAttendanceChildrenKey] as! Array<NSDictionary>? {
       SessionStudent.syncWithJsonArray(session!, arr: studentsJson, ctx: ctx)
     }
-    print(json)
-    if let reunionPointsJson = json[SessionEventPointsKey] as! Array<NSDictionary>? {
-      ReunionPoint.syncJsonArrayWithSession(session!, arr: reunionPointsJson, ctx: ctx)
+    if let reunionPointsJson = json[SessionMeetingPointsKey] as! Array<NSDictionary>? {
+      SessionReunionPoint.syncWithJsonArray(session!, arr: reunionPointsJson, ctx: ctx)
+    }
+    return session
+  }
+  
+  public class func updateOrCreateReunionPointsWithJson(json: NSDictionary, ctx: NSManagedObjectContext) -> Session? {
+    var session: Session?
+    if let id = json["session_id"] as AnyObject? {
+      let sessionId = id is Int ? Int32(id as! Int) : Int32(id as! String)!
+      session = findOrCreateWithId(sessionId, ctx: ctx)
+    }
+    if let reunionPointsJson = json[SessionMeetingPointsKey] as! Array<NSDictionary>? {
+      SessionReunionPoint.syncWithJsonArray(session!, arr: reunionPointsJson, ctx: ctx)
     }
     return session
   }

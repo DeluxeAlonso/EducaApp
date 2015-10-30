@@ -47,17 +47,7 @@ extension ReunionPoint: Deserializable {
 
 extension ReunionPoint {
   
-  public class func syncJsonArrayWithSession(session:Session, arr: Array<NSDictionary>, ctx: NSManagedObjectContext) {
-    let sessionReunionPoints = NSMutableArray()
-    for json in arr {
-      if let reunionPointJson = json[ReunionPointMeetingPoint] as? NSDictionary {
-       sessionReunionPoints.addObject(updateOrCreateWithJson(reunionPointJson, ctx: ctx)!)
-      }
-    }
-    session.reunionPoints = NSSet(array: sessionReunionPoints as [AnyObject])
-  }
-  
-  /*public class func syncWithJsonArray(session:Session, arr: Array<NSDictionary>, ctx: NSManagedObjectContext) -> Array<ReunionPoint> {
+  public class func syncWithJsonArray(session:Session, arr: Array<NSDictionary>, ctx: NSManagedObjectContext) -> Array<ReunionPoint> {
     // Map JSON to ids, for easier access
     var jsonById = Dictionary<Int, NSDictionary>()
     for json in arr {
@@ -82,7 +72,6 @@ extension ReunionPoint {
     let newReunionPoints = newIds.allObjects.map({ (id: AnyObject) -> ReunionPoint in
       let newReunionPoint = NSEntityDescription.insertNewObjectForEntityForName(ReunionPointEntityName, inManagedObjectContext: ctx) as! ReunionPoint
       newReunionPoint.id = (Int32(id as! Int))
-      //newReunionPoint.session = session
       return newReunionPoint
     })
     
@@ -100,7 +89,7 @@ extension ReunionPoint {
     }
     
     return ReunionPoint.getAllReunionPoints(ctx)
-  }*/
+  }
   
   class func findOrCreateWithId(id: Int32, ctx: NSManagedObjectContext) -> ReunionPoint {
     var student: ReunionPoint? = getReunionPointById(id, ctx: ctx)

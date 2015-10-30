@@ -77,13 +77,22 @@ class SessionsViewController: BaseViewController {
       guard let json = responseObject as? Array<NSDictionary> else {
         return
       }
+      guard json.count > 0 else {
+        self.customLoader.stopActivity()
+        self.tableView.hidden = false
+        return
+      }
       if (json[0][Constants.Api.ErrorKey] == nil) {
         let syncedSessions = Session.syncWithJsonArray(json , ctx: self.dataLayer.managedObjectContext!)
         self.sessions = syncedSessions
+        for session in self.sessions {
+          let volunteers =  session.volunteers
+          for volunteer in volunteers {
+            print((volunteer as! SessionUser).attended)
+          }
+        }
         self.dataLayer.saveContext()
         self.reloadData()
-      } else {
-        //Show Error Message
       }
     })
   }

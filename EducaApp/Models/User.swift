@@ -70,6 +70,10 @@ extension User: Deserializable {
   }
   
   func assistedToSession(session: Session, ctx: NSManagedObjectContext) -> Bool {
+    let sessionUser = SessionUser.findBySessionAndUser(session, user: self, ctx: ctx)
+    print(sessionUser?.session.id)
+    print(sessionUser?.user.firstName)
+    print(sessionUser?.attended)
     return (SessionUser.findBySessionAndUser(session, user: self, ctx: ctx)?.attended)!
   }
   

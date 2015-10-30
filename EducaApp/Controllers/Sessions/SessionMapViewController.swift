@@ -39,7 +39,7 @@ enum SessionMarkerType {
   
 }
 
-class SessionMapViewController: UIViewController, CLLocationManagerDelegate, GMSMapViewDelegate {
+class SessionMapViewController: UIViewController {
   
   @IBOutlet weak var saveBarButtonItem: UIBarButtonItem!
   @IBOutlet weak var mapView: GMSMapView!
@@ -49,6 +49,7 @@ class SessionMapViewController: UIViewController, CLLocationManagerDelegate, GMS
   @IBOutlet weak var mapInfoViewHeightConstraint: NSLayoutConstraint!
   @IBOutlet weak var deleteMarkerButton: UIButton!
   @IBOutlet weak var mapRouteButton: UIButton!
+  @IBOutlet weak var undoDeleteButton: UIButton!
   
   let CancelAlertTitle = "¿Está seguro de que desea salir?"
   let CancelAlertMessage = "Sus cambios no han sido guardados."
@@ -68,6 +69,9 @@ class SessionMapViewController: UIViewController, CLLocationManagerDelegate, GMS
   var isSaved = true
   lazy var dataLayer = DataLayer()
   
+  var newReunionPoints = NSMutableArray()
+  var markers = NSMutableArray()
+  
   var session: Session?
   
   // MARK: - Lifecycle
@@ -78,24 +82,17 @@ class SessionMapViewController: UIViewController, CLLocationManagerDelegate, GMS
     getReunionPoints()
   }
   
-  override func didReceiveMemoryWarning() {
-    super.didReceiveMemoryWarning()
-  }
-  
   // MARK: - Private
   
   private func setupElements() {
-    print("REUNION POINTS")
-    print(session?.reunionPoints.count)
-    print(session?.reunionPoints.description)
     setupLocation()
     setupNavigationBar()
-    setupInfoView()
     setupAdditionalConstraints()
   }
   
   private func setupLocation() {
     mapView.delegate = self
+    mapInfoView.setShadowBorder()
     searchContainerView.layer.borderColor = UIColor.defaultSmallTextColor().CGColor
     locationManager.delegate = self
     locationManager.requestWhenInUseAuthorization()
@@ -109,25 +106,22 @@ class SessionMapViewController: UIViewController, CLLocationManagerDelegate, GMS
     navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName: UIColor.whiteColor()]
   }
   
-  private func setupInfoView() {
-    mapInfoView.setShadowBorder()
-  }
-  
   private func setupAdditionalConstraints() {
     initialHeightConstant = mapInfoViewHeightConstraint.constant
     mapInfoViewHeightConstraint.constant = 0
   }
   
   private func getReunionPoints() {
-    for reunionPoint in (session?.reunionPoints)! {
-      addMarkerWithTitle(SessionMarkerType.ReunionPoint.markerTitle(), color: SessionMarkerType.ReunionPoint.markerColor(), type: SessionMarkerType.ReunionPoint.hashValue, coordinate: reunionPoint.coordinate)
+    for sessionReunionPoint in (session?.reunionPoints)! {
+      let reunionPoint = sessionReunionPoint as! SessionReunionPoint
+      addMarkerWithTitleAndReunionPoint(SessionMarkerType.ReunionPoint.markerTitle(), color: reunionPoint.selected ?  SessionMarkerType.ReunionPoint.markerColor() : SessionMarkerType.DeletedPoint.markerColor(), type: reunionPoint.selected ? SessionMarkerType.ReunionPoint.hashValue : SessionMarkerType.DeletedPoint.hashValue, coordinate: reunionPoint.reunionPoint.coordinate, reunionPoint: reunionPoint)
     }
     setupSessionPoint()
   }
   
   private func setupSessionPoint() {
     addMarkerWithTitle(SessionMarkerType.SessionPoint.markerTitle(), color: SessionMarkerType.SessionPoint.markerColor(), type: SessionMarkerType.SessionPoint.hashValue, coordinate: (session?.coordinate)!)
-    reverseGeocodeCoordinate(sessionLocation)
+    reverseGeocodeCoordinate((session?.coordinate)!)
     showMapInfoView()
   }
   
@@ -142,6 +136,31 @@ class SessionMapViewController: UIViewController, CLLocationManagerDelegate, GMS
       var lines: [String] = address.lines as! [String]
       lines = lines.filter { (line) in line.characters.count != 0 }
       self.mapInfoLabel.text = lines.joinWithSeparator("\n")
+      print("MAPINFOLABEL")
+      print(lines.joinWithSeparator("\n"))
+    })
+    UIView.animateWithDuration(0.25, animations: {
+      self.view.layoutIfNeeded()
+    })
+  }
+  
+  private func reverseGeocodeCoordinateWithNewPoint(coordinate: CLLocationCoordinate2D) {
+    clearMap()
+    let geocoder = GMSGeocoder()
+    targetLocation = coordinate
+    geocoder.reverseGeocodeCoordinate(coordinate, completionHandler: { (response, error) in
+      guard let address = response?.firstResult() else {
+        return
+      }
+      var lines: [String] = address.lines as! [String]
+      lines = lines.filter { (line) in line.characters.count != 0 }
+      self.mapInfoLabel.text = lines.joinWithSeparator("\n")
+      let newReunionPoint = NewReunionPoint()
+      newReunionPoint.latitude = Float(coordinate.latitude)
+      newReunionPoint.longitude = Float(coordinate.longitude)
+      newReunionPoint.address = self.mapInfoLabel.text! as String?
+      self.currentMarker?.addedReunionPoint = newReunionPoint
+      self.newReunionPoints.addObject(newReunionPoint)
     })
     UIView.animateWithDuration(0.25, animations: {
       self.view.layoutIfNeeded()
@@ -150,20 +169,52 @@ class SessionMapViewController: UIViewController, CLLocationManagerDelegate, GMS
   
   private func addMarkerWithTitle(title: String, color: UIColor, type: Int, coordinate: CLLocationCoordinate2D) {
     let marker = CustomMapMarker(position: coordinate)
-    currentMarker = marker
     marker.title = title
-    marker.type = type
     marker.icon = CustomMapMarker.markerImageWithColor(color)
     marker.appearAnimation = kGMSMarkerAnimationPop
     marker.map = mapView
+    
+    marker.wasAdded = false
+    marker.canBeDeleted = false
+    
+    currentMarker = marker
+    mapView.selectedMarker = marker
+  }
+  
+  private func addNewMarkerWithTitle(title: String, color: UIColor, type: Int, coordinate: CLLocationCoordinate2D) {
+    let marker = CustomMapMarker(position: coordinate)
+    marker.title = title
+    marker.icon = CustomMapMarker.markerImageWithColor(color)
+    marker.appearAnimation = kGMSMarkerAnimationPop
+    marker.map = mapView
+    
+    marker.wasAdded = true
+    marker.canBeDeleted = true
+    
+    currentMarker = marker
+    mapView.selectedMarker = marker
+  }
+  
+  private func addMarkerWithTitleAndReunionPoint(title: String, color: UIColor, type: Int, coordinate: CLLocationCoordinate2D, reunionPoint: SessionReunionPoint) {
+    let marker = CustomMapMarker(position: coordinate)
+    marker.title = title
+    marker.icon = CustomMapMarker.markerImageWithColor(color)
+    marker.appearAnimation = kGMSMarkerAnimationPop
+    marker.map = mapView
+    
+    marker.assignedReunionPoint = reunionPoint
+    marker.selected = reunionPoint.selected
+    marker.wasAdded = false
+    marker.canBeDeleted = true
+    
+    currentMarker = marker
     mapView.selectedMarker = marker
   }
   
   private func showMapInfoView() {
     if !canDeleteCurrentMarker() {
       deleteMarkerButton.hidden = true
-    } else {
-      deleteMarkerButton.hidden = false
+      undoDeleteButton.hidden = true
     }
     let viewHeight = initialHeightConstant
     view.layoutIfNeeded()
@@ -173,6 +224,22 @@ class SessionMapViewController: UIViewController, CLLocationManagerDelegate, GMS
       self.mapView.padding = UIEdgeInsets(top: self.topLayoutGuide.length, left: 0,
         bottom: viewHeight!, right: 0)
     })
+  }
+  
+  private func canDeleteCurrentMarker() -> Bool {
+    if currentMarker?.canBeDeleted == false {
+      return false
+    } else if currentMarker?.selected == false {
+      enableUndoButton()
+      return true
+    } else if currentMarker?.selected == true {
+      enableDeleteButton()
+      return true
+    } else if currentMarker?.wasAdded == true {
+      enableDeleteButton()
+      return true
+    }
+    return true
   }
   
   private func hideMapInfoView() {
@@ -185,6 +252,15 @@ class SessionMapViewController: UIViewController, CLLocationManagerDelegate, GMS
     })
   }
   
+  private func drawRoute() {
+    let route = mapTasks.overviewPolyline["points"] as! String
+    let path: GMSPath = GMSPath(fromEncodedPath: route)
+    polyline = GMSPolyline(path: path)
+    polyline!.strokeWidth = 5.0
+    polyline?.strokeColor = UIColor.defaultTextColor()
+    polyline?.map = mapView
+  }
+  
   private func clearMap() {
     polyline?.map = nil
   }
@@ -195,40 +271,21 @@ class SessionMapViewController: UIViewController, CLLocationManagerDelegate, GMS
   }
   
   private func enableUndoButton() {
-    deleteMarkerButton.setBackgroundImage(UIImage(named: ImageAssets.UndoIcon), forState: UIControlState.Normal)
-    deleteMarkerButton.addTarget(self, action: undoDeleteActionSelector, forControlEvents: UIControlEvents.TouchUpInside)
+    undoDeleteButton.hidden = false
+    deleteMarkerButton.hidden = true
   }
   
   private func enableDeleteButton() {
-    deleteMarkerButton.setBackgroundImage(UIImage(named: ImageAssets.DeleteMarkerIcon), forState: UIControlState.Normal)
-    deleteMarkerButton.addTarget(self, action: deleteMarkerSelector, forControlEvents: UIControlEvents.TouchUpInside)
+    undoDeleteButton.hidden = true
+    deleteMarkerButton.hidden = false
   }
   
-  private func canDeleteCurrentMarker() -> Bool {
-    switch currentMarker?.type! {
-    case SessionMarkerType.SessionPoint.hashValue?:
-      return false
-    case SessionMarkerType.DeletedPoint.hashValue?:
-      enableUndoButton()
-      return true
-    default:
-      enableDeleteButton()
-      return true
-    }
-  }
-  
-  private func drawRoute() {
-    let route = mapTasks.overviewPolyline["points"] as! String
-    
-    let path: GMSPath = GMSPath(fromEncodedPath: route)
-    polyline = GMSPolyline(path: path)
-    polyline!.strokeWidth = 5.0
-    polyline?.strokeColor = UIColor.defaultTextColor()
-    polyline?.map = mapView
-  }
-  
-  // MARK: - Actions
-  
+}
+
+// MARK: - Actions
+
+extension SessionMapViewController {
+
   @IBAction func dismissMap(sender: AnyObject) {
     guard isSaved == false else {
       self.dismissViewControllerAnimated(true, completion: nil)
@@ -245,19 +302,35 @@ class SessionMapViewController: UIViewController, CLLocationManagerDelegate, GMS
   }
   
   @IBAction func deleteMarker(sender: AnyObject) {
-    currentMarker!.icon = CustomMapMarker.markerImageWithColor(SessionMarkerType.DeletedPoint.markerColor())
-    currentMarker?.type = SessionMarkerType.DeletedPoint.hashValue
-    enableUndoButton()
-    enableSaveButton()
+    if currentMarker?.wasAdded == true {
+      currentMarker!.map = nil
+      newReunionPoints.removeObject((currentMarker?.addedReunionPoint)!)
+      hideMapInfoView()
+    } else {
+      currentMarker?.assignedReunionPoint?.selected = false
+      dataLayer.saveContext()
+      currentMarker!.icon = CustomMapMarker.markerImageWithColor(SessionMarkerType.DeletedPoint.markerColor())
+      currentMarker?.selected = false
+      enableUndoButton()
+      enableSaveButton()
+    }
   }
   
   @IBAction func undoDeleteAction(sender: AnyObject) {
-    currentMarker!.icon = CustomMapMarker.markerImageWithColor(SessionMarkerType.AddedPoint.markerColor())
-    currentMarker?.type = SessionMarkerType.AddedPoint.hashValue
+    currentMarker?.assignedReunionPoint?.selected = true
+    dataLayer.saveContext()
+    currentMarker!.icon = CustomMapMarker.markerImageWithColor(SessionMarkerType.ReunionPoint.markerColor())
+    currentMarker?.type = SessionMarkerType.ReunionPoint.hashValue
+    currentMarker?.selected = true
     enableDeleteButton()
+    enableSaveButton()
   }
   
   @IBAction func drawRoute(sender: AnyObject) {
+    print(Util.connectedToNetwork())
+    guard Util.connectedToNetwork() == true else {
+      return
+    }
     self.mapTasks.getDirections(currentLocation, destination: targetLocation, waypoints: nil, travelMode: TravelModes.driving, completionHandler: { (status, success) -> Void in
       if success {
         self.drawRoute()
@@ -267,9 +340,20 @@ class SessionMapViewController: UIViewController, CLLocationManagerDelegate, GMS
       }
     })
   }
+ 
+  @IBAction func saveReunionPoints(sender: AnyObject) {
+    isSaved = true
+    updateReunionPoints()
+  }
   
-  // MARK: - CLLocationManagerDelegate
-  
+}
+
+
+
+// MARK: - CLLocationManagerDelegate
+
+extension SessionMapViewController: CLLocationManagerDelegate {
+
   func locationManager(manager: CLLocationManager, didChangeAuthorizationStatus status: CLAuthorizationStatus) {
     guard status == .AuthorizedWhenInUse else {
       return
@@ -288,9 +372,13 @@ class SessionMapViewController: UIViewController, CLLocationManagerDelegate, GMS
     mapView.camera = GMSCameraPosition(target: location.coordinate, zoom: 11, bearing: 0, viewingAngle: 0)
     locationManager.stopUpdatingLocation()
   }
+  
+}
 
   // MARK: - GMSMapViewDelegate
-  
+
+extension SessionMapViewController: GMSMapViewDelegate {
+
   func mapView(mapView: GMSMapView!, didTapMarker marker: GMSMarker!) -> Bool {
     currentMarker = marker as? CustomMapMarker
     mapView.selectedMarker = marker
@@ -306,10 +394,56 @@ class SessionMapViewController: UIViewController, CLLocationManagerDelegate, GMS
   }
   
   func mapView(mapView: GMSMapView!, didLongPressAtCoordinate coordinate: CLLocationCoordinate2D) {
-    addMarkerWithTitle(SessionMarkerType.ReunionPoint.markerTitle(), color: SessionMarkerType.AddedPoint.markerColor(), type: SessionMarkerType.AddedPoint.hashValue, coordinate: coordinate)
+    addNewMarkerWithTitle(SessionMarkerType.ReunionPoint.markerTitle(), color: SessionMarkerType.AddedPoint.markerColor(), type: SessionMarkerType.AddedPoint.hashValue, coordinate: coordinate)
     clearMap()
+    enableSaveButton()
     showMapInfoView()
-    reverseGeocodeCoordinate(coordinate)
+    reverseGeocodeCoordinateWithNewPoint(coordinate)
   }
   
+}
+
+// MARK: - Networking
+
+extension SessionMapViewController {
+  
+  func requestParameters() -> NSDictionary {
+    let dictionary = NSMutableDictionary()
+    dictionary["session_id"] = Int(session!.id)
+    let arrayReunionDictionary = NSMutableArray()
+    for reunionPoint in (session?.reunionPoints)! {
+      let reunionDictionary = NSMutableDictionary()
+      reunionDictionary["id"] = Int((reunionPoint as! SessionReunionPoint).reunionPoint.id)
+      reunionDictionary["latitude"] = reunionPoint.reunionPoint.latitude
+      reunionDictionary["longitude"] = reunionPoint.reunionPoint.longitude
+      reunionDictionary["selected"] = reunionPoint.selected
+      arrayReunionDictionary.addObject(reunionDictionary)
+    }
+    dictionary["meeting_points"] = arrayReunionDictionary
+    let arrayNeWReunionDictionary = NSMutableArray()
+    for newReunionPoint in newReunionPoints {
+      let newReunionDictionary = NSMutableDictionary()
+      newReunionDictionary["address"] = (newReunionPoint as! NewReunionPoint).address
+      newReunionDictionary["latitude"] = (newReunionPoint as! NewReunionPoint).latitude
+      newReunionDictionary["longitude"] = (newReunionPoint as! NewReunionPoint).longitude
+      arrayNeWReunionDictionary.addObject(newReunionDictionary)
+    }
+    dictionary["new_meeting_points"] = arrayNeWReunionDictionary
+    
+    return dictionary
+  }
+  
+  func updateReunionPoints() {
+    SessionService.editReunionPoints(requestParameters(), completion: {(responseObject: AnyObject?, error: NSError?) in
+      guard let json = responseObject as? NSDictionary else {
+        return
+      }
+      if (json[Constants.Api.ErrorKey] == nil) {
+        Session.updateOrCreateReunionPointsWithJson(json, ctx: self.dataLayer.managedObjectContext!)
+        self.dataLayer.saveContext()
+        self.getReunionPoints()
+      }
+    })
+  }
+
 }

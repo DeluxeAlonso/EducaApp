@@ -43,8 +43,7 @@ class ArticlesViewController: BaseViewController {
   // MARK: - Private
   
   private func setupElements() {
-    print("SETUTUT")
-    print(currentUser?.actions.count)
+    print("Actions ids")
     for action in (currentUser?.actions)! {
       print((action as! Action).id)
     }
@@ -173,7 +172,7 @@ extension ArticlesViewController: UITableViewDelegate {
 
 // MARK: - UIScrollViewDelegate
 
-extension PeopleViewController: UIScrollViewDelegate {
+extension ArticlesViewController: UIScrollViewDelegate {
   
   func scrollViewDidEndDecelerating(scrollView: UIScrollView) {
     guard refreshControl.refreshing && !refreshControl.isAnimating else {

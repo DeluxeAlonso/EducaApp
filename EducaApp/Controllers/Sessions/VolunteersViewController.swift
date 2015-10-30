@@ -78,7 +78,6 @@ extension VolunteersViewController: UITableViewDelegate {
       return
     }
     let selectedCell = tableView.cellForRowAtIndexPath(indexPath) as! VolunteerTableViewCell
-    print(volunteers[indexPath.row].assistedToSession(session!, ctx: self.dataLayer.managedObjectContext!))
     volunteers[indexPath.row].assistedToSession(session!, ctx: self.dataLayer.managedObjectContext!) ? checkVolunteer(volunteers[indexPath.row], cell: selectedCell, attended: false) :
       checkVolunteer(volunteers[indexPath.row], cell: selectedCell, attended: true)
   }

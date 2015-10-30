@@ -27,10 +27,15 @@ public class SessionUser: NSManagedObject {
 extension SessionUser: Deserializable {
   
   public func setDataFromJSON(json: NSDictionary) {
-    guard let attended = json[SessionUserAttendedKey] as? Bool else {
+    guard let attended = json[SessionUserAttendedKey] as AnyObject? else {
       return
     }
-    self.attended = attended
+    if attended is Bool {
+      self.attended = attended as! Bool
+    } else if attended is String {
+      self.attended = (attended as! String) == "0" ? false : true
+       print(self.attended)
+    }
   }
   
 }
