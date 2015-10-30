@@ -20,10 +20,8 @@ class MenuController: StaticDataTableViewController {
   override func viewDidLoad() {
     super.viewDidLoad()
     currentUser = User.getAuthenticatedUser(dataLayer.managedObjectContext!)
-    for action in (currentUser?.actions)! {
-      print((action as! Action).id)
-    }
     setupPermissions()
+    
   }
   
   override func didReceiveMemoryWarning() {
@@ -31,8 +29,6 @@ class MenuController: StaticDataTableViewController {
   }
   
   private func setupPermissions() {
-    //self.cell(PostulationCell, setHidden: true)
-    //self.cell(SchoolCell, setHidden: true)
     self.reloadDataAnimated(false)
   }
   

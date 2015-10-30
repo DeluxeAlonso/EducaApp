@@ -747,11 +747,24 @@
                                             <action selector="deleteMarker:" destination="qWl-Sc-bid" eventType="touchUpInside" id="TDp-tx-Qf6"/>
                                         </connections>
                                     </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="E57-hY-zBG" userLabel="Undo Delete Button">
+                                        <rect key="frame" x="472" y="18" width="53" height="53"/>
+                                        <animations/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="53" id="0Wo-tz-Pnz"/>
+                                            <constraint firstAttribute="width" constant="53" id="luE-Co-mFo"/>
+                                        </constraints>
+                                        <state key="normal" backgroundImage="UndoIcon"/>
+                                        <connections>
+                                            <action selector="undoDeleteAction:" destination="qWl-Sc-bid" eventType="touchUpInside" id="o51-6Z-Sl6"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
                                 <animations/>
                                 <color key="backgroundColor" red="0.94117647058823528" green="0.94117647058823528" blue="0.98039215686274506" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstItem="qm7-N8-3mz" firstAttribute="top" secondItem="WuX-5M-PxZ" secondAttribute="top" constant="18" id="3bC-U5-joU"/>
+                                    <constraint firstItem="E57-hY-zBG" firstAttribute="top" secondItem="WuX-5M-PxZ" secondAttribute="top" constant="18" id="M2R-MI-1mM"/>
                                     <constraint firstItem="GTy-VT-m5g" firstAttribute="leading" secondItem="WuX-5M-PxZ" secondAttribute="leading" constant="17" id="Upb-Bv-IUB"/>
                                     <constraint firstItem="qm7-N8-3mz" firstAttribute="leading" secondItem="GTy-VT-m5g" secondAttribute="trailing" constant="15" id="VEV-lT-tcJ"/>
                                     <constraint firstAttribute="trailing" secondItem="AEP-PX-Ba1" secondAttribute="trailing" constant="11" id="Yko-1g-fvi"/>
@@ -760,6 +773,8 @@
                                     <constraint firstItem="GTy-VT-m5g" firstAttribute="top" secondItem="WuX-5M-PxZ" secondAttribute="top" id="aGM-dq-llu"/>
                                     <constraint firstAttribute="bottom" secondItem="AEP-PX-Ba1" secondAttribute="bottom" constant="18" id="bFR-sc-lbZ"/>
                                     <constraint firstItem="AEP-PX-Ba1" firstAttribute="leading" secondItem="qm7-N8-3mz" secondAttribute="trailing" constant="11" id="mtd-M9-FSu"/>
+                                    <constraint firstItem="E57-hY-zBG" firstAttribute="leading" secondItem="GTy-VT-m5g" secondAttribute="trailing" constant="15" id="p5e-sb-vxB"/>
+                                    <constraint firstItem="AEP-PX-Ba1" firstAttribute="leading" secondItem="E57-hY-zBG" secondAttribute="trailing" constant="11" id="wgg-BS-0qX"/>
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Oq1-ek-T9z" userLabel="Search View">
@@ -825,7 +840,11 @@
                                 <action selector="dismissMap:" destination="qWl-Sc-bid" id="xP9-vC-oAg"/>
                             </connections>
                         </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" enabled="NO" title="Guardar" id="aGk-eY-Vbo"/>
+                        <barButtonItem key="rightBarButtonItem" enabled="NO" title="Guardar" id="aGk-eY-Vbo">
+                            <connections>
+                                <action selector="saveReunionPoints:" destination="qWl-Sc-bid" id="4uW-7C-hva"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="deleteMarkerButton" destination="qm7-N8-3mz" id="fhZ-M8-xAp"/>
@@ -836,6 +855,7 @@
                         <outlet property="mapView" destination="gf7-ip-8mr" id="VuA-zS-QC4"/>
                         <outlet property="saveBarButtonItem" destination="aGk-eY-Vbo" id="q6a-uO-rWj"/>
                         <outlet property="searchContainerView" destination="Oq1-ek-T9z" id="XhU-H6-tfZ"/>
+                        <outlet property="undoDeleteButton" destination="E57-hY-zBG" id="EjF-1s-yf1"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hTr-Qm-ecm" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -2477,7 +2497,7 @@ El voluntariado comprende actividades asistenciales de servicios sociales, cívi
                                             <rect key="frame" x="0.0" y="0.0" width="600" height="70.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Cerro El Pino" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QIP-2u-1VU" userLabel="Session Place">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Cerro El Pino" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="QIP-2u-1VU" userLabel="Session Place">
                                                     <rect key="frame" x="18" y="11" width="518" height="25"/>
                                                     <animations/>
                                                     <constraints>
@@ -6457,6 +6477,7 @@ El voluntariado comprende actividades asistenciales de servicios sociales, cívi
         <image name="ShareIcon" width="30" height="30"/>
         <image name="StarFilled" width="30" height="30"/>
         <image name="StarGray" width="30" height="30"/>
+        <image name="UndoIcon" width="30" height="30"/>
         <image name="UnsentCommentIcon" width="30" height="30"/>
         <image name="UserIcon" width="30" height="30"/>
         <image name="VolunteerAssistedIcon" width="30" height="30"/>

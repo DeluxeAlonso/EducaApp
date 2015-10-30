@@ -108,6 +108,7 @@
 		E2F2D82C1BC7710E005DDEA2 /* DepositPaymentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2F2D82B1BC7710E005DDEA2 /* DepositPaymentViewController.swift */; };
 		E2F2D8301BC77E08005DDEA2 /* PostAuthorDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2F2D82F1BC77E08005DDEA2 /* PostAuthorDetailViewController.swift */; };
 		E2F457111BE1DC4D00941231 /* StaticDataTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E2F457101BE1DC4D00941231 /* StaticDataTableViewController.m */; };
+		E2F457131BE1ED5B00941231 /* SessionReunionPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2F457121BE1ED5B00941231 /* SessionReunionPoint.swift */; };
 		E2F462BD1BD895C600339271 /* SessionService.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2F462BC1BD895C600339271 /* SessionService.swift */; };
 		E2F598D41BB29E4E00C0206E /* SessionComment.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2F598D31BB29E4E00C0206E /* SessionComment.swift */; };
 		E2F9C83D1BCF292800DBE7B9 /* CalendarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2F9C83C1BCF292800DBE7B9 /* CalendarViewController.swift */; };
@@ -280,6 +281,7 @@
 		E2F2D82F1BC77E08005DDEA2 /* PostAuthorDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PostAuthorDetailViewController.swift; path = Controllers/Blog/PostAuthorDetailViewController.swift; sourceTree = "<group>"; };
 		E2F4570F1BE1DC4D00941231 /* StaticDataTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = StaticDataTableViewController.h; path = Vendors/StaticDataTableViewController.h; sourceTree = "<group>"; };
 		E2F457101BE1DC4D00941231 /* StaticDataTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = StaticDataTableViewController.m; path = Vendors/StaticDataTableViewController.m; sourceTree = "<group>"; };
+		E2F457121BE1ED5B00941231 /* SessionReunionPoint.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SessionReunionPoint.swift; path = Models/SessionReunionPoint.swift; sourceTree = "<group>"; };
 		E2F462BC1BD895C600339271 /* SessionService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SessionService.swift; path = Networking/SessionService.swift; sourceTree = "<group>"; };
 		E2F598D31BB29E4E00C0206E /* SessionComment.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SessionComment.swift; path = Models/SessionComment.swift; sourceTree = "<group>"; };
 		E2F9C83C1BCF292800DBE7B9 /* CalendarViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CalendarViewController.swift; path = Controllers/Sessions/CalendarViewController.swift; sourceTree = "<group>"; };
@@ -616,6 +618,7 @@
 				E29F29151BDF5C49000D174B /* School.swift */,
 				E2EEF3611BE038CF003A83B0 /* ReunionPoint.swift */,
 				E2EEF3631BE0392C003A83B0 /* Action.swift */,
+				E2F457121BE1ED5B00941231 /* SessionReunionPoint.swift */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -1010,6 +1013,7 @@
 				E2F21EAF1BC63FD500CD474E /* CustomMapMarker.swift in Sources */,
 				E2F9C8A21BCF47E000DBE7B9 /* CVCalendarWeekContentViewController.swift in Sources */,
 				E2E990DB1BD75477006064FD /* Session.swift in Sources */,
+				E2F457131BE1ED5B00941231 /* SessionReunionPoint.swift in Sources */,
 				E2FBE7421BE013D100DC7457 /* StudentService.swift in Sources */,
 				E2FA6F7B1BDDA06A000DA2E5 /* Profile.swift in Sources */,
 				E2ED7EEF1BC651E9001A7C29 /* ArticleMapViewController.swift in Sources */,
