@@ -123,10 +123,6 @@ class SignInViewController: UIViewController {
     let user = User.updateOrCreateWithJson(json, ctx: self.dataLayer.managedObjectContext!)
     self.dataLayer.saveContext()
     User.setAuthenticatedUser(user!)
-    let actionsArray: NSArray = (User.getAuthenticatedUser(self.dataLayer.managedObjectContext!)?.actions.allObjects)! as NSArray
-    //let actionsIds = actionsArray.map{(action) in return Int((action as! Action).id)} as! NSMutableArray
-    //NSUserDefaults.standardUserDefaults().setObject(actionsIds as NSMutableArray, forKey: "actions")
-    NSUserDefaults.standardUserDefaults().synchronize()
     NSNotificationCenter.defaultCenter().postNotificationName(Constants.Notification.SignIn, object: self, userInfo: nil)
   }
   
@@ -137,6 +133,7 @@ class SignInViewController: UIViewController {
     UserService.recoverPassword(email, completion: {(responseObject: AnyObject?, error: NSError?) in
       self.enableSignInButton()
       guard let json = responseObject as? NSDictionary else {
+        self.recoverPasswordPopUp?.dismiss()
         self.showAlertWithTitle(self.AlertMessageTitle, message: self.RequestErrorMessage, buttonTitle: self.AlertButtonTitle)
         return
       }
@@ -149,6 +146,7 @@ class SignInViewController: UIViewController {
         alertController.addAction(defaultAction)
         self.presentViewController(alertController, animated: true, completion: nil)
       } else {
+        self.recoverPasswordPopUp?.dismiss()
         self.showAlertWithTitle(self.RecoverPasswordErrorAlertTitle, message: json[Constants.Api.ErrorKey] as! String, buttonTitle: self.RecoverPasswordErrorAlertButton)
       }
     })

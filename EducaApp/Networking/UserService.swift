@@ -44,7 +44,7 @@ class UserService {
     let serializer = AFHTTPRequestSerializer()
     manager.requestSerializer = serializer
     let parameters = ["email": email]
-    manager.POST(UrlBuilder.UrlForPath(RecoverPasswordPath), parameters: parameters, success: { (operation: AFHTTPRequestOperation, responseObject: AnyObject?) in
+    manager.PUT(UrlBuilder.UrlForPath(RecoverPasswordPath), parameters: parameters, success: { (operation: AFHTTPRequestOperation, responseObject: AnyObject?) in
       completion(responseObject: responseObject! as? NSObject, error: nil)
       }, failure: {( operation: AFHTTPRequestOperation, error: NSError) in
         completion(responseObject: nil, error: error)

@@ -131,7 +131,9 @@ class SchoolsMapViewController: UIViewController, CLLocationManagerDelegate, GMS
       addMarkerWithTitle(school.name, color: SchoolMarkerType.SchoolPoint.markerColor(), type: SchoolMarkerType.SchoolPoint.hashValue, coordinate: school.coordinate)
     }
     for volunteer in volunteers {
-      addMarkerWithTitle(volunteer.fullName, color: SchoolMarkerType.VolunteerPoint.markerColor(), type: SchoolMarkerType.VolunteerPoint.hashValue, coordinate: volunteer.coordinate)
+      if volunteer.coordinate.latitude != 0.0 || volunteer.coordinate.longitude != 0.0 {
+        addMarkerWithTitle(volunteer.fullName, color: SchoolMarkerType.VolunteerPoint.markerColor(), type: SchoolMarkerType.VolunteerPoint.hashValue, coordinate: volunteer.coordinate)
+      }
     }
   }
   

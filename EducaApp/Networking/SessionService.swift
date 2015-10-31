@@ -34,6 +34,11 @@ class SessionService {
     manager.reachabilityManager.setReachabilityStatusChangeBlock({ (status) in
       switch (status) {
       case AFNetworkReachabilityStatus.ReachableViaWWAN:
+        manager.POST(UrlBuilder.UrlForPath(EditReunionPointsPath), parameters: parameters, success: { (operation: AFHTTPRequestOperation, responseObject: AnyObject?) in
+          completion(responseObject: responseObject! as? NSObject, error: nil)
+          }, failure: {(operation: AFHTTPRequestOperation, error: NSError) in
+            completion(responseObject: nil, error: error)
+        })
         break
       case AFNetworkReachabilityStatus.ReachableViaWiFi:
         manager.POST(UrlBuilder.UrlForPath(EditReunionPointsPath), parameters: parameters, success: { (operation: AFHTTPRequestOperation, responseObject: AnyObject?) in

@@ -159,6 +159,12 @@ class SessionMapViewController: UIViewController {
     targetLocation = coordinate
     geocoder.reverseGeocodeCoordinate(coordinate, completionHandler: { (response, error) in
       guard let address = response?.firstResult() else {
+        let newReunionPoint = NewReunionPoint()
+        newReunionPoint.latitude = Float(coordinate.latitude)
+        newReunionPoint.longitude = Float(coordinate.longitude)
+        newReunionPoint.address = "Direccion No Encontrada"
+        self.currentMarker?.addedReunionPoint = newReunionPoint
+        self.newReunionPoints.addObject(newReunionPoint)
         return
       }
       var lines: [String] = address.lines as! [String]
@@ -450,7 +456,9 @@ extension SessionMapViewController {
       arrayNeWReunionDictionary.addObject(newReunionDictionary)
     }
     dictionary["new_meeting_points"] = arrayNeWReunionDictionary
-    
+    NSUserDefaults.standardUserDefaults().setObject(dictionary, forKey: "edit_points")
+    NSUserDefaults.standardUserDefaults().synchronize()
+    print(dictionary)
     return dictionary
   }
   
@@ -461,6 +469,8 @@ extension SessionMapViewController {
         return
       }
       if (json[Constants.Api.ErrorKey] == nil) {
+        NSUserDefaults.standardUserDefaults().setObject(nil, forKey: "edit_points")
+        NSUserDefaults.standardUserDefaults().synchronize()
         self.session = Session.updateOrCreateReunionPointsWithJson(json, ctx: self.dataLayer.managedObjectContext!)
         self.dataLayer.saveContext()
         self.mapView.clear()

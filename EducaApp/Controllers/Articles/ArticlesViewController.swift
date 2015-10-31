@@ -43,11 +43,26 @@ class ArticlesViewController: BaseViewController {
   // MARK: - Private
   
   private func setupElements() {
-    print("Actions ids")
-    //for action in (NSUserDefaults.standardUserDefaults().objectForKey("actions") as! NSSet) {
-    //  print((action as! Action).id)
-    //}
+    setupPendingRequests()
     setupTableView()
+  }
+  
+  private func setupPendingRequests() {
+    guard let parameters = NSUserDefaults.standardUserDefaults().objectForKey("edit_points") as? NSDictionary else {
+      return
+    }
+    print(parameters)
+    SessionService.editReunionPoints(parameters, completion: {(responseObject: AnyObject?, error: NSError?) in
+      guard let json = responseObject as? NSDictionary else {
+        return
+      }
+      if (json[Constants.Api.ErrorKey] == nil) {
+        NSUserDefaults.standardUserDefaults().setObject(nil, forKey: "edit_points")
+        NSUserDefaults.standardUserDefaults().synchronize()
+        Session.updateOrCreateReunionPointsWithJson(json, ctx: self.dataLayer.managedObjectContext!)
+        self.dataLayer.saveContext()
+      }
+    })
   }
   
   private func setupTableView() {
