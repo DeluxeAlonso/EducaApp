@@ -8,11 +8,21 @@
 
 import UIKit
 
+protocol AuthorContentTableViewCellDelegate {
+  
+  func authorContentTableViewCell(authorContentTableViewCell: AuthorContentTableViewCell, textFieldDidChange textField: UITextField, text: String, indexPath: NSIndexPath)
+  
+}
+
 class AuthorContentTableViewCell: UITableViewCell {
   
   @IBOutlet weak var fieldNameLabel: UILabel!
-
   @IBOutlet weak var filterTextField: UITextField!
+  
+  let textDidChangeSeletor: Selector = "textDidChange:"
+  
+  var indexPath: NSIndexPath?
+  var delegate: AuthorContentTableViewCellDelegate?
   
   // MARK - Lifecycle
   
@@ -23,20 +33,24 @@ class AuthorContentTableViewCell: UITableViewCell {
   
   override func setSelected(selected: Bool, animated: Bool) {
     super.setSelected(selected, animated: animated)
-    
-    // Configure the view for the selected state
   }
   
   // MARK: - Private
   
   private func setupElements() {
+    filterTextField.addTarget(self, action: textDidChangeSeletor, forControlEvents: UIControlEvents.EditingChanged)
     filterTextField.layer.borderColor = UIColor.defaultFilterBorderField().CGColor
   }
   
   // MARK: - Public
   
-  func setupNameFieldLabel(string: String) {
+  func setupNameFieldLabel(string: String, indexPath: NSIndexPath) {
     fieldNameLabel.text = string
+    self.indexPath = indexPath
+  }
+  
+  @IBAction func textDidChange(sender: AnyObject) {
+    delegate?.authorContentTableViewCell(self, textFieldDidChange: filterTextField, text: filterTextField.text!, indexPath: indexPath!)
   }
   
 }

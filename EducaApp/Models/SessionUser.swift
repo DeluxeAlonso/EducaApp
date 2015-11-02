@@ -27,10 +27,14 @@ public class SessionUser: NSManagedObject {
 extension SessionUser: Deserializable {
   
   public func setDataFromJSON(json: NSDictionary) {
-    guard let attended = json[SessionUserAttendedKey] as? Bool else {
+    guard let attended = json[SessionUserAttendedKey] as AnyObject? else {
       return
     }
-    self.attended = attended
+    if attended is Bool {
+      self.attended = attended as! Bool
+    } else if attended is String {
+      self.attended = (attended as! String) == "0" ? false : true
+    }
   }
   
 }
@@ -49,7 +53,6 @@ extension SessionUser {
       if let userJson = json["volunteer"] as? NSDictionary, id = userJson["id"] as AnyObject? {
         let sessionUserId = id is Int ? id as! Int : Int(id as! String)!
         let user :User = User.updateOrCreateWithJson(userJson, ctx: ctx)!
-        print(user.description)
         usersByUserId[sessionUserId] = user
         jsonBysessionUserId[sessionUserId] = json
         jsonByUserId[sessionUserId] = userJson

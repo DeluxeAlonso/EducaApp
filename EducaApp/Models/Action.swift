@@ -39,7 +39,6 @@ extension Action {
   public class func syncJsonArrayWithUser(user:User, arr: Array<NSDictionary>, ctx: NSManagedObjectContext) {
     let userActions = NSMutableArray()
     for json in arr {
-      print(json)
       userActions.addObject(updateOrCreateWithJson(json, ctx: ctx)!)
     }
     user.actions = NSSet(array: userActions as [AnyObject])

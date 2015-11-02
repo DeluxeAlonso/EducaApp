@@ -77,13 +77,16 @@ class SessionsViewController: BaseViewController {
       guard let json = responseObject as? Array<NSDictionary> else {
         return
       }
+      guard json.count > 0 else {
+        self.customLoader.stopActivity()
+        self.tableView.hidden = false
+        return
+      }
       if (json[0][Constants.Api.ErrorKey] == nil) {
         let syncedSessions = Session.syncWithJsonArray(json , ctx: self.dataLayer.managedObjectContext!)
         self.sessions = syncedSessions
         self.dataLayer.saveContext()
         self.reloadData()
-      } else {
-        //Show Error Message
       }
     })
   }
@@ -197,7 +200,6 @@ extension SessionsViewController: UITableViewDataSource {
     let cell = tableView.dequeueReusableCellWithIdentifier(SessionsCellIdentifier, forIndexPath: indexPath) as! SessionTableViewCell
     cell.delegate = self
     cell.indexPath = indexPath
-    print(sessions[indexPath.row].volunteers)
     cell.setupSession(sessions[indexPath.row])
     return cell
   }
@@ -209,6 +211,8 @@ extension SessionsViewController: UITableViewDataSource {
 extension SessionsViewController: UITableViewDelegate {
   
   func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+    selectedSession = sessions[indexPath.row]
+    showMenuView()
     tableView.deselectRowAtIndexPath(indexPath, animated: true)
   }
   

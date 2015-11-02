@@ -79,7 +79,11 @@ extension User: Deserializable {
   }
   
   func canListAssistantsComments() -> Bool {
-    return true
+    return self.hasPermissionWithId(35)
+  }
+  
+  func canEditReunionPoints() -> Bool {
+    return self.hasPermissionWithId(13)
   }
   
   func hasPermissionWithId(id: Int) -> Bool {
@@ -138,6 +142,18 @@ extension User {
       User.updateOrCreateWithJson(jsonById[Int(user.id)]!,ctx: ctx)
     }
     
+    // Delete old items
+    let deleteIds = NSMutableSet(array: persistedIds)
+    deleteIds.minusSet(NSSet(array: ids) as Set<NSObject>)
+    let deleteUsers = deleteIds.allObjects.map({ (id: AnyObject) -> User in
+      return persistedUserById[id as! Int]!
+    })
+    for user in deleteUsers {
+      if user.id != getAuthenticatedUser(ctx)?.id {
+        ctx.deleteObject(user)
+      }
+    }
+    
     return User.getAllUsers(ctx)
   }
   
@@ -159,8 +175,8 @@ extension User {
     if let profiles = json[UserProfilesKey] as? Array<NSDictionary> {
       Profile.syncJsonArrayWithUser(user!,arr: profiles, ctx: ctx)
     }
-    if let actions = json[UserActionsKey] as? Array<NSDictionary> {
-      if User.isSignedIn() == false {
+    if User.isSignedIn() == false {
+      if let actions = json[UserActionsKey] as? Array<NSDictionary> {
         Action.syncJsonArrayWithUser(user!, arr: actions, ctx: ctx)
       }
     }
@@ -188,10 +204,28 @@ extension User {
     return nil
   }
   
+  class func searchByName(searchText: String, ctx: NSManagedObjectContext) -> Array<User> {
+    let fetchRequest = NSFetchRequest()
+    fetchRequest.entity = NSEntityDescription.entityForName(UserEntityName, inManagedObjectContext: ctx)
+    fetchRequest.predicate = NSPredicate(format: "firstName contains[cd] %@ OR lastName contains[cd] %@", searchText, searchText)
+    let sortDescriptor = NSSortDescriptor(key: "firstName", ascending: true)
+    fetchRequest.sortDescriptors = [sortDescriptor]
+    let users = try! ctx.executeFetchRequest(fetchRequest) as? Array<User>
+    
+    return users ?? Array<User>()
+  }
+  
+}
+
+// MARK: - Authentication
+
+extension User {
+  
   class func getAuthenticatedUser(ctx: NSManagedObjectContext) -> User? {
     let defaults = NSUserDefaults.standardUserDefaults()
     if let id = defaults.integerForKey("authenticatedUserId") as Int? {
-      return User.getUserById(Int32(id), ctx: ctx)
+      let user = User.getUserById(Int32(id), ctx: ctx)
+      return user
     }
     return nil
   }

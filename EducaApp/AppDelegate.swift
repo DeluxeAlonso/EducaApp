@@ -9,6 +9,9 @@
 import UIKit
 import CoreData
 
+let GoogleMapsApiKey = "AIzaSyCw4hGJhT6FyPKlwjbz3kSsymp9be0iqBI"
+let GooglePlacesApiKey =  "AIzaSyAE2GOOBEjJA3p_S5Thh8P-0DJF7Y5F1Ww"
+
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
   
@@ -16,8 +19,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
   var storyboard: UIStoryboard?
   
   lazy var dataLayer = DataLayer()
-  
-  let GoogleMapsApiKey = "AIzaSyCw4hGJhT6FyPKlwjbz3kSsymp9be0iqBI"
   
   deinit {
     NSNotificationCenter.defaultCenter().removeObserver(self, name: Constants.Notification.SignIn, object: nil);

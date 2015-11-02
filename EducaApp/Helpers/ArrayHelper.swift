@@ -15,5 +15,5 @@ extension Array {
       doThis(element: e)
     }
   }
-  
+
 }

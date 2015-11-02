@@ -33,7 +33,6 @@
 		E29F29161BDF5C49000D174B /* School.swift in Sources */ = {isa = PBXBuildFile; fileRef = E29F29151BDF5C49000D174B /* School.swift */; };
 		E2A41DDD1BC1A965003C00E9 /* SessionMapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2A41DDC1BC1A965003C00E9 /* SessionMapViewController.swift */; };
 		E2B2A76C1BAF65DF00691884 /* SessionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2B2A76B1BAF65DF00691884 /* SessionTableViewCell.swift */; };
-		E2CD93FF1BBD22BD00A2F357 /* StudentsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2CD93FE1BBD22BD00A2F357 /* StudentsViewController.swift */; };
 		E2CD94011BBD2A3000A2F357 /* UsersFilterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2CD94001BBD2A3000A2F357 /* UsersFilterViewController.swift */; };
 		E2CF33BE1B9D3F2C00B8BE40 /* UrlBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2CF33BD1B9D3F2C00B8BE40 /* UrlBuilder.swift */; };
 		E2CF33C01B9D4D1800B8BE40 /* DictionaryHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2CF33BF1B9D4D1800B8BE40 /* DictionaryHelper.swift */; };
@@ -108,6 +107,7 @@
 		E2F2D82C1BC7710E005DDEA2 /* DepositPaymentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2F2D82B1BC7710E005DDEA2 /* DepositPaymentViewController.swift */; };
 		E2F2D8301BC77E08005DDEA2 /* PostAuthorDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2F2D82F1BC77E08005DDEA2 /* PostAuthorDetailViewController.swift */; };
 		E2F457111BE1DC4D00941231 /* StaticDataTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E2F457101BE1DC4D00941231 /* StaticDataTableViewController.m */; };
+		E2F457131BE1ED5B00941231 /* SessionReunionPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2F457121BE1ED5B00941231 /* SessionReunionPoint.swift */; };
 		E2F462BD1BD895C600339271 /* SessionService.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2F462BC1BD895C600339271 /* SessionService.swift */; };
 		E2F598D41BB29E4E00C0206E /* SessionComment.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2F598D31BB29E4E00C0206E /* SessionComment.swift */; };
 		E2F9C83D1BCF292800DBE7B9 /* CalendarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2F9C83C1BCF292800DBE7B9 /* CalendarViewController.swift */; };
@@ -140,6 +140,8 @@
 		E2F9C8AB1BCF47E000DBE7B9 /* CVWeekdaySymbolType.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2F9C8901BCF47E000DBE7B9 /* CVWeekdaySymbolType.swift */; };
 		E2FA6F7B1BDDA06A000DA2E5 /* Profile.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2FA6F771BDDA06A000DA2E5 /* Profile.swift */; };
 		E2FA6F851BDE0160000DA2E5 /* SessionUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2FA6F831BDE0160000DA2E5 /* SessionUser.swift */; };
+		E2FBC50F1BE484FA0051715F /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2FBC50E1BE484FA0051715F /* NetworkManager.swift */; };
+		E2FBC5111BE4A9090051715F /* GooglePlacesSearchController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2FBC5101BE4A9090051715F /* GooglePlacesSearchController.swift */; };
 		E2FBE7401BDFDEA600DC7457 /* SessionStudent.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2FBE73F1BDFDEA600DC7457 /* SessionStudent.swift */; };
 		E2FBE7421BE013D100DC7457 /* StudentService.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2FBE7411BE013D100DC7457 /* StudentService.swift */; };
 		E2FE3F481B9632DC006EEA91 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2FE3F471B9632DC006EEA91 /* AppDelegate.swift */; };
@@ -203,7 +205,6 @@
 		E29F29151BDF5C49000D174B /* School.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = School.swift; path = Models/School.swift; sourceTree = "<group>"; };
 		E2A41DDC1BC1A965003C00E9 /* SessionMapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SessionMapViewController.swift; path = Controllers/Sessions/SessionMapViewController.swift; sourceTree = "<group>"; };
 		E2B2A76B1BAF65DF00691884 /* SessionTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SessionTableViewCell.swift; path = Views/Cells/SessionTableViewCell.swift; sourceTree = "<group>"; };
-		E2CD93FE1BBD22BD00A2F357 /* StudentsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = StudentsViewController.swift; path = Controllers/Students/StudentsViewController.swift; sourceTree = "<group>"; };
 		E2CD94001BBD2A3000A2F357 /* UsersFilterViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UsersFilterViewController.swift; path = Controllers/Filters/UsersFilterViewController.swift; sourceTree = "<group>"; };
 		E2CF33BD1B9D3F2C00B8BE40 /* UrlBuilder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UrlBuilder.swift; path = Networking/UrlBuilder.swift; sourceTree = "<group>"; };
 		E2CF33BF1B9D4D1800B8BE40 /* DictionaryHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DictionaryHelper.swift; path = Helpers/DictionaryHelper.swift; sourceTree = "<group>"; };
@@ -280,6 +281,7 @@
 		E2F2D82F1BC77E08005DDEA2 /* PostAuthorDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PostAuthorDetailViewController.swift; path = Controllers/Blog/PostAuthorDetailViewController.swift; sourceTree = "<group>"; };
 		E2F4570F1BE1DC4D00941231 /* StaticDataTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = StaticDataTableViewController.h; path = Vendors/StaticDataTableViewController.h; sourceTree = "<group>"; };
 		E2F457101BE1DC4D00941231 /* StaticDataTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = StaticDataTableViewController.m; path = Vendors/StaticDataTableViewController.m; sourceTree = "<group>"; };
+		E2F457121BE1ED5B00941231 /* SessionReunionPoint.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SessionReunionPoint.swift; path = Models/SessionReunionPoint.swift; sourceTree = "<group>"; };
 		E2F462BC1BD895C600339271 /* SessionService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SessionService.swift; path = Networking/SessionService.swift; sourceTree = "<group>"; };
 		E2F598D31BB29E4E00C0206E /* SessionComment.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SessionComment.swift; path = Models/SessionComment.swift; sourceTree = "<group>"; };
 		E2F9C83C1BCF292800DBE7B9 /* CalendarViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CalendarViewController.swift; path = Controllers/Sessions/CalendarViewController.swift; sourceTree = "<group>"; };
@@ -312,6 +314,8 @@
 		E2F9C8901BCF47E000DBE7B9 /* CVWeekdaySymbolType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CVWeekdaySymbolType.swift; sourceTree = "<group>"; };
 		E2FA6F771BDDA06A000DA2E5 /* Profile.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Profile.swift; path = Models/Profile.swift; sourceTree = "<group>"; };
 		E2FA6F831BDE0160000DA2E5 /* SessionUser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SessionUser.swift; path = Models/SessionUser.swift; sourceTree = "<group>"; };
+		E2FBC50E1BE484FA0051715F /* NetworkManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NetworkManager.swift; path = Networking/NetworkManager.swift; sourceTree = "<group>"; };
+		E2FBC5101BE4A9090051715F /* GooglePlacesSearchController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = GooglePlacesSearchController.swift; path = Controllers/Sessions/GooglePlacesSearchController.swift; sourceTree = "<group>"; };
 		E2FBE73F1BDFDEA600DC7457 /* SessionStudent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SessionStudent.swift; path = Models/SessionStudent.swift; sourceTree = "<group>"; };
 		E2FBE7411BE013D100DC7457 /* StudentService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = StudentService.swift; path = Networking/StudentService.swift; sourceTree = "<group>"; };
 		E2FE3F421B9632DC006EEA91 /* EducaApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = EducaApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -372,14 +376,6 @@
 			name = Documents;
 			sourceTree = "<group>";
 		};
-		E2CD93FD1BBD22AD00A2F357 /* Students */ = {
-			isa = PBXGroup;
-			children = (
-				E2CD93FE1BBD22BD00A2F357 /* StudentsViewController.swift */,
-			);
-			name = Students;
-			sourceTree = "<group>";
-		};
 		E2CF33BA1B9D2C5C00B8BE40 /* Networking */ = {
 			isa = PBXGroup;
 			children = (
@@ -389,6 +385,7 @@
 				E2F462BC1BD895C600339271 /* SessionService.swift */,
 				E29F29131BDF59B2000D174B /* SchoolService.swift */,
 				E2FBE7411BE013D100DC7457 /* StudentService.swift */,
+				E2FBC50E1BE484FA0051715F /* NetworkManager.swift */,
 			);
 			name = Networking;
 			sourceTree = "<group>";
@@ -486,6 +483,7 @@
 				E2E2A1F21BB6863F00B1CBB3 /* ShowAssistantCommentViewController.swift */,
 				E2DA52E21BB8E5FB00CB3793 /* SendAssistantCommentViewController.swift */,
 				E2A41DDC1BC1A965003C00E9 /* SessionMapViewController.swift */,
+				E2FBC5101BE4A9090051715F /* GooglePlacesSearchController.swift */,
 				E2F2D8241BC70308005DDEA2 /* RateVolunteerViewController.swift */,
 				E2F9C83C1BCF292800DBE7B9 /* CalendarViewController.swift */,
 			);
@@ -495,19 +493,19 @@
 		E2E09BA61BA92D1F00C9A109 /* Cells */ = {
 			isa = PBXGroup;
 			children = (
-				E2DDF9181BBC8F7F00000555 /* Filters */,
-				E246CE7E1BD1BE9D006A194D /* SessionCommentTableViewCell.swift */,
-				E2E09BA71BA92D6800C9A109 /* SettingsTableViewCell.swift */,
 				E2DD53C01BABCB170034B31C /* ArticleTableViewCell.swift */,
-				E2B2A76B1BAF65DF00691884 /* SessionTableViewCell.swift */,
-				E2DD0A7A1BB148B60038A358 /* VolunteerTableViewCell.swift */,
 				E2E316AB1BB1C87A000D8DC7 /* AssistantTableViewCell.swift */,
 				E2DDD13D1BB3ABE20085D795 /* DocumentTableViewCell.swift */,
-				E2DF0F531BBCFB6C00F1D1D0 /* PostulationTableViewCell.swift */,
-				E2E4F80E1BBE3D4B00224059 /* UserTableViewCell.swift */,
-				E2E4F8101BBE3D8600224059 /* PostTableViewCell.swift */,
-				E2E4F8121BBE3D9300224059 /* StudentTableViewCell.swift */,
 				E253E3C31BCDDB34006A284F /* NotificationControlTableViewCell.swift */,
+				E2E4F8101BBE3D8600224059 /* PostTableViewCell.swift */,
+				E2DF0F531BBCFB6C00F1D1D0 /* PostulationTableViewCell.swift */,
+				E246CE7E1BD1BE9D006A194D /* SessionCommentTableViewCell.swift */,
+				E2E09BA71BA92D6800C9A109 /* SettingsTableViewCell.swift */,
+				E2B2A76B1BAF65DF00691884 /* SessionTableViewCell.swift */,
+				E2E4F8121BBE3D9300224059 /* StudentTableViewCell.swift */,
+				E2E4F80E1BBE3D4B00224059 /* UserTableViewCell.swift */,
+				E2DD0A7A1BB148B60038A358 /* VolunteerTableViewCell.swift */,
+				E2DDF9181BBC8F7F00000555 /* Filters */,
 			);
 			name = Cells;
 			sourceTree = "<group>";
@@ -616,6 +614,7 @@
 				E29F29151BDF5C49000D174B /* School.swift */,
 				E2EEF3611BE038CF003A83B0 /* ReunionPoint.swift */,
 				E2EEF3631BE0392C003A83B0 /* Action.swift */,
+				E2F457121BE1ED5B00941231 /* SessionReunionPoint.swift */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -786,7 +785,6 @@
 				E2ED7EF01BC665FC001A7C29 /* Schools */,
 				E2E081091BAF28910014803B /* Sessions */,
 				E2E13ABB1BA6B8B6004C6E45 /* Sidebar */,
-				E2CD93FD1BBD22AD00A2F357 /* Students */,
 				E2DF0F4A1BBCF8F200F1D1D0 /* Users */,
 				E2E0CCB71BB9FD5000067144 /* CameraViewController.swift */,
 			);
@@ -823,7 +821,6 @@
 				E2FE3F401B9632DC006EEA91 /* Resources */,
 				064E8DAAC286032CAB72D9D0 /* Copy Pods Resources */,
 				E2DDE34D1BA621A100C96CE5 /* Embed Frameworks */,
-				F48BA884953D25F36EB90201 /* Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -947,21 +944,6 @@
 			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
-		F48BA884953D25F36EB90201 /* Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "Embed Pods Frameworks";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -969,6 +951,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E2FBC5111BE4A9090051715F /* GooglePlacesSearchController.swift in Sources */,
 				E2F9C8A41BCF47E000DBE7B9 /* CVCalendarWeekView.swift in Sources */,
 				E2DD3F0D1BAE325500DF40C2 /* CustomRefreshControlView.swift in Sources */,
 				E2CF33C21B9D5EF100B8BE40 /* UserService.swift in Sources */,
@@ -1026,6 +1009,7 @@
 				E2F21EAF1BC63FD500CD474E /* CustomMapMarker.swift in Sources */,
 				E2F9C8A21BCF47E000DBE7B9 /* CVCalendarWeekContentViewController.swift in Sources */,
 				E2E990DB1BD75477006064FD /* Session.swift in Sources */,
+				E2F457131BE1ED5B00941231 /* SessionReunionPoint.swift in Sources */,
 				E2FBE7421BE013D100DC7457 /* StudentService.swift in Sources */,
 				E2FA6F7B1BDDA06A000DA2E5 /* Profile.swift in Sources */,
 				E2ED7EEF1BC651E9001A7C29 /* ArticleMapViewController.swift in Sources */,
@@ -1085,6 +1069,7 @@
 				E2E13AB91BA6AFF0004C6E45 /* CustomIndicatorStyle.swift in Sources */,
 				E246CE761BD1BDF4006A194D /* CollapseSectionHeaderView.swift in Sources */,
 				E2EEF3621BE038CF003A83B0 /* ReunionPoint.swift in Sources */,
+				E2FBC50F1BE484FA0051715F /* NetworkManager.swift in Sources */,
 				E2F2D82A1BC7246B005DDEA2 /* PaymentsViewController.swift in Sources */,
 				E2A41DDD1BC1A965003C00E9 /* SessionMapViewController.swift in Sources */,
 				E2F9C8A61BCF47E000DBE7B9 /* CVRange.swift in Sources */,
@@ -1094,7 +1079,6 @@
 				E2DDF91A1BBC8FB900000555 /* DateFilterTableViewCell.swift in Sources */,
 				E2F9C8971BCF47E000DBE7B9 /* CVCalendarMenuViewDelegate.swift in Sources */,
 				E29F29161BDF5C49000D174B /* School.swift in Sources */,
-				E2CD93FF1BBD22BD00A2F357 /* StudentsViewController.swift in Sources */,
 				E2F9C89C1BCF47E000DBE7B9 /* CVCalendarViewAnimator.swift in Sources */,
 				E2F9C8A01BCF47E000DBE7B9 /* CVCalendarViewDelegate.swift in Sources */,
 				E2F462BD1BD895C600339271 /* SessionService.swift in Sources */,

@@ -120,6 +120,17 @@ extension UsersViewController: UITableViewDataSource {
   
 }
 
+// MARK: - UsersFilterViewControllerDelegate
+
+extension UsersViewController: UsersFilterViewControllerDelegate {
+  
+  func usersFilterViewController(usersFilterViewController: UsersFilterViewController, searchedName name: String, searchedDocNumber: String, profile: String) {
+    print(name)
+    print(searchedDocNumber)
+  }
+  
+}
+
 // MARK: - UIPopoverPresentationControllerDelegate
 
 extension UsersViewController: UIPopoverPresentationControllerDelegate {

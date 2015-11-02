@@ -23,7 +23,7 @@ class UserTableViewCell: UITableViewCell {
   }
   
   func setupUser(user: User) {
-    nameLabel.text = user.firstName
+    nameLabel.text = user.fullName
     var profiles = ""
     for profile in user.profiles {
       profiles += "\((profile as! Profile).name!) - "

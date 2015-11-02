@@ -90,6 +90,16 @@ extension School {
       School.updateOrCreateWithJson(jsonById[Int(school.id)]!,ctx: ctx)
     }
     
+    // Delete old items
+    let deleteIds = NSMutableSet(array: persistedIds)
+    deleteIds.minusSet(NSSet(array: ids) as Set<NSObject>)
+    let deleteSchools = deleteIds.allObjects.map({ (id: AnyObject) -> School in
+      return persistedSchoolById[id as! Int]!
+    })
+    for school in deleteSchools {
+      ctx.deleteObject(school)
+    }
+    
     return School.getAllSchools(ctx)
   }
   

@@ -33,6 +33,9 @@ class SignInViewController: UIViewController {
   let AlertButtonTitle = "OK"
   let EmptyUsernamePasswordMessage = "El nombre de usuario y contraseña no pueden estar en blanco."
   let RequestErrorMessage = "Ocurrió un error. Por favor intenta de nuevo."
+  let RecoverPasswordSuccessMessage = "Se le ha enviado un correo para la recuperación de su contraseña."
+  let RecoverPasswordErrorAlertButton = "OK"
+  let RecoverPasswordErrorAlertTitle = "Ocurrió un error."
   
   var initialBottomHeight: CGFloat!
   var isKeyboardVisible = false
@@ -123,6 +126,32 @@ class SignInViewController: UIViewController {
     NSNotificationCenter.defaultCenter().postNotificationName(Constants.Notification.SignIn, object: self, userInfo: nil)
   }
   
+  // MARK: - Public
+  
+  func recoverPassword(email: String) {
+    disableSignInButton()
+    UserService.recoverPassword(email, completion: {(responseObject: AnyObject?, error: NSError?) in
+      self.enableSignInButton()
+      guard let json = responseObject as? NSDictionary else {
+        self.recoverPasswordPopUp?.dismiss()
+        self.showAlertWithTitle(self.AlertMessageTitle, message: self.RequestErrorMessage, buttonTitle: self.AlertButtonTitle)
+        return
+      }
+      if (json[Constants.Api.ErrorKey] == nil) {
+        self.recoverPasswordPopUp?.dismiss()
+        let alertController = UIAlertController(title: self.RecoverPasswordSuccessMessage, message: nil, preferredStyle: UIAlertControllerStyle.Alert)
+        let defaultAction = UIAlertAction(title: self.RecoverPasswordErrorAlertButton, style: UIAlertActionStyle.Default) { action -> Void in
+          self.navigationController?.popViewControllerAnimated(true)
+        }
+        alertController.addAction(defaultAction)
+        self.presentViewController(alertController, animated: true, completion: nil)
+      } else {
+        self.recoverPasswordPopUp?.dismiss()
+        self.showAlertWithTitle(self.RecoverPasswordErrorAlertTitle, message: json[Constants.Api.ErrorKey] as! String, buttonTitle: self.RecoverPasswordErrorAlertButton)
+      }
+    })
+  }
+  
   // MARK: - Actions
   
   @IBAction func hideKeyboard(sender: AnyObject) {
@@ -132,7 +161,7 @@ class SignInViewController: UIViewController {
   
   @IBAction func gotoRecoverPassword(sender: AnyObject) {
     let viewController = self.storyboard?.instantiateViewControllerWithIdentifier(RecoverPasswordTableViewControllerIdentifier) as! RecoverPasswordTableViewController
-    print(viewController.description)
+    viewController.delegate = self
     setupPopupNavigationBar()
     recoverPasswordPopUp = STPopupController(rootViewController: viewController)
     recoverPasswordPopUp!.presentInViewController(self)
@@ -147,7 +176,6 @@ class SignInViewController: UIViewController {
     disableSignInButton()
     UserService.signInWithEmail(email, password: password, completion: {(responseObject: AnyObject?, error: NSError?) in
       self.enableSignInButton()
-      print(responseObject)
       guard let json = responseObject as? NSDictionary else {
         self.showAlertWithTitle(self.AlertMessageTitle, message: self.RequestErrorMessage, buttonTitle: self.AlertButtonTitle)
         return
@@ -185,8 +213,8 @@ class SignInViewController: UIViewController {
     }
     isKeyboardVisible = false
     view.layoutIfNeeded()
-    bottomConstraint.constant = self.initialBottomHeight;
-    logoImageView.alpha = 1.0;
+    bottomConstraint.constant = self.initialBottomHeight
+    logoImageView.alpha = 1.0
     view.layoutIfNeeded()
     view.endEditing(true)
   }

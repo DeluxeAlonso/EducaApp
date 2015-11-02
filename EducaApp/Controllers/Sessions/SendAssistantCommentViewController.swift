@@ -26,7 +26,7 @@ class SendAssistantCommentViewController: UIViewController {
   let ScaleToSize: CGFloat = 1.15
   let ScaleDuration: NSTimeInterval = 0.5
   
-  var delegate: AssistantDetailViewController?
+  var delegate: UIViewController?
   var assistant: String?
   
   var selectedFaceIndex = SelectedMood.None
@@ -69,7 +69,12 @@ class SendAssistantCommentViewController: UIViewController {
   // MARK: - Actions
   
   @IBAction func sendMessage(sender: AnyObject) {
-    delegate?.dismissSendCommentPopup()
+    if delegate is AssistantsViewController {
+      (delegate as! AssistantsViewController).dismissSendCommentPopup()
+    } else {
+      (delegate as! AssistantDetailViewController).dismissSendCommentPopup()
+    }
+    
   }
   
   @IBAction func pressHappyButton(sender: AnyObject) {
