@@ -788,26 +788,26 @@
                                             <constraint firstAttribute="height" constant="25" id="DtI-4P-VG6"/>
                                         </constraints>
                                     </imageView>
-                                    <label opaque="NO" userInteractionEnabled="NO" alpha="0.5" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Buscar Ubicación" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Bdh-sV-5IO">
+                                    <textField opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Buscar Ubicación" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="4V3-xh-M9A">
                                         <rect key="frame" x="8" y="12" width="521" height="21"/>
                                         <animations/>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="21" id="yrS-GK-7PC"/>
+                                            <constraint firstAttribute="height" constant="21" id="eGd-Tz-wPs"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="15"/>
-                                        <color key="textColor" red="0.37647058820000001" green="0.72549019609999998" blue="0.83921568629999999" alpha="1" colorSpace="calibratedRGB"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
+                                        <textInputTraits key="textInputTraits"/>
+                                    </textField>
                                 </subviews>
                                 <animations/>
                                 <color key="backgroundColor" red="0.94117647059999998" green="0.94117647059999998" blue="0.98039215690000003" alpha="1" colorSpace="calibratedRGB"/>
+                                <gestureRecognizers/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="45" id="Hnl-sp-55n"/>
-                                    <constraint firstItem="Bdh-sV-5IO" firstAttribute="leading" secondItem="Oq1-ek-T9z" secondAttribute="leading" constant="8" id="VqE-57-PpG"/>
+                                    <constraint firstItem="kKK-Qb-NYI" firstAttribute="leading" secondItem="4V3-xh-M9A" secondAttribute="trailing" constant="18" id="KOl-GI-GVa"/>
+                                    <constraint firstItem="4V3-xh-M9A" firstAttribute="centerY" secondItem="Oq1-ek-T9z" secondAttribute="centerY" id="Ts2-8f-Mvo"/>
                                     <constraint firstItem="kKK-Qb-NYI" firstAttribute="centerY" secondItem="Oq1-ek-T9z" secondAttribute="centerY" id="Zty-tz-rdB"/>
-                                    <constraint firstItem="Bdh-sV-5IO" firstAttribute="centerY" secondItem="Oq1-ek-T9z" secondAttribute="centerY" id="bkf-T0-bEA"/>
                                     <constraint firstAttribute="trailing" secondItem="kKK-Qb-NYI" secondAttribute="trailing" constant="8" id="pvG-LN-qxa"/>
-                                    <constraint firstItem="kKK-Qb-NYI" firstAttribute="leading" secondItem="Bdh-sV-5IO" secondAttribute="trailing" constant="18" id="t51-yG-fF4"/>
+                                    <constraint firstItem="4V3-xh-M9A" firstAttribute="leading" secondItem="Oq1-ek-T9z" secondAttribute="leading" constant="8" id="xOR-XJ-qQp"/>
                                 </constraints>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="number" keyPath="layer.borderWidth">
@@ -817,6 +817,9 @@
                                         <integer key="value" value="5"/>
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <outletCollection property="gestureRecognizers" destination="CCg-Qu-fIL" appends="YES" id="yqt-A1-otB"/>
+                                </connections>
                             </view>
                         </subviews>
                         <animations/>
@@ -854,11 +857,18 @@
                         <outlet property="mapRouteButton" destination="AEP-PX-Ba1" id="bRF-XK-Tef"/>
                         <outlet property="mapView" destination="gf7-ip-8mr" id="VuA-zS-QC4"/>
                         <outlet property="saveBarButtonItem" destination="aGk-eY-Vbo" id="q6a-uO-rWj"/>
+                        <outlet property="searchBarTopContraint" destination="brj-t7-T1n" id="DOC-UY-QvN"/>
                         <outlet property="searchContainerView" destination="Oq1-ek-T9z" id="XhU-H6-tfZ"/>
+                        <outlet property="searchTextField" destination="4V3-xh-M9A" id="7nu-Qv-EFR"/>
                         <outlet property="undoDeleteButton" destination="E57-hY-zBG" id="EjF-1s-yf1"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hTr-Qm-ecm" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="CCg-Qu-fIL">
+                    <connections>
+                        <action selector="searchLocations:" destination="qWl-Sc-bid" id="CCf-iq-xiO"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="3755" y="-1536"/>
         </scene>
@@ -5199,7 +5209,7 @@ El voluntariado comprende actividades asistenciales de servicios sociales, cívi
                                                     <color key="textColor" red="0.0" green="0.59999999999999998" blue="0.80000000000000004" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="MaleGenderIcon" translatesAutoresizingMaskIntoConstraints="NO" id="BwR-do-Wwq">
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="BwR-do-Wwq">
                                                     <rect key="frame" x="550" y="11" width="35" height="35"/>
                                                     <animations/>
                                                     <constraints>

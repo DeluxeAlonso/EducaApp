@@ -8,29 +8,47 @@
 
 import UIKit
 
+protocol UsersFilterViewControllerDelegate {
+  
+  func usersFilterViewController(usersFilterViewController: UsersFilterViewController, searchedName name: String, searchedDocNumber: String, profile: String)
+  
+}
+
 enum UsersFilterFields: String {
   case Name = "Nombre:"
   case Document = "DNI:"
   case SortName = "Perfil:"
-  case SortResult = "Miembro de AFI"
+  case SortResult = "Todos"
 }
 
 class UsersFilterViewController: UIViewController {
 
   let rightBarButtonItemTitle = "Buscar"
   let advancedSearchSelector: Selector = "advancedSearch:"
-  let sortingOptions = ["Miembro de AFI", "Voluntario", "Padrino"]
+  var sortingOptions = [String]()
   let sortingViewControllerTitle = "Perfiles"
   
   let popupHeight: CGFloat = 159
   
-  var delegate: UIViewController?
+  var delegate: UsersFilterViewControllerDelegate?
+  
+  var nameSearchText = String()
+  var docNumberSearchText = String()
+  var profileSearch = String()
+  
+  var selectedProfile = "Todos"
+  
+  var profileCell: SortingFilterTableViewCell?
+  
+  lazy var dataLayer = DataLayer()
   
   // MARK: - Lifecycle
   
   override func viewDidLoad() {
     super.viewDidLoad()
     setupNavigationBar()
+    let profiles = Profile.getAllProfiles(dataLayer.managedObjectContext!)
+    sortingOptions = profiles.map { (profile) in return (profile).name! }
     self.contentSizeInPopup = CGSizeMake(300, popupHeight)
   }
   
@@ -48,6 +66,8 @@ class UsersFilterViewController: UIViewController {
   private func goToSortSelection() {
     let viewController = self.storyboard?.instantiateViewControllerWithIdentifier(SortingFilterViewControllerIdentifier) as! SortingFilterViewController
     viewController.height = popupHeight
+    viewController.selectedProfile = selectedProfile
+    viewController.delegate = self
     viewController.sortingOptions = sortingOptions
     viewController.viewTitle = sortingViewControllerTitle
     self.popupController?.pushViewController(viewController, animated: true)
@@ -56,15 +76,7 @@ class UsersFilterViewController: UIViewController {
   // MARK: - Actions
   
   @IBAction func advancedSearch(sender: AnyObject) {
-    if delegate is AssistantDetailViewController {
-      (delegate as! AssistantDetailViewController).dismissPopup()
-    } else if delegate is UsersViewController {
-      (delegate as! UsersViewController).dismissPopup()
-    } else if delegate is PostsViewController {
-      (delegate as! PostsViewController).dismissPopup()
-    } else if delegate is StudentsViewController {
-      (delegate as! StudentsViewController).dismissPopup()
-    }
+    delegate?.usersFilterViewController(self, searchedName: nameSearchText, searchedDocNumber: docNumberSearchText, profile: selectedProfile)
   }
   
 }
@@ -87,13 +99,16 @@ extension UsersFilterViewController: UITableViewDataSource {
       switch indexPath.row {
       case 0:
         cell = tableView.dequeueReusableCellWithIdentifier(AuthorContentFilterCellIdentidifer, forIndexPath: indexPath)
-        (cell as! AuthorContentTableViewCell).setupNameFieldLabel(UsersFilterFields.Name.rawValue)
+        (cell as! AuthorContentTableViewCell).delegate = self
+        (cell as! AuthorContentTableViewCell).setupNameFieldLabel(UsersFilterFields.Name.rawValue, indexPath: indexPath)
       case 1:
         cell = tableView.dequeueReusableCellWithIdentifier(AuthorContentFilterCellIdentidifer, forIndexPath: indexPath)
-        (cell as! AuthorContentTableViewCell).setupNameFieldLabel(UsersFilterFields.Document.rawValue)
+        (cell as! AuthorContentTableViewCell).delegate = self
+        (cell as! AuthorContentTableViewCell).setupNameFieldLabel(UsersFilterFields.Document.rawValue, indexPath: indexPath)
       case 2:
         cell = tableView.dequeueReusableCellWithIdentifier(SortingFilterCellIdentifier, forIndexPath: indexPath)
-        (cell as! SortingFilterTableViewCell).setupFieldNameLabel(UsersFilterFields.SortName.rawValue, fieldType: UsersFilterFields.SortResult.rawValue)
+        profileCell = cell as? SortingFilterTableViewCell
+        (cell as! SortingFilterTableViewCell).setupFieldNameLabel(UsersFilterFields.SortName.rawValue, fieldType: selectedProfile)
       default:
         break
       }
@@ -112,6 +127,35 @@ extension UsersFilterViewController: UITableViewDelegate {
     if indexPath.row == 2 {
       goToSortSelection()
     }
+  }
+  
+}
+
+// MARK: - AuthorContentTableViewCellDelegate
+
+extension UsersFilterViewController: AuthorContentTableViewCellDelegate {
+  
+  func authorContentTableViewCell(authorContentTableViewCell: AuthorContentTableViewCell, textFieldDidChange textField: UITextField, text: String, indexPath: NSIndexPath) {
+    switch indexPath.row {
+    case 0:
+      nameSearchText = text
+    case 1:
+      docNumberSearchText = text
+    default:
+      break
+    }
+  }
+  
+}
+
+// MARK: - SortingFilterViewControllerDelegate
+
+extension UsersFilterViewController: SortingFilterViewControllerDelegate {
+  
+  func sortingFilterViewController(sortingFilterViewController: SortingFilterViewController, selectedOptionName: String) {
+    selectedProfile = selectedOptionName
+    profileCell!.setupFieldNameLabel(UsersFilterFields.SortName.rawValue, fieldType: selectedProfile)
+    print(selectedOptionName)
   }
   
 }

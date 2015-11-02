@@ -11,14 +11,23 @@ import UIKit
 let GenderFilterCellIdentifier = "GenderFilterCell"
 let AgeFilterCellIdentifier = "AgeFilterCell"
 
+protocol StudentsFilterViewControllerDelegate {
+  
+  func studentsFilterViewController(studentsFilterViewController: StudentsFilterViewController, searchedName name: String, minAge: Int, maxAge: Int, gender: Int)
+  
+}
+
 class StudentsFilterViewController: UIViewController {
 
   let rightBarButtonItemTitle = "Buscar"
   let advancedSearchSelector: Selector = "advancedSearch:"
-  
   let popupHeight: CGFloat = 159
   
-  var delegate: UIViewController?
+  var delegate: StudentsFilterViewControllerDelegate?
+  var nameSearchText = String()
+  var minAgeSearch =  5
+  var maxAgeSearch = 14
+  var genderSearch = -1
   
   // MARK: - Lifecycle
   
@@ -42,15 +51,7 @@ class StudentsFilterViewController: UIViewController {
   // MARK: - Actions
   
   @IBAction func advancedSearch(sender: AnyObject) {
-    if delegate is AssistantDetailViewController {
-      (delegate as! AssistantDetailViewController).dismissPopup()
-    } else if delegate is UsersViewController {
-      (delegate as! UsersViewController).dismissPopup()
-    } else if delegate is PostsViewController {
-      (delegate as! PostsViewController).dismissPopup()
-    } else if delegate is StudentsViewController {
-      (delegate as! StudentsViewController).dismissPopup()
-    }
+    delegate?.studentsFilterViewController(self, searchedName: nameSearchText, minAge: minAgeSearch, maxAge: maxAgeSearch, gender: genderSearch)
   }
   
 }
@@ -73,7 +74,8 @@ extension StudentsFilterViewController: UITableViewDataSource {
       switch indexPath.row {
       case 0:
         cell = tableView.dequeueReusableCellWithIdentifier(AuthorContentFilterCellIdentidifer, forIndexPath: indexPath)
-        (cell as! AuthorContentTableViewCell).setupNameFieldLabel(UsersFilterFields.Name.rawValue)
+        (cell as! AuthorContentTableViewCell)
+        (cell as! AuthorContentTableViewCell).setupNameFieldLabel(UsersFilterFields.Name.rawValue, indexPath: indexPath)
       case 1:
         cell = tableView.dequeueReusableCellWithIdentifier(AgeFilterCellIdentifier, forIndexPath: indexPath)
       case 2:
@@ -95,4 +97,19 @@ extension StudentsFilterViewController: UITableViewDelegate {
     tableView.deselectRowAtIndexPath(indexPath, animated: true)
   }
 
+}
+
+// MARK: - AuthorContentTableViewCellDelegate
+
+extension StudentsFilterViewController: AuthorContentTableViewCellDelegate {
+  
+  func authorContentTableViewCell(authorContentTableViewCell: AuthorContentTableViewCell, textFieldDidChange textField: UITextField, text: String, indexPath: NSIndexPath) {
+    switch indexPath.row {
+    case 0:
+      nameSearchText = text
+    default:
+      break
+    }
+  }
+  
 }

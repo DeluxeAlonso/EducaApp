@@ -85,12 +85,6 @@ class SessionsViewController: BaseViewController {
       if (json[0][Constants.Api.ErrorKey] == nil) {
         let syncedSessions = Session.syncWithJsonArray(json , ctx: self.dataLayer.managedObjectContext!)
         self.sessions = syncedSessions
-        for session in self.sessions {
-          let volunteers =  session.volunteers
-          for volunteer in volunteers {
-            print((volunteer as! SessionUser).attended)
-          }
-        }
         self.dataLayer.saveContext()
         self.reloadData()
       }
@@ -206,7 +200,6 @@ extension SessionsViewController: UITableViewDataSource {
     let cell = tableView.dequeueReusableCellWithIdentifier(SessionsCellIdentifier, forIndexPath: indexPath) as! SessionTableViewCell
     cell.delegate = self
     cell.indexPath = indexPath
-    print(sessions[indexPath.row].volunteers)
     cell.setupSession(sessions[indexPath.row])
     return cell
   }

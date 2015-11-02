@@ -213,8 +213,8 @@ class SignInViewController: UIViewController {
     }
     isKeyboardVisible = false
     view.layoutIfNeeded()
-    bottomConstraint.constant = self.initialBottomHeight;
-    logoImageView.alpha = 1.0;
+    bottomConstraint.constant = self.initialBottomHeight
+    logoImageView.alpha = 1.0
     view.layoutIfNeeded()
     view.endEditing(true)
   }

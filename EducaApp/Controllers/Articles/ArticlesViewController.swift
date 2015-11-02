@@ -51,7 +51,6 @@ class ArticlesViewController: BaseViewController {
     guard let parameters = NSUserDefaults.standardUserDefaults().objectForKey("edit_points") as? NSDictionary else {
       return
     }
-    print(parameters)
     SessionService.editReunionPoints(parameters, completion: {(responseObject: AnyObject?, error: NSError?) in
       guard let json = responseObject as? NSDictionary else {
         return

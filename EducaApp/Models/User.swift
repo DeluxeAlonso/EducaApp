@@ -70,10 +70,6 @@ extension User: Deserializable {
   }
   
   func assistedToSession(session: Session, ctx: NSManagedObjectContext) -> Bool {
-    let sessionUser = SessionUser.findBySessionAndUser(session, user: self, ctx: ctx)
-    print(sessionUser?.session.id)
-    print(sessionUser?.user.firstName)
-    print(sessionUser?.attended)
     return (SessionUser.findBySessionAndUser(session, user: self, ctx: ctx)?.attended)!
   }
   
@@ -84,6 +80,10 @@ extension User: Deserializable {
   
   func canListAssistantsComments() -> Bool {
     return self.hasPermissionWithId(35)
+  }
+  
+  func canEditReunionPoints() -> Bool {
+    return self.hasPermissionWithId(13)
   }
   
   func hasPermissionWithId(id: Int) -> Bool {
@@ -203,6 +203,23 @@ extension User {
     }
     return nil
   }
+  
+  class func searchByName(searchText: String, ctx: NSManagedObjectContext) -> Array<User> {
+    let fetchRequest = NSFetchRequest()
+    fetchRequest.entity = NSEntityDescription.entityForName(UserEntityName, inManagedObjectContext: ctx)
+    fetchRequest.predicate = NSPredicate(format: "firstName contains[cd] %@ OR lastName contains[cd] %@", searchText, searchText)
+    let sortDescriptor = NSSortDescriptor(key: "firstName", ascending: true)
+    fetchRequest.sortDescriptors = [sortDescriptor]
+    let users = try! ctx.executeFetchRequest(fetchRequest) as? Array<User>
+    
+    return users ?? Array<User>()
+  }
+  
+}
+
+// MARK: - Authentication
+
+extension User {
   
   class func getAuthenticatedUser(ctx: NSManagedObjectContext) -> User? {
     let defaults = NSUserDefaults.standardUserDefaults()

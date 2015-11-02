@@ -13,6 +13,9 @@ enum SelectedSegmentIndex: Int {
   case Students
 }
 
+let StudentCellIdentifier = "StudentCell"
+let StudentsFilterViewControllerIdentifier = "StudentsFilterViewController"
+
 class PeopleViewController: BaseFilterViewController {
   
   @IBOutlet weak var segmentedControl: UISegmentedControl!
@@ -70,10 +73,7 @@ class PeopleViewController: BaseFilterViewController {
     UserService.fetchUsers({(responseObject: AnyObject?, error: NSError?) in
       self.refreshControl.endRefreshing()
       self.isRefreshing = false
-      guard let json = responseObject as? Array<NSDictionary> else {
-        return
-      }
-      guard json.count > 0 else {
+      guard let json = responseObject as? Array<NSDictionary> where json.count > 0 else {
         self.customLoader.stopActivity()
         self.tableView.hidden = false
         return
@@ -91,20 +91,14 @@ class PeopleViewController: BaseFilterViewController {
     StudentService.fetchStudents({(responseObject: AnyObject?, error: NSError?) in
       self.refreshControl.endRefreshing()
       self.isRefreshing = false
-      guard let json = responseObject as? Array<NSDictionary> else {
+      guard let json = responseObject as? Array<NSDictionary> where json.count > 0 else {
         return
       }
-      guard json.count > 0 else {
-        return
-      }
-      
       if (json[0][Constants.Api.ErrorKey] == nil) {
         let syncedStudents = Student.syncWithJsonArray(json , ctx: self.dataLayer.managedObjectContext!)
         self.students = syncedStudents
         self.dataLayer.saveContext()
         self.tableView.reloadData()
-      } else {
-        //Show Error Message
       }
     })
   }
@@ -167,12 +161,6 @@ class PeopleViewController: BaseFilterViewController {
     popupViewController!.presentInViewController(self)
   }
   
-  // MARK: - UISearchBarDelegate
-  
-  func searchBarCancelButtonClicked(searchBar: UISearchBar) {
-    hideSearchBar()
-  }
-  
 }
 
 extension PeopleViewController: UITableViewDataSource {
@@ -196,6 +184,74 @@ extension PeopleViewController: UITableViewDataSource {
       (cell as! StudentTableViewCell).setupStudent(students[indexPath.row])
     }
     return cell!
+  }
+  
+}
+
+// MARK: - UISearchBarDelegate
+
+extension PeopleViewController {
+  
+  func searchBar(searchBar: UISearchBar, textDidChange searchText: String) {
+    guard let searchText = searchBar.text else {
+      return
+    }
+    selectedSegmentIndex == SelectedSegmentIndex.Users.rawValue ? searchUsers(searchText) : searchStudents(searchText)
+  }
+  
+  func searchBarCancelButtonClicked(searchBar: UISearchBar) {
+    resetSearchFields()
+    hideSearchBar()
+  }
+  
+  private func searchUsers(searchText: String) {
+    guard searchText.characters.count != 0 else {
+      users = User.getAllUsers(dataLayer.managedObjectContext!)
+      tableView.reloadData()
+      return
+    }
+    users = User.searchByName(searchText, ctx: dataLayer.managedObjectContext!)
+    tableView.reloadData()
+  }
+  
+  private func searchStudents(searchText: String) {
+    guard searchText.characters.count != 0 else {
+      students = Student.getAllStudents(dataLayer.managedObjectContext!)
+      tableView.reloadData()
+      return
+    }
+    students = Student.searchByName(searchText, ctx: dataLayer.managedObjectContext!)
+    tableView.reloadData()
+  }
+  
+  private func resetSearchFields() {
+    searchUsers("")
+    searchStudents("")
+  }
+  
+}
+
+// MARK: - UsersFilterViewControllerDelegate
+
+extension PeopleViewController: UsersFilterViewControllerDelegate {
+  
+  func usersFilterViewController(usersFilterViewController: UsersFilterViewController, searchedName name: String, searchedDocNumber: String, profile: String) {
+    print(name)
+    print(searchedDocNumber)
+    print(profile)
+  }
+  
+}
+
+// MARK: - StudentsFilterViewControllerDelegate
+
+extension PeopleViewController: StudentsFilterViewControllerDelegate {
+  
+  func studentsFilterViewController(studentsFilterViewController: StudentsFilterViewController, searchedName name: String, minAge: Int, maxAge: Int, gender: Int) {
+    print(name)
+    print(minAge)
+    print(maxAge)
+    print(gender)
   }
   
 }

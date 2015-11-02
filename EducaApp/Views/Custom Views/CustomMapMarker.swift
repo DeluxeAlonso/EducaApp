@@ -16,6 +16,14 @@ class CustomMapMarker: GMSMarker {
   var selected: Bool?
   var wasAdded: Bool?
   var canBeDeleted: Bool?
+  
+  func setupMarker(title: String, color: UIColor, animation: GMSMarkerAnimation, wasAdded: Bool, canBeDeleted: Bool) {
+    self.title = title
+    self.icon = CustomMapMarker.markerImageWithColor(color)
+    self.appearAnimation = animation
+    self.wasAdded = wasAdded
+    self.canBeDeleted = canBeDeleted
+  }
 
 }
 

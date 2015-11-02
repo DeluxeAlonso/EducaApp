@@ -19,7 +19,6 @@ class UserService {
     let manager = AFHTTPRequestOperationManager()
     let parameters = ["username": email, "password": password]
     manager.POST(UrlBuilder.UrlForPath(SignInPath), parameters: parameters, success: { (operation: AFHTTPRequestOperation, responseObject: AnyObject?) in
-      print(responseObject)
         completion(responseObject: responseObject! as? NSObject, error: nil)
       }, failure: { (operation: AFHTTPRequestOperation, error: NSError) in
         completion(responseObject: nil, error: error)
@@ -27,12 +26,8 @@ class UserService {
   }
   
   class func changePassword(oldPassword: String, newPassword: String, completion: (responseObject: NSObject?, error: NSError?) -> Void) {
-    let manager = AFHTTPRequestOperationManager()
-    let serializer = AFHTTPRequestSerializer()
-    serializer.setValue(User.getAuthToken(), forHTTPHeaderField: Constants.Api.Header)
-    manager.requestSerializer = serializer
     let parameters = ["current_password": oldPassword, "new_password": newPassword]
-    manager.PUT(UrlBuilder.UrlForPath(ChangePasswordPath), parameters: parameters, success: { (operation: AFHTTPRequestOperation, responseObject: AnyObject?) in
+    NetworkManager.sharedInstance.PUT(UrlBuilder.UrlForPath(ChangePasswordPath), parameters: parameters, success: { (operation: AFHTTPRequestOperation, responseObject: AnyObject?) in
         completion(responseObject: responseObject! as? NSObject, error: nil)
       }, failure: {( operation: AFHTTPRequestOperation, error: NSError) in
         completion(responseObject: nil, error: error)
@@ -40,11 +35,8 @@ class UserService {
   }
   
   class func recoverPassword(email: String, completion: (responseObject: NSObject?, error: NSError?) -> Void) {
-    let manager = AFHTTPRequestOperationManager()
-    let serializer = AFHTTPRequestSerializer()
-    manager.requestSerializer = serializer
     let parameters = ["email": email]
-    manager.PUT(UrlBuilder.UrlForPath(RecoverPasswordPath), parameters: parameters, success: { (operation: AFHTTPRequestOperation, responseObject: AnyObject?) in
+    NetworkManager.sharedInstance.POST(UrlBuilder.UrlForPath(RecoverPasswordPath), parameters: parameters, success: { (operation: AFHTTPRequestOperation, responseObject: AnyObject?) in
       completion(responseObject: responseObject! as? NSObject, error: nil)
       }, failure: {( operation: AFHTTPRequestOperation, error: NSError) in
         completion(responseObject: nil, error: error)
@@ -52,11 +44,7 @@ class UserService {
   }
   
   class func fetchUsers(completion: (responseObject: NSObject?, error: NSError?) -> Void) {
-    let manager = AFHTTPRequestOperationManager()
-    let serializer = AFHTTPRequestSerializer()
-    serializer.setValue(User.getAuthToken(), forHTTPHeaderField: Constants.Api.Header)
-    manager.requestSerializer = serializer
-    manager.GET(UrlBuilder.UrlForPath(UsersPath), parameters: nil, success: { (operation: AFHTTPRequestOperation, responseObject: AnyObject?) in
+    NetworkManager.sharedInstance.GET(UrlBuilder.UrlForPath(UsersPath), parameters: nil, success: { (operation: AFHTTPRequestOperation, responseObject: AnyObject?) in
       completion(responseObject: responseObject! as? NSObject, error: nil)
       }, failure: {(operation: AFHTTPRequestOperation, error: NSError) in
         completion(responseObject: nil, error: error)

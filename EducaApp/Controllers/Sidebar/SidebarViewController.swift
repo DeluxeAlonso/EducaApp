@@ -30,49 +30,32 @@ class MenuController: StaticDataTableViewController {
     super.viewDidLoad()
     currentUser = User.getAuthenticatedUser(dataLayer.managedObjectContext!)
     setupPermissions()
-    print(User.isSignedIn())
-    print(currentUser?.profiles.count)
-    print(currentUser?.actions.count)
-    print(User.getAuthToken())
     for action in (currentUser?.actions)! {
-      print((action as! Action).id)
-      
       var idnumber: Int32
       idnumber = (action as! Action).id
       
       switch idnumber{
       case 15:
-      self.cell(SesionsCell, setHidden: false)
-      self.cell(DocumentsCell, setHidden: false)
+        self.cell(SesionsCell, setHidden: false)
+        self.cell(DocumentsCell, setHidden: false)
       case 14:
-        //ptos de reunion
         break;
       case 16:
-        //marcar asistencia
         break;
       case 28:
-        //listar colegios y voluntarios
         break;
       case 31:
-        //listar usuarios
         self.cell(PeopleCell, setHidden: false)
       case 20:
-        //listar reporte
         self.cell(ReportsCell, setHidden: false)
       case 21:
-        //menu pagos
         self.cell(PayCell, setHidden: false)
       default:
-        //fotos y donaciones
         self.cell(DonationCell, setHidden: false)
         self.cell(CameraCell, setHidden: false)
-        //blog y noticias
         self.cell(BlogCell, setHidden: false)
         self.cell(NewsCell, setHidden: false)
         self.cell(SettingsCell, setHidden: false)
-        
-        //-solo miembros de afi pueden listar comentarios (buscar codigo perfil de miembro de afi)
-        //-solo voluntarios pueden postular (buscar codigo perfil voluntario)
       }
       
     }

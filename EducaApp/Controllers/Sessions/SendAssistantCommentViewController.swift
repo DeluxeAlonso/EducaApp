@@ -47,8 +47,6 @@ class SendAssistantCommentViewController: UIViewController {
   // MARK: - Private
   
   private func setupNavigationBar() {
-    print("ASSISTANT")
-    print(assistant)
     self.title = assistant
     self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: SendText, style: UIBarButtonItemStyle.Plain, target: self, action: SendMessage)
   }

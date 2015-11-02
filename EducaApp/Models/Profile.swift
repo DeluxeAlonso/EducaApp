@@ -76,4 +76,26 @@ extension Profile {
     }
     return nil
   }
+  
+  public class func getProfileByName(name: String, ctx: NSManagedObjectContext) -> Profile? {
+    let fetchRequest = NSFetchRequest()
+    fetchRequest.entity = NSEntityDescription.entityForName(ProfileEntityName, inManagedObjectContext: ctx)
+    fetchRequest.predicate = NSPredicate(format: "(name = %@)", name)
+    let profiles = try! ctx.executeFetchRequest(fetchRequest) as? Array<Profile>
+    if (profiles != nil && profiles!.count > 0) {
+      return profiles![0]
+    }
+    return nil
+  }
+  
+  class func getAllProfiles(ctx: NSManagedObjectContext) -> Array<Profile> {
+    let fetchRequest = NSFetchRequest()
+    fetchRequest.entity = NSEntityDescription.entityForName(ProfileEntityName, inManagedObjectContext: ctx)
+    let sortDescriptor = NSSortDescriptor(key: "id", ascending: true)
+    fetchRequest.sortDescriptors = [sortDescriptor]
+    let profiles = try! ctx.executeFetchRequest(fetchRequest) as? Array<Profile>
+    
+    return profiles ?? Array<Profile>()
+  }
+  
 }

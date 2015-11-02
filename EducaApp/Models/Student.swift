@@ -37,14 +37,16 @@ public class Student: NSManagedObject {
 extension Student: Deserializable {
   
   func setDataFromJSON(json: NSDictionary) {
-    guard let id = json[StudentIdKey] as AnyObject?, firstName = json[StudentNameKey] as? String, lastName = json[StudentLastNameKey] as? String, age = json[StudentAgeKey] as? Int, gender = json[StudentGenderKey] as? Int else {
+    guard let id = json[StudentIdKey] as AnyObject?, firstName = json[StudentNameKey] as? String, lastName = json[StudentLastNameKey] as? String, age = json[StudentAgeKey] as? Int else {
         return
     }
     self.id = id is Int ? Int32(id as! Int) : Int32(id as! String)!
     self.firstName = firstName
     self.lastName = lastName
     self.age = Int32(age)
-    self.gender = Int32(gender)
+    if let gender = json[StudentGenderKey] as? Int {
+      self.gender = Int32(gender)
+    }
   }
   
   func wasCommented(session: Session, ctx: NSManagedObjectContext) -> Bool {
@@ -148,6 +150,17 @@ extension Student {
       return students![0]
     }
     return nil
+  }
+  
+  class func searchByName(searchText: String, ctx: NSManagedObjectContext) -> Array<Student> {
+    let fetchRequest = NSFetchRequest()
+    fetchRequest.entity = NSEntityDescription.entityForName(StudentEntityName, inManagedObjectContext: ctx)
+    fetchRequest.predicate = NSPredicate(format: "firstName contains[cd] %@ OR lastName contains[cd] %@", searchText, searchText)
+    let sortDescriptor = NSSortDescriptor(key: "firstName", ascending: true)
+    fetchRequest.sortDescriptors = [sortDescriptor]
+    let students = try! ctx.executeFetchRequest(fetchRequest) as? Array<Student>
+    
+    return students ?? Array<Student>()
   }
   
 }

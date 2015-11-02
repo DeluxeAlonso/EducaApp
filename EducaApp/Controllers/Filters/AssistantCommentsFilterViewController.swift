@@ -70,8 +70,6 @@ class AssistantCommentsFilterViewController: UIViewController {
       (delegate as! UsersViewController).dismissPopup()
     } else if delegate is PostsViewController {
       (delegate as! PostsViewController).dismissPopup()
-    } else if delegate is StudentsViewController {
-      (delegate as! StudentsViewController).dismissPopup()
     }
   }
   

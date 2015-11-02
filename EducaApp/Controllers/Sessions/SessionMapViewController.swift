@@ -39,10 +39,12 @@ enum SessionMarkerType {
   
 }
 
-class SessionMapViewController: UIViewController {
+class SessionMapViewController: UIViewController , UISearchControllerDelegate{
   
   @IBOutlet weak var saveBarButtonItem: UIBarButtonItem!
   @IBOutlet weak var mapView: GMSMapView!
+  
+  @IBOutlet weak var searchTextField: UITextField!
   @IBOutlet weak var searchContainerView: UIView!
   @IBOutlet weak var mapInfoView: UIView!
   @IBOutlet weak var mapInfoLabel: UILabel!
@@ -50,17 +52,19 @@ class SessionMapViewController: UIViewController {
   @IBOutlet weak var deleteMarkerButton: UIButton!
   @IBOutlet weak var mapRouteButton: UIButton!
   @IBOutlet weak var undoDeleteButton: UIButton!
+  @IBOutlet weak var searchBarTopContraint: NSLayoutConstraint!
   
   let CancelAlertTitle = "¿Está seguro de que desea salir?"
   let CancelAlertMessage = "Sus cambios no han sido guardados."
   
+  let AddressNotFoundTitle = "Dirección No Encontrada"
+  
   let deleteMarkerSelector: Selector = "deleteMarker:"
   let undoDeleteActionSelector: Selector = "undoDeleteAction:"
   let locationManager = CLLocationManager()
-  let sessionLocation = CLLocationCoordinate2DMake(
-    -12.068016, -77.001027)
   
   var initialHeightConstant: CGFloat?
+  var initialTopConstant: CGFloat?
   var currentLocation: CLLocationCoordinate2D?
   var targetLocation: CLLocationCoordinate2D?
   var mapTasks = MapTasks()
@@ -101,7 +105,7 @@ class SessionMapViewController: UIViewController {
   }
   
   private func setupNavigationBar() {
-    if currentUser?.hasPermissionWithId(13) == false {
+    if currentUser?.canEditReunionPoints() == false {
       navigationItem.rightBarButtonItem = nil
     }
     UIApplication.sharedApplication().setStatusBarStyle(UIStatusBarStyle.LightContent, animated: false)
@@ -113,25 +117,24 @@ class SessionMapViewController: UIViewController {
   
   private func setupAdditionalConstraints() {
     initialHeightConstant = mapInfoViewHeightConstraint.constant
+    initialTopConstant = searchBarTopContraint.constant
     mapInfoViewHeightConstraint.constant = 0
   }
   
   private func getReunionPoints() {
-    for sessionReunionPoint in (session?.reunionPoints)! {
+    var reunionPoints = (session?.reunionPoints.allObjects)! as NSArray
+    if currentUser?.canEditReunionPoints() == false {
+      reunionPoints = reunionPoints.filter { (reunionPoint) in (reunionPoint as! SessionReunionPoint).selected == true }
+    }
+    for sessionReunionPoint in reunionPoints {
       let reunionPoint = sessionReunionPoint as! SessionReunionPoint
-      if currentUser?.hasPermissionWithId(13) == false {
-        if reunionPoint.selected == true {
-          addMarkerWithTitleAndReunionPoint(SessionMarkerType.ReunionPoint.markerTitle(), color: reunionPoint.selected ?  SessionMarkerType.ReunionPoint.markerColor() : SessionMarkerType.DeletedPoint.markerColor(), type: reunionPoint.selected ? SessionMarkerType.ReunionPoint.hashValue : SessionMarkerType.DeletedPoint.hashValue, coordinate: reunionPoint.reunionPoint.coordinate, reunionPoint: reunionPoint)
-        }
-      } else {
-        addMarkerWithTitleAndReunionPoint(SessionMarkerType.ReunionPoint.markerTitle(), color: reunionPoint.selected ?  SessionMarkerType.ReunionPoint.markerColor() : SessionMarkerType.DeletedPoint.markerColor(), type: reunionPoint.selected ? SessionMarkerType.ReunionPoint.hashValue : SessionMarkerType.DeletedPoint.hashValue, coordinate: reunionPoint.reunionPoint.coordinate, reunionPoint: reunionPoint)
-      }
+      addMarkerWithTitleAndReunionPoint(SessionMarkerType.ReunionPoint.markerTitle(), color: reunionPoint.selected ?  SessionMarkerType.ReunionPoint.markerColor() : SessionMarkerType.DeletedPoint.markerColor(), type: reunionPoint.selected ? SessionMarkerType.ReunionPoint.hashValue : SessionMarkerType.DeletedPoint.hashValue, coordinate: reunionPoint.reunionPoint.coordinate, reunionPoint: reunionPoint)
     }
     setupSessionPoint()
   }
   
   private func setupSessionPoint() {
-    addMarkerWithTitle(SessionMarkerType.SessionPoint.markerTitle(), color: SessionMarkerType.SessionPoint.markerColor(), type: SessionMarkerType.SessionPoint.hashValue, coordinate: (session?.coordinate)!)
+    addMarkerWithTitle(SessionMarkerType.SessionPoint.markerTitle(), color: SessionMarkerType.SessionPoint.markerColor(), type: SessionMarkerType.SessionPoint.hashValue, coordinate: (session?.coordinate)!, isNew: false)
     reverseGeocodeCoordinate((session?.coordinate)!)
     showMapInfoView()
   }
@@ -159,69 +162,52 @@ class SessionMapViewController: UIViewController {
     targetLocation = coordinate
     geocoder.reverseGeocodeCoordinate(coordinate, completionHandler: { (response, error) in
       guard let address = response?.firstResult() else {
-        let newReunionPoint = NewReunionPoint()
-        newReunionPoint.latitude = Float(coordinate.latitude)
-        newReunionPoint.longitude = Float(coordinate.longitude)
-        newReunionPoint.address = "Direccion No Encontrada"
-        self.currentMarker?.addedReunionPoint = newReunionPoint
-        self.newReunionPoints.addObject(newReunionPoint)
+        self.createNewPoint(coordinate, address: self.AddressNotFoundTitle)
         return
       }
       var lines: [String] = address.lines as! [String]
       lines = lines.filter { (line) in line.characters.count != 0 }
       self.mapInfoLabel.text = lines.joinWithSeparator("\n")
-      let newReunionPoint = NewReunionPoint()
-      newReunionPoint.latitude = Float(coordinate.latitude)
-      newReunionPoint.longitude = Float(coordinate.longitude)
-      newReunionPoint.address = self.mapInfoLabel.text! as String?
-      self.currentMarker?.addedReunionPoint = newReunionPoint
-      self.newReunionPoints.addObject(newReunionPoint)
+      self.createNewPoint(coordinate, address: (self.mapInfoLabel.text! as String?)!)
     })
     UIView.animateWithDuration(0.25, animations: {
       self.view.layoutIfNeeded()
     })
   }
   
-  private func addMarkerWithTitle(title: String, color: UIColor, type: Int, coordinate: CLLocationCoordinate2D) {
-    let marker = CustomMapMarker(position: coordinate)
-    marker.title = title
-    marker.icon = CustomMapMarker.markerImageWithColor(color)
-    marker.appearAnimation = kGMSMarkerAnimationPop
-    marker.map = mapView
-    
-    marker.wasAdded = false
-    marker.canBeDeleted = false
-    
-    currentMarker = marker
-    mapView.selectedMarker = marker
+  private func createNewPoint(coordinate: CLLocationCoordinate2D, address: String) {
+    let newReunionPoint = NewReunionPoint()
+    newReunionPoint.latitude = Float(coordinate.latitude)
+    newReunionPoint.longitude = Float(coordinate.longitude)
+    newReunionPoint.address = address
+    self.currentMarker?.addedReunionPoint = newReunionPoint
+    self.newReunionPoints.addObject(newReunionPoint)
   }
   
-  private func addNewMarkerWithTitle(title: String, color: UIColor, type: Int, coordinate: CLLocationCoordinate2D) {
+  private func addMarkerWithTitle(title: String, color: UIColor, type: Int, coordinate: CLLocationCoordinate2D, isNew: Bool) {
     let marker = CustomMapMarker(position: coordinate)
-    marker.title = title
-    marker.icon = CustomMapMarker.markerImageWithColor(color)
-    marker.appearAnimation = kGMSMarkerAnimationPop
-    marker.map = mapView
-    
-    marker.wasAdded = true
-    marker.canBeDeleted = true
-    
-    currentMarker = marker
-    mapView.selectedMarker = marker
+    marker.setupMarker(title, color: color, animation: kGMSMarkerAnimationPop, wasAdded: isNew, canBeDeleted: isNew)
+    hightLightMarker(marker)
   }
   
   private func addMarkerWithTitleAndReunionPoint(title: String, color: UIColor, type: Int, coordinate: CLLocationCoordinate2D, reunionPoint: SessionReunionPoint) {
     let marker = CustomMapMarker(position: coordinate)
-    marker.title = title
-    marker.icon = CustomMapMarker.markerImageWithColor(color)
-    marker.appearAnimation = kGMSMarkerAnimationPop
-    marker.map = mapView
-    
+    marker.setupMarker(title, color: color, animation: kGMSMarkerAnimationPop, wasAdded: false, canBeDeleted: true)
     marker.assignedReunionPoint = reunionPoint
     marker.selected = reunionPoint.selected
-    marker.wasAdded = false
-    marker.canBeDeleted = true
-    
+    hightLightMarker(marker)
+  }
+  
+  private func placeNewReunionPointMarker(coordinate: CLLocationCoordinate2D) {
+    addMarkerWithTitle(SessionMarkerType.ReunionPoint.markerTitle(), color: SessionMarkerType.AddedPoint.markerColor(), type: SessionMarkerType.AddedPoint.hashValue, coordinate: coordinate, isNew: true)
+    clearMap()
+    enableSaveButton()
+    showMapInfoView()
+    reverseGeocodeCoordinateWithNewPoint(coordinate)
+  }
+  
+  private func hightLightMarker(marker: CustomMapMarker) {
+    marker.map = mapView
     currentMarker = marker
     mapView.selectedMarker = marker
   }
@@ -242,12 +228,10 @@ class SessionMapViewController: UIViewController {
   }
   
   private func canDeleteCurrentMarker() -> Bool {
-    if currentUser?.hasPermissionWithId(13) == false {
+    if currentUser?.canEditReunionPoints() == false || currentMarker?.canBeDeleted == false {
       return false
     }
-    if currentMarker?.canBeDeleted == false {
-      return false
-    } else if currentMarker?.selected == false {
+    if currentMarker?.selected == false {
       enableUndoButton()
     } else if currentMarker?.selected == true || currentMarker?.wasAdded == true  {
       enableDeleteButton()
@@ -293,11 +277,22 @@ class SessionMapViewController: UIViewController {
     deleteMarkerButton.hidden = false
   }
   
-  private func showAlertWithTitle(title: String, message: String, buttonTitle: String) {
-    let alertController = UIAlertController(title: title, message: message, preferredStyle: UIAlertControllerStyle.Alert)
-    let defaultAction = UIAlertAction(title: buttonTitle, style: .Default, handler: nil)
-    alertController.addAction(defaultAction)
-    presentViewController(alertController, animated: true, completion: nil)
+  // MARK: - Public
+  
+  func showLocationSearchBar() {
+    self.view.layoutIfNeeded()
+    searchBarTopContraint.constant = initialTopConstant!
+    UIView.animateWithDuration(0.25, animations: {
+      self.view.layoutIfNeeded()
+    })
+  }
+  
+  func hideLocationSearchBar() {
+    self.view.layoutIfNeeded()
+    searchBarTopContraint.constant -= 100
+    UIView.animateWithDuration(0.3, animations: {
+      self.view.layoutIfNeeded()
+    })
   }
   
 }
@@ -323,14 +318,12 @@ extension SessionMapViewController {
   
   @IBAction func deleteMarker(sender: AnyObject) {
     if currentMarker?.wasAdded == true {
-      print("Was added point")
       currentMarker!.map = nil
       newReunionPoints.removeObject((currentMarker?.addedReunionPoint)!)
       hideMapInfoView()
     } else {
       currentMarker?.assignedReunionPoint?.selected = false
       dataLayer.saveContext()
-      print("Change to deleted point")
       currentMarker!.icon = CustomMapMarker.markerImageWithColor(SessionMarkerType.DeletedPoint.markerColor())
       currentMarker?.selected = false
       enableUndoButton()
@@ -343,7 +336,6 @@ extension SessionMapViewController {
     dataLayer.saveContext()
     currentMarker!.icon = CustomMapMarker.markerImageWithColor(SessionMarkerType.ReunionPoint.markerColor())
     currentMarker?.type = SessionMarkerType.ReunionPoint.hashValue
-    print("Change to Selected point")
     currentMarker?.selected = true
     enableDeleteButton()
     enableSaveButton()
@@ -366,10 +358,28 @@ extension SessionMapViewController {
     if Util.connectedToNetwork() {
       showActivityIndicator()
     } else {
-      showAlertWithTitle("No se encontro una red.", message: "Tus cambios seran enviados cuando la señal sea detectada.", buttonTitle: "OK")
+      Util.showAlertWithTitle(self, title: "No se encontro una red.", message: "Tus cambios seran enviados cuando la señal sea detectada.", buttonTitle: "OK")
       saveBarButtonItem.enabled = false
     }
     updateReunionPoints()
+  }
+  
+  @IBAction func searchLocations(sender: AnyObject) {
+    let controller = GooglePlacesSearchController(
+      apiKey: GooglePlacesApiKey,
+      placeType: PlaceType.Address,
+      currentText: searchTextField.text!,
+      controller: self
+    )
+    controller.didSelectGooglePlace { (place) -> Void in
+      self.placeNewReunionPointMarker(place.coordinate)
+      self.searchTextField.text = place.currentText
+      self.mapView.camera = GMSCameraPosition(target: place.coordinate, zoom: 11, bearing: 0, viewingAngle: 0)
+      controller.active = false
+    }
+    UISearchBar.appearance().tintColor = UIColor.whiteColor()
+    hideLocationSearchBar()
+    presentViewController(controller, animated: true, completion: nil)
   }
   
 }
@@ -399,7 +409,7 @@ extension SessionMapViewController: CLLocationManagerDelegate {
   
 }
 
-  // MARK: - GMSMapViewDelegate
+// MARK: - GMSMapViewDelegate
 
 extension SessionMapViewController: GMSMapViewDelegate {
 
@@ -418,14 +428,10 @@ extension SessionMapViewController: GMSMapViewDelegate {
   }
   
   func mapView(mapView: GMSMapView!, didLongPressAtCoordinate coordinate: CLLocationCoordinate2D) {
-    guard currentUser?.hasPermissionWithId(13) == true else {
+    guard currentUser?.canEditReunionPoints() == true else {
       return
     }
-    addNewMarkerWithTitle(SessionMarkerType.ReunionPoint.markerTitle(), color: SessionMarkerType.AddedPoint.markerColor(), type: SessionMarkerType.AddedPoint.hashValue, coordinate: coordinate)
-    clearMap()
-    enableSaveButton()
-    showMapInfoView()
-    reverseGeocodeCoordinateWithNewPoint(coordinate)
+    placeNewReunionPointMarker(coordinate)
   }
   
 }
@@ -440,25 +446,24 @@ extension SessionMapViewController {
     let arrayReunionDictionary = NSMutableArray()
     for reunionPoint in (session?.reunionPoints)! {
       let reunionDictionary = NSMutableDictionary()
-      reunionDictionary["id"] = Int((reunionPoint as! SessionReunionPoint).reunionPoint.id)
-      reunionDictionary["latitude"] = reunionPoint.reunionPoint.latitude
-      reunionDictionary["longitude"] = reunionPoint.reunionPoint.longitude
-      reunionDictionary["selected"] = reunionPoint.selected
+      reunionDictionary[SessionIdKey] = Int((reunionPoint as! SessionReunionPoint).reunionPoint.id)
+      reunionDictionary[SessionLatitudeKey] = reunionPoint.reunionPoint.latitude
+      reunionDictionary[SessionLongitudeKey] = reunionPoint.reunionPoint.longitude
+      reunionDictionary[SessionReunionPointSelectedKey] = reunionPoint.selected
       arrayReunionDictionary.addObject(reunionDictionary)
     }
-    dictionary["meeting_points"] = arrayReunionDictionary
+    dictionary[SessionMeetingPointsKey] = arrayReunionDictionary
     let arrayNeWReunionDictionary = NSMutableArray()
     for newReunionPoint in newReunionPoints {
       let newReunionDictionary = NSMutableDictionary()
       newReunionDictionary["address"] = (newReunionPoint as! NewReunionPoint).address
-      newReunionDictionary["latitude"] = (newReunionPoint as! NewReunionPoint).latitude
-      newReunionDictionary["longitude"] = (newReunionPoint as! NewReunionPoint).longitude
+      newReunionDictionary[SessionLatitudeKey] = (newReunionPoint as! NewReunionPoint).latitude
+      newReunionDictionary[SessionLongitudeKey] = (newReunionPoint as! NewReunionPoint).longitude
       arrayNeWReunionDictionary.addObject(newReunionDictionary)
     }
     dictionary["new_meeting_points"] = arrayNeWReunionDictionary
     NSUserDefaults.standardUserDefaults().setObject(dictionary, forKey: "edit_points")
     NSUserDefaults.standardUserDefaults().synchronize()
-    print(dictionary)
     return dictionary
   }
   
@@ -485,14 +490,15 @@ extension SessionMapViewController {
     let barButton = UIBarButtonItem(customView: activityIndicator)
     self.navigationItem.rightBarButtonItem = barButton
     activityIndicator.startAnimating()
+    undoDeleteButton.enabled = false
+    deleteMarkerButton.enabled = false
   }
   
   private func hideActivityIndicator() {
-    let barButton = UIBarButtonItem()
-    barButton.title = "Guardar"
-    barButton.target = self
-    barButton.action = "saveReunionPoints:"
+    let barButton = UIBarButtonItem(title: "Guardar", style: UIBarButtonItemStyle.Plain, target: self, action: "saveReunionPoints:")
     saveBarButtonItem = barButton
+    undoDeleteButton.enabled = true
+    deleteMarkerButton.enabled = true
     saveBarButtonItem.enabled = false
     self.navigationItem.rightBarButtonItem = barButton
   }
