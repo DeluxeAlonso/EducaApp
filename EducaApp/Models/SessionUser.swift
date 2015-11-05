@@ -11,12 +11,16 @@ import CoreData
 
 let SessionUserEntityName = "SessionUser"
 let SessionUserAttendedKey = "attended"
+let SessionUserRatingKey = "rating"
+let SessionUserCommentKey = "comment"
 let FindSessionUserByIdQuery = "user.id = %d AND session.id = %d"
 
 @objc(SessionUser)
 public class SessionUser: NSManagedObject {
 
   @NSManaged public var attended: Bool
+  @NSManaged public var rating: Int32
+  @NSManaged public var comment: String
   @NSManaged public var session: Session
   @NSManaged public var user: User
 
@@ -35,6 +39,12 @@ extension SessionUser: Deserializable {
     } else if attended is String {
       self.attended = (attended as! String) == "0" ? false : true
     }
+    if let rating = json[SessionUserRatingKey] as! Int? {
+      self.rating = Int32(rating)
+    }
+    if let comment =  json[SessionUserCommentKey] as? String {
+      self.comment = comment
+    }
   }
   
 }
@@ -44,7 +54,6 @@ extension SessionUser: Deserializable {
 extension SessionUser {
   
   public class func syncWithJsonArray(session:Session, arr: Array<NSDictionary>, ctx: NSManagedObjectContext) -> Array<SessionUser> {
-    
     // Map JSON to user ids for comparing
     var jsonByUserId = Dictionary<Int, NSDictionary>()
     var usersByUserId = Dictionary<Int, User>()
@@ -68,6 +77,68 @@ extension SessionUser {
       persistedSessionUsersByUserId[Int(sessionUser.user.id)] = sessionUser as? SessionUser
     }
 
+    let persistedIds = Array(persistedSessionUsersByUserId.keys)
+    
+    // Create new SessionUser objects for new ids
+    let newIds = NSMutableSet(array: ids)
+    newIds.minusSet(NSSet(array: persistedIds) as Set<NSObject>)
+    let newSessionUsers = newIds.allObjects.map({ (id: AnyObject) -> SessionUser in
+      let sessionVolunteer = NSEntityDescription.insertNewObjectForEntityForName(SessionUserEntityName, inManagedObjectContext: ctx) as! SessionUser
+      sessionVolunteer.user = usersByUserId[id as! Int]!
+      sessionVolunteer.session = session
+      return sessionVolunteer
+    })
+    
+    // Find existing SessionUser objects
+    let updateIds = NSMutableSet(array: ids)
+    updateIds.intersectSet(NSSet(array: persistedIds) as Set<NSObject>)
+    let updateSessionUsers = updateIds.allObjects.map({ (id: AnyObject) -> SessionUser in
+      return persistedSessionUsersByUserId[id as! Int]!
+    })
+    
+    // Apply json to each
+    let validSessionUsers = newSessionUsers + updateSessionUsers
+    for sessionUser in validSessionUsers {
+      sessionUser.setDataFromJSON(jsonBysessionUserId[Int(sessionUser.user.id)]!)
+    }
+    
+    // Delete old items
+    let deleteIds = NSMutableSet(array: persistedIds)
+    deleteIds.minusSet(NSSet(array: ids) as Set<NSObject>)
+    let deleteSessionUsers = deleteIds.allObjects.map({ (id: AnyObject) -> SessionUser in
+      return persistedSessionUsersByUserId[id as! Int]!
+    })
+    for sessionUser in deleteSessionUsers {
+      ctx.deleteObject(sessionUser)
+    }
+    
+    return validSessionUsers
+  }
+  
+  public class func syncVolunteersWithJsonArray(session:Session, arr: Array<NSDictionary>, ctx: NSManagedObjectContext) -> Array<SessionUser> {
+    // Map JSON to user ids for comparing
+    var jsonByUserId = Dictionary<Int, NSDictionary>()
+    var usersByUserId = Dictionary<Int, User>()
+    var jsonBysessionUserId = Dictionary<Int, NSDictionary>()
+    for json in arr {
+      if let id = json["id"] as AnyObject? {
+        let sessionUserId = id is Int ? id as! Int : Int(id as! String)!
+        let user :User = User.updateOrCreateWithJson(json, ctx: ctx)!
+        usersByUserId[sessionUserId] = user
+        jsonBysessionUserId[sessionUserId] = json
+        jsonByUserId[sessionUserId] = json
+      }
+    }
+    
+    let ids = Array(jsonByUserId.keys)
+    
+    // Get SessionUsers from the deal
+    let persistedSessionUsers = session.volunteers
+    var persistedSessionUsersByUserId = Dictionary<Int, SessionUser>()
+    for sessionUser in persistedSessionUsers {
+      persistedSessionUsersByUserId[Int(sessionUser.user.id)] = sessionUser as? SessionUser
+    }
+    
     let persistedIds = Array(persistedSessionUsersByUserId.keys)
     
     // Create new SessionUser objects for new ids

@@ -74,6 +74,8 @@ class SessionMapViewController: UIViewController , UISearchControllerDelegate{
   var currentUser: User?
   lazy var dataLayer = DataLayer()
   
+  var delegate: SessionsViewController?
+  
   var newReunionPoints = NSMutableArray()
   var markers = NSMutableArray()
   
@@ -303,6 +305,7 @@ extension SessionMapViewController {
 
   @IBAction func dismissMap(sender: AnyObject) {
     guard isSaved == false else {
+      self.delegate!.setupSessions()
       self.dismissViewControllerAnimated(true, completion: nil)
       return
     }
@@ -310,6 +313,7 @@ extension SessionMapViewController {
     let cancelAction: UIAlertAction = UIAlertAction(title: "Cancelar", style: .Cancel, handler: nil)
     actionSheetController.addAction(cancelAction)
     let nextAction: UIAlertAction = UIAlertAction(title: "Salir", style: .Default) { action -> Void in
+      self.delegate!.setupSessions()
       self.dismissViewControllerAnimated(true, completion: nil)
     }
     actionSheetController.addAction(nextAction)
@@ -323,7 +327,6 @@ extension SessionMapViewController {
       hideMapInfoView()
     } else {
       currentMarker?.assignedReunionPoint?.selected = false
-      dataLayer.saveContext()
       currentMarker!.icon = CustomMapMarker.markerImageWithColor(SessionMarkerType.DeletedPoint.markerColor())
       currentMarker?.selected = false
       enableUndoButton()
@@ -333,7 +336,6 @@ extension SessionMapViewController {
   
   @IBAction func undoDeleteAction(sender: AnyObject) {
     currentMarker?.assignedReunionPoint?.selected = true
-    dataLayer.saveContext()
     currentMarker!.icon = CustomMapMarker.markerImageWithColor(SessionMarkerType.ReunionPoint.markerColor())
     currentMarker?.type = SessionMarkerType.ReunionPoint.hashValue
     currentMarker?.selected = true
@@ -354,6 +356,7 @@ extension SessionMapViewController {
   }
  
   @IBAction func saveReunionPoints(sender: AnyObject) {
+    dataLayer.saveContext()
     isSaved =  true
     if Util.connectedToNetwork() {
       showActivityIndicator()

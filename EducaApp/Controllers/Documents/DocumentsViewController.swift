@@ -13,19 +13,30 @@ let DocumentsNavigationItemTitle = "Documentos"
 
 class DocumentsViewController: BaseFilterViewController {
 
+  @IBOutlet weak var tableView: UITableView!
   @IBOutlet weak var shadowView: UIView!
   @IBOutlet weak var menuContentView: UIView!
   @IBOutlet weak var menuHeightConstraint: NSLayoutConstraint!
+  @IBOutlet weak var customLoader: CustomActivityIndicatorView!
   
   let UserListSegueIdentifier = "GoToUserListSegue"
+  let refreshDataSelector: Selector = "refreshData"
+  let refreshControl = CustomRefreshControlView()
+  
   
   var session:Session?
-  var documents: NSMutableArray = []
+  var documents = [Document]()
   var initialHeightConstraintConstant: CGFloat?
+  var isRefreshing: Bool?
+  var selectedDocument: Document?
   
   override func viewDidLoad() {
     super.viewDidLoad()
     setupElements()
+    if session == nil {
+      setupDocuments()
+      setupTableView()
+    }
   }
   
   override func didReceiveMemoryWarning() {
@@ -38,7 +49,6 @@ class DocumentsViewController: BaseFilterViewController {
     setupBarButtonItem()
     setupSearchBar()
     setupMenuView()
-    getDocuments()
   }
   
   override func setupBarButtonItem() {
@@ -57,15 +67,41 @@ class DocumentsViewController: BaseFilterViewController {
     menuHeightConstraint.constant = 0
   }
   
-  private func getDocuments() {
-    for i in 0..<Int((Constants.MockData.DocumentsName.count)) {
-      let document = Document()
-      document.title = Constants.MockData.DocumentsName[i] as? String
-      document.size = Constants.MockData.DocumentsSize[i] as? String
-      document.uploadDate = Constants.MockData.DocumentsUploadTime[i] as? String
-      document.imageIcon = UIImage(named: (Constants.MockData.DocumentsImage[i] as? String)!)
-      documents.addObject(document)
+  private func setupTableView() {
+    tableView.addSubview(refreshControl)
+    refreshControl.addTarget(self, action: refreshDataSelector, forControlEvents: UIControlEvents.ValueChanged)
+  }
+
+  private func setupDocuments() {
+    documents = Document.getAllDocuments(self.dataLayer.managedObjectContext!)
+    guard documents.count == 0 else {
+      getDocuments()
+      return
     }
+    tableView.hidden = true
+    customLoader.startActivity()
+    getDocuments()
+  }
+  
+  private func getDocuments() {
+    DocumentService.fetchDocuments({(responseObject: AnyObject?, error: NSError?) in
+      self.refreshControl.endRefreshing()
+      self.isRefreshing = false
+      guard let json = responseObject as? Array<NSDictionary> else {
+        return
+      }
+      guard json.count > 0 else {
+        self.customLoader.stopActivity()
+        self.tableView.hidden = false
+        return
+      }
+      if (json[0][Constants.Api.ErrorKey] == nil) {
+        let syncedDocuments = Document.syncWithJsonArray(json, ctx: self.dataLayer.managedObjectContext!)
+        self.documents = syncedDocuments
+        self.dataLayer.saveContext()
+        self.reloadData()
+      }
+    })
   }
   
   private func showMenuView() {
@@ -100,6 +136,27 @@ class DocumentsViewController: BaseFilterViewController {
     })
   }
   
+  // MARK: - Public
+  
+  func refreshData() {
+    isRefreshing = true
+    Util.delay(2.0) {
+      self.getDocuments()
+    }
+  }
+  
+  func reloadData() {
+    guard self.isRefreshing == false else {
+      self.tableView.reloadData()
+      return
+    }
+    Util.delay(0.5) {
+      self.customLoader.stopActivity()
+      self.tableView.hidden = false
+      self.tableView.reloadData()
+    }
+  }
+  
   // MARK: - Actions
   
   @IBAction func goBack(sender: AnyObject) {
@@ -125,7 +182,7 @@ class DocumentsViewController: BaseFilterViewController {
   
   @IBAction func goToUsersList(sender: AnyObject) {
     hideMenuViewWithoutAnimation()
-    performSegueWithIdentifier(UserListSegueIdentifier, sender: Document())
+    performSegueWithIdentifier(UserListSegueIdentifier, sender: nil)
   }
   
   // MARK: - Navigation
@@ -133,7 +190,7 @@ class DocumentsViewController: BaseFilterViewController {
   override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
     if (segue.destinationViewController is UsersViewController) {
       let destinationVC = segue.destinationViewController as! UsersViewController;
-      destinationVC.document = Document()
+      destinationVC.documentUsers = selectedDocument!.users.allObjects as? [DocumentUser]
     }
   }
   
@@ -159,7 +216,7 @@ extension DocumentsViewController: UITableViewDataSource {
   
   func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
     let cell = tableView.dequeueReusableCellWithIdentifier(DocumentCellIdentifier, forIndexPath: indexPath) as! DocumentTableViewCell
-    cell.setupDocument(documents[indexPath.row] as! Document)
+    cell.setupDocument(documents[indexPath.row] )
     cell.delegate = self
     return cell
   }
@@ -171,7 +228,35 @@ extension DocumentsViewController: UITableViewDataSource {
 extension DocumentsViewController: UITableViewDelegate {
 
   func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+    selectedDocument = documents[indexPath.row]
+    showMenuView()
     tableView.deselectRowAtIndexPath(indexPath, animated: true)
+  }
+  
+}
+
+// MARK: - UIScrollViewDelegate
+
+extension DocumentsViewController: UIScrollViewDelegate {
+  
+  func scrollViewDidEndDecelerating(scrollView: UIScrollView) {
+    guard refreshControl.refreshing && !refreshControl.isAnimating else {
+      return
+    }
+    refreshControl.animateRefreshFirstStep()
+  }
+  
+  func scrollViewDidScroll(scrollView: UIScrollView) {
+    var offset = scrollView.contentOffset.y * -1
+    var alpha = CGFloat(0.0)
+    offset = offset - 64
+    if offset > 30 {
+      alpha = ((offset) / 100)
+      if alpha > 100 {
+        alpha = 1.0
+      }
+    }
+    refreshControl.customView.alpha = alpha
   }
   
 }

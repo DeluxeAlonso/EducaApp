@@ -9,6 +9,7 @@
 import UIKit
 
 let StudentsPath = "children"
+let StudentCommentsPath = "children/{id}"
 
 class StudentService {
   
@@ -20,4 +21,12 @@ class StudentService {
     })
   }
 
+  class func fetchStudentComments(studentId: Int32, completion: (responseObject: NSObject?, error: NSError?) -> Void) {
+    NetworkManager.sharedInstance.GET(UrlBuilder.UrlForApiaryPath("children/\(studentId)"), parameters: nil, success: { (operation: AFHTTPRequestOperation, responseObject: AnyObject?) in
+      completion(responseObject: responseObject! as? NSObject, error: nil)
+      }, failure: {(operation: AFHTTPRequestOperation, error: NSError) in
+        completion(responseObject: nil, error: error)
+    })
+  }
+  
 }

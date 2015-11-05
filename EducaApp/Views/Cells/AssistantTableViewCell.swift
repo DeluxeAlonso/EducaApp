@@ -34,8 +34,10 @@ class AssistantTableViewCell: UITableViewCell {
   
   // MARK: - Public
   
-  func setupAssistant(student: Student) {
-    nameLabel.text = student.fullName
+  func setupAssistant(sessionStudent: SessionStudent) {
+    nameLabel.text = sessionStudent.student.fullName
+    ageLabel.text = "Edad: \(sessionStudent.student.age)"
+    commentedImageView.image = sessionStudent.commented ? UIImage(named: ImageAssets.SentCommentIcon) : UIImage(named: ImageAssets.UnsentCommentIcon)
   }
   
   func setupCommentedImage() {

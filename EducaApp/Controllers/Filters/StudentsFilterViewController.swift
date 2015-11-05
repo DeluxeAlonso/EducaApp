@@ -18,7 +18,9 @@ protocol StudentsFilterViewControllerDelegate {
 }
 
 class StudentsFilterViewController: UIViewController {
-
+  @IBOutlet weak var maleGenderImageView: UIImageView!
+  @IBOutlet weak var femaleGenderImageView: UIImageView!
+  
   let rightBarButtonItemTitle = "Buscar"
   let advancedSearchSelector: Selector = "advancedSearch:"
   let popupHeight: CGFloat = 159
@@ -74,12 +76,14 @@ extension StudentsFilterViewController: UITableViewDataSource {
       switch indexPath.row {
       case 0:
         cell = tableView.dequeueReusableCellWithIdentifier(AuthorContentFilterCellIdentidifer, forIndexPath: indexPath)
-        (cell as! AuthorContentTableViewCell)
+        (cell as! AuthorContentTableViewCell).delegate = self
         (cell as! AuthorContentTableViewCell).setupNameFieldLabel(UsersFilterFields.Name.rawValue, indexPath: indexPath)
       case 1:
         cell = tableView.dequeueReusableCellWithIdentifier(AgeFilterCellIdentifier, forIndexPath: indexPath)
+        (cell as! AgeFilterTableViewCell).delegate = self
       case 2:
         cell = tableView.dequeueReusableCellWithIdentifier(GenderFilterCellIdentifier, forIndexPath: indexPath)
+        (cell as! GenderFilterTableViewCell).delegate = self
       default:
         break
       }
@@ -110,6 +114,25 @@ extension StudentsFilterViewController: AuthorContentTableViewCellDelegate {
     default:
       break
     }
+  }
+  
+}
+
+// MARK: - AgeFilterTableViewCellDelegate
+
+extension StudentsFilterViewController: AgeFilterTableViewCellDelegate {
+  
+  func ageFilterTableViewCell(ageFilterTableViewCell: AgeFilterTableViewCell, sliderValueChanged minValue: Int, maxValue: Int) {
+    minAgeSearch = minValue
+    maxAgeSearch = maxValue
+  }
+  
+}
+
+extension StudentsFilterViewController: GenderFilterTableViewCellDelegate {
+  
+  func genderFilterTableViewCell(ageFilterTableViewCell: GenderFilterTableViewCell, selectedIndex: Int) {
+    print(selectedIndex)
   }
   
 }

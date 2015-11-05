@@ -26,7 +26,7 @@ public class SessionReunionPoint: NSManagedObject {
 // MARK: - JSON deserialization
 
 extension SessionReunionPoint: Deserializable {
-  
+
   public func setDataFromJSON(json: NSDictionary) {
     guard let selected = json[SessionReunionPointSelectedKey] as? Bool else {
       return
@@ -41,7 +41,6 @@ extension SessionReunionPoint: Deserializable {
 extension SessionReunionPoint {
   
   public class func syncWithJsonArray(session:Session, arr: Array<NSDictionary>, ctx: NSManagedObjectContext) -> Array<SessionReunionPoint> {
-    
     // Map JSON to user ids for comparing
     var jsonByReunionPointId = Dictionary<Int, NSDictionary>()
     var reunionPointsByReunionPointId = Dictionary<Int, ReunionPoint>()

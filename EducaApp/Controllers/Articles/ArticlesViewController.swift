@@ -48,20 +48,8 @@ class ArticlesViewController: BaseViewController {
   }
   
   private func setupPendingRequests() {
-    guard let parameters = NSUserDefaults.standardUserDefaults().objectForKey("edit_points") as? NSDictionary else {
-      return
-    }
-    SessionService.editReunionPoints(parameters, completion: {(responseObject: AnyObject?, error: NSError?) in
-      guard let json = responseObject as? NSDictionary else {
-        return
-      }
-      if (json[Constants.Api.ErrorKey] == nil) {
-        NSUserDefaults.standardUserDefaults().setObject(nil, forKey: "edit_points")
-        NSUserDefaults.standardUserDefaults().synchronize()
-        Session.updateOrCreateReunionPointsWithJson(json, ctx: self.dataLayer.managedObjectContext!)
-        self.dataLayer.saveContext()
-      }
-    })
+    setupMeetingPointsPendingRequest()
+    setupVolunteersAttendancePendingRequest()
   }
   
   private func setupTableView() {
@@ -216,6 +204,46 @@ extension ArticlesViewController: ArticleTableViewCellDelegate {
   func articleTableViewCell(sessionTableViewCell: ArticleTableViewCell, starButtonDidTapped button: UIButton, favorited: Bool, indexPath: NSIndexPath) {
     currentUser!.updateFavoriteArticle(articles[indexPath.row], favorited: favorited, ctx: dataLayer.managedObjectContext!)
     self.dataLayer.saveContext()
+  }
+  
+}
+
+// MARK: - Pending Requests
+
+extension ArticlesViewController {
+  
+  private func setupMeetingPointsPendingRequest() {
+    guard let parameters = NSUserDefaults.standardUserDefaults().objectForKey("edit_points") as? NSDictionary else {
+      return
+    }
+    SessionService.editReunionPoints(parameters, completion: {(responseObject: AnyObject?, error: NSError?) in
+      guard let json = responseObject as? NSDictionary else {
+        return
+      }
+      if (json[Constants.Api.ErrorKey] == nil) {
+        NSUserDefaults.standardUserDefaults().setObject(nil, forKey: "edit_points")
+        NSUserDefaults.standardUserDefaults().synchronize()
+        Session.updateOrCreateReunionPointsWithJson(json, ctx: self.dataLayer.managedObjectContext!)
+        self.dataLayer.saveContext()
+      }
+    })
+  }
+  
+  private func setupVolunteersAttendancePendingRequest() {
+    guard let parameters = NSUserDefaults.standardUserDefaults().objectForKey("mark_assistance") as? NSDictionary else {
+      return
+    }
+    SessionService.editVolunteersAttendance(parameters, completion: {(responseObject: AnyObject?, error: NSError?) in
+      guard let json = responseObject as? NSDictionary else {
+        return
+      }
+      if (json[Constants.Api.ErrorKey] == nil) {
+        NSUserDefaults.standardUserDefaults().setObject(nil, forKey: "mark_assistance")
+        NSUserDefaults.standardUserDefaults().synchronize()
+        Session.updateOrCreateVolunteersWithJson(json, ctx: self.dataLayer.managedObjectContext!)
+        self.dataLayer.saveContext()
+      }
+    })
   }
   
 }

@@ -12,10 +12,9 @@ struct Constants {
   
   struct Path {
     static let Development = "http://200.16.7.111/afiperularavel/public/api/v1/"
-    static let Localhost = "http://localhost:8000/api/v1/"
+    static let Localhost = "http://192.168.1.6:8000/api/v1/"
     static let Apiary = "http://private-7791c-afiapp.apiary-mock.com/api/v1/"
     //http://192.168.1.6:8000
-    //http://200.16.7.111/afiperularavel/public/api/v1/
   }
   
   struct Notification {

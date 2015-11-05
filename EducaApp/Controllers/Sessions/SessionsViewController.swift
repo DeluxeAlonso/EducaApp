@@ -41,6 +41,21 @@ class SessionsViewController: BaseViewController {
     setupSessions()
   }
   
+  override func viewWillAppear(animated: Bool) {
+    super.viewWillAppear(animated)
+    sessions = Session.getAllSessions(dataLayer.managedObjectContext!)
+    for session in sessions {
+      print("Session")
+      print(session.id)
+      print(session.name)
+      print("Puntos de Reunion")
+      print(session.reunionPoints.count)
+      for reunionPoint in session.reunionPoints {
+        print((reunionPoint as! SessionReunionPoint).reunionPoint.id)
+      }
+    }
+  }
+  
   // MARK: - Private
   
   private func setupElements() {
@@ -59,7 +74,7 @@ class SessionsViewController: BaseViewController {
     menuHeightConstraint.constant = 0
   }
   
-  private func setupSessions() {
+  func setupSessions() {
     sessions = Session.getAllSessions(self.dataLayer.managedObjectContext!)
     guard sessions.count == 0 else {
       getSessions()
@@ -160,21 +175,25 @@ class SessionsViewController: BaseViewController {
   // MARK: - Navigation
   
   override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+    print(selectedSession)
     switch segue.destinationViewController {
     case is DocumentsViewController:
       let destinationVC = segue.destinationViewController as! DocumentsViewController
-      destinationVC.session = Session()
+      destinationVC.session = selectedSession
+      destinationVC.documents = (selectedSession?.documents.allObjects as! [DocumentSession]).map { (documentSession) in return documentSession.document }
     case is VolunteersViewController:
       let destinationVC = segue.destinationViewController as! VolunteersViewController
       destinationVC.session = selectedSession
-      destinationVC.volunteers = (selectedSession!.volunteers.allObjects as! [SessionUser]).map { (sessionUser) in return sessionUser.user }
+      destinationVC.delegate = self
+      destinationVC.sessionUsers = selectedSession!.volunteers.allObjects as! [SessionUser]
     case is AssistantsViewController:
       let destinationVC = segue.destinationViewController as! AssistantsViewController
-      destinationVC.assistants = (selectedSession!.students.allObjects as! [SessionStudent]).map { (sessionStudent) in return sessionStudent.student }
-    case is UINavigationController:
+      destinationVC.sessionStudents = selectedSession!.students.allObjects as! [SessionStudent]
+    case is UINavigationController :
       let navigationController = segue.destinationViewController as! UINavigationController
       if navigationController.viewControllers.first is SessionMapViewController {
         let destinationVC = navigationController.viewControllers.first as! SessionMapViewController
+        destinationVC.delegate = self
         destinationVC.session = selectedSession
       }
     default:

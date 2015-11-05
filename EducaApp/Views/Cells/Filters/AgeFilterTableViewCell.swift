@@ -8,21 +8,23 @@
 
 import UIKit
 
+protocol AgeFilterTableViewCellDelegate {
+  
+  func ageFilterTableViewCell(ageFilterTableViewCell: AgeFilterTableViewCell, sliderValueChanged minValue: Int, maxValue: Int)
+  
+}
+
 class AgeFilterTableViewCell: UITableViewCell {
   
   @IBOutlet weak var customSlider: NMRangeSlider!
   @IBOutlet weak var valueLabel: UILabel!
   
+  var delegate: AgeFilterTableViewCellDelegate?
+  
   override func awakeFromNib() {
     super.awakeFromNib()
     setupElements()
     updateLabelSlider()
-  }
-  
-  override func setSelected(selected: Bool, animated: Bool) {
-    super.setSelected(selected, animated: animated)
-    
-    // Configure the view for the selected state
   }
   
   // MARK: - Private
@@ -39,6 +41,7 @@ class AgeFilterTableViewCell: UITableViewCell {
     let lowerVal = Int(customSlider.lowerValue) + 4
     let upperVal = Int(customSlider.upperValue) + 4
     valueLabel.text = "\(lowerVal) - \(upperVal)"
+    delegate?.ageFilterTableViewCell(self, sliderValueChanged: lowerVal, maxValue: upperVal)
   }
   
   // MARK: - Actions
