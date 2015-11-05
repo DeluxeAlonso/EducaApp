@@ -29,6 +29,7 @@
 		E264BB811BBDF7D800D4D7D5 /* StudentsFilterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E264BB801BBDF7D800D4D7D5 /* StudentsFilterViewController.swift */; };
 		E26916441BB264BC001B1160 /* AssistantDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E26916431BB264BC001B1160 /* AssistantDetailViewController.swift */; };
 		E279C83F1BBCCDD900FCC139 /* SortSelectionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E279C83E1BBCCDD900FCC139 /* SortSelectionTableViewCell.swift */; };
+		E2926EF41BE8B38B00FB94E9 /* DocumentService.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2926EF31BE8B38B00FB94E9 /* DocumentService.swift */; };
 		E29F29141BDF59B2000D174B /* SchoolService.swift in Sources */ = {isa = PBXBuildFile; fileRef = E29F29131BDF59B2000D174B /* SchoolService.swift */; };
 		E29F29161BDF5C49000D174B /* School.swift in Sources */ = {isa = PBXBuildFile; fileRef = E29F29151BDF5C49000D174B /* School.swift */; };
 		E2A41DDD1BC1A965003C00E9 /* SessionMapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2A41DDC1BC1A965003C00E9 /* SessionMapViewController.swift */; };
@@ -37,6 +38,7 @@
 		E2CF33BE1B9D3F2C00B8BE40 /* UrlBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2CF33BD1B9D3F2C00B8BE40 /* UrlBuilder.swift */; };
 		E2CF33C01B9D4D1800B8BE40 /* DictionaryHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2CF33BF1B9D4D1800B8BE40 /* DictionaryHelper.swift */; };
 		E2CF33C21B9D5EF100B8BE40 /* UserService.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2CF33C11B9D5EF100B8BE40 /* UserService.swift */; };
+		E2D6E3D51BE8256500B62A66 /* GenderFilterTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2D6E3D41BE8256500B62A66 /* GenderFilterTableViewCell.swift */; };
 		E2DA52E31BB8E5FB00CB3793 /* SendAssistantCommentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2DA52E21BB8E5FB00CB3793 /* SendAssistantCommentViewController.swift */; };
 		E2DC077E1BBDDA3900304FDE /* PostDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2DC077D1BBDDA3900304FDE /* PostDetailViewController.swift */; };
 		E2DD0A7B1BB148B60038A358 /* VolunteerTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2DD0A7A1BB148B60038A358 /* VolunteerTableViewCell.swift */; };
@@ -101,6 +103,10 @@
 		E2EEA6501BDA1B7D00D3CE7F /* MapTasks.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2EEA64F1BDA1B7D00D3CE7F /* MapTasks.swift */; };
 		E2EEF3621BE038CF003A83B0 /* ReunionPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2EEF3611BE038CF003A83B0 /* ReunionPoint.swift */; };
 		E2EEF3641BE0392C003A83B0 /* Action.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2EEF3631BE0392C003A83B0 /* Action.swift */; };
+		E2EFE92F1BE931AB00E7B138 /* DocumentSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2EFE92E1BE931AB00E7B138 /* DocumentSession.swift */; };
+		E2EFE9311BE93A4100E7B138 /* DocumentUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2EFE9301BE93A4100E7B138 /* DocumentUser.swift */; };
+		E2EFE9331BE94C3000E7B138 /* DocumentUsersTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2EFE9321BE94C3000E7B138 /* DocumentUsersTableViewCell.swift */; };
+		E2F10A1E1BEA74B7006929CF /* Comment.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2F10A1D1BEA74B7006929CF /* Comment.swift */; };
 		E2F21EAF1BC63FD500CD474E /* CustomMapMarker.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2F21EAE1BC63FD500CD474E /* CustomMapMarker.swift */; };
 		E2F2D8251BC70308005DDEA2 /* RateVolunteerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2F2D8241BC70308005DDEA2 /* RateVolunteerViewController.swift */; };
 		E2F2D82A1BC7246B005DDEA2 /* PaymentsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2F2D8291BC7246B005DDEA2 /* PaymentsViewController.swift */; };
@@ -201,6 +207,7 @@
 		E264BB801BBDF7D800D4D7D5 /* StudentsFilterViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = StudentsFilterViewController.swift; path = Controllers/Filters/StudentsFilterViewController.swift; sourceTree = "<group>"; };
 		E26916431BB264BC001B1160 /* AssistantDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AssistantDetailViewController.swift; path = Controllers/Sessions/AssistantDetailViewController.swift; sourceTree = "<group>"; };
 		E279C83E1BBCCDD900FCC139 /* SortSelectionTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SortSelectionTableViewCell.swift; path = Views/Cells/Filters/SortSelectionTableViewCell.swift; sourceTree = "<group>"; };
+		E2926EF31BE8B38B00FB94E9 /* DocumentService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DocumentService.swift; path = Networking/DocumentService.swift; sourceTree = "<group>"; };
 		E29F29131BDF59B2000D174B /* SchoolService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SchoolService.swift; path = Networking/SchoolService.swift; sourceTree = "<group>"; };
 		E29F29151BDF5C49000D174B /* School.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = School.swift; path = Models/School.swift; sourceTree = "<group>"; };
 		E2A41DDC1BC1A965003C00E9 /* SessionMapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SessionMapViewController.swift; path = Controllers/Sessions/SessionMapViewController.swift; sourceTree = "<group>"; };
@@ -209,6 +216,7 @@
 		E2CF33BD1B9D3F2C00B8BE40 /* UrlBuilder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UrlBuilder.swift; path = Networking/UrlBuilder.swift; sourceTree = "<group>"; };
 		E2CF33BF1B9D4D1800B8BE40 /* DictionaryHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DictionaryHelper.swift; path = Helpers/DictionaryHelper.swift; sourceTree = "<group>"; };
 		E2CF33C11B9D5EF100B8BE40 /* UserService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UserService.swift; path = Networking/UserService.swift; sourceTree = "<group>"; };
+		E2D6E3D41BE8256500B62A66 /* GenderFilterTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = GenderFilterTableViewCell.swift; path = Views/Cells/Filters/GenderFilterTableViewCell.swift; sourceTree = "<group>"; };
 		E2DA52E21BB8E5FB00CB3793 /* SendAssistantCommentViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SendAssistantCommentViewController.swift; path = Controllers/Sessions/SendAssistantCommentViewController.swift; sourceTree = "<group>"; };
 		E2DC077D1BBDDA3900304FDE /* PostDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PostDetailViewController.swift; path = Controllers/Blog/PostDetailViewController.swift; sourceTree = "<group>"; };
 		E2DD0A7A1BB148B60038A358 /* VolunteerTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = VolunteerTableViewCell.swift; path = Views/Cells/VolunteerTableViewCell.swift; sourceTree = "<group>"; };
@@ -274,6 +282,10 @@
 		E2EEA64F1BDA1B7D00D3CE7F /* MapTasks.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MapTasks.swift; path = Helpers/Util/MapTasks.swift; sourceTree = "<group>"; };
 		E2EEF3611BE038CF003A83B0 /* ReunionPoint.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ReunionPoint.swift; path = Models/ReunionPoint.swift; sourceTree = "<group>"; };
 		E2EEF3631BE0392C003A83B0 /* Action.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Action.swift; path = Models/Action.swift; sourceTree = "<group>"; };
+		E2EFE92E1BE931AB00E7B138 /* DocumentSession.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DocumentSession.swift; path = Models/DocumentSession.swift; sourceTree = "<group>"; };
+		E2EFE9301BE93A4100E7B138 /* DocumentUser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DocumentUser.swift; path = Models/DocumentUser.swift; sourceTree = "<group>"; };
+		E2EFE9321BE94C3000E7B138 /* DocumentUsersTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DocumentUsersTableViewCell.swift; path = Views/Cells/DocumentUsersTableViewCell.swift; sourceTree = "<group>"; };
+		E2F10A1D1BEA74B7006929CF /* Comment.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Comment.swift; path = Models/Comment.swift; sourceTree = "<group>"; };
 		E2F21EAE1BC63FD500CD474E /* CustomMapMarker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CustomMapMarker.swift; path = "Views/Custom Views/CustomMapMarker.swift"; sourceTree = "<group>"; };
 		E2F2D8241BC70308005DDEA2 /* RateVolunteerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RateVolunteerViewController.swift; path = Controllers/Sessions/RateVolunteerViewController.swift; sourceTree = "<group>"; };
 		E2F2D8291BC7246B005DDEA2 /* PaymentsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PaymentsViewController.swift; path = Controllers/Payments/PaymentsViewController.swift; sourceTree = "<group>"; };
@@ -386,6 +398,7 @@
 				E29F29131BDF59B2000D174B /* SchoolService.swift */,
 				E2FBE7411BE013D100DC7457 /* StudentService.swift */,
 				E2FBC50E1BE484FA0051715F /* NetworkManager.swift */,
+				E2926EF31BE8B38B00FB94E9 /* DocumentService.swift */,
 			);
 			name = Networking;
 			sourceTree = "<group>";
@@ -423,6 +436,7 @@
 				E21257B61BBCC779007425B2 /* SortingFilterTableViewCell.swift */,
 				E279C83E1BBCCDD900FCC139 /* SortSelectionTableViewCell.swift */,
 				E2E4F7D51BBE395E00224059 /* AgeFilterTableViewCell.swift */,
+				E2D6E3D41BE8256500B62A66 /* GenderFilterTableViewCell.swift */,
 			);
 			name = Filters;
 			sourceTree = "<group>";
@@ -476,16 +490,16 @@
 		E2E081091BAF28910014803B /* Sessions */ = {
 			isa = PBXGroup;
 			children = (
-				E2E0810A1BAF28FD0014803B /* SessionsViewController.swift */,
-				E2DF160B1BB1327600886D1A /* VolunteersViewController.swift */,
 				E2E316A91BB1C09C000D8DC7 /* AssistantsViewController.swift */,
 				E26916431BB264BC001B1160 /* AssistantDetailViewController.swift */,
+				E2F9C83C1BCF292800DBE7B9 /* CalendarViewController.swift */,
+				E2FBC5101BE4A9090051715F /* GooglePlacesSearchController.swift */,
 				E2E2A1F21BB6863F00B1CBB3 /* ShowAssistantCommentViewController.swift */,
 				E2DA52E21BB8E5FB00CB3793 /* SendAssistantCommentViewController.swift */,
+				E2E0810A1BAF28FD0014803B /* SessionsViewController.swift */,
 				E2A41DDC1BC1A965003C00E9 /* SessionMapViewController.swift */,
-				E2FBC5101BE4A9090051715F /* GooglePlacesSearchController.swift */,
 				E2F2D8241BC70308005DDEA2 /* RateVolunteerViewController.swift */,
-				E2F9C83C1BCF292800DBE7B9 /* CalendarViewController.swift */,
+				E2DF160B1BB1327600886D1A /* VolunteersViewController.swift */,
 			);
 			name = Sessions;
 			sourceTree = "<group>";
@@ -496,6 +510,7 @@
 				E2DD53C01BABCB170034B31C /* ArticleTableViewCell.swift */,
 				E2E316AB1BB1C87A000D8DC7 /* AssistantTableViewCell.swift */,
 				E2DDD13D1BB3ABE20085D795 /* DocumentTableViewCell.swift */,
+				E2EFE9321BE94C3000E7B138 /* DocumentUsersTableViewCell.swift */,
 				E253E3C31BCDDB34006A284F /* NotificationControlTableViewCell.swift */,
 				E2E4F8101BBE3D8600224059 /* PostTableViewCell.swift */,
 				E2DF0F531BBCFB6C00F1D1D0 /* PostulationTableViewCell.swift */,
@@ -601,20 +616,23 @@
 		E2E9CA471B97BA6300DC0EDA /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				E202F74A1BB3658100D5E64D /* Document.swift */,
-				E2E9CA4C1B97E4D400DC0EDA /* User.swift */,
+				E2EEF3631BE0392C003A83B0 /* Action.swift */,
 				E26116E21BABA374002C0332 /* Article.swift */,
+				E202F74A1BB3658100D5E64D /* Document.swift */,
+				E2EFE92E1BE931AB00E7B138 /* DocumentSession.swift */,
+				E2EFE9301BE93A4100E7B138 /* DocumentUser.swift */,
 				E2E4F8161BBE410C00224059 /* Post.swift */,
 				E2FA6F771BDDA06A000DA2E5 /* Profile.swift */,
+				E2EEF3611BE038CF003A83B0 /* ReunionPoint.swift */,
 				E2E990DA1BD75477006064FD /* Session.swift */,
 				E2FA6F831BDE0160000DA2E5 /* SessionUser.swift */,
 				E2F598D31BB29E4E00C0206E /* SessionComment.swift */,
 				E2FBE73F1BDFDEA600DC7457 /* SessionStudent.swift */,
 				E2E4F8141BBE40FF00224059 /* Student.swift */,
 				E29F29151BDF5C49000D174B /* School.swift */,
-				E2EEF3611BE038CF003A83B0 /* ReunionPoint.swift */,
-				E2EEF3631BE0392C003A83B0 /* Action.swift */,
 				E2F457121BE1ED5B00941231 /* SessionReunionPoint.swift */,
+				E2E9CA4C1B97E4D400DC0EDA /* User.swift */,
+				E2F10A1D1BEA74B7006929CF /* Comment.swift */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -968,6 +986,7 @@
 				E2FE3F721B9636E0006EEA91 /* SWRevealViewController.m in Sources */,
 				E2FE3F481B9632DC006EEA91 /* AppDelegate.swift in Sources */,
 				E253E3C41BCDDB34006A284F /* NotificationControlTableViewCell.swift in Sources */,
+				E2EFE9311BE93A4100E7B138 /* DocumentUser.swift in Sources */,
 				E2E4F8171BBE410C00224059 /* Post.swift in Sources */,
 				E2F9C89E1BCF47E000DBE7B9 /* CVCalendarViewAppearance.swift in Sources */,
 				E2F9C8A11BCF47E000DBE7B9 /* CVCalendarViewPresentationMode.swift in Sources */,
@@ -983,14 +1002,17 @@
 				E2E0CCBA1BBA187700067144 /* UIImageHelper.swift in Sources */,
 				E2CD94011BBD2A3000A2F357 /* UsersFilterViewController.swift in Sources */,
 				E2F9C8981BCF47E000DBE7B9 /* CVCalendarMonthContentViewController.swift in Sources */,
+				E2926EF41BE8B38B00FB94E9 /* DocumentService.swift in Sources */,
 				E2E990E11BD762F0006064FD /* UIAlertControllerHelper.swift in Sources */,
 				E2F2D8251BC70308005DDEA2 /* RateVolunteerViewController.swift in Sources */,
+				E2D6E3D51BE8256500B62A66 /* GenderFilterTableViewCell.swift in Sources */,
 				E2E13ABD1BA6B918004C6E45 /* SidebarViewController.swift in Sources */,
 				E2EE4D5D1BD5FD92006CBDFE /* PeopleViewController.swift in Sources */,
 				E2DE92601BB4BC1100E762F8 /* BaseViewController.swift in Sources */,
 				E2DD53C11BABCB170034B31C /* ArticleTableViewCell.swift in Sources */,
 				E2E4F8151BBE40FF00224059 /* Student.swift in Sources */,
 				E23D17FC1BB915C900AB8D18 /* UIViewHelper.swift in Sources */,
+				E2EFE92F1BE931AB00E7B138 /* DocumentSession.swift in Sources */,
 				E2E587E01B993C1C008580D3 /* SignInViewController.swift in Sources */,
 				E2DD0A7B1BB148B60038A358 /* VolunteerTableViewCell.swift in Sources */,
 				E2B2A76C1BAF65DF00691884 /* SessionTableViewCell.swift in Sources */,
@@ -1039,6 +1061,7 @@
 				E2DDD1421BB3DCD00085D795 /* ArticlesViewController.swift in Sources */,
 				E2CF33BE1B9D3F2C00B8BE40 /* UrlBuilder.swift in Sources */,
 				E2E0810B1BAF28FD0014803B /* SessionsViewController.swift in Sources */,
+				E2EFE9331BE94C3000E7B138 /* DocumentUsersTableViewCell.swift in Sources */,
 				E2E2A1F41BB6863F00B1CBB3 /* ShowAssistantCommentViewController.swift in Sources */,
 				E279C83F1BBCCDD900FCC139 /* SortSelectionTableViewCell.swift in Sources */,
 				E2DF0F501BBCFA5400F1D1D0 /* UsersViewController.swift in Sources */,
@@ -1061,6 +1084,7 @@
 				E29F29141BDF59B2000D174B /* SchoolService.swift in Sources */,
 				E2F9C8A91BCF47E000DBE7B9 /* CVSet.swift in Sources */,
 				E22E72211BBCC5DD0082FE4B /* AuthorContentTableViewCell.swift in Sources */,
+				E2F10A1E1BEA74B7006929CF /* Comment.swift in Sources */,
 				E2DD26A21BBC5256006A0A78 /* DateFilterViewController.swift in Sources */,
 				E2E4F8131BBE3D9300224059 /* StudentTableViewCell.swift in Sources */,
 				E26916441BB264BC001B1160 /* AssistantDetailViewController.swift in Sources */,

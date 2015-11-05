@@ -17,7 +17,7 @@ class AssistantsViewController: BaseViewController {
   let GoToCommentViewSegueIdentifier = "ShowCommentSegue"
   let GoToDetailViewSegueIdentifier = "GoToAssistantDetail"
   
-  var assistants = [Student]()
+  var sessionStudents = [SessionStudent]()
   var selectedCell: UITableViewCell?
   
   var sendCommentPopupViewController: STPopupController?
@@ -39,7 +39,7 @@ class AssistantsViewController: BaseViewController {
   private func goToCommentSection(tableView:UITableView, indexPath: NSIndexPath) {
     selectedCell = tableView.cellForRowAtIndexPath(indexPath) as! AssistantTableViewCell
     let viewController = self.storyboard?.instantiateViewControllerWithIdentifier(SendAssistantCommentViewIdentifier) as! SendAssistantCommentViewController
-    viewController.assistant = assistants[indexPath.row].fullName
+    viewController.assistant = sessionStudents[indexPath.row].student.fullName
     viewController.delegate = self
     setupPopupNavigationBar()
     sendCommentPopupViewController = STPopupController(rootViewController: viewController)
@@ -48,7 +48,7 @@ class AssistantsViewController: BaseViewController {
   }
   
   private func goToDetailSection(tableView:UITableView, indexPath: NSIndexPath) {
-    self.performSegueWithIdentifier(GoToDetailViewSegueIdentifier, sender: assistants[indexPath.row].fullName)
+    self.performSegueWithIdentifier(GoToDetailViewSegueIdentifier, sender: sessionStudents[indexPath.row].student)
   }
   
   // MARK: - Public
@@ -69,7 +69,7 @@ class AssistantsViewController: BaseViewController {
   override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
     if segue.destinationViewController is AssistantDetailViewController {
       let destinationVC = segue.destinationViewController as! AssistantDetailViewController
-      destinationVC.assistant = sender as? String
+      destinationVC.student = sender as? Student
     }
   }
   
@@ -84,12 +84,12 @@ extension AssistantsViewController: UITableViewDataSource {
   }
   
   func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-    return assistants.count
+    return sessionStudents.count
   }
   
   func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
     let cell = tableView.dequeueReusableCellWithIdentifier(AssistantCellIdentifier, forIndexPath: indexPath) as! AssistantTableViewCell
-    cell.setupAssistant(assistants[indexPath.row])
+    cell.setupAssistant(sessionStudents[indexPath.row])
     return cell
   }
   

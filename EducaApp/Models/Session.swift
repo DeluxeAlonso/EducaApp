@@ -23,7 +23,8 @@ let SessionAttendanceVolunteerKey = "attendance_volunteers"
 let SessionAttendanceChildrenKey = "attendance_children"
 let SessionReunionPointKey = "points_of_reunion"
 let SessionMeetingPointsKey = "meeting_points"
-
+let SessionDocumentsKey = "documents"
+let SessionVolunteersKey = "volunteers"
 
 @objc(Session)
 public class Session: NSManagedObject {
@@ -36,6 +37,7 @@ public class Session: NSManagedObject {
   @NSManaged public var volunteers: NSSet
   @NSManaged public var students: NSSet
   @NSManaged public var reunionPoints: NSSet
+  @NSManaged public var documents: NSSet
   
   var coordinate: CLLocationCoordinate2D {
     return CLLocationCoordinate2D(latitude: CLLocationDegrees(latitude), longitude: CLLocationDegrees(longitude))
@@ -62,7 +64,6 @@ extension Session: Deserializable {
     let sessionReunionPoint = SessionReunionPoint.findBySessionAndReunionPoint(self, reunionPoint: reunionPoint, ctx: ctx)
     sessionReunionPoint?.selected = selected
   }
-  
   
 }
 
@@ -150,6 +151,9 @@ extension Session {
     if let reunionPointsJson = json[SessionMeetingPointsKey] as! Array<NSDictionary>? {
       SessionReunionPoint.syncWithJsonArray(session!, arr: reunionPointsJson, ctx: ctx)
     }
+    if let documentsJson = json[SessionDocumentsKey] as! Array<NSDictionary>? {
+      DocumentSession.syncWithJsonArray(session!, arr: documentsJson, ctx: ctx)
+    }
     return session
   }
   
@@ -161,6 +165,18 @@ extension Session {
     }
     if let reunionPointsJson = json[SessionMeetingPointsKey] as! Array<NSDictionary>? {
       SessionReunionPoint.syncWithJsonArray(session!, arr: reunionPointsJson, ctx: ctx)
+    }
+    return session
+  }
+  
+  public class func updateOrCreateVolunteersWithJson(json: NSDictionary, ctx: NSManagedObjectContext) -> Session? {
+    var session: Session?
+    if let id = json["session_id"] as AnyObject? {
+      let sessionId = id is Int ? Int32(id as! Int) : Int32(id as! String)!
+      session = findOrCreateWithId(sessionId, ctx: ctx)
+    }
+    if let volunteersJson = json[SessionVolunteersKey] as! Array<NSDictionary>? {
+      SessionUser.syncVolunteersWithJsonArray(session!, arr: volunteersJson, ctx: ctx)
     }
     return session
   }

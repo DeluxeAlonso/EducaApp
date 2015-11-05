@@ -14,16 +14,15 @@ let UserTableViewCellIdentifier = "UserCell"
 class UsersViewController: BaseFilterViewController {
   
   let UsersViewControllerTitle = "Usuarios"
+  let DocumentUserTableViewCellIdentifier = "DocumentUserCell"
   
   var popupViewController: STPopupController?
-  var document: Document?
-  var users: NSMutableArray = []
+  var documentUsers: [DocumentUser]?
   
   // MARK: - Lifecycle
   
   override func viewDidLoad() {
     super.viewDidLoad()
-    getUsers()
   }
   
   override func didReceiveMemoryWarning() {
@@ -31,9 +30,6 @@ class UsersViewController: BaseFilterViewController {
   }
 
   // MARK: - Private
-  
-  private func getUsers() {
-  }
   
   private func setupPopupNavigationBar() {
     STPopupNavigationBar.appearance().barTintColor = UIColor.defaultTextColor()
@@ -43,7 +39,7 @@ class UsersViewController: BaseFilterViewController {
   
   override func setupBarButtonItem() {
     super.setupBarButtonItem()
-    if self.revealViewController() != nil && document == nil {
+    if self.revealViewController() != nil && documentUsers == nil {
       let menuIcon = UIBarButtonItem(title: nil, style: UIBarButtonItemStyle.Plain, target: self.revealViewController(), action: MenuButtonSelector)
       menuIcon.image = UIImage(named: ImageAssets.MenuIcon)
       self.navigationItem.setLeftBarButtonItem(menuIcon, animated: false)
@@ -109,12 +105,12 @@ extension UsersViewController: UITableViewDataSource {
   }
   
   func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-    return 5
+    return documentUsers!.count
   }
   
   func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-    let cell = tableView.dequeueReusableCellWithIdentifier(UserTableViewCellIdentifier, forIndexPath: indexPath) as! UserTableViewCell
-    //cell.setupUser(users[indexPath.row] as! User)
+    let cell = tableView.dequeueReusableCellWithIdentifier(DocumentUserTableViewCellIdentifier, forIndexPath: indexPath) as! DocumentUsersTableViewCell
+    cell.setupDocumentUser(documentUsers![indexPath.row])
     return cell
   }
   

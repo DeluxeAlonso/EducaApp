@@ -26,7 +26,9 @@ struct ImageAssets {
   static let DefaultBackground = "DefaultBackground"
   static let AfiLogo = "AfiLogo"
   static let SentCommentIcon = "SentCommentIcon"
+  static let UnsentCommentIcon = "UnsentCommentIcon"
   static let MaleGenderIcon = "MaleGenderIcon"
   static let FemaleGenderIcon = "FemaleGenderIcon"
-  
+  static let UncheckIcon = "UncheckMark"
+  static let CheckIcon = "CheckAssistanceIcon"
 }

@@ -74,7 +74,6 @@ class SendAssistantCommentViewController: UIViewController {
     } else {
       (delegate as! AssistantDetailViewController).dismissSendCommentPopup()
     }
-    
   }
   
   @IBAction func pressHappyButton(sender: AnyObject) {

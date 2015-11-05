@@ -73,9 +73,17 @@ extension User: Deserializable {
     return (SessionUser.findBySessionAndUser(session, user: self, ctx: ctx)?.attended)!
   }
   
-  func markAttendanceToSession(session: Session, attended: Bool, ctx: NSManagedObjectContext) {
+  func markAttendanceToSession(session: Session, attended: Bool, ctx: NSManagedObjectContext) -> SessionUser {
     let sessionUser = SessionUser.findBySessionAndUser(session, user: self, ctx: ctx)
     sessionUser?.attended = attended
+    return sessionUser!
+  }
+  
+  func rateVolunteerInSession(session: Session, rating: Int, comment: String, ctx: NSManagedObjectContext) -> SessionUser {
+    let sessionUser = SessionUser.findBySessionAndUser(session, user: self, ctx: ctx)
+    sessionUser?.rating = Int32(rating)
+    sessionUser?.comment = comment
+    return sessionUser!
   }
   
   func canListAssistantsComments() -> Bool {
@@ -167,6 +175,8 @@ extension User {
   
   class func updateOrCreateWithJson(json: NSDictionary, ctx: NSManagedObjectContext) -> User? {
     var user: User?
+    print("updateOrCreateWithJson")
+    print(json)
     if let id = json[UserIdKey] as AnyObject?  {
       let userId = id is Int ? Int32(id as! Int) : Int32(id as! String)!
       user = findOrCreateWithId(userId, ctx: ctx)

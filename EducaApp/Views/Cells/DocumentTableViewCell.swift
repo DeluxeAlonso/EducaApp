@@ -47,9 +47,9 @@ class DocumentTableViewCell: UITableViewCell {
   // MARK: - Public
   
   func setupDocument(document: Document) {
-    iconImageView.image = document.imageIcon
-    titleLabel.text = document.title
-    sizeLabel.text = "\(document.size!) - \(document.uploadDate!)"
+    iconImageView.image = UIImage(named: "PDFIcon")
+    titleLabel.text = document.name
+    sizeLabel.text = "\(document.size) - \(document.uploadDate)"
   }
   
   // MARK: - Actions

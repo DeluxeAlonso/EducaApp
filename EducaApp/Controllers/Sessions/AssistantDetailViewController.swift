@@ -29,7 +29,6 @@ class AssistantDetailViewController: BaseFilterViewController {
   
   let commentViewText = "Comentarios"
   
-  var assistant: String?
   var sections: NSMutableArray = ["16/09/2015", "01/09/2015"]
   var collapseSectionsInfo:[CollapseSectionModel] = Array()
   
@@ -39,6 +38,9 @@ class AssistantDetailViewController: BaseFilterViewController {
   var isSearchBarOpen = false
   var isKeyboardVisible = false
   var initialHeightConstant: CGFloat!
+  
+  var student: Student?
+  var studentComments = [Comment]()
   
   // MARK: - Lifecycle
   
@@ -56,12 +58,13 @@ class AssistantDetailViewController: BaseFilterViewController {
   override func viewDidLoad() {
     super.viewDidLoad()
     setupElements()
+    setupComments()
   }
   
   // MARK: - Private
   
   private func setupElements() {
-    title = assistant
+    title = student?.fullName
     setupObservers()
     setupLabels()
     setupSearchBar()
@@ -96,6 +99,46 @@ class AssistantDetailViewController: BaseFilterViewController {
     self.tableView.registerNib(sectionHeader, forHeaderFooterViewReuseIdentifier: CollapseSectionHeaderViewIdentifier)
   }
   
+  private func setupComments() {
+    getComments()
+  }
+  
+  private func getComments() {
+    StudentService.fetchStudentComments(1, completion: {(responseObject: AnyObject?, error: NSError?) in
+      print(responseObject)
+      guard let json = responseObject as? NSDictionary where json.count > 0 else {
+        return
+      }
+      if (json[Constants.Api.ErrorKey] == nil) {
+        self.student = Student.updateOrCreateWithJson(json, ctx: self.dataLayer.managedObjectContext!)
+        Comment.syncWithJsonArray(self.student!, arr: (json["comments"] as? Array<NSDictionary>)!, ctx: self.dataLayer.managedObjectContext!)
+        self.setupInfoLabels()
+        self.dataLayer.saveContext()
+        let comments = Comment.getAllComments(self.dataLayer.managedObjectContext!)
+        print(comments.count)
+        for comment in comments {
+          print(comment.id)
+          print(comment.message)
+          print(comment.face)
+          print(comment.author.fullName)
+        }
+        self.tableView.reloadData()
+      }
+    })
+  }
+  
+  private func setupInfoLabels() {
+    ageLabel.text = "Edad:\n\((student?.age)!) años"
+    let gender = student?.gender == 0 ? "Masculino" : "Femenino"
+    genderLabel.text = "Género:\n\(gender)"
+    sessionCountLabel.text = "Sesiones:\n\((student?.sessionsQty)!)"
+    let date = student?.joiningDate
+    let dateFormatter = NSDateFormatter()
+    dateFormatter.dateFormat = "dd/M/Y"
+    let dateString = dateFormatter.stringFromDate(date!)
+    dateLabel.text = "Fecha de inscripción: \(dateString)"
+  }
+  
   private func showPopoverCommentView(indexPath: NSIndexPath, comment: SessionComment) {
     let popoverViewController = ShowAssistantCommentViewController()
     popoverViewController.setupView(comment)
@@ -128,7 +171,7 @@ class AssistantDetailViewController: BaseFilterViewController {
     UIView.animateWithDuration(duration, animations: {
       self.navigationItem.titleView?.alpha = 0
       }, completion: { finished in
-        self.navigationItem.title = self.assistant
+        self.navigationItem.title = self.student?.fullName
         self.navigationItem.titleView = nil
     })
   }
@@ -154,7 +197,7 @@ class AssistantDetailViewController: BaseFilterViewController {
   @IBAction func goToSendCommentSection(sender: AnyObject) {
     hideSearchBar()
     let viewController = self.storyboard?.instantiateViewControllerWithIdentifier(SendAssistantCommentViewIdentifier) as! SendAssistantCommentViewController
-    viewController.assistant = assistant
+    viewController.assistant = student?.fullName
     viewController.delegate = self
     setupPopupNavigationBar()
     sendCommentPopupViewController = STPopupController(rootViewController: viewController)

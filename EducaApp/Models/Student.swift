@@ -25,6 +25,9 @@ public class Student: NSManagedObject {
   @NSManaged public var age: Int32
   @NSManaged public var gender: Int32
   
+  @NSManaged public var joiningDate: NSDate
+  @NSManaged public var sessionsQty: Int32
+  
   var fullName: String {
     let name = "\(firstName) \(lastName)"
     return name
@@ -46,6 +49,12 @@ extension Student: Deserializable {
     self.age = Int32(age)
     if let gender = json[StudentGenderKey] as? Int {
       self.gender = Int32(gender)
+    }
+    if let joiningDate = json["joining_date"] as? Double {
+      self.joiningDate = NSDate(timeIntervalSince1970: joiningDate)
+    }
+    if let sessionsQty = json["sessions"] as AnyObject? {
+      self.sessionsQty = sessionsQty is Int ? Int32(sessionsQty as! Int) : Int32(sessionsQty as! String)!
     }
   }
   
