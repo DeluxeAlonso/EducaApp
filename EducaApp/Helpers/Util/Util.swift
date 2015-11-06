@@ -43,6 +43,10 @@ class Util {
     controller!.presentViewController(alertController, animated: true, completion: nil)
   }
   
+  class func showNoInternetAlert(controller: UIViewController) {
+    Util.showAlertWithTitle(controller, title: "No se encontro una red.", message: "Tus cambios seran enviados cuando la señal sea detectada.", buttonTitle: "OK")
+  }
+  
   class func connectedToNetwork() -> Bool {
     var zeroAddress = sockaddr_in()
     zeroAddress.sin_len = UInt8(sizeofValue(zeroAddress))

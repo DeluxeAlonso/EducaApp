@@ -103,6 +103,9 @@
 		E2EEA6501BDA1B7D00D3CE7F /* MapTasks.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2EEA64F1BDA1B7D00D3CE7F /* MapTasks.swift */; };
 		E2EEF3621BE038CF003A83B0 /* ReunionPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2EEF3611BE038CF003A83B0 /* ReunionPoint.swift */; };
 		E2EEF3641BE0392C003A83B0 /* Action.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2EEF3631BE0392C003A83B0 /* Action.swift */; };
+		E2EF5EBC1BEC6D0B00573642 /* DocumentPreviewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2EF5EBB1BEC6D0B00573642 /* DocumentPreviewViewController.swift */; };
+		E2EF5EBF1BECB58C00573642 /* Payment.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2EF5EBD1BECB58C00573642 /* Payment.swift */; };
+		E2EF5EC21BECB90100573642 /* PaymentService.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2EF5EC11BECB90100573642 /* PaymentService.swift */; };
 		E2EFE92F1BE931AB00E7B138 /* DocumentSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2EFE92E1BE931AB00E7B138 /* DocumentSession.swift */; };
 		E2EFE9311BE93A4100E7B138 /* DocumentUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2EFE9301BE93A4100E7B138 /* DocumentUser.swift */; };
 		E2EFE9331BE94C3000E7B138 /* DocumentUsersTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2EFE9321BE94C3000E7B138 /* DocumentUsersTableViewCell.swift */; };
@@ -282,6 +285,9 @@
 		E2EEA64F1BDA1B7D00D3CE7F /* MapTasks.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MapTasks.swift; path = Helpers/Util/MapTasks.swift; sourceTree = "<group>"; };
 		E2EEF3611BE038CF003A83B0 /* ReunionPoint.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ReunionPoint.swift; path = Models/ReunionPoint.swift; sourceTree = "<group>"; };
 		E2EEF3631BE0392C003A83B0 /* Action.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Action.swift; path = Models/Action.swift; sourceTree = "<group>"; };
+		E2EF5EBB1BEC6D0B00573642 /* DocumentPreviewViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DocumentPreviewViewController.swift; path = Controllers/Documents/DocumentPreviewViewController.swift; sourceTree = "<group>"; };
+		E2EF5EBD1BECB58C00573642 /* Payment.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Payment.swift; path = Models/Payment.swift; sourceTree = "<group>"; };
+		E2EF5EC11BECB90100573642 /* PaymentService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PaymentService.swift; path = Models/PaymentService.swift; sourceTree = "<group>"; };
 		E2EFE92E1BE931AB00E7B138 /* DocumentSession.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DocumentSession.swift; path = Models/DocumentSession.swift; sourceTree = "<group>"; };
 		E2EFE9301BE93A4100E7B138 /* DocumentUser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DocumentUser.swift; path = Models/DocumentUser.swift; sourceTree = "<group>"; };
 		E2EFE9321BE94C3000E7B138 /* DocumentUsersTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DocumentUsersTableViewCell.swift; path = Views/Cells/DocumentUsersTableViewCell.swift; sourceTree = "<group>"; };
@@ -384,6 +390,7 @@
 			isa = PBXGroup;
 			children = (
 				E25A5EF31BAFBC26000530F7 /* DocumentsViewController.swift */,
+				E2EF5EBB1BEC6D0B00573642 /* DocumentPreviewViewController.swift */,
 			);
 			name = Documents;
 			sourceTree = "<group>";
@@ -399,6 +406,7 @@
 				E2FBE7411BE013D100DC7457 /* StudentService.swift */,
 				E2FBC50E1BE484FA0051715F /* NetworkManager.swift */,
 				E2926EF31BE8B38B00FB94E9 /* DocumentService.swift */,
+				E2EF5EC11BECB90100573642 /* PaymentService.swift */,
 			);
 			name = Networking;
 			sourceTree = "<group>";
@@ -630,6 +638,7 @@
 				E2FBE73F1BDFDEA600DC7457 /* SessionStudent.swift */,
 				E2E4F8141BBE40FF00224059 /* Student.swift */,
 				E29F29151BDF5C49000D174B /* School.swift */,
+				E2EF5EBD1BECB58C00573642 /* Payment.swift */,
 				E2F457121BE1ED5B00941231 /* SessionReunionPoint.swift */,
 				E2E9CA4C1B97E4D400DC0EDA /* User.swift */,
 				E2F10A1D1BEA74B7006929CF /* Comment.swift */,
@@ -978,6 +987,7 @@
 				E2EE4D601BD63085006CBDFE /* PeriodsViewController.swift in Sources */,
 				E26116E11BAB9E09002C0332 /* ArticleService.swift in Sources */,
 				E2EEF3641BE0392C003A83B0 /* Action.swift in Sources */,
+				E2EF5EC21BECB90100573642 /* PaymentService.swift in Sources */,
 				E2F9C8A51BCF47E000DBE7B9 /* CVDate.swift in Sources */,
 				E21257B71BBCC779007425B2 /* SortingFilterTableViewCell.swift in Sources */,
 				E2FE3F4B1B9632DC006EEA91 /* EducaApp.xcdatamodeld in Sources */,
@@ -1045,6 +1055,7 @@
 				E2F9C89F1BCF47E000DBE7B9 /* CVCalendarViewAppearanceDelegate.swift in Sources */,
 				E202F74B1BB3658100D5E64D /* Document.swift in Sources */,
 				E2E4F7D61BBE395E00224059 /* AgeFilterTableViewCell.swift in Sources */,
+				E2EF5EBF1BECB58C00573642 /* Payment.swift in Sources */,
 				E2F9C89A1BCF47E000DBE7B9 /* CVCalendarTouchController.swift in Sources */,
 				E246CE7A1BD1BE1A006A194D /* CustomRatingView.swift in Sources */,
 				E2E56B391BA5549700D18F76 /* CALayerHelper.swift in Sources */,
@@ -1053,6 +1064,7 @@
 				E2E4F80F1BBE3D4B00224059 /* UserTableViewCell.swift in Sources */,
 				E2ED7EF21BC668E5001A7C29 /* SchoolsMapViewController.swift in Sources */,
 				E2F2D8301BC77E08005DDEA2 /* PostAuthorDetailViewController.swift in Sources */,
+				E2EF5EBC1BEC6D0B00573642 /* DocumentPreviewViewController.swift in Sources */,
 				E26116E31BABA374002C0332 /* Article.swift in Sources */,
 				E2E990DD1BD75F07006064FD /* ChangePasswordTableViewController.swift in Sources */,
 				E2E316AC1BB1C87A000D8DC7 /* AssistantTableViewCell.swift in Sources */,

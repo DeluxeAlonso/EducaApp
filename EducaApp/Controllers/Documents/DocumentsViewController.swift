@@ -19,7 +19,13 @@ class DocumentsViewController: BaseFilterViewController {
   @IBOutlet weak var menuHeightConstraint: NSLayoutConstraint!
   @IBOutlet weak var customLoader: CustomActivityIndicatorView!
   
+  @IBOutlet weak var downloadButton: UIButton!
+  
+  @IBOutlet weak var downLoadLabel: UILabel!
+  
   let UserListSegueIdentifier = "GoToUserListSegue"
+  let DocumentPreviewSegueIdentifier = "GoToDocumentPreviewSegue"
+  
   let refreshDataSelector: Selector = "refreshData"
   let refreshControl = CustomRefreshControlView()
   
@@ -29,6 +35,13 @@ class DocumentsViewController: BaseFilterViewController {
   var initialHeightConstraintConstant: CGFloat?
   var isRefreshing: Bool?
   var selectedDocument: Document?
+  var downloadedDocument: Document?
+  
+  var selectedCell: DocumentTableViewCell?
+  var downLoadedCell: DocumentTableViewCell?
+  
+  var currentDownloadSize: Int64?
+  var currentDownloadData = NSMutableData()
   
   override func viewDidLoad() {
     super.viewDidLoad()
@@ -87,10 +100,7 @@ class DocumentsViewController: BaseFilterViewController {
     DocumentService.fetchDocuments({(responseObject: AnyObject?, error: NSError?) in
       self.refreshControl.endRefreshing()
       self.isRefreshing = false
-      guard let json = responseObject as? Array<NSDictionary> else {
-        return
-      }
-      guard json.count > 0 else {
+      guard let json = responseObject as? Array<NSDictionary> where json.count > 0 else {
         self.customLoader.stopActivity()
         self.tableView.hidden = false
         return
@@ -106,6 +116,7 @@ class DocumentsViewController: BaseFilterViewController {
   
   private func showMenuView() {
     hideSearchBarAnimated(false)
+    validateDocumentAvailibity()
     self.shadowView.translatesAutoresizingMaskIntoConstraints = true
     self.menuContentView.translatesAutoresizingMaskIntoConstraints = true
     self.navigationController?.interactivePopGestureRecognizer?.enabled = false
@@ -134,6 +145,13 @@ class DocumentsViewController: BaseFilterViewController {
           self.navigationItem.title = DocumentsNavigationItemTitle
           self.navigationItem.titleView = nil
     })
+  }
+  
+  private func validateDocumentAvailibity() {
+    if selectedDocument?.isSaved == true {
+      downloadButton.enabled = false
+      downLoadLabel.textColor = UIColor.lightGrayColor()
+    }
   }
   
   // MARK: - Public
@@ -185,12 +203,37 @@ class DocumentsViewController: BaseFilterViewController {
     performSegueWithIdentifier(UserListSegueIdentifier, sender: nil)
   }
   
+  @IBAction func goToDocumentPreview(sender: AnyObject) {
+    hideMenuView(NSNull)
+    performSegueWithIdentifier(DocumentPreviewSegueIdentifier, sender: nil)
+  }
+  
+  @IBAction func downloadDocument(sender: AnyObject) {
+    if Util.connectedToNetwork() == false {
+      showAlertWithTitle("Error", message: "No tienes conexión a internet.", buttonTitle: "OK")
+      return
+    }
+    hideMenuView(NSNull)
+    downLoadedCell = selectedCell
+    downloadedDocument = selectedDocument
+    let url = NSURL(string: "\(Constants.Path.BaseUrl)\((selectedDocument?.url)!)" )
+    let requestObject = NSURLRequest(URL: url!, cachePolicy: NSURLRequestCachePolicy.ReturnCacheDataElseLoad, timeoutInterval: 10.0)
+    let urlConnection = NSURLConnection(request: requestObject, delegate: self, startImmediately: true)
+    print(urlConnection)
+  }
+  
   // MARK: - Navigation
   
   override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
     if (segue.destinationViewController is UsersViewController) {
       let destinationVC = segue.destinationViewController as! UsersViewController;
       destinationVC.documentUsers = selectedDocument!.users.allObjects as? [DocumentUser]
+    } else if segue.destinationViewController is UINavigationController {
+      let navigationController = segue.destinationViewController as! UINavigationController
+      if navigationController.viewControllers.first is DocumentPreviewViewController {
+        let destinationVC = navigationController.viewControllers.first as! DocumentPreviewViewController
+        destinationVC.document = selectedDocument
+      }
     }
   }
   
@@ -229,6 +272,7 @@ extension DocumentsViewController: UITableViewDelegate {
 
   func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
     selectedDocument = documents[indexPath.row]
+    selectedCell = tableView.cellForRowAtIndexPath(indexPath) as? DocumentTableViewCell
     showMenuView()
     tableView.deselectRowAtIndexPath(indexPath, animated: true)
   }
@@ -257,6 +301,29 @@ extension DocumentsViewController: UIScrollViewDelegate {
       }
     }
     refreshControl.customView.alpha = alpha
+  }
+  
+}
+
+// MARK: - NSURLConnectionDataDelegate
+
+extension DocumentsViewController: NSURLConnectionDataDelegate {
+  
+  func connectionDidFinishLoading(connection: NSURLConnection) {
+    downloadedDocument?.isSaved = true
+    dataLayer.saveContext()
+    downLoadedCell?.setupProgressView(1.0)
+  }
+  
+  func connection(connection: NSURLConnection, didReceiveResponse response: NSURLResponse) {
+    currentDownloadSize = response.expectedContentLength
+  }
+  
+  func connection(connection: NSURLConnection, didReceiveData data: NSData) {
+    currentDownloadData.appendData(data)
+    print(currentDownloadData.length)
+    let downloadProgress: Float = Float((currentDownloadData.length)) / Float(currentDownloadSize!)
+    downLoadedCell?.setupProgressView(downloadProgress)
   }
   
 }

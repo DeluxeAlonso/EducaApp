@@ -184,7 +184,7 @@ extension Session {
   public class func getAllSessions(ctx: NSManagedObjectContext) -> Array<Session> {
     let fetchRequest = NSFetchRequest()
     fetchRequest.entity = NSEntityDescription.entityForName(SessionEntityName, inManagedObjectContext: ctx)
-    let sortDescriptor = NSSortDescriptor(key: SessionIdKey, ascending: false)
+    let sortDescriptor = NSSortDescriptor(key: SessionDateKey, ascending: false)
     fetchRequest.sortDescriptors = [sortDescriptor]
     let sessions = try! ctx.executeFetchRequest(fetchRequest) as? Array<Session>
     return sessions ?? Array<Session>()

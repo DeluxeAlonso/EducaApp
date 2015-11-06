@@ -14,6 +14,12 @@ enum SelectedMood: Int {
   case SadMood
 }
 
+protocol SendAssistantCommentViewControllerDelegate {
+  
+  func sendAssistantCommentViewController(sendAssistantCommentViewController: SendAssistantCommentViewController, comment: String, face: Int)
+  
+}
+
 class SendAssistantCommentViewController: UIViewController {
   
   @IBOutlet weak var happyMoodImageView: UIImageView!
@@ -26,9 +32,12 @@ class SendAssistantCommentViewController: UIViewController {
   let ScaleToSize: CGFloat = 1.15
   let ScaleDuration: NSTimeInterval = 0.5
   
-  var delegate: UIViewController?
+  var delegate: SendAssistantCommentViewControllerDelegate?
   var assistant: String?
   
+  var currentComment: Comment?
+  
+  var comment = String()
   var selectedFaceIndex = SelectedMood.None
   
   // MARK: - Lifecycle
@@ -54,6 +63,9 @@ class SendAssistantCommentViewController: UIViewController {
   private func setupElements() {
     setupButtons()
     setupTextView()
+    if currentComment != nil {
+      setupFields()
+    }
   }
   
   private func setupButtons() {
@@ -62,18 +74,29 @@ class SendAssistantCommentViewController: UIViewController {
   }
   
   private func setupTextView() {
+    commentTextView.text = ""
     commentTextView.textColor = UIColor.defaultSmallTextColor()
     commentTextView.layer.borderColor = UIColor.defaultSmallTextColor().CGColor
+  }
+  
+  private func setupFields() {
+    commentTextView.text = currentComment?.message
+    if currentComment?.face == 1 {
+      pressHappyButton(NSNull)
+    } else if currentComment?.face == -1 {
+      pressSadButton(NSNull)
+    }
   }
   
   // MARK: - Actions
   
   @IBAction func sendMessage(sender: AnyObject) {
-    if delegate is AssistantsViewController {
-      (delegate as! AssistantsViewController).dismissSendCommentPopup()
-    } else {
-      (delegate as! AssistantDetailViewController).dismissSendCommentPopup()
+    var face = selectedFaceIndex.hashValue
+    comment = commentTextView.text
+    if selectedFaceIndex == SelectedMood.SadMood {
+      face = -1
     }
+    delegate?.sendAssistantCommentViewController(self, comment: comment, face: face)
   }
   
   @IBAction func pressHappyButton(sender: AnyObject) {

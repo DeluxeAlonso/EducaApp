@@ -21,6 +21,7 @@ class DocumentTableViewCell: UITableViewCell {
   @IBOutlet weak var menuButton: UIButton!
   @IBOutlet weak var sizeLabel: UILabel!
   
+  @IBOutlet weak var progressView: UIProgressView!
   var delegate: DocumentTableViewCellDelegate?
   
   // MARK: - Lifecycle
@@ -28,13 +29,6 @@ class DocumentTableViewCell: UITableViewCell {
   override func awakeFromNib() {
     super.awakeFromNib()
     setupElements()
-    // Initialization code
-  }
-  
-  override func setSelected(selected: Bool, animated: Bool) {
-    super.setSelected(selected, animated: animated)
-    
-    // Configure the view for the selected state
   }
   
   // MARK: - Private
@@ -44,12 +38,33 @@ class DocumentTableViewCell: UITableViewCell {
     sizeLabel.textColor = UIColor.defaultSmallTextColor()
   }
   
+  private func getDocumentImage(document: Document) -> UIImage {
+    if document.url.lowercaseString.rangeOfString(".pdf") != nil {
+      return UIImage(named: "PDFIcon")!
+    } else if document.url.lowercaseString.rangeOfString(".xls") != nil {
+      return UIImage(named: "ExcelIcon")!
+    } else if document.url.lowercaseString.rangeOfString(".doc") != nil {
+      return UIImage(named: "WordIcon")!
+    }
+    return UIImage(named: "GenericDocIcon")!
+  }
+  
   // MARK: - Public
   
   func setupDocument(document: Document) {
-    iconImageView.image = UIImage(named: "PDFIcon")
+    if document.isSaved == true {
+      progressView.progress = 1.0
+      progressView.hidden = false
+    }
+    iconImageView.image = getDocumentImage(document)
     titleLabel.text = document.name
     sizeLabel.text = "\(document.size) - \(document.uploadDate)"
+  }
+  
+  func setupProgressView(progress: Float) {
+    print(progress)
+    progressView.hidden = false
+    progressView.progress = progress
   }
   
   // MARK: - Actions

@@ -15,6 +15,7 @@ let EditVolunteersAttendancePath = "roll_call"
 class SessionService {
 
   class func fetchSessions(completion: (responseObject: NSObject?, error: NSError?) -> Void) {
+    NetworkManager.sharedInstance.requestSerializer.setValue(User.getAuthToken(), forHTTPHeaderField: Constants.Api.Header)
     NetworkManager.sharedInstance.GET(UrlBuilder.UrlForPath(SessionsPath), parameters: nil, success: { (operation: AFHTTPRequestOperation, responseObject: AnyObject?) in
       completion(responseObject: responseObject! as? NSObject, error: nil)
       }, failure: {(operation: AFHTTPRequestOperation, error: NSError) in

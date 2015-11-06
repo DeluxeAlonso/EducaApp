@@ -126,3 +126,13 @@ extension PostsViewController: UIPopoverPresentationControllerDelegate {
   }
   
 }
+
+// MARK: - AssistantCommentsFilterViewControllerDelegate
+
+extension PostsViewController: AssistantCommentsFilterViewControllerDelegate {
+  
+  func assistantCommentsFilterViewController(assistantCommentsFilterViewController: AssistantCommentsFilterViewController) {
+    popupViewController?.dismiss()
+  }
+  
+}

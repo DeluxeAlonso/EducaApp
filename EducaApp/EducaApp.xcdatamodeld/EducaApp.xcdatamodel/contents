@@ -22,6 +22,7 @@
     </entity>
     <entity name="Document" representedClassName="Document" syncable="YES">
         <attribute name="id" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
+        <attribute name="isSaved" optional="YES" attributeType="Boolean" syncable="YES"/>
         <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="size" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="uploadDate" optional="YES" attributeType="String" syncable="YES"/>
@@ -37,6 +38,13 @@
         <attribute name="seen" optional="YES" attributeType="Boolean" syncable="YES"/>
         <relationship name="document" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Document" inverseName="users" inverseEntity="Document" syncable="YES"/>
         <relationship name="user" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="User" inverseName="documents" inverseEntity="User" syncable="YES"/>
+    </entity>
+    <entity name="Payment" representedClassName="Payment" syncable="YES">
+        <attribute name="amount" optional="YES" attributeType="Float" defaultValueString="0.0" syncable="YES"/>
+        <attribute name="dueDate" optional="YES" attributeType="Date" syncable="YES"/>
+        <attribute name="feeNumber" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
+        <attribute name="id" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
+        <attribute name="status" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
     </entity>
     <entity name="Profile" representedClassName="Profile" syncable="YES">
         <attribute name="id" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
@@ -74,6 +82,7 @@
     </entity>
     <entity name="SessionStudent" representedClassName="SessionStudent" syncable="YES">
         <attribute name="commented" optional="YES" attributeType="Boolean" syncable="YES"/>
+        <attribute name="sessionStudentId" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
         <relationship name="session" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Session" inverseName="students" inverseEntity="Session" syncable="YES"/>
         <relationship name="student" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Student" inverseName="sessions" inverseEntity="Student" syncable="YES"/>
     </entity>
@@ -96,23 +105,27 @@
         <relationship name="sessions" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="SessionStudent" inverseName="student" inverseEntity="SessionStudent" syncable="YES"/>
     </entity>
     <entity name="User" representedClassName="User" syncable="YES">
+        <attribute name="canReapply" optional="YES" attributeType="Boolean" syncable="YES"/>
         <attribute name="firstName" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="id" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
         <attribute name="lastName" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="latitude" optional="YES" attributeType="Float" defaultValueString="0.0" syncable="YES"/>
         <attribute name="longitude" optional="YES" attributeType="Float" defaultValueString="0.0" syncable="YES"/>
+        <attribute name="periodId" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
+        <attribute name="periodName" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="username" optional="YES" attributeType="String" syncable="YES"/>
         <relationship name="actions" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Action" inverseName="user" inverseEntity="Action" syncable="YES"/>
         <relationship name="articles" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Article" inverseName="author" inverseEntity="Article" syncable="YES"/>
         <relationship name="comments" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Comment" inverseName="author" inverseEntity="Comment" syncable="YES"/>
-        <relationship name="documents" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="DocumentUser" inverseName="user" inverseEntity="DocumentUser" syncable="YES"/>
+        <relationship name="documents" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="DocumentUser" inverseName="user" inverseEntity="DocumentUser" syncable="YES"/>
         <relationship name="profiles" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Profile" inverseName="users" inverseEntity="Profile" syncable="YES"/>
         <relationship name="sessions" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="SessionUser" inverseName="user" inverseEntity="SessionUser" syncable="YES"/>
     </entity>
     <elements>
         <element name="Action" positionX="-2135" positionY="476" width="128" height="73"/>
         <element name="Article" positionX="-1946" positionY="36" width="128" height="133"/>
-        <element name="Document" positionX="-2511" positionY="38" width="128" height="148"/>
+        <element name="Comment" positionX="-2340" positionY="153" width="128" height="133"/>
+        <element name="Document" positionX="-2511" positionY="38" width="128" height="163"/>
         <element name="DocumentSession" positionX="-2324" positionY="45" width="128" height="73"/>
         <element name="DocumentUser" positionX="-2358" positionY="335" width="128" height="88"/>
         <element name="Profile" positionX="-2342" positionY="461" width="128" height="88"/>
@@ -120,10 +133,10 @@
         <element name="School" positionX="-2700" positionY="36" width="128" height="103"/>
         <element name="Session" positionX="-2126" positionY="-198" width="128" height="178"/>
         <element name="SessionReunionPoint" positionX="-1964" positionY="-108" width="128" height="88"/>
-        <element name="SessionStudent" positionX="-2331" positionY="-153" width="128" height="88"/>
+        <element name="SessionStudent" positionX="-2331" positionY="-153" width="128" height="103"/>
         <element name="SessionUser" positionX="-2135" positionY="60" width="128" height="118"/>
         <element name="Student" positionX="-2504" positionY="-144" width="128" height="178"/>
-        <element name="User" positionX="-2124" positionY="207" width="128" height="223"/>
-        <element name="Comment" positionX="-2340" positionY="153" width="128" height="133"/>
+        <element name="User" positionX="-2124" positionY="207" width="128" height="270"/>
+        <element name="Payment" positionX="-2682" positionY="180" width="128" height="118"/>
     </elements>
 </model>

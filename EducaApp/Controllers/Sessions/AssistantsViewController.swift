@@ -20,6 +20,8 @@ class AssistantsViewController: BaseViewController {
   var sessionStudents = [SessionStudent]()
   var selectedCell: UITableViewCell?
   
+  var selectedSessionStudent: SessionStudent?
+  
   var sendCommentPopupViewController: STPopupController?
 
   // MARK: - Lifecycle
@@ -41,6 +43,9 @@ class AssistantsViewController: BaseViewController {
     let viewController = self.storyboard?.instantiateViewControllerWithIdentifier(SendAssistantCommentViewIdentifier) as! SendAssistantCommentViewController
     viewController.assistant = sessionStudents[indexPath.row].student.fullName
     viewController.delegate = self
+    if let comment = Comment.getCommentBySessionAndStudentAndAuthor((sessionStudents.first?.session)!, student: (selectedSessionStudent?.student)!, author: currentUser!, ctx: dataLayer.managedObjectContext!) {
+      viewController.currentComment = comment
+    }
     setupPopupNavigationBar()
     sendCommentPopupViewController = STPopupController(rootViewController: viewController)
     sendCommentPopupViewController!.presentInViewController(self)
@@ -48,7 +53,7 @@ class AssistantsViewController: BaseViewController {
   }
   
   private func goToDetailSection(tableView:UITableView, indexPath: NSIndexPath) {
-    self.performSegueWithIdentifier(GoToDetailViewSegueIdentifier, sender: sessionStudents[indexPath.row].student)
+    self.performSegueWithIdentifier(GoToDetailViewSegueIdentifier, sender: sessionStudents[indexPath.row])
   }
   
   // MARK: - Public
@@ -69,7 +74,9 @@ class AssistantsViewController: BaseViewController {
   override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
     if segue.destinationViewController is AssistantDetailViewController {
       let destinationVC = segue.destinationViewController as! AssistantDetailViewController
-      destinationVC.student = sender as? Student
+      destinationVC.session = sessionStudents.first!.session
+      destinationVC.sessionStudent = (sender as? SessionStudent)
+      destinationVC.student = (sender as? SessionStudent)!.student
     }
   }
   
@@ -101,6 +108,7 @@ extension AssistantsViewController: UITableViewDelegate {
   
   func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
     tableView.deselectRowAtIndexPath(indexPath, animated: true)
+    selectedSessionStudent = sessionStudents[indexPath.row]
     ((currentUser?.canListAssistantsComments()) == true) ? goToDetailSection(tableView, indexPath: indexPath) : goToCommentSection(tableView, indexPath: indexPath)
   }
   
@@ -113,6 +121,30 @@ extension AssistantsViewController: UIPopoverPresentationControllerDelegate {
   func adaptivePresentationStyleForPresentationController(
     controller: UIPresentationController) -> UIModalPresentationStyle {
       return .None
+  }
+  
+}
+
+// MARK: - SendAssistantCommentViewControllerDelegate
+
+extension AssistantsViewController: SendAssistantCommentViewControllerDelegate {
+  
+  func sendAssistantCommentViewController(sendAssistantCommentViewController: SendAssistantCommentViewController, comment: String, face: Int) {
+    sendCommentPopupViewController?.dismiss()
+    if Util.connectedToNetwork() == false {
+      Util.showNoInternetAlert(self)
+    }
+    let parameters = ["message": comment, "face": face]
+    StudentService.commentStudent((selectedSessionStudent?.sessionStudentId)!, parameters: parameters, completion: {(responseObject: AnyObject?, error: NSError?) in
+      guard let json = responseObject as? NSDictionary where json.count > 0 else {
+        return
+      }
+      if (json[Constants.Api.ErrorKey] == nil && json["message"] == nil) {
+        (self.selectedCell as! AssistantTableViewCell).setupCommentedImage()
+        Comment.createNewComment(self.selectedSessionStudent!, message: comment, face: face, ctx: self.dataLayer.managedObjectContext!)
+        self.dataLayer.saveContext()
+      }
+    })
   }
   
 }

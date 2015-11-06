@@ -16,6 +16,7 @@ let FindSessionStudentByIdQuery = "student.id = %d AND session.id = %d"
 @objc(SessionStudent)
 public class SessionStudent: NSManagedObject {
   
+  @NSManaged public var sessionStudentId: Int32
   @NSManaged public var commented: Bool
   @NSManaged public var session: Session
   @NSManaged public var student: Student
@@ -45,13 +46,21 @@ extension SessionStudent {
     var jsonByStudentId = Dictionary<Int, NSDictionary>()
     var studentsByStudentId = Dictionary<Int, Student>()
     var jsonBysessionStudentId = Dictionary<Int, NSDictionary>()
+    var relationshipByStudentId = Dictionary<Int, Int>()
+    var relationshipId: Int = 0
     for json in arr {
-      if let userJson = json["child"] as? NSDictionary, id = userJson["id"] as AnyObject? {
+      if let  sessionStudent = json["id"] as AnyObject?, userJson = json["child"] as? NSDictionary, id = userJson["id"] as AnyObject? {
         let sessionStudentId = id is Int ? id as! Int : Int(id as! String)!
+        relationshipId = sessionStudent is Int ? sessionStudent as! Int : Int(sessionStudent as! String)!
         let student :Student = Student.updateOrCreateWithJson(userJson, ctx: ctx)!
+        relationshipByStudentId[sessionStudentId] = relationshipId
         studentsByStudentId[sessionStudentId] = student
         jsonBysessionStudentId[sessionStudentId] = json
         jsonByStudentId[sessionStudentId] = userJson
+        
+        if let commentJson = json["comment"] as? NSDictionary? {
+          Comment.syncSingleCommentWithJsonArray(session,student: student, author: User.getAuthenticatedUser(ctx)!, json: commentJson!, ctx: ctx)
+        }
       }
     }
     
@@ -73,6 +82,7 @@ extension SessionStudent {
       let sessionStudent = NSEntityDescription.insertNewObjectForEntityForName(SessionStudentEntityName, inManagedObjectContext: ctx) as! SessionStudent
       sessionStudent.student = studentsByStudentId[id as! Int]!
       sessionStudent.session = session
+      sessionStudent.sessionStudentId = Int32(relationshipByStudentId[id as! Int]!)
       return sessionStudent
     })
     

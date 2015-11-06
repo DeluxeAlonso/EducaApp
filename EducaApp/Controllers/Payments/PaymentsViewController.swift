@@ -14,15 +14,19 @@ let DebtPaymentCellIdentifier = "DebtPaymentCell"
 
 class PaymentsViewController: BaseViewController {
 
+  @IBOutlet weak var tableView: UITableView!
   let GoToDepositSegueIdentifier = "GoToDepositSegue"
   
   var paymentConfig = PayPalConfiguration()
+  
+  var payments = [Payment]()
   
   // MARK:- Lifecycle
   
   override func viewDidLoad() {
     super.viewDidLoad()
     setupElements()
+    setupPayments()
   }
   
   override func viewWillAppear(animated: Bool) {
@@ -40,6 +44,22 @@ class PaymentsViewController: BaseViewController {
   private func configuratePayment() {
     paymentConfig.acceptCreditCards = true
     paymentConfig.languageOrLocale = "es"
+  }
+  
+  private func setupPayments() {
+    PaymentService.fetchPayments({(responseObject: AnyObject?, error: NSError?) in
+      print(responseObject)
+      guard let json = responseObject as? Array<NSDictionary> where json.count > 0 else {
+        return
+      }
+      if (json[0][Constants.Api.ErrorKey] == nil) {
+        let syncedPayments = Payment.syncWithJsonArray(json , ctx: self.dataLayer.managedObjectContext!)
+        self.payments = syncedPayments
+        print(self.payments.count)
+        self.dataLayer.saveContext()
+        self.tableView.reloadData()
+      }
+    })
   }
   
   // MARK: - Actions

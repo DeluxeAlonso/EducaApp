@@ -19,15 +19,20 @@ let AssistantCommentsFilterViewIdentifier = "AssistantCommentsFilterViewControll
 class AssistantDetailViewController: BaseFilterViewController {
   
   @IBOutlet weak var tableView: UITableView!
+  @IBOutlet weak var studentInfoView: UIView!
+  @IBOutlet weak var commentView: UIView!
   @IBOutlet weak var genderLabel: UILabel!
   @IBOutlet weak var ageLabel: UILabel!
   @IBOutlet weak var dateLabel: UILabel!
   @IBOutlet weak var sessionCountLabel: UILabel!
   @IBOutlet weak var commentViewLabel: UILabel!
-  
+  @IBOutlet weak var customLoader: CustomActivityIndicatorView!
   @IBOutlet weak var heightConstraint: NSLayoutConstraint!
   
   let commentViewText = "Comentarios"
+  
+  let refreshDataSelector: Selector = "refreshData"
+  let refreshControl = CustomRefreshControlView()
   
   var sections: NSMutableArray = ["16/09/2015", "01/09/2015"]
   var collapseSectionsInfo:[CollapseSectionModel] = Array()
@@ -36,11 +41,17 @@ class AssistantDetailViewController: BaseFilterViewController {
   var sendCommentPopupViewController: STPopupController?
   
   var isSearchBarOpen = false
+  var isRefreshing = false
   var isKeyboardVisible = false
   var initialHeightConstant: CGFloat!
   
+  var session: Session?
+  
+  var sessions = [Session]()
+  var sessionStudent: SessionStudent?
   var student: Student?
   var studentComments = [Comment]()
+  var sessionComments = [Int: [Comment]]()
   
   // MARK: - Lifecycle
   
@@ -50,8 +61,9 @@ class AssistantDetailViewController: BaseFilterViewController {
   }
   
   override func awakeFromNib() {
-    for section in sections {
-        self.collapseSectionsInfo.append(CollapseSectionModel(sectionName: section as! String, section: sections.indexOfObject(section), open: true))
+    sessions = Session.getAllSessions(dataLayer.managedObjectContext!)
+    for session in sessions {
+        self.collapseSectionsInfo.append(CollapseSectionModel(sectionName: session.name , section: sessions.indexOf(session)!, open: true))
     }
   }
   
@@ -66,14 +78,22 @@ class AssistantDetailViewController: BaseFilterViewController {
   private func setupElements() {
     title = student?.fullName
     setupObservers()
+    setupTableView()
     setupLabels()
     setupSearchBar()
-    setupTableView()
   }
   
   private func setupObservers() {
     NSNotificationCenter.defaultCenter().addObserver(self, selector: Constants.KeyboardSelector.WillShow, name: UIKeyboardWillShowNotification, object: nil)
     NSNotificationCenter.defaultCenter().addObserver(self, selector: Constants.KeyboardSelector.WillHide, name: UIKeyboardWillHideNotification, object: nil)
+  }
+  
+  private func setupTableView() {
+    tableView.addSubview(refreshControl)
+    refreshControl.addTarget(self, action: refreshDataSelector, forControlEvents: UIControlEvents.ValueChanged)
+    setupTableViewHeader()
+    self.tableView.estimatedRowHeight = 64
+    self.tableView.rowHeight = UITableViewAutomaticDimension
   }
   
   private func setupLabels() {
@@ -88,41 +108,39 @@ class AssistantDetailViewController: BaseFilterViewController {
     initialHeightConstant = heightConstraint.constant
   }
   
-  private func setupTableView() {
-    setupTableViewHeader()
-    self.tableView.estimatedRowHeight = 64
-    self.tableView.rowHeight = UITableViewAutomaticDimension
-  }
-  
   private func setupTableViewHeader() {
     let sectionHeader = UINib(nibName: CollectionHeaderViewNibName, bundle: nil)
     self.tableView.registerNib(sectionHeader, forHeaderFooterViewReuseIdentifier: CollapseSectionHeaderViewIdentifier)
   }
   
   private func setupComments() {
+    fillDataSource()
+    guard Int((student?.sessionsQty)!) == 0  else {
+      setupInfoLabels()
+      getComments()
+      return
+    }
+    hideViews()
+    customLoader.startActivity()
     getComments()
   }
   
   private func getComments() {
-    StudentService.fetchStudentComments(1, completion: {(responseObject: AnyObject?, error: NSError?) in
-      print(responseObject)
+    StudentService.fetchStudentComments((student?.id)!, completion: {(responseObject: AnyObject?, error: NSError?) in
+      self.refreshControl.endRefreshing()
+      self.isRefreshing = false
       guard let json = responseObject as? NSDictionary where json.count > 0 else {
+        self.customLoader.stopActivity()
+        self.hideViews()
         return
       }
       if (json[Constants.Api.ErrorKey] == nil) {
         self.student = Student.updateOrCreateWithJson(json, ctx: self.dataLayer.managedObjectContext!)
         Comment.syncWithJsonArray(self.student!, arr: (json["comments"] as? Array<NSDictionary>)!, ctx: self.dataLayer.managedObjectContext!)
-        self.setupInfoLabels()
         self.dataLayer.saveContext()
-        let comments = Comment.getAllComments(self.dataLayer.managedObjectContext!)
-        print(comments.count)
-        for comment in comments {
-          print(comment.id)
-          print(comment.message)
-          print(comment.face)
-          print(comment.author.fullName)
-        }
-        self.tableView.reloadData()
+        self.setupInfoLabels()
+        self.fillDataSource()
+        self.reloadData()
       }
     })
   }
@@ -139,7 +157,15 @@ class AssistantDetailViewController: BaseFilterViewController {
     dateLabel.text = "Fecha de inscripción: \(dateString)"
   }
   
-  private func showPopoverCommentView(indexPath: NSIndexPath, comment: SessionComment) {
+  private func fillDataSource() {
+    sessionComments = [Int: [Comment]]()
+    for session in sessions {
+      let comments = Comment.getCommentsBySessionAndStudent(session, student: student!, ctx: dataLayer.managedObjectContext!)
+      sessionComments[Int(session.id)] = comments
+    }
+  }
+  
+  private func showPopoverCommentView(indexPath: NSIndexPath, comment: Comment) {
     let popoverViewController = ShowAssistantCommentViewController()
     popoverViewController.setupView(comment)
     popoverViewController.modalPresentationStyle = .Popover
@@ -176,6 +202,18 @@ class AssistantDetailViewController: BaseFilterViewController {
     })
   }
   
+  private func showViews() {
+    tableView.hidden = false
+    studentInfoView.hidden = false
+    commentView.hidden = false
+  }
+  
+  private func hideViews() {
+    tableView.hidden = true
+    studentInfoView.hidden = true
+    commentView.hidden = true
+  }
+  
   // MARK: - UISearchBarDelegate
   
   func searchBarCancelButtonClicked(searchBar: UISearchBar) {
@@ -192,6 +230,25 @@ class AssistantDetailViewController: BaseFilterViewController {
     sendCommentPopupViewController!.dismiss()
   }
   
+  func refreshData() {
+    isRefreshing = true
+    Util.delay(2.0) {
+      self.getComments()
+    }
+  }
+  
+  func reloadData() {
+    guard !self.isRefreshing else {
+      self.tableView.reloadData()
+      return
+    }
+    Util.delay(0.5) {
+      self.customLoader.stopActivity()
+      self.showViews()
+      self.tableView.reloadData()
+    }
+  }
+  
   // MARK: - Actions
   
   @IBAction func goToSendCommentSection(sender: AnyObject) {
@@ -199,6 +256,9 @@ class AssistantDetailViewController: BaseFilterViewController {
     let viewController = self.storyboard?.instantiateViewControllerWithIdentifier(SendAssistantCommentViewIdentifier) as! SendAssistantCommentViewController
     viewController.assistant = student?.fullName
     viewController.delegate = self
+    if let comment = Comment.getCommentBySessionAndStudentAndAuthor(session!, student: student!, author: currentUser!, ctx: dataLayer.managedObjectContext!) {
+      viewController.currentComment = comment
+    }
     setupPopupNavigationBar()
     sendCommentPopupViewController = STPopupController(rootViewController: viewController)
     sendCommentPopupViewController!.presentInViewController(self)
@@ -270,14 +330,15 @@ class AssistantDetailViewController: BaseFilterViewController {
 extension AssistantDetailViewController: UITableViewDataSource {
   
   func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-    return sections.count
-  }
-  
-  func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-    return sections[section] as? String
+    return sessions.count
   }
   
   func tableView(tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+    let sessionId = sessions[section].id
+    let comments = sessionComments[Int(sessionId)]
+    if comments?.count == 0 {
+      return 0
+    }
     return 50
   }
   
@@ -293,22 +354,16 @@ extension AssistantDetailViewController: UITableViewDataSource {
     if !collapseSection.open {
       return 0
     }
-    return 4
+    let sessionId = sessions[section].id
+    let comments = sessionComments[Int(sessionId)]
+    return (comments?.count)!
   }
   
   func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
     let cell = tableView.dequeueReusableCellWithIdentifier(SessionCommentCellIdentifier, forIndexPath: indexPath) as! SessionCommentTableViewCell
-    let comment = SessionComment()
-    if indexPath.section == 0 {
-      comment.author = Constants.MockData.FirstBlockAuthors[indexPath.row] as? String
-      comment.comment = Constants.MockData.FirstBlockComments[indexPath.row] as? String
-      comment.mood = Constants.MockData.FirstBlockMoods[indexPath.row] as? Int
-    } else {
-      comment.author = Constants.MockData.SecondBlockAuthors[indexPath.row] as? String
-      comment.comment = Constants.MockData.SecondBlockComments[indexPath.row] as? String
-      comment.mood = Constants.MockData.SecondBlockMoods[indexPath.row] as? Int
-    }
-    cell.setupSessionComment(comment)
+    let sessionId = sessions[indexPath.section].id
+    let comments = sessionComments[Int(sessionId)]
+    cell.setupSessionComment(comments![indexPath.row])
     return cell
   }
   
@@ -320,20 +375,39 @@ extension AssistantDetailViewController: UITableViewDelegate {
   
   func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
     tableView.deselectRowAtIndexPath(indexPath, animated: true)
-    let comment = SessionComment()
-    if indexPath.section == 0 {
-      comment.author = Constants.MockData.FirstBlockAuthors[indexPath.row] as? String
-      comment.comment = Constants.MockData.FirstBlockComments[indexPath.row] as? String
-      comment.mood = Constants.MockData.FirstBlockMoods[indexPath.row] as? Int
-    } else {
-      comment.author = Constants.MockData.SecondBlockAuthors[indexPath.row] as? String
-      comment.comment = Constants.MockData.SecondBlockComments[indexPath.row] as? String
-      comment.mood = Constants.MockData.SecondBlockMoods[indexPath.row] as? Int
-    }
     let cell = tableView.cellForRowAtIndexPath(indexPath) as! SessionCommentTableViewCell
-    if Util.needsPopoverPresentation(cell.volunteerNameLabel, string: comment.fullComment) {
+    let sessionId = sessions[indexPath.section].id
+    let comments = sessionComments[Int(sessionId)]
+    let comment = comments![indexPath.row]
+    if Util.needsPopoverPresentation(cell.volunteerNameLabel, string: comment.message) {
       showPopoverCommentView(indexPath, comment: comment)
     }
+  }
+  
+}
+
+// MARK: - UIScrollViewDelegate
+
+extension AssistantDetailViewController: UIScrollViewDelegate {
+  
+  func scrollViewDidEndDecelerating(scrollView: UIScrollView) {
+    guard refreshControl.refreshing && !refreshControl.isAnimating else {
+      return
+    }
+    refreshControl.animateRefreshFirstStep()
+  }
+  
+  func scrollViewDidScroll(scrollView: UIScrollView) {
+    var offset = scrollView.contentOffset.y * -1
+    var alpha = CGFloat(0.0)
+    offset = offset - 5
+    if offset > 30 {
+      alpha = ((offset) / 100)
+      if alpha > 100 {
+        alpha = 1.0
+      }
+    }
+    refreshControl.customView.alpha = alpha
   }
   
 }
@@ -354,7 +428,9 @@ extension AssistantDetailViewController: UIPopoverPresentationControllerDelegate
 extension AssistantDetailViewController: CollapseSectionHeaderViewDelegate {
   
   func collapseSectionHeaderViewDelegate(sectionHeaderView: CollapseSectionHeaderView, sectionOpened section: Int) {
-    let rowsToInsert = Constants.MockData.FirstBlockAuthors.count
+    let sessionId = sessions[section].id
+    let comments = sessionComments[Int(sessionId)]
+    let rowsToInsert = comments!.count
     var indexPathsToInsert:[NSIndexPath] = Array()
     for i in 0..<rowsToInsert {
       indexPathsToInsert.append(NSIndexPath(forRow: i, inSection: section))
@@ -365,7 +441,9 @@ extension AssistantDetailViewController: CollapseSectionHeaderViewDelegate {
   }
   
   func collapseSectionHeaderViewDelegate(sectionHeaderView: CollapseSectionHeaderView, sectionClosed section: Int) {
-    let rowsToDelete = Constants.MockData.FirstBlockAuthors.count
+    let sessionId = sessions[section].id
+    let comments = sessionComments[Int(sessionId)]
+    let rowsToDelete = comments!.count
     var indexPathsToDelete:[NSIndexPath] = Array()
     for i in 0..<rowsToDelete {
       indexPathsToDelete.append(NSIndexPath(forRow: i, inSection: section))
@@ -376,3 +454,38 @@ extension AssistantDetailViewController: CollapseSectionHeaderViewDelegate {
   }
   
 }
+
+// MARK: - AssistantCommentsFilterViewControllerDelegate
+
+extension AssistantDetailViewController: AssistantCommentsFilterViewControllerDelegate {
+  
+  func assistantCommentsFilterViewController(assistantCommentsFilterViewController: AssistantCommentsFilterViewController) {
+    sendCommentPopupViewController?.dismiss()
+  }
+  
+}
+
+// MARK: - SendAssistantCommentViewControllerDelegate
+
+extension AssistantDetailViewController: SendAssistantCommentViewControllerDelegate {
+  
+  func sendAssistantCommentViewController(sendAssistantCommentViewController: SendAssistantCommentViewController, comment: String, face: Int) {
+    let parameters = ["message": comment, "face": face]
+    sendCommentPopupViewController?.dismiss()
+    StudentService.commentStudent((sessionStudent?.sessionStudentId)!, parameters: parameters, completion: {(responseObject: AnyObject?, error: NSError?) in
+      guard let json = responseObject as? NSDictionary where json.count > 0 else {
+        return
+      }
+      if (json[Constants.Api.ErrorKey] == nil && json["message"] == nil) {
+        self.student = Student.updateOrCreateWithJson(json, ctx: self.dataLayer.managedObjectContext!)
+        Comment.syncWithJsonArray(self.student!, arr: (json["comments"] as? Array<NSDictionary>)!, ctx: self.dataLayer.managedObjectContext!)
+        self.dataLayer.saveContext()
+        self.setupInfoLabels()
+        self.fillDataSource()
+        self.reloadData()
+      }
+    })
+  }
+  
+}
+

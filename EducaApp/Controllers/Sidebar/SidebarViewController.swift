@@ -44,11 +44,11 @@ class MenuController: StaticDataTableViewController {
         break;
       case 28:
         break;
-      case 31:
+      case 35:
         self.cell(PeopleCell, setHidden: false)
-      case 20:
-        self.cell(ReportsCell, setHidden: false)
       case 21:
+        self.cell(ReportsCell, setHidden: false)
+      case 24:
         self.cell(PayCell, setHidden: false)
       default:
         self.cell(DonationCell, setHidden: false)
@@ -67,7 +67,9 @@ class MenuController: StaticDataTableViewController {
   }
   
   private func setupPermissions() {
-    self.cell(PostulationCell, setHidden: true)
+    if currentUser?.canReapply == false {
+      self.cell(PostulationCell, setHidden: true)
+    }
     self.cell(NewsCell, setHidden: true)
     self.cell(BlogCell, setHidden: true)
     self.cell(PeopleCell, setHidden: true)
@@ -94,7 +96,6 @@ class MenuController: StaticDataTableViewController {
     }
     actionSheetController.addAction(depositAction)
     self.presentViewController(actionSheetController, animated: true, completion: nil)
-
   }
   
 }

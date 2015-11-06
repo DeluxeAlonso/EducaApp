@@ -27,6 +27,7 @@ class UserService {
   
   class func changePassword(oldPassword: String, newPassword: String, completion: (responseObject: NSObject?, error: NSError?) -> Void) {
     let parameters = ["current_password": oldPassword, "new_password": newPassword]
+    NetworkManager.sharedInstance.requestSerializer.setValue(User.getAuthToken(), forHTTPHeaderField: Constants.Api.Header)
     NetworkManager.sharedInstance.PUT(UrlBuilder.UrlForPath(ChangePasswordPath), parameters: parameters, success: { (operation: AFHTTPRequestOperation, responseObject: AnyObject?) in
         completion(responseObject: responseObject! as? NSObject, error: nil)
       }, failure: {( operation: AFHTTPRequestOperation, error: NSError) in
@@ -36,6 +37,7 @@ class UserService {
   
   class func recoverPassword(email: String, completion: (responseObject: NSObject?, error: NSError?) -> Void) {
     let parameters = ["email": email]
+    NetworkManager.sharedInstance.requestSerializer.setValue(User.getAuthToken(), forHTTPHeaderField: Constants.Api.Header)
     NetworkManager.sharedInstance.POST(UrlBuilder.UrlForPath(RecoverPasswordPath), parameters: parameters, success: { (operation: AFHTTPRequestOperation, responseObject: AnyObject?) in
       completion(responseObject: responseObject! as? NSObject, error: nil)
       }, failure: {( operation: AFHTTPRequestOperation, error: NSError) in
@@ -44,6 +46,7 @@ class UserService {
   }
   
   class func fetchUsers(completion: (responseObject: NSObject?, error: NSError?) -> Void) {
+    NetworkManager.sharedInstance.requestSerializer.setValue(User.getAuthToken(), forHTTPHeaderField: Constants.Api.Header)
     NetworkManager.sharedInstance.GET(UrlBuilder.UrlForPath(UsersPath), parameters: nil, success: { (operation: AFHTTPRequestOperation, responseObject: AnyObject?) in
       completion(responseObject: responseObject! as? NSObject, error: nil)
       }, failure: {(operation: AFHTTPRequestOperation, error: NSError) in

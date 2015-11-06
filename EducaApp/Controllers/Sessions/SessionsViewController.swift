@@ -44,16 +44,6 @@ class SessionsViewController: BaseViewController {
   override func viewWillAppear(animated: Bool) {
     super.viewWillAppear(animated)
     sessions = Session.getAllSessions(dataLayer.managedObjectContext!)
-    for session in sessions {
-      print("Session")
-      print(session.id)
-      print(session.name)
-      print("Puntos de Reunion")
-      print(session.reunionPoints.count)
-      for reunionPoint in session.reunionPoints {
-        print((reunionPoint as! SessionReunionPoint).reunionPoint.id)
-      }
-    }
   }
   
   // MARK: - Private
@@ -175,7 +165,6 @@ class SessionsViewController: BaseViewController {
   // MARK: - Navigation
   
   override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-    print(selectedSession)
     switch segue.destinationViewController {
     case is DocumentsViewController:
       let destinationVC = segue.destinationViewController as! DocumentsViewController
