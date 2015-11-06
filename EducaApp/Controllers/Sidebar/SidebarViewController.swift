@@ -62,6 +62,7 @@ class MenuController: StaticDataTableViewController {
     
   }
   
+  
   override func didReceiveMemoryWarning() {
     super.didReceiveMemoryWarning()
   }
@@ -93,10 +94,58 @@ class MenuController: StaticDataTableViewController {
     let payPalAction: UIAlertAction = UIAlertAction(title: "Cancelar", style:UIAlertActionStyle.Cancel, handler: nil)
     actionSheetController.addAction(payPalAction)
     let depositAction: UIAlertAction = UIAlertAction(title: "Aceptar", style: UIAlertActionStyle.Default) { action -> Void in
+      self.reapply(NSNull)
     }
     actionSheetController.addAction(depositAction)
     self.presentViewController(actionSheetController, animated: true, completion: nil)
   }
   
+  @IBAction func reapply(sender: AnyObject) {
+    
+    reaply(Int((currentUser?.periodId)!))
+  }
+  
+  
+  func reaply(idperiod:Int){
+    UserService.reapply(idperiod , completion: {(responseObject: AnyObject?, error: NSError?) in
+      print(responseObject)
+      print(error?.description)
+      guard let json = responseObject as? NSDictionary else {
+        
+        self.cell(self.PostulationCell, setHidden: true)
+        return
+      }
+            self.cell(self.PostulationCell, setHidden: true)
+      if (json[Constants.Api.ErrorKey] == nil) {
+        self.currentUser?.canReapply = false
+        let user = User.getUserById((self.currentUser?.id)!, ctx: self.dataLayer.managedObjectContext!)
+        user?.canReapply = false
+        self.currentUser = user
+        self.dataLayer.saveContext()
+        self.tableView.reloadData()
+        self.showAlertWithTitle("Enhorabuena", message: "Has logrado postular con éxito", buttonTitle: "OK")
+        self.cell(self.PostulationCell, setHidden: true)
+      }
+    })
+  }
+  
+  func showAlertWithTitle(title: String, message: String, buttonTitle: String) {
+    let alertController = UIAlertController(title: title, message: message, preferredStyle: UIAlertControllerStyle.Alert)
+    let defaultAction = UIAlertAction(title: buttonTitle, style: .Default, handler: nil)
+    alertController.addAction(defaultAction)
+    presentViewController(alertController, animated: true, completion: nil)
+  }
+  
+  override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+    if currentUser?.canReapply == true{
+      if indexPath.row == 0 {
+        return 0
+      }
+    }
+    return 44
+  }
+  
 }
+
+
 

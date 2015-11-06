@@ -12,6 +12,7 @@ let SignInPath = "sign_in"
 let ChangePasswordPath = "change_password"
 let RecoverPasswordPath = "recover_password"
 let UsersPath = "users"
+let ReapplyPath="reapply"
 
 class UserService {
   
@@ -21,6 +22,16 @@ class UserService {
     manager.POST(UrlBuilder.UrlForPath(SignInPath), parameters: parameters, success: { (operation: AFHTTPRequestOperation, responseObject: AnyObject?) in
         completion(responseObject: responseObject! as? NSObject, error: nil)
       }, failure: { (operation: AFHTTPRequestOperation, error: NSError) in
+        completion(responseObject: nil, error: error)
+    })
+  }
+  
+  class func reapply(period_id: Int, completion: (responseObject: NSObject?, error: NSError?) -> Void){
+    let parameters = ["period_id": period_id]
+    NetworkManager.sharedInstance.requestSerializer.setValue(User.getAuthToken(), forHTTPHeaderField: Constants.Api.Header)
+    NetworkManager.sharedInstance.POST(UrlBuilder.UrlForPath(ReapplyPath), parameters: parameters, success: { (operation: AFHTTPRequestOperation, responseObject: AnyObject?) in
+      completion(responseObject: responseObject! as? NSObject, error: nil)
+      }, failure: {( operation: AFHTTPRequestOperation, error: NSError) in
         completion(responseObject: nil, error: error)
     })
   }
