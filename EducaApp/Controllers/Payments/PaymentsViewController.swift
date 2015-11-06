@@ -47,6 +47,16 @@ class PaymentsViewController: BaseViewController {
   }
   
   private func setupPayments() {
+    payments = Payment.getAllPayments(self.dataLayer.managedObjectContext!)
+    guard payments.count == 0 else {
+      getPayments()
+      return
+    }
+    tableView.hidden = true
+    getPayments()
+  }
+  
+  private func getPayments() {
     PaymentService.fetchPayments({(responseObject: AnyObject?, error: NSError?) in
       print(responseObject)
       guard let json = responseObject as? Array<NSDictionary> where json.count > 0 else {
@@ -88,17 +98,21 @@ extension PaymentsViewController: UITableViewDataSource {
   }
   
   func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-    return 4
+    return payments.count
   }
   
   func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
     let cell: UITableViewCell
-    if indexPath.row == 2 {
-      cell = tableView.dequeueReusableCellWithIdentifier(PendingPaymentCellIdentifier, forIndexPath: indexPath)
-    } else if indexPath.row == 3 {
-      cell = tableView.dequeueReusableCellWithIdentifier(CanceledPaymentCellIdentifier, forIndexPath: indexPath)
-    } else {
+    switch payments[indexPath.row].status {
+    case 0:
       cell = tableView.dequeueReusableCellWithIdentifier(DebtPaymentCellIdentifier, forIndexPath: indexPath)
+      (cell as! DebtPaymentTableViewCell).setupPayment(payments[indexPath.row])
+    case 1:
+      cell = tableView.dequeueReusableCellWithIdentifier(PendingPaymentCellIdentifier, forIndexPath: indexPath)
+      (cell as! PendingPaymentTableViewCell).setupPayment(payments[indexPath.row])
+    default:
+      cell = tableView.dequeueReusableCellWithIdentifier(CanceledPaymentCellIdentifier, forIndexPath: indexPath)
+      (cell as! CanceledPaymentTableViewCell).setupPayment(payments[indexPath.row])
     }
     return cell
   }

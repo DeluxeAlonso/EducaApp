@@ -151,6 +151,9 @@ class DocumentsViewController: BaseFilterViewController {
     if selectedDocument?.isSaved == true {
       downloadButton.enabled = false
       downLoadLabel.textColor = UIColor.lightGrayColor()
+    } else {
+      downloadButton.enabled = true
+      downLoadLabel.textColor = UIColor.defaultTextColor()
     }
   }
   
@@ -216,8 +219,11 @@ class DocumentsViewController: BaseFilterViewController {
     hideMenuView(NSNull)
     downLoadedCell = selectedCell
     downloadedDocument = selectedDocument
-    let url = NSURL(string: "\(Constants.Path.BaseUrl)\((selectedDocument?.url)!)" )
-    let requestObject = NSURLRequest(URL: url!, cachePolicy: NSURLRequestCachePolicy.ReturnCacheDataElseLoad, timeoutInterval: 10.0)
+    guard let url = NSURL(string: "\(Constants.Path.BaseUrl)\((selectedDocument?.url)!)" ) else {
+      showAlertWithTitle("Error", message: "No se pudo descargar el archivo.", buttonTitle: "OK")
+      return
+    }
+    let requestObject = NSURLRequest(URL: url, cachePolicy: NSURLRequestCachePolicy.ReturnCacheDataElseLoad, timeoutInterval: 10.0)
     let urlConnection = NSURLConnection(request: requestObject, delegate: self, startImmediately: true)
     print(urlConnection)
   }
@@ -310,7 +316,8 @@ extension DocumentsViewController: UIScrollViewDelegate {
 extension DocumentsViewController: NSURLConnectionDataDelegate {
   
   func connectionDidFinishLoading(connection: NSURLConnection) {
-    downloadedDocument?.isSaved = true
+    let doc = Document.getDocumentsById((downloadedDocument?.id)!, ctx: dataLayer.managedObjectContext!)
+    doc?.isSaved = true
     dataLayer.saveContext()
     downLoadedCell?.setupProgressView(1.0)
   }

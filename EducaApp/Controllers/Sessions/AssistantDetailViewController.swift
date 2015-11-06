@@ -117,6 +117,7 @@ class AssistantDetailViewController: BaseFilterViewController {
     fillDataSource()
     guard Int((student?.sessionsQty)!) == 0  else {
       setupInfoLabels()
+      self.reloadData()
       getComments()
       return
     }
@@ -131,7 +132,7 @@ class AssistantDetailViewController: BaseFilterViewController {
       self.isRefreshing = false
       guard let json = responseObject as? NSDictionary where json.count > 0 else {
         self.customLoader.stopActivity()
-        self.hideViews()
+        //self.hideViews()
         return
       }
       if (json[Constants.Api.ErrorKey] == nil) {
