@@ -26,10 +26,10 @@ class ShowAssistantCommentViewController: UIViewController {
   
   // MARK: - Public
   
-  func setupView(comment: SessionComment) {
+  func setupView(comment: Comment) {
     self.view = NSBundle.mainBundle().loadNibNamed(ShowAssistantCommentViewIdentifier, owner: self, options: nil).first as! SessionCommentView
-    let longString: String = comment.fullComment
-    let stringToBold = "\((comment.author)!):"
+    let longString: String = "\((comment.author.fullName)): \(comment.message)"
+    let stringToBold = "\((comment.author.fullName)):"
     let stringToBoldRange = (longString as NSString).rangeOfString(stringToBold)
     let attributedString = NSMutableAttributedString(string: longString, attributes: [NSFontAttributeName : UIFont.lightFontWithFontSize(17)])
     attributedString.setAttributes([NSFontAttributeName : UIFont.regularFontWithFontSize(17), NSForegroundColorAttributeName : UIColor.defaultTextColor()], range: stringToBoldRange)

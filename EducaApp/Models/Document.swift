@@ -26,6 +26,7 @@ public class Document: NSManagedObject {
   @NSManaged public var size: String
   @NSManaged public var uploadDate: String
   @NSManaged public var users: NSSet
+  @NSManaged public var isSaved: Bool
 
 }
 

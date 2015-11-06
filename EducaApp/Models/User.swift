@@ -19,6 +19,9 @@ let UserLatitudeKey = "latitude"
 let UserLongitudeKey = "longitude"
 let UserProfilesKey = "profiles"
 let UserActionsKey = "actions"
+let UserReapplyKey = "can_reapply"
+let UserPeriodKey = "period"
+let UserPeriodNameKey = "name"
 
 @objc(User)
 public class User: NSManagedObject {
@@ -31,6 +34,9 @@ public class User: NSManagedObject {
   @NSManaged public var longitude: Float
   @NSManaged public var profiles: NSSet
   @NSManaged public var actions: NSSet
+  @NSManaged public var canReapply: Bool
+  @NSManaged public var periodId: Int32
+  @NSManaged public var periodName: String
   
   var fullName: String {
     let name = "\(firstName) \(lastName)"
@@ -62,6 +68,13 @@ extension User: Deserializable {
         self.latitude = latitude
         self.longitude = longitude
       }
+      if let canReapply = json[UserReapplyKey] as? Bool, periodJson = json[UserPeriodKey] as? NSDictionary?, periodId = periodJson![UserIdKey] as AnyObject?, periodName = periodJson![UserPeriodNameKey] as? String  {
+        if User.isSignedIn() == false {
+          self.canReapply = canReapply
+          self.periodId = periodId is Int ? Int32(periodId as! Int) : Int32(periodId as! String)!
+          self.periodName = periodName
+        }
+      }
     }
   }
   
@@ -86,14 +99,6 @@ extension User: Deserializable {
     return sessionUser!
   }
   
-  func canListAssistantsComments() -> Bool {
-    return self.hasPermissionWithId(35)
-  }
-  
-  func canEditReunionPoints() -> Bool {
-    return self.hasPermissionWithId(13)
-  }
-  
   func hasPermissionWithId(id: Int) -> Bool {
     let actionsArray: NSArray = (self.actions.allObjects) as NSArray
     let actionsIds: Array<Int32> = actionsArray.map{(action) in return action.id} as Array<Int32>
@@ -101,6 +106,22 @@ extension User: Deserializable {
       return true
     }
     return false
+  }
+  
+  func canListAssistantsComments() -> Bool {
+    return self.hasPermissionWithId(33)
+  }
+  
+  func canEditReunionPoints() -> Bool {
+    return self.hasPermissionWithId(13)
+  }
+  
+  func canCheckAttendance() -> Bool {
+    return self.hasPermissionWithId(16)
+  }
+  
+  func canSeeSchools() -> Bool {
+    return self.hasPermissionWithId(28)
   }
   
 }
@@ -175,8 +196,6 @@ extension User {
   
   class func updateOrCreateWithJson(json: NSDictionary, ctx: NSManagedObjectContext) -> User? {
     var user: User?
-    print("updateOrCreateWithJson")
-    print(json)
     if let id = json[UserIdKey] as AnyObject?  {
       let userId = id is Int ? Int32(id as! Int) : Int32(id as! String)!
       user = findOrCreateWithId(userId, ctx: ctx)

@@ -50,4 +50,8 @@ extension UIColor {
     return UIColor.colorWithR(199, green: 199, blue: 204, alpha: 1)
   }
   
+  class func defaultDocumentPreviewNavColor() -> UIColor {
+    return UIColor.colorWithR(0, green: 0, blue: 0, alpha: 0.5)
+  }
+  
 }

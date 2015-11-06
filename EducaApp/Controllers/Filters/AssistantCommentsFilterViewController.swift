@@ -8,6 +8,12 @@
 
 import UIKit
 
+protocol AssistantCommentsFilterViewControllerDelegate {
+  
+  func assistantCommentsFilterViewController(assistantCommentsFilterViewController: AssistantCommentsFilterViewController)
+  
+}
+
 let DatePickerViewControllerIdentifier = "DateFilterViewController"
 let SortingFilterViewControllerIdentifier = "SortingFilterViewController"
 
@@ -26,7 +32,7 @@ class AssistantCommentsFilterViewController: UIViewController {
   
   let popupHeight: CGFloat = 212
   
-  var delegate: UIViewController?
+  var delegate: AssistantCommentsFilterViewControllerDelegate?
   
   // MARK: - Lifecycle
   
@@ -64,13 +70,7 @@ class AssistantCommentsFilterViewController: UIViewController {
   // MARK: - Actions
   
   @IBAction func advancedSearch(sender: AnyObject) {
-    if delegate is AssistantDetailViewController {
-      (delegate as! AssistantDetailViewController).dismissPopup()
-    } else if delegate is UsersViewController {
-      (delegate as! UsersViewController).dismissPopup()
-    } else if delegate is PostsViewController {
-      (delegate as! PostsViewController).dismissPopup()
-    }
+    delegate?.assistantCommentsFilterViewController(self)
   }
   
 }

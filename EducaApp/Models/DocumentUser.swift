@@ -31,7 +31,6 @@ extension DocumentUser: Deserializable {
     guard let seen = json[DocumentUserSeenKey] as? Bool else {
       return
     }
-    print(seen)
     self.seen = seen
   }
   

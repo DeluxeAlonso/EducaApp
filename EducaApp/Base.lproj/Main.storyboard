@@ -10,25 +10,6 @@
     <customFonts key="customFonts">
         <mutableArray key="OpenSans-Bold.ttf">
             <string>OpenSans-Bold</string>
-            <string>OpenSans-Bold</string>
-            <string>OpenSans-Bold</string>
-            <string>OpenSans-Bold</string>
-            <string>OpenSans-Bold</string>
-            <string>OpenSans-Bold</string>
-            <string>OpenSans-Bold</string>
-            <string>OpenSans-Bold</string>
-            <string>OpenSans-Bold</string>
-            <string>OpenSans-Bold</string>
-            <string>OpenSans-Bold</string>
-            <string>OpenSans-Bold</string>
-            <string>OpenSans-Bold</string>
-            <string>OpenSans-Bold</string>
-            <string>OpenSans-Bold</string>
-        </mutableArray>
-        <mutableArray key="Roboto-Light.ttf">
-            <string>Roboto-Light</string>
-            <string>Roboto-Light</string>
-            <string>Roboto-Light</string>
         </mutableArray>
         <mutableArray key="Roboto-Regular.ttf">
             <string>Roboto-Regular</string>
@@ -57,7 +38,7 @@
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Vence" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wPf-GX-RCy">
                                                 <rect key="frame" x="56" y="12" width="39" height="17"/>
                                                 <animations/>
-                                                <fontDescription key="fontDescription" name="OpenSans-Bold" family="Open Sans" pointSize="14"/>
+                                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="14"/>
                                                 <color key="textColor" red="0.1333333333" green="0.1333333333" blue="0.1333333333" alpha="1" colorSpace="calibratedRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
@@ -75,7 +56,7 @@
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Monto" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0p4-Mj-2v4">
                                                 <rect key="frame" x="54" y="13" width="41" height="17"/>
                                                 <animations/>
-                                                <fontDescription key="fontDescription" name="OpenSans-Bold" family="Open Sans" pointSize="14"/>
+                                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="14"/>
                                                 <color key="textColor" red="0.1333333333" green="0.1333333333" blue="0.1333333333" alpha="1" colorSpace="calibratedRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
@@ -93,7 +74,7 @@
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Estado" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NKE-LI-5AD">
                                                 <rect key="frame" x="53" y="12" width="44" height="17"/>
                                                 <animations/>
-                                                <fontDescription key="fontDescription" name="OpenSans-Bold" family="Open Sans" pointSize="14"/>
+                                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="14"/>
                                                 <color key="textColor" red="0.1333333333" green="0.1333333333" blue="0.1333333333" alpha="1" colorSpace="calibratedRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
@@ -112,7 +93,7 @@
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Acción" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="009-gB-4f7">
                                                 <rect key="frame" x="53" y="13" width="44" height="17"/>
                                                 <animations/>
-                                                <fontDescription key="fontDescription" name="OpenSans-Bold" family="Open Sans" pointSize="14"/>
+                                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="14"/>
                                                 <color key="textColor" red="0.1333333333" green="0.1333333333" blue="0.1333333333" alpha="1" colorSpace="calibratedRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
@@ -171,7 +152,7 @@
                                                                         <constraint firstAttribute="width" constant="73" id="hK2-jl-IX5"/>
                                                                         <constraint firstAttribute="height" constant="28" id="kDo-Np-sQ5"/>
                                                                     </constraints>
-                                                                    <fontDescription key="fontDescription" name="OpenSans-Bold" family="Open Sans" pointSize="14"/>
+                                                                    <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="14"/>
                                                                     <color key="textColor" red="0.0" green="0.59999999999999998" blue="0.80000000000000004" alpha="1" colorSpace="calibratedRGB"/>
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
@@ -201,7 +182,7 @@
                                                                         <constraint firstAttribute="height" constant="17" id="Cir-Tj-z7D"/>
                                                                         <constraint firstAttribute="width" constant="41" id="uaH-U7-72J"/>
                                                                     </constraints>
-                                                                    <fontDescription key="fontDescription" name="OpenSans-Bold" family="Open Sans" pointSize="14"/>
+                                                                    <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="14"/>
                                                                     <color key="textColor" red="0.0" green="0.59999999999999998" blue="0.80000000000000004" alpha="1" colorSpace="calibratedRGB"/>
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
@@ -219,7 +200,7 @@
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Pagado" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nly-1h-Rdi">
                                                                     <rect key="frame" x="51" y="12" width="49" height="28"/>
                                                                     <animations/>
-                                                                    <fontDescription key="fontDescription" name="OpenSans-Bold" family="Open Sans" pointSize="14"/>
+                                                                    <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="14"/>
                                                                     <color key="textColor" red="0.0" green="0.59999999999999998" blue="0.80000000000000004" alpha="1" colorSpace="calibratedRGB"/>
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
@@ -248,7 +229,7 @@
                                                                         <constraint firstAttribute="height" constant="16.5" id="fhC-hA-ykj"/>
                                                                         <constraint firstAttribute="width" constant="44" id="pqT-ij-eFm"/>
                                                                     </constraints>
-                                                                    <fontDescription key="fontDescription" name="OpenSans-Bold" family="Open Sans" pointSize="14"/>
+                                                                    <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="14"/>
                                                                     <color key="textColor" red="0.0" green="0.59999999999999998" blue="0.80000000000000004" alpha="1" colorSpace="calibratedRGB"/>
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
@@ -328,7 +309,7 @@
                                                                         <constraint firstAttribute="height" constant="28" id="HWG-2y-aWr"/>
                                                                         <constraint firstAttribute="width" constant="73" id="idu-9v-N4n"/>
                                                                     </constraints>
-                                                                    <fontDescription key="fontDescription" name="OpenSans-Bold" family="Open Sans" pointSize="14"/>
+                                                                    <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="14"/>
                                                                     <color key="textColor" red="1" green="0.067999089809999996" blue="0.067999089809999996" alpha="1" colorSpace="calibratedRGB"/>
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
@@ -358,7 +339,7 @@
                                                                         <constraint firstAttribute="height" constant="17" id="U5d-Uq-w53"/>
                                                                         <constraint firstAttribute="width" constant="41" id="V7M-tm-34Q"/>
                                                                     </constraints>
-                                                                    <fontDescription key="fontDescription" name="OpenSans-Bold" family="Open Sans" pointSize="14"/>
+                                                                    <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="14"/>
                                                                     <color key="textColor" red="1" green="0.067999089809999996" blue="0.067999089809999996" alpha="1" colorSpace="calibratedRGB"/>
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
@@ -376,7 +357,7 @@
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Vencido" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DTd-mK-uVA">
                                                                     <rect key="frame" x="50" y="12" width="51" height="28"/>
                                                                     <animations/>
-                                                                    <fontDescription key="fontDescription" name="OpenSans-Bold" family="Open Sans" pointSize="14"/>
+                                                                    <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="14"/>
                                                                     <color key="textColor" red="1" green="0.067999089809999996" blue="0.067999089809999996" alpha="1" colorSpace="calibratedRGB"/>
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
@@ -482,7 +463,7 @@
                                                                         <constraint firstAttribute="height" constant="28" id="Mfk-nu-YSo"/>
                                                                         <constraint firstAttribute="width" constant="74" id="Xv9-vI-OD0"/>
                                                                     </constraints>
-                                                                    <fontDescription key="fontDescription" name="OpenSans-Bold" family="Open Sans" pointSize="14"/>
+                                                                    <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="14"/>
                                                                     <color key="textColor" red="0.0" green="0.59999999999999998" blue="0.80000000000000004" alpha="1" colorSpace="calibratedRGB"/>
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
@@ -512,7 +493,7 @@
                                                                         <constraint firstAttribute="height" constant="17" id="UB9-hf-AMA"/>
                                                                         <constraint firstAttribute="width" constant="41" id="zA6-At-oKB"/>
                                                                     </constraints>
-                                                                    <fontDescription key="fontDescription" name="OpenSans-Bold" family="Open Sans" pointSize="14"/>
+                                                                    <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="14"/>
                                                                     <color key="textColor" red="0.0" green="0.59999999999999998" blue="0.80000000000000004" alpha="1" colorSpace="calibratedRGB"/>
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
@@ -538,7 +519,7 @@
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Pendiente" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tfB-aS-oiN">
                                                                     <rect key="frame" x="44" y="12" width="63" height="28"/>
                                                                     <animations/>
-                                                                    <fontDescription key="fontDescription" name="OpenSans-Bold" family="Open Sans" pointSize="14"/>
+                                                                    <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="14"/>
                                                                     <color key="textColor" red="0.0" green="0.59999999999999998" blue="0.80000000000000004" alpha="1" colorSpace="calibratedRGB"/>
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
@@ -659,6 +640,7 @@
                     </navigationItem>
                     <connections>
                         <outlet property="menuIcon" destination="usW-8L-3iP" id="KAz-4O-qEE"/>
+                        <outlet property="tableView" destination="wDw-qy-Plq" id="3wJ-Dq-emM"/>
                         <segue destination="6PU-od-CcI" kind="presentation" identifier="GoToDepositSegue" id="XU7-TI-on3"/>
                     </connections>
                 </viewController>
@@ -1856,7 +1838,7 @@ El voluntariado comprende actividades asistenciales de servicios sociales, cívi
                                 <constraints>
                                     <constraint firstAttribute="height" constant="44" id="2ag-qh-onh"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" name="Roboto-Light" family="Roboto" pointSize="22"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="22"/>
                                 <state key="normal" title="Iniciar Sesión">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
@@ -1895,7 +1877,7 @@ El voluntariado comprende actividades asistenciales de servicios sociales, cívi
                                             <constraint firstAttribute="width" constant="85" id="3dL-GJ-Lvq"/>
                                             <constraint firstAttribute="height" constant="40" id="hDO-22-YKt"/>
                                         </constraints>
-                                        <fontDescription key="fontDescription" name="Roboto-Light" family="Roboto" pointSize="14"/>
+                                        <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="14"/>
                                         <nil key="highlightedColor"/>
                                         <userDefinedRuntimeAttributes>
                                             <userDefinedRuntimeAttribute type="number" keyPath="layer.borderWidth">
@@ -1955,7 +1937,7 @@ El voluntariado comprende actividades asistenciales de servicios sociales, cívi
                                             <constraint firstAttribute="width" constant="85" id="flW-VL-vTI"/>
                                             <constraint firstAttribute="height" constant="40" id="h1x-Ae-3Cc"/>
                                         </constraints>
-                                        <fontDescription key="fontDescription" name="Roboto-Light" family="Roboto" pointSize="14"/>
+                                        <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="14"/>
                                         <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                         <userDefinedRuntimeAttributes>
@@ -2019,6 +2001,7 @@ El voluntariado comprende actividades asistenciales de servicios sociales, cívi
                                     <constraint firstAttribute="height" constant="41" id="Nu6-XY-Ke3"/>
                                     <constraint firstAttribute="width" constant="180" id="SzA-Qc-nn9"/>
                                 </constraints>
+                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="15"/>
                                 <state key="normal" title="¿Olvidaste tu contraseña?">
                                     <color key="titleColor" red="0.0" green="0.59999999999999998" blue="0.80000000000000004" alpha="1" colorSpace="calibratedRGB"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
@@ -3482,7 +3465,7 @@ El voluntariado comprende actividades asistenciales de servicios sociales, cívi
                                                         </mask>
                                                     </variation>
                                                 </label>
-                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GO7-Hx-o9q">
+                                                <button opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GO7-Hx-o9q">
                                                     <rect key="frame" x="540" y="0.0" width="58" height="70"/>
                                                     <animations/>
                                                     <constraints>
@@ -3504,10 +3487,19 @@ El voluntariado comprende actividades asistenciales de servicios sociales, cívi
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
+                                                <progressView hidden="YES" opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" progress="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="c0b-qa-OZR">
+                                                    <rect key="frame" x="0.0" y="67" width="600" height="2"/>
+                                                    <animations/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="2" id="OJA-HC-CmF"/>
+                                                    </constraints>
+                                                    <color key="progressTintColor" red="0.090196078430000007" green="0.65490196079999996" blue="0.83529411760000005" alpha="1" colorSpace="calibratedRGB"/>
+                                                </progressView>
                                             </subviews>
                                             <animations/>
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                             <constraints>
+                                                <constraint firstItem="c0b-qa-OZR" firstAttribute="leading" secondItem="Y33-Yc-H5V" secondAttribute="leading" id="5ay-h6-DDN"/>
                                                 <constraint firstItem="GO7-Hx-o9q" firstAttribute="leading" secondItem="oaL-B8-2zZ" secondAttribute="trailing" constant="8" id="8XH-SM-3Gb"/>
                                                 <constraint firstItem="fpk-H4-mQV" firstAttribute="centerY" secondItem="Y33-Yc-H5V" secondAttribute="centerY" id="8lR-V9-Htd"/>
                                                 <constraint firstItem="GO7-Hx-o9q" firstAttribute="top" secondItem="Y33-Yc-H5V" secondAttribute="top" id="BUv-yR-MWY"/>
@@ -3519,10 +3511,12 @@ El voluntariado comprende actividades asistenciales de servicios sociales, cívi
                                                 <constraint firstItem="Aky-Pz-mnU" firstAttribute="top" secondItem="GO7-Hx-o9q" secondAttribute="bottom" constant="-36" id="KsP-MZ-NLq"/>
                                                 <constraint firstItem="Aky-Pz-mnU" firstAttribute="leading" secondItem="oaL-B8-2zZ" secondAttribute="leading" id="Ukm-d7-yiC"/>
                                                 <constraint firstItem="oaL-B8-2zZ" firstAttribute="top" secondItem="Y33-Yc-H5V" secondAttribute="top" constant="10" id="ea2-rP-bcv"/>
+                                                <constraint firstAttribute="bottom" secondItem="c0b-qa-OZR" secondAttribute="bottom" id="hQ5-LL-yyv"/>
                                                 <constraint firstItem="GO7-Hx-o9q" firstAttribute="centerY" secondItem="Y33-Yc-H5V" secondAttribute="centerY" id="jXv-Pp-OtU"/>
                                                 <constraint firstItem="fpk-H4-mQV" firstAttribute="leading" secondItem="Y33-Yc-H5V" secondAttribute="leading" constant="18" id="qX0-9e-b8d"/>
                                                 <constraint firstAttribute="trailing" secondItem="GO7-Hx-o9q" secondAttribute="trailing" constant="2" id="ugh-kB-g9j"/>
                                                 <constraint firstItem="oaL-B8-2zZ" firstAttribute="leading" secondItem="fpk-H4-mQV" secondAttribute="trailing" constant="13" id="x3o-Lm-U37"/>
+                                                <constraint firstAttribute="trailing" secondItem="c0b-qa-OZR" secondAttribute="trailing" id="zHR-bZ-F2A"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <animations/>
@@ -3530,6 +3524,7 @@ El voluntariado comprende actividades asistenciales de servicios sociales, cívi
                                         <connections>
                                             <outlet property="iconImageView" destination="fpk-H4-mQV" id="0sM-S4-26b"/>
                                             <outlet property="menuButton" destination="GO7-Hx-o9q" id="6pp-wB-Pk6"/>
+                                            <outlet property="progressView" destination="c0b-qa-OZR" id="mb4-xf-50k"/>
                                             <outlet property="sizeLabel" destination="Aky-Pz-mnU" id="fdv-0c-QEW"/>
                                             <outlet property="titleLabel" destination="oaL-B8-2zZ" id="H4a-gm-qC7"/>
                                         </connections>
@@ -3584,7 +3579,7 @@ El voluntariado comprende actividades asistenciales de servicios sociales, cívi
                                                 </constraints>
                                                 <state key="normal" backgroundImage="BlueDocumentsIcon"/>
                                                 <connections>
-                                                    <action selector="goToSessionDocuments:" destination="zpX-FB-339" eventType="touchUpInside" id="Fx3-nJ-52M"/>
+                                                    <action selector="goToDocumentPreview:" destination="sOw-mS-ShX" eventType="touchUpInside" id="c3C-GM-PXB"/>
                                                 </connections>
                                             </button>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Ver              Archivo" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Mgj-Uh-E1k">
@@ -3621,7 +3616,7 @@ El voluntariado comprende actividades asistenciales de servicios sociales, cívi
                                                 </constraints>
                                                 <state key="normal" backgroundImage="DownloadIcon"/>
                                                 <connections>
-                                                    <action selector="goToSessionMap:" destination="zpX-FB-339" eventType="touchDragInside" id="gsY-tV-hh2"/>
+                                                    <action selector="downloadDocument:" destination="sOw-mS-ShX" eventType="touchUpInside" id="7IV-b7-cyO"/>
                                                 </connections>
                                             </button>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Descargar" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hcn-kU-Xaq">
@@ -3746,12 +3741,15 @@ El voluntariado comprende actividades asistenciales de servicios sociales, cívi
                     </navigationItem>
                     <connections>
                         <outlet property="customLoader" destination="w28-by-eQQ" id="dlO-BF-qzK"/>
+                        <outlet property="downLoadLabel" destination="hcn-kU-Xaq" id="yc0-OL-MJ8"/>
+                        <outlet property="downloadButton" destination="9MH-A8-Axw" id="SdO-gP-kkp"/>
                         <outlet property="menuContentView" destination="W1j-xv-u8u" id="ef6-bz-dbf"/>
                         <outlet property="menuHeightConstraint" destination="4R5-ZW-LSN" id="Djo-yk-1UR"/>
                         <outlet property="searchBarButtonItem" destination="3DR-Zf-cqO" id="Yuv-Ad-b64"/>
                         <outlet property="shadowView" destination="omf-Ul-hiO" id="B9j-QB-Dbs"/>
                         <outlet property="tableView" destination="por-Ck-MfZ" id="xzN-3R-bEa"/>
                         <segue destination="qf6-h5-f8O" kind="show" identifier="GoToUserListSegue" id="Bq6-7u-HM0"/>
+                        <segue destination="yXj-T1-28m" kind="presentation" identifier="GoToDocumentPreviewSegue" modalTransitionStyle="coverVertical" id="maf-yN-UYl"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="53H-no-dwz" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -3767,6 +3765,92 @@ El voluntariado comprende actividades asistenciales de servicios sociales, cívi
                 </swipeGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="908" y="31"/>
+        </scene>
+        <!--Document Preview View Controller-->
+        <scene sceneID="sDR-8A-1TC">
+            <objects>
+                <viewController id="Lf4-C5-M1Q" customClass="DocumentPreviewViewController" customModule="EducaApp" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="VBw-2U-hea"/>
+                        <viewControllerLayoutGuide type="bottom" id="M9W-Vx-Tnx"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="kRI-r3-6pB">
+                        <rect key="frame" x="0.0" y="64" width="600" height="536"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="No se pudo mostrar el archivo seleccionado." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xaq-au-6Yl">
+                                <rect key="frame" x="60.5" y="233" width="479.5" height="70"/>
+                                <animations/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="70" id="ZVt-UF-bcD"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="24"/>
+                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <webView hidden="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scalesPageToFit="YES" translatesAutoresizingMaskIntoConstraints="NO" id="L58-Gm-BsA">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="536"/>
+                                <animations/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <gestureRecognizers/>
+                                <connections>
+                                    <outlet property="delegate" destination="Lf4-C5-M1Q" id="SEn-VT-d62"/>
+                                    <outletCollection property="gestureRecognizers" destination="0ts-sW-em7" appends="YES" id="9fk-02-Sgm"/>
+                                </connections>
+                            </webView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="F9e-sn-zs0" customClass="CustomActivityIndicatorView" customModule="EducaApp" customModuleProvider="target">
+                                <rect key="frame" x="275" y="243" width="50" height="50"/>
+                                <animations/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="3Az-ie-9Xn"/>
+                                    <constraint firstAttribute="width" constant="50" id="5Wv-hi-TmF"/>
+                                </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="indicatorColor">
+                                        <color key="value" red="0.37647058820000001" green="0.72549019609999998" blue="0.98039215690000003" alpha="1" colorSpace="calibratedRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </view>
+                        </subviews>
+                        <animations/>
+                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="L58-Gm-BsA" firstAttribute="top" secondItem="kRI-r3-6pB" secondAttribute="top" id="2uO-ie-Fja"/>
+                            <constraint firstItem="L58-Gm-BsA" firstAttribute="leading" secondItem="kRI-r3-6pB" secondAttribute="leading" id="5Lo-be-6sN"/>
+                            <constraint firstAttribute="trailing" secondItem="xaq-au-6Yl" secondAttribute="trailing" constant="60" id="FPp-G8-u9H"/>
+                            <constraint firstItem="xaq-au-6Yl" firstAttribute="centerX" secondItem="kRI-r3-6pB" secondAttribute="centerX" id="REp-TG-r04"/>
+                            <constraint firstItem="F9e-sn-zs0" firstAttribute="centerX" secondItem="kRI-r3-6pB" secondAttribute="centerX" id="bLf-hX-9NC"/>
+                            <constraint firstItem="xaq-au-6Yl" firstAttribute="centerY" secondItem="kRI-r3-6pB" secondAttribute="centerY" id="dwX-ZI-wiK"/>
+                            <constraint firstAttribute="trailing" secondItem="L58-Gm-BsA" secondAttribute="trailing" id="i4o-t3-Svl"/>
+                            <constraint firstItem="xaq-au-6Yl" firstAttribute="leading" secondItem="kRI-r3-6pB" secondAttribute="leading" constant="60.5" id="iPc-9p-Dxu"/>
+                            <constraint firstItem="M9W-Vx-Tnx" firstAttribute="top" secondItem="L58-Gm-BsA" secondAttribute="bottom" id="jRc-hW-C6d"/>
+                            <constraint firstItem="F9e-sn-zs0" firstAttribute="centerY" secondItem="kRI-r3-6pB" secondAttribute="centerY" id="vrj-6r-Rsy"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="Gvk-Ac-T3o">
+                        <barButtonItem key="leftBarButtonItem" image="CancelIcon" id="yn0-oc-T3N">
+                            <connections>
+                                <action selector="dismissView:" destination="Lf4-C5-M1Q" id="z23-fY-DJ8"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" translucent="NO" prompted="NO"/>
+                    <connections>
+                        <outlet property="customLoader" destination="F9e-sn-zs0" id="9tx-2k-JPE"/>
+                        <outlet property="documentWebView" destination="L58-Gm-BsA" id="AE8-DJ-fo6"/>
+                        <outlet property="noDocumentLabel" destination="xaq-au-6Yl" id="1yF-8K-sru"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Kho-hp-kD5" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="0ts-sW-em7">
+                    <connections>
+                        <action selector="hideNavigation:" destination="Lf4-C5-M1Q" id="9Ry-9Y-rHV"/>
+                        <outlet property="delegate" destination="Lf4-C5-M1Q" id="3ZJ-Zt-IEd"/>
+                    </connections>
+                </tapGestureRecognizer>
+            </objects>
+            <point key="canvasLocation" x="2335" y="31"/>
         </scene>
         <!--Asistentes-->
         <scene sceneID="Yyi-6b-2mQ">
@@ -3874,7 +3958,7 @@ El voluntariado comprende actividades asistenciales de servicios sociales, cívi
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="pmX-I9-lRI" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1619" y="31"/>
+            <point key="canvasLocation" x="3147" y="31"/>
         </scene>
         <!--Asistente-->
         <scene sceneID="4OO-Gn-z8g">
@@ -4056,10 +4140,25 @@ El voluntariado comprende actividades asistenciales de servicios sociales, cívi
                                     <outlet property="delegate" destination="Xhg-0D-UcY" id="qka-uB-ftc"/>
                                 </connections>
                             </tableView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="SP8-cH-pfD" customClass="CustomActivityIndicatorView" customModule="EducaApp" customModuleProvider="target">
+                                <rect key="frame" x="275" y="275" width="50" height="50"/>
+                                <animations/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="50" id="Kw8-ln-rvr"/>
+                                    <constraint firstAttribute="height" constant="50" id="OEt-cV-go3"/>
+                                </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="indicatorColor">
+                                        <color key="value" red="0.37647058820000001" green="0.72549019609999998" blue="0.98039215690000003" alpha="1" colorSpace="calibratedRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </view>
                         </subviews>
                         <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="SP8-cH-pfD" firstAttribute="centerX" secondItem="2xf-am-Vdx" secondAttribute="centerX" id="4vo-1N-PoD"/>
                             <constraint firstItem="wyt-dD-lVP" firstAttribute="top" secondItem="pPa-fL-GOP" secondAttribute="bottom" id="5dz-q7-CIW"/>
                             <constraint firstItem="iB7-YH-kh9" firstAttribute="leading" secondItem="2xf-am-Vdx" secondAttribute="leading" id="Ccx-T3-JLU"/>
                             <constraint firstItem="8ql-lN-aez" firstAttribute="centerX" secondItem="2xf-am-Vdx" secondAttribute="centerX" id="Cq7-R1-Ash"/>
@@ -4068,6 +4167,7 @@ El voluntariado comprende actividades asistenciales de servicios sociales, cívi
                             <constraint firstItem="iB7-YH-kh9" firstAttribute="top" secondItem="8ql-lN-aez" secondAttribute="bottom" id="bv2-ri-J3g"/>
                             <constraint firstItem="8ql-lN-aez" firstAttribute="top" secondItem="wyt-dD-lVP" secondAttribute="bottom" id="fPG-rv-lCf"/>
                             <constraint firstItem="dOQ-Nf-NIk" firstAttribute="top" secondItem="iB7-YH-kh9" secondAttribute="bottom" id="kyE-kR-Ofu"/>
+                            <constraint firstItem="SP8-cH-pfD" firstAttribute="centerY" secondItem="2xf-am-Vdx" secondAttribute="centerY" id="r7v-ka-xE6"/>
                             <constraint firstAttribute="trailing" secondItem="wyt-dD-lVP" secondAttribute="trailing" id="vUy-F1-M5A"/>
                             <constraint firstItem="wyt-dD-lVP" firstAttribute="leading" secondItem="2xf-am-Vdx" secondAttribute="leading" id="vmj-om-srs"/>
                         </constraints>
@@ -4081,18 +4181,21 @@ El voluntariado comprende actividades asistenciales de servicios sociales, cívi
                     </navigationItem>
                     <connections>
                         <outlet property="ageLabel" destination="dGV-UN-6oP" id="udW-YB-OOq"/>
+                        <outlet property="commentView" destination="8ql-lN-aez" id="hdZ-1C-kNH"/>
                         <outlet property="commentViewLabel" destination="uYv-MI-9NF" id="DHp-14-ivA"/>
+                        <outlet property="customLoader" destination="SP8-cH-pfD" id="3ej-bK-atn"/>
                         <outlet property="dateLabel" destination="d2s-MW-0Tg" id="gk7-GB-WMR"/>
                         <outlet property="genderLabel" destination="yru-5o-6j8" id="orI-mO-YJu"/>
                         <outlet property="heightConstraint" destination="Zn3-Sr-WwC" id="bap-0d-p28"/>
                         <outlet property="searchBarButtonItem" destination="ft2-AM-EtP" id="bWo-Rs-xOg"/>
                         <outlet property="sessionCountLabel" destination="vov-CM-anu" id="wVF-22-PB5"/>
+                        <outlet property="studentInfoView" destination="wyt-dD-lVP" id="4cS-5G-VwY"/>
                         <outlet property="tableView" destination="iB7-YH-kh9" id="7mb-Mt-Cxu"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cgW-9K-Wzn" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2335" y="31"/>
+            <point key="canvasLocation" x="3863" y="31"/>
         </scene>
         <!--Assistant Comments Filter View Controller-->
         <scene sceneID="TGP-uM-JcB">
@@ -4279,7 +4382,7 @@ El voluntariado comprende actividades asistenciales de servicios sociales, cívi
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="27Q-Id-zZV" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2895" y="32"/>
+            <point key="canvasLocation" x="4423" y="32"/>
         </scene>
         <!--Users Filter View Controller-->
         <scene sceneID="kzP-cn-PIS">
@@ -4458,7 +4561,7 @@ El voluntariado comprende actividades asistenciales de servicios sociales, cívi
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1Yc-R8-dlq" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3321" y="-114"/>
+            <point key="canvasLocation" x="4849" y="-114"/>
         </scene>
         <!--Sorting Filter View Controller-->
         <scene sceneID="xzk-Sx-edF">
@@ -4523,7 +4626,7 @@ El voluntariado comprende actividades asistenciales de servicios sociales, cívi
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="iIb-ys-ZUQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3321" y="177"/>
+            <point key="canvasLocation" x="4849" y="177"/>
         </scene>
         <!--Send Assistant Comment View Controller-->
         <scene sceneID="XRg-q1-qFp">
@@ -4659,7 +4762,7 @@ El voluntariado comprende actividades asistenciales de servicios sociales, cívi
                     </connections>
                 </tapGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="2335" y="488"/>
+            <point key="canvasLocation" x="3051" y="540"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="5Mj-Iq-76W">
@@ -6497,6 +6600,25 @@ El voluntariado comprende actividades asistenciales de servicios sociales, cívi
             </objects>
             <point key="canvasLocation" x="-2257" y="625"/>
         </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="Yxq-4u-jRG">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="yXj-T1-28m" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="ABT-JU-x24">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <animations/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="Lf4-C5-M1Q" kind="relationship" relationship="rootViewController" id="mDK-DR-Z1d"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="zYN-Kp-xsS" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1625" y="31"/>
+        </scene>
     </scenes>
     <resources>
         <image name="AfiCompleteLogo" width="646" height="220"/>
@@ -6507,6 +6629,7 @@ El voluntariado comprende actividades asistenciales de servicios sociales, cívi
         <image name="CameraBlackIcon" width="30" height="30"/>
         <image name="CameraPlaceholder" width="512" height="512"/>
         <image name="CameraWhiteIcon" width="30" height="30"/>
+        <image name="CancelIcon" width="30" height="30"/>
         <image name="CheckAssistanceIcon" width="30" height="30"/>
         <image name="DeleteMarkerIcon" width="30" height="30"/>
         <image name="DocumentsIcon" width="30" height="30"/>

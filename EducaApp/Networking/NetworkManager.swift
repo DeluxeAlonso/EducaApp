@@ -22,7 +22,6 @@ class NetworkManager: AFHTTPRequestOperationManager {
   {
     super.init(baseURL: url)
     let serializer = AFHTTPRequestSerializer()
-    serializer.setValue(User.getAuthToken(), forHTTPHeaderField: Constants.Api.Header)
     self.requestSerializer = serializer
   }
 
