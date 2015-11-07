@@ -132,7 +132,7 @@
                                 <animations/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="CanceledPaymentCell" rowHeight="54" id="2FI-55-tnx">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="CanceledPaymentCell" rowHeight="54" id="2FI-55-tnx" customClass="CanceledPaymentTableViewCell" customModule="EducaApp" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="600" height="54"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="2FI-55-tnx" id="srM-cA-XZU">
@@ -145,7 +145,7 @@
                                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bdB-tY-cFf" userLabel="Order View">
                                                             <rect key="frame" x="0.0" y="0.0" width="150" height="52"/>
                                                             <subviews>
-                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="15/01/2015" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Dzd-LV-A7Z">
+                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="15/01/2015" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="7" translatesAutoresizingMaskIntoConstraints="NO" id="Dzd-LV-A7Z">
                                                                     <rect key="frame" x="39" y="12" width="73" height="28"/>
                                                                     <animations/>
                                                                     <constraints>
@@ -288,8 +288,14 @@
                                             </variation>
                                         </tableViewCellContentView>
                                         <animations/>
+                                        <connections>
+                                            <outlet property="actionLabel" destination="4Fd-ea-JQj" id="ZXi-3O-AyY"/>
+                                            <outlet property="amountLabel" destination="Dxt-rc-V8z" id="I7f-5J-7gg"/>
+                                            <outlet property="dateLabel" destination="Dzd-LV-A7Z" id="A57-QI-QXu"/>
+                                            <outlet property="statusLabel" destination="nly-1h-Rdi" id="1ge-nL-jKa"/>
+                                        </connections>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="DebtPaymentCell" rowHeight="54" id="XzZ-qC-YoT">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="DebtPaymentCell" rowHeight="54" id="XzZ-qC-YoT" customClass="DebtPaymentTableViewCell" customModule="EducaApp" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="82" width="600" height="54"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="XzZ-qC-YoT" id="JhP-BY-Y7a">
@@ -302,7 +308,7 @@
                                                         <view userInteractionEnabled="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fNu-wG-6ay" userLabel="Order View">
                                                             <rect key="frame" x="0.0" y="0.0" width="150" height="52"/>
                                                             <subviews>
-                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="15/06/2015" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="m2c-oF-Ipl">
+                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="15/06/2015" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="7" translatesAutoresizingMaskIntoConstraints="NO" id="m2c-oF-Ipl">
                                                                     <rect key="frame" x="39" y="12" width="73" height="28"/>
                                                                     <animations/>
                                                                     <constraints>
@@ -442,8 +448,13 @@
                                             </constraints>
                                         </tableViewCellContentView>
                                         <animations/>
+                                        <connections>
+                                            <outlet property="amountLabel" destination="Swx-wD-Wz6" id="qJh-ck-Sp5"/>
+                                            <outlet property="dateLabel" destination="m2c-oF-Ipl" id="YvV-bd-eS0"/>
+                                            <outlet property="statusLabel" destination="DTd-mK-uVA" id="V3K-1I-6ty"/>
+                                        </connections>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="PendingPaymentCell" rowHeight="54" id="Vot-yn-jMv">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="PendingPaymentCell" rowHeight="54" id="Vot-yn-jMv" customClass="PendingPaymentTableViewCell" customModule="EducaApp" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="136" width="600" height="54"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Vot-yn-jMv" id="0dm-Gm-RDQ">
@@ -456,7 +467,7 @@
                                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jGM-pw-gaq" userLabel="Order View">
                                                             <rect key="frame" x="0.0" y="0.0" width="150" height="52"/>
                                                             <subviews>
-                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="15/12/2015" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vQ3-CP-BZX">
+                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="15/12/2015" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="7" translatesAutoresizingMaskIntoConstraints="NO" id="vQ3-CP-BZX">
                                                                     <rect key="frame" x="38" y="12" width="74" height="28"/>
                                                                     <animations/>
                                                                     <constraints>
@@ -615,6 +626,11 @@
                                             </constraints>
                                         </tableViewCellContentView>
                                         <animations/>
+                                        <connections>
+                                            <outlet property="amountLabel" destination="12C-9Z-0GN" id="3mO-Ta-5jY"/>
+                                            <outlet property="dateLabel" destination="vQ3-CP-BZX" id="1bp-nq-J5e"/>
+                                            <outlet property="statusLabel" destination="tfB-aS-oiN" id="kRw-Jf-Nxr"/>
+                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                                 <connections>
@@ -2431,6 +2447,7 @@ El voluntariado comprende actividades asistenciales de servicios sociales, cívi
                         <outlet property="ReportsCell" destination="e3S-zB-pJ9" id="D4C-kZ-Ncs"/>
                         <outlet property="SesionsCell" destination="Vhm-qx-Mx7" id="Rvo-cf-a5h"/>
                         <outlet property="SettingsCell" destination="iWN-ZY-OCn" id="Bkm-YT-ma1"/>
+                        <outlet property="periodLabel" destination="T9q-Qd-AZt" id="UTs-if-bnT"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="J4w-b8-2BF" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -3778,7 +3795,7 @@ El voluntariado comprende actividades asistenciales de servicios sociales, cívi
                         <rect key="frame" x="0.0" y="64" width="600" height="536"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="No se pudo mostrar el archivo seleccionado." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xaq-au-6Yl">
+                            <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="No se pudo mostrar el archivo seleccionado." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="xaq-au-6Yl">
                                 <rect key="frame" x="60.5" y="233" width="479.5" height="70"/>
                                 <animations/>
                                 <constraints>
@@ -6674,7 +6691,7 @@ El voluntariado comprende actividades asistenciales de servicios sociales, cívi
         <image name="WriteCommentIcon" width="30" height="30"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="KtG-YL-lHe"/>
-        <segue reference="ThX-Nn-SQw"/>
+        <segue reference="RtS-xr-ajm"/>
+        <segue reference="dRH-hr-v2Y"/>
     </inferredMetricsTieBreakers>
 </document>

@@ -106,7 +106,7 @@ extension Document {
   }
   
   class func findOrCreateWithId(id: Int32, ctx: NSManagedObjectContext) -> Document {
-    var student: Document? = getStudentById(id, ctx: ctx)
+    var student: Document? = getDocumentsById(id, ctx: ctx)
     if (student == nil) {
       student = NSEntityDescription.insertNewObjectForEntityForName(DocumentEntityName, inManagedObjectContext: ctx) as? Document
     }
@@ -136,7 +136,7 @@ extension Document {
     return students ?? Array<Document>()
   }
   
-  class func getStudentById(id: Int32, ctx: NSManagedObjectContext) -> Document? {
+  class func getDocumentsById(id: Int32, ctx: NSManagedObjectContext) -> Document? {
     let fetchRequest = NSFetchRequest()
     fetchRequest.entity = NSEntityDescription.entityForName(DocumentEntityName, inManagedObjectContext: ctx)
     fetchRequest.predicate = NSPredicate(format: "(id = %d)", Int(id))

@@ -21,7 +21,7 @@ class MenuController: StaticDataTableViewController {
   @IBOutlet weak var DonationCell: UITableViewCell!
   @IBOutlet weak var ReportsCell: UITableViewCell!
   @IBOutlet weak var SettingsCell: UITableViewCell!
-  
+  @IBOutlet weak var periodLabel: UILabel!
   var currentUser: User?
   lazy var dataLayer = DataLayer()
   
@@ -29,6 +29,7 @@ class MenuController: StaticDataTableViewController {
   override func viewDidLoad() {
     super.viewDidLoad()
     currentUser = User.getAuthenticatedUser(dataLayer.managedObjectContext!)
+    periodLabel.text = "Postular a \((currentUser?.periodName)!)"
     setupPermissions()
     for action in (currentUser?.actions)! {
       var idnumber: Int32

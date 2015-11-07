@@ -119,6 +119,9 @@
 		E2F457131BE1ED5B00941231 /* SessionReunionPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2F457121BE1ED5B00941231 /* SessionReunionPoint.swift */; };
 		E2F462BD1BD895C600339271 /* SessionService.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2F462BC1BD895C600339271 /* SessionService.swift */; };
 		E2F598D41BB29E4E00C0206E /* SessionComment.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2F598D31BB29E4E00C0206E /* SessionComment.swift */; };
+		E2F8565F1BED546000815088 /* PendingPaymentTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2F8565E1BED546000815088 /* PendingPaymentTableViewCell.swift */; };
+		E2F856611BED547700815088 /* CanceledPaymentTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2F856601BED547700815088 /* CanceledPaymentTableViewCell.swift */; };
+		E2F856631BED548E00815088 /* DebtPaymentTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2F856621BED548E00815088 /* DebtPaymentTableViewCell.swift */; };
 		E2F9C83D1BCF292800DBE7B9 /* CalendarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2F9C83C1BCF292800DBE7B9 /* CalendarViewController.swift */; };
 		E2F9C8911BCF47E000DBE7B9 /* CVAuxiliaryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2F9C8761BCF47E000DBE7B9 /* CVAuxiliaryView.swift */; };
 		E2F9C8921BCF47E000DBE7B9 /* CVCalendarContentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2F9C8771BCF47E000DBE7B9 /* CVCalendarContentViewController.swift */; };
@@ -302,6 +305,9 @@
 		E2F457121BE1ED5B00941231 /* SessionReunionPoint.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SessionReunionPoint.swift; path = Models/SessionReunionPoint.swift; sourceTree = "<group>"; };
 		E2F462BC1BD895C600339271 /* SessionService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SessionService.swift; path = Networking/SessionService.swift; sourceTree = "<group>"; };
 		E2F598D31BB29E4E00C0206E /* SessionComment.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SessionComment.swift; path = Models/SessionComment.swift; sourceTree = "<group>"; };
+		E2F8565E1BED546000815088 /* PendingPaymentTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PendingPaymentTableViewCell.swift; path = Views/Cells/PendingPaymentTableViewCell.swift; sourceTree = "<group>"; };
+		E2F856601BED547700815088 /* CanceledPaymentTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CanceledPaymentTableViewCell.swift; path = Views/Cells/CanceledPaymentTableViewCell.swift; sourceTree = "<group>"; };
+		E2F856621BED548E00815088 /* DebtPaymentTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DebtPaymentTableViewCell.swift; path = Views/Cells/DebtPaymentTableViewCell.swift; sourceTree = "<group>"; };
 		E2F9C83C1BCF292800DBE7B9 /* CalendarViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CalendarViewController.swift; path = Controllers/Sessions/CalendarViewController.swift; sourceTree = "<group>"; };
 		E2F9C8761BCF47E000DBE7B9 /* CVAuxiliaryView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CVAuxiliaryView.swift; sourceTree = "<group>"; };
 		E2F9C8771BCF47E000DBE7B9 /* CVCalendarContentViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CVCalendarContentViewController.swift; sourceTree = "<group>"; };
@@ -529,6 +535,9 @@
 				E2E4F80E1BBE3D4B00224059 /* UserTableViewCell.swift */,
 				E2DD0A7A1BB148B60038A358 /* VolunteerTableViewCell.swift */,
 				E2DDF9181BBC8F7F00000555 /* Filters */,
+				E2F8565E1BED546000815088 /* PendingPaymentTableViewCell.swift */,
+				E2F856601BED547700815088 /* CanceledPaymentTableViewCell.swift */,
+				E2F856621BED548E00815088 /* DebtPaymentTableViewCell.swift */,
 			);
 			name = Cells;
 			sourceTree = "<group>";
@@ -997,6 +1006,7 @@
 				E2FE3F481B9632DC006EEA91 /* AppDelegate.swift in Sources */,
 				E253E3C41BCDDB34006A284F /* NotificationControlTableViewCell.swift in Sources */,
 				E2EFE9311BE93A4100E7B138 /* DocumentUser.swift in Sources */,
+				E2F856631BED548E00815088 /* DebtPaymentTableViewCell.swift in Sources */,
 				E2E4F8171BBE410C00224059 /* Post.swift in Sources */,
 				E2F9C89E1BCF47E000DBE7B9 /* CVCalendarViewAppearance.swift in Sources */,
 				E2F9C8A11BCF47E000DBE7B9 /* CVCalendarViewPresentationMode.swift in Sources */,
@@ -1025,6 +1035,7 @@
 				E2EFE92F1BE931AB00E7B138 /* DocumentSession.swift in Sources */,
 				E2E587E01B993C1C008580D3 /* SignInViewController.swift in Sources */,
 				E2DD0A7B1BB148B60038A358 /* VolunteerTableViewCell.swift in Sources */,
+				E2F856611BED547700815088 /* CanceledPaymentTableViewCell.swift in Sources */,
 				E2B2A76C1BAF65DF00691884 /* SessionTableViewCell.swift in Sources */,
 				E2E316AA1BB1C09C000D8DC7 /* AssistantsViewController.swift in Sources */,
 				E2DDE3591BA641CE00C96CE5 /* CustomActivityIndicatorView.swift in Sources */,
@@ -1112,6 +1123,7 @@
 				E246CE781BD1BE0F006A194D /* SessionCommentView.swift in Sources */,
 				E2DC077E1BBDDA3900304FDE /* PostDetailViewController.swift in Sources */,
 				E2F9C8A71BCF47E000DBE7B9 /* CVScrollDirection.swift in Sources */,
+				E2F8565F1BED546000815088 /* PendingPaymentTableViewCell.swift in Sources */,
 				E2DDF91A1BBC8FB900000555 /* DateFilterTableViewCell.swift in Sources */,
 				E2F9C8971BCF47E000DBE7B9 /* CVCalendarMenuViewDelegate.swift in Sources */,
 				E29F29161BDF5C49000D174B /* School.swift in Sources */,
