@@ -213,7 +213,7 @@ class DocumentsViewController: BaseFilterViewController {
   
   @IBAction func downloadDocument(sender: AnyObject) {
     if Util.connectedToNetwork() == false {
-      showAlertWithTitle("Error", message: "No tienes conexión a internet.", buttonTitle: "OK")
+      Util.showNoInternetAlert(self)
       return
     }
     hideMenuView(NSNull)

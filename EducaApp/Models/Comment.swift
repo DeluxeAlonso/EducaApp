@@ -9,6 +9,12 @@
 import Foundation
 import CoreData
 
+let CommentEntityName = "Comment"
+let CommentIdKey = "id"
+let CommentMessageKey = "message"
+let CommentFaceKey = "face"
+
+
 @objc(Comment)
 public class Comment: NSManagedObject {
   
@@ -26,7 +32,7 @@ public class Comment: NSManagedObject {
 extension Comment: Deserializable {
   
   func setDataFromJSON(json: NSDictionary) {
-    guard let id = json["id"] as AnyObject?, message = json["message"] as? String, face = json["face"] as AnyObject? else {
+    guard let id = json[CommentIdKey] as AnyObject?, message = json[CommentMessageKey] as? String, face = json[CommentFaceKey] as AnyObject? else {
         return
     }
     self.id = id is Int ? Int32(id as! Int) : Int32(id as! String)!
@@ -67,7 +73,7 @@ extension Comment {
     let newIds = NSMutableSet(array: ids)
     newIds.minusSet(NSSet(array: persistedIds) as Set<NSObject>)
     let newArticles = newIds.allObjects.map({ (id: AnyObject) -> Comment in
-      let newArticle = NSEntityDescription.insertNewObjectForEntityForName("Comment", inManagedObjectContext: ctx) as! Comment
+      let newArticle = NSEntityDescription.insertNewObjectForEntityForName(CommentEntityName, inManagedObjectContext: ctx) as! Comment
       newArticle.id = (Int32(id as! Int))
       newArticle.student = student
       return newArticle
@@ -103,7 +109,7 @@ extension Comment {
   public class func findOrCreateWithId(id: Int32, ctx: NSManagedObjectContext) -> Comment {
     var article: Comment? = getCommentById(id, ctx: ctx)
     if (article == nil) {
-      article = NSEntityDescription.insertNewObjectForEntityForName("Comment", inManagedObjectContext: ctx) as? Comment
+      article = NSEntityDescription.insertNewObjectForEntityForName(CommentEntityName, inManagedObjectContext: ctx) as? Comment
       article!.id = id
     }
     return article!
@@ -134,7 +140,7 @@ extension Comment {
     let ids = Array(jsonById.keys)
     
     // Get persisted articles
-    let persistedArticles = Comment.getCommentsByStudent(student, ctx: ctx)
+    let persistedArticles = Comment.getCommentsBySessionAndStudent(session, student: student, ctx: ctx)
     var persistedArticleById = Dictionary<Int, Comment>()
     for art in persistedArticles {
       persistedArticleById[Int(art.id)] = art
@@ -146,7 +152,7 @@ extension Comment {
     let newIds = NSMutableSet(array: ids)
     newIds.minusSet(NSSet(array: persistedIds) as Set<NSObject>)
     let newArticles = newIds.allObjects.map({ (id: AnyObject) -> Comment in
-      let newArticle = NSEntityDescription.insertNewObjectForEntityForName("Comment", inManagedObjectContext: ctx) as! Comment
+      let newArticle = NSEntityDescription.insertNewObjectForEntityForName(CommentEntityName, inManagedObjectContext: ctx) as! Comment
       newArticle.id = (Int32(id as! Int))
       newArticle.student = student
       return newArticle
@@ -180,7 +186,7 @@ extension Comment {
   
   public class func updateOrCreateWithJsonAndUser(session:Session, author: User,json: NSDictionary, ctx: NSManagedObjectContext) -> Comment? {
     var comment: Comment?
-    if let id = json["id"] as AnyObject? {
+    if let id = json[CommentIdKey] as AnyObject? {
       let commentId = id is Int ? Int32(id as! Int) : Int32(id as! String)!
       comment = findOrCreateWithId(commentId, ctx: ctx)
       comment?.setDataFromJSON(json)
@@ -193,7 +199,7 @@ extension Comment {
   public class func createNewComment(sessionStudent: SessionStudent, message: String, face: Int, ctx: NSManagedObjectContext) -> Comment? {
     var comment = getCommentBySessionAndStudentAndAuthor(sessionStudent.session, student: sessionStudent.student, author: User.getAuthenticatedUser(ctx)!, ctx: ctx)
     if (comment == nil){
-      comment = NSEntityDescription.insertNewObjectForEntityForName("Comment", inManagedObjectContext: ctx) as? Comment
+      comment = NSEntityDescription.insertNewObjectForEntityForName(CommentEntityName, inManagedObjectContext: ctx) as? Comment
     }
     let sessionContext : Session = ctx.objectWithID(sessionStudent.session.objectID) as! Session
     let userContext : User = ctx.objectWithID(User.getAuthenticatedUser(ctx)!.objectID) as! User
@@ -208,8 +214,8 @@ extension Comment {
   
   public class func getAllComments(ctx: NSManagedObjectContext) -> Array<Comment> {
     let fetchRequest = NSFetchRequest()
-    fetchRequest.entity = NSEntityDescription.entityForName("Comment", inManagedObjectContext: ctx)
-    let sortDescriptor = NSSortDescriptor(key: "id", ascending: false)
+    fetchRequest.entity = NSEntityDescription.entityForName(CommentEntityName, inManagedObjectContext: ctx)
+    let sortDescriptor = NSSortDescriptor(key: CommentIdKey, ascending: false)
     fetchRequest.sortDescriptors = [sortDescriptor]
     let articles = try! ctx.executeFetchRequest(fetchRequest) as? Array<Comment>
     return articles ?? Array<Comment>()
@@ -217,7 +223,7 @@ extension Comment {
   
   public class func getCommentById(id: Int32, ctx: NSManagedObjectContext) -> Comment? {
     let fetchRequest = NSFetchRequest()
-    fetchRequest.entity = NSEntityDescription.entityForName("Comment", inManagedObjectContext: ctx)
+    fetchRequest.entity = NSEntityDescription.entityForName(CommentEntityName, inManagedObjectContext: ctx)
     fetchRequest.predicate = NSPredicate(format: "(id = %d)", Int(id))
     let articles = try! ctx.executeFetchRequest(fetchRequest) as? Array<Comment>
     if (articles != nil && articles!.count > 0) {
@@ -228,7 +234,7 @@ extension Comment {
   
   public class func getCommentsBySessionAndStudent(session: Session, student: Student, ctx: NSManagedObjectContext) -> Array<Comment> {
     let fetchRequest = NSFetchRequest()
-    fetchRequest.entity = NSEntityDescription.entityForName("Comment", inManagedObjectContext: ctx)
+    fetchRequest.entity = NSEntityDescription.entityForName(CommentEntityName, inManagedObjectContext: ctx)
     fetchRequest.predicate = NSPredicate(format: "(sessionId = %d AND student.id = %d)", Int(session.id), Int(student.id))
     let comments = try! ctx.executeFetchRequest(fetchRequest) as? Array<Comment>
     return comments ?? Array<Comment>()
@@ -236,7 +242,7 @@ extension Comment {
   
   public class func getCommentsByStudent(student: Student, ctx: NSManagedObjectContext) -> Array<Comment> {
     let fetchRequest = NSFetchRequest()
-    fetchRequest.entity = NSEntityDescription.entityForName("Comment", inManagedObjectContext: ctx)
+    fetchRequest.entity = NSEntityDescription.entityForName(CommentEntityName, inManagedObjectContext: ctx)
     fetchRequest.predicate = NSPredicate(format: "(student.id = %d)", Int(student.id))
     let comments = try! ctx.executeFetchRequest(fetchRequest) as? Array<Comment>
     return comments ?? Array<Comment>()
@@ -244,7 +250,7 @@ extension Comment {
   
   public class func getCommentBySessionAndStudentAndAuthor(session: Session, student: Student, author: User, ctx: NSManagedObjectContext) -> Comment? {
     let fetchRequest = NSFetchRequest()
-    fetchRequest.entity = NSEntityDescription.entityForName("Comment", inManagedObjectContext: ctx)
+    fetchRequest.entity = NSEntityDescription.entityForName(CommentEntityName, inManagedObjectContext: ctx)
     fetchRequest.predicate = NSPredicate(format: "(sessionId = %d AND student.id = %d AND author.id = %d)", Int(session.id), Int(student.id), Int(author.id))
     let comments = try! ctx.executeFetchRequest(fetchRequest) as? Array<Comment>
     if (comments != nil && comments!.count > 0) {

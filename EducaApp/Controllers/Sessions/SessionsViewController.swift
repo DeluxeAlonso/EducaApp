@@ -184,6 +184,9 @@ class SessionsViewController: BaseViewController {
         let destinationVC = navigationController.viewControllers.first as! SessionMapViewController
         destinationVC.delegate = self
         destinationVC.session = selectedSession
+      } else if navigationController.viewControllers.first is CalendarViewController {
+        let destinationVC = navigationController.viewControllers.first as! CalendarViewController
+        destinationVC.sessions = sessions
       }
     default:
       break

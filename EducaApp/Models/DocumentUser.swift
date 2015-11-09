@@ -60,9 +60,16 @@ extension DocumentUser {
     
     // Get SessionUsers from the deal
     let persistedSessionUsers = document.users
+    for user in persistedSessionUsers {
+      if (user as! DocumentUser).user.id == 0 {
+        ctx.deleteObject(user as! NSManagedObject)
+      }
+    }
     var persistedSessionDocumentsByDocumentId = Dictionary<Int, DocumentUser>()
     for sessionDocument in persistedSessionUsers {
-      persistedSessionDocumentsByDocumentId[Int(sessionDocument.user.id)] = sessionDocument as? DocumentUser
+      if sessionDocument.user != nil {
+        persistedSessionDocumentsByDocumentId[Int(sessionDocument.user.id)] = sessionDocument as? DocumentUser
+      }
     }
     
     let persistedIds = Array(persistedSessionDocumentsByDocumentId.keys)
@@ -87,7 +94,6 @@ extension DocumentUser {
     // Apply json to each
     let validSessionDocuments = newDocumentUsers + updateDocumentUsers
     for sessionDocument in validSessionDocuments {
-      // CAMBIAR ACA EN CASO DE ERROR
       sessionDocument.setDataFromJSON(jsonBysessionDocumentId[Int(sessionDocument.user.id)]!)
     }
     
