@@ -22,19 +22,29 @@ class MenuController: StaticDataTableViewController {
   @IBOutlet weak var ReportsCell: UITableViewCell!
   @IBOutlet weak var SettingsCell: UITableViewCell!
   @IBOutlet weak var periodLabel: UILabel!
+  
+  let PostulationSuccessTitle = "Enhorabuena"
+  let PostulationSuccessMessage = "Has logrado postular con éxito"
+  let PostulationSuccessButtonTitle = "OK"
+  
   var currentUser: User?
   lazy var dataLayer = DataLayer()
   
   // MARK: - Lifecycle
+  
   override func viewDidLoad() {
     super.viewDidLoad()
+    setupMenuItems()
+  }
+  
+  // MARK: - Private
+  
+  private func setupMenuItems() {
     currentUser = User.getAuthenticatedUser(dataLayer.managedObjectContext!)
     periodLabel.text = "Postular a \((currentUser?.periodName)!)"
     setupPermissions()
     for action in (currentUser?.actions)! {
-      var idnumber: Int32
-      idnumber = (action as! Action).id
-      
+      let idnumber = (action as! Action).id
       switch idnumber{
       case 15:
         self.cell(SesionsCell, setHidden: false)
@@ -58,14 +68,7 @@ class MenuController: StaticDataTableViewController {
         self.cell(NewsCell, setHidden: false)
         self.cell(SettingsCell, setHidden: false)
       }
-      
     }
-    
-  }
-  
-  
-  override func didReceiveMemoryWarning() {
-    super.didReceiveMemoryWarning()
   }
   
   private func setupPermissions() {
@@ -85,10 +88,25 @@ class MenuController: StaticDataTableViewController {
     self.reloadDataAnimated(false)
   }
   
-  override func tableView(tableView: UITableView,
-    didSelectRowAtIndexPath indexPath: NSIndexPath) {
-      tableView.deselectRowAtIndexPath(indexPath, animated: true)
+  func reaply(idperiod:Int) {
+    UserService.reapply(idperiod , completion: {(responseObject: AnyObject?, error: NSError?) in
+      print(responseObject)
+      guard let json = responseObject as? NSDictionary else {
+        return
+      }
+      self.cell(self.PostulationCell, setHidden: true)
+      if (json[Constants.Api.ErrorKey] == nil) {
+        let user = User.getUserById((self.currentUser?.id)!, ctx: self.dataLayer.managedObjectContext!)
+        user?.canReapply = false
+        self.dataLayer.saveContext()
+        self.cell(self.PostulationCell, setHidden: true)
+        self.reloadDataAnimated(false)
+        Util.showAlertWithTitle(self, title: self.PostulationSuccessTitle, message: self.PostulationSuccessMessage, buttonTitle: self.PostulationSuccessButtonTitle)
+      }
+    })
   }
+  
+  // MARK: - Actions
   
   @IBAction func selectedNewPostulation(sender: AnyObject) {
     let actionSheetController: UIAlertController = UIAlertController(title: "¿Está seguro de que desea participar en este periodo?", message: nil, preferredStyle: .Alert)
@@ -102,51 +120,14 @@ class MenuController: StaticDataTableViewController {
   }
   
   @IBAction func reapply(sender: AnyObject) {
-    
     reaply(Int((currentUser?.periodId)!))
   }
   
+  // MARK: - UITableViewDelegate
   
-  func reaply(idperiod:Int){
-    UserService.reapply(idperiod , completion: {(responseObject: AnyObject?, error: NSError?) in
-      print(responseObject)
-      print(error?.description)
-      guard let json = responseObject as? NSDictionary else {
-        
-        self.cell(self.PostulationCell, setHidden: true)
-        return
-      }
-            self.cell(self.PostulationCell, setHidden: true)
-      if (json[Constants.Api.ErrorKey] == nil) {
-        self.currentUser?.canReapply = false
-        let user = User.getUserById((self.currentUser?.id)!, ctx: self.dataLayer.managedObjectContext!)
-        user?.canReapply = false
-        self.currentUser = user
-        self.dataLayer.saveContext()
-        self.tableView.reloadData()
-        self.showAlertWithTitle("Enhorabuena", message: "Has logrado postular con éxito", buttonTitle: "OK")
-        self.cell(self.PostulationCell, setHidden: true)
-      }
-    })
+  override func tableView(tableView: UITableView,
+    didSelectRowAtIndexPath indexPath: NSIndexPath) {
+      tableView.deselectRowAtIndexPath(indexPath, animated: true)
   }
-  
-  func showAlertWithTitle(title: String, message: String, buttonTitle: String) {
-    let alertController = UIAlertController(title: title, message: message, preferredStyle: UIAlertControllerStyle.Alert)
-    let defaultAction = UIAlertAction(title: buttonTitle, style: .Default, handler: nil)
-    alertController.addAction(defaultAction)
-    presentViewController(alertController, animated: true, completion: nil)
-  }
-  
-  override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
-    if currentUser?.canReapply == true{
-      if indexPath.row == 0 {
-        return 0
-      }
-    }
-    return 44
-  }
-  
+
 }
-
-
-

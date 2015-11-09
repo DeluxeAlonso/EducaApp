@@ -54,7 +54,6 @@
 		E2DDF91A1BBC8FB900000555 /* DateFilterTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2DDF9191BBC8FB900000555 /* DateFilterTableViewCell.swift */; };
 		E2DDF91C1BBC97D800000555 /* UIFontHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2DDF91B1BBC97D800000555 /* UIFontHelper.swift */; };
 		E2DE92601BB4BC1100E762F8 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2DE925F1BB4BC1100E762F8 /* BaseViewController.swift */; };
-		E2DF0F4C1BBCF9DD00F1D1D0 /* PostulationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2DF0F4B1BBCF9DD00F1D1D0 /* PostulationViewController.swift */; };
 		E2DF0F4E1BBCFA1E00F1D1D0 /* PostsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2DF0F4D1BBCFA1E00F1D1D0 /* PostsViewController.swift */; };
 		E2DF0F501BBCFA5400F1D1D0 /* UsersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2DF0F4F1BBCFA5400F1D1D0 /* UsersViewController.swift */; };
 		E2DF0F541BBCFB6C00F1D1D0 /* PostulationTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2DF0F531BBCFB6C00F1D1D0 /* PostulationTableViewCell.swift */; };
@@ -238,7 +237,6 @@
 		E2DDF9191BBC8FB900000555 /* DateFilterTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DateFilterTableViewCell.swift; path = Views/Cells/Filters/DateFilterTableViewCell.swift; sourceTree = "<group>"; };
 		E2DDF91B1BBC97D800000555 /* UIFontHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UIFontHelper.swift; path = Helpers/UIFontHelper.swift; sourceTree = "<group>"; };
 		E2DE925F1BB4BC1100E762F8 /* BaseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BaseViewController.swift; path = Controllers/Base/BaseViewController.swift; sourceTree = "<group>"; };
-		E2DF0F4B1BBCF9DD00F1D1D0 /* PostulationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PostulationViewController.swift; path = Controllers/Postulation/PostulationViewController.swift; sourceTree = "<group>"; };
 		E2DF0F4D1BBCFA1E00F1D1D0 /* PostsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PostsViewController.swift; path = Controllers/Blog/PostsViewController.swift; sourceTree = "<group>"; };
 		E2DF0F4F1BBCFA5400F1D1D0 /* UsersViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UsersViewController.swift; path = Controllers/Users/UsersViewController.swift; sourceTree = "<group>"; };
 		E2DF0F531BBCFB6C00F1D1D0 /* PostulationTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PostulationTableViewCell.swift; path = Views/Cells/PostulationTableViewCell.swift; sourceTree = "<group>"; };
@@ -473,14 +471,6 @@
 				E2ED7EEE1BC651E9001A7C29 /* ArticleMapViewController.swift */,
 			);
 			name = Articles;
-			sourceTree = "<group>";
-		};
-		E2DF0F481BBCF8E200F1D1D0 /* Postulation */ = {
-			isa = PBXGroup;
-			children = (
-				E2DF0F4B1BBCF9DD00F1D1D0 /* PostulationViewController.swift */,
-			);
-			name = Postulation;
 			sourceTree = "<group>";
 		};
 		E2DF0F491BBCF8ED00F1D1D0 /* Blog */ = {
@@ -816,7 +806,6 @@
 				E2F2D8281BC7243E005DDEA2 /* Payments */,
 				E2EE4D5B1BD5FD4E006CBDFE /* People */,
 				E2EE4D5E1BD6306A006CBDFE /* Periods */,
-				E2DF0F481BBCF8E200F1D1D0 /* Postulation */,
 				E2E3464E1BA77785007232A9 /* Settings */,
 				E2ED7EF01BC665FC001A7C29 /* Schools */,
 				E2E081091BAF28910014803B /* Sessions */,
@@ -1103,7 +1092,6 @@
 				E2EE4D621BD6309C006CBDFE /* RecoverPasswordTableViewController.swift in Sources */,
 				E2E1ACC81BAC903500070EB8 /* KeychainWrapper.m in Sources */,
 				E264BB811BBDF7D800D4D7D5 /* StudentsFilterViewController.swift in Sources */,
-				E2DF0F4C1BBCF9DD00F1D1D0 /* PostulationViewController.swift in Sources */,
 				E29F29141BDF59B2000D174B /* SchoolService.swift in Sources */,
 				E2F9C8A91BCF47E000DBE7B9 /* CVSet.swift in Sources */,
 				E22E72211BBCC5DD0082FE4B /* AuthorContentTableViewCell.swift in Sources */,

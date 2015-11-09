@@ -34,7 +34,6 @@ class AssistantDetailViewController: BaseFilterViewController {
   let refreshDataSelector: Selector = "refreshData"
   let refreshControl = CustomRefreshControlView()
   
-  var sections: NSMutableArray = ["16/09/2015", "01/09/2015"]
   var collapseSectionsInfo:[CollapseSectionModel] = Array()
   
   var popupViewController: STPopupController?
@@ -132,7 +131,6 @@ class AssistantDetailViewController: BaseFilterViewController {
       self.isRefreshing = false
       guard let json = responseObject as? NSDictionary where json.count > 0 else {
         self.customLoader.stopActivity()
-        //self.hideViews()
         return
       }
       if (json[Constants.Api.ErrorKey] == nil) {
@@ -471,13 +469,13 @@ extension AssistantDetailViewController: AssistantCommentsFilterViewControllerDe
 extension AssistantDetailViewController: SendAssistantCommentViewControllerDelegate {
   
   func sendAssistantCommentViewController(sendAssistantCommentViewController: SendAssistantCommentViewController, comment: String, face: Int) {
-    let parameters = ["message": comment, "face": face]
+    let parameters = [CommentMessageKey: comment, CommentFaceKey: face]
     sendCommentPopupViewController?.dismiss()
     StudentService.commentStudent((sessionStudent?.sessionStudentId)!, parameters: parameters, completion: {(responseObject: AnyObject?, error: NSError?) in
       guard let json = responseObject as? NSDictionary where json.count > 0 else {
         return
       }
-      if (json[Constants.Api.ErrorKey] == nil && json["message"] == nil) {
+      if (json[Constants.Api.ErrorKey] == nil && json[CommentMessageKey] == nil) {
         self.student = Student.updateOrCreateWithJson(json, ctx: self.dataLayer.managedObjectContext!)
         Comment.syncWithJsonArray(self.student!, arr: (json["comments"] as? Array<NSDictionary>)!, ctx: self.dataLayer.managedObjectContext!)
         self.dataLayer.saveContext()

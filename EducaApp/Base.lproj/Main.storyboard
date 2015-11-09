@@ -3041,11 +3041,39 @@ El voluntariado comprende actividades asistenciales de servicios sociales, cívi
                                             <constraint firstItem="4Nu-2P-FGg" firstAttribute="centerY" secondItem="EH4-ep-7es" secondAttribute="centerY" id="uhv-4n-YAu"/>
                                         </constraints>
                                     </view>
+                                    <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fFZ-1P-Usx" userLabel="No Events View">
+                                        <rect key="frame" x="8" y="40" width="584" height="128"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="No tienes sesiones para el día seleccionado." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CvX-eC-pr6">
+                                                <rect key="frame" x="8" y="36.5" width="568" height="55"/>
+                                                <animations/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="55" id="umf-cx-qYQ"/>
+                                                </constraints>
+                                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="19"/>
+                                                <color key="textColor" red="0.015686274510000001" green="0.64705882349999999" blue="0.92156862750000001" alpha="1" colorSpace="calibratedRGB"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                        <animations/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        <constraints>
+                                            <constraint firstItem="CvX-eC-pr6" firstAttribute="leading" secondItem="fFZ-1P-Usx" secondAttribute="leading" constant="8" id="Bni-Z3-fLH"/>
+                                            <constraint firstAttribute="trailing" secondItem="CvX-eC-pr6" secondAttribute="trailing" constant="8" id="azt-Bz-Af2"/>
+                                            <constraint firstItem="CvX-eC-pr6" firstAttribute="centerY" secondItem="fFZ-1P-Usx" secondAttribute="centerY" id="eBL-sq-gMr"/>
+                                            <constraint firstItem="CvX-eC-pr6" firstAttribute="centerX" secondItem="fFZ-1P-Usx" secondAttribute="centerX" id="hQr-WF-fM3"/>
+                                        </constraints>
+                                    </view>
                                 </subviews>
                                 <animations/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
+                                    <constraint firstItem="fFZ-1P-Usx" firstAttribute="centerY" secondItem="etn-s3-MpA" secondAttribute="centerY" id="0Tz-aD-ob3"/>
                                     <constraint firstItem="b3U-B4-QmH" firstAttribute="top" secondItem="KLz-nq-EHL" secondAttribute="bottom" constant="2" id="7Qj-5n-ynr"/>
+                                    <constraint firstItem="fFZ-1P-Usx" firstAttribute="leading" secondItem="etn-s3-MpA" secondAttribute="leading" constant="8" id="JC1-95-cIb"/>
+                                    <constraint firstAttribute="trailing" secondItem="fFZ-1P-Usx" secondAttribute="trailing" constant="8" id="TrJ-oC-Sjt"/>
+                                    <constraint firstItem="fFZ-1P-Usx" firstAttribute="centerX" secondItem="etn-s3-MpA" secondAttribute="centerX" id="ZVl-gf-5jE"/>
+                                    <constraint firstItem="fFZ-1P-Usx" firstAttribute="top" secondItem="etn-s3-MpA" secondAttribute="top" constant="40" id="aoE-Qi-cLC"/>
                                     <constraint firstAttribute="trailing" secondItem="b3U-B4-QmH" secondAttribute="trailing" constant="8" id="fjJ-5Q-0x3"/>
                                     <constraint firstAttribute="trailing" secondItem="KLz-nq-EHL" secondAttribute="trailing" id="idj-4O-LkM"/>
                                     <constraint firstItem="KLz-nq-EHL" firstAttribute="leading" secondItem="etn-s3-MpA" secondAttribute="leading" id="ktY-lF-6jp"/>
@@ -3089,6 +3117,10 @@ El voluntariado comprende actividades asistenciales de servicios sociales, cívi
                         <outlet property="calendarView" destination="fXR-w8-J0q" id="RLy-Ea-b8H"/>
                         <outlet property="dateLabel" destination="EH4-ep-7es" id="tFO-5z-nnb"/>
                         <outlet property="monthLabel" destination="VEd-A9-G9p" id="YV9-aW-cs5"/>
+                        <outlet property="noSessionsView" destination="fFZ-1P-Usx" id="Kvl-rW-3if"/>
+                        <outlet property="sessionDetailView" destination="b3U-B4-QmH" id="zWS-Dv-pQ3"/>
+                        <outlet property="sessionHourLabel" destination="7Pj-i4-vqV" id="eOW-YK-iyD"/>
+                        <outlet property="sessionNameLabel" destination="KLz-nq-EHL" id="efN-QA-vuX"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="k7h-Ol-K4p" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -3467,7 +3499,7 @@ El voluntariado comprende actividades asistenciales de servicios sociales, cívi
                                                         <constraint firstAttribute="height" constant="40" id="rxS-BX-wqn"/>
                                                     </constraints>
                                                 </imageView>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Guia de actividades 27/09.pdf" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="oaL-B8-2zZ">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Guia de actividades 27/09.pdf" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="12" translatesAutoresizingMaskIntoConstraints="NO" id="oaL-B8-2zZ">
                                                     <rect key="frame" x="71" y="10" width="461" height="25"/>
                                                     <animations/>
                                                     <constraints>
@@ -6692,6 +6724,6 @@ El voluntariado comprende actividades asistenciales de servicios sociales, cívi
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="RtS-xr-ajm"/>
-        <segue reference="dRH-hr-v2Y"/>
+        <segue reference="ThX-Nn-SQw"/>
     </inferredMetricsTieBreakers>
 </document>

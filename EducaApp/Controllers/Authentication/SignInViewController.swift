@@ -112,13 +112,6 @@ class SignInViewController: UIViewController {
     STPopupNavigationBar.appearance().titleTextAttributes = [NSForegroundColorAttributeName: UIColor.whiteColor(), NSFontAttributeName: UIFont.lightFontWithFontSize(17)]
   }
   
-  private func showAlertWithTitle(title: String, message: String, buttonTitle: String) {
-    let alertController = UIAlertController(title: title, message: message, preferredStyle: UIAlertControllerStyle.Alert)
-    let defaultAction = UIAlertAction(title: buttonTitle, style: .Default, handler: nil)
-    alertController.addAction(defaultAction)
-    presentViewController(alertController, animated: true, completion: nil)
-  }
-  
   private func saveUser(json: NSDictionary) {
     let user = User.updateOrCreateWithJson(json, ctx: self.dataLayer.managedObjectContext!)
     self.dataLayer.saveContext()
@@ -134,7 +127,7 @@ class SignInViewController: UIViewController {
       self.enableSignInButton()
       guard let json = responseObject as? NSDictionary else {
         self.recoverPasswordPopUp?.dismiss()
-        self.showAlertWithTitle(self.AlertMessageTitle, message: self.RequestErrorMessage, buttonTitle: self.AlertButtonTitle)
+        Util.showAlertWithTitle(self, title: self.AlertMessageTitle, message: self.RequestErrorMessage, buttonTitle: self.AlertButtonTitle)
         return
       }
       if (json[Constants.Api.ErrorKey] == nil) {
@@ -147,7 +140,7 @@ class SignInViewController: UIViewController {
         self.presentViewController(alertController, animated: true, completion: nil)
       } else {
         self.recoverPasswordPopUp?.dismiss()
-        self.showAlertWithTitle(self.RecoverPasswordErrorAlertTitle, message: json[Constants.Api.ErrorKey] as! String, buttonTitle: self.RecoverPasswordErrorAlertButton)
+        Util.showAlertWithTitle(self, title: self.RecoverPasswordErrorAlertTitle, message: json[Constants.Api.ErrorKey] as! String, buttonTitle: self.RecoverPasswordErrorAlertButton)
       }
     })
   }
@@ -177,10 +170,10 @@ class SignInViewController: UIViewController {
     UserService.signInWithEmail(email, password: password, completion: {(responseObject: AnyObject?, error: NSError?) in
       self.enableSignInButton()
       guard let json = responseObject as? NSDictionary else {
-        self.showAlertWithTitle(self.AlertMessageTitle, message: self.RequestErrorMessage, buttonTitle: self.AlertButtonTitle)
+        Util.showAlertWithTitle(self, title: self.AlertMessageTitle, message: self.RequestErrorMessage, buttonTitle: self.AlertButtonTitle)
         return
       }
-      json[Constants.Api.ErrorKey] == nil ? self.saveUser(json) : self.showAlertWithTitle(self.AlertMessageTitle, message: json[Constants.Api.ErrorKey] as! String, buttonTitle: self.AlertButtonTitle)
+      json[Constants.Api.ErrorKey] == nil ? self.saveUser(json) : Util.showAlertWithTitle(self, title: self.AlertMessageTitle, message: json[Constants.Api.ErrorKey] as! String, buttonTitle: self.AlertButtonTitle)
     })
   }
   

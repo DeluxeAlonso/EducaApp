@@ -101,6 +101,9 @@ class SessionMapViewController: UIViewController , UISearchControllerDelegate{
   private func setupLocation() {
     mapView.delegate = self
     mapInfoView.setShadowBorder()
+    if currentUser?.canEditReunionPoints()  == false {
+      searchContainerView.hidden = true
+    }
     searchContainerView.layer.borderColor = UIColor.defaultSmallTextColor().CGColor
     locationManager.delegate = self
     locationManager.requestWhenInUseAuthorization()
