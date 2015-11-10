@@ -24,8 +24,6 @@ class CalendarViewController: UIViewController {
   var sessions = [Session]()
   var sessionDates = [NSDate]()
   
-  
-  
   // MARK: - Lifecycle
   
   override func viewDidLoad() {
@@ -35,7 +33,6 @@ class CalendarViewController: UIViewController {
   
   override func viewDidLayoutSubviews() {
     super.viewDidLayoutSubviews()
-    
     calendarView.commitCalendarViewUpdate()
     calendarMenuView.commitMenuViewUpdate()
   }
