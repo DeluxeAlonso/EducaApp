@@ -11,6 +11,7 @@ import UIKit
 let PendingPaymentCellIdentifier = "PendingPaymentCell"
 let CanceledPaymentCellIdentifier = "CanceledPaymentCell"
 let DebtPaymentCellIdentifier = "DebtPaymentCell"
+let PendingApprovalPaymentCellIdentifier = "PendingApprovalPaymentCell"
 
 class PaymentsViewController: BaseViewController {
 
@@ -49,7 +50,8 @@ class PaymentsViewController: BaseViewController {
   private func setupPayments() {
     payments = Payment.getAllPayments(self.dataLayer.managedObjectContext!)
     guard payments.count == 0 else {
-      getPayments()
+    tableView.reloadData()
+    getPayments()
       return
     }
     tableView.hidden = true
@@ -110,9 +112,12 @@ extension PaymentsViewController: UITableViewDataSource {
     case 1:
       cell = tableView.dequeueReusableCellWithIdentifier(PendingPaymentCellIdentifier, forIndexPath: indexPath)
       (cell as! PendingPaymentTableViewCell).setupPayment(payments[indexPath.row])
-    default:
+    case 2:
       cell = tableView.dequeueReusableCellWithIdentifier(CanceledPaymentCellIdentifier, forIndexPath: indexPath)
       (cell as! CanceledPaymentTableViewCell).setupPayment(payments[indexPath.row])
+    default:
+      cell = tableView.dequeueReusableCellWithIdentifier(PendingApprovalPaymentCellIdentifier, forIndexPath: indexPath)
+      (cell as! PendingApprovalPaymentTableViewCell).setupPayment(payments[indexPath.row])
     }
     return cell
   }

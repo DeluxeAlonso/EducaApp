@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1297129A1BF18AE50077FB38 /* PendingApprovalPaymentTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 129712991BF18AE50077FB38 /* PendingApprovalPaymentTableViewCell.swift */; };
 		239BBDB765A74B254C0F89BD /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3766A7409970578ACAFAFA23 /* libPods.a */; };
 		E202F74B1BB3658100D5E64D /* Document.swift in Sources */ = {isa = PBXBuildFile; fileRef = E202F74A1BB3658100D5E64D /* Document.swift */; };
 		E208C68B1BB694F9005DF1EB /* Util.swift in Sources */ = {isa = PBXBuildFile; fileRef = E208C68A1BB694F9005DF1EB /* Util.swift */; };
@@ -187,6 +188,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		129712991BF18AE50077FB38 /* PendingApprovalPaymentTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PendingApprovalPaymentTableViewCell.swift; path = Views/Cells/PendingApprovalPaymentTableViewCell.swift; sourceTree = "<group>"; };
 		3766A7409970578ACAFAFA23 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		B16CF1D03442508C54A2C811 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		C330EF7BE42F7341323D4084 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
@@ -528,6 +530,7 @@
 				E2F8565E1BED546000815088 /* PendingPaymentTableViewCell.swift */,
 				E2F856601BED547700815088 /* CanceledPaymentTableViewCell.swift */,
 				E2F856621BED548E00815088 /* DebtPaymentTableViewCell.swift */,
+				129712991BF18AE50077FB38 /* PendingApprovalPaymentTableViewCell.swift */,
 			);
 			name = Cells;
 			sourceTree = "<group>";
@@ -846,6 +849,7 @@
 				E2FE3F401B9632DC006EEA91 /* Resources */,
 				064E8DAAC286032CAB72D9D0 /* Copy Pods Resources */,
 				E2DDE34D1BA621A100C96CE5 /* Embed Frameworks */,
+				07AEF94C7331F41CCE28A908 /* Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -954,6 +958,21 @@
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
+		07AEF94C7331F41CCE28A908 /* Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		19C97DC4773B20F33E546C1F /* Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -983,6 +1002,7 @@
 				E2E13ABA1BA6AFF0004C6E45 /* SpotifyLikeStyle.swift in Sources */,
 				E2F2D82C1BC7710E005DDEA2 /* DepositPaymentViewController.swift in Sources */,
 				E2EE4D601BD63085006CBDFE /* PeriodsViewController.swift in Sources */,
+				1297129A1BF18AE50077FB38 /* PendingApprovalPaymentTableViewCell.swift in Sources */,
 				E26116E11BAB9E09002C0332 /* ArticleService.swift in Sources */,
 				E2EEF3641BE0392C003A83B0 /* Action.swift in Sources */,
 				E2EF5EC21BECB90100573642 /* PaymentService.swift in Sources */,
