@@ -411,11 +411,11 @@
 				E2CF33BD1B9D3F2C00B8BE40 /* UrlBuilder.swift */,
 				E2CF33C11B9D5EF100B8BE40 /* UserService.swift */,
 				E26116E01BAB9E09002C0332 /* ArticleService.swift */,
+				E2926EF31BE8B38B00FB94E9 /* DocumentService.swift */,
 				E2F462BC1BD895C600339271 /* SessionService.swift */,
 				E29F29131BDF59B2000D174B /* SchoolService.swift */,
 				E2FBE7411BE013D100DC7457 /* StudentService.swift */,
 				E2FBC50E1BE484FA0051715F /* NetworkManager.swift */,
-				E2926EF31BE8B38B00FB94E9 /* DocumentService.swift */,
 				E2EF5EC11BECB90100573642 /* PaymentService.swift */,
 			);
 			name = Networking;

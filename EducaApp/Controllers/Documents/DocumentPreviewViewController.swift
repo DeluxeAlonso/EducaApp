@@ -14,8 +14,10 @@ class DocumentPreviewViewController: UIViewController {
   @IBOutlet weak var customLoader: CustomActivityIndicatorView!
 
   @IBOutlet weak var noDocumentLabel: UILabel!
+  
   var document: Document?
   var navigationIsShowed = true
+  var isReport = false
   
   // MARK: - Lifecycle
   
@@ -64,6 +66,7 @@ class DocumentPreviewViewController: UIViewController {
       guard let json = responseObject as? NSDictionary else {
         return
       }
+      print(json)
     })
   }
   
@@ -91,7 +94,9 @@ extension DocumentPreviewViewController: UIWebViewDelegate {
   func webViewDidFinishLoad(webView: UIWebView) {
     documentWebView.hidden = false
     customLoader.stopActivity()
-    sendDocumentVisualization()
+    if !isReport {
+      sendDocumentVisualization()
+    }
   }
   
 }
