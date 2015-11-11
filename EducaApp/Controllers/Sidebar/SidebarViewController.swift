@@ -46,6 +46,9 @@ class MenuController: StaticDataTableViewController {
     for action in (currentUser?.actions)! {
       let idnumber = (action as! Action).id
       switch idnumber{
+      case 12:
+        self.cell(SesionsCell, setHidden: false)
+        self.cell(DocumentsCell, setHidden: false)
       case 15:
         self.cell(SesionsCell, setHidden: false)
         self.cell(DocumentsCell, setHidden: false)
@@ -58,6 +61,8 @@ class MenuController: StaticDataTableViewController {
       case 35:
         self.cell(PeopleCell, setHidden: false)
       case 21:
+        self.cell(ReportsCell, setHidden: false)
+      case 39:
         self.cell(ReportsCell, setHidden: false)
       case 24:
         self.cell(PayCell, setHidden: false)
@@ -90,7 +95,6 @@ class MenuController: StaticDataTableViewController {
   
   func reaply(idperiod:Int) {
     UserService.reapply(idperiod , completion: {(responseObject: AnyObject?, error: NSError?) in
-      print(responseObject)
       guard let json = responseObject as? NSDictionary else {
         return
       }

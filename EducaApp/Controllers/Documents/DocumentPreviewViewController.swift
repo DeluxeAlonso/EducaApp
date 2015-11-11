@@ -61,11 +61,9 @@ class DocumentPreviewViewController: UIViewController {
   
   private func sendDocumentVisualization() {
     DocumentService.visualizateDocument(Int((document?.id)!), completion: {(responseObject: AnyObject?, error: NSError?) in
-      print(responseObject)
       guard let json = responseObject as? NSDictionary else {
         return
       }
-      print(json)
     })
   }
   

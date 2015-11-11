@@ -15,16 +15,12 @@ class CalendarViewController: UIViewController {
   @IBOutlet weak var calendarMenuView: CVCalendarMenuView!
   @IBOutlet weak var dateLabel: UILabel!
   
-  @IBOutlet weak var sessionNameLabel: UILabel!
-  
-  @IBOutlet weak var sessionHourLabel: UILabel!
-  @IBOutlet weak var sessionDetailView: UIView!
   @IBOutlet weak var noSessionsView: UIView!
+  @IBOutlet weak var noSessionsLabel: UILabel!
   
   var sessions = [Session]()
-  var sessionDates = [NSDate]()
-  
-  
+  var sessionDates = [Int]()
+  var sessionInfoPageViewController: CalendarPageViewController?
   
   // MARK: - Lifecycle
   
@@ -35,7 +31,6 @@ class CalendarViewController: UIViewController {
   
   override func viewDidLayoutSubviews() {
     super.viewDidLayoutSubviews()
-    
     calendarView.commitCalendarViewUpdate()
     calendarMenuView.commitMenuViewUpdate()
   }
@@ -48,6 +43,7 @@ class CalendarViewController: UIViewController {
   
   private func setupElements() {
     calendarMenuView.setShadowBorder()
+    noSessionsView.setShadowBorder()
     setupNavigationBar()
     setupLabels()
     setupCalendar()
@@ -63,15 +59,26 @@ class CalendarViewController: UIViewController {
   
   private func setupLabels() {
     dateLabel?.text = calendarView.presentedDate.commonDescription
-    monthLabel.text = CVDate(date: NSDate()).globalDescription
+    monthLabel.text = Util.getDateString(NSDate(), format: "MMMM, Y")
   }
   
   private func setupCalendar() {
-    sessionDates = sessions.map { (session) in return session.date }
+    sessionDates = sessions.map { (session) in return session.date.getNumberOfDays() }
+    let currentDate = NSDate()
+    if sessionDates.contains((NSDate().getNumberOfDays())) {
+      let selectedSessions = sessions.filter { (session) in return currentDate.getNumberOfDays() == currentDate.getNumberOfDays() }
+      fillSessionInfo(selectedSessions)
+      calendarMenuView.hidden = false
+      noSessionsView.hidden = true
+    } else {
+      calendarMenuView.hidden = true
+      noSessionsView.hidden = false
+      noSessionsLabel.text = "No tienes sesiones el día de hoy."
+    }
   }
   
-  private func fillSessionInfo(session: Session) {
-    sessionNameLabel.text = session.name
+  private func fillSessionInfo(sessions: [Session]) {
+    sessionInfoPageViewController?.setupPageViewController(sessions)
   }
   
   // MARK: - Actions
@@ -87,6 +94,14 @@ class CalendarViewController: UIViewController {
   @IBAction func dismissCalendarView(sender: AnyObject) {
     dismissViewControllerAnimated(true, completion: nil)
   }
+  
+  // MARK: - Navigation
+  
+  override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+    if segue.destinationViewController is CalendarPageViewController {
+      sessionInfoPageViewController = segue.destinationViewController as? CalendarPageViewController
+    }
+  }
  
 }
 
@@ -99,29 +114,31 @@ extension CalendarViewController: CVCalendarViewDelegate {
   }
   
   func firstWeekday() -> Weekday {
-    return .Sunday
+    return .Monday
   }
   
   func didSelectDayView(dayView: DayView, animationDidFinish: Bool) {
-    if sessionDates.contains(dayView.date.convertedDate()!) {
-      let selectedSessions = sessions.filter { (session) in return session.date == dayView.date.convertedDate()! }
-      fillSessionInfo(selectedSessions.first!)
-      dateLabel?.text = calendarView.presentedDate.commonDescription
-      sessionNameLabel.hidden = false
-      sessionDetailView.hidden = false
+    if sessionDates.contains((dayView.date.convertedDate()?.getNumberOfDays())!) {
+      let selectedSessions = sessions.filter { (session) in return session.date.getNumberOfDays() == dayView.date.convertedDate()?.getNumberOfDays() }
+      fillSessionInfo(selectedSessions)
+      calendarMenuView.hidden = false
       noSessionsView.hidden = true
     } else {
-      sessionNameLabel.hidden = true
-      sessionDetailView.hidden = true
+      calendarMenuView.hidden = true
       noSessionsView.hidden = false
+      noSessionsLabel.text = "No tienes sesiones para el día \(Util.getDateString(dayView.date.convertedDate()!, format: "dd' de 'MMMM"))."
     }
   }
   
   func presentedDateUpdated(date: Date) {
-    monthLabel?.text = date.globalDescription
+    monthLabel.text = Util.getDateString(date.convertedDate()!, format: "MMMM, Y")
   }
 
   func shouldAutoSelectDayOnMonthChange() -> Bool {
+    return false
+  }
+  
+  func shouldShowWeekdaysOut() -> Bool {
     return false
   }
   
@@ -129,14 +146,14 @@ extension CalendarViewController: CVCalendarViewDelegate {
     guard let currentDate = dayView.date else {
       return false
     }
-    if sessionDates.contains(currentDate.convertedDate()!) {
+    if sessionDates.contains((currentDate.convertedDate()?.getNumberOfDays())!) {
       return true
     }
     return false
   }
   
   func dotMarker(colorOnDayView dayView: DayView) -> [UIColor] {
-    let selectedSessions = sessions.filter { (session) in return session.date == dayView.date.convertedDate()! }
+    let selectedSessions = sessions.filter { (session) in return session.date.getNumberOfDays() == dayView.date.convertedDate()?.getNumberOfDays() }
     var colors = [UIColor]()
     for _ in selectedSessions {
       colors.insert(UIColor.redColor(), atIndex: 0)

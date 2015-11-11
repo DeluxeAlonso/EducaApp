@@ -73,13 +73,11 @@ extension SessionUser {
     // Get SessionUsers from the deal
     let persistedSessionUsers = session.volunteers
     for v in persistedSessionUsers {
-      print("voluntarios")
       if (v as! SessionUser).user.id == 0 {
         ctx.deleteObject(v as! NSManagedObject)
       }
     }
     var persistedSessionUsersByUserId = Dictionary<Int, SessionUser>()
-    print(persistedSessionUsers.count)
     for sessionUser in persistedSessionUsers {
       if sessionUser.user != nil {
         persistedSessionUsersByUserId[Int(sessionUser.user.id)] = sessionUser as? SessionUser
