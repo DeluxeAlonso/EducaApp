@@ -62,7 +62,6 @@ class DocumentTableViewCell: UITableViewCell {
   }
   
   func setupProgressView(progress: Float) {
-    print(progress)
     progressView.hidden = false
     progressView.progress = progress
   }

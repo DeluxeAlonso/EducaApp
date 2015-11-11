@@ -15,6 +15,8 @@ struct Constants {
     static let Localhost = "http://192.168.1.6:8000/api/v1/"
     static let Apiary = "http://private-7791c-afiapp.apiary-mock.com/api/v1/"
     static let BaseUrl = "http://200.16.7.111/afiperularavel/public/"
+    static let Production = "http://162.243.118.33/"
+    //200.16.7.111  162.243.118.33
   }
   
   struct Notification {

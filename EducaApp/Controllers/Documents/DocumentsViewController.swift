@@ -225,7 +225,6 @@ class DocumentsViewController: BaseFilterViewController {
     }
     let requestObject = NSURLRequest(URL: url, cachePolicy: NSURLRequestCachePolicy.ReturnCacheDataElseLoad, timeoutInterval: 10.0)
     let urlConnection = NSURLConnection(request: requestObject, delegate: self, startImmediately: true)
-    print(urlConnection)
   }
   
   // MARK: - Navigation
@@ -328,7 +327,6 @@ extension DocumentsViewController: NSURLConnectionDataDelegate {
   
   func connection(connection: NSURLConnection, didReceiveData data: NSData) {
     currentDownloadData.appendData(data)
-    print(currentDownloadData.length)
     let downloadProgress: Float = Float((currentDownloadData.length)) / Float(currentDownloadSize!)
     downLoadedCell?.setupProgressView(downloadProgress)
   }

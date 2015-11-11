@@ -36,6 +36,14 @@ class Util {
     return false
   }
   
+  class func getDateString(date: NSDate, format: String) -> String {
+    let presentedDate: NSDate = date
+    let dateFormatter = NSDateFormatter()
+    dateFormatter.locale = NSLocale(localeIdentifier: "es_PE")
+    dateFormatter.dateFormat = format
+    return dateFormatter.stringFromDate(presentedDate)
+  }
+  
   class func showAlertWithTitle(controller: UIViewController?,title: String, message: String, buttonTitle: String) {
     let alertController = UIAlertController(title: title, message: message, preferredStyle: UIAlertControllerStyle.Alert)
     let defaultAction = UIAlertAction(title: buttonTitle, style: .Default, handler: nil)

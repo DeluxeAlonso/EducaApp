@@ -88,7 +88,6 @@ extension Comment {
     
     // Apply json to each
     let validArticles = newArticles + updateArticles
-    print(validArticles.count)
     for article in validArticles {
       Comment.updateOrCreateWithJson(jsonById[Int(article.id)]!,ctx: ctx)
     }

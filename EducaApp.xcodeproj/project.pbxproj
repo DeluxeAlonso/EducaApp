@@ -11,6 +11,8 @@
 		E202F74B1BB3658100D5E64D /* Document.swift in Sources */ = {isa = PBXBuildFile; fileRef = E202F74A1BB3658100D5E64D /* Document.swift */; };
 		E208C68B1BB694F9005DF1EB /* Util.swift in Sources */ = {isa = PBXBuildFile; fileRef = E208C68A1BB694F9005DF1EB /* Util.swift */; };
 		E21257B71BBCC779007425B2 /* SortingFilterTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E21257B61BBCC779007425B2 /* SortingFilterTableViewCell.swift */; };
+		E22BF89B1BF1F71600BD5855 /* CalendarSessionDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E22BF89A1BF1F71600BD5855 /* CalendarSessionDetailViewController.swift */; };
+		E22BF89D1BF1F94200BD5855 /* CalendarPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E22BF89C1BF1F94200BD5855 /* CalendarPageViewController.swift */; };
 		E22E72211BBCC5DD0082FE4B /* AuthorContentTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E22E72201BBCC5DD0082FE4B /* AuthorContentTableViewCell.swift */; };
 		E23D17FC1BB915C900AB8D18 /* UIViewHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = E23D17FB1BB915C900AB8D18 /* UIViewHelper.swift */; };
 		E246CE721BD1A2FA006A194D /* ImageAssests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E246CE711BD1A2FA006A194D /* ImageAssests.swift */; };
@@ -121,6 +123,7 @@
 		E2F8565F1BED546000815088 /* PendingPaymentTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2F8565E1BED546000815088 /* PendingPaymentTableViewCell.swift */; };
 		E2F856611BED547700815088 /* CanceledPaymentTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2F856601BED547700815088 /* CanceledPaymentTableViewCell.swift */; };
 		E2F856631BED548E00815088 /* DebtPaymentTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2F856621BED548E00815088 /* DebtPaymentTableViewCell.swift */; };
+		E2F919B81BF2B10F002340D2 /* NSDateHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2F919B71BF2B10F002340D2 /* NSDateHelper.swift */; };
 		E2F9C83D1BCF292800DBE7B9 /* CalendarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2F9C83C1BCF292800DBE7B9 /* CalendarViewController.swift */; };
 		E2F9C8911BCF47E000DBE7B9 /* CVAuxiliaryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2F9C8761BCF47E000DBE7B9 /* CVAuxiliaryView.swift */; };
 		E2F9C8921BCF47E000DBE7B9 /* CVCalendarContentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2F9C8771BCF47E000DBE7B9 /* CVCalendarContentViewController.swift */; };
@@ -193,6 +196,8 @@
 		E202F74A1BB3658100D5E64D /* Document.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Document.swift; path = Models/Document.swift; sourceTree = "<group>"; };
 		E208C68A1BB694F9005DF1EB /* Util.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Util.swift; path = Helpers/Util/Util.swift; sourceTree = "<group>"; };
 		E21257B61BBCC779007425B2 /* SortingFilterTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SortingFilterTableViewCell.swift; path = Views/Cells/Filters/SortingFilterTableViewCell.swift; sourceTree = "<group>"; };
+		E22BF89A1BF1F71600BD5855 /* CalendarSessionDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CalendarSessionDetailViewController.swift; path = Controllers/Sessions/CalendarSessionDetailViewController.swift; sourceTree = "<group>"; };
+		E22BF89C1BF1F94200BD5855 /* CalendarPageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CalendarPageViewController.swift; path = Controllers/Sessions/CalendarPageViewController.swift; sourceTree = "<group>"; };
 		E22E72201BBCC5DD0082FE4B /* AuthorContentTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AuthorContentTableViewCell.swift; path = Views/Cells/Filters/AuthorContentTableViewCell.swift; sourceTree = "<group>"; };
 		E23D17FB1BB915C900AB8D18 /* UIViewHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UIViewHelper.swift; path = Helpers/UIViewHelper.swift; sourceTree = "<group>"; };
 		E246CE711BD1A2FA006A194D /* ImageAssests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ImageAssests.swift; path = Helpers/Util/ImageAssests.swift; sourceTree = "<group>"; };
@@ -306,6 +311,7 @@
 		E2F8565E1BED546000815088 /* PendingPaymentTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PendingPaymentTableViewCell.swift; path = Views/Cells/PendingPaymentTableViewCell.swift; sourceTree = "<group>"; };
 		E2F856601BED547700815088 /* CanceledPaymentTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CanceledPaymentTableViewCell.swift; path = Views/Cells/CanceledPaymentTableViewCell.swift; sourceTree = "<group>"; };
 		E2F856621BED548E00815088 /* DebtPaymentTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DebtPaymentTableViewCell.swift; path = Views/Cells/DebtPaymentTableViewCell.swift; sourceTree = "<group>"; };
+		E2F919B71BF2B10F002340D2 /* NSDateHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NSDateHelper.swift; path = Helpers/NSDateHelper.swift; sourceTree = "<group>"; };
 		E2F9C83C1BCF292800DBE7B9 /* CalendarViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CalendarViewController.swift; path = Controllers/Sessions/CalendarViewController.swift; sourceTree = "<group>"; };
 		E2F9C8761BCF47E000DBE7B9 /* CVAuxiliaryView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CVAuxiliaryView.swift; sourceTree = "<group>"; };
 		E2F9C8771BCF47E000DBE7B9 /* CVCalendarContentViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CVCalendarContentViewController.swift; sourceTree = "<group>"; };
@@ -497,6 +503,8 @@
 				E2E316A91BB1C09C000D8DC7 /* AssistantsViewController.swift */,
 				E26916431BB264BC001B1160 /* AssistantDetailViewController.swift */,
 				E2F9C83C1BCF292800DBE7B9 /* CalendarViewController.swift */,
+				E22BF89C1BF1F94200BD5855 /* CalendarPageViewController.swift */,
+				E22BF89A1BF1F71600BD5855 /* CalendarSessionDetailViewController.swift */,
 				E2FBC5101BE4A9090051715F /* GooglePlacesSearchController.swift */,
 				E2E2A1F21BB6863F00B1CBB3 /* ShowAssistantCommentViewController.swift */,
 				E2DA52E21BB8E5FB00CB3793 /* SendAssistantCommentViewController.swift */,
@@ -829,6 +837,7 @@
 				E2DDF91B1BBC97D800000555 /* UIFontHelper.swift */,
 				E246CE731BD1B9B4006A194D /* ArrayHelper.swift */,
 				E2E990E01BD762F0006064FD /* UIAlertControllerHelper.swift */,
+				E2F919B71BF2B10F002340D2 /* NSDateHelper.swift */,
 			);
 			name = Helpers;
 			sourceTree = "<group>";
@@ -1052,6 +1061,7 @@
 				E2EEA6501BDA1B7D00D3CE7F /* MapTasks.swift in Sources */,
 				E2E4F8111BBE3D8600224059 /* PostTableViewCell.swift in Sources */,
 				E2E09BA81BA92D6800C9A109 /* SettingsTableViewCell.swift in Sources */,
+				E22BF89B1BF1F71600BD5855 /* CalendarSessionDetailViewController.swift in Sources */,
 				E2F9C89F1BCF47E000DBE7B9 /* CVCalendarViewAppearanceDelegate.swift in Sources */,
 				E202F74B1BB3658100D5E64D /* Document.swift in Sources */,
 				E2E4F7D61BBE395E00224059 /* AgeFilterTableViewCell.swift in Sources */,
@@ -1091,6 +1101,7 @@
 				E2E990E31BD765AB006064FD /* BaseTableViewController.swift in Sources */,
 				E2EE4D621BD6309C006CBDFE /* RecoverPasswordTableViewController.swift in Sources */,
 				E2E1ACC81BAC903500070EB8 /* KeychainWrapper.m in Sources */,
+				E2F919B81BF2B10F002340D2 /* NSDateHelper.swift in Sources */,
 				E264BB811BBDF7D800D4D7D5 /* StudentsFilterViewController.swift in Sources */,
 				E29F29141BDF59B2000D174B /* SchoolService.swift in Sources */,
 				E2F9C8A91BCF47E000DBE7B9 /* CVSet.swift in Sources */,
@@ -1112,6 +1123,7 @@
 				E2DC077E1BBDDA3900304FDE /* PostDetailViewController.swift in Sources */,
 				E2F9C8A71BCF47E000DBE7B9 /* CVScrollDirection.swift in Sources */,
 				E2F8565F1BED546000815088 /* PendingPaymentTableViewCell.swift in Sources */,
+				E22BF89D1BF1F94200BD5855 /* CalendarPageViewController.swift in Sources */,
 				E2DDF91A1BBC8FB900000555 /* DateFilterTableViewCell.swift in Sources */,
 				E2F9C8971BCF47E000DBE7B9 /* CVCalendarMenuViewDelegate.swift in Sources */,
 				E29F29161BDF5C49000D174B /* School.swift in Sources */,
