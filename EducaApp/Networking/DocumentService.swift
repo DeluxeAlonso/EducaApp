@@ -10,6 +10,7 @@ import UIKit
 
 let DocumentsPath = "documents"
 let VisualizateDocumentPath = "visualizations"
+let ReportsPath = "activity_reports"
 
 class DocumentService {
   
@@ -25,6 +26,15 @@ class DocumentService {
   class func visualizateDocument(documentId: Int, completion: (responseObject: NSObject?, error: NSError?) -> Void) {
     NetworkManager.sharedInstance.requestSerializer.setValue(User.getAuthToken(), forHTTPHeaderField: Constants.Api.Header)
     NetworkManager.sharedInstance.POST(UrlBuilder.UrlForPath("\(DocumentsPath)/\(documentId)/\(VisualizateDocumentPath)"), parameters: nil, success: { (operation: AFHTTPRequestOperation, responseObject: AnyObject?) in
+      completion(responseObject: responseObject! as? NSObject, error: nil)
+      }, failure: {(operation: AFHTTPRequestOperation, error: NSError) in
+        completion(responseObject: nil, error: error)
+    })
+  }
+  
+  class func fetchReports(completion: (responseObject: NSObject?, error: NSError?) -> Void) {
+    NetworkManager.sharedInstance.requestSerializer.setValue(User.getAuthToken(), forHTTPHeaderField: Constants.Api.Header)
+    NetworkManager.sharedInstance.GET(UrlBuilder.UrlForPath(ReportsPath), parameters: nil, success: { (operation: AFHTTPRequestOperation, responseObject: AnyObject?) in
       completion(responseObject: responseObject! as? NSObject, error: nil)
       }, failure: {(operation: AFHTTPRequestOperation, error: NSError) in
         completion(responseObject: nil, error: error)
