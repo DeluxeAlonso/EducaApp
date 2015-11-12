@@ -55,9 +55,8 @@ class DepositPaymentTableViewController: UITableViewController {
     let voucherCode = voucherTextField.text
     let date = Double(selectedDate!.timeIntervalSince1970)
     PaymentService.registerPayment(feeId, voucherCode: voucherCode!, date: date, completion: {(responseObject: AnyObject?, error: NSError?) in
-      let json = responseObject
-      print(responseObject)
       print(error?.description)
+      let json = responseObject
       if (json != nil && json?["error"]! == nil) {
         Util.showAlertWithTitle(self, title: "Enhorabuena!", message: "Se registro el voucher con éxito", buttonTitle: "OK")
       } else {

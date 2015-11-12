@@ -224,7 +224,7 @@ class DocumentsViewController: BaseFilterViewController {
       return
     }
     let requestObject = NSURLRequest(URL: url, cachePolicy: NSURLRequestCachePolicy.ReturnCacheDataElseLoad, timeoutInterval: 10.0)
-    let urlConnection = NSURLConnection(request: requestObject, delegate: self, startImmediately: true)
+    _ = NSURLConnection(request: requestObject, delegate: self, startImmediately: true)
   }
   
   // MARK: - Navigation

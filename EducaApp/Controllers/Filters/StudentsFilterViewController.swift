@@ -27,6 +27,7 @@ class StudentsFilterViewController: UIViewController {
   
   var delegate: StudentsFilterViewControllerDelegate?
   var nameSearchText = String()
+  var nameSearchString: String?
   var minAgeSearch =  5
   var maxAgeSearch = 14
   var genderSearch = -1
@@ -36,6 +37,9 @@ class StudentsFilterViewController: UIViewController {
   override func viewDidLoad() {
     super.viewDidLoad()
     setupNavigationBar()
+    if nameSearchString != nil {
+      nameSearchText = nameSearchString!
+    }
     self.contentSizeInPopup = CGSizeMake(300, popupHeight)
   }
   
@@ -77,7 +81,7 @@ extension StudentsFilterViewController: UITableViewDataSource {
       case 0:
         cell = tableView.dequeueReusableCellWithIdentifier(AuthorContentFilterCellIdentidifer, forIndexPath: indexPath)
         (cell as! AuthorContentTableViewCell).delegate = self
-        (cell as! AuthorContentTableViewCell).setupNameFieldLabel(UsersFilterFields.Name.rawValue, indexPath: indexPath)
+        (cell as! AuthorContentTableViewCell).setupNameFieldLabel(UsersFilterFields.Name.rawValue,searchedName: nameSearchString ?? "", indexPath: indexPath)
       case 1:
         cell = tableView.dequeueReusableCellWithIdentifier(AgeFilterCellIdentifier, forIndexPath: indexPath)
         (cell as! AgeFilterTableViewCell).delegate = self
