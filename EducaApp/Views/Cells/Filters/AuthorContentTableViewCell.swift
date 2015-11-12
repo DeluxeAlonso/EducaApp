@@ -23,11 +23,13 @@ class AuthorContentTableViewCell: UITableViewCell {
   
   var indexPath: NSIndexPath?
   var delegate: AuthorContentTableViewCellDelegate?
+  var searchedName: String?
   
   // MARK - Lifecycle
   
   override func awakeFromNib() {
     super.awakeFromNib()
+
     setupElements()
   }
   
@@ -44,9 +46,10 @@ class AuthorContentTableViewCell: UITableViewCell {
   
   // MARK: - Public
   
-  func setupNameFieldLabel(string: String, indexPath: NSIndexPath) {
+  func setupNameFieldLabel(string: String, searchedName: String, indexPath: NSIndexPath) {
     fieldNameLabel.text = string
     self.indexPath = indexPath
+    filterTextField.text = searchedName
   }
   
   @IBAction func textDidChange(sender: AnyObject) {

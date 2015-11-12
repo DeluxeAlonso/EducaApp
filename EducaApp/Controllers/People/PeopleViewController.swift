@@ -34,6 +34,9 @@ class PeopleViewController: BaseFilterViewController {
   var users = [User]()
   var students = [Student]()
   
+  var userSearchString: String?
+  var studentSearchString: String?
+  
   var mapBarButtonItem = UIBarButtonItem()
   
   // MARK: - Lifecycle
@@ -125,6 +128,7 @@ class PeopleViewController: BaseFilterViewController {
   // MARK: - Actions
   
   @IBAction func selectedControlIndexChanged(sender: AnyObject) {
+    resetSearchFields()
     selectedSegmentIndex = segmentedControl.selectedSegmentIndex
     advanceSearchBarButtonItem.action = selectedSegmentIndex == SelectedSegmentIndex.Users.rawValue ? userAdvancedSearchSelector : studentAdvancedSearchSelector
     tableView.reloadData()
@@ -147,6 +151,7 @@ class PeopleViewController: BaseFilterViewController {
     hideSearchBar()
     let viewController = self.storyboard?.instantiateViewControllerWithIdentifier(UsersFilterViewControllerIdentifier) as! UsersFilterViewController
     viewController.delegate = self
+    viewController.nameSearchString = userSearchString
     setupPopupNavigationBar()
     popupViewController = STPopupController(rootViewController: viewController)
     popupViewController!.presentInViewController(self)
@@ -156,6 +161,7 @@ class PeopleViewController: BaseFilterViewController {
     hideSearchBar()
     let viewController = self.storyboard?.instantiateViewControllerWithIdentifier(StudentsFilterViewControllerIdentifier) as! StudentsFilterViewController
     viewController.delegate = self
+    viewController.nameSearchString = studentSearchString
     setupPopupNavigationBar()
     popupViewController = STPopupController(rootViewController: viewController)
     popupViewController!.presentInViewController(self)
@@ -205,6 +211,7 @@ extension PeopleViewController {
   }
   
   private func searchUsers(searchText: String) {
+    userSearchString = searchText
     guard searchText.characters.count != 0 else {
       users = User.getAllUsers(dataLayer.managedObjectContext!)
       tableView.reloadData()
@@ -215,6 +222,7 @@ extension PeopleViewController {
   }
   
   private func searchStudents(searchText: String) {
+    studentSearchString = searchText
     guard searchText.characters.count != 0 else {
       students = Student.getAllStudents(dataLayer.managedObjectContext!)
       tableView.reloadData()
@@ -236,9 +244,19 @@ extension PeopleViewController {
 extension PeopleViewController: UsersFilterViewControllerDelegate {
   
   func usersFilterViewController(usersFilterViewController: UsersFilterViewController, searchedName name: String, searchedDocNumber: String, profile: String) {
-    print(name)
-    print(searchedDocNumber)
-    print(profile)
+    var searchedUsers = name.characters.count == 0 ? User.getAllUsers(dataLayer.managedObjectContext!) : User.searchByName(name, ctx: dataLayer.managedObjectContext!)
+    if searchedDocNumber.characters.count > 0 {
+      searchedUsers = searchedUsers.filter({ (user) in return user.username.lowercaseString.rangeOfString(searchedDocNumber) != nil })
+    }
+    if profile != "Todos" {
+      searchedUsers = searchedUsers.filter({ (user) in
+        let userProfileNames = user.profiles.map({ $0.name }) as [String]
+        return userProfileNames.contains(profile)
+      })
+    }
+    users = searchedUsers
+    tableView.reloadData()
+    popupViewController?.dismiss()
   }
   
 }
@@ -252,6 +270,7 @@ extension PeopleViewController: StudentsFilterViewControllerDelegate {
     print(minAge)
     print(maxAge)
     print(gender)
+    
   }
   
 }

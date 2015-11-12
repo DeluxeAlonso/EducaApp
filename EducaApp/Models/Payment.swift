@@ -35,13 +35,13 @@ public class Payment: NSManagedObject {
 extension Payment: Deserializable {
   
   func setDataFromJSON(json: NSDictionary) {
-    guard let id = json[PaymentIdKey] as AnyObject?, feeNumber = json[PaymentFeeNumberKey] as AnyObject?, date = json[PaymentDueDate] as? Double, amount = json[PaymentAmountKey] as? Float, status = json[PaymentStatusKey] as AnyObject? else {
+    guard let id = json[PaymentIdKey] as AnyObject?, feeNumber = json[PaymentFeeNumberKey] as AnyObject?, date = json[PaymentDueDate] as? Double, amount = json[PaymentAmountKey] as AnyObject?, status = json[PaymentStatusKey] as AnyObject? else {
       return
     }
     self.id = id is Int ? Int32(id as! Int) : Int32(id as! String)!
     self.status = status is Int ? Int32(status as! Int) : Int32(status as! String)!
     self.feeNumber = feeNumber is Int ? Int32(feeNumber as! Int) : Int32(feeNumber as! String)!
-    self.amount = amount
+    self.amount = amount is Float ? Float(amount as! Float) : Float(amount as! String)!
     self.dueDate = NSDate(timeIntervalSince1970: date)
   }
   
@@ -136,6 +136,7 @@ extension Payment {
   
   class func getAllPayments(ctx: NSManagedObjectContext) -> Array<Payment> {
     let fetchRequest = NSFetchRequest()
+    fetchRequest.fetchBatchSize = 15
     fetchRequest.entity = NSEntityDescription.entityForName(PaymentEntityName, inManagedObjectContext: ctx)
     let sortDescriptor = NSSortDescriptor(key: "id", ascending: true)
     fetchRequest.sortDescriptors = [sortDescriptor]

@@ -33,11 +33,12 @@ class UsersFilterViewController: UIViewController {
   var delegate: UsersFilterViewControllerDelegate?
   
   var nameSearchText = String()
+  var nameSearchString: String?
   var docNumberSearchText = String()
   var profileSearch = String()
   
   var selectedProfile = "Todos"
-  
+
   var profileCell: SortingFilterTableViewCell?
   
   lazy var dataLayer = DataLayer()
@@ -47,6 +48,11 @@ class UsersFilterViewController: UIViewController {
   override func viewDidLoad() {
     super.viewDidLoad()
     setupNavigationBar()
+    print("viewdidload")
+    print(nameSearchString)
+    if nameSearchString != nil {
+      nameSearchText = nameSearchString!
+    }
     let profiles = Profile.getAllProfiles(dataLayer.managedObjectContext!)
     sortingOptions = profiles.map { (profile) in return (profile).name! }
     self.contentSizeInPopup = CGSizeMake(300, popupHeight)
@@ -100,11 +106,13 @@ extension UsersFilterViewController: UITableViewDataSource {
       case 0:
         cell = tableView.dequeueReusableCellWithIdentifier(AuthorContentFilterCellIdentidifer, forIndexPath: indexPath)
         (cell as! AuthorContentTableViewCell).delegate = self
-        (cell as! AuthorContentTableViewCell).setupNameFieldLabel(UsersFilterFields.Name.rawValue, indexPath: indexPath)
+        (cell as! AuthorContentTableViewCell).setupNameFieldLabel(UsersFilterFields.Name.rawValue, searchedName: nameSearchString ?? "", indexPath: indexPath)
+        print("Before author")
+        print(nameSearchString)
       case 1:
         cell = tableView.dequeueReusableCellWithIdentifier(AuthorContentFilterCellIdentidifer, forIndexPath: indexPath)
         (cell as! AuthorContentTableViewCell).delegate = self
-        (cell as! AuthorContentTableViewCell).setupNameFieldLabel(UsersFilterFields.Document.rawValue, indexPath: indexPath)
+        (cell as! AuthorContentTableViewCell).setupNameFieldLabel(UsersFilterFields.Document.rawValue, searchedName: "", indexPath: indexPath)
       case 2:
         cell = tableView.dequeueReusableCellWithIdentifier(SortingFilterCellIdentifier, forIndexPath: indexPath)
         profileCell = cell as? SortingFilterTableViewCell
