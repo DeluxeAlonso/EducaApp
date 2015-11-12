@@ -233,6 +233,7 @@ extension PeopleViewController {
   }
   
   private func resetSearchFields() {
+    searchBar.text = ""
     searchUsers("")
     searchStudents("")
   }
