@@ -6226,38 +6226,42 @@ El voluntariado comprende actividades asistenciales de servicios sociales, cívi
                                                     <color key="textColor" red="0.0" green="0.59999999999999998" blue="0.80000000000000004" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="MaleGenderIcon" translatesAutoresizingMaskIntoConstraints="NO" id="9S0-Kd-OdR">
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VVL-3Y-cqB">
                                                     <rect key="frame" x="92" y="9" width="35" height="35"/>
                                                     <animations/>
                                                     <constraints>
-                                                        <constraint firstAttribute="height" constant="35" id="Eb7-f2-fdG"/>
-                                                        <constraint firstAttribute="width" constant="35" id="TbG-OJ-O8M"/>
+                                                        <constraint firstAttribute="width" constant="35" id="LlP-II-c6F"/>
+                                                        <constraint firstAttribute="height" constant="35" id="yrp-z6-9Iv"/>
                                                     </constraints>
-                                                </imageView>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="FemaleGenderIcon" translatesAutoresizingMaskIntoConstraints="NO" id="kON-dL-6em">
+                                                    <state key="normal" image="GrayMaleIcon"/>
+                                                    <connections>
+                                                        <action selector="pressMaleButton:" destination="cBO-tx-P4r" eventType="touchUpInside" id="SyL-dN-Fq6"/>
+                                                    </connections>
+                                                </button>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0Wy-Ca-D3g">
                                                     <rect key="frame" x="228" y="8" width="35" height="35"/>
                                                     <animations/>
                                                     <constraints>
-                                                        <constraint firstAttribute="width" constant="35" id="G9Y-YK-n8J"/>
-                                                        <constraint firstAttribute="height" constant="35" id="O6I-4x-Uek"/>
+                                                        <constraint firstAttribute="height" constant="35" id="gTH-Ta-8ZU"/>
+                                                        <constraint firstAttribute="width" constant="35" id="tuk-nC-dNb"/>
                                                     </constraints>
-                                                </imageView>
+                                                    <state key="normal" image="FemaleGrayIcon"/>
+                                                    <connections>
+                                                        <action selector="pressFemaleButton:" destination="cBO-tx-P4r" eventType="touchUpInside" id="lHx-NY-Duw"/>
+                                                    </connections>
+                                                </button>
                                             </subviews>
                                             <animations/>
                                             <constraints>
+                                                <constraint firstItem="0Wy-Ca-D3g" firstAttribute="centerY" secondItem="sNy-iv-qKH" secondAttribute="centerY" id="9Vh-yA-vNB"/>
                                                 <constraint firstItem="veX-JI-Crz" firstAttribute="leading" secondItem="sNy-iv-qKH" secondAttribute="leading" constant="8" id="ELV-vN-eOJ"/>
                                                 <constraint firstItem="veX-JI-Crz" firstAttribute="centerY" secondItem="sNy-iv-qKH" secondAttribute="centerY" id="FRz-dC-qc5"/>
-                                                <constraint firstItem="9S0-Kd-OdR" firstAttribute="leading" secondItem="veX-JI-Crz" secondAttribute="trailing" constant="29" id="V6O-Sm-anx"/>
-                                                <constraint firstItem="9S0-Kd-OdR" firstAttribute="centerY" secondItem="sNy-iv-qKH" secondAttribute="centerY" id="rgp-Qa-CAs"/>
-                                                <constraint firstItem="kON-dL-6em" firstAttribute="centerY" secondItem="sNy-iv-qKH" secondAttribute="centerY" id="sq2-Ls-cL6"/>
-                                                <constraint firstAttribute="trailing" secondItem="kON-dL-6em" secondAttribute="trailing" constant="37" id="z2B-KS-mBw"/>
+                                                <constraint firstItem="VVL-3Y-cqB" firstAttribute="centerY" secondItem="sNy-iv-qKH" secondAttribute="centerY" id="Hbh-76-ixa"/>
+                                                <constraint firstItem="VVL-3Y-cqB" firstAttribute="leading" secondItem="veX-JI-Crz" secondAttribute="trailing" constant="29" id="nDi-xC-f9Z"/>
+                                                <constraint firstAttribute="trailing" secondItem="0Wy-Ca-D3g" secondAttribute="trailing" constant="37" id="pOY-Gm-myz"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <animations/>
-                                        <connections>
-                                            <outlet property="femaleGenderImageView" destination="kON-dL-6em" id="Bj7-OB-yzs"/>
-                                            <outlet property="maleGenderImageView" destination="9S0-Kd-OdR" id="PJ8-v4-ClT"/>
-                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                                 <connections>
@@ -7235,13 +7239,13 @@ El voluntariado comprende actividades asistenciales de servicios sociales, cívi
         <image name="DocumentsIcon" width="30" height="30"/>
         <image name="DonationIcon" width="30" height="30"/>
         <image name="DownloadIcon" width="30" height="30"/>
-        <image name="FemaleGenderIcon" width="30" height="30"/>
+        <image name="FemaleGrayIcon" width="30" height="30"/>
         <image name="GalleryWhiteIcon" width="30" height="30"/>
+        <image name="GrayMaleIcon" width="30" height="30"/>
         <image name="HappyFaceGrayIcon" width="30" height="30"/>
         <image name="HappyFaceIcon" width="30" height="30"/>
         <image name="InfoIcon" width="30" height="30"/>
         <image name="LeftArrowBlueIcont" width="30" height="30"/>
-        <image name="MaleGenderIcon" width="30" height="30"/>
         <image name="MapIcon" width="23" height="23"/>
         <image name="MapRouteIcon" width="30" height="30"/>
         <image name="MenuIcon" width="22" height="22"/>

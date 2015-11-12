@@ -271,7 +271,13 @@ extension PeopleViewController: StudentsFilterViewControllerDelegate {
     print(minAge)
     print(maxAge)
     print(gender)
-    
+    var searchedStudents = name.characters.count == 0 ? Student.getAllStudents(dataLayer.managedObjectContext!) : Student.searchByName(name, ctx: dataLayer.managedObjectContext!)
+    searchedStudents = searchedStudents.filter({ (student) in
+      return student.age >= Int32(minAge) && student.age <= Int32(maxAge)
+     })
+    students = searchedStudents
+    tableView.reloadData()
+    popupViewController?.dismiss()
   }
   
 }
