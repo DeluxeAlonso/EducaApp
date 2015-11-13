@@ -106,7 +106,7 @@ class DocumentsViewController: BaseFilterViewController {
         return
       }
       if (json[0][Constants.Api.ErrorKey] == nil) {
-        let syncedDocuments = Document.syncWithJsonArray(json, ctx: self.dataLayer.managedObjectContext!)
+        let syncedDocuments = Document.syncWithJsonArray(json,areSessionDocuments: true, ctx: self.dataLayer.managedObjectContext!)
         self.documents = syncedDocuments
         self.dataLayer.saveContext()
         self.reloadData()

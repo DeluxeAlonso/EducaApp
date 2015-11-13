@@ -12,6 +12,7 @@ class PeriodsViewController: BaseFilterViewController {
   
   @IBOutlet weak var tableView: UITableView!
   @IBOutlet weak var shadowView: UIView!
+  @IBOutlet weak var noReportsLabel: UILabel!
   @IBOutlet weak var menuContentView: UIView!
   @IBOutlet weak var menuHeightConstraint: NSLayoutConstraint!
   @IBOutlet weak var customLoader: CustomActivityIndicatorView!
@@ -68,7 +69,7 @@ class PeriodsViewController: BaseFilterViewController {
   }
   
   private func setupDocuments() {
-    documents = Document.getAllDocuments(self.dataLayer.managedObjectContext!)
+    documents = Document.getAllReports(self.dataLayer.managedObjectContext!)
     guard documents.count == 0 else {
       getDocuments()
       return
@@ -79,19 +80,19 @@ class PeriodsViewController: BaseFilterViewController {
   }
   
   private func getDocuments() {
-    print("GETDOC")
     DocumentService.fetchReports({(responseObject: AnyObject?, error: NSError?) in
       print(responseObject)
       print(error.debugDescription)
       self.refreshControl.endRefreshing()
       self.isRefreshing = false
       guard let json = responseObject as? Array<NSDictionary> where json.count > 0 else {
+        self.noReportsLabel.hidden = false
         self.customLoader.stopActivity()
-        self.tableView.hidden = false
+        self.tableView.hidden = true
         return
       }
       if (json[0][Constants.Api.ErrorKey] == nil) {
-        let syncedDocuments = Document.syncWithJsonArray(json, ctx: self.dataLayer.managedObjectContext!)
+        let syncedDocuments = Document.syncWithJsonArray(json, areSessionDocuments: false, ctx: self.dataLayer.managedObjectContext!)
         self.documents = syncedDocuments
         self.dataLayer.saveContext()
         self.reloadData()

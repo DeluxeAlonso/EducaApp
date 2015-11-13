@@ -818,6 +818,13 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </view>
+                            <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="El calendario de pagos no se encuentra disponible." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="11" translatesAutoresizingMaskIntoConstraints="NO" id="Bx4-iR-31p" userLabel="No calendar Label">
+                                <rect key="frame" x="20" y="288.5" width="560" height="23.5"/>
+                                <animations/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="20"/>
+                                <color key="textColor" red="0.090196078430000007" green="0.65490196079999996" blue="0.83529411760000005" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -825,12 +832,16 @@
                             <constraint firstAttribute="trailing" secondItem="wDw-qy-Plq" secondAttribute="trailing" id="1G7-Kp-AZj"/>
                             <constraint firstItem="qHc-bz-2iI" firstAttribute="centerX" secondItem="uBi-xH-a3h" secondAttribute="centerX" id="3bD-kS-zDx"/>
                             <constraint firstItem="qHc-bz-2iI" firstAttribute="centerY" secondItem="uBi-xH-a3h" secondAttribute="centerY" id="4Om-kp-WDd"/>
+                            <constraint firstAttribute="trailing" secondItem="Bx4-iR-31p" secondAttribute="trailing" constant="20" id="9ge-5f-RbJ"/>
                             <constraint firstItem="2Qo-5k-YjH" firstAttribute="top" secondItem="E11-cy-uL0" secondAttribute="bottom" id="ATr-AL-95S"/>
                             <constraint firstItem="wDw-qy-Plq" firstAttribute="leading" secondItem="uBi-xH-a3h" secondAttribute="leading" id="FAZ-Mn-r2H"/>
                             <constraint firstAttribute="trailing" secondItem="2Qo-5k-YjH" secondAttribute="trailing" id="FB9-tw-DaI"/>
                             <constraint firstItem="wDw-qy-Plq" firstAttribute="top" secondItem="2Qo-5k-YjH" secondAttribute="bottom" id="KJK-Sk-RRg"/>
+                            <constraint firstItem="Bx4-iR-31p" firstAttribute="leading" secondItem="uBi-xH-a3h" secondAttribute="leading" constant="20" id="MHS-gn-D6f"/>
+                            <constraint firstItem="Bx4-iR-31p" firstAttribute="centerX" secondItem="uBi-xH-a3h" secondAttribute="centerX" id="SFf-FR-gBd"/>
                             <constraint firstItem="2Qo-5k-YjH" firstAttribute="leading" secondItem="uBi-xH-a3h" secondAttribute="leading" id="XN0-4D-AEY"/>
                             <constraint firstItem="LY7-TB-GUx" firstAttribute="top" secondItem="wDw-qy-Plq" secondAttribute="bottom" id="q4r-5P-3rx"/>
+                            <constraint firstItem="Bx4-iR-31p" firstAttribute="centerY" secondItem="uBi-xH-a3h" secondAttribute="centerY" id="xz7-Zj-psG"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Pagos" id="H41-V9-n5p">
@@ -838,7 +849,9 @@
                     </navigationItem>
                     <connections>
                         <outlet property="customLoader" destination="qHc-bz-2iI" id="lBr-Ep-nrq"/>
+                        <outlet property="headerView" destination="2Qo-5k-YjH" id="IVM-5o-NEE"/>
                         <outlet property="menuIcon" destination="usW-8L-3iP" id="KAz-4O-qEE"/>
+                        <outlet property="noCalendarLabel" destination="Bx4-iR-31p" id="vYI-1K-sVQ"/>
                         <outlet property="tableView" destination="wDw-qy-Plq" id="3wJ-Dq-emM"/>
                         <segue destination="6PU-od-CcI" kind="presentation" identifier="GoToDepositSegue" id="XU7-TI-on3"/>
                     </connections>
@@ -6262,6 +6275,10 @@ El voluntariado comprende actividades asistenciales de servicios sociales, cívi
                                             </constraints>
                                         </tableViewCellContentView>
                                         <animations/>
+                                        <connections>
+                                            <outlet property="femaleGenderButton" destination="0Wy-Ca-D3g" id="GhW-sz-J6d"/>
+                                            <outlet property="maleGenderButton" destination="VVL-3Y-cqB" id="Vgm-vc-GOG"/>
+                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                                 <connections>
@@ -7175,21 +7192,32 @@ El voluntariado comprende actividades asistenciales de servicios sociales, cívi
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </view>
+                            <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="No hay reportes de padrino que mostrar." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="11" translatesAutoresizingMaskIntoConstraints="NO" id="LKz-AC-CQy" userLabel="No reports Label">
+                                <rect key="frame" x="20" y="288.5" width="560" height="23.5"/>
+                                <animations/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="20"/>
+                                <color key="textColor" red="0.090196078430000007" green="0.65490196079999996" blue="0.83529411760000005" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="wZC-aG-xUu" firstAttribute="top" secondItem="Zhf-yI-Qmc" secondAttribute="top" id="9xi-1s-Mcv"/>
+                            <constraint firstItem="LKz-AC-CQy" firstAttribute="centerY" secondItem="Zhf-yI-Qmc" secondAttribute="centerY" id="Big-oG-xVb"/>
                             <constraint firstAttribute="trailing" secondItem="KyS-6W-mpS" secondAttribute="trailing" id="DBJ-xJ-88h"/>
                             <constraint firstItem="KyS-6W-mpS" firstAttribute="top" secondItem="Zhf-yI-Qmc" secondAttribute="top" id="JXd-x8-he6"/>
                             <constraint firstItem="4rs-YZ-ld7" firstAttribute="leading" secondItem="Zhf-yI-Qmc" secondAttribute="leading" id="NJg-vh-2d3"/>
                             <constraint firstItem="LxQ-96-i56" firstAttribute="top" secondItem="wZC-aG-xUu" secondAttribute="bottom" id="NPI-uc-rv1"/>
                             <constraint firstItem="LxQ-96-i56" firstAttribute="top" secondItem="KyS-6W-mpS" secondAttribute="bottom" id="RFf-u2-Tbn"/>
                             <constraint firstItem="wZC-aG-xUu" firstAttribute="leading" secondItem="Zhf-yI-Qmc" secondAttribute="leading" id="SHO-0o-1Dw"/>
+                            <constraint firstItem="LKz-AC-CQy" firstAttribute="centerX" secondItem="Zhf-yI-Qmc" secondAttribute="centerX" id="Tqy-Wa-XXy"/>
                             <constraint firstItem="LxQ-96-i56" firstAttribute="top" secondItem="4rs-YZ-ld7" secondAttribute="bottom" id="UUl-ha-4E2"/>
                             <constraint firstItem="vkc-HW-cb0" firstAttribute="centerY" secondItem="Zhf-yI-Qmc" secondAttribute="centerY" id="YLU-16-RP5"/>
                             <constraint firstAttribute="trailing" secondItem="4rs-YZ-ld7" secondAttribute="trailing" id="h3S-92-e72"/>
                             <constraint firstItem="KyS-6W-mpS" firstAttribute="leading" secondItem="Zhf-yI-Qmc" secondAttribute="leading" id="hQH-Nq-UPf"/>
+                            <constraint firstAttribute="trailing" secondItem="LKz-AC-CQy" secondAttribute="trailing" constant="20" id="i1P-OG-nsP"/>
+                            <constraint firstItem="LKz-AC-CQy" firstAttribute="leading" secondItem="Zhf-yI-Qmc" secondAttribute="leading" constant="20" id="m7V-UX-9M5"/>
                             <constraint firstItem="vkc-HW-cb0" firstAttribute="centerX" secondItem="Zhf-yI-Qmc" secondAttribute="centerX" id="mCn-cv-IIT"/>
                             <constraint firstAttribute="trailing" secondItem="wZC-aG-xUu" secondAttribute="trailing" id="ykC-LV-yLM"/>
                         </constraints>
@@ -7204,6 +7232,7 @@ El voluntariado comprende actividades asistenciales de servicios sociales, cívi
                         <outlet property="menuContentView" destination="4rs-YZ-ld7" id="pCG-As-fCW"/>
                         <outlet property="menuHeightConstraint" destination="uCq-L7-4RZ" id="gDu-dA-R4x"/>
                         <outlet property="menuIcon" destination="vXf-fK-nG3" id="D9a-Zn-LCe"/>
+                        <outlet property="noReportsLabel" destination="LKz-AC-CQy" id="YEZ-kl-oXC"/>
                         <outlet property="shadowView" destination="KyS-6W-mpS" id="2mh-6g-IKZ"/>
                         <outlet property="tableView" destination="wZC-aG-xUu" id="sUJ-vt-avx"/>
                         <segue destination="yXj-T1-28m" kind="presentation" identifier="GoToDocumentPreviewSegue" id="6BD-5l-icH"/>

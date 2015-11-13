@@ -31,9 +31,9 @@ class AgeFilterTableViewCell: UITableViewCell {
   
   private func setupElements() {
     customSlider.minimumRange = 0
-    customSlider.minimumValue = 1
+    customSlider.minimumValue = 0
     customSlider.maximumValue = 10
-    customSlider.lowerValue = 1
+    customSlider.lowerValue = 0
     customSlider.upperValue = 10
   }
   

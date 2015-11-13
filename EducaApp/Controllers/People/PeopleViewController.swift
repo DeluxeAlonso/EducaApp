@@ -267,14 +267,14 @@ extension PeopleViewController: UsersFilterViewControllerDelegate {
 extension PeopleViewController: StudentsFilterViewControllerDelegate {
   
   func studentsFilterViewController(studentsFilterViewController: StudentsFilterViewController, searchedName name: String, minAge: Int, maxAge: Int, gender: Int) {
-    print(name)
-    print(minAge)
-    print(maxAge)
-    print(gender)
     var searchedStudents = name.characters.count == 0 ? Student.getAllStudents(dataLayer.managedObjectContext!) : Student.searchByName(name, ctx: dataLayer.managedObjectContext!)
     searchedStudents = searchedStudents.filter({ (student) in
       return student.age >= Int32(minAge) && student.age <= Int32(maxAge)
      })
+    print(gender)
+    if gender != -1 {
+      searchedStudents = searchedStudents.filter({ (student) in return student.gender == Int32(gender) })
+    }
     students = searchedStudents
     tableView.reloadData()
     popupViewController?.dismiss()

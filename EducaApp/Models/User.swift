@@ -108,6 +108,20 @@ extension User: Deserializable {
     return false
   }
   
+  func isWebMaster() -> Bool {
+    let profileIds = self.profiles.allObjects.map({ (profile) in
+      return Int(profile.id)
+    }) as NSArray
+    return profileIds.containsObject(1) && !profileIds.containsObject(4)
+  }
+  
+  func isOnlyGodfather() -> Bool {
+    let profileIds = self.profiles.allObjects.map({ (profile) in
+      return Int(profile.id)
+    }) as NSArray
+    return profileIds.containsObject(4) && profileIds.count == 1
+  }
+  
   func canListAssistantsComments() -> Bool {
     return self.hasPermissionWithId(33)
   }

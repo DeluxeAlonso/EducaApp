@@ -15,9 +15,11 @@ let PendingApprovalPaymentCellIdentifier = "PendingApprovalPaymentCell"
 
 class PaymentsViewController: BaseViewController {
   
+  @IBOutlet weak var headerView: UIView!
   @IBOutlet weak var tableView: UITableView!
-  
   @IBOutlet weak var customLoader: CustomActivityIndicatorView!
+  @IBOutlet weak var noCalendarLabel: UILabel!
+  
   let GoToDepositSegueIdentifier = "GoToDepositSegue"
   
   var paymentConfig = PayPalConfiguration()
@@ -63,9 +65,11 @@ class PaymentsViewController: BaseViewController {
   
   private func getPayments() {
     PaymentService.fetchPayments({(responseObject: AnyObject?, error: NSError?) in
-      print(responseObject)
-      print(error?.description)
       guard let json = responseObject as? Array<NSDictionary> where json.count > 0 else {
+        self.customLoader.stopActivity()
+        self.headerView.hidden = true
+        self.tableView.hidden = true
+        self.noCalendarLabel.hidden = false
         return
       }
       if (json[0][Constants.Api.ErrorKey] == nil) {

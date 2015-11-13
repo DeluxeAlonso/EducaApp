@@ -136,7 +136,7 @@ extension StudentsFilterViewController: AgeFilterTableViewCellDelegate {
 extension StudentsFilterViewController: GenderFilterTableViewCellDelegate {
   
   func genderFilterTableViewCell(ageFilterTableViewCell: GenderFilterTableViewCell, selectedIndex: Int) {
-    print(selectedIndex)
+    genderSearch = selectedIndex
   }
   
 }
