@@ -48,8 +48,6 @@ class UsersFilterViewController: UIViewController {
   override func viewDidLoad() {
     super.viewDidLoad()
     setupNavigationBar()
-    print("viewdidload")
-    print(nameSearchString)
     if nameSearchString != nil {
       nameSearchText = nameSearchString!
     }
@@ -107,8 +105,6 @@ extension UsersFilterViewController: UITableViewDataSource {
         cell = tableView.dequeueReusableCellWithIdentifier(AuthorContentFilterCellIdentidifer, forIndexPath: indexPath)
         (cell as! AuthorContentTableViewCell).delegate = self
         (cell as! AuthorContentTableViewCell).setupNameFieldLabel(UsersFilterFields.Name.rawValue, searchedName: nameSearchString ?? "", indexPath: indexPath)
-        print("Before author")
-        print(nameSearchString)
       case 1:
         cell = tableView.dequeueReusableCellWithIdentifier(AuthorContentFilterCellIdentidifer, forIndexPath: indexPath)
         (cell as! AuthorContentTableViewCell).delegate = self

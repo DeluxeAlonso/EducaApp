@@ -162,4 +162,15 @@ extension Document {
     return nil
   }
   
+  class func searchByName(searchText: String, ctx: NSManagedObjectContext) -> Array<Document> {
+    let fetchRequest = NSFetchRequest()
+    fetchRequest.entity = NSEntityDescription.entityForName(DocumentEntityName, inManagedObjectContext: ctx)
+    fetchRequest.predicate = NSPredicate(format: "name contains[cd] %@", searchText)
+    let sortDescriptor = NSSortDescriptor(key: "id", ascending: true)
+    fetchRequest.sortDescriptors = [sortDescriptor]
+    let users = try! ctx.executeFetchRequest(fetchRequest) as? Array<Document>
+    
+    return users ?? Array<Document>()
+  }
+  
 }

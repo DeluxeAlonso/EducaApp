@@ -44,6 +44,24 @@ class UrlBuilder: NSObject {
     return stringUrl
   }
   
+  
+  class func UrlForDrupalPath (path: String) -> String {
+    return self.UrlForDrupalPathWithParameters(path: path, parameters: nil)
+  }
+  
+  class func UrlForDrupalPathWithParameters (path path: String, parameters: Dictionary<String,String>?) -> String {
+    var stringUrl: String
+    if (parameters == nil) {
+      stringUrl = String(format: "%@%@", Constants.Path.Drupal, path)
+    } else {
+      stringUrl = String(format: "%@%@?%@", Constants.Path.Drupal, path, parameters!)
+    }
+    
+    print(stringUrl)
+    
+    return stringUrl
+  }
+  
   class func UrlForLocalPath (path: String) -> String {
     return self.UrlForLocalPathWithParameters(path: path, parameters: nil)
   }

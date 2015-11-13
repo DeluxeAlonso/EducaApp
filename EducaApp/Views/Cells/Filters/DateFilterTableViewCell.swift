@@ -35,4 +35,12 @@ class DateFilterTableViewCell: UITableViewCell {
     filterLabel.text = filterType
   }
   
+  func setupDateText(date: NSDate) {
+    print("setups")
+    let dateFormatter = NSDateFormatter()
+    dateFormatter.dateFormat = "dd/M/Y"
+    let dateString = dateFormatter.stringFromDate(date)
+    filterTextField.text = "\(dateString)"
+  }
+  
 }

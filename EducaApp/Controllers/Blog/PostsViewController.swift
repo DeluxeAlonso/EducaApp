@@ -131,7 +131,7 @@ extension PostsViewController: UIPopoverPresentationControllerDelegate {
 
 extension PostsViewController: AssistantCommentsFilterViewControllerDelegate {
   
-  func assistantCommentsFilterViewController(assistantCommentsFilterViewController: AssistantCommentsFilterViewController) {
+  func assistantCommentsFilterViewController(assistantCommentsFilterViewController: AssistantCommentsFilterViewController, searchedAuthor: String, minDate: NSDate?, maxDate: NSDate?, sortType: String) {
     popupViewController?.dismiss()
   }
   

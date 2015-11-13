@@ -268,6 +268,7 @@ extension PeopleViewController: StudentsFilterViewControllerDelegate {
   
   func studentsFilterViewController(studentsFilterViewController: StudentsFilterViewController, searchedName name: String, minAge: Int, maxAge: Int, gender: Int) {
     var searchedStudents = name.characters.count == 0 ? Student.getAllStudents(dataLayer.managedObjectContext!) : Student.searchByName(name, ctx: dataLayer.managedObjectContext!)
+    print(minAge)
     searchedStudents = searchedStudents.filter({ (student) in
       return student.age >= Int32(minAge) && student.age <= Int32(maxAge)
      })

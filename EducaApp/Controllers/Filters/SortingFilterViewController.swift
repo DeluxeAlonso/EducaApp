@@ -55,18 +55,20 @@ extension SortingFilterViewController: UITableViewDataSource {
   }
   
   func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-    return sortingOptions!.count + 1
+    return delegate is UsersViewController ? sortingOptions!.count + 1 : sortingOptions!.count
   }
   
   func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
     let cell = tableView.dequeueReusableCellWithIdentifier(SortingFilterCellIdentidifer, forIndexPath: indexPath) as! SortSelectionTableViewCell
     cell.accessoryType = UITableViewCellAccessoryType.None
-    if indexPath.row == 0 {
+    if indexPath.row == 0 && delegate is UsersViewController {
      cell.accessoryType = selectedProfile == "Todos" ? UITableViewCellAccessoryType.Checkmark :  UITableViewCellAccessoryType.None
     } else {
-      cell.accessoryType = sortingOptions![indexPath.row - 1] as? String == selectedProfile ? UITableViewCellAccessoryType.Checkmark : UITableViewCellAccessoryType.None
+      let index = delegate is UsersViewController ? indexPath.row - 1 : indexPath.row
+      cell.accessoryType = sortingOptions![index] as? String == selectedProfile ? UITableViewCellAccessoryType.Checkmark : UITableViewCellAccessoryType.None
     }
-    indexPath.row == 0 ? cell.setupSortLabel("Todos") : cell.setupSortLabel(sortingOptions?[indexPath.row - 1] as! String)
+    let index = delegate is UsersViewController ? indexPath.row - 1 : indexPath.row
+    (indexPath.row == 0 && delegate is UsersViewController) ? cell.setupSortLabel("Todos") : cell.setupSortLabel(sortingOptions?[index] as! String)
     return cell
   }
   
@@ -77,7 +79,12 @@ extension SortingFilterViewController: UITableViewDataSource {
 extension SortingFilterViewController: UITableViewDelegate {
   
   func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-    let profile = indexPath.row == 0 ? "Todos" : sortingOptions![indexPath.row - 1] as! String
+    let profile: String
+    if delegate is UsersViewController {
+      profile = indexPath.row == 0 ? "Todos" : sortingOptions![indexPath.row - 1] as! String
+    } else {
+      profile = sortingOptions![indexPath.row] as! String
+    }
     delegate?.sortingFilterViewController(self, selectedOptionName: profile)
     self.popupController?.popViewControllerAnimated(true)
   }

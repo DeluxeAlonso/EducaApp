@@ -27,6 +27,7 @@ class SessionsViewController: BaseViewController {
   @IBOutlet weak var mapView: UIView!
   @IBOutlet weak var registerView: UIView!
   
+  @IBOutlet weak var assistanceViewWidthContraint: NSLayoutConstraint!
   let refreshDataSelector: Selector = "refreshData"
   let refreshControl = CustomRefreshControlView()
   
@@ -51,6 +52,9 @@ class SessionsViewController: BaseViewController {
   private func setupElements() {
     setupTableView()
     setupMenuView()
+    if currentUser?.canCheckAttendance() == false {
+      assistanceView.hidden = true
+    }
   }
   
   private func setupTableView() {

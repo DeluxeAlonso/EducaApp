@@ -157,6 +157,11 @@ class DocumentsViewController: BaseFilterViewController {
     }
   }
   
+  private func quickSearchDocument(searchText: String) {
+    documents = searchText == "" ? Document.getAllDocuments(dataLayer.managedObjectContext!) : Document.searchByName(searchText, ctx: dataLayer.managedObjectContext!)
+    tableView.reloadData()
+  }
+  
   // MARK: - Public
   
   func refreshData() {
@@ -245,7 +250,16 @@ class DocumentsViewController: BaseFilterViewController {
   // MARK: - UISearchBarDelegate
   
   func searchBarCancelButtonClicked(searchBar: UISearchBar) {
+    searchBar.text = ""
+    quickSearchDocument("")
     hideSearchBarAnimated(true)
+  }
+  
+  func searchBar(searchBar: UISearchBar, textDidChange searchText: String) {
+    guard let searchText = searchBar.text else {
+      return
+    }
+    quickSearchDocument(searchText)
   }
   
 }

@@ -17,8 +17,10 @@ class CameraViewController: BaseViewController, UIImagePickerControllerDelegate,
   @IBOutlet weak var sendPhotoButton: UIButton!
   @IBOutlet weak var alertLabel: UILabel!
   @IBOutlet weak var alertSolutionLabel: UILabel!
+  @IBOutlet weak var customLoader: CustomActivityIndicatorView!
   
   var imagePicker = UIImagePickerController()
+  var selectedImage: UIImage?
   
   // MARK: - Lifecycle
   
@@ -60,6 +62,20 @@ class CameraViewController: BaseViewController, UIImagePickerControllerDelegate,
     pictureImageView.contentMode = UIViewContentMode.ScaleToFill
   }
   
+  private func enableSignInButton() {
+    customLoader?.stopActivity()
+    customLoader?.hidden = true
+    sendPhotoButton.userInteractionEnabled = true
+    sendPhotoButton.setTitle("Enviar", forState: UIControlState.Normal)
+  }
+  
+  private func disableSignInButton() {
+    sendPhotoButton.setTitle("", forState: UIControlState.Normal)
+    customLoader?.startActivity()
+    customLoader?.hidden = false
+    sendPhotoButton.userInteractionEnabled = false
+  }
+  
   // MARK: - Actions
   
   @IBAction func openPhotoGallery(sender: AnyObject) {
@@ -92,6 +108,22 @@ class CameraViewController: BaseViewController, UIImagePickerControllerDelegate,
     })
   }
   
+  @IBAction func sendPhoto(sender: AnyObject) {
+    disableSignInButton()
+    UserService.sendPhoto(selectedImage!, completion: {(responseObject: AnyObject?, error: NSError?) in
+      self.enableSignInButton()
+      let json = responseObject
+      print(json)
+      print(error?.description)
+      if (json != nil && json?["error"]! == nil) {
+        Util.showAlertWithTitle(self, title: "Enhorabuena", message: "La foto ha sido enviada.", buttonTitle: "OK")
+      } else {
+        Util.showAlertWithTitle(self, title: "Error", message: "No se pudo enviar la foto. Intente más tarde.", buttonTitle: "OK")
+      }
+    })
+    
+  }
+  
   // MARK: - UIImagePickerControllerDelegate
   
   func imagePickerController(picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : AnyObject]) {
@@ -99,6 +131,7 @@ class CameraViewController: BaseViewController, UIImagePickerControllerDelegate,
     let image = info[UIImagePickerControllerEditedImage]
     imagePicker.dismissViewControllerAnimated(true, completion: nil)
     hidePlaceholder()
+    selectedImage = image as? UIImage
     pictureImageView.image = image as? UIImage
   }
 

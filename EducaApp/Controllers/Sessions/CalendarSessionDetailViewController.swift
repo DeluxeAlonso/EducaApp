@@ -28,6 +28,7 @@ class CalendarSessionDetailViewController: UIViewController {
     sessionNameLabel.text = sessionName!
     sessionDateLabel.text = sessionDate!
     sessionHourLabel.text = sessionHour!
+    sessionPlaceLabel.text = sessionPlace!
     indexLabel.text = total == 1 ? "" : "\(index!) de \(total!)"
   }
   
@@ -40,6 +41,7 @@ class CalendarSessionDetailViewController: UIViewController {
     let dateString = dateFormatter.stringFromDate(date)
     let hourString = hourFormatter.stringFromDate(date)
     sessionName = session.name
+    sessionPlace = session.address
     sessionDate = dateString
     sessionHour = hourString
     self.index = index + 1
