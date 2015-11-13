@@ -15,8 +15,11 @@ protocol GenderFilterTableViewCellDelegate {
 }
 
 class GenderFilterTableViewCell: UITableViewCell {
-  @IBOutlet weak var maleGenderImageView: UIImageView!
-  @IBOutlet weak var femaleGenderImageView: UIImageView!
+  
+  @IBOutlet weak var maleGenderButton: UIButton!
+  
+  @IBOutlet weak var femaleGenderButton: UIButton!
+  
   
   var delegate: GenderFilterTableViewCellDelegate?
   
@@ -28,24 +31,16 @@ class GenderFilterTableViewCell: UITableViewCell {
   
   // MARK: - Actions
   
-  @IBAction func pressMaleButton(sender: AnyObject) {/*
-    selectedFaceIndex = SelectedMood.HappyMood
-    happyMoodImageView.image = UIImage(named: ImageAssets.HappyFaceIcon)
-    happyMoodImageView.layer.borderColor = UIColor.defaultHappyFaceBorderColor().CGColor
-    sadMoodImageView.layer.borderColor = UIColor.defaultBorderFieldColor().CGColor
-    sadMoodImageView.image = UIImage(named: ImageAssets.SadFaceGrayIcon)
-    happyMoodImageView.scaleToSize(ScaleToSize, duration: ScaleDuration)
-    sadMoodImageView.restoreWithDuration(ScaleDuration)*/
+  @IBAction func pressMaleButton(sender: AnyObject) {
+    maleGenderButton.setImage(UIImage(named: ImageAssets.MaleGenderIcon), forState: UIControlState.Normal)
+    femaleGenderButton.setImage(UIImage(named: "FemaleGrayIcon"), forState: UIControlState.Normal)
+    delegate?.genderFilterTableViewCell(self, selectedIndex: 0)
   }
   
-  @IBAction func pressFemaleButton(sender: AnyObject) {/*
-    selectedFaceIndex = SelectedMood.SadMood
-    sadMoodImageView.image = UIImage(named: ImageAssets.SadFaceIcon)
-    sadMoodImageView.layer.borderColor = UIColor.defaultSadFaceBorderColor().CGColor
-    happyMoodImageView.image = UIImage(named: ImageAssets.HappyFaceGrayIcon)
-    happyMoodImageView.layer.borderColor = UIColor.defaultBorderFieldColor().CGColor
-    sadMoodImageView.scaleToSize(ScaleToSize, duration: ScaleDuration)
-    happyMoodImageView.restoreWithDuration(ScaleDuration) */
+  @IBAction func pressFemaleButton(sender: AnyObject) {
+    maleGenderButton.setImage(UIImage(named: "GrayMaleIcon"), forState: UIControlState.Normal)
+    femaleGenderButton.setImage(UIImage(named: ImageAssets.FemaleGenderIcon), forState: UIControlState.Normal)
+    delegate?.genderFilterTableViewCell(self, selectedIndex: 1)
   }
   
 }

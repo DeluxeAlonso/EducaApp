@@ -106,7 +106,7 @@ class DocumentsViewController: BaseFilterViewController {
         return
       }
       if (json[0][Constants.Api.ErrorKey] == nil) {
-        let syncedDocuments = Document.syncWithJsonArray(json, ctx: self.dataLayer.managedObjectContext!)
+        let syncedDocuments = Document.syncWithJsonArray(json,areSessionDocuments: true, ctx: self.dataLayer.managedObjectContext!)
         self.documents = syncedDocuments
         self.dataLayer.saveContext()
         self.reloadData()
@@ -155,6 +155,11 @@ class DocumentsViewController: BaseFilterViewController {
       downloadButton.enabled = true
       downLoadLabel.textColor = UIColor.defaultTextColor()
     }
+  }
+  
+  private func quickSearchDocument(searchText: String) {
+    documents = searchText == "" ? Document.getAllDocuments(dataLayer.managedObjectContext!) : Document.searchByName(searchText, ctx: dataLayer.managedObjectContext!)
+    tableView.reloadData()
   }
   
   // MARK: - Public
@@ -245,7 +250,16 @@ class DocumentsViewController: BaseFilterViewController {
   // MARK: - UISearchBarDelegate
   
   func searchBarCancelButtonClicked(searchBar: UISearchBar) {
+    searchBar.text = ""
+    quickSearchDocument("")
     hideSearchBarAnimated(true)
+  }
+  
+  func searchBar(searchBar: UISearchBar, textDidChange searchText: String) {
+    guard let searchText = searchBar.text else {
+      return
+    }
+    quickSearchDocument(searchText)
   }
   
 }

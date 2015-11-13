@@ -9,7 +9,7 @@
 import UIKit
 import CoreData
 
-let GoogleMapsApiKey = "AIzaSyCw4hGJhT6FyPKlwjbz3kSsymp9be0iqBI"
+let GoogleMapsApiKey = "AIzaSyBF2bNxOCwEmwRcBjKoMxQja8cbldZ4CZs"
 let GooglePlacesApiKey =  "AIzaSyAE2GOOBEjJA3p_S5Thh8P-0DJF7Y5F1Ww"
 
 @UIApplicationMain
@@ -34,6 +34,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     PayPalMobile.initializeWithClientIdsForEnvironments([PayPalEnvironmentProduction: Constants.PayPal.Production, PayPalEnvironmentSandbox: Constants.PayPal.SandBox])
     GMSServices.provideAPIKey(GoogleMapsApiKey)
     return true
+  }
+  
+  func application(application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: NSData) {
+    print(deviceToken)
+  }
+  
+  func application(application: UIApplication, didFailToRegisterForRemoteNotificationsWithError error: NSError) {
+    
   }
   
   func applicationWillResignActive(application: UIApplication) {

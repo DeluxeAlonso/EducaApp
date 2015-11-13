@@ -239,6 +239,14 @@ extension Comment {
     return comments ?? Array<Comment>()
   }
   
+  public class func getCommentsBySessionAndStudentWithSearch(searchText:String, session: Session, student: Student, ctx: NSManagedObjectContext) -> Array<Comment> {
+    let fetchRequest = NSFetchRequest()
+    fetchRequest.entity = NSEntityDescription.entityForName(CommentEntityName, inManagedObjectContext: ctx)
+    fetchRequest.predicate = NSPredicate(format: "(sessionId = %d AND student.id = %d AND (message contains[cd] %@ OR author.firstName contains[cd] %@))", Int(session.id), Int(student.id), searchText, searchText)
+    let comments = try! ctx.executeFetchRequest(fetchRequest) as? Array<Comment>
+    return comments ?? Array<Comment>()
+  }
+  
   public class func getCommentsByStudent(student: Student, ctx: NSManagedObjectContext) -> Array<Comment> {
     let fetchRequest = NSFetchRequest()
     fetchRequest.entity = NSEntityDescription.entityForName(CommentEntityName, inManagedObjectContext: ctx)

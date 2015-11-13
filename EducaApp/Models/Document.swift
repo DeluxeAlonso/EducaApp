@@ -51,7 +51,7 @@ extension Document: Deserializable {
 
 extension Document {
   
-  public class func syncWithJsonArray(arr: Array<NSDictionary>, ctx: NSManagedObjectContext) -> Array<Document> {
+  public class func syncWithJsonArray(arr: Array<NSDictionary>, areSessionDocuments: Bool, ctx: NSManagedObjectContext) -> Array<Document> {
     // Map JSON to ids, for easier access
     var jsonById = Dictionary<Int, NSDictionary>()
     for json in arr {
@@ -63,7 +63,7 @@ extension Document {
     let ids = Array(jsonById.keys)
     
     // Get persisted articles
-    let persistedStudents = Document.getAllDocuments(ctx)
+    let persistedStudents = areSessionDocuments ? Document.getAllDocuments(ctx) : Document.getAllReports(ctx)
     var persistedStudentById = Dictionary<Int, Document>()
     for art in persistedStudents {
       persistedStudentById[Int(art.id)] = art
@@ -102,7 +102,7 @@ extension Document {
       ctx.deleteObject(student)
     }
     
-    return Document.getAllDocuments(ctx)
+    return areSessionDocuments ? Document.getAllDocuments(ctx) : Document.getAllReports(ctx)
   }
   
   class func findOrCreateWithId(id: Int32, ctx: NSManagedObjectContext) -> Document {
@@ -131,7 +131,22 @@ extension Document {
     fetchRequest.entity = NSEntityDescription.entityForName(DocumentEntityName, inManagedObjectContext: ctx)
     let sortDescriptor = NSSortDescriptor(key: "id", ascending: true)
     fetchRequest.sortDescriptors = [sortDescriptor]
-    let students = try! ctx.executeFetchRequest(fetchRequest) as? Array<Document>
+    var students = try! ctx.executeFetchRequest(fetchRequest) as? Array<Document>
+    students = students?.filter({ (document) in
+      return document.users.count > 0
+    })
+    return students ?? Array<Document>()
+  }
+  
+  class func getAllReports(ctx: NSManagedObjectContext) -> Array<Document> {
+    let fetchRequest = NSFetchRequest()
+    fetchRequest.entity = NSEntityDescription.entityForName(DocumentEntityName, inManagedObjectContext: ctx)
+    let sortDescriptor = NSSortDescriptor(key: "id", ascending: true)
+    fetchRequest.sortDescriptors = [sortDescriptor]
+    var students = try! ctx.executeFetchRequest(fetchRequest) as? Array<Document>
+    students = students?.filter({ (document) in
+      return document.users.count == 0
+    })
     
     return students ?? Array<Document>()
   }
@@ -145,6 +160,17 @@ extension Document {
       return students![0]
     }
     return nil
+  }
+  
+  class func searchByName(searchText: String, ctx: NSManagedObjectContext) -> Array<Document> {
+    let fetchRequest = NSFetchRequest()
+    fetchRequest.entity = NSEntityDescription.entityForName(DocumentEntityName, inManagedObjectContext: ctx)
+    fetchRequest.predicate = NSPredicate(format: "name contains[cd] %@", searchText)
+    let sortDescriptor = NSSortDescriptor(key: "id", ascending: true)
+    fetchRequest.sortDescriptors = [sortDescriptor]
+    let users = try! ctx.executeFetchRequest(fetchRequest) as? Array<Document>
+    
+    return users ?? Array<Document>()
   }
   
 }

@@ -19,6 +19,7 @@ let SessionDateKey = "date"
 let SessionLocationKey = "location"
 let SessionLatitudeKey = "latitude"
 let SessionLongitudeKey = "longitude"
+let SessionAddressKey = "address"
 let SessionAttendanceVolunteerKey = "attendance_volunteers"
 let SessionAttendanceChildrenKey = "attendance_children"
 let SessionReunionPointKey = "points_of_reunion"
@@ -34,6 +35,7 @@ public class Session: NSManagedObject {
   @NSManaged public var id: Int32
   @NSManaged public var latitude: Float
   @NSManaged public var longitude: Float
+  @NSManaged public var address: String
   @NSManaged public var volunteers: NSSet
   @NSManaged public var students: NSSet
   @NSManaged public var reunionPoints: NSSet
@@ -50,13 +52,14 @@ public class Session: NSManagedObject {
 extension Session: Deserializable {
   
   func setDataFromJSON(json: NSDictionary) {
-    guard let id = json[SessionIdKey] as AnyObject?, name = json[SessionNameKey] as? String, locationJson = json[SessionLocationKey] as? NSDictionary, latitude = locationJson[SessionLatitudeKey] as? Float,longitude = locationJson[SessionLongitudeKey] as? Float, date = json[SessionDateKey] as? Double else {
+    guard let id = json[SessionIdKey] as AnyObject?, name = json[SessionNameKey] as? String, locationJson = json[SessionLocationKey] as? NSDictionary, latitude = locationJson[SessionLatitudeKey] as? Float,longitude = locationJson[SessionLongitudeKey] as? Float, date = json[SessionDateKey] as? Double, let address = locationJson[SessionAddressKey] as? String else {
         return
     }
     self.id = id is Int ? Int32(id as! Int) : Int32(id as! String)!
     self.name = name
     self.latitude = latitude
     self.longitude = longitude
+    self.address = address
     self.date = NSDate(timeIntervalSince1970: date)
   }
   
@@ -185,6 +188,16 @@ extension Session {
     let fetchRequest = NSFetchRequest()
     fetchRequest.entity = NSEntityDescription.entityForName(SessionEntityName, inManagedObjectContext: ctx)
     let sortDescriptor = NSSortDescriptor(key: SessionDateKey, ascending: false)
+    let nameSortDescriptor = NSSortDescriptor(key: SessionNameKey, ascending: true)
+    fetchRequest.sortDescriptors = [sortDescriptor, nameSortDescriptor]
+    let sessions = try! ctx.executeFetchRequest(fetchRequest) as? Array<Session>
+    return sessions ?? Array<Session>()
+  }
+  
+  public class func getAllOldSessions(ctx: NSManagedObjectContext) -> Array<Session> {
+    let fetchRequest = NSFetchRequest()
+    fetchRequest.entity = NSEntityDescription.entityForName(SessionEntityName, inManagedObjectContext: ctx)
+    let sortDescriptor = NSSortDescriptor(key: SessionDateKey, ascending: true)
     let nameSortDescriptor = NSSortDescriptor(key: SessionNameKey, ascending: true)
     fetchRequest.sortDescriptors = [sortDescriptor, nameSortDescriptor]
     let sessions = try! ctx.executeFetchRequest(fetchRequest) as? Array<Session>

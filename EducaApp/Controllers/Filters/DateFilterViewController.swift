@@ -8,12 +8,22 @@
 
 import UIKit
 
+protocol DateFilterViewControllerDelegate {
+  
+  func dateFilterViewController(dateFilterViewController: DateFilterViewController, selectedDate: NSDate, indexPath: NSIndexPath)
+  
+}
+
 class DateFilterViewController: UIViewController {
+  
+  @IBOutlet weak var datePicker: UIDatePicker!
   
   let rightBarButtonItemTitle = "Seleccionar"
   let advancedSearchSelector: Selector = "selectDate:"
   
+  var indexPath: NSIndexPath?
   var height: CGFloat?
+  var delegate: DateFilterViewControllerDelegate?
   
   override func viewDidLoad() {
     super.viewDidLoad()
@@ -34,6 +44,7 @@ class DateFilterViewController: UIViewController {
   // MARK: - Actions
   
   @IBAction func selectDate(sender: AnyObject) {
+    delegate?.dateFilterViewController(self, selectedDate: datePicker.date, indexPath: indexPath!)
     self.popupController?.popViewControllerAnimated(true)
   }
   

@@ -28,7 +28,7 @@ class StudentsFilterViewController: UIViewController {
   var delegate: StudentsFilterViewControllerDelegate?
   var nameSearchText = String()
   var nameSearchString: String?
-  var minAgeSearch =  5
+  var minAgeSearch =  4
   var maxAgeSearch = 14
   var genderSearch = -1
   
@@ -136,7 +136,7 @@ extension StudentsFilterViewController: AgeFilterTableViewCellDelegate {
 extension StudentsFilterViewController: GenderFilterTableViewCellDelegate {
   
   func genderFilterTableViewCell(ageFilterTableViewCell: GenderFilterTableViewCell, selectedIndex: Int) {
-    print(selectedIndex)
+    genderSearch = selectedIndex
   }
   
 }

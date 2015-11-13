@@ -12,7 +12,8 @@ let SignInPath = "sign_in"
 let ChangePasswordPath = "change_password"
 let RecoverPasswordPath = "recover_password"
 let UsersPath = "users"
-let ReapplyPath="reapply"
+let ReapplyPath = "reapply"
+let SendPhotoPath = "?q=photoupload"
 
 class UserService {
   
@@ -60,6 +61,20 @@ class UserService {
     NetworkManager.sharedInstance.requestSerializer.setValue(User.getAuthToken(), forHTTPHeaderField: Constants.Api.Header)
     NetworkManager.sharedInstance.GET(UrlBuilder.UrlForPath(UsersPath), parameters: nil, success: { (operation: AFHTTPRequestOperation, responseObject: AnyObject?) in
       completion(responseObject: responseObject! as? NSObject, error: nil)
+      }, failure: {(operation: AFHTTPRequestOperation, error: NSError) in
+        completion(responseObject: nil, error: error)
+    })
+  }
+  
+  class func sendPhoto(image: UIImage, completion: (responseObject: NSObject?, error: NSError?) -> Void) {
+    NetworkManager.sharedInstance.POST(UrlBuilder.UrlForDrupalPath(SendPhotoPath), parameters: nil,
+      constructingBodyWithBlock: { (formData: AFMultipartFormData!) in
+        if let imageData: NSData = UIImagePNGRepresentation(image)! {
+          formData.appendPartWithFileData(imageData, name: "image", fileName: "imagen", mimeType: "image/png")
+        }
+      },
+      success: { (operation: AFHTTPRequestOperation, responseObject: AnyObject?) in
+        completion(responseObject: responseObject! as? NSObject, error: nil)
       }, failure: {(operation: AFHTTPRequestOperation, error: NSError) in
         completion(responseObject: nil, error: error)
     })

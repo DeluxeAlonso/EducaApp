@@ -65,6 +65,7 @@
         <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
     </entity>
     <entity name="Session" representedClassName="Session" syncable="YES">
+        <attribute name="address" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="date" optional="YES" attributeType="Date" syncable="YES"/>
         <attribute name="id" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
         <attribute name="latitude" optional="YES" attributeType="Float" defaultValueString="0.0" syncable="YES"/>
@@ -128,15 +129,15 @@
         <element name="Document" positionX="-2511" positionY="38" width="128" height="163"/>
         <element name="DocumentSession" positionX="-2324" positionY="45" width="128" height="73"/>
         <element name="DocumentUser" positionX="-2358" positionY="335" width="128" height="88"/>
+        <element name="Payment" positionX="-2682" positionY="180" width="128" height="118"/>
         <element name="Profile" positionX="-2342" positionY="461" width="128" height="88"/>
         <element name="ReunionPoint" positionX="-1793" positionY="-135" width="128" height="120"/>
         <element name="School" positionX="-2700" positionY="36" width="128" height="103"/>
-        <element name="Session" positionX="-2126" positionY="-198" width="128" height="178"/>
+        <element name="Session" positionX="-2126" positionY="-198" width="128" height="195"/>
         <element name="SessionReunionPoint" positionX="-1964" positionY="-108" width="128" height="88"/>
         <element name="SessionStudent" positionX="-2331" positionY="-153" width="128" height="103"/>
         <element name="SessionUser" positionX="-2135" positionY="60" width="128" height="118"/>
         <element name="Student" positionX="-2504" positionY="-144" width="128" height="178"/>
         <element name="User" positionX="-2124" positionY="207" width="128" height="270"/>
-        <element name="Payment" positionX="-2682" positionY="180" width="128" height="118"/>
     </elements>
 </model>

@@ -73,6 +73,13 @@ class MenuController: StaticDataTableViewController {
         self.cell(NewsCell, setHidden: false)
         self.cell(SettingsCell, setHidden: false)
       }
+      if (currentUser?.isWebMaster() == true) {
+        self.cell(PayCell, setHidden: true)
+      }
+      if currentUser?.isOnlyGodfather() == true {
+        self.cell(CameraCell, setHidden: true)
+      }
+      self.reloadDataAnimated(false)
     }
   }
   

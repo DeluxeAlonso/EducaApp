@@ -138,7 +138,6 @@ class AssistantDetailViewController: BaseFilterViewController {
         Comment.syncWithJsonArray(self.student!, arr: (json["comments"] as? Array<NSDictionary>)!, ctx: self.dataLayer.managedObjectContext!)
         self.dataLayer.saveContext()
         self.setupInfoLabels()
-        self.fillDataSource()
         self.reloadData()
       }
     })
@@ -213,10 +212,35 @@ class AssistantDetailViewController: BaseFilterViewController {
     commentView.hidden = true
   }
   
+  private func updateSectionHeaders() {
+    collapseSectionsInfo = Array()
+    for session in sessions {
+      self.collapseSectionsInfo.append(CollapseSectionModel(sectionName: session.name , section: sessions.indexOf(session)!, open: true))
+    }
+  }
+  
+  private func quickSearchComments(searchText: String) {
+    searchText == "" ? fillDataSource() : fillDataSourceWithSearchText(searchText)
+    tableView.reloadData()
+  }
+  
+  private func resetSearchFields() {
+    searchBar.text = ""
+    quickSearchComments("")
+  }
+  
   // MARK: - UISearchBarDelegate
   
   func searchBarCancelButtonClicked(searchBar: UISearchBar) {
+    resetSearchFields()
     hideSearchBar()
+  }
+  
+  func searchBar(searchBar: UISearchBar, textDidChange searchText: String) {
+    guard let searchText = searchBar.text else {
+      return
+    }
+    quickSearchComments(searchText)
   }
 
   // MARK: - Public
@@ -237,6 +261,10 @@ class AssistantDetailViewController: BaseFilterViewController {
   }
   
   func reloadData() {
+    isRefreshing = true
+    self.sessions = Session.getAllSessions(self.dataLayer.managedObjectContext!)
+    self.updateSectionHeaders()
+    fillDataSource()
     guard !self.isRefreshing else {
       self.tableView.reloadData()
       return
@@ -280,6 +308,7 @@ class AssistantDetailViewController: BaseFilterViewController {
     hideSearchBar()
     let viewController = self.storyboard?.instantiateViewControllerWithIdentifier(AssistantCommentsFilterViewIdentifier) as! AssistantCommentsFilterViewController
     viewController.delegate = self
+    viewController.nameSearchString = searchBar.text
     setupPopupNavigationBar()
     popupViewController = STPopupController(rootViewController: viewController)
     popupViewController!.presentInViewController(self)
@@ -458,13 +487,36 @@ extension AssistantDetailViewController: CollapseSectionHeaderViewDelegate {
 
 extension AssistantDetailViewController: AssistantCommentsFilterViewControllerDelegate {
   
-  func assistantCommentsFilterViewController(assistantCommentsFilterViewController: AssistantCommentsFilterViewController) {
-    sendCommentPopupViewController?.dismiss()
+  func assistantCommentsFilterViewController(assistantCommentsFilterViewController: AssistantCommentsFilterViewController, searchedAuthor: String, minDate: NSDate?, maxDate: NSDate?, sortType: String) {
+    var searchedSessions = sortType == "Más Actual" ? Session.getAllSessions(dataLayer.managedObjectContext!) : Session.getAllOldSessions(dataLayer.managedObjectContext!)
+    if minDate != nil {
+      searchedSessions = searchedSessions.filter({ (session) in
+        return session.date.getNumberOfDays() >= minDate?.getNumberOfDays()
+      })
+    }
+    if maxDate != nil {
+      searchedSessions = searchedSessions.filter({ (session) in
+        return session.date.getNumberOfDays() <= maxDate?.getNumberOfDays()
+      })
+    }
+    sessions = searchedSessions
+    updateSectionHeaders()
+    searchedAuthor == "" ? fillDataSource() : fillDataSourceWithSearchText(searchedAuthor)
+    tableView.reloadData()
+    popupViewController?.dismiss()
+  }
+  
+  private func fillDataSourceWithSearchText(searchText: String) {
+    sessionComments = [Int: [Comment]]()
+    for session in sessions {
+      let comments = Comment.getCommentsBySessionAndStudentWithSearch(searchText,session: session, student: student!, ctx: dataLayer.managedObjectContext!)
+      sessionComments[Int(session.id)] = comments
+    }
   }
   
 }
 
-// MARK: - SendAssistantCommentViewControllerDelegate
+  // MARK: - SendAssistantCommentViewControllerDelegate
 
 extension AssistantDetailViewController: SendAssistantCommentViewControllerDelegate {
   
