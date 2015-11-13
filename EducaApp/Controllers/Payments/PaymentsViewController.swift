@@ -143,18 +143,32 @@ extension PaymentsViewController: UITableViewDelegate {
   
   func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
     let cell = tableView.cellForRowAtIndexPath(indexPath)
+    
     if (cell is PendingApprovalPaymentTableViewCell || cell is CanceledPaymentTableViewCell) {
       return
     }
-    let actionSheetController: UIAlertController = UIAlertController(title: "Método de Pago", message: "Seleccione un método de pago.", preferredStyle: .Alert)
+    
+    let actionSheetController: UIAlertController = UIAlertController(title: "Método de Pago", message: "Seleccione un método de pago.", preferredStyle: .ActionSheet)
+    
     let payPalAction: UIAlertAction = UIAlertAction(title: "PayPal", style: .Default) { action -> Void in
       self.donateFixedAmout(NSNull)
     }
     actionSheetController.addAction(payPalAction)
+    
     let depositAction: UIAlertAction = UIAlertAction(title: "Depósito", style: .Default) { action -> Void in
       self.performSegueWithIdentifier(self.GoToDepositSegueIdentifier, sender: self.payments[indexPath.row])
     }
     actionSheetController.addAction(depositAction)
+    
+    let cancel = UIAlertAction(title: "Cancelar", style: .Cancel, handler: nil)
+    actionSheetController.addAction(cancel)
+    
+    if let popoverController = actionSheetController.popoverPresentationController {
+      popoverController.sourceView = cell
+      popoverController.sourceRect = cell!.bounds
+      
+    }
+    
     self.presentViewController(actionSheetController, animated: true, completion: nil)
   }
   
