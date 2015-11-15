@@ -900,6 +900,7 @@
 				TargetAttributes = {
 					E2FE3F411B9632DC006EEA91 = {
 						CreatedOnToolsVersion = 6.4;
+						DevelopmentTeam = NFZUMSV4RN;
 						SystemCapabilities = {
 							com.apple.Push = {
 								enabled = 0;
@@ -1290,7 +1291,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
-				CODE_SIGN_IDENTITY = "";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				ENABLE_BITCODE = NO;
 				INFOPLIST_FILE = EducaApp/Info.plist;
@@ -1312,7 +1313,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
-				CODE_SIGN_IDENTITY = "";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				ENABLE_BITCODE = NO;
 				INFOPLIST_FILE = EducaApp/Info.plist;

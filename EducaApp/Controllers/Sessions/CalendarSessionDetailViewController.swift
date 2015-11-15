@@ -37,7 +37,7 @@ class CalendarSessionDetailViewController: UIViewController {
     let dateFormatter = NSDateFormatter()
     let hourFormatter = NSDateFormatter()
     dateFormatter.dateFormat = "dd/M/Y"
-    hourFormatter.dateFormat = "HH:00 a"
+    hourFormatter.dateFormat = "HH:mm a"
     let dateString = dateFormatter.stringFromDate(date)
     let hourString = hourFormatter.stringFromDate(date)
     sessionName = session.name

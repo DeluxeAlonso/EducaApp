@@ -70,7 +70,7 @@ class UserService {
     NetworkManager.sharedInstance.POST(UrlBuilder.UrlForDrupalPath(SendPhotoPath), parameters: nil,
       constructingBodyWithBlock: { (formData: AFMultipartFormData!) in
         if let imageData: NSData = UIImagePNGRepresentation(image)! {
-          formData.appendPartWithFileData(imageData, name: "image", fileName: "imagen", mimeType: "image/png")
+          formData.appendPartWithFileData(imageData, name: "image", fileName: "imagen_afi.png", mimeType: "image/png")
         }
       },
       success: { (operation: AFHTTPRequestOperation, responseObject: AnyObject?) in

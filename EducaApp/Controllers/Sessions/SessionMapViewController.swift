@@ -468,6 +468,7 @@ extension SessionMapViewController {
       arrayNeWReunionDictionary.addObject(newReunionDictionary)
     }
     dictionary["new_meeting_points"] = arrayNeWReunionDictionary
+    print(dictionary)
     NSUserDefaults.standardUserDefaults().setObject(dictionary, forKey: "edit_points")
     NSUserDefaults.standardUserDefaults().synchronize()
     return dictionary
@@ -476,13 +477,17 @@ extension SessionMapViewController {
   private func updateReunionPoints() {
     SessionService.editReunionPoints(requestParameters(), completion: {(responseObject: AnyObject?, error: NSError?) in
       self.hideActivityIndicator()
+      print(responseObject)
+      print(error?.description)
       guard let json = responseObject as? NSDictionary else {
+        Util.showAlertWithTitle(self, title: "Error", message: "Ocurrio un error en el servidor.", buttonTitle: "OK")
         return
       }
       if (json[Constants.Api.ErrorKey] == nil) {
         NSUserDefaults.standardUserDefaults().setObject(nil, forKey: "edit_points")
         NSUserDefaults.standardUserDefaults().synchronize()
         self.session = Session.updateOrCreateReunionPointsWithJson(json, ctx: self.dataLayer.managedObjectContext!)
+        self.newReunionPoints = NSMutableArray()
         self.dataLayer.saveContext()
         self.mapView.clear()
         self.getReunionPoints()

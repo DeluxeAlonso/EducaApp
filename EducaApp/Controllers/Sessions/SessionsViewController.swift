@@ -27,6 +27,7 @@ class SessionsViewController: BaseViewController {
   @IBOutlet weak var mapView: UIView!
   @IBOutlet weak var registerView: UIView!
   
+  @IBOutlet weak var noSessionsLabel: UILabel!
   @IBOutlet weak var assistanceViewWidthContraint: NSLayoutConstraint!
   let refreshDataSelector: Selector = "refreshData"
   let refreshControl = CustomRefreshControlView()
@@ -83,12 +84,10 @@ class SessionsViewController: BaseViewController {
     SessionService.fetchSessions({(responseObject: AnyObject?, error: NSError?) in
       self.refreshControl.endRefreshing()
       self.isRefreshing = false
-      guard let json = responseObject as? Array<NSDictionary> else {
-        return
-      }
-      guard json.count > 0 else {
+      guard let json = responseObject as? Array<NSDictionary> where json.count > 0 else {
+        self.noSessionsLabel.hidden = false
         self.customLoader.stopActivity()
-        self.tableView.hidden = false
+        self.tableView.hidden = true
         return
       }
       if (json[0][Constants.Api.ErrorKey] == nil) {
