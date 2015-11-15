@@ -11,11 +11,11 @@ import UIKit
 struct Constants {
   
   struct Path {
-    static let Development = "http://200.16.7.111/afiperularavel/public/api/v1/"
+    static let Development = "http://162.243.118.33/afiperularavel/public/api/v1/"
     static let Localhost = "http://192.168.1.6:8000/api/v1/"
     static let Apiary = "http://private-7791c-afiapp.apiary-mock.com/api/v1/"
-    static let Drupal = "http://200.16.7.111/afiperudrupal/" 
-    static let BaseUrl = "http://200.16.7.111/afiperularavel/public/"
+    static let Drupal = "http://162.243.118.33/afiperudrupal/"
+    static let BaseUrl = "http://162.243.118.33/afiperularavel/public/"
     static let Production = "http://162.243.118.33/"
     //200.16.7.111  162.243.118.33
   }

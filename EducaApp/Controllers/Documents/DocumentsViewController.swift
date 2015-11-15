@@ -22,6 +22,7 @@ class DocumentsViewController: BaseFilterViewController {
   @IBOutlet weak var downloadButton: UIButton!
   
   @IBOutlet weak var downLoadLabel: UILabel!
+  @IBOutlet weak var noDocumentsLabel: UILabel!
   
   let UserListSegueIdentifier = "GoToUserListSegue"
   let DocumentPreviewSegueIdentifier = "GoToDocumentPreviewSegue"
@@ -101,8 +102,9 @@ class DocumentsViewController: BaseFilterViewController {
       self.refreshControl.endRefreshing()
       self.isRefreshing = false
       guard let json = responseObject as? Array<NSDictionary> where json.count > 0 else {
+        self.noDocumentsLabel.hidden = false
         self.customLoader.stopActivity()
-        self.tableView.hidden = false
+        self.tableView.hidden = true
         return
       }
       if (json[0][Constants.Api.ErrorKey] == nil) {

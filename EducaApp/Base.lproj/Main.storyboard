@@ -3013,6 +3013,13 @@ El voluntariado comprende actividades asistenciales de servicios sociales, cívi
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </view>
+                            <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="No hay sesiones que mostrar." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="11" translatesAutoresizingMaskIntoConstraints="NO" id="eJr-e8-oMg" userLabel="No sessions Label">
+                                <rect key="frame" x="20" y="288.5" width="560" height="23.5"/>
+                                <animations/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="20"/>
+                                <color key="textColor" red="0.090196078430000007" green="0.65490196079999996" blue="0.83529411760000005" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -3021,13 +3028,17 @@ El voluntariado comprende actividades asistenciales de servicios sociales, cívi
                             <constraint firstItem="BDQ-gq-g83" firstAttribute="top" secondItem="DVS-50-KWh" secondAttribute="bottom" id="OHa-dt-Ofa"/>
                             <constraint firstItem="BDQ-gq-g83" firstAttribute="top" secondItem="gau-KQ-y4g" secondAttribute="bottom" id="OK9-dv-JIu"/>
                             <constraint firstAttribute="trailing" secondItem="gau-KQ-y4g" secondAttribute="trailing" id="Pks-6N-mJP"/>
+                            <constraint firstItem="eJr-e8-oMg" firstAttribute="leading" secondItem="Kxu-WN-o6b" secondAttribute="leading" constant="20" id="QJI-SH-Aau"/>
                             <constraint firstAttribute="trailing" secondItem="DVS-50-KWh" secondAttribute="trailing" id="SD3-wg-1Vz"/>
+                            <constraint firstItem="eJr-e8-oMg" firstAttribute="centerX" secondItem="Kxu-WN-o6b" secondAttribute="centerX" id="T2e-pG-U7V"/>
+                            <constraint firstItem="eJr-e8-oMg" firstAttribute="centerY" secondItem="Kxu-WN-o6b" secondAttribute="centerY" id="VTA-P9-UZz"/>
                             <constraint firstItem="DVS-50-KWh" firstAttribute="top" secondItem="Kxu-WN-o6b" secondAttribute="top" id="VnZ-qV-N4G"/>
                             <constraint firstItem="gau-KQ-y4g" firstAttribute="top" secondItem="Kxu-WN-o6b" secondAttribute="top" id="Vp4-6Z-PTK"/>
                             <constraint firstItem="DTA-6m-rln" firstAttribute="leading" secondItem="Kxu-WN-o6b" secondAttribute="leading" id="VzM-Ex-E7F"/>
                             <constraint firstItem="BDQ-gq-g83" firstAttribute="top" secondItem="DTA-6m-rln" secondAttribute="bottom" id="Wlb-ZE-Ea8"/>
                             <constraint firstAttribute="trailing" secondItem="DTA-6m-rln" secondAttribute="trailing" id="jJ1-n0-AyS"/>
                             <constraint firstItem="xem-7h-FlM" firstAttribute="centerY" secondItem="Kxu-WN-o6b" secondAttribute="centerY" id="kKj-NC-JUW"/>
+                            <constraint firstAttribute="trailing" secondItem="eJr-e8-oMg" secondAttribute="trailing" constant="20" id="kyN-Bn-Ned"/>
                             <constraint firstItem="xem-7h-FlM" firstAttribute="centerX" secondItem="Kxu-WN-o6b" secondAttribute="centerX" id="tOa-Xc-M9U"/>
                             <constraint firstItem="gau-KQ-y4g" firstAttribute="leading" secondItem="Kxu-WN-o6b" secondAttribute="leading" id="yA0-sB-4a2"/>
                         </constraints>
@@ -3049,6 +3060,7 @@ El voluntariado comprende actividades asistenciales de servicios sociales, cívi
                         <outlet property="menuContentView" destination="DTA-6m-rln" id="pfr-df-x2r"/>
                         <outlet property="menuHeightConstraint" destination="xnK-gN-GuB" id="y6o-sp-tLw"/>
                         <outlet property="menuIcon" destination="iB4-oj-scM" id="HOB-fo-qEd"/>
+                        <outlet property="noSessionsLabel" destination="eJr-e8-oMg" id="WDp-IJ-x2K"/>
                         <outlet property="registerView" destination="Mwt-th-EbQ" id="fmE-gK-lXg"/>
                         <outlet property="shadowView" destination="DVS-50-KWh" id="aYa-cz-Pp8"/>
                         <outlet property="tableView" destination="gau-KQ-y4g" id="jew-eK-FAm"/>
@@ -4152,11 +4164,20 @@ El voluntariado comprende actividades asistenciales de servicios sociales, cívi
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </view>
+                            <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="No hay documentos que mostrar." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="11" translatesAutoresizingMaskIntoConstraints="NO" id="Lre-1H-WTS" userLabel="No documents Label">
+                                <rect key="frame" x="20" y="288.5" width="560" height="23.5"/>
+                                <animations/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="20"/>
+                                <color key="textColor" red="0.090196078430000007" green="0.65490196079999996" blue="0.83529411760000005" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="omf-Ul-hiO" firstAttribute="top" secondItem="l2J-hb-qot" secondAttribute="top" id="4HL-gb-ZdZ"/>
+                            <constraint firstAttribute="trailing" secondItem="Lre-1H-WTS" secondAttribute="trailing" constant="20" id="9P4-AP-Mab"/>
+                            <constraint firstItem="Lre-1H-WTS" firstAttribute="leading" secondItem="l2J-hb-qot" secondAttribute="leading" constant="20" id="Bpi-qD-6ok"/>
                             <constraint firstItem="beG-DN-Bem" firstAttribute="top" secondItem="W1j-xv-u8u" secondAttribute="bottom" id="Fwk-ih-9Lq"/>
                             <constraint firstItem="W1j-xv-u8u" firstAttribute="leading" secondItem="l2J-hb-qot" secondAttribute="leading" id="Grn-gC-l7a"/>
                             <constraint firstItem="beG-DN-Bem" firstAttribute="top" secondItem="omf-Ul-hiO" secondAttribute="bottom" id="JfG-PW-kxJ"/>
@@ -4165,6 +4186,8 @@ El voluntariado comprende actividades asistenciales de servicios sociales, cívi
                             <constraint firstItem="por-Ck-MfZ" firstAttribute="top" secondItem="l2J-hb-qot" secondAttribute="top" id="UFk-nz-WuQ"/>
                             <constraint firstItem="w28-by-eQQ" firstAttribute="centerY" secondItem="l2J-hb-qot" secondAttribute="centerY" id="frb-2P-9Pp"/>
                             <constraint firstAttribute="trailing" secondItem="por-Ck-MfZ" secondAttribute="trailing" id="fwH-pW-Tdw"/>
+                            <constraint firstItem="Lre-1H-WTS" firstAttribute="centerY" secondItem="l2J-hb-qot" secondAttribute="centerY" id="l3q-dJ-Me1"/>
+                            <constraint firstItem="Lre-1H-WTS" firstAttribute="centerX" secondItem="l2J-hb-qot" secondAttribute="centerX" id="m1G-jO-1Xu"/>
                             <constraint firstItem="por-Ck-MfZ" firstAttribute="leading" secondItem="l2J-hb-qot" secondAttribute="leading" id="moG-MD-rkZ"/>
                             <constraint firstAttribute="trailing" secondItem="omf-Ul-hiO" secondAttribute="trailing" id="roe-aj-bQf"/>
                             <constraint firstItem="beG-DN-Bem" firstAttribute="top" secondItem="por-Ck-MfZ" secondAttribute="bottom" id="sD2-27-ok1"/>
@@ -4184,6 +4207,7 @@ El voluntariado comprende actividades asistenciales de servicios sociales, cívi
                         <outlet property="downloadButton" destination="9MH-A8-Axw" id="SdO-gP-kkp"/>
                         <outlet property="menuContentView" destination="W1j-xv-u8u" id="ef6-bz-dbf"/>
                         <outlet property="menuHeightConstraint" destination="4R5-ZW-LSN" id="Djo-yk-1UR"/>
+                        <outlet property="noDocumentsLabel" destination="Lre-1H-WTS" id="yBf-lx-854"/>
                         <outlet property="searchBarButtonItem" destination="3DR-Zf-cqO" id="Yuv-Ad-b64"/>
                         <outlet property="shadowView" destination="omf-Ul-hiO" id="B9j-QB-Dbs"/>
                         <outlet property="tableView" destination="por-Ck-MfZ" id="xzN-3R-bEa"/>

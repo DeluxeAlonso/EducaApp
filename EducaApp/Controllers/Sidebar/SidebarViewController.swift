@@ -41,7 +41,7 @@ class MenuController: StaticDataTableViewController {
   
   private func setupMenuItems() {
     currentUser = User.getAuthenticatedUser(dataLayer.managedObjectContext!)
-    periodLabel.text = "Postular a \((currentUser?.periodName)!)"
+    periodLabel.text = "\((currentUser?.periodName)!)"
     setupPermissions()
     for action in (currentUser?.actions)! {
       let idnumber = (action as! Action).id
