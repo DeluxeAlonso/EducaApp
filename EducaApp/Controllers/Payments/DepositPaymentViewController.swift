@@ -8,13 +8,18 @@
 
 import UIKit
 
-class DepositPaymentTableViewController: UITableViewController {
+class DepositPaymentTableViewController: UITableViewController, UIPickerViewDataSource, UIPickerViewDelegate {
   
   var payment: Payment?
   var selectedDate: NSDate?
+  var pickerOption = ["BANCO DE CREDITO DEL PERU",
+                      "BBVA BANCO CONTINENTAL",
+                      "INTERBANK",
+                      "SCOTIABANK"]
   
   @IBOutlet weak var voucherTextField: UITextField!
   @IBOutlet weak var dateTextField: UITextField!
+  @IBOutlet weak var bankTextField: UITextField!
   
   override func viewDidLoad() {
     super.viewDidLoad()
@@ -46,6 +51,29 @@ class DepositPaymentTableViewController: UITableViewController {
     selectedDate = sender.date
   }
   
+  func setupBankPicker(){
+    let bankPickerView = UIPickerView()
+    bankPickerView.delegate = self
+    bankPickerView.backgroundColor = UIColor.whiteColor()
+    bankTextField.inputView = bankPickerView
+  }
+  
+  func numberOfComponentsInPickerView(pickerView: UIPickerView) -> Int {
+    return 1
+  }
+  
+  func pickerView(pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+    return pickerOption.count
+  }
+  
+  func pickerView(pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+    return pickerOption[row]
+  }
+  
+  func pickerView(pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+    bankTextField.text = pickerOption[row]
+  }
+  
   @IBAction func dimissDepositForm(sender: AnyObject) {
     dismissViewControllerAnimated(true, completion: nil)
   }
@@ -54,6 +82,8 @@ class DepositPaymentTableViewController: UITableViewController {
     let feeId = "\(payment!.id)"
     let voucherCode = voucherTextField.text
     let date = Double(selectedDate!.timeIntervalSince1970)
+    //let bank = bankTextField.text
+    //, bank: bank
     PaymentService.registerPayment(feeId, voucherCode: voucherCode!, date: date, completion: {(responseObject: AnyObject?, error: NSError?) in
       print(error?.description)
       let json = responseObject

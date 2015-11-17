@@ -22,6 +22,9 @@ class PaymentService: NSObject {
     })
   }
   
+  //, bank: String
+  //, "bank": bank
+  
   class func registerPayment(feeId: String, voucherCode: String, date: Double, completion: (responseObject: NSObject?, error: NSError?) -> Void) {
     let parameters = ["fee_id": feeId, "voucher_code": voucherCode , "date": date]
       NetworkManager.sharedInstance.requestSerializer.setValue(User.getAuthToken(), forHTTPHeaderField: Constants.Api.Header)
