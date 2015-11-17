@@ -20,7 +20,7 @@
         <!--Pagos-->
         <scene sceneID="szj-sd-gsM">
             <objects>
-                <viewController storyboardIdentifier="DonationsViewController" id="xHp-Bu-IDF" customClass="PaymentsViewController" customModule="EducaApp" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="xHp-Bu-IDF" customClass="PaymentsViewController" customModule="EducaApp" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="E11-cy-uL0"/>
                         <viewControllerLayoutGuide type="bottom" id="LY7-TB-GUx"/>
@@ -2634,6 +2634,52 @@ El voluntariado comprende actividades asistenciales de servicios sociales, cívi
             <point key="canvasLocation" x="-681" y="32"/>
         </scene>
         <!--Reveal View Controller-->
+        <scene sceneID="YFk-NU-ZAC">
+            <objects>
+                <viewController storyboardIdentifier="PeriodsMenuViewController" id="iH6-eX-ouk" customClass="SWRevealViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="NK6-F8-WYF"/>
+                        <viewControllerLayoutGuide type="bottom" id="lLF-ET-tYC"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="6uA-Kg-tWM">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <animations/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <connections>
+                        <segue destination="iwE-5P-Cpj" kind="custom" identifier="sw_front" customClass="SWRevealViewControllerSegueSetController" id="rOI-1C-a3c"/>
+                        <segue destination="ch9-Mj-2JE" kind="custom" identifier="sw_rear" customClass="SWRevealViewControllerSegueSetController" id="bm5-Tq-ecy"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="0VH-CU-adf" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1455" y="-1484"/>
+        </scene>
+        <!--Reveal View Controller-->
+        <scene sceneID="Y6T-G8-od0">
+            <objects>
+                <viewController storyboardIdentifier="SessionsMenuViewController" id="dpn-30-wJo" customClass="SWRevealViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="R83-ny-N3u"/>
+                        <viewControllerLayoutGuide type="bottom" id="ijf-5w-xsP"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="ZLU-Qr-hJg">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <animations/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <connections>
+                        <segue destination="ch9-Mj-2JE" kind="custom" identifier="sw_rear" customClass="SWRevealViewControllerSegueSetController" id="U4G-0i-Dl9"/>
+                        <segue destination="eId-bY-6l6" kind="custom" identifier="sw_front" customClass="SWRevealViewControllerSegueSetController" id="Pre-Nv-Nqk"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="OEQ-1h-4lW" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1451" y="-724"/>
+        </scene>
+        <!--Reveal View Controller-->
         <scene sceneID="72H-V9-wjA">
             <objects>
                 <viewController storyboardIdentifier="MainViewController" id="Chu-gx-nid" customClass="SWRevealViewController" sceneMemberID="viewController">
@@ -2656,10 +2702,56 @@ El voluntariado comprende actividades asistenciales de servicios sociales, cívi
             </objects>
             <point key="canvasLocation" x="-1452" y="32"/>
         </scene>
+        <!--Reveal View Controller-->
+        <scene sceneID="7ms-jP-kFx">
+            <objects>
+                <viewController storyboardIdentifier="PaymentsMenuViewController" id="o4T-R7-6ZP" customClass="SWRevealViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="bft-xX-H5h"/>
+                        <viewControllerLayoutGuide type="bottom" id="vtP-pI-729"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="VX0-Re-z7Q">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <animations/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <connections>
+                        <segue destination="3Zj-sa-evx" kind="custom" identifier="sw_front" customClass="SWRevealViewControllerSegueSetController" id="6CU-3i-foV"/>
+                        <segue destination="ch9-Mj-2JE" kind="custom" identifier="sw_front" customClass="SWRevealViewControllerSegueSetController" id="vch-2M-smu"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="p4i-fo-C7Q" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1451" y="832"/>
+        </scene>
+        <!--Reveal View Controller-->
+        <scene sceneID="oRv-r0-I7I">
+            <objects>
+                <viewController storyboardIdentifier="DocumentsMenuViewController" id="N7V-Qk-VyY" customClass="SWRevealViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="gpw-pY-5a5"/>
+                        <viewControllerLayoutGuide type="bottom" id="t3M-07-J45"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="fUd-GR-Zwv">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <animations/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <connections>
+                        <segue destination="g6b-oT-GuY" kind="custom" identifier="sw_front" customClass="SWRevealViewControllerSegueSetController" id="OhW-LA-j8S"/>
+                        <segue destination="ch9-Mj-2JE" kind="custom" identifier="sw_rear" customClass="SWRevealViewControllerSegueSetController" id="NOH-ML-OHl"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="WgS-6r-F73" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1459" y="1688"/>
+        </scene>
         <!--Navigation Controller-->
         <scene sceneID="UFD-sy-QWo">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="3Zj-sa-evx" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="PaymentsViewController" automaticallyAdjustsScrollViewInsets="NO" id="3Zj-sa-evx" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="oce-9y-DDb">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
@@ -5238,7 +5330,7 @@ El voluntariado comprende actividades asistenciales de servicios sociales, cívi
         <!--Navigation Controller-->
         <scene sceneID="EQv-U9-Yf9">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="g6b-oT-GuY" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="DocumentsViewController" automaticallyAdjustsScrollViewInsets="NO" id="g6b-oT-GuY" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="1mD-To-euB">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
@@ -7349,8 +7441,13 @@ El voluntariado comprende actividades asistenciales de servicios sociales, cívi
         <image name="WriteCommentIcon" width="30" height="30"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="RtS-xr-ajm"/>
-        <segue reference="ThX-Nn-SQw"/>
+        <segue reference="Pre-Nv-Nqk"/>
+        <segue reference="bm5-Tq-ecy"/>
+        <segue reference="rOI-1C-a3c"/>
+        <segue reference="OhW-LA-j8S"/>
+        <segue reference="dRH-hr-v2Y"/>
         <segue reference="maf-yN-UYl"/>
+        <segue reference="KtG-YL-lHe"/>
+        <segue reference="6CU-3i-foV"/>
     </inferredMetricsTieBreakers>
 </document>
