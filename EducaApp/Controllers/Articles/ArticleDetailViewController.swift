@@ -47,7 +47,8 @@ class ArticleDetailViewController: BaseViewController {
   private func setupArticle() {
     articleImageView.sd_setImageWithURL(NSURL(string: (article?.imageUrl)!)!, placeholderImage: UIImage(named: DefaultBackgroundImage))
     titleLabel.text = article!.title
-    authorLabel.text = "\((article?.author.firstName)!), \((article?.postTime)!)"
+    authorLabel.text = NSDate.getDiffDate((article?.postDate)!)
+    articleTextView.text = article?.content
   }
   
   // MARK: - Actions

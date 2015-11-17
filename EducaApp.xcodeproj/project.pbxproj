@@ -32,6 +32,7 @@
 		E264BB811BBDF7D800D4D7D5 /* StudentsFilterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E264BB801BBDF7D800D4D7D5 /* StudentsFilterViewController.swift */; };
 		E26916441BB264BC001B1160 /* AssistantDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E26916431BB264BC001B1160 /* AssistantDetailViewController.swift */; };
 		E279C83F1BBCCDD900FCC139 /* SortSelectionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E279C83E1BBCCDD900FCC139 /* SortSelectionTableViewCell.swift */; };
+		E291238D1BFAE99E00CF2A58 /* Post.swift in Sources */ = {isa = PBXBuildFile; fileRef = E291238C1BFAE99E00CF2A58 /* Post.swift */; };
 		E2926EF41BE8B38B00FB94E9 /* DocumentService.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2926EF31BE8B38B00FB94E9 /* DocumentService.swift */; };
 		E29F29141BDF59B2000D174B /* SchoolService.swift in Sources */ = {isa = PBXBuildFile; fileRef = E29F29131BDF59B2000D174B /* SchoolService.swift */; };
 		E29F29161BDF5C49000D174B /* School.swift in Sources */ = {isa = PBXBuildFile; fileRef = E29F29151BDF5C49000D174B /* School.swift */; };
@@ -84,7 +85,6 @@
 		E2E4F8111BBE3D8600224059 /* PostTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2E4F8101BBE3D8600224059 /* PostTableViewCell.swift */; };
 		E2E4F8131BBE3D9300224059 /* StudentTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2E4F8121BBE3D9300224059 /* StudentTableViewCell.swift */; };
 		E2E4F8151BBE40FF00224059 /* Student.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2E4F8141BBE40FF00224059 /* Student.swift */; };
-		E2E4F8171BBE410C00224059 /* Post.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2E4F8161BBE410C00224059 /* Post.swift */; };
 		E2E56B391BA5549700D18F76 /* CALayerHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2E56B381BA5549700D18F76 /* CALayerHelper.swift */; };
 		E2E56B491BA55A3700D18F76 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2E56B461BA55A3700D18F76 /* Constants.swift */; };
 		E2E56B4A1BA55A3700D18F76 /* DataLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2E56B471BA55A3700D18F76 /* DataLayer.swift */; };
@@ -120,7 +120,6 @@
 		E2F457111BE1DC4D00941231 /* StaticDataTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E2F457101BE1DC4D00941231 /* StaticDataTableViewController.m */; };
 		E2F457131BE1ED5B00941231 /* SessionReunionPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2F457121BE1ED5B00941231 /* SessionReunionPoint.swift */; };
 		E2F462BD1BD895C600339271 /* SessionService.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2F462BC1BD895C600339271 /* SessionService.swift */; };
-		E2F598D41BB29E4E00C0206E /* SessionComment.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2F598D31BB29E4E00C0206E /* SessionComment.swift */; };
 		E2F8565F1BED546000815088 /* PendingPaymentTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2F8565E1BED546000815088 /* PendingPaymentTableViewCell.swift */; };
 		E2F856611BED547700815088 /* CanceledPaymentTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2F856601BED547700815088 /* CanceledPaymentTableViewCell.swift */; };
 		E2F856631BED548E00815088 /* DebtPaymentTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2F856621BED548E00815088 /* DebtPaymentTableViewCell.swift */; };
@@ -219,6 +218,7 @@
 		E264BB801BBDF7D800D4D7D5 /* StudentsFilterViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = StudentsFilterViewController.swift; path = Controllers/Filters/StudentsFilterViewController.swift; sourceTree = "<group>"; };
 		E26916431BB264BC001B1160 /* AssistantDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AssistantDetailViewController.swift; path = Controllers/Sessions/AssistantDetailViewController.swift; sourceTree = "<group>"; };
 		E279C83E1BBCCDD900FCC139 /* SortSelectionTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SortSelectionTableViewCell.swift; path = Views/Cells/Filters/SortSelectionTableViewCell.swift; sourceTree = "<group>"; };
+		E291238C1BFAE99E00CF2A58 /* Post.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Post.swift; path = Models/Post.swift; sourceTree = "<group>"; };
 		E2926EF31BE8B38B00FB94E9 /* DocumentService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DocumentService.swift; path = Networking/DocumentService.swift; sourceTree = "<group>"; };
 		E29F29131BDF59B2000D174B /* SchoolService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SchoolService.swift; path = Networking/SchoolService.swift; sourceTree = "<group>"; };
 		E29F29151BDF5C49000D174B /* School.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = School.swift; path = Models/School.swift; sourceTree = "<group>"; };
@@ -272,7 +272,6 @@
 		E2E4F8101BBE3D8600224059 /* PostTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PostTableViewCell.swift; path = Views/Cells/PostTableViewCell.swift; sourceTree = "<group>"; };
 		E2E4F8121BBE3D9300224059 /* StudentTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = StudentTableViewCell.swift; path = Views/Cells/StudentTableViewCell.swift; sourceTree = "<group>"; };
 		E2E4F8141BBE40FF00224059 /* Student.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Student.swift; path = Models/Student.swift; sourceTree = "<group>"; };
-		E2E4F8161BBE410C00224059 /* Post.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Post.swift; path = Models/Post.swift; sourceTree = "<group>"; };
 		E2E56B381BA5549700D18F76 /* CALayerHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CALayerHelper.swift; path = Helpers/CALayerHelper.swift; sourceTree = "<group>"; };
 		E2E56B461BA55A3700D18F76 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Constants.swift; path = Helpers/Util/Constants.swift; sourceTree = "<group>"; };
 		E2E56B471BA55A3700D18F76 /* DataLayer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DataLayer.swift; path = Helpers/Util/DataLayer.swift; sourceTree = "<group>"; };
@@ -309,7 +308,6 @@
 		E2F457101BE1DC4D00941231 /* StaticDataTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = StaticDataTableViewController.m; path = Vendors/StaticDataTableViewController.m; sourceTree = "<group>"; };
 		E2F457121BE1ED5B00941231 /* SessionReunionPoint.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SessionReunionPoint.swift; path = Models/SessionReunionPoint.swift; sourceTree = "<group>"; };
 		E2F462BC1BD895C600339271 /* SessionService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SessionService.swift; path = Networking/SessionService.swift; sourceTree = "<group>"; };
-		E2F598D31BB29E4E00C0206E /* SessionComment.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SessionComment.swift; path = Models/SessionComment.swift; sourceTree = "<group>"; };
 		E2F8565E1BED546000815088 /* PendingPaymentTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PendingPaymentTableViewCell.swift; path = Views/Cells/PendingPaymentTableViewCell.swift; sourceTree = "<group>"; };
 		E2F856601BED547700815088 /* CanceledPaymentTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CanceledPaymentTableViewCell.swift; path = Views/Cells/CanceledPaymentTableViewCell.swift; sourceTree = "<group>"; };
 		E2F856621BED548E00815088 /* DebtPaymentTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DebtPaymentTableViewCell.swift; path = Views/Cells/DebtPaymentTableViewCell.swift; sourceTree = "<group>"; };
@@ -634,17 +632,16 @@
 		E2E9CA471B97BA6300DC0EDA /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				E291238C1BFAE99E00CF2A58 /* Post.swift */,
 				E2EEF3631BE0392C003A83B0 /* Action.swift */,
 				E26116E21BABA374002C0332 /* Article.swift */,
 				E202F74A1BB3658100D5E64D /* Document.swift */,
 				E2EFE92E1BE931AB00E7B138 /* DocumentSession.swift */,
 				E2EFE9301BE93A4100E7B138 /* DocumentUser.swift */,
-				E2E4F8161BBE410C00224059 /* Post.swift */,
 				E2FA6F771BDDA06A000DA2E5 /* Profile.swift */,
 				E2EEF3611BE038CF003A83B0 /* ReunionPoint.swift */,
 				E2E990DA1BD75477006064FD /* Session.swift */,
 				E2FA6F831BDE0160000DA2E5 /* SessionUser.swift */,
-				E2F598D31BB29E4E00C0206E /* SessionComment.swift */,
 				E2FBE73F1BDFDEA600DC7457 /* SessionStudent.swift */,
 				E2E4F8141BBE40FF00224059 /* Student.swift */,
 				E29F29151BDF5C49000D174B /* School.swift */,
@@ -1029,7 +1026,6 @@
 				E253E3C41BCDDB34006A284F /* NotificationControlTableViewCell.swift in Sources */,
 				E2EFE9311BE93A4100E7B138 /* DocumentUser.swift in Sources */,
 				E2F856631BED548E00815088 /* DebtPaymentTableViewCell.swift in Sources */,
-				E2E4F8171BBE410C00224059 /* Post.swift in Sources */,
 				E2F9C89E1BCF47E000DBE7B9 /* CVCalendarViewAppearance.swift in Sources */,
 				E2F9C8A11BCF47E000DBE7B9 /* CVCalendarViewPresentationMode.swift in Sources */,
 				E2E3465B1BA77929007232A9 /* DonationsViewController.swift in Sources */,
@@ -1080,7 +1076,6 @@
 				E2ED7EEF1BC651E9001A7C29 /* ArticleMapViewController.swift in Sources */,
 				E2FBE7401BDFDEA600DC7457 /* SessionStudent.swift in Sources */,
 				E2E13AB81BA6AFF0004C6E45 /* ChasingDotsStyle.swift in Sources */,
-				E2F598D41BB29E4E00C0206E /* SessionComment.swift in Sources */,
 				E2F9C8911BCF47E000DBE7B9 /* CVAuxiliaryView.swift in Sources */,
 				E2EEA6501BDA1B7D00D3CE7F /* MapTasks.swift in Sources */,
 				E2E4F8111BBE3D8600224059 /* PostTableViewCell.swift in Sources */,
@@ -1098,6 +1093,7 @@
 				E2E4F80F1BBE3D4B00224059 /* UserTableViewCell.swift in Sources */,
 				E2ED7EF21BC668E5001A7C29 /* SchoolsMapViewController.swift in Sources */,
 				E2F2D8301BC77E08005DDEA2 /* PostAuthorDetailViewController.swift in Sources */,
+				E291238D1BFAE99E00CF2A58 /* Post.swift in Sources */,
 				E2EF5EBC1BEC6D0B00573642 /* DocumentPreviewViewController.swift in Sources */,
 				E26116E31BABA374002C0332 /* Article.swift in Sources */,
 				E2E990DD1BD75F07006064FD /* ChangePasswordTableViewController.swift in Sources */,

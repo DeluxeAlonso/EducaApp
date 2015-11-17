@@ -18,9 +18,7 @@ class ArticleTableViewCell: UITableViewCell {
   
   @IBOutlet weak var articleImageView: UIImageView!
   @IBOutlet weak var articleTitle: UILabel!
-  @IBOutlet weak var authorImageView: UIImageView!
   @IBOutlet weak var postTimeLabel: UILabel!
-  @IBOutlet weak var authorNameLabel: UILabel!
   @IBOutlet weak var favoriteButton: UIButton!
   
   let FavoriteButtonTransitionDuration = 0.25
@@ -46,9 +44,7 @@ class ArticleTableViewCell: UITableViewCell {
     articleTitle.textColor = UIColor.defaultTextColor()
     articleTitle.text = article.title
     postTimeLabel.textColor = UIColor.defaultSmallTextColor()
-    postTimeLabel.text = article.postTime
-    authorNameLabel.textColor = UIColor.defaultSmallTextColor()
-    authorNameLabel.text = article.author.firstName
+    postTimeLabel.text = NSDate.getDiffDate(article.postDate)
   }
   
   private func setupButtons(article: Article) {
@@ -57,7 +53,6 @@ class ArticleTableViewCell: UITableViewCell {
   
   private func setupImageViews(article: Article) {
     articleImageView.sd_setImageWithURL(NSURL(string: (article.imageUrl))!, placeholderImage: UIImage(named: ImageAssets.DefaultBackground))
-    authorImageView.image = UIImage(named: ImageAssets.AfiLogo)
   }
   
   private func setupStarImage(imageName: String, favorited: Bool) {
