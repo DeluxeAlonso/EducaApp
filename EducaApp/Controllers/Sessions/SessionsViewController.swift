@@ -85,9 +85,11 @@ class SessionsViewController: BaseViewController {
       self.refreshControl.endRefreshing()
       self.isRefreshing = false
       guard let json = responseObject as? Array<NSDictionary> where json.count > 0 else {
-        self.noSessionsLabel.hidden = false
+        if Util.connectedToNetwork() {
+          self.noSessionsLabel.hidden = false
+          self.tableView.hidden = true
+        }
         self.customLoader.stopActivity()
-        self.tableView.hidden = true
         return
       }
       if (json[0][Constants.Api.ErrorKey] == nil) {

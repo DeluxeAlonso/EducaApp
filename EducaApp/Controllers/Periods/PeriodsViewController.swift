@@ -86,9 +86,11 @@ class PeriodsViewController: BaseFilterViewController {
       self.refreshControl.endRefreshing()
       self.isRefreshing = false
       guard let json = responseObject as? Array<NSDictionary> where json.count > 0 else {
-        self.noReportsLabel.hidden = false
+        if Util.connectedToNetwork() {
+          self.noReportsLabel.hidden = false
+          self.tableView.hidden = true
+        }
         self.customLoader.stopActivity()
-        self.tableView.hidden = true
         return
       }
       if (json[0][Constants.Api.ErrorKey] == nil) {
