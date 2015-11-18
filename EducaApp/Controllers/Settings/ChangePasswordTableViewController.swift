@@ -95,7 +95,7 @@ class ChangePasswordTableViewController: BaseTableViewController {
       showAlertWithTitle(ConfirmPasswordErrorAlertTitle, message: ConfirmPasswordEmptyAlertMessage, buttonTitle: ConfirmPasswordErrorAlertButton)
       return
     }
-    guard oldPassword?.characters.count <= 0 && newPassword?.characters.count < 8 && confirmPassword?.characters.count < 8 else {
+    guard newPassword?.characters.count >= 8 && confirmPassword?.characters.count >= 8 else {
       showAlertWithTitle(ConfirmPasswordErrorAlertTitle, message: ConfirmPasswordLenghtErrorAlertMessage, buttonTitle: ConfirmPasswordErrorAlertButton)
       return
     }
