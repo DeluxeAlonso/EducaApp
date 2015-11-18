@@ -33,11 +33,9 @@ class PaymentService: NSObject {
       })
   }
   
-  class func verifyPayment(paymentId: String, feeID: Int, paymentInfo: NSDictionary, completion: (responseObject: NSObject?, error: NSError?) -> Void) {
+  class func verifyPayment(paymentId: String, feeID: Int, paymentInfo: String, completion: (responseObject: NSObject?, error: NSError?) -> Void) {
     let parameters = ["payment_id": paymentId, "payment_client": paymentInfo, "fee_id": feeID]
-    let serializer = AFJSONRequestSerializer()
-    serializer.setValue(User.getAuthToken(), forHTTPHeaderField: Constants.Api.Header)
-     NetworkManager.sharedInstance.requestSerializer = serializer
+     NetworkManager.sharedInstance.requestSerializer.setValue(User.getAuthToken(), forHTTPHeaderField: Constants.Api.Header)
     NetworkManager.sharedInstance.POST(UrlBuilder.UrlForPath(VerifyPaymentPath), parameters: parameters, success: { (operation: AFHTTPRequestOperation, responseObject: AnyObject?) in
       completion(responseObject: responseObject! as? NSObject, error: nil)
       }, failure: {( operation: AFHTTPRequestOperation, error: NSError) in
