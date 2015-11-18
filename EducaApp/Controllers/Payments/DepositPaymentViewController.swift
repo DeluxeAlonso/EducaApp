@@ -8,18 +8,22 @@
 
 import UIKit
 
-class DepositPaymentTableViewController: UITableViewController {
+class DepositPaymentTableViewController: UITableViewController, UIPickerViewDataSource, UIPickerViewDelegate {
   
   var payment: Payment?
   var selectedDate: NSDate?
+  var pickerOption = ["BANCO DE CREDITO DEL PERU", "BBVA BANCO CONTINENTAL", "INTERBANK", "SCOTIABANK"]
   
   @IBOutlet weak var voucherTextField: UITextField!
   @IBOutlet weak var dateTextField: UITextField!
+  @IBOutlet weak var bankTextField: UITextField!
+  
   
   override func viewDidLoad() {
     super.viewDidLoad()
     setupNavigationBar()
     setupDatePicker()
+    setupBankPicker()
   }
   
   func setupNavigationBar() {
@@ -46,6 +50,30 @@ class DepositPaymentTableViewController: UITableViewController {
     selectedDate = sender.date
   }
   
+  func setupBankPicker(){
+    let bankPickerView = UIPickerView()
+    bankPickerView.delegate = self
+    bankPickerView.backgroundColor = UIColor.whiteColor()
+    bankTextField.inputView = bankPickerView
+  }
+  
+  func numberOfComponentsInPickerView(pickerView: UIPickerView) -> Int {
+    return 1
+  }
+  
+  func pickerView(pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+    return pickerOption.count
+  }
+  
+  func pickerView(pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+    return pickerOption[row]
+  }
+  
+  func pickerView(pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+    bankTextField.text = pickerOption[row]
+  }
+
+  
   @IBAction func dimissDepositForm(sender: AnyObject) {
     dismissViewControllerAnimated(true, completion: nil)
   }
@@ -55,11 +83,14 @@ class DepositPaymentTableViewController: UITableViewController {
     let voucherCode = voucherTextField.text
     selectedDate = selectedDate ?? NSDate()
     let date = Double(selectedDate!.timeIntervalSince1970)
-    guard ( voucherCode!.characters.count != 0 && dateTextField.text!.characters.count != 0 ) else {
+    let bank = bankTextField.text
+    
+    guard ( voucherCode!.characters.count != 0 && dateTextField.text!.characters.count != 0 && bankTextField.text!.characters.count != 0) else {
       Util.showAlertWithTitle(self, title: "Error", message: "Los campos no pueden estar en blanco.", buttonTitle: "OK")
       return
     }
-    PaymentService.registerPayment(feeId, voucherCode: voucherCode!, date: date, completion: {(responseObject: AnyObject?, error: NSError?) in
+    
+    PaymentService.registerPayment(feeId, voucherCode: voucherCode!, bank: bank!, date: date, completion: {(responseObject: AnyObject?, error: NSError?) in
       print(error?.description)
       let json = responseObject
       if (json != nil && json?["error"]! == nil) {

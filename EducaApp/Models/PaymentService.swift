@@ -23,14 +23,14 @@ class PaymentService: NSObject {
     })
   }
   
-  class func registerPayment(feeId: String, voucherCode: String, date: Double, completion: (responseObject: NSObject?, error: NSError?) -> Void) {
-    let parameters = ["fee_id": feeId, "voucher_code": voucherCode , "date": date]
-      NetworkManager.sharedInstance.requestSerializer.setValue(User.getAuthToken(), forHTTPHeaderField: Constants.Api.Header)
-      NetworkManager.sharedInstance.POST(UrlBuilder.UrlForPath(RegisterPaymentPath), parameters: parameters, success: { (operation: AFHTTPRequestOperation, responseObject: AnyObject?) in
+  class func registerPayment(feeId: String, voucherCode: String, bank: String, date: Double, completion: (responseObject: NSObject?, error: NSError?) -> Void) {
+    let parameters = ["fee_id": feeId, "voucher_code": voucherCode, "bank": bank , "date": date]
+    NetworkManager.sharedInstance.requestSerializer.setValue(User.getAuthToken(), forHTTPHeaderField: Constants.Api.Header)
+    NetworkManager.sharedInstance.POST(UrlBuilder.UrlForPath(RegisterPaymentPath), parameters: parameters, success: { (operation: AFHTTPRequestOperation, responseObject: AnyObject?) in
       completion(responseObject: responseObject! as? NSObject, error: nil)
       }, failure: {( operation: AFHTTPRequestOperation, error: NSError) in
-      completion(responseObject: nil, error: error)
-      })
+        completion(responseObject: nil, error: error)
+    })
   }
   
   class func verifyPayment(paymentId: String, feeID: Int, paymentInfo: String, completion: (responseObject: NSObject?, error: NSError?) -> Void) {
