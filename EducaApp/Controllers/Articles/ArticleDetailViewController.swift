@@ -16,7 +16,6 @@ class ArticleDetailViewController: BaseViewController {
   @IBOutlet weak var articleTextView: UITextView!
   
   let DefaultBackgroundImage = "DefaultBackground"
-  let URLToShare = "https://www.facebook.com/afiperu?fref=ts"
   
   var article: Article?
   
@@ -56,7 +55,7 @@ class ArticleDetailViewController: BaseViewController {
   @IBAction func shareButtonClicked(sender: AnyObject) {
     let textToShare = article!.title
     let imageToShare = articleImageView.image as UIImage!
-    guard let myWebsite = NSURL(string: URLToShare) else {
+    guard let myWebsite = NSURL(string: "http://162.243.118.33/afiperudrupal/node/\(article?.id)") else {
       return
     }
     let objectsToShare = [textToShare, myWebsite, imageToShare]
