@@ -68,7 +68,7 @@ extension NSDate {
     } else if hours < 24 {
       return hours == 1 ? "Hace \(hours) hora." : "Hace \(hours) horas."
     } else if days <= 31 {
-      return days == 1 ? "Hace \(minutes) día." : "Hace \(days) días."
+      return days == 1 ? "Hace \(days) día." : "Hace \(days) días."
     } else if months < 12 {
       return months == 1 ? "Hace \(months) mes." : "Hace \(months) meses."
     } else {
