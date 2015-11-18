@@ -21,21 +21,30 @@ class PaymentsViewController: BaseViewController {
   @IBOutlet weak var noCalendarLabel: UILabel!
   
   let GoToDepositSegueIdentifier = "GoToDepositSegue"
+  let ConversionRateApiUrl = "http://download.finance.yahoo.com/d/quotes.csv?s=USDPEN=X&f=nl1d1t1"
   
   var paymentConfig = PayPalConfiguration()
   var payments = [Payment]()
+  var selectedPayment: Payment?
   
   // MARK:- Lifecycle
   
   override func viewDidLoad() {
+    customLoader.startActivity()
     super.viewDidLoad()
     setupElements()
   }
   
   override func viewWillAppear(animated: Bool) {
+    customLoader.startActivity()
     super.viewWillAppear(animated)
-    setupPayments()
-    PayPalMobile.preconnectWithEnvironment(PayPalEnvironmentSandbox)
+    if let currencyFactor = NSUserDefaults.standardUserDefaults().doubleForKey("currency") as Double? where currencyFactor != 0.0 {
+      print(currencyFactor)
+      setupPayments()
+      PayPalMobile.preconnectWithEnvironment(PayPalEnvironmentSandbox)
+    } else {
+      setupCurrencyFactor()
+    }
   }
   
   // MARK: - Private
@@ -43,6 +52,21 @@ class PaymentsViewController: BaseViewController {
   private func setupElements() {
     setupBarButtonItem()
     configuratePayment()
+  }
+  
+  private func setupCurrencyFactor() {
+    let url = NSURL(string: ConversionRateApiUrl);
+    let task = NSURLSession.sharedSession().dataTaskWithURL(url!) {(data, response, error) in
+      print(NSString(data: data!, encoding: NSUTF8StringEncoding))
+      guard let string = NSString(data: data!, encoding: NSUTF8StringEncoding) else {
+        return
+      }
+      NSUserDefaults.standardUserDefaults().setDouble(Double(string.componentsSeparatedByString(",")[1])!, forKey: "currency")
+      NSUserDefaults.standardUserDefaults().synchronize()
+      self.setupPayments()
+      PayPalMobile.preconnectWithEnvironment(PayPalEnvironmentSandbox)
+    }
+    task.resume()
   }
   
   private func configuratePayment() {
@@ -66,17 +90,18 @@ class PaymentsViewController: BaseViewController {
   private func getPayments() {
     PaymentService.fetchPayments({(responseObject: AnyObject?, error: NSError?) in
       guard let json = responseObject as? Array<NSDictionary> where json.count > 0 else {
+        if Util.connectedToNetwork() {
+          self.headerView.hidden = true
+          self.noCalendarLabel.hidden = false
+          self.tableView.hidden = true
+        }
         self.customLoader.stopActivity()
-        self.headerView.hidden = true
-        self.tableView.hidden = true
-        self.noCalendarLabel.hidden = false
         return
       }
       if (json[0][Constants.Api.ErrorKey] == nil) {
         let syncedPayments = Payment.syncWithJsonArray(json , ctx: self.dataLayer.managedObjectContext!)
         self.payments = syncedPayments
         self.dataLayer.saveContext()
-        self.customLoader.stopActivity()
         self.tableView.hidden = false
         self.tableView.reloadData()
       }
@@ -94,7 +119,9 @@ class PaymentsViewController: BaseViewController {
   // MARK: - Actions
   
   @IBAction func donateFixedAmout(sender: AnyObject) {
-    let amount = NSDecimalNumber(string: "90.00")
+    let fmt = NSNumberFormatter()
+    fmt.positiveFormat = "0.##"
+    let amount = NSDecimalNumber(string: fmt.stringFromNumber(NSNumber(float: sender as! Float)))
     let payment = PayPalPayment()
     payment.amount = amount
     payment.currencyCode = "USD"
@@ -122,6 +149,9 @@ extension PaymentsViewController: UITableViewDataSource {
   
   func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
     let cell: UITableViewCell
+    if indexPath.row == payments.count - 1 {
+      customLoader.stopActivity()
+    }
     switch payments[indexPath.row].status {
     case 0:
       cell = tableView.dequeueReusableCellWithIdentifier(DebtPaymentCellIdentifier, forIndexPath: indexPath)
@@ -147,7 +177,7 @@ extension PaymentsViewController: UITableViewDelegate {
   
   func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
     let cell = tableView.cellForRowAtIndexPath(indexPath)
-    
+    selectedPayment = payments[indexPath.row]
     if (cell is PendingApprovalPaymentTableViewCell || cell is CanceledPaymentTableViewCell) {
       return
     }
@@ -155,7 +185,9 @@ extension PaymentsViewController: UITableViewDelegate {
     let actionSheetController: UIAlertController = UIAlertController(title: "Método de Pago", message: "Seleccione un método de pago.", preferredStyle: .ActionSheet)
     
     let payPalAction: UIAlertAction = UIAlertAction(title: "PayPal", style: .Default) { action -> Void in
-      self.donateFixedAmout(NSNull)
+      if let currencyFactor = NSUserDefaults.standardUserDefaults().doubleForKey("currency") as Double? {
+        self.donateFixedAmout(self.payments[indexPath.row].amount / Float(currencyFactor))
+      }
     }
     actionSheetController.addAction(payPalAction)
     
@@ -183,7 +215,17 @@ extension PaymentsViewController: UITableViewDelegate {
 extension PaymentsViewController: PayPalPaymentDelegate {
   
   func payPalPaymentViewController(paymentViewController: PayPalPaymentViewController!, didCompletePayment completedPayment: PayPalPayment!) {
-    print(completedPayment.description)
+    let info = NSMutableDictionary()
+    info["amount"] = completedPayment.amount
+    info["currency_code"] = completedPayment.currencyCode
+    let paymentInfo = info as NSDictionary
+    PaymentService.verifyPayment(completedPayment.confirmation["response"]!["id"] as! String, feeID: Int((selectedPayment?.id)!), paymentInfo: paymentInfo, completion: { (responseObject: AnyObject?, error: NSError?) in
+      print(responseObject)
+      print(error?.description)
+      if error == nil {
+        self.getPayments()
+      }
+    })
     self.dismissViewControllerAnimated(true, completion: nil)
   }
   

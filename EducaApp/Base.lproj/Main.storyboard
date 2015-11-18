@@ -627,36 +627,6 @@
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="70x-k1-kcl">
                                                     <rect key="frame" x="0.0" y="0.0" width="600" height="52"/>
                                                     <subviews>
-                                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jGM-pw-gaq" userLabel="Order View">
-                                                            <rect key="frame" x="0.0" y="0.0" width="150" height="52"/>
-                                                            <subviews>
-                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="15/12/2015" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="7" translatesAutoresizingMaskIntoConstraints="NO" id="vQ3-CP-BZX">
-                                                                    <rect key="frame" x="38" y="12" width="74" height="28"/>
-                                                                    <animations/>
-                                                                    <constraints>
-                                                                        <constraint firstAttribute="height" constant="28" id="Mfk-nu-YSo"/>
-                                                                        <constraint firstAttribute="width" constant="74" id="Xv9-vI-OD0"/>
-                                                                    </constraints>
-                                                                    <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="14"/>
-                                                                    <color key="textColor" red="0.0" green="0.59999999999999998" blue="0.80000000000000004" alpha="1" colorSpace="calibratedRGB"/>
-                                                                    <nil key="highlightedColor"/>
-                                                                </label>
-                                                            </subviews>
-                                                            <animations/>
-                                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                                            <constraints>
-                                                                <constraint firstItem="vQ3-CP-BZX" firstAttribute="top" secondItem="jGM-pw-gaq" secondAttribute="top" constant="12" id="1g2-i7-pzE"/>
-                                                                <constraint firstAttribute="centerX" secondItem="vQ3-CP-BZX" secondAttribute="centerX" id="QRH-s1-8uF"/>
-                                                                <constraint firstAttribute="centerY" secondItem="vQ3-CP-BZX" secondAttribute="centerY" id="dvs-U0-F4X"/>
-                                                                <constraint firstItem="vQ3-CP-BZX" firstAttribute="leading" secondItem="jGM-pw-gaq" secondAttribute="leading" constant="38" id="jFU-Aj-a5d"/>
-                                                            </constraints>
-                                                            <variation key="default">
-                                                                <mask key="constraints">
-                                                                    <exclude reference="1g2-i7-pzE"/>
-                                                                    <exclude reference="jFU-Aj-a5d"/>
-                                                                </mask>
-                                                            </variation>
-                                                        </view>
                                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="f2i-Kn-T5z" userLabel="Date View">
                                                             <rect key="frame" x="150" y="0.0" width="150" height="52"/>
                                                             <subviews>
@@ -758,6 +728,36 @@
                                                                 <constraint firstItem="2d0-NO-TnG" firstAttribute="leading" secondItem="RJl-hR-I44" secondAttribute="leading" constant="53" id="ax5-M2-4xp"/>
                                                                 <constraint firstAttribute="centerX" secondItem="2d0-NO-TnG" secondAttribute="centerX" id="gkh-5e-Yrc"/>
                                                             </constraints>
+                                                        </view>
+                                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jGM-pw-gaq" userLabel="Order View">
+                                                            <rect key="frame" x="0.0" y="0.0" width="150" height="52"/>
+                                                            <subviews>
+                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="15/12/2015" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="7" translatesAutoresizingMaskIntoConstraints="NO" id="vQ3-CP-BZX">
+                                                                    <rect key="frame" x="38" y="12" width="74" height="28"/>
+                                                                    <animations/>
+                                                                    <constraints>
+                                                                        <constraint firstAttribute="height" constant="28" id="Mfk-nu-YSo"/>
+                                                                        <constraint firstAttribute="width" constant="74" id="Xv9-vI-OD0"/>
+                                                                    </constraints>
+                                                                    <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="14"/>
+                                                                    <color key="textColor" red="0.0" green="0.59999999999999998" blue="0.80000000000000004" alpha="1" colorSpace="calibratedRGB"/>
+                                                                    <nil key="highlightedColor"/>
+                                                                </label>
+                                                            </subviews>
+                                                            <animations/>
+                                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                                            <constraints>
+                                                                <constraint firstItem="vQ3-CP-BZX" firstAttribute="top" secondItem="jGM-pw-gaq" secondAttribute="top" constant="12" id="1g2-i7-pzE"/>
+                                                                <constraint firstAttribute="centerX" secondItem="vQ3-CP-BZX" secondAttribute="centerX" id="QRH-s1-8uF"/>
+                                                                <constraint firstAttribute="centerY" secondItem="vQ3-CP-BZX" secondAttribute="centerY" id="dvs-U0-F4X"/>
+                                                                <constraint firstItem="vQ3-CP-BZX" firstAttribute="leading" secondItem="jGM-pw-gaq" secondAttribute="leading" constant="38" id="jFU-Aj-a5d"/>
+                                                            </constraints>
+                                                            <variation key="default">
+                                                                <mask key="constraints">
+                                                                    <exclude reference="1g2-i7-pzE"/>
+                                                                    <exclude reference="jFU-Aj-a5d"/>
+                                                                </mask>
+                                                            </variation>
                                                         </view>
                                                     </subviews>
                                                     <animations/>
