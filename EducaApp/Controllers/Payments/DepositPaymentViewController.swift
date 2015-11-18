@@ -53,8 +53,11 @@ class DepositPaymentTableViewController: UITableViewController {
   @IBAction func registerPayment(sender: AnyObject) {
     let feeId = "\(payment!.id)"
     let voucherCode = voucherTextField.text
+    selectedDate = selectedDate ?? NSDate()
     let date = Double(selectedDate!.timeIntervalSince1970)
-    guard ( voucherCode!.characters.count != 0 || dateTextField.text!.characters.count != 0 ) else {
+    print(voucherCode!.characters.count)
+    print(dateTextField.text!.characters.count)
+    guard ( voucherCode!.characters.count != 0 && dateTextField.text!.characters.count != 0 ) else {
       Util.showAlertWithTitle(self, title: "Error", message: "Los campos no pueden estar en blanco.", buttonTitle: "OK")
       return
     }
