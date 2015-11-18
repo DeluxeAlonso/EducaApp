@@ -82,9 +82,9 @@ class DepositPaymentTableViewController: UITableViewController, UIPickerViewData
     let feeId = "\(payment!.id)"
     let voucherCode = voucherTextField.text
     let date = Double(selectedDate!.timeIntervalSince1970)
-    //let bank = bankTextField.text
-    //, bank: bank
-    PaymentService.registerPayment(feeId, voucherCode: voucherCode!, date: date, completion: {(responseObject: AnyObject?, error: NSError?) in
+    let bank = bankTextField.text
+    
+    PaymentService.registerPayment(feeId, voucherCode: voucherCode!, bank: bank!, date: date, completion: {(responseObject: AnyObject?, error: NSError?) in
       print(error?.description)
       let json = responseObject
       if (json != nil && json?["error"]! == nil) {
