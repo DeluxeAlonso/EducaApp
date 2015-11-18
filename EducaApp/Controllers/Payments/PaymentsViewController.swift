@@ -215,13 +215,9 @@ extension PaymentsViewController: UITableViewDelegate {
 extension PaymentsViewController: PayPalPaymentDelegate {
   
   func payPalPaymentViewController(paymentViewController: PayPalPaymentViewController!, didCompletePayment completedPayment: PayPalPayment!) {
-    let info = NSMutableDictionary()
-    info["amount"] = completedPayment.amount
-    info["currency_code"] = completedPayment.currencyCode
-    let paymentInfo = info as NSDictionary
+    let paymentInfo = "{\("\"amount\""): \(completedPayment.amount), \("\"currency_code\""): \("\"USD\"")}"
+    print(paymentInfo)
     PaymentService.verifyPayment(completedPayment.confirmation["response"]!["id"] as! String, feeID: Int((selectedPayment?.id)!), paymentInfo: paymentInfo, completion: { (responseObject: AnyObject?, error: NSError?) in
-      print(responseObject)
-      print(error?.description)
       if error == nil {
         self.getPayments()
       }

@@ -55,8 +55,6 @@ class DepositPaymentTableViewController: UITableViewController {
     let voucherCode = voucherTextField.text
     selectedDate = selectedDate ?? NSDate()
     let date = Double(selectedDate!.timeIntervalSince1970)
-    print(voucherCode!.characters.count)
-    print(dateTextField.text!.characters.count)
     guard ( voucherCode!.characters.count != 0 && dateTextField.text!.characters.count != 0 ) else {
       Util.showAlertWithTitle(self, title: "Error", message: "Los campos no pueden estar en blanco.", buttonTitle: "OK")
       return
