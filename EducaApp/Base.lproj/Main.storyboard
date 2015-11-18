@@ -20,7 +20,7 @@
         <!--Pagos-->
         <scene sceneID="szj-sd-gsM">
             <objects>
-                <viewController storyboardIdentifier="DonationsViewController" id="xHp-Bu-IDF" customClass="PaymentsViewController" customModule="EducaApp" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="xHp-Bu-IDF" customClass="PaymentsViewController" customModule="EducaApp" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="E11-cy-uL0"/>
                         <viewControllerLayoutGuide type="bottom" id="LY7-TB-GUx"/>
@@ -627,36 +627,6 @@
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="70x-k1-kcl">
                                                     <rect key="frame" x="0.0" y="0.0" width="600" height="52"/>
                                                     <subviews>
-                                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jGM-pw-gaq" userLabel="Order View">
-                                                            <rect key="frame" x="0.0" y="0.0" width="150" height="52"/>
-                                                            <subviews>
-                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="15/12/2015" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="7" translatesAutoresizingMaskIntoConstraints="NO" id="vQ3-CP-BZX">
-                                                                    <rect key="frame" x="38" y="12" width="74" height="28"/>
-                                                                    <animations/>
-                                                                    <constraints>
-                                                                        <constraint firstAttribute="height" constant="28" id="Mfk-nu-YSo"/>
-                                                                        <constraint firstAttribute="width" constant="74" id="Xv9-vI-OD0"/>
-                                                                    </constraints>
-                                                                    <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="14"/>
-                                                                    <color key="textColor" red="0.0" green="0.59999999999999998" blue="0.80000000000000004" alpha="1" colorSpace="calibratedRGB"/>
-                                                                    <nil key="highlightedColor"/>
-                                                                </label>
-                                                            </subviews>
-                                                            <animations/>
-                                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                                            <constraints>
-                                                                <constraint firstItem="vQ3-CP-BZX" firstAttribute="top" secondItem="jGM-pw-gaq" secondAttribute="top" constant="12" id="1g2-i7-pzE"/>
-                                                                <constraint firstAttribute="centerX" secondItem="vQ3-CP-BZX" secondAttribute="centerX" id="QRH-s1-8uF"/>
-                                                                <constraint firstAttribute="centerY" secondItem="vQ3-CP-BZX" secondAttribute="centerY" id="dvs-U0-F4X"/>
-                                                                <constraint firstItem="vQ3-CP-BZX" firstAttribute="leading" secondItem="jGM-pw-gaq" secondAttribute="leading" constant="38" id="jFU-Aj-a5d"/>
-                                                            </constraints>
-                                                            <variation key="default">
-                                                                <mask key="constraints">
-                                                                    <exclude reference="1g2-i7-pzE"/>
-                                                                    <exclude reference="jFU-Aj-a5d"/>
-                                                                </mask>
-                                                            </variation>
-                                                        </view>
                                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="f2i-Kn-T5z" userLabel="Date View">
                                                             <rect key="frame" x="150" y="0.0" width="150" height="52"/>
                                                             <subviews>
@@ -758,6 +728,36 @@
                                                                 <constraint firstItem="2d0-NO-TnG" firstAttribute="leading" secondItem="RJl-hR-I44" secondAttribute="leading" constant="53" id="ax5-M2-4xp"/>
                                                                 <constraint firstAttribute="centerX" secondItem="2d0-NO-TnG" secondAttribute="centerX" id="gkh-5e-Yrc"/>
                                                             </constraints>
+                                                        </view>
+                                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jGM-pw-gaq" userLabel="Order View">
+                                                            <rect key="frame" x="0.0" y="0.0" width="150" height="52"/>
+                                                            <subviews>
+                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="15/12/2015" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="7" translatesAutoresizingMaskIntoConstraints="NO" id="vQ3-CP-BZX">
+                                                                    <rect key="frame" x="38" y="12" width="74" height="28"/>
+                                                                    <animations/>
+                                                                    <constraints>
+                                                                        <constraint firstAttribute="height" constant="28" id="Mfk-nu-YSo"/>
+                                                                        <constraint firstAttribute="width" constant="74" id="Xv9-vI-OD0"/>
+                                                                    </constraints>
+                                                                    <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="14"/>
+                                                                    <color key="textColor" red="0.0" green="0.59999999999999998" blue="0.80000000000000004" alpha="1" colorSpace="calibratedRGB"/>
+                                                                    <nil key="highlightedColor"/>
+                                                                </label>
+                                                            </subviews>
+                                                            <animations/>
+                                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                                            <constraints>
+                                                                <constraint firstItem="vQ3-CP-BZX" firstAttribute="top" secondItem="jGM-pw-gaq" secondAttribute="top" constant="12" id="1g2-i7-pzE"/>
+                                                                <constraint firstAttribute="centerX" secondItem="vQ3-CP-BZX" secondAttribute="centerX" id="QRH-s1-8uF"/>
+                                                                <constraint firstAttribute="centerY" secondItem="vQ3-CP-BZX" secondAttribute="centerY" id="dvs-U0-F4X"/>
+                                                                <constraint firstItem="vQ3-CP-BZX" firstAttribute="leading" secondItem="jGM-pw-gaq" secondAttribute="leading" constant="38" id="jFU-Aj-a5d"/>
+                                                            </constraints>
+                                                            <variation key="default">
+                                                                <mask key="constraints">
+                                                                    <exclude reference="1g2-i7-pzE"/>
+                                                                    <exclude reference="jFU-Aj-a5d"/>
+                                                                </mask>
+                                                            </variation>
                                                         </view>
                                                     </subviews>
                                                     <animations/>
@@ -1636,20 +1636,16 @@
                                                         <constraint firstAttribute="height" constant="137" id="8k1-ad-P64"/>
                                                     </constraints>
                                                 </imageView>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="W7Z-yd-VdH">
-                                                    <rect key="frame" x="10" y="148" width="580" height="50"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" misplaced="YES" text="Label" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="W7Z-yd-VdH">
+                                                    <rect key="frame" x="10" y="148" width="580" height="54"/>
                                                     <animations/>
                                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                     <fontDescription key="fontDescription" name="AvenirNext-Medium" family="Avenir Next" pointSize="17"/>
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="551-bh-Frp">
-                                                    <rect key="frame" x="10" y="204" width="30" height="30"/>
-                                                    <animations/>
-                                                </imageView>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="an hour ago" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lMZ-Ig-nYH">
-                                                    <rect key="frame" x="48" y="217" width="125" height="21"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="an hour ago" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lMZ-Ig-nYH">
+                                                    <rect key="frame" x="10" y="213" width="125" height="17"/>
                                                     <animations/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="125" id="KQY-ro-XjD"/>
@@ -1658,25 +1654,14 @@
                                                     <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xe2-7Q-fhi">
-                                                    <rect key="frame" x="48" y="201" width="339" height="21"/>
-                                                    <animations/>
-                                                    <constraints>
-                                                        <constraint firstAttribute="height" constant="21" id="1sd-hO-8EY"/>
-                                                        <constraint firstAttribute="width" constant="339" id="Tnx-bv-9e4"/>
-                                                    </constraints>
-                                                    <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="13"/>
-                                                    <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                                <button opaque="NO" contentMode="center" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ePJ-SY-KZ1" userLabel="Favorite Button">
-                                                    <rect key="frame" x="545" y="187" width="55" height="55"/>
+                                                <button opaque="NO" contentMode="center" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ePJ-SY-KZ1" userLabel="Favorite Button">
+                                                    <rect key="frame" x="539" y="187" width="61" height="56"/>
                                                     <animations/>
                                                     <rect key="contentStretch" x="1" y="1" width="1" height="1"/>
                                                     <gestureRecognizers/>
                                                     <constraints>
-                                                        <constraint firstAttribute="height" constant="55" id="CQI-X7-3Ye"/>
-                                                        <constraint firstAttribute="width" constant="55" id="iug-1B-yD9"/>
+                                                        <constraint firstAttribute="height" constant="55.5" id="CQI-X7-3Ye"/>
+                                                        <constraint firstAttribute="width" constant="61" id="iug-1B-yD9"/>
                                                     </constraints>
                                                     <inset key="contentEdgeInsets" minX="5" minY="12" maxX="5" maxY="5"/>
                                                     <inset key="imageEdgeInsets" minX="5" minY="5" maxX="5" maxY="5"/>
@@ -1689,25 +1674,17 @@
                                             <animations/>
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                             <constraints>
-                                                <constraint firstItem="Nfy-CI-maQ" firstAttribute="leading" secondItem="551-bh-Frp" secondAttribute="leading" id="0al-7h-LiN"/>
+                                                <constraint firstItem="lMZ-Ig-nYH" firstAttribute="leading" secondItem="W7Z-yd-VdH" secondAttribute="leading" id="0GC-At-vcr"/>
                                                 <constraint firstItem="Nfy-CI-maQ" firstAttribute="leading" secondItem="k11-Ac-od4" secondAttribute="leadingMargin" constant="2" id="5YR-0b-bxs"/>
-                                                <constraint firstItem="xe2-7Q-fhi" firstAttribute="leading" secondItem="k11-Ac-od4" secondAttribute="leading" constant="48" id="B80-UX-GhY"/>
-                                                <constraint firstItem="xe2-7Q-fhi" firstAttribute="leading" secondItem="551-bh-Frp" secondAttribute="trailing" constant="8" id="H6K-Ig-oGG"/>
-                                                <constraint firstItem="lMZ-Ig-nYH" firstAttribute="top" secondItem="W7Z-yd-VdH" secondAttribute="bottom" constant="19" id="MyO-q9-cOu"/>
-                                                <constraint firstAttribute="bottomMargin" secondItem="551-bh-Frp" secondAttribute="bottom" constant="0.5" id="OfB-c6-PPy"/>
+                                                <constraint firstItem="lMZ-Ig-nYH" firstAttribute="top" secondItem="W7Z-yd-VdH" secondAttribute="bottom" constant="11" id="MyO-q9-cOu"/>
                                                 <constraint firstItem="Nfy-CI-maQ" firstAttribute="trailing" secondItem="W7Z-yd-VdH" secondAttribute="trailing" id="Pee-JO-InK"/>
                                                 <constraint firstItem="Nfy-CI-maQ" firstAttribute="centerX" secondItem="k11-Ac-od4" secondAttribute="centerX" id="VCN-mH-aAI"/>
-                                                <constraint firstAttribute="bottomMargin" secondItem="xe2-7Q-fhi" secondAttribute="bottom" constant="12.5" id="WBz-Eo-NoV"/>
-                                                <constraint firstItem="551-bh-Frp" firstAttribute="top" secondItem="W7Z-yd-VdH" secondAttribute="bottom" constant="6" id="ZCW-sO-ibh"/>
-                                                <constraint firstItem="xe2-7Q-fhi" firstAttribute="top" secondItem="W7Z-yd-VdH" secondAttribute="bottom" constant="3" id="ZMM-Ct-h9E"/>
-                                                <constraint firstItem="551-bh-Frp" firstAttribute="leading" secondItem="k11-Ac-od4" secondAttribute="leadingMargin" constant="2" id="myd-v4-udE"/>
                                                 <constraint firstItem="W7Z-yd-VdH" firstAttribute="top" secondItem="Nfy-CI-maQ" secondAttribute="bottom" constant="3" id="olP-Xh-p5P"/>
-                                                <constraint firstItem="lMZ-Ig-nYH" firstAttribute="leading" secondItem="xe2-7Q-fhi" secondAttribute="leading" id="pk8-15-4xf"/>
-                                                <constraint firstAttribute="bottomMargin" secondItem="lMZ-Ig-nYH" secondAttribute="bottom" constant="-3.5" id="qja-Th-hsu"/>
+                                                <constraint firstAttribute="bottomMargin" secondItem="lMZ-Ig-nYH" secondAttribute="bottom" constant="5" id="qja-Th-hsu"/>
                                                 <constraint firstItem="Nfy-CI-maQ" firstAttribute="leading" secondItem="W7Z-yd-VdH" secondAttribute="leading" id="smd-YF-O2v"/>
                                                 <constraint firstAttribute="trailing" secondItem="ePJ-SY-KZ1" secondAttribute="trailing" id="uBv-Nt-8EQ"/>
                                                 <constraint firstItem="Nfy-CI-maQ" firstAttribute="top" secondItem="k11-Ac-od4" secondAttribute="topMargin" id="xqJ-LA-v40"/>
-                                                <constraint firstAttribute="bottom" secondItem="ePJ-SY-KZ1" secondAttribute="bottom" constant="0.5" id="zuZ-Pg-JQQ"/>
+                                                <constraint firstAttribute="bottom" secondItem="ePJ-SY-KZ1" secondAttribute="bottom" id="zuZ-Pg-JQQ"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <animations/>
@@ -1716,8 +1693,6 @@
                                         <connections>
                                             <outlet property="articleImageView" destination="Nfy-CI-maQ" id="lDe-KD-F8s"/>
                                             <outlet property="articleTitle" destination="W7Z-yd-VdH" id="VJu-h6-d75"/>
-                                            <outlet property="authorImageView" destination="551-bh-Frp" id="Nt1-te-60C"/>
-                                            <outlet property="authorNameLabel" destination="xe2-7Q-fhi" id="Zpe-EG-HaR"/>
                                             <outlet property="favoriteButton" destination="ePJ-SY-KZ1" id="VRg-qB-22F"/>
                                             <outlet property="postTimeLabel" destination="lMZ-Ig-nYH" id="3j9-62-PXU"/>
                                         </connections>
@@ -1812,7 +1787,7 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="IgO-PF-8kZ">
-                                                <rect key="frame" x="16" y="255" width="173" height="32"/>
+                                                <rect key="frame" x="16" y="264" width="173" height="32"/>
                                                 <animations/>
                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                 <constraints>
@@ -1831,8 +1806,8 @@
                                                     <constraint firstAttribute="height" constant="1" id="Wv2-0m-Ge7"/>
                                                 </constraints>
                                             </view>
-                                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" bounces="NO" scrollEnabled="NO" editable="NO" textAlignment="justified" translatesAutoresizingMaskIntoConstraints="NO" id="xj1-uM-DYQ">
-                                                <rect key="frame" x="0.0" y="324" width="600" height="659"/>
+                                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" bounces="NO" scrollEnabled="NO" editable="NO" textAlignment="justified" translatesAutoresizingMaskIntoConstraints="NO" id="xj1-uM-DYQ">
+                                                <rect key="frame" x="0.0" y="324" width="600" height="660"/>
                                                 <animations/>
                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                 <string key="text">El Ministerio de la Mujer y Poblaciones Vulnerables (MIMP), destacó la aprobación del reglamento de la Ley General del Voluntario que busca promover la solidaridad y conciencia social entre los peruanos y peruanas, y que establece diversos beneficios de carácter social, salud y educativos a favor de las personas que realicen este tipo de actividades.
@@ -1853,7 +1828,7 @@ El voluntariado comprende actividades asistenciales de servicios sociales, cívi
                                                 <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                             </textView>
-                                            <button opaque="NO" alpha="0.59999999999999998" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="adB-nQ-0NK">
+                                            <button hidden="YES" opaque="NO" alpha="0.59999999999999998" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="adB-nQ-0NK">
                                                 <rect key="frame" x="484" y="250" width="100" height="41"/>
                                                 <animations/>
                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
@@ -1876,7 +1851,7 @@ El voluntariado comprende actividades asistenciales de servicios sociales, cívi
                                             <constraint firstItem="Niw-XZ-lsa" firstAttribute="leading" secondItem="e7a-VI-SnT" secondAttribute="leading" id="4AO-yv-Bbl"/>
                                             <constraint firstItem="xj1-uM-DYQ" firstAttribute="width" secondItem="e7a-VI-SnT" secondAttribute="width" id="9Bt-2y-OJh"/>
                                             <constraint firstItem="sEp-gE-aqV" firstAttribute="centerX" secondItem="e7a-VI-SnT" secondAttribute="centerX" id="AA9-tX-5w2"/>
-                                            <constraint firstItem="IgO-PF-8kZ" firstAttribute="top" secondItem="Sjx-gu-83V" secondAttribute="bottom" id="E3Y-Os-C7P"/>
+                                            <constraint firstItem="IgO-PF-8kZ" firstAttribute="top" secondItem="Sjx-gu-83V" secondAttribute="bottom" constant="9" id="E3Y-Os-C7P"/>
                                             <constraint firstItem="Niw-XZ-lsa" firstAttribute="width" secondItem="e7a-VI-SnT" secondAttribute="width" id="EBy-99-KQg"/>
                                             <constraint firstItem="IgO-PF-8kZ" firstAttribute="leading" secondItem="e7a-VI-SnT" secondAttribute="leading" constant="16" id="JiF-o2-MsC"/>
                                             <constraint firstItem="xj1-uM-DYQ" firstAttribute="leading" secondItem="e7a-VI-SnT" secondAttribute="leading" id="KmS-5K-LUh"/>
@@ -1886,7 +1861,7 @@ El voluntariado comprende actividades asistenciales de servicios sociales, cívi
                                             <constraint firstItem="Niw-XZ-lsa" firstAttribute="top" secondItem="e7a-VI-SnT" secondAttribute="top" id="bcZ-he-VQO"/>
                                             <constraint firstAttribute="trailing" secondItem="Sjx-gu-83V" secondAttribute="trailing" constant="17" id="dZM-4s-gC6"/>
                                             <constraint firstAttribute="trailing" secondItem="Niw-XZ-lsa" secondAttribute="trailing" id="dy1-8y-bDY"/>
-                                            <constraint firstItem="sEp-gE-aqV" firstAttribute="top" secondItem="IgO-PF-8kZ" secondAttribute="bottom" constant="21" id="jZz-dG-ldf"/>
+                                            <constraint firstItem="sEp-gE-aqV" firstAttribute="top" secondItem="IgO-PF-8kZ" secondAttribute="bottom" constant="12" id="jZz-dG-ldf"/>
                                             <constraint firstAttribute="bottom" secondItem="xj1-uM-DYQ" secondAttribute="bottom" constant="5" id="p3f-c7-Rpb"/>
                                             <constraint firstAttribute="trailing" secondItem="xj1-uM-DYQ" secondAttribute="trailing" id="rcG-5g-5d7"/>
                                             <constraint firstItem="xj1-uM-DYQ" firstAttribute="top" secondItem="sEp-gE-aqV" secondAttribute="bottom" constant="14.5" id="tWj-VD-DjU"/>
@@ -2659,6 +2634,52 @@ El voluntariado comprende actividades asistenciales de servicios sociales, cívi
             <point key="canvasLocation" x="-681" y="32"/>
         </scene>
         <!--Reveal View Controller-->
+        <scene sceneID="YFk-NU-ZAC">
+            <objects>
+                <viewController storyboardIdentifier="PeriodsMenuViewController" id="iH6-eX-ouk" customClass="SWRevealViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="NK6-F8-WYF"/>
+                        <viewControllerLayoutGuide type="bottom" id="lLF-ET-tYC"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="6uA-Kg-tWM">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <animations/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <connections>
+                        <segue destination="iwE-5P-Cpj" kind="custom" identifier="sw_front" customClass="SWRevealViewControllerSegueSetController" id="rOI-1C-a3c"/>
+                        <segue destination="ch9-Mj-2JE" kind="custom" identifier="sw_rear" customClass="SWRevealViewControllerSegueSetController" id="bm5-Tq-ecy"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="0VH-CU-adf" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1455" y="-1484"/>
+        </scene>
+        <!--Reveal View Controller-->
+        <scene sceneID="Y6T-G8-od0">
+            <objects>
+                <viewController storyboardIdentifier="SessionsMenuViewController" id="dpn-30-wJo" customClass="SWRevealViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="R83-ny-N3u"/>
+                        <viewControllerLayoutGuide type="bottom" id="ijf-5w-xsP"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="ZLU-Qr-hJg">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <animations/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <connections>
+                        <segue destination="ch9-Mj-2JE" kind="custom" identifier="sw_rear" customClass="SWRevealViewControllerSegueSetController" id="U4G-0i-Dl9"/>
+                        <segue destination="eId-bY-6l6" kind="custom" identifier="sw_front" customClass="SWRevealViewControllerSegueSetController" id="Pre-Nv-Nqk"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="OEQ-1h-4lW" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1451" y="-724"/>
+        </scene>
+        <!--Reveal View Controller-->
         <scene sceneID="72H-V9-wjA">
             <objects>
                 <viewController storyboardIdentifier="MainViewController" id="Chu-gx-nid" customClass="SWRevealViewController" sceneMemberID="viewController">
@@ -2681,10 +2702,56 @@ El voluntariado comprende actividades asistenciales de servicios sociales, cívi
             </objects>
             <point key="canvasLocation" x="-1452" y="32"/>
         </scene>
+        <!--Reveal View Controller-->
+        <scene sceneID="7ms-jP-kFx">
+            <objects>
+                <viewController storyboardIdentifier="PaymentsMenuViewController" id="o4T-R7-6ZP" customClass="SWRevealViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="bft-xX-H5h"/>
+                        <viewControllerLayoutGuide type="bottom" id="vtP-pI-729"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="VX0-Re-z7Q">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <animations/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <connections>
+                        <segue destination="3Zj-sa-evx" kind="custom" identifier="sw_front" customClass="SWRevealViewControllerSegueSetController" id="6CU-3i-foV"/>
+                        <segue destination="ch9-Mj-2JE" kind="custom" identifier="sw_front" customClass="SWRevealViewControllerSegueSetController" id="vch-2M-smu"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="p4i-fo-C7Q" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1451" y="832"/>
+        </scene>
+        <!--Reveal View Controller-->
+        <scene sceneID="oRv-r0-I7I">
+            <objects>
+                <viewController storyboardIdentifier="DocumentsMenuViewController" id="N7V-Qk-VyY" customClass="SWRevealViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="gpw-pY-5a5"/>
+                        <viewControllerLayoutGuide type="bottom" id="t3M-07-J45"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="fUd-GR-Zwv">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <animations/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <connections>
+                        <segue destination="g6b-oT-GuY" kind="custom" identifier="sw_front" customClass="SWRevealViewControllerSegueSetController" id="OhW-LA-j8S"/>
+                        <segue destination="ch9-Mj-2JE" kind="custom" identifier="sw_rear" customClass="SWRevealViewControllerSegueSetController" id="NOH-ML-OHl"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="WgS-6r-F73" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1459" y="1688"/>
+        </scene>
         <!--Navigation Controller-->
         <scene sceneID="UFD-sy-QWo">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="3Zj-sa-evx" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="PaymentsViewController" automaticallyAdjustsScrollViewInsets="NO" id="3Zj-sa-evx" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="oce-9y-DDb">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
@@ -3195,7 +3262,7 @@ El voluntariado comprende actividades asistenciales de servicios sociales, cívi
                                     <segue destination="jWf-S9-fR7" kind="embed" identifier="" id="dWa-Ws-ApM"/>
                                 </connections>
                             </containerView>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="JTO-Ue-dpp">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="JTO-Ue-dpp" userLabel="Week View">
                                 <rect key="frame" x="0.0" y="109" width="600" height="31"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="L" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kO1-bY-NWF">
@@ -5263,7 +5330,7 @@ El voluntariado comprende actividades asistenciales de servicios sociales, cívi
         <!--Navigation Controller-->
         <scene sceneID="EQv-U9-Yf9">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="g6b-oT-GuY" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="DocumentsViewController" automaticallyAdjustsScrollViewInsets="NO" id="g6b-oT-GuY" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="1mD-To-euB">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
@@ -7423,8 +7490,13 @@ El voluntariado comprende actividades asistenciales de servicios sociales, cívi
         <image name="WriteCommentIcon" width="30" height="30"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="RtS-xr-ajm"/>
-        <segue reference="ThX-Nn-SQw"/>
+        <segue reference="Pre-Nv-Nqk"/>
+        <segue reference="bm5-Tq-ecy"/>
+        <segue reference="rOI-1C-a3c"/>
+        <segue reference="OhW-LA-j8S"/>
+        <segue reference="dRH-hr-v2Y"/>
         <segue reference="maf-yN-UYl"/>
+        <segue reference="KtG-YL-lHe"/>
+        <segue reference="6CU-3i-foV"/>
     </inferredMetricsTieBreakers>
 </document>

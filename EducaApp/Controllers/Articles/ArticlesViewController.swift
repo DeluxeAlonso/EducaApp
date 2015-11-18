@@ -21,10 +21,7 @@ class ArticlesViewController: BaseViewController {
   let refreshControl = CustomRefreshControlView()
   
   var articles = [Article]()
-  var allArticles = [Article]()
-
   var labelsArray: Array<UILabel> = []
-  
   var isRefreshing = false
   
   // MARK: - Lifecycle
@@ -79,7 +76,9 @@ class ArticlesViewController: BaseViewController {
         let syncedArticles = Article.syncWithJsonArray(json as! Array<NSDictionary>, ctx: self.dataLayer.managedObjectContext!)
         self.articles = syncedArticles
         self.dataLayer.saveContext()
-        self.reloadData()
+        if self.favoritesSegmentedControl.selectedSegmentIndex == 0 {
+          self.reloadData()
+        }
       } else {
         //Show Error Message
       }
@@ -204,6 +203,14 @@ extension ArticlesViewController: ArticleTableViewCellDelegate {
   func articleTableViewCell(sessionTableViewCell: ArticleTableViewCell, starButtonDidTapped button: UIButton, favorited: Bool, indexPath: NSIndexPath) {
     currentUser!.updateFavoriteArticle(articles[indexPath.row], favorited: favorited, ctx: dataLayer.managedObjectContext!)
     self.dataLayer.saveContext()
+    if favoritesSegmentedControl.selectedSegmentIndex == 1 && !favorited {
+      let favorites = articles.filter { (article) in article.favoritedByCurrentUser == true }
+      articles = favorites
+      tableView.beginUpdates()
+      tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: UITableViewRowAnimation.Fade)
+      tableView.endUpdates()
+      tableView.reloadData()
+    }
   }
   
 }

@@ -24,10 +24,9 @@ class ChangePasswordTableViewController: BaseTableViewController {
   let ConfirmPasswordErrorAlertMessage = "Tu nueva contraseña no coincide con la contraseña confirmada."
   let ConfirmPasswordErrorAlertButton = "Ok"
   
+  let ConfirmPasswordLenghtErrorAlertMessage = "Tu nueva contraseña debe contener como mínimo 8 caracteres."
   let ConfirmPasswordSuccessMessage = "!Se ha cambiado la contraseña de forma exitosa!"
-  
   let ConfirmPasswordEmptyAlertMessage = "Todos los campos son obligatorios."
-  
   let ChangePasswordButtonTitle = "Cambiar Contraseña"
   
   let changePasswordSelector: Selector = "changePassword:"
@@ -94,6 +93,10 @@ class ChangePasswordTableViewController: BaseTableViewController {
     let confirmPassword = collectionOfViews?[ChangePasswordFieldsIndex.ConfirmPassword.rawValue].text
     guard oldPassword?.characters.count != 0 && newPassword?.characters.count != 0 && confirmPassword?.characters.count != 0 else {
       showAlertWithTitle(ConfirmPasswordErrorAlertTitle, message: ConfirmPasswordEmptyAlertMessage, buttonTitle: ConfirmPasswordErrorAlertButton)
+      return
+    }
+    guard newPassword?.characters.count >= 8 && confirmPassword?.characters.count >= 8 else {
+      showAlertWithTitle(ConfirmPasswordErrorAlertTitle, message: ConfirmPasswordLenghtErrorAlertMessage, buttonTitle: ConfirmPasswordErrorAlertButton)
       return
     }
     guard newPassword == confirmPassword else {

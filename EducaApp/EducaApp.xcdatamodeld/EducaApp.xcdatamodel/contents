@@ -5,10 +5,11 @@
         <relationship name="user" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="User" inverseName="actions" inverseEntity="User" syncable="YES"/>
     </entity>
     <entity name="Article" representedClassName="Article" syncable="YES">
+        <attribute name="content" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="favoritedByCurrentUser" optional="YES" attributeType="Boolean" defaultValueString="0.0" syncable="YES"/>
         <attribute name="id" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
         <attribute name="imageUrl" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="postTime" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="postDate" optional="YES" attributeType="Date" syncable="YES"/>
         <attribute name="title" optional="YES" attributeType="String" syncable="YES"/>
         <relationship name="author" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="User" inverseName="articles" inverseEntity="User" syncable="YES"/>
     </entity>
@@ -124,7 +125,7 @@
     </entity>
     <elements>
         <element name="Action" positionX="-2135" positionY="476" width="128" height="73"/>
-        <element name="Article" positionX="-1946" positionY="36" width="128" height="133"/>
+        <element name="Article" positionX="-1946" positionY="36" width="128" height="150"/>
         <element name="Comment" positionX="-2340" positionY="153" width="128" height="133"/>
         <element name="Document" positionX="-2511" positionY="38" width="128" height="163"/>
         <element name="DocumentSession" positionX="-2324" positionY="45" width="128" height="73"/>

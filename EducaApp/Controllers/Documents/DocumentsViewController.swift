@@ -50,6 +50,11 @@ class DocumentsViewController: BaseFilterViewController {
     if session == nil {
       setupDocuments()
       setupTableView()
+    } else {
+      if documents.count == 0{
+        tableView.hidden = true
+        noDocumentsLabel.hidden = false
+      }
     }
   }
   
@@ -102,9 +107,11 @@ class DocumentsViewController: BaseFilterViewController {
       self.refreshControl.endRefreshing()
       self.isRefreshing = false
       guard let json = responseObject as? Array<NSDictionary> where json.count > 0 else {
-        self.noDocumentsLabel.hidden = false
+        if Util.connectedToNetwork() {
+          self.noDocumentsLabel.hidden = false
+          self.tableView.hidden = true
+        }
         self.customLoader.stopActivity()
-        self.tableView.hidden = true
         return
       }
       if (json[0][Constants.Api.ErrorKey] == nil) {

@@ -16,7 +16,8 @@ let GooglePlacesApiKey =  "AIzaSyAE2GOOBEjJA3p_S5Thh8P-0DJF7Y5F1Ww"
 class AppDelegate: UIResponder, UIApplicationDelegate {
   
   var window: UIWindow?
-  var storyboard: UIStoryboard?
+  var storyboard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+  var deviceToken: String?
   
   lazy var dataLayer = DataLayer()
   
@@ -26,7 +27,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
   }
   
   func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
-    launch()
+    if User.isSignedIn() == true {
+      registerDeviceToken()
+    }
+    if let options = launchOptions {
+      let notificationOptions: NSDictionary = (options as NSDictionary).objectForKey(UIApplicationLaunchOptionsRemoteNotificationKey) as! NSDictionary
+      redirectView(notificationOptions["id"] as! Int)
+    } else {
+      launch()
+    }
     dispatch_async(dispatch_get_global_queue(Int(QOS_CLASS_BACKGROUND.rawValue), 0)) {
       NSNotificationCenter.defaultCenter().addObserver(self, selector: "signIn:", name: Constants.Notification.SignIn, object: nil)
       NSNotificationCenter.defaultCenter().addObserver(self, selector: "signOut:", name: Constants.Notification.SignOut, object: nil)
@@ -37,11 +46,23 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
   }
   
   func application(application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: NSData) {
-    print(deviceToken)
+    var deviceTokenStr = deviceToken.description.stringByReplacingOccurrencesOfString(">", withString: "", options: [], range: nil)
+    deviceTokenStr = deviceTokenStr.stringByReplacingOccurrencesOfString("<", withString: "", options: [], range: nil)
+    deviceTokenStr = deviceTokenStr.stringByReplacingOccurrencesOfString(" ", withString: "", options: [], range: nil)
+    deviceTokenStr = deviceTokenStr.lowercaseString
+    self.deviceToken = deviceTokenStr
+    UserService.sendDeviceToken(self.deviceToken!, completion: {(responseObject: AnyObject?, error: NSError?) in
+      print(responseObject)
+      print(error?.description)
+    })
+    print(self.deviceToken)
   }
   
   func application(application: UIApplication, didFailToRegisterForRemoteNotificationsWithError error: NSError) {
-    
+  }
+  
+  func application(application: UIApplication, didReceiveRemoteNotification userInfo: [NSObject : AnyObject]) {
+    Util.showAlertWithTitle(window?.rootViewController, title: "Notificación", message: userInfo["aps"]!["alert"] as! String, buttonTitle: "OK")
   }
   
   func applicationWillResignActive(application: UIApplication) {
@@ -59,7 +80,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
   }
   
   func applicationDidBecomeActive(application: UIApplication) {
-    // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
+    UIApplication.sharedApplication().applicationIconBadgeNumber = 0
   }
   
   func applicationWillTerminate(application: UIApplication) {
@@ -68,26 +89,55 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     dataLayer.saveContext()
   }
   
+  func registerDeviceToken() {
+    let settings = UIUserNotificationSettings(forTypes: [.Sound, .Alert, .Badge], categories: nil)
+    UIApplication.sharedApplication().registerUserNotificationSettings(settings)
+    UIApplication.sharedApplication().registerForRemoteNotifications()
+
+  }
+  
+  func clearDeviceToken() {
+    UIApplication.sharedApplication().unregisterForRemoteNotifications()
+    UserService.signOut({(responseObject: AnyObject?, error: NSError?) in
+      print(responseObject)
+      print(error?.description)
+    })
+  }
+  
   // Mark: - Private
   
   private func launch() {
-    self.storyboard = UIStoryboard(name: "Main", bundle: nil)
     if User.isSignedIn()! {
       window?.rootViewController = getControllerWithIdentifier("MainViewController")
     }else{
-      window?.rootViewController = storyboard?.instantiateInitialViewController()
+      window?.rootViewController = storyboard.instantiateInitialViewController()
+    }
+    self.window?.makeKeyAndVisible()
+  }
+  
+  private func redirectView(notificationId: Int) {
+    switch notificationId {
+    case 1:
+      window?.rootViewController = getControllerWithIdentifier("SessionsMenuViewController")
+    case 2:
+      window?.rootViewController = getControllerWithIdentifier("PaymentsMenuViewController")
+    case 3:
+      window?.rootViewController = getControllerWithIdentifier("DocumentsMenuViewController")
+    default:
+      window?.rootViewController = getControllerWithIdentifier("PeriodsMenuViewController")
     }
     self.window?.makeKeyAndVisible()
   }
   
   private func getControllerWithIdentifier(identifier: String)-> UIViewController? {
-    let controller = self.storyboard?.instantiateViewControllerWithIdentifier(identifier)  as UIViewController?
+    let controller = self.storyboard.instantiateViewControllerWithIdentifier(identifier)  as UIViewController?
     return controller
   }
   
   // MARK: - Notifications
   
   func signIn(notification: NSNotification) {
+    registerDeviceToken()
     let signInViewController = window?.rootViewController
     let initialViewController: UIViewController = getControllerWithIdentifier("MainViewController")!
     
@@ -100,7 +150,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
   }
   
   func signOut(notification: NSNotification) {
-
+    clearDeviceToken()
     let settingsViewController = window?.rootViewController
     let signInViewController: UIViewController = getControllerWithIdentifier("SignInViewController")!
     

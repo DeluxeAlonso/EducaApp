@@ -14,8 +14,9 @@ public class Article: NSManagedObject {
   
   @NSManaged public var id: Int32
   @NSManaged public var title: String
-  @NSManaged public var postTime: String
+  @NSManaged public var postDate: NSDate
   @NSManaged public var imageUrl: String
+  @NSManaged public var content: String
   @NSManaged public var author: User
   @NSManaged public var favoritedByCurrentUser: Bool
   @NSManaged public var favoriteBy: NSSet
@@ -27,14 +28,15 @@ public class Article: NSManagedObject {
 extension Article: Deserializable {
   
   func setDataFromJSON(json: NSDictionary) {
-    guard let id = json["id"] as? Int, title = json["title"] as? String,
-      postTime = json["post_time"] as? String, imageUrl = json["image"] as? String else {
+    guard let id = json["id"] as AnyObject?, title = json["title"] as? String,
+      postDate = json["post_date"] as? Double, imageUrl = json["image_url"] as? String, content = json["content"] as? String else {
       return
     }
-    self.id = Int32(id)
+    self.id = id is Int ? Int32(id as! Int) : Int32(id as! String)!
     self.title = title
-    self.postTime = postTime
+    self.postDate = NSDate(timeIntervalSince1970: postDate)
     self.imageUrl = imageUrl
+    self.content = content
   }
   
 }
@@ -102,10 +104,6 @@ extension Article {
     if let id = json["id"] as? Int {
       article = findOrCreateWithId(Int32(id), ctx: ctx)
       article?.setDataFromJSON(json)
-    }
-    if let authorJson = json["author"] as? Array<NSDictionary>, jsonInfo = authorJson[0] as NSDictionary! {
-      let user = User.updateOrCreateWithJson(jsonInfo, ctx: ctx)
-      article?.author = user!
     }
     return article
   }

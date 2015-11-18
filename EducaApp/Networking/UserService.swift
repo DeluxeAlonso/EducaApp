@@ -13,6 +13,8 @@ let ChangePasswordPath = "change_password"
 let RecoverPasswordPath = "recover_password"
 let UsersPath = "users"
 let ReapplyPath = "reapply"
+let SendDeviceTokenPath = "set_uuid"
+let LogoutPath = "clear_uuid"
 let SendPhotoPath = "?q=photoupload"
 
 class UserService {
@@ -76,6 +78,25 @@ class UserService {
       success: { (operation: AFHTTPRequestOperation, responseObject: AnyObject?) in
         completion(responseObject: responseObject! as? NSObject, error: nil)
       }, failure: {(operation: AFHTTPRequestOperation, error: NSError) in
+        completion(responseObject: nil, error: error)
+    })
+  }
+  
+  class func sendDeviceToken(token: String, completion: (responseObject: NSObject?, error: NSError?) -> Void) {
+    let parameters = ["uuid": token]
+    NetworkManager.sharedInstance.requestSerializer.setValue(User.getAuthToken(), forHTTPHeaderField: Constants.Api.Header)
+    NetworkManager.sharedInstance.POST(UrlBuilder.UrlForPath(SendDeviceTokenPath), parameters: parameters, success: { (operation: AFHTTPRequestOperation, responseObject: AnyObject?) in
+      completion(responseObject: responseObject! as? NSObject, error: nil)
+      }, failure: {( operation: AFHTTPRequestOperation, error: NSError) in
+        completion(responseObject: nil, error: error)
+    })
+  }
+  
+  class func signOut( completion: (responseObject: NSObject?, error: NSError?) -> Void) {
+    NetworkManager.sharedInstance.requestSerializer.setValue(User.getAuthToken(), forHTTPHeaderField: Constants.Api.Header)
+    NetworkManager.sharedInstance.POST(UrlBuilder.UrlForPath(LogoutPath), parameters: nil, success: { (operation: AFHTTPRequestOperation, responseObject: AnyObject?) in
+      completion(responseObject: responseObject! as? NSObject, error: nil)
+      }, failure: {( operation: AFHTTPRequestOperation, error: NSError) in
         completion(responseObject: nil, error: error)
     })
   }

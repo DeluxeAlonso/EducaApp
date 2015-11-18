@@ -81,9 +81,13 @@ class DepositPaymentTableViewController: UITableViewController, UIPickerViewData
   @IBAction func registerPayment(sender: AnyObject) {
     let feeId = "\(payment!.id)"
     let voucherCode = voucherTextField.text
+    selectedDate = selectedDate ?? NSDate()
     let date = Double(selectedDate!.timeIntervalSince1970)
     let bank = bankTextField.text
-    
+    guard ( voucherCode!.characters.count != 0 && dateTextField.text!.characters.count != 0 ) else {
+      Util.showAlertWithTitle(self, title: "Error", message: "Los campos no pueden estar en blanco.", buttonTitle: "OK")
+      return
+    }
     PaymentService.registerPayment(feeId, voucherCode: voucherCode!, bank: bank!, date: date, completion: {(responseObject: AnyObject?, error: NSError?) in
       print(error?.description)
       let json = responseObject

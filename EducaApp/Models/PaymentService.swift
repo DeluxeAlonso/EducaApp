@@ -10,6 +10,7 @@ import UIKit
 
 let PaymentPath = "payment_calendar"
 let RegisterPaymentPath = "payment"
+let VerifyPaymentPath = "verify_payment"
 
 class PaymentService: NSObject {
   
@@ -30,6 +31,16 @@ class PaymentService: NSObject {
       }, failure: {( operation: AFHTTPRequestOperation, error: NSError) in
       completion(responseObject: nil, error: error)
       })
+  }
+  
+  class func verifyPayment(paymentId: String, feeID: Int, paymentInfo: String, completion: (responseObject: NSObject?, error: NSError?) -> Void) {
+    let parameters = ["payment_id": paymentId, "payment_client": paymentInfo, "fee_id": feeID]
+     NetworkManager.sharedInstance.requestSerializer.setValue(User.getAuthToken(), forHTTPHeaderField: Constants.Api.Header)
+    NetworkManager.sharedInstance.POST(UrlBuilder.UrlForPath(VerifyPaymentPath), parameters: parameters, success: { (operation: AFHTTPRequestOperation, responseObject: AnyObject?) in
+      completion(responseObject: responseObject! as? NSObject, error: nil)
+      }, failure: {( operation: AFHTTPRequestOperation, error: NSError) in
+        completion(responseObject: nil, error: error)
+    })
   }
 
 
