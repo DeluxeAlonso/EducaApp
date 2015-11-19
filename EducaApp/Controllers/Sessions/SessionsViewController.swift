@@ -39,6 +39,7 @@ class SessionsViewController: BaseViewController {
   var sessions = [Session]()
   var selectedSession: Session?
   var isRefreshing = false
+  var menuIsOpen = false
   
   override func viewDidLoad() {
     super.viewDidLoad()
@@ -111,6 +112,7 @@ class SessionsViewController: BaseViewController {
   }
   
   private func showMenuView() {
+    menuIsOpen = true
     self.shadowView.translatesAutoresizingMaskIntoConstraints = true
     self.menuContentView.translatesAutoresizingMaskIntoConstraints = true
     self.navigationController?.view.addSubview(self.shadowView)
@@ -123,6 +125,7 @@ class SessionsViewController: BaseViewController {
   }
   
   private func hideMenuViewWithoutAnimation () {
+    menuIsOpen = false
     self.shadowView.alpha = 0.0
     self.menuContentView.frame = CGRect(x: self.menuContentView.frame.origin.x, y: self.menuContentView.frame.origin.y + self.initialHeightConstraintConstant!, width: self.menuContentView.frame.width, height: self.initialHeightConstraintConstant!)
   }
@@ -237,7 +240,9 @@ extension SessionsViewController: UITableViewDelegate {
   
   func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
     selectedSession = sessions[indexPath.row]
-    showMenuView()
+    if !menuIsOpen {
+      showMenuView()
+    }
     tableView.deselectRowAtIndexPath(indexPath, animated: true)
   }
   

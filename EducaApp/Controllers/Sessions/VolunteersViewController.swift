@@ -116,6 +116,10 @@ extension VolunteersViewController: UITableViewDelegate {
   
   func tableView(tableView: UITableView, editActionsForRowAtIndexPath indexPath: NSIndexPath) -> [UITableViewRowAction]? {
     let rateAction = UITableViewRowAction(style: .Normal, title: RateButtonTitle, handler: { (action:UITableViewRowAction, indexPath:NSIndexPath) -> Void in
+      if self.sessionUsers[indexPath.row].attended == false {
+        Util.showAlertWithTitle(self, title: "Error", message: "No se puede calificar al usuario debido a que este no asistió.", buttonTitle: "OK")
+        return
+      }
       let viewController = self.storyboard?.instantiateViewControllerWithIdentifier(RateVolunteerViewControllerIdentifier) as! RateVolunteerViewController
       self.setupPopupNavigationBar()
       viewController.delegate = self
@@ -138,7 +142,6 @@ extension VolunteersViewController: RateVolunteerViewControllerDelegate {
   func rateVolunteerViewController(rateVolunteerViewController: RateVolunteerViewController, rating: Int, comment: String, indexPath: NSIndexPath) {
     enableSaveButton()
     sessionUsers[indexPath.row] = sessionUsers[indexPath.row].user.rateVolunteerInSession(session!, rating: rating, comment: comment, ctx: dataLayer.managedObjectContext!)
-    //dataLayer.saveContext()
     requestParameters()
     ratePopupViewController!.dismiss()
   }
@@ -148,7 +151,6 @@ extension VolunteersViewController: RateVolunteerViewControllerDelegate {
     sessionUsers[indexPath.row] = sessionUsers[indexPath.row].user.markAttendanceToSession(session!, attended: attended, ctx: self.dataLayer.managedObjectContext!)
     attended ? cell.setupVolunteerWithImage(CheckImageName, animated: false) : cell.setupVolunteerWithImage(UncheckImageName, animated: false)
     requestParameters()
-    //dataLayer.saveContext()
   }
   
 }

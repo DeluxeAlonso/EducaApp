@@ -45,9 +45,16 @@ extension DocumentSession {
     
     // Get SessionUsers from the deal
     let persistedSessionDocuments = session.documents
+    for v in persistedSessionDocuments {
+      if (v as! DocumentSession).document.id == 0 {
+        ctx.deleteObject(v as! NSManagedObject)
+      }
+    }
     var persistedSessionDocumentsByDocumentId = Dictionary<Int, DocumentSession>()
     for sessionDocument in persistedSessionDocuments {
-      persistedSessionDocumentsByDocumentId[Int(sessionDocument.document.id)] = sessionDocument as? DocumentSession
+      if sessionDocument.document != nil {
+        persistedSessionDocumentsByDocumentId[Int(sessionDocument.document.id)] = sessionDocument as? DocumentSession
+      }
     }
     
     let persistedIds = Array(persistedSessionDocumentsByDocumentId.keys)
