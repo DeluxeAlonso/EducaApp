@@ -11,7 +11,7 @@ import UIKit
 let ArticlesCellIdentifier = "ArticleCell"
 let GoToArticleDetailSegueIdentifier = "GoToArticleDetailSegue"
 
-class ArticlesViewController: BaseViewController {
+class ArticlesViewController: BaseFilterViewController {
   
   @IBOutlet weak var tableView: UITableView!
   @IBOutlet weak var customLoader: CustomActivityIndicatorView!
@@ -50,6 +50,7 @@ class ArticlesViewController: BaseViewController {
   }
   
   private func setupTableView() {
+    tableView.tableFooterView = UIView()
     self.tableView.estimatedRowHeight = 243
     self.tableView.rowHeight = UITableViewAutomaticDimension
     tableView.addSubview(refreshControl)
@@ -99,6 +100,23 @@ class ArticlesViewController: BaseViewController {
     tableView.reloadSections(NSIndexSet(index: 0), withRowAnimation: UITableViewRowAnimation.Fade)
   }
   
+  private func quickSearchDocument(searchText: String) {
+    articles = searchText == "" ? Article.getAllArticles(dataLayer.managedObjectContext!) : Article.searchByTitle(searchText, ctx: dataLayer.managedObjectContext!)
+    tableView.reloadData()
+  }
+  
+  private func hideSearchBarAnimated(animated: Bool) {
+    let duration = animated ? 0.3 : 0
+    searchBar.resignFirstResponder()
+    UIView.animateWithDuration(duration, animations: {
+      self.navigationItem.titleView?.alpha = 0
+      }, completion: { finished in
+        self.setupBarButtonItem()
+        self.navigationItem.title = DocumentsNavigationItemTitle
+        self.navigationItem.titleView = nil
+    })
+  }
+  
   // MARK: - Public
   
   func refreshData() {
@@ -120,6 +138,19 @@ class ArticlesViewController: BaseViewController {
     }
   }
   
+  func searchBarCancelButtonClicked(searchBar: UISearchBar) {
+    searchBar.text = ""
+    quickSearchDocument("")
+    hideSearchBarAnimated(true)
+  }
+  
+  func searchBar(searchBar: UISearchBar, textDidChange searchText: String) {
+    guard let searchText = searchBar.text else {
+      return
+    }
+    quickSearchDocument(searchText)
+  }
+  
   // MARK: - Actions
   
   @IBAction func segmentedControlIndexChanged(sender: AnyObject) {
@@ -133,6 +164,16 @@ class ArticlesViewController: BaseViewController {
       let destinationVC = segue.destinationViewController as! ArticleDetailViewController
       destinationVC.article = sender as? Article
     }
+  }
+  
+  @IBAction func showSearchBar(sender: AnyObject) {
+    navigationItem.titleView = searchBar
+    searchBar.alpha = 0
+    UIView.animateWithDuration(0.5, animations: {
+      self.searchBar.alpha = 1
+      self.searchBar.becomeFirstResponder()
+      }, completion: { finished in
+    })
   }
   
 }

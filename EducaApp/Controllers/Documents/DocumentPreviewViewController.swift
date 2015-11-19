@@ -45,7 +45,7 @@ class DocumentPreviewViewController: UIViewController {
       showPlaceHolderView()
       return
     }
-    let requestObject = document?.isSaved == true ? NSURLRequest(URL: url, cachePolicy: NSURLRequestCachePolicy.ReturnCacheDataElseLoad, timeoutInterval: 10.0) : NSURLRequest(URL: url, cachePolicy: NSURLRequestCachePolicy.ReloadIgnoringLocalCacheData, timeoutInterval: 10.0)
+    let requestObject = document?.isSaved == true ? NSURLRequest(URL: url, cachePolicy: NSURLRequestCachePolicy.ReturnCacheDataElseLoad, timeoutInterval: 100.0) : NSURLRequest(URL: url, cachePolicy: NSURLRequestCachePolicy.ReloadIgnoringLocalCacheData, timeoutInterval: 10.0)
     documentWebView.loadRequest(requestObject)
   }
   

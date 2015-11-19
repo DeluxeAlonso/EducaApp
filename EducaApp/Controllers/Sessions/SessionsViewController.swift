@@ -29,6 +29,9 @@ class SessionsViewController: BaseViewController {
   
   @IBOutlet weak var noSessionsLabel: UILabel!
   @IBOutlet weak var assistanceViewWidthContraint: NSLayoutConstraint!
+  
+  @IBOutlet weak var heightConstraintsConstant: NSLayoutConstraint!
+  
   let refreshDataSelector: Selector = "refreshData"
   let refreshControl = CustomRefreshControlView()
   
@@ -54,11 +57,17 @@ class SessionsViewController: BaseViewController {
     setupTableView()
     setupMenuView()
     if currentUser?.canCheckAttendance() == false {
+      heightConstraintsConstant.constant = self.view.frame.width / 3
       assistanceView.hidden = true
+      self.view.layoutIfNeeded()
+    } else {
+      heightConstraintsConstant.constant = self.view.frame.width / 4
+      self.view.layoutIfNeeded()
     }
   }
   
   private func setupTableView() {
+    tableView.tableFooterView = UIView()
     tableView.addSubview(refreshControl)
     refreshControl.addTarget(self, action: refreshDataSelector, forControlEvents: UIControlEvents.ValueChanged)
   }

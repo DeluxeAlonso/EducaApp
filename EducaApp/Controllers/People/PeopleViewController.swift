@@ -50,6 +50,7 @@ class PeopleViewController: BaseFilterViewController {
   // MARK: - Private
   
   private func setupElements() {
+    tableView.tableFooterView = UIView()
     if currentUser?.hasPermissionWithId(28) == false {
       mapButton.image = nil
       mapButton.enabled = false
