@@ -321,6 +321,9 @@ extension PeriodsViewController: NSURLConnectionDataDelegate {
     currentDownloadData.appendData(data)
     let downloadProgress: Float = Float((currentDownloadData.length)) / Float(currentDownloadSize!)
     downLoadedCell?.setupProgressView(downloadProgress)
+    if downloadProgress == 1.0 {
+      Util.showAlertWithTitle(self, title: "Enhorabuena", message: "La descarga se realizó con éxito.", buttonTitle: "OK")
+    }
   }
   
 }

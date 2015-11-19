@@ -150,7 +150,7 @@ extension PaymentsViewController: UITableViewDataSource {
   
   func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
     let cell: UITableViewCell
-    if indexPath.row == payments.count - 1 {
+    if indexPath.row == 2 {
       customLoader.stopActivity()
     }
     switch payments[indexPath.row].status {

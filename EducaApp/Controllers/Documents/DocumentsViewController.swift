@@ -238,9 +238,11 @@ class DocumentsViewController: BaseFilterViewController {
       showAlertWithTitle("Error", message: "No se pudo descargar el archivo.", buttonTitle: "OK")
       return
     }
-    let requestObject = NSURLRequest(URL: url, cachePolicy: NSURLRequestCachePolicy.ReturnCacheDataElseLoad, timeoutInterval: 10.0)
+    let requestObject = NSURLRequest(URL: url, cachePolicy: NSURLRequestCachePolicy.ReturnCacheDataElseLoad, timeoutInterval: 20.0)
     _ = NSURLConnection(request: requestObject, delegate: self, startImmediately: true)
   }
+  
+  
   
   // MARK: - Navigation
   
@@ -353,6 +355,10 @@ extension DocumentsViewController: NSURLConnectionDataDelegate {
     currentDownloadData.appendData(data)
     let downloadProgress: Float = Float((currentDownloadData.length)) / Float(currentDownloadSize!)
     downLoadedCell?.setupProgressView(downloadProgress)
+    print(downloadProgress)
+    if downloadProgress == 1.0 {
+      Util.showAlertWithTitle(self, title: "Enhorabuena", message: "La descarga se realizó con éxito.", buttonTitle: "OK")
+    }
   }
   
 }
