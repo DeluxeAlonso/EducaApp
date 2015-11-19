@@ -52,6 +52,7 @@ class PaymentsViewController: BaseViewController {
   private func setupElements() {
     setupBarButtonItem()
     configuratePayment()
+    tableView.tableFooterView = UIView()
   }
   
   private func setupCurrencyFactor() {

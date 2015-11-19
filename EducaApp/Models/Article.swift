@@ -128,4 +128,15 @@ extension Article {
     return nil
   }
   
+  class func searchByTitle(searchText: String, ctx: NSManagedObjectContext) -> Array<Article> {
+    let fetchRequest = NSFetchRequest()
+    fetchRequest.entity = NSEntityDescription.entityForName("Article", inManagedObjectContext: ctx)
+    fetchRequest.predicate = NSPredicate(format: "title contains[cd] %@", searchText)
+    let sortDescriptor = NSSortDescriptor(key: "id", ascending: false)
+    fetchRequest.sortDescriptors = [sortDescriptor]
+    let users = try! ctx.executeFetchRequest(fetchRequest) as? Array<Article>
+    
+    return users ?? Array<Article>()
+  }
+  
 }

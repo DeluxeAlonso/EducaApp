@@ -81,6 +81,7 @@ class DocumentsViewController: BaseFilterViewController {
   }
   
   private func setupMenuView() {
+    tableView.tableFooterView = UIView()
     initialHeightConstraintConstant = menuHeightConstraint.constant
     menuContentView.clipsToBounds = true
     menuHeightConstraint.constant = 0

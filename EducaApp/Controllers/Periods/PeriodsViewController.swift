@@ -64,6 +64,7 @@ class PeriodsViewController: BaseFilterViewController {
   }
   
   private func setupTableView() {
+    tableView.tableFooterView = UIView()
     tableView.addSubview(refreshControl)
     refreshControl.addTarget(self, action: refreshDataSelector, forControlEvents: UIControlEvents.ValueChanged)
   }
