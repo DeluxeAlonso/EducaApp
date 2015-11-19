@@ -50,7 +50,6 @@ class PeopleViewController: BaseFilterViewController {
   // MARK: - Private
   
   private func setupElements() {
-    tableView.tableFooterView = UIView()
     if currentUser?.hasPermissionWithId(28) == false {
       mapButton.image = nil
       mapButton.enabled = false
@@ -58,6 +57,7 @@ class PeopleViewController: BaseFilterViewController {
     mapBarButtonItem = mapButton
     selectedSegmentIndex = SelectedSegmentIndex.Users.hashValue
     advanceSearchBarButtonItem.action = userAdvancedSearchSelector
+    tableView.tableFooterView = UIView()
   }
   
   private func setupUsers() {
