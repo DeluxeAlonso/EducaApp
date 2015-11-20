@@ -46,12 +46,13 @@ extension Article: Deserializable {
 extension Article {
   
   public class func syncWithJsonArray(arr: Array<NSDictionary>, ctx: NSManagedObjectContext) -> Array<Article> {
-
+    print(arr)
     // Map JSON to ids, for easier access
     var jsonById = Dictionary<Int, NSDictionary>()
     for json in arr {
-      if let id = json["id"] as? Int {
-        jsonById[id] = json
+      if let id = json["id"] as AnyObject? {
+        let articleId = id is Int ? Int32(id as! Int) : Int32(id as! String)!
+        jsonById[Int(articleId)] = json
       }
     }
     let ids = Array(jsonById.keys)
@@ -87,6 +88,16 @@ extension Article {
       Article.updateOrCreateWithJson(jsonById[Int(article.id)]!,ctx: ctx)
     }
     
+    // Delete old items
+    let deleteIds = NSMutableSet(array: persistedIds)
+    deleteIds.minusSet(NSSet(array: ids) as Set<NSObject>)
+    let deleteArticles = deleteIds.allObjects.map({ (id: AnyObject) -> Article in
+      return persistedArticleById[id as! Int]!
+    })
+    for article in deleteArticles {
+      ctx.deleteObject(article)
+    }
+    
     return Article.getAllArticles(ctx)
   }
   
@@ -101,8 +112,9 @@ extension Article {
   
   public class func updateOrCreateWithJson(json: NSDictionary, ctx: NSManagedObjectContext) -> Article? {
     var article: Article?
-    if let id = json["id"] as? Int {
-      article = findOrCreateWithId(Int32(id), ctx: ctx)
+    if let id = json["id"] as AnyObject? {
+      let articleId = id is Int ? Int32(id as! Int) : Int32(id as! String)!
+      article = findOrCreateWithId(articleId, ctx: ctx)
       article?.setDataFromJSON(json)
     }
     return article

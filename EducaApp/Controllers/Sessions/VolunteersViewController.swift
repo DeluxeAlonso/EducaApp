@@ -51,8 +51,6 @@ class VolunteersViewController: BaseViewController {
     STPopupNavigationBar.appearance().titleTextAttributes = [NSForegroundColorAttributeName: UIColor.whiteColor(), NSFontAttributeName: UIFont.lightFontWithFontSize(17)]
   }
   
-
-  
   private func enableSaveButton() {
     isSaved = false
     saveButton.enabled = true
@@ -103,6 +101,10 @@ extension VolunteersViewController: UITableViewDelegate {
   
   func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
     tableView.deselectRowAtIndexPath(indexPath, animated: true)
+    guard session?.date.compare(NSDate()) == NSComparisonResult.OrderedAscending else {
+      Util.showAlertWithTitle(self, title: "Error", message: "No se puede marcar asistencia debido a que la sesión aun no ha empezado.", buttonTitle: "OK")
+      return
+    }
     guard let volunteers = self.sessionUsers as Array<SessionUser>? else {
       return
     }
@@ -116,6 +118,10 @@ extension VolunteersViewController: UITableViewDelegate {
   
   func tableView(tableView: UITableView, editActionsForRowAtIndexPath indexPath: NSIndexPath) -> [UITableViewRowAction]? {
     let rateAction = UITableViewRowAction(style: .Normal, title: RateButtonTitle, handler: { (action:UITableViewRowAction, indexPath:NSIndexPath) -> Void in
+      guard self.session?.date.compare(NSDate()) == NSComparisonResult.OrderedAscending else {
+        Util.showAlertWithTitle(self, title: "Error", message: "No se puede calificar al usuario debido a que la sesión aun no ha empezado.", buttonTitle: "OK")
+        return
+      }
       if self.sessionUsers[indexPath.row].attended == false {
         Util.showAlertWithTitle(self, title: "Error", message: "No se puede calificar al usuario debido a que este no asistió.", buttonTitle: "OK")
         return

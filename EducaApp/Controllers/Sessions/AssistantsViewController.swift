@@ -39,6 +39,10 @@ class AssistantsViewController: BaseViewController {
   }
   
   private func goToCommentSection(tableView:UITableView, indexPath: NSIndexPath) {
+    guard sessionStudents.first?.session.date.compare(NSDate()) == NSComparisonResult.OrderedAscending else {
+      Util.showAlertWithTitle(self, title: "Error", message: "No se puede dejar un comentario debido a que la sesión aun no ha empezado.", buttonTitle: "OK")
+      return
+    }
     selectedCell = tableView.cellForRowAtIndexPath(indexPath) as! AssistantTableViewCell
     let viewController = self.storyboard?.instantiateViewControllerWithIdentifier(SendAssistantCommentViewIdentifier) as! SendAssistantCommentViewController
     viewController.assistant = sessionStudents[indexPath.row].student.fullName

@@ -66,7 +66,7 @@ class CalendarViewController: UIViewController {
     sessionDates = sessions.map { (session) in return session.date.getNumberOfDays() }
     let currentDate = NSDate()
     if sessionDates.contains((NSDate().getNumberOfDays())) {
-      let selectedSessions = sessions.filter { (session) in return currentDate.getNumberOfDays() == currentDate.getNumberOfDays() }
+      let selectedSessions = sessions.filter { (session) in return session.date.getNumberOfDays() == currentDate.getNumberOfDays() }
       fillSessionInfo(selectedSessions)
       calendarMenuView.hidden = false
       noSessionsView.hidden = true

@@ -279,6 +279,10 @@ class AssistantDetailViewController: BaseFilterViewController {
   // MARK: - Actions
   
   @IBAction func goToSendCommentSection(sender: AnyObject) {
+    guard session!.date.compare(NSDate()) == NSComparisonResult.OrderedAscending else {
+      Util.showAlertWithTitle(self, title: "Error", message: "No se puede dejar un comentario debido a que la sesión aun no ha empezado.", buttonTitle: "OK")
+      return
+    }
     hideSearchBar()
     let viewController = self.storyboard?.instantiateViewControllerWithIdentifier(SendAssistantCommentViewIdentifier) as! SendAssistantCommentViewController
     viewController.assistant = student?.fullName
