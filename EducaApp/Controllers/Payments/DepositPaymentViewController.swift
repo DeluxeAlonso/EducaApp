@@ -93,8 +93,16 @@ class DepositPaymentTableViewController: UITableViewController, UIPickerViewData
     PaymentService.registerPayment(feeId, voucherCode: voucherCode!, bank: bank!, date: date, completion: {(responseObject: AnyObject?, error: NSError?) in
       print(error?.description)
       let json = responseObject
+      
       if (json != nil && json?["error"]! == nil) {
-        Util.showAlertWithTitle(self, title: "Enhorabuena!", message: "Se registro el voucher con éxito", buttonTitle: "OK")
+        let alertController = UIAlertController(title: "Enhorabuena!", message: "Se registro el voucher con éxito", preferredStyle: .Alert)
+        
+        let okAction = UIAlertAction(title: "OK", style: UIAlertActionStyle.Default) { action -> Void in
+          self.navigationController?.dismissViewControllerAnimated(true, completion: nil)
+        }
+        alertController.addAction(okAction)
+        
+        self.presentViewController(alertController, animated: true, completion: nil)
       } else {
         Util.showAlertWithTitle(self, title: "Error", message: "No se puede registrar el voucher", buttonTitle: "OK")
       }
