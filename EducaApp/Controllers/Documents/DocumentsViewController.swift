@@ -44,6 +44,8 @@ class DocumentsViewController: BaseFilterViewController {
   var currentDownloadSize: Int64?
   var currentDownloadData = NSMutableData()
   
+  var menuIsOpen = false
+  
   override func viewDidLoad() {
     super.viewDidLoad()
     setupElements()
@@ -51,7 +53,7 @@ class DocumentsViewController: BaseFilterViewController {
       setupDocuments()
       setupTableView()
     } else {
-      if documents.count == 0{
+      if documents.count == 0 {
         tableView.hidden = true
         noDocumentsLabel.hidden = false
       }
@@ -81,6 +83,7 @@ class DocumentsViewController: BaseFilterViewController {
   }
   
   private func setupMenuView() {
+    tableView.tableFooterView = UIView()
     initialHeightConstraintConstant = menuHeightConstraint.constant
     menuContentView.clipsToBounds = true
     menuHeightConstraint.constant = 0
@@ -124,6 +127,7 @@ class DocumentsViewController: BaseFilterViewController {
   }
   
   private func showMenuView() {
+    menuIsOpen = true
     hideSearchBarAnimated(false)
     validateDocumentAvailibity()
     self.shadowView.translatesAutoresizingMaskIntoConstraints = true
@@ -139,6 +143,7 @@ class DocumentsViewController: BaseFilterViewController {
   }
   
   private func hideMenuViewWithoutAnimation () {
+    menuIsOpen = false
     self.navigationController?.interactivePopGestureRecognizer?.enabled = true
     self.shadowView.alpha = 0.0
     self.menuContentView.frame = CGRect(x: self.menuContentView.frame.origin.x, y: self.menuContentView.frame.origin.y + self.initialHeightConstraintConstant!, width: self.menuContentView.frame.width, height: self.initialHeightConstraintConstant!)
@@ -237,9 +242,11 @@ class DocumentsViewController: BaseFilterViewController {
       showAlertWithTitle("Error", message: "No se pudo descargar el archivo.", buttonTitle: "OK")
       return
     }
-    let requestObject = NSURLRequest(URL: url, cachePolicy: NSURLRequestCachePolicy.ReturnCacheDataElseLoad, timeoutInterval: 10.0)
+    let requestObject = NSURLRequest(URL: url, cachePolicy: NSURLRequestCachePolicy.ReturnCacheDataElseLoad, timeoutInterval: 20.0)
     _ = NSURLConnection(request: requestObject, delegate: self, startImmediately: true)
   }
+  
+  
   
   // MARK: - Navigation
   
@@ -301,7 +308,9 @@ extension DocumentsViewController: UITableViewDelegate {
   func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
     selectedDocument = documents[indexPath.row]
     selectedCell = tableView.cellForRowAtIndexPath(indexPath) as? DocumentTableViewCell
-    showMenuView()
+    if !menuIsOpen {
+      showMenuView()
+    }
     tableView.deselectRowAtIndexPath(indexPath, animated: true)
   }
   
@@ -352,6 +361,11 @@ extension DocumentsViewController: NSURLConnectionDataDelegate {
     currentDownloadData.appendData(data)
     let downloadProgress: Float = Float((currentDownloadData.length)) / Float(currentDownloadSize!)
     downLoadedCell?.setupProgressView(downloadProgress)
+    print(downloadProgress)
+    if downloadProgress == 1.0 {
+      Util.showAlertWithTitle(self, title: "Enhorabuena", message: "La descarga se realizó con éxito.", buttonTitle: "OK")
+      currentDownloadData = NSMutableData()
+    }
   }
   
 }

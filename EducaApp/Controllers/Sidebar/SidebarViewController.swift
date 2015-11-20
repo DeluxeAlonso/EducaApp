@@ -69,7 +69,6 @@ class MenuController: StaticDataTableViewController {
       default:
         self.cell(DonationCell, setHidden: false)
         self.cell(CameraCell, setHidden: false)
-        self.cell(BlogCell, setHidden: false)
         self.cell(NewsCell, setHidden: false)
         self.cell(SettingsCell, setHidden: false)
       }

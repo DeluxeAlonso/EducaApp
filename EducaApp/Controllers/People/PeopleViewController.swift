@@ -57,6 +57,7 @@ class PeopleViewController: BaseFilterViewController {
     mapBarButtonItem = mapButton
     selectedSegmentIndex = SelectedSegmentIndex.Users.hashValue
     advanceSearchBarButtonItem.action = userAdvancedSearchSelector
+    tableView.tableFooterView = UIView()
   }
   
   private func setupUsers() {

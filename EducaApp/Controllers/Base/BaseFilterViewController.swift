@@ -59,6 +59,10 @@ class BaseFilterViewController: BaseViewController, UISearchBarDelegate {
     navigationItem.setRightBarButtonItem(advanceSearchBarButtonItem, animated: true)
   }
   
+  func searchBarSearchButtonClicked(searchBar: UISearchBar) {
+    searchBar.resignFirstResponder()
+  }
+  
   // MARK: - SWRevealViewControllerDelegate
   
   override func revealController(revealController: SWRevealViewController!, willMoveToPosition position: FrontViewPosition) {
