@@ -70,12 +70,15 @@ class ArticlesViewController: BaseFilterViewController {
   
   private func getArticles() {
     ArticleService.fetchArticles({(responseObject: AnyObject?, error: NSError?) in
+      print(responseObject)
+      print(error)
       self.refreshControl.endRefreshing()
       self.isRefreshing = false
       let json = responseObject
       if (json != nil && json?["error"] == nil) {
         let syncedArticles = Article.syncWithJsonArray(json as! Array<NSDictionary>, ctx: self.dataLayer.managedObjectContext!)
         self.articles = syncedArticles
+        print(self.articles.count)
         self.dataLayer.saveContext()
         if self.favoritesSegmentedControl.selectedSegmentIndex == 0 {
           self.reloadData()
@@ -127,6 +130,7 @@ class ArticlesViewController: BaseFilterViewController {
   }
   
   func reloadData() {
+    print("RELOADDATA")
     guard !self.isRefreshing else {
       self.tableView.reloadData()
       return

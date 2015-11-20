@@ -55,7 +55,7 @@ class ArticleDetailViewController: BaseViewController {
   @IBAction func shareButtonClicked(sender: AnyObject) {
     let textToShare = article!.title
     let imageToShare = articleImageView.image as UIImage!
-    guard let myWebsite = NSURL(string: "http://162.243.118.33/afiperudrupal/node/\(article?.id)") else {
+    guard let myWebsite = NSURL(string: "http://162.243.118.33/afiperudrupal/node/\(Int((article?.id)!))") else {
       return
     }
     let objectsToShare = [textToShare, myWebsite, imageToShare]

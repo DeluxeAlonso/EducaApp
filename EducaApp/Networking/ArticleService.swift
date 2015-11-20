@@ -8,12 +8,12 @@
 
 import UIKit
 
-let ArticlesPath = "articles"
+let ArticlesPath = "api/v1/articles"
 
 class ArticleService {
   
   class func fetchArticles( completion: (responseObject: NSObject?, error: NSError?) -> Void) {
-    NetworkManager.sharedInstance.GET(UrlBuilder.UrlForApiaryPath(ArticlesPath), parameters: nil, success: { (operation: AFHTTPRequestOperation, responseObject: AnyObject?) in
+    NetworkManager.sharedInstance.GET(UrlBuilder.UrlForDrupalPath(ArticlesPath), parameters: nil, success: { (operation: AFHTTPRequestOperation, responseObject: AnyObject?) in
       completion(responseObject: responseObject! as? NSObject, error: nil)
       }, failure: {(operation: AFHTTPRequestOperation, error: NSError) in
         completion(responseObject: nil, error: error)
