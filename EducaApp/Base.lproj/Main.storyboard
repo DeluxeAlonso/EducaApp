@@ -5702,7 +5702,7 @@ El voluntariado comprende actividades asistenciales de servicios sociales, cívi
                                     <constraint firstItem="0DV-JF-TEg" firstAttribute="centerY" secondItem="jSr-cz-ghi" secondAttribute="centerY" id="siW-A2-6JW"/>
                                 </constraints>
                             </view>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fzF-qz-Q6l">
+                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fzF-qz-Q6l">
                                 <rect key="frame" x="217" y="550" width="167" height="30"/>
                                 <animations/>
                                 <constraints>

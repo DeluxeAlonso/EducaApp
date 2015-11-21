@@ -156,7 +156,9 @@ extension CalendarViewController: CVCalendarViewDelegate {
     let selectedSessions = sessions.filter { (session) in return session.date.getNumberOfDays() == dayView.date.convertedDate()?.getNumberOfDays() }
     var colors = [UIColor]()
     for _ in selectedSessions {
+      if colors.count < 3 {
       colors.insert(UIColor.redColor(), atIndex: 0)
+      }
     }
     return colors
   }

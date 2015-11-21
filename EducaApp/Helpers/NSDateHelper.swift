@@ -11,7 +11,7 @@ import UIKit
 extension NSDate {
   
   func getNumberOfDays() -> Int {
-    return Int(self.timeIntervalSince1970 / 86400.0)
+    return Int((self.timeIntervalSince1970 - 18000.0) / 86400.0)
   }
   
   func yearsFrom(date:NSDate) -> Int{
