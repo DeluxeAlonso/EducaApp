@@ -16,6 +16,7 @@ let ReapplyPath = "reapply"
 let SendDeviceTokenPath = "set_uuid"
 let LogoutPath = "clear_uuid"
 let SendPhotoPath = "?q=photoupload"
+let SaveSettingsPath = "push_settings"
 
 class UserService {
   
@@ -86,6 +87,18 @@ class UserService {
     let parameters = ["uuid": token]
     NetworkManager.sharedInstance.requestSerializer.setValue(User.getAuthToken(), forHTTPHeaderField: Constants.Api.Header)
     NetworkManager.sharedInstance.POST(UrlBuilder.UrlForPath(SendDeviceTokenPath), parameters: parameters, success: { (operation: AFHTTPRequestOperation, responseObject: AnyObject?) in
+      completion(responseObject: responseObject! as? NSObject, error: nil)
+      }, failure: {( operation: AFHTTPRequestOperation, error: NSError) in
+        completion(responseObject: nil, error: error)
+    })
+  }
+  
+  class func saveSettings(parameters: NSDictionary, completion: (responseObject: NSObject?, error: NSError?) -> Void) {
+    let manager = AFHTTPRequestOperationManager()
+    let serializer = AFJSONRequestSerializer()
+    serializer.setValue(User.getAuthToken(), forHTTPHeaderField: Constants.Api.Header)
+    manager.requestSerializer = serializer
+    manager.POST(UrlBuilder.UrlForPath(SaveSettingsPath), parameters: parameters, success: { (operation: AFHTTPRequestOperation, responseObject: AnyObject?) in
       completion(responseObject: responseObject! as? NSObject, error: nil)
       }, failure: {( operation: AFHTTPRequestOperation, error: NSError) in
         completion(responseObject: nil, error: error)

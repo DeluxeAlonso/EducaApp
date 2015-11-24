@@ -98,6 +98,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
   
   func clearDeviceToken() {
     UIApplication.sharedApplication().unregisterForRemoteNotifications()
+    print("SIGNOUT")
     UserService.signOut({(responseObject: AnyObject?, error: NSError?) in
       print(responseObject)
       print(error?.description)
