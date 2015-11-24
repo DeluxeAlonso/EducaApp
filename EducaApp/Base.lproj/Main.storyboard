@@ -3545,7 +3545,7 @@ El voluntariado comprende actividades asistenciales de servicios sociales, cívi
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <animations/>
-                        <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                        <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="calibratedRGB"/>
                         <sections>
                             <tableViewSection headerTitle="Datos Personales" id="brh-Vy-vay">
                                 <cells>
@@ -3584,7 +3584,7 @@ El voluntariado comprende actividades asistenciales de servicios sociales, cívi
                             </tableViewSection>
                             <tableViewSection headerTitle="Notificaciones" id="7jc-cB-AUO">
                                 <cells>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="Events" rowHeight="55" id="Ald-in-cuK">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="Events" rowHeight="55" id="Ald-in-cuK">
                                         <rect key="frame" x="0.0" y="218.5" width="600" height="55"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Ald-in-cuK" id="osJ-cf-zav">
@@ -3625,7 +3625,7 @@ El voluntariado comprende actividades asistenciales de servicios sociales, cívi
                                         <animations/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="Payent" rowHeight="55" id="i7S-IB-EXa">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="Payent" rowHeight="55" id="i7S-IB-EXa">
                                         <rect key="frame" x="0.0" y="273.5" width="600" height="55"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="i7S-IB-EXa" id="HX6-BE-f7P">
@@ -3666,7 +3666,7 @@ El voluntariado comprende actividades asistenciales de servicios sociales, cívi
                                         <animations/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="Docs" rowHeight="55" id="BLe-K2-Slu">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="Docs" rowHeight="55" id="BLe-K2-Slu">
                                         <rect key="frame" x="0.0" y="328.5" width="600" height="55"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="BLe-K2-Slu" id="pxm-J2-ihj">
@@ -3707,7 +3707,7 @@ El voluntariado comprende actividades asistenciales de servicios sociales, cívi
                                         <animations/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="Reports" rowHeight="55" id="y4P-7d-cqk">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="Reports" rowHeight="55" id="y4P-7d-cqk">
                                         <rect key="frame" x="0.0" y="383.5" width="600" height="55"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="y4P-7d-cqk" id="dV0-Tm-4BC">

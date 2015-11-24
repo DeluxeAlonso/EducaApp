@@ -115,7 +115,7 @@ class ArticlesViewController: BaseFilterViewController {
       self.navigationItem.titleView?.alpha = 0
       }, completion: { finished in
         self.setupBarButtonItem()
-        self.navigationItem.title = DocumentsNavigationItemTitle
+        self.navigationItem.title = "Noticias"
         self.navigationItem.titleView = nil
     })
   }
@@ -130,7 +130,6 @@ class ArticlesViewController: BaseFilterViewController {
   }
   
   func reloadData() {
-    print("RELOADDATA")
     guard !self.isRefreshing else {
       self.tableView.reloadData()
       return
