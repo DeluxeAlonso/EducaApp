@@ -22,6 +22,10 @@ let UserActionsKey = "actions"
 let UserReapplyKey = "can_reapply"
 let UserPeriodKey = "period"
 let UserPeriodNameKey = "name"
+let UserPushEventsKey = "push_events"
+let UserPushFeesKey = "push_fees"
+let UserPushDocumentsKey = "push_documents"
+let UserPushReportsKey = "push_reports"
 
 @objc(User)
 public class User: NSManagedObject {
@@ -37,6 +41,10 @@ public class User: NSManagedObject {
   @NSManaged public var canReapply: Bool
   @NSManaged public var periodId: Int32
   @NSManaged public var periodName: String
+  @NSManaged public var pushEvents: Bool
+  @NSManaged public var pushFees: Bool
+  @NSManaged public var pushDocuments: Bool
+  @NSManaged public var pushReports: Bool
   
   var fullName: String {
     let name = "\(firstName) \(lastName)"
@@ -75,6 +83,30 @@ extension User: Deserializable {
           self.periodName = periodName
         }
       }
+      if let pushEvents = json[UserPushEventsKey] as? Bool {
+        self.pushEvents = pushEvents
+      } else {
+        self.pushEvents = false
+      }
+      
+      if let pushDocuments = json[UserPushDocumentsKey] as? Bool {
+        self.pushDocuments = pushDocuments
+      } else {
+        self.pushDocuments = false
+      }
+      
+      if let pushFees = json[UserPushFeesKey] as? Bool {
+        self.pushFees = pushFees
+      } else {
+        self.pushFees = false
+      }
+      
+      if let pushReports = json[UserPushReportsKey] as? Bool {
+        self.pushReports = pushReports
+      } else {
+        self.pushReports = false
+      }
+      
     }
   }
   
