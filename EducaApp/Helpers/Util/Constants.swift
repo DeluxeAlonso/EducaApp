@@ -17,7 +17,6 @@ struct Constants {
     static let Drupal = "http://162.243.118.33/afiperudrupal/"
     static let BaseUrl = "http://162.243.118.33/afiperularavel/public/"
     static let Production = "http://162.243.118.33/"
-    //200.16.7.111  162.243.118.33
   }
   
   struct Notification {
