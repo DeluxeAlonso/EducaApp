@@ -20,12 +20,14 @@ class ArticleTableViewCell: UITableViewCell {
   @IBOutlet weak var articleTitle: UILabel!
   @IBOutlet weak var postTimeLabel: UILabel!
   @IBOutlet weak var favoriteButton: UIButton!
+  @IBOutlet weak var heightConstraint: NSLayoutConstraint!
   
   let FavoriteButtonTransitionDuration = 0.25
   
   var article: Article?
   var isFavorite = false
   var indexPath: NSIndexPath?
+  var imageHeight: CGFloat?
   var delegate: ArticleTableViewCellDelegate?
   
   // MARK: - Lifecycle
@@ -68,8 +70,9 @@ class ArticleTableViewCell: UITableViewCell {
   
   // MARK: - Public
   
-  func setupArticle(article: Article, indexPath: NSIndexPath) {
+  func setupArticle(article: Article, indexPath: NSIndexPath, height: CGFloat) {
     self.indexPath = indexPath
+    heightConstraint.constant = height
     setupLabels(article)
     setupButtons(article)
     setupImageViews(article)

@@ -197,7 +197,8 @@ extension ArticlesViewController: UITableViewDataSource {
     cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
       let cell = tableView.dequeueReusableCellWithIdentifier(ArticlesCellIdentifier, forIndexPath: indexPath) as! ArticleTableViewCell
       cell.delegate = self
-      cell.setupArticle(articles[indexPath.row], indexPath: indexPath)
+      print(self.view.frame.height / 4)
+      cell.setupArticle(articles[indexPath.row], indexPath: indexPath, height: self.view.frame.height / 4)
       return cell
   }
 
