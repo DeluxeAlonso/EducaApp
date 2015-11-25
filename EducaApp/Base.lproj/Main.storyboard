@@ -269,6 +269,7 @@
                                                 </view>
                                             </subviews>
                                             <animations/>
+                                            <color key="backgroundColor" red="0.94117647058823528" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                             <constraints>
                                                 <constraint firstItem="KcW-6m-Mqf" firstAttribute="centerY" secondItem="srM-cA-XZU" secondAttribute="centerY" id="EKx-7D-uaq"/>
                                                 <constraint firstItem="KcW-6m-Mqf" firstAttribute="top" secondItem="srM-cA-XZU" secondAttribute="top" id="OKU-8M-oLa"/>
@@ -283,6 +284,7 @@
                                             </variation>
                                         </tableViewCellContentView>
                                         <animations/>
+                                        <color key="backgroundColor" red="0.94117647058823528" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                         <connections>
                                             <outlet property="amountLabel" destination="Dxt-rc-V8z" id="bO4-yJ-MsR"/>
                                             <outlet property="dateLabel" destination="Dzd-LV-A7Z" id="DaJ-C2-HtU"/>
@@ -434,6 +436,7 @@
                                                 </view>
                                             </subviews>
                                             <animations/>
+                                            <color key="backgroundColor" red="0.94117647058823528" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                             <constraints>
                                                 <constraint firstAttribute="trailing" secondItem="zmO-zq-fnN" secondAttribute="trailing" id="NK2-iF-GvC"/>
                                                 <constraint firstAttribute="bottom" secondItem="zmO-zq-fnN" secondAttribute="bottom" constant="1.5" id="YOg-ym-53R"/>
@@ -448,6 +451,7 @@
                                             </variation>
                                         </tableViewCellContentView>
                                         <animations/>
+                                        <color key="backgroundColor" red="0.94117647058823528" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                         <connections>
                                             <outlet property="actionLabel" destination="7Kw-ae-OTo" id="lhn-df-bTl"/>
                                             <outlet property="amountLabel" destination="D51-vk-t5j" id="D42-Nb-q45"/>
@@ -603,6 +607,7 @@
                                                 </view>
                                             </subviews>
                                             <animations/>
+                                            <color key="backgroundColor" red="0.94117647058823528" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                             <constraints>
                                                 <constraint firstItem="U86-Wy-Tey" firstAttribute="top" secondItem="JhP-BY-Y7a" secondAttribute="top" id="OER-fO-66e"/>
                                                 <constraint firstItem="U86-Wy-Tey" firstAttribute="leading" secondItem="JhP-BY-Y7a" secondAttribute="leading" id="V1b-Re-kfM"/>
@@ -611,6 +616,7 @@
                                             </constraints>
                                         </tableViewCellContentView>
                                         <animations/>
+                                        <color key="backgroundColor" red="0.94117647058823528" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                         <connections>
                                             <outlet property="amountLabel" destination="Swx-wD-Wz6" id="qJh-ck-Sp5"/>
                                             <outlet property="dateLabel" destination="m2c-oF-Ipl" id="YvV-bd-eS0"/>
@@ -784,6 +790,7 @@
                                                 </view>
                                             </subviews>
                                             <animations/>
+                                            <color key="backgroundColor" red="0.94117647058823528" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                             <constraints>
                                                 <constraint firstItem="70x-k1-kcl" firstAttribute="top" secondItem="0dm-Gm-RDQ" secondAttribute="top" id="EnS-Ol-jro"/>
                                                 <constraint firstAttribute="trailing" secondItem="70x-k1-kcl" secondAttribute="trailing" id="Zp2-ZQ-1ta"/>
@@ -792,6 +799,7 @@
                                             </constraints>
                                         </tableViewCellContentView>
                                         <animations/>
+                                        <color key="backgroundColor" red="0.94117647058823528" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                         <connections>
                                             <outlet property="amountLabel" destination="12C-9Z-0GN" id="3mO-Ta-5jY"/>
                                             <outlet property="dateLabel" destination="vQ3-CP-BZX" id="1bp-nq-J5e"/>
@@ -1117,7 +1125,7 @@
                                                 </label>
                                             </subviews>
                                             <animations/>
-                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                            <color key="backgroundColor" red="0.94117647058823528" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                             <constraints>
                                                 <constraint firstItem="iBX-bM-7Ti" firstAttribute="leading" secondItem="SkF-5N-SFk" secondAttribute="leadingMargin" constant="17" id="239-hJ-Swc"/>
                                                 <constraint firstItem="iBX-bM-7Ti" firstAttribute="leading" secondItem="EkK-N0-ouz" secondAttribute="leading" id="97v-Hq-3ZM"/>
@@ -1136,7 +1144,7 @@
                                             </variation>
                                         </tableViewCellContentView>
                                         <animations/>
-                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        <color key="backgroundColor" red="0.94117647058823528" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                     </tableViewCell>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="NewPasswordCell" rowHeight="67" id="yN1-IR-4Kv" userLabel="NewPasswordCell">
                                         <rect key="frame" x="0.0" y="144" width="600" height="67"/>
@@ -1179,7 +1187,7 @@
                                                 </label>
                                             </subviews>
                                             <animations/>
-                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                            <color key="backgroundColor" red="0.94117647058823528" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                             <constraints>
                                                 <constraint firstItem="2H8-Sq-0ua" firstAttribute="top" secondItem="1XR-l5-QOf" secondAttribute="topMargin" constant="19" id="4h3-rs-4Id"/>
                                                 <constraint firstAttribute="bottomMargin" secondItem="2H8-Sq-0ua" secondAttribute="bottom" constant="34.5" id="Kbm-Mb-Uel"/>
@@ -1197,7 +1205,7 @@
                                             </variation>
                                         </tableViewCellContentView>
                                         <animations/>
-                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        <color key="backgroundColor" red="0.94117647058823528" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                     </tableViewCell>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="ConfirmPasswordCell" rowHeight="66" id="Aos-Te-u4V" userLabel="ConfirmPasswordCell">
                                         <rect key="frame" x="0.0" y="211" width="600" height="66"/>
@@ -1237,7 +1245,7 @@
                                                 </label>
                                             </subviews>
                                             <animations/>
-                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                            <color key="backgroundColor" red="0.94117647058823528" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                             <constraints>
                                                 <constraint firstItem="qp1-Fb-w0w" firstAttribute="leading" secondItem="82N-zL-ZVt" secondAttribute="leadingMargin" constant="17" id="53g-6r-DWp"/>
                                                 <constraint firstAttribute="trailingMargin" secondItem="qp1-Fb-w0w" secondAttribute="trailing" constant="17" id="67Z-Mc-LsS"/>
@@ -1258,7 +1266,7 @@
                                             </variation>
                                         </tableViewCellContentView>
                                         <animations/>
-                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        <color key="backgroundColor" red="0.94117647058823528" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                     </tableViewCell>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="NameInfoCell" rowHeight="87" id="IC4-WQ-dbN" userLabel="RegisterCell">
                                         <rect key="frame" x="0.0" y="277" width="600" height="87"/>
@@ -1300,7 +1308,7 @@
                                                 </view>
                                             </subviews>
                                             <animations/>
-                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                            <color key="backgroundColor" red="0.94117647058823528" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                             <constraints>
                                                 <constraint firstAttribute="bottom" secondItem="cGZ-KU-VE4" secondAttribute="bottom" constant="32" id="0Zd-BB-xT5"/>
                                                 <constraint firstItem="Igf-U9-J29" firstAttribute="centerX" secondItem="cGZ-KU-VE4" secondAttribute="centerX" id="9gF-AR-hZ3"/>
@@ -1312,7 +1320,7 @@
                                             </constraints>
                                         </tableViewCellContentView>
                                         <animations/>
-                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        <color key="backgroundColor" red="0.94117647058823528" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                     </tableViewCell>
                                 </cells>
                             </tableViewSection>
@@ -1446,7 +1454,7 @@
                                                 </button>
                                             </subviews>
                                             <animations/>
-                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                            <color key="backgroundColor" red="0.94117647058823528" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                             <constraints>
                                                 <constraint firstItem="lMZ-Ig-nYH" firstAttribute="leading" secondItem="W7Z-yd-VdH" secondAttribute="leading" id="0GC-At-vcr"/>
                                                 <constraint firstItem="Nfy-CI-maQ" firstAttribute="leading" secondItem="k11-Ac-od4" secondAttribute="leadingMargin" constant="2" id="5YR-0b-bxs"/>
@@ -1468,6 +1476,7 @@
                                             <outlet property="articleImageView" destination="Nfy-CI-maQ" id="lDe-KD-F8s"/>
                                             <outlet property="articleTitle" destination="W7Z-yd-VdH" id="VJu-h6-d75"/>
                                             <outlet property="favoriteButton" destination="ePJ-SY-KZ1" id="VRg-qB-22F"/>
+                                            <outlet property="heightConstraint" destination="8k1-ad-P64" id="vSF-fY-XYg"/>
                                             <outlet property="postTimeLabel" destination="lMZ-Ig-nYH" id="3j9-62-PXU"/>
                                         </connections>
                                     </tableViewCell>
@@ -1549,9 +1558,6 @@
                                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Niw-XZ-lsa">
                                                 <rect key="frame" x="0.0" y="0.0" width="600" height="200"/>
                                                 <animations/>
-                                                <constraints>
-                                                    <constraint firstAttribute="height" constant="200" id="oZQ-6G-8Rp"/>
-                                                </constraints>
                                             </imageView>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="Sjx-gu-83V">
                                                 <rect key="frame" x="16" y="200" width="567" height="55"/>
@@ -1585,7 +1591,7 @@
                                                 </constraints>
                                             </view>
                                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" bounces="NO" scrollEnabled="NO" editable="NO" textAlignment="justified" translatesAutoresizingMaskIntoConstraints="NO" id="xj1-uM-DYQ">
-                                                <rect key="frame" x="0.0" y="324" width="600" height="660"/>
+                                                <rect key="frame" x="0.0" y="324" width="600" height="659.5"/>
                                                 <animations/>
                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                 <string key="text">El Ministerio de la Mujer y Poblaciones Vulnerables (MIMP), destacó la aprobación del reglamento de la Ley General del Voluntario que busca promover la solidaridad y conciencia social entre los peruanos y peruanas, y que establece diversos beneficios de carácter social, salud y educativos a favor de las personas que realicen este tipo de actividades.
@@ -1662,6 +1668,7 @@ El voluntariado comprende actividades asistenciales de servicios sociales, cívi
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="PX3-Lh-l1F" firstAttribute="width" secondItem="yBt-UH-q3O" secondAttribute="width" id="5PK-qU-8l4"/>
+                            <constraint firstItem="Niw-XZ-lsa" firstAttribute="height" secondItem="yBt-UH-q3O" secondAttribute="height" multiplier="0.333" id="aa4-ie-h3G"/>
                             <constraint firstItem="PX3-Lh-l1F" firstAttribute="height" secondItem="yBt-UH-q3O" secondAttribute="height" id="qlL-em-KP9"/>
                             <constraint firstItem="PX3-Lh-l1F" firstAttribute="centerY" secondItem="yBt-UH-q3O" secondAttribute="centerY" id="tNN-da-fcz"/>
                             <constraint firstItem="PX3-Lh-l1F" firstAttribute="centerX" secondItem="yBt-UH-q3O" secondAttribute="centerX" id="vDT-Ey-Iiy"/>
@@ -2603,7 +2610,7 @@ El voluntariado comprende actividades asistenciales de servicios sociales, cívi
                                                 </button>
                                             </subviews>
                                             <animations/>
-                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                            <color key="backgroundColor" red="0.94117647058823528" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                             <constraints>
                                                 <constraint firstItem="JMN-TU-eMP" firstAttribute="centerY" secondItem="3Bc-PS-xVU" secondAttribute="centerY" id="1lb-uO-jmu"/>
                                                 <constraint firstItem="JMN-TU-eMP" firstAttribute="leading" secondItem="7LB-DH-Xhc" secondAttribute="trailing" constant="9" id="4iR-a9-MZx"/>
@@ -2616,7 +2623,7 @@ El voluntariado comprende actividades asistenciales de servicios sociales, cívi
                                             </constraints>
                                         </tableViewCellContentView>
                                         <animations/>
-                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        <color key="backgroundColor" red="0.94117647058823528" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                         <connections>
                                             <outlet property="dateLabel" destination="7LB-DH-Xhc" id="8h2-9O-cox"/>
                                             <outlet property="menuButton" destination="JMN-TU-eMP" id="QuE-57-AAL"/>
@@ -3386,7 +3393,7 @@ El voluntariado comprende actividades asistenciales de servicios sociales, cívi
                                                 </imageView>
                                             </subviews>
                                             <animations/>
-                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                            <color key="backgroundColor" red="0.94117647058823528" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                             <constraints>
                                                 <constraint firstAttribute="trailing" secondItem="He7-aA-mR2" secondAttribute="trailing" constant="18" id="1zS-w0-7SZ"/>
                                                 <constraint firstItem="SUe-1b-Lsu" firstAttribute="centerY" secondItem="HMk-OZ-PQm" secondAttribute="centerY" id="jeJ-C0-rP7"/>
@@ -3396,7 +3403,7 @@ El voluntariado comprende actividades asistenciales de servicios sociales, cívi
                                             </constraints>
                                         </tableViewCellContentView>
                                         <animations/>
-                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        <color key="backgroundColor" red="0.94117647058823528" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                         <accessibility key="accessibilityConfiguration" label="cllVolunteer"/>
                                         <connections>
                                             <outlet property="volunteerMarkImageView" destination="He7-aA-mR2" id="N8p-r3-L6S"/>
@@ -4000,7 +4007,7 @@ El voluntariado comprende actividades asistenciales de servicios sociales, cívi
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="70" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="por-Ck-MfZ">
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                                 <animations/>
-                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <color key="backgroundColor" red="0.94117647058823528" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="DocumentCell" rowHeight="70" id="uxQ-Vd-NlV" customClass="DocumentTableViewCell" customModule="EducaApp" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="92" width="600" height="70"/>
@@ -4064,7 +4071,7 @@ El voluntariado comprende actividades asistenciales de servicios sociales, cívi
                                                 </progressView>
                                             </subviews>
                                             <animations/>
-                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                            <color key="backgroundColor" red="0.94117647058823528" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                             <constraints>
                                                 <constraint firstItem="c0b-qa-OZR" firstAttribute="leading" secondItem="Y33-Yc-H5V" secondAttribute="leading" id="5ay-h6-DDN"/>
                                                 <constraint firstItem="GO7-Hx-o9q" firstAttribute="leading" secondItem="oaL-B8-2zZ" secondAttribute="trailing" constant="8" id="8XH-SM-3Gb"/>
@@ -4087,7 +4094,7 @@ El voluntariado comprende actividades asistenciales de servicios sociales, cívi
                                             </constraints>
                                         </tableViewCellContentView>
                                         <animations/>
-                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        <color key="backgroundColor" red="0.94117647058823528" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                         <connections>
                                             <outlet property="iconImageView" destination="fpk-H4-mQV" id="0sM-S4-26b"/>
                                             <outlet property="menuButton" destination="GO7-Hx-o9q" id="6pp-wB-Pk6"/>
@@ -4491,7 +4498,7 @@ El voluntariado comprende actividades asistenciales de servicios sociales, cívi
                                                 </label>
                                             </subviews>
                                             <animations/>
-                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                            <color key="backgroundColor" red="0.94117647058823528" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                             <constraints>
                                                 <constraint firstItem="fR1-kW-SAF" firstAttribute="leading" secondItem="fdi-xB-ahD" secondAttribute="leading" constant="18" id="3ko-AV-GLq"/>
                                                 <constraint firstItem="VOZ-Bf-zBk" firstAttribute="centerY" secondItem="fdi-xB-ahD" secondAttribute="centerY" id="4s7-h0-zSs"/>
@@ -4510,7 +4517,7 @@ El voluntariado comprende actividades asistenciales de servicios sociales, cívi
                                             </variation>
                                         </tableViewCellContentView>
                                         <animations/>
-                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        <color key="backgroundColor" red="0.94117647058823528" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                         <connections>
                                             <outlet property="ageLabel" destination="fR1-kW-SAF" id="VD0-w7-DVh"/>
                                             <outlet property="commentedImageView" destination="VOZ-Bf-zBk" id="AuQ-Ns-M2s"/>
@@ -5883,7 +5890,7 @@ El voluntariado comprende actividades asistenciales de servicios sociales, cívi
                                                 </label>
                                             </subviews>
                                             <animations/>
-                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                            <color key="backgroundColor" red="0.94117647058823528" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                             <constraints>
                                                 <constraint firstItem="jwN-Xn-WEB" firstAttribute="leading" secondItem="vQb-no-k8s" secondAttribute="leading" constant="15" id="1hN-jG-UJM"/>
                                                 <constraint firstItem="kOV-hb-FsP" firstAttribute="leading" secondItem="vQb-no-k8s" secondAttribute="leading" constant="15" id="EXb-nC-whK"/>
@@ -5942,7 +5949,7 @@ El voluntariado comprende actividades asistenciales de servicios sociales, cívi
                                                 </imageView>
                                             </subviews>
                                             <animations/>
-                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                            <color key="backgroundColor" red="0.94117647058823528" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                             <constraints>
                                                 <constraint firstItem="rrT-DN-XoN" firstAttribute="centerY" secondItem="E3i-bZ-im1" secondAttribute="centerY" id="Dep-hx-UON"/>
                                                 <constraint firstAttribute="trailing" secondItem="BwR-do-Wwq" secondAttribute="trailing" constant="15" id="Ig6-hS-NAJ"/>
@@ -7234,7 +7241,7 @@ El voluntariado comprende actividades asistenciales de servicios sociales, cívi
                                                 </progressView>
                                             </subviews>
                                             <animations/>
-                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                            <color key="backgroundColor" red="0.94117647058823528" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                             <constraints>
                                                 <constraint firstItem="bSf-Tq-qpp" firstAttribute="top" secondItem="t0R-Sf-f6F" secondAttribute="top" constant="10" id="02g-Pk-PAL"/>
                                                 <constraint firstAttribute="bottom" secondItem="QhD-Hg-vtz" secondAttribute="bottom" id="4lF-7C-K0L"/>
@@ -7257,7 +7264,7 @@ El voluntariado comprende actividades asistenciales de servicios sociales, cívi
                                             </constraints>
                                         </tableViewCellContentView>
                                         <animations/>
-                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        <color key="backgroundColor" red="0.94117647058823528" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                         <connections>
                                             <outlet property="iconImageView" destination="6dP-uS-XjN" id="rgh-DR-fTi"/>
                                             <outlet property="menuButton" destination="7zi-N5-QYV" id="gga-Gc-CNl"/>
@@ -7564,13 +7571,13 @@ El voluntariado comprende actividades asistenciales de servicios sociales, cívi
         <image name="WriteCommentIcon" width="30" height="30"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="bm5-Tq-ecy"/>
-        <segue reference="rOI-1C-a3c"/>
-        <segue reference="maf-yN-UYl"/>
-        <segue reference="ThX-Nn-SQw"/>
         <segue reference="Pre-Nv-Nqk"/>
-        <segue reference="KtG-YL-lHe"/>
-        <segue reference="6CU-3i-foV"/>
+        <segue reference="ThX-Nn-SQw"/>
         <segue reference="OhW-LA-j8S"/>
+        <segue reference="KtG-YL-lHe"/>
+        <segue reference="rOI-1C-a3c"/>
+        <segue reference="bm5-Tq-ecy"/>
+        <segue reference="6BD-5l-icH"/>
+        <segue reference="6CU-3i-foV"/>
     </inferredMetricsTieBreakers>
 </document>

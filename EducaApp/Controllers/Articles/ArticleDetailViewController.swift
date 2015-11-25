@@ -60,6 +60,9 @@ class ArticleDetailViewController: BaseViewController {
     }
     let objectsToShare = [textToShare, myWebsite, imageToShare]
     let activityVC = UIActivityViewController(activityItems: objectsToShare, applicationActivities: nil)
+    if let popoverController = activityVC.popoverPresentationController {
+      popoverController.sourceView = self.view
+    }
     self.presentViewController(activityVC, animated: true, completion: nil)
   }
   
